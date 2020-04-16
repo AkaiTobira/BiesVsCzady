@@ -9,7 +9,9 @@ public static class  PlayerUtils
         Right = 1
     }
 
-    public static Vector2 PlayerSpeed = new Vector2( 5, 0);
+    public static float PlayerSpeed = 15.0f;
+    public static float JumpMaxTime     = 0.25f;
+    public static float PlayerJumpForce = 15.0f;
 
 
 }
