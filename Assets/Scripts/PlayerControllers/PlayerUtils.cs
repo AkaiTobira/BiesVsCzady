@@ -9,9 +9,11 @@ public static class  PlayerUtils
         Right = 1
     }
 
-    public static float PlayerSpeed = 15.0f;
-    public static float JumpMaxTime     = 0.25f;
-    public static float PlayerJumpForce = 15.0f;
+    public const float PlayerSpeed = 15.0f;
+    public const float JumpMaxTime     = 0.25f;
+    public const float PlayerJumpForce = 25.0f;
+
+    public const float PlayerSpeedInAir = 15.0f;
 
 
 }

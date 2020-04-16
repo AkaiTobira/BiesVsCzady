@@ -23,20 +23,23 @@ public class PlayerJump : BaseState
         m_dir = dir;
     }
 
+    private float ProcessSwipe( float curr_velocity ){
+        if( m_swipe == Swipe.None ) return curr_velocity;
+        if( m_swipe == Swipe.Left ){
+                m_controllabledObject.transform.GetComponent<Player>().changeDirection(PlayerUtils.Direction.Left);
+                return PlayerUtils.PlayerSpeedInAir * (float)PlayerUtils.Direction.Left;
+            }
+        if( m_swipe == Swipe.Right ){
+                m_controllabledObject.transform.GetComponent<Player>().changeDirection(PlayerUtils.Direction.Right);
+                return PlayerUtils.PlayerSpeedInAir * (float)PlayerUtils.Direction.Right;
+            }
+        return curr_velocity;
+    }
+
     public override void Process(){
         Rigidbody2D m_rb      = m_controllabledObject.GetComponent<Rigidbody2D>();
         Vector2 curr_velocity = m_rb.velocity;
-
-        if( m_swipe != Swipe.None ){
-            if( m_swipe == Swipe.Left ){
-                m_controllabledObject.transform.GetComponent<Player>().changeDirection(PlayerUtils.Direction.Left);
-                curr_velocity.x = PlayerUtils.PlayerSpeed * (float)PlayerUtils.Direction.Left;
-            }
-            if( m_swipe == Swipe.Right ){
-                m_controllabledObject.transform.GetComponent<Player>().changeDirection(PlayerUtils.Direction.Right);
-                curr_velocity.x = PlayerUtils.PlayerSpeed * (float)PlayerUtils.Direction.Right;
-            }
-        }
+        curr_velocity.x = ProcessSwipe(curr_velocity.x);
 
         if( isJumpIncreasing ){
             curr_velocity.y       = PlayerUtils.PlayerJumpForce;
@@ -50,7 +53,6 @@ public class PlayerJump : BaseState
     public override void HandleInput(){
         if( Input.GetKey(KeyCode.Space) && jumpTime < PlayerUtils.JumpMaxTime ){
             jumpTime += Time.deltaTime;
-            Debug.Log( jumpTime);
         }else{
             isJumpIncreasing = false;
         }
