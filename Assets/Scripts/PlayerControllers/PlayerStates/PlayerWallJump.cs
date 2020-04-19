@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerJump : BaseState
+public class PlayerWallJump : BaseState
 {
     private bool isMovingLeft = false;
     private PlayerUtils.Direction m_dir;
@@ -14,7 +14,7 @@ public class PlayerJump : BaseState
 
     private Swipe m_swipe;
 
-    public PlayerJump( GameObject controllable, PlayerUtils.Direction dir) : base( controllable ) {
+    public PlayerWallJump( GameObject controllable, PlayerUtils.Direction dir) : base( controllable ) {
         // play change direction animation;
         // at end of animation call :
         // TEMP
@@ -45,24 +45,20 @@ public class PlayerJump : BaseState
             curr_velocity.y       = PlayerUtils.PlayerJumpForce;
         }else if( m_controllabledObject.GetComponent<Player>().isOnGrounded() ){
             m_isOver = true;
-        } 
+        }else if( m_controllabledObject.GetComponent<Player>().isHittingWall()){
+            m_isOver = true;
+        }
 
         //m_rb.velocity         = curr_velocity;
         m_rb.AddForce( curr_velocity  * 10);
     }
 
     public override void HandleInput(){
-        if( Input.GetKeyDown(KeyCode.Space) && m_controllabledObject.GetComponent<Player>().isHittingWall() ){
-            m_nextState = new PlayerWallJump( m_controllabledObject, PlayerUtils.ReverseDirection( m_dir ) ); 
-        }
-
         if( Input.GetKey(KeyCode.Space) && jumpTime < PlayerUtils.JumpMaxTime ){
             jumpTime += Time.deltaTime;
         }else{
             isJumpIncreasing = false;
         }
-
-
 
         if( Input.GetKey(KeyCode.A)      ) { m_swipe = Swipe.Left;  }
         else if( Input.GetKey(KeyCode.D) ) { m_swipe = Swipe.Right; }
