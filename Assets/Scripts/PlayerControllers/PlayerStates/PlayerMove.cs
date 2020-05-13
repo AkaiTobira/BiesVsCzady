@@ -22,6 +22,8 @@ public class PlayerMove : BaseState
         velocity.x = PlayerUtils.PlayerSpeed * ( isMovingLeft ? -1 : 1);
         if( ! m_detector.isOnGround() ){
             velocity.y += -PlayerUtils.GravityForce * Time.deltaTime;
+        }else{
+            velocity.y = 0;
         }
         m_detector.Move(velocity * Time.deltaTime);
     }
