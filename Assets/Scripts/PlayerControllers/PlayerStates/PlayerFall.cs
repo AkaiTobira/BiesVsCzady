@@ -2,41 +2,21 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerJump : BaseState
-{    private bool isMovingLeft = false;
+public class PlayerFall : BaseState
+{
+    private bool isMovingLeft = false;
     private PlayerUtils.Direction m_dir;
     private PlayerUtils.Direction m_swipe;
 
     private bool swipeOn = false;
 
-    public PlayerJump( GameObject controllable, PlayerUtils.Direction dir) : base( controllable ) {
+    public PlayerFall( GameObject controllable, PlayerUtils.Direction dir) : base( controllable ) {
         isMovingLeft = dir == PlayerUtils.Direction.Left;
-        velocity.y = PlayerUtils.PlayerJumpForce;
-        name = "Jump";
-    }
-
-
-    private void checkIfShouldBeOver(){
-
-        if( m_detector.isOnCelling()){
-            velocity = new Vector2();
-            m_isOver = true;
-        }
-
-//        if( m_detector.isOnGround() || m_detector.isOnCelling() ){
-//            velocity = new Vector2();
-//            m_isOver   = true;
-//        }
-
-        if( PlayerFallHelper.FallRequirementsMeet( m_detector.isOnGround()) && velocity.y < 0 ){ 
-            m_isOver = true;
-        }
-
+        name = "Fall";
     }
 
     public override void Process(){
-        
-        checkIfShouldBeOver();
+        if( m_detector.isOnGround() ) m_isOver = true;
 
         velocity.y += -PlayerUtils.GravityForce * Time.deltaTime;
         if( swipeOn ){
@@ -51,6 +31,11 @@ public class PlayerJump : BaseState
     }
 
     public override void HandleInput(){
+    //     if(PlayerJumpHelper.JumpRequirementsMeet( PlayerUtils.isJumpKeyJustPressed(), 
+    //                                               m_detector.isOnGround() ))
+    //    {
+    //        m_nextState = new PlayerJump(m_controllabledObject, PlayerUtils.Direction.Left);
+    //    }
 
         if( PlayerUtils.isMoveLeftKeyHold() ){
             swipeOn = true;
@@ -62,4 +47,5 @@ public class PlayerJump : BaseState
             swipeOn = false;
         }
     }
+
 }

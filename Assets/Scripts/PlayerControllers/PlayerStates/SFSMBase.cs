@@ -13,13 +13,17 @@ public class SFSMBase
     }
 
     private void cleanStack(){
-        while( m_states.Peek().isOver() ) m_states.Pop();
+        while( m_states.Peek().isOver() ) m_states.Pop().OnExit();
     }
 
     private void processStack(){
         BaseState current_state = m_states.Peek();
         current_state.HandleInput();
         current_state.Process();
+    }
+
+    public string GetStateName(){
+        return  m_states.Peek().name;
     }
 
     private void switchState(){

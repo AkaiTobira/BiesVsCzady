@@ -4,15 +4,16 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    
-    [SerializeField] private LayerMask m_floorLayerMask = 8; 
-    [SerializeField] private LayerMask m_wallLayerMask = 8; 
     private SFSMBase m_controller;
     private PlayerUtils.Direction m_dir = PlayerUtils.Direction.Left;
+    private CollisionDetectorPlayer m_detector;
 
-    private BoxCollider2D m_boxCollider;
+    [SerializeField] float jumpHeight;
+    [SerializeField] float timeToJumpApex;
+    [SerializeField] float moveDistance = 15.0f;
+    [SerializeField] float moveDistanceInAir = 5.0f;
 
-    public void changeDirection( PlayerUtils.Direction dir ){
+    public void changeDirection( PlayerUtils.Direction dir, float angle = 361.0f ){
         if( m_dir == dir ) return;
         Vector3 localTransform = transform.localScale;
         localTransform.x       = Mathf.Abs( localTransform.x ) * (float)dir * -1 ;
@@ -22,50 +23,33 @@ public class Player : MonoBehaviour
 
     void Start()
     {
-        m_boxCollider = GetComponent<BoxCollider2D>(); 
-        m_controller  = new SFSMBase( transform.gameObject, new PlayerIdle( transform.gameObject ) );
+        m_detector    = GetComponent<CollisionDetectorPlayer>();
+        m_controller  = new SFSMBase( transform.gameObject, new PlayerIdle( gameObject ) );
+        CalculateMath();
     }
 
-    public bool isOnGrounded(){
-        float extraHeight = 0.1f;
-        RaycastHit2D rHit = Physics2D.BoxCast(m_boxCollider.bounds.center,
-                                              m_boxCollider.bounds.size,
-                                              0,
-                                              Vector2.down, 
-                                              extraHeight,
-                                              m_floorLayerMask);
-        Color rayColor;
-        if( rHit.collider != null ){
-            rayColor = Color.green;
-        }else {rayColor = Color.red;}
-        Debug.DrawRay( m_boxCollider.bounds.center, Vector2.down * ( m_boxCollider.bounds.extents.y + extraHeight), rayColor, Time.deltaTime, false );
-        return rHit.collider != null ;
+    private void CalculateMath(){
+        PlayerUtils.GravityForce     = (2 * jumpHeight) / Mathf.Pow (timeToJumpApex, 2);
+        PlayerUtils.PlayerSpeed      = moveDistance;
+        PlayerUtils.PlayerJumpForce  = Mathf.Abs(PlayerUtils.GravityForce) * timeToJumpApex;
+        PlayerUtils.PlayerSpeedInAir = moveDistanceInAir;
     }
 
-    public bool isHittingWall(){
-        float extraHeight = 1f;
-        RaycastHit2D rHit = Physics2D.BoxCast(m_boxCollider.bounds.center,
-                                              m_boxCollider.bounds.size/2,
-                                              0,
-                                              (transform.localScale.x < 0 ) ? Vector2.right : Vector2.left, 
-                                              extraHeight,
-                                              m_wallLayerMask);
-        Color rayColor;
-        if( rHit.collider != null ){
-            rayColor = Color.green;
-        }else {rayColor = Color.red;}
-        Debug.DrawRay( m_boxCollider.bounds.center, 
-                       ((transform.localScale.x < 0 ) ? Vector2.right : Vector2.left) * ( m_boxCollider.bounds.extents.x + extraHeight), 
-                       rayColor, 
-                       Time.deltaTime, 
-                       false );
-        return rHit.collider != null ;
-            
+    private void UpdateCounters(){
+        PlayerJumpHelper.IncrementCounters();
+        PlayerFallHelper.IncrementCounters();
+
+        if (Debug.isDebugBuild) CalculateMath();
     }
 
+    [SerializeField] bool isOnGround = false;
+    [SerializeField] string StateName = "Idle";
     // Update is called once per frame
-    void FixedUpdate(){
+    void Update(){
         m_controller.Update();
-        isHittingWall();
+        UpdateCounters();
+
+        isOnGround = m_detector.isOnGround();
+        StateName  = m_controller.GetStateName();
     }
 }

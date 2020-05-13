@@ -43,12 +43,13 @@ public class PlayerWallJump : BaseState
 
         if( isJumpIncreasing ){
             curr_velocity.y       = PlayerUtils.PlayerJumpForce;
-        }else if( m_controllabledObject.GetComponent<Player>().isOnGrounded() ){
+        }
+/*        }else if( m_controllabledObject.GetComponent<Player>().isOnGrounded() ){
             m_isOver = true;
         }else if( m_controllabledObject.GetComponent<Player>().isHittingWall()){
             m_isOver = true;
         }
-
+*/
         //m_rb.velocity         = curr_velocity;
         m_rb.AddForce( curr_velocity  * 10);
     }
