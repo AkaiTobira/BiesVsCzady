@@ -41,7 +41,6 @@ public class PlayerMove : BaseState
         ){ 
             m_nextState = new PlayerJump(m_controllabledObject, PlayerUtils.Direction.Left);
         }
-
     }
 
 }

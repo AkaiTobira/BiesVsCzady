@@ -13,6 +13,8 @@ public class PlayerFall : BaseState
     public PlayerFall( GameObject controllable, PlayerUtils.Direction dir) : base( controllable ) {
         isMovingLeft = dir == PlayerUtils.Direction.Left;
         name = "Fall";
+        if( PlayerFallOfWallHelper.FallOfWallRequirementsMeet() ) 
+            velocity.x = (isMovingLeft)? - PlayerUtils.PlayerSpeedInAir : PlayerUtils.PlayerSpeedInAir;
     }
 
     public override void Process(){
@@ -37,15 +39,24 @@ public class PlayerFall : BaseState
     //        m_nextState = new PlayerJump(m_controllabledObject, PlayerUtils.Direction.Left);
     //    }
 
-        if( PlayerUtils.isMoveLeftKeyHold() ){
-            swipeOn = true;
-            m_swipe = PlayerUtils.Direction.Left;
-        }else if( PlayerUtils.isMoveRightKeyHold() ){
-            swipeOn = true;
-            m_swipe = PlayerUtils.Direction.Right;
-        }else{
-            swipeOn = false;
+        if( m_detector.isWallClose() && !PlayerFallOfWallHelper.FallOfWallRequirementsMeet() ){
+            m_isOver = true;
+            m_nextState = new PlayerSlide( m_controllabledObject, m_dir);
         }
+
+        if( PlayerSwipeLock.SwipeUnlockRequirementsMeet() ){
+
+            if( PlayerUtils.isMoveLeftKeyHold() ){
+                swipeOn = true;
+                m_swipe = PlayerUtils.Direction.Left;
+            }else if( PlayerUtils.isMoveRightKeyHold() ){
+                swipeOn = true;
+                m_swipe = PlayerUtils.Direction.Right;
+            }else{
+                swipeOn = false;
+            }
+        }
+
     }
 
 }

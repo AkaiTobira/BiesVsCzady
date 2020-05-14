@@ -706,8 +706,8 @@ GameObject:
   m_Component:
   - component: {fileID: 239379937}
   - component: {fileID: 239379936}
-  - component: {fileID: 239379940}
   - component: {fileID: 239379939}
+  - component: {fileID: 239379940}
   - component: {fileID: 239379938}
   m_Layer: 0
   m_Name: Player
@@ -797,10 +797,6 @@ MonoBehaviour:
     m_Bits: 256
   verticalRayNumber: 4
   horizontalRayNumber: 4
-  transition: {x: 0, y: 0}
-  m_ladderMask:
-    serializedVersion: 2
-    m_Bits: 0
   m_oneWayFloorMask:
     serializedVersion: 2
     m_Bits: 0
@@ -843,11 +839,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be12501bceeac5c4c9f60f2d3c019401, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jumpHeight: 10
+  jumpHeight: 15
   timeToJumpApex: 1
   moveDistance: 15
   moveDistanceInAir: 5
   isOnGround: 0
+  isWallClose: 0
   StateName: Idle
 --- !u!1001 &295981531
 PrefabInstance:

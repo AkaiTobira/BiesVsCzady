@@ -26,6 +26,7 @@ public class CollisionDetector : MonoBehaviour
 
     protected struct CollisionInfo{
         public bool above, below, right, left;
+        public int faceDir;
 
         public void Reset(){
             above = below = right = left = false;
@@ -81,7 +82,7 @@ public class CollisionDetector : MonoBehaviour
                 new Color(1,0,0)
              );
         }
-        transition.x = Mathf.Sign(transition.x) * ( rayLenght -skinSize );
+        transition.x = Mathf.Sign(transition.x) * Mathf.Max( rayLenght -skinSize, 0.0f );
     }
     protected void ProcessCollisionVertical( float directionY ){
         float rayLenght  = Mathf.Abs (transition.y) + skinSize;
@@ -109,13 +110,14 @@ public class CollisionDetector : MonoBehaviour
                 new Color(0,1,0)
              );
         }
-        transition.y = Mathf.Sign(transition.y) * ( rayLenght -skinSize );
+        transition.y = Mathf.Sign(transition.y) * (rayLenght-skinSize);//Mathf.Max( rayLenght -skinSize, 0.0f );
     }
     protected virtual void ResetCollisionInfo(){
         collisionInfo.Reset();
     }
     public virtual void Move( Vector2 velocity ){
-        transition = velocity;
+        transition = velocity;        
+        if( transition.x != 0) collisionInfo.faceDir = (int) Mathf.Sign(transition.x) ;
         ResetCollisionInfo();
         CalculateBorders();
         ProcessCollision();

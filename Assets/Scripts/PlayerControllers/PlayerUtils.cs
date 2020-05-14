@@ -17,8 +17,14 @@ public static class  PlayerUtils
 
     public static float PlayerSpeedInAir  = 5.0f;
 
+    public static float MaxWallSlideSpeed  = 2.0f;
+
     public static Direction ReverseDirection( Direction curr ){
         return (curr == Direction.Left) ? Direction.Right : Direction.Left;
+    }
+
+    public static bool isSpecialKeyHold(){
+        return Input.GetKey(KeyCode.RightShift) || Input.GetKey(KeyCode.LeftShift);
     }
 
     public static bool isMoveLeftKeyHold(){

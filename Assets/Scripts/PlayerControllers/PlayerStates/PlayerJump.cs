@@ -13,6 +13,7 @@ public class PlayerJump : BaseState
         isMovingLeft = dir == PlayerUtils.Direction.Left;
         velocity.y = PlayerUtils.PlayerJumpForce;
         name = "Jump";
+        PlayerFallOfWallHelper.ResetCounter();
     }
 
 
@@ -52,6 +53,11 @@ public class PlayerJump : BaseState
 
     public override void HandleInput(){
 
+        if( m_detector.isWallClose() ){
+            m_isOver = true;
+            m_nextState = new PlayerSlide( m_controllabledObject, m_dir);
+        }
+
         if( PlayerUtils.isMoveLeftKeyHold() ){
             swipeOn = true;
             m_swipe = PlayerUtils.Direction.Left;
@@ -61,5 +67,7 @@ public class PlayerJump : BaseState
         }else{
             swipeOn = false;
         }
+
+
     }
 }

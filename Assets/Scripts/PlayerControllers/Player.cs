@@ -38,18 +38,23 @@ public class Player : MonoBehaviour
     private void UpdateCounters(){
         PlayerJumpHelper.IncrementCounters();
         PlayerFallHelper.IncrementCounters();
+        PlayerFallOfWallHelper.IncrementCounters();
+        PlayerSwipeLock.IncrementCounters();
+        PlayerJumpOffWall.IncrementCounters();
 
         if (Debug.isDebugBuild) CalculateMath();
     }
 
-    [SerializeField] bool isOnGround = false;
+    [SerializeField] bool isOnGround  = false;
+    [SerializeField] bool isWallClose = false;
     [SerializeField] string StateName = "Idle";
     // Update is called once per frame
     void Update(){
         m_controller.Update();
         UpdateCounters();
 
-        isOnGround = m_detector.isOnGround();
-        StateName  = m_controller.GetStateName();
+        isOnGround  = m_detector.isOnGround();
+        isWallClose = m_detector.isWallClose();
+        StateName   = m_controller.GetStateName();
     }
 }
