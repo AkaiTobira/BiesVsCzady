@@ -29,7 +29,7 @@ public class CollisionDetectorPlayer : CollisionDetector
     override protected void ProcessCollision(){
         ProcessCollisionHorizontal( Mathf.Sign(transition.x));
         ProcessCollisionVertical(   Mathf.Sign(transition.y));
-
+        ProcessOneWayPlatformDetection( Mathf.Sign(transition.y) );
         ProcessCollisionWallClose();
     }
 
