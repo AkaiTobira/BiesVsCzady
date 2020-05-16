@@ -11,9 +11,11 @@ public class PlayerSlide : BaseState
         // at end of animation call :
         // TEMP
 
+        PlayerFallOfWallHelper.ResetCounter();
+
         isMovingLeft = dir == PlayerUtils.Direction.Left;
         name = "WallSlide";
-
+        m_dir = dir;
         rotationAngle = ( m_dir == PlayerUtils.Direction.Left) ? 180 :0 ; 
         m_controllabledObject.transform.GetChild(0).eulerAngles = new Vector3( 0, rotationAngle, slopeAngle);
         m_controllabledObject.transform.GetChild(0).position    = m_controllabledObject.transform.position;
@@ -33,7 +35,8 @@ public class PlayerSlide : BaseState
             m_isOver = true;
         }
 
-        velocity.y =  Mathf.Max( velocity.y -PlayerUtils.GravityForce * Time.deltaTime,
+        velocity.x = (m_dir != PlayerUtils.Direction.Left )? -0.001f : 0.001f;
+        velocity.y = Mathf.Max( velocity.y -PlayerUtils.GravityForce * Time.deltaTime,
                                  -PlayerUtils.MaxWallSlideSpeed);
         if( PlayerUtils.isSpecialKeyHold() ) velocity.y = 0.0f;
 
@@ -43,13 +46,18 @@ public class PlayerSlide : BaseState
 
     public override void HandleInput(){
         if( !PlayerUtils.isSpecialKeyHold() ) {
-            if( isMovingLeft && PlayerUtils.isMoveRightKeyHold() ){
+
+            if( PlayerUtils.isJumpKeyJustPressed() ){
                 m_isOver = true;
-                m_nextState = new PlayerFall( m_controllabledObject, PlayerUtils.Direction.Right  );
-            }else if(!isMovingLeft && PlayerUtils.isMoveLeftKeyHold() ){
-                m_isOver = true;
-                m_nextState = new PlayerFall( m_controllabledObject, PlayerUtils.Direction.Left  );
+                m_nextState = new PlayerJumpWall(m_controllabledObject, m_dir);
             }
+        //    }else if( isMovingLeft && PlayerUtils.isMoveRightKeyHold() ){
+        //        m_isOver = true;
+        //        m_nextState = new PlayerFall( m_controllabledObject, PlayerUtils.Direction.Right  );
+        //    }else if(!isMovingLeft && PlayerUtils.isMoveLeftKeyHold() ){
+        //        m_isOver = true;
+        //        m_nextState = new PlayerFall( m_controllabledObject, PlayerUtils.Direction.Left  );
+        //    }
         }else{
 
         }

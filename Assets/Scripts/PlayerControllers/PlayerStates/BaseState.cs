@@ -51,6 +51,10 @@ public class BaseState
         }
     }
 
+    public PlayerUtils.Direction GetDirection(){
+        return m_dir;
+    }
+
     public  virtual void Process()
     {
     }

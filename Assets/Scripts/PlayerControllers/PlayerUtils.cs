@@ -19,6 +19,8 @@ public static class  PlayerUtils
 
     public static float MaxWallSlideSpeed  = 2.0f;
 
+    public static Vector2 PlayerWallJumpForce = new Vector2( 100, 400);
+
     public static Direction ReverseDirection( Direction curr ){
         return (curr == Direction.Left) ? Direction.Right : Direction.Left;
     }

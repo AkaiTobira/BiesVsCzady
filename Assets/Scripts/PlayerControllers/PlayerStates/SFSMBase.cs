@@ -32,6 +32,10 @@ public class SFSMBase
         if( nextState != null ) m_states.Push(nextState);
     }
 
+    public PlayerUtils.Direction GetDirection(){
+        return m_states.Peek().GetDirection();
+    }
+
     public void Update(){
         cleanStack();
         processStack();

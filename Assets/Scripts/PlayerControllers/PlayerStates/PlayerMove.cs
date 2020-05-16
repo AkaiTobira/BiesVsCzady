@@ -10,7 +10,6 @@ public class PlayerMove : BaseState
         // play change direction animation;
         // at end of animation call :
         // TEMP
-
    //     controllable.transform.GetComponent<Player>().changeDirection(dir);
         isMovingLeft = dir == PlayerUtils.Direction.Left;
         name = "Move";
