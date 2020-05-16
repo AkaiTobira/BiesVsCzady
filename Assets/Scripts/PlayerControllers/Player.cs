@@ -13,26 +13,22 @@ public class Player : MonoBehaviour
     [SerializeField] float moveDistance = 15.0f;
     [SerializeField] float moveDistanceInAir = 5.0f;
 
-    public void changeDirection( PlayerUtils.Direction dir, float angle = 361.0f ){
-        if( m_dir == dir ) return;
-        Vector3 localTransform = transform.localScale;
-        localTransform.x       = Mathf.Abs( localTransform.x ) * (float)dir * -1 ;
-        transform.localScale   = localTransform;
-        m_dir = dir;
-    }
+    [Range( 0.0f, 1.0f)] public float wallFriction = 1.0f;
 
     void Start()
     {
+    //    Application.targetFrameRate = 60;
         m_detector    = GetComponent<CollisionDetectorPlayer>();
         m_controller  = new SFSMBase( transform.gameObject, new PlayerIdle( gameObject ) );
         CalculateMath();
     }
 
     private void CalculateMath(){
-        PlayerUtils.GravityForce     = (2 * jumpHeight) / Mathf.Pow (timeToJumpApex, 2);
-        PlayerUtils.PlayerSpeed      = moveDistance;
-        PlayerUtils.PlayerJumpForce  = Mathf.Abs(PlayerUtils.GravityForce) * timeToJumpApex;
-        PlayerUtils.PlayerSpeedInAir = moveDistanceInAir;
+        PlayerUtils.GravityForce      = (2 * jumpHeight) / Mathf.Pow (timeToJumpApex, 2);
+        PlayerUtils.PlayerSpeed       = moveDistance;
+        PlayerUtils.PlayerJumpForce   = Mathf.Abs(PlayerUtils.GravityForce) * timeToJumpApex;
+        PlayerUtils.PlayerSpeedInAir  = moveDistanceInAir;
+        PlayerUtils.MaxWallSlideSpeed = PlayerUtils.GravityForce * wallFriction; 
     }
 
     private void UpdateCounters(){
@@ -47,6 +43,10 @@ public class Player : MonoBehaviour
 
     [SerializeField] bool isOnGround  = false;
     [SerializeField] bool isWallClose = false;
+    [SerializeField] bool isColLeft  = false;
+    [SerializeField] bool isColRight = false;
+
+
     [SerializeField] string StateName = "Idle";
     // Update is called once per frame
     void Update(){
@@ -56,5 +56,7 @@ public class Player : MonoBehaviour
         isOnGround  = m_detector.isOnGround();
         isWallClose = m_detector.isWallClose();
         StateName   = m_controller.GetStateName();
+        isColLeft =m_detector.isCollideWithLeftWall();
+        isColRight= m_detector.isCollideWithLeftWall();
     }
 }

@@ -15,7 +15,7 @@ public class CollisionDetector : MonoBehaviour
     protected float verticalDistanceBeetweenRays       = 1;
     [SerializeField] protected int horizontalRayNumber = 4;
     protected float horizontalDistanceBeetweenRays     = 1;
-    protected float skinSize              = 0.15f;
+    [SerializeField] protected float skinSize              = 15f;
     [SerializeField] protected Vector2 transition          = new Vector2();
     protected CollisionInfo collisionInfo = new CollisionInfo();
     protected Borders borders             = new Borders();
@@ -56,6 +56,7 @@ public class CollisionDetector : MonoBehaviour
     protected virtual void ProcessCollision(){
     }
     protected void ProcessCollisionHorizontal( float directionX ){
+        if( transition.x == 0) return;
         float rayLenght  = Mathf.Abs (transition.x) + skinSize;
 
         for( int i = 0; i < horizontalRayNumber; i ++){
@@ -82,9 +83,10 @@ public class CollisionDetector : MonoBehaviour
                 new Color(1,0,0)
              );
         }
-        transition.x = Mathf.Sign(transition.x) * Mathf.Max( rayLenght -skinSize, 0.0f );
+        transition.x = Mathf.Sign(transition.x) * ( rayLenght -skinSize);
     }
     protected void ProcessCollisionVertical( float directionY ){
+        if( transition.y == 0) return;
         float rayLenght  = Mathf.Abs (transition.y) + skinSize;
 
         for( int i = 0; i < verticalRayNumber; i ++){
@@ -112,6 +114,38 @@ public class CollisionDetector : MonoBehaviour
         }
         transition.y = Mathf.Sign(transition.y) * (rayLenght-skinSize);//Mathf.Max( rayLenght -skinSize, 0.0f );
     }
+
+	protected void VerticalCollisions() {
+        if( transition.y == 0) return;
+		float directionY = Mathf.Sign (transition.y);
+		float rayLength = Mathf.Abs (transition.y) + skinSize;
+
+		for (int i = 0; i < verticalRayNumber; i ++) {
+
+            Vector2 rayOrigin = new Vector2( borders.left + i * verticalDistanceBeetweenRays, 
+                                            (directionY == DIR_DOWN) ? borders.bottom : borders.top  );
+
+			RaycastHit2D hit = Physics2D.Raycast(rayOrigin, Vector2.up * directionY, rayLength, m_collsionMask);
+
+			Debug.DrawRay(rayOrigin, Vector2.up * directionY * rayLength,Color.red);
+
+			if (hit) {
+				transition.y = (hit.distance - skinSize) * directionY;
+				rayLength = hit.distance;
+
+				collisionInfo.below = directionY == -1;
+				collisionInfo.above = directionY == 1;
+			}
+		}
+	}
+
+    void Update()
+    {
+    //    ResetCollisionInfo();
+    //    CalculateBorders();
+     //   ProcessCollision();        
+    }
+
     protected virtual void ResetCollisionInfo(){
         collisionInfo.Reset();
     }

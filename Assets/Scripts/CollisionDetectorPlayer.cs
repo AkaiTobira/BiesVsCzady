@@ -27,9 +27,9 @@ public class CollisionDetectorPlayer : CollisionDetector
     }
 
     override protected void ProcessCollision(){
-        ProcessCollisionVertical( Mathf.Sign(transition.y));
         ProcessCollisionHorizontal( Mathf.Sign(transition.x));
-        ProcessOneWayPlatformDetection( Mathf.Sign(transition.y) );
+        ProcessCollisionVertical(   Mathf.Sign(transition.y));
+
         ProcessCollisionWallClose();
     }
 
@@ -100,6 +100,14 @@ public class CollisionDetectorPlayer : CollisionDetector
 
     public bool isWallClose(){
         return closeToWall;
+    }
+
+    public bool isCollideWithLeftWall(){
+        return collisionInfo.left;
+    }
+
+    public bool isCollideWithRightWall(){
+        return collisionInfo.right;
     }
 
     public bool isOnCelling(){

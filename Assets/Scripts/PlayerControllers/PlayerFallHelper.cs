@@ -15,7 +15,7 @@ public static class  PlayerFallHelper
     }
 
     static int fallAfterLeaveTheGorundFrames = 0;
-    const int MAX_FALL_AFTER_LEAVE_PLATFORM  = 5;
+    const int MAX_FALL_AFTER_LEAVE_PLATFORM  = 15;
     private static bool isFitInGroundLeaveDelay( ){
         return ( (fallAfterLeaveTheGorundFrames > MAX_FALL_AFTER_LEAVE_PLATFORM)  );
     }

@@ -5,7 +5,6 @@ using UnityEngine;
 public class PlayerMove : BaseState
 {
     private bool isMovingLeft = false;
-    private PlayerUtils.Direction m_dir;
 
     public PlayerMove( GameObject controllable, PlayerUtils.Direction dir) : base( controllable ) {
         // play change direction animation;
@@ -20,6 +19,10 @@ public class PlayerMove : BaseState
 
     public override void Process(){
         velocity.x = PlayerUtils.PlayerSpeed * ( isMovingLeft ? -1 : 1);
+        if( isMovingLeft  && m_detector.isCollideWithLeftWall() ) velocity.x = 0.0f;
+        if( !isMovingLeft && m_detector.isCollideWithRightWall()) velocity.x = 0.0f;
+
+
         if( ! m_detector.isOnGround() ){
             velocity.y += -PlayerUtils.GravityForce * Time.deltaTime;
         }else{

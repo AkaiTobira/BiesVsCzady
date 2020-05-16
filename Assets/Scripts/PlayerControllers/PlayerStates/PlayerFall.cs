@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerFall : BaseState
 {
     private bool isMovingLeft = false;
-    private PlayerUtils.Direction m_dir;
+
     private PlayerUtils.Direction m_swipe;
 
     private bool swipeOn = false;
@@ -41,7 +41,7 @@ public class PlayerFall : BaseState
 
         if( m_detector.isWallClose() && !PlayerFallOfWallHelper.FallOfWallRequirementsMeet() ){
             m_isOver = true;
-            m_nextState = new PlayerSlide( m_controllabledObject, m_dir);
+            m_nextState = new PlayerSlide( m_controllabledObject,  PlayerUtils.ReverseDirection(m_dir));
         }
 
         if( PlayerSwipeLock.SwipeUnlockRequirementsMeet() ){

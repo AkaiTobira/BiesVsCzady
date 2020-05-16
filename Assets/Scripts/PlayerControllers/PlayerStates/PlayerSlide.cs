@@ -5,7 +5,6 @@ using UnityEngine;
 public class PlayerSlide : BaseState
 {
     private bool isMovingLeft = false;
-    private PlayerUtils.Direction m_dir;
 
     public PlayerSlide( GameObject controllable, PlayerUtils.Direction dir) : base( controllable ) {
         // play change direction animation;
@@ -14,9 +13,17 @@ public class PlayerSlide : BaseState
 
         isMovingLeft = dir == PlayerUtils.Direction.Left;
         name = "WallSlide";
+
+        rotationAngle = ( m_dir == PlayerUtils.Direction.Left) ? 180 :0 ; 
+        m_controllabledObject.transform.GetChild(0).eulerAngles = new Vector3( 0, rotationAngle, slopeAngle);
+        m_controllabledObject.transform.GetChild(0).position    = m_controllabledObject.transform.position;
     }
 
     private float timeToFallOffWall = 0.0f;
+
+    public override void UpdateDirection(){
+
+    }
 
     public override void Process(){
         if( m_detector.isOnGround()   ) m_isOver = true;

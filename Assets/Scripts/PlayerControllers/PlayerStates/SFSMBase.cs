@@ -20,6 +20,7 @@ public class SFSMBase
         BaseState current_state = m_states.Peek();
         current_state.HandleInput();
         current_state.Process();
+        current_state.UpdateDirection();
     }
 
     public string GetStateName(){

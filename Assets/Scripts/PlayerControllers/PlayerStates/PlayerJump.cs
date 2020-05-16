@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class PlayerJump : BaseState
 {    private bool isMovingLeft = false;
-    private PlayerUtils.Direction m_dir;
     private PlayerUtils.Direction m_swipe;
 
     private bool swipeOn = false;
@@ -23,11 +22,6 @@ public class PlayerJump : BaseState
             velocity = new Vector2();
             m_isOver = true;
         }
-
-//        if( m_detector.isOnGround() || m_detector.isOnCelling() ){
-//            velocity = new Vector2();
-//            m_isOver   = true;
-//        }
 
         if( PlayerFallHelper.FallRequirementsMeet( m_detector.isOnGround()) && velocity.y < 0 ){ 
             m_isOver = true;
@@ -55,7 +49,7 @@ public class PlayerJump : BaseState
 
         if( m_detector.isWallClose() ){
             m_isOver = true;
-            m_nextState = new PlayerSlide( m_controllabledObject, m_dir);
+            m_nextState = new PlayerSlide( m_controllabledObject, PlayerUtils.ReverseDirection(m_dir));
         }
 
         if( PlayerUtils.isMoveLeftKeyHold() ){
