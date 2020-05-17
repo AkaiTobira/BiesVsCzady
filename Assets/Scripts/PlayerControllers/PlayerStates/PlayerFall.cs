@@ -18,8 +18,6 @@ public class PlayerFall : BaseState
     }
 
     public override void Process(){
-        if( m_detector.isOnGround() ) m_isOver = true;
-
         velocity.y += -PlayerUtils.GravityForce * Time.deltaTime;
         if( swipeOn ){
             velocity.x = ( m_swipe == PlayerUtils.Direction.Left ) ? 
@@ -30,6 +28,7 @@ public class PlayerFall : BaseState
             // else velocity.x < 0 => m_direction = Direction.Right czy jakoś tak.
         }
         m_detector.Move(velocity * Time.deltaTime);
+        if( m_detector.isOnGround() ) m_isOver = true;
     }
 
     public override void HandleInput(){

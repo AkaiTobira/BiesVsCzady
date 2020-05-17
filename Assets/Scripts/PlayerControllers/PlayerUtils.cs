@@ -37,6 +37,11 @@ public static class  PlayerUtils
         return Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow);
     }
 
+    public static bool isFallKeyHold(){
+        return Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow);
+    }
+
+
     public static bool isJumpKeyJustPressed(){
         return Input.GetKeyDown( KeyCode.Space );
     }

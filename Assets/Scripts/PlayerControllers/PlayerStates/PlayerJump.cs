@@ -8,11 +8,18 @@ public class PlayerJump : BaseState
 
     private bool swipeOn = false;
 
+    private  int timeToCheckJump = 180;
+
     public PlayerJump( GameObject controllable, PlayerUtils.Direction dir) : base( controllable ) {
         isMovingLeft = dir == PlayerUtils.Direction.Left;
         velocity.y = PlayerUtils.PlayerJumpForce;
         name = "Jump";
         PlayerFallOfWallHelper.ResetCounter();
+
+        m_detector.CheatMove( new Vector2(0,20.0f));
+
+        Debug.Log(m_detector.isOnGround());
+
     }
 
 
@@ -23,6 +30,9 @@ public class PlayerJump : BaseState
             m_isOver = true;
         }
 
+      //  timeToCheckJump --;
+      //  if( timeToCheckJump > 0 ) return;
+
         if( PlayerFallHelper.FallRequirementsMeet( m_detector.isOnGround()) && velocity.y < 0 ){ 
             m_isOver = true;
         }
@@ -31,9 +41,9 @@ public class PlayerJump : BaseState
 
     public override void Process(){
         
-        checkIfShouldBeOver();
-
         velocity.y += -PlayerUtils.GravityForce * Time.deltaTime;
+        velocity.y = Mathf.Max( velocity.y, -500 );
+
         if( swipeOn ){
             velocity.x = ( m_swipe == PlayerUtils.Direction.Left ) ? 
                             -PlayerUtils.PlayerSpeedInAir : 
@@ -43,6 +53,7 @@ public class PlayerJump : BaseState
             // else velocity.x < 0 => m_direction = Direction.Right czy jakoś tak.
         }
         m_detector.Move(velocity * Time.deltaTime);
+        checkIfShouldBeOver();
     }
 
     public override void HandleInput(){

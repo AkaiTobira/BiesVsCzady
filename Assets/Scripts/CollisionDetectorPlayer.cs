@@ -27,6 +27,8 @@ public class CollisionDetectorPlayer : CollisionDetector
     }
 
     override protected void ProcessCollision(){
+        ProcessSlopeDetection( Mathf.Sign(transition.x) );
+    //    DebuggText3.text = transition.ToString();
         ProcessCollisionHorizontal( Mathf.Sign(transition.x));
         ProcessCollisionVertical(   Mathf.Sign(transition.y));
         ProcessOneWayPlatformDetection( Mathf.Sign(transition.y) );
@@ -36,31 +38,36 @@ public class CollisionDetectorPlayer : CollisionDetector
     protected void ProcessCollisionWallClose(){
         float rayLenght = wallCheckRayLenght;
 
-        Vector2 rayOrigin = new Vector2( (collisionInfo.faceDir == DIR_LEFT) ? borders.left : 
-                                                                               borders.right,
-                                          borders.bottom + (horizontalRayNumber/2.0f) * 
-                                                            horizontalDistanceBeetweenRays );
+        for( float i = -1.0f; i < 2.0f; i++){
+            Vector2 rayOrigin = new Vector2( (collisionInfo.faceDir == DIR_LEFT) ? 
+                                             borders.left + skinSize: borders.right -skinSize ,
+                                              borders.bottom + ((horizontalRayNumber+i)/2.0f) * 
+                                                                horizontalDistanceBeetweenRays );
 
-        RaycastHit2D hit = Physics2D.Raycast(
-            rayOrigin,
-            new Vector2( collisionInfo.faceDir, 0),
-            rayLenght,
-            m_collsionMask
-        );
 
-        if( hit ){
-            closeToWall = true;
-        }else{
-            closeToWall = false;
+
+
+            RaycastHit2D hit = Physics2D.Raycast(
+                rayOrigin,
+                new Vector2( collisionInfo.faceDir, 0),
+                rayLenght,
+                m_collsionMask
+            );
+
+            if( hit ){
+                closeToWall = true;
+            }else{
+                closeToWall = false;
+            }
+
+            Debug.DrawRay(
+                rayOrigin,
+                new Vector2( collisionInfo.faceDir, 0) * rayLenght,
+                new Color(1,1,1)
+             );
+
         }
-        
-        Debug.DrawRay(
-            rayOrigin,
-            new Vector2( collisionInfo.faceDir, 0) * rayLenght,
-            new Color(1,1,1)
-         );
     }
-
 
     protected void ProcessOneWayPlatformDetection( float directionY ){
         if( disableFallByOneWayFloorTimer < FallByFloorTime ){
@@ -73,7 +80,8 @@ public class CollisionDetectorPlayer : CollisionDetector
 
         for( int i = 0; i < verticalRayNumber; i ++){
             Vector2 rayOrigin = new Vector2( borders.left + i * verticalDistanceBeetweenRays, 
-                                             borders.bottom );
+                                             borders.bottom + skinSize );
+
 
             RaycastHit2D hit = Physics2D.Raycast(
                 rayOrigin,

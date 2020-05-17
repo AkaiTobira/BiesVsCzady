@@ -21,17 +21,21 @@ public class PlayerIdle : BaseState
                                                    m_detector.isOnGround() )
         ){
             m_nextState = new PlayerJump(m_controllabledObject, PlayerUtils.Direction.Left);
+        }else if( PlayerUtils.isFallKeyHold() ) {
+            m_detector.enableFallForOneWayFloor();
+            velocity.y += -PlayerUtils.GravityForce * Time.deltaTime;
+            m_detector.Move( velocity * Time.deltaTime );
         }
     }
 
     public override void Process(){
-
         if( ! m_detector.isOnGround() ){
             velocity.y += -PlayerUtils.GravityForce * Time.deltaTime;
             m_detector.Move( velocity * Time.deltaTime );
         }else{
-            velocity = new Vector2();
+            velocity = new Vector2(0,0);
+        //    m_detector.Move( new Vector2(0,-0.000000001f));
+        //    m_detector.Move( velocity * Time.deltaTime );
         }
-
     }
 }

@@ -21,7 +21,7 @@ public class PlayerMove : BaseState
         if( isMovingLeft  && m_detector.isCollideWithLeftWall() ) velocity.x = 0.0f;
         if( !isMovingLeft && m_detector.isCollideWithRightWall()) velocity.x = 0.0f;
 
-
+        velocity.y += -PlayerUtils.GravityForce * Time.deltaTime;
         if( ! m_detector.isOnGround() ){
             velocity.y += -PlayerUtils.GravityForce * Time.deltaTime;
         }else{
@@ -42,6 +42,10 @@ public class PlayerMove : BaseState
                                                    m_detector.isOnGround() )
         ){ 
             m_nextState = new PlayerJump(m_controllabledObject, PlayerUtils.Direction.Left);
+        }else if( PlayerUtils.isFallKeyHold() ) {
+            m_detector.enableFallForOneWayFloor();
+            velocity.y += -PlayerUtils.GravityForce * Time.deltaTime;
+            m_detector.Move( velocity * Time.deltaTime );
         }
     }
 
