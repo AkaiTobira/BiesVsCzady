@@ -17,13 +17,18 @@ public class PlayerSlide : BaseState
         name = "WallSlide";
         m_dir = dir;
         rotationAngle = ( m_dir == PlayerUtils.Direction.Left) ? 180 :0 ; 
-        m_controllabledObject.transform.GetChild(0).eulerAngles = new Vector3( 0, rotationAngle, slopeAngle);
-        m_controllabledObject.transform.GetChild(0).position    = m_controllabledObject.transform.position;
+        m_controllabledObject.GetComponent<Player>().animationNode.eulerAngles = new Vector3( 0, rotationAngle, slopeAngle);
+
     }
 
     private float timeToFallOffWall = 0.0f;
 
     public override void UpdateDirection(){
+
+            m_controllabledObject.GetComponent<Player>().animationNode.position = 
+                Vector3.SmoothDamp( m_controllabledObject.GetComponent<Player>().animationNode.position, 
+                                    m_controllabledObject.transform.position, ref animationVel, m_smoothTime);
+
 
     }
 

@@ -31,11 +31,9 @@ public class PlayerIdle : BaseState
     public override void Process(){
         if( ! m_detector.isOnGround() ){
             velocity.y += -PlayerUtils.GravityForce * Time.deltaTime;
-            m_detector.Move( velocity * Time.deltaTime );
         }else{
-            velocity = new Vector2(0,0);
-        //    m_detector.Move( new Vector2(0,-0.000000001f));
-        //    m_detector.Move( velocity * Time.deltaTime );
+            velocity.y = -PlayerUtils.GravityForce * Time.deltaTime;
         }
+        m_detector.Move( velocity * Time.deltaTime );
     }
 }

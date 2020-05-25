@@ -28,6 +28,7 @@ public class CollisionDetectorPlayer : CollisionDetector
 
     override protected void ProcessCollision(){
         ProcessSlopeDetection( Mathf.Sign(transition.x) );
+        DescendSlope();
     //    DebuggText3.text = transition.ToString();
         ProcessCollisionHorizontal( Mathf.Sign(transition.x));
         ProcessCollisionVertical(   Mathf.Sign(transition.y));

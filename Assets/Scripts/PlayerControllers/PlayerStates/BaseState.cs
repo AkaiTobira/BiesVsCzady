@@ -35,7 +35,16 @@ public class BaseState
         return temp;
     }
 
+    protected Vector3 animationVel = Vector3.zero;
+    protected float m_smoothTime = 0.03f;
     public virtual void UpdateDirection(){
+
+        m_controllabledObject.GetComponent<Player>().animationNode.position = 
+            Vector3.SmoothDamp( m_controllabledObject.GetComponent<Player>().animationNode.position, 
+                                m_controllabledObject.transform.position, ref animationVel, m_smoothTime);
+
+    //    slopeAngle =  (( m_dir == PlayerUtils.Direction.Right) ? 180.0f - m_detector.GetSlopeAngle()  : m_detector.GetSlopeAngle()  );
+
         if( velocity.x != 0){
             PlayerUtils.Direction c_dir = Mathf.Sign( velocity.x ) == -1 ? 
                                                PlayerUtils.Direction.Left : 
@@ -44,10 +53,10 @@ public class BaseState
             if( m_dir == c_dir) return;
 
             m_dir = c_dir;
-
+            
             rotationAngle = ( m_dir == PlayerUtils.Direction.Left) ? 180 :0 ; 
-            m_controllabledObject.transform.GetChild(0).eulerAngles = new Vector3( 0, rotationAngle, slopeAngle);
-            m_controllabledObject.transform.GetChild(0).position    = m_controllabledObject.transform.position;
+            m_controllabledObject.GetComponent<Player>().animationNode.eulerAngles = new Vector3( 0, rotationAngle, slopeAngle);
+            //m_controllabledObject.transform.GetChild(0).position    = m_controllabledObject.transform.position;
         }
     }
 

@@ -76,9 +76,8 @@ public class CollisionDetector : MonoBehaviour
         float rayLenght  = Mathf.Abs (transition.x) + skinSize;
         Vector2 rayOrigin = new Vector2( (directionX == DIR_LEFT) ? 
                                                     borders.left : 
-                                                    borders.right ,
-                                          borders.bottom - skinSize );
-
+                                                    borders.right,
+                                          borders.bottom - skinSize);
 
             RaycastHit2D hit = Physics2D.Raycast(
                 rayOrigin,
@@ -88,16 +87,23 @@ public class CollisionDetector : MonoBehaviour
             );
 
             if( hit ){
-                float slopeAngle = Vector2.Angle(hit.normal, Vector2.up);
-                if( slopeAngle < maxClimbAngle){
-                    Debug.Log("Slope Detected" + slopeAngle.ToString());
+                if( hit.distance == 0.0f) return;
 
+                float slopeAngle = Vector2.Angle(hit.normal, Vector2.up);
+                DebuggText3.text = slopeAngle.ToString();
+                DebuggText3.text += " : " + hit.distance.ToString(); 
+                if( slopeAngle < maxClimbAngle){
+
+					if (collisionInfo.descendingSlope) {
+						collisionInfo.descendingSlope = false;
+//						transition = collisionInfo.velocityOld;
+					}
 					float distanceToSlopeStart = 0;
 					if (slopeAngle != collisionInfo.slopeAngleOld) {
 						distanceToSlopeStart = hit.distance- skinSize;
                         transition.x -= distanceToSlopeStart * directionX;
 					}
-                    DebuggText3.text = transition.ToString();
+                    DebuggText3.text += " : " + transition.ToString();
                 	float moveDistance   = Mathf.Abs (transition.x);
 		            float climbVelocityY = Mathf.Sin (slopeAngle * Mathf.Deg2Rad) * moveDistance;
                     DebuggText3.text += " : " + moveDistance.ToString();
@@ -109,9 +115,10 @@ public class CollisionDetector : MonoBehaviour
                         
                         collisionInfo.below         = true;
 		            	collisionInfo.climbingSlope = true;
+                        collisionInfo.slopeAngleOld = collisionInfo.slopeAngle;
 		            	collisionInfo.slopeAngle    = slopeAngle;
 		            }
-				    transition.x += distanceToSlopeStart * directionX;     
+				    transition.x     += distanceToSlopeStart * directionX;
                     DebuggText3.text += " : " + transition.x.ToString();
 		            transition.y = Mathf.Tan(slopeAngle * Mathf.Deg2Rad) * 
                                    Mathf.Abs(transition.x);
@@ -123,10 +130,54 @@ public class CollisionDetector : MonoBehaviour
             }
                 Debug.DrawRay(
                 rayOrigin,
-                new Vector2(directionX * 10, 0) * rayLenght,
+                new Vector2(directionX * 4, 0) * rayLenght,
                 new Color(0,0,0)
              );
     }
+
+    float maxDescendAngle = 40;
+
+	protected void DescendSlope() {
+        if( collisionInfo.climbingSlope ) return;
+		float directionX = Mathf.Sign (transition.x);
+		
+        Vector2 rayOrigin = new Vector2( (directionX == DIR_RIGHT) ? 
+                                                    borders.left : 
+                                                    borders.right,
+                                          borders.bottom - skinSize);
+		RaycastHit2D hit = Physics2D.Raycast (rayOrigin, -Vector2.up, Mathf.Infinity, m_collsionMask);
+
+		if (hit) {
+			float slopeAngle = Vector2.Angle(hit.normal, Vector2.up);
+			if (slopeAngle != 0 && slopeAngle <= maxDescendAngle) {
+				if (Mathf.Sign(hit.normal.x) == directionX) {
+					if (hit.distance - skinSize <= Mathf.Tan(slopeAngle * Mathf.Deg2Rad) * Mathf.Abs(transition.x)) {
+						float moveDistance = Mathf.Abs(transition.x);
+						float descendVelocityY = Mathf.Sin (slopeAngle * Mathf.Deg2Rad) * moveDistance;
+						transition.x = Mathf.Cos (slopeAngle * Mathf.Deg2Rad) * moveDistance * Mathf.Sign (transition.x);
+						transition.y -= descendVelocityY;
+
+						collisionInfo.slopeAngle = slopeAngle;
+						collisionInfo.descendingSlope = true;
+						collisionInfo.below = true;
+					}
+				}
+			}
+		}
+
+        Debug.DrawRay(
+            rayOrigin,
+            new Vector2(-4, 0),
+            new Color(0,0,0)
+        );
+        
+
+	}
+
+    public float GetSlopeAngle(){
+        return collisionInfo.slopeAngle;
+    }
+
 
     protected void ProcessCollisionHorizontal( float directionX ){
         if( transition.x == 0) return;
@@ -155,9 +206,12 @@ public class CollisionDetector : MonoBehaviour
             //    if (hit.distance == 0) {
 			//		continue;
 			//	}
+             //   if( i == 0 ){
 
-                rayLenght  = hit.distance;
-
+            //    }else{
+                    rayLenght  = hit.distance;
+            //    }
+                
                 collisionInfo.left  = (directionX == DIR_LEFT );
                 collisionInfo.right = (directionX == DIR_RIGHT);
             }

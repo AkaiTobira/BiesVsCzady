@@ -44,6 +44,8 @@ public class Player : MonoBehaviour
         if (Debug.isDebugBuild) CalculateMath();
     }
 
+    [SerializeField] public Transform animationNode;
+
     [SerializeField] bool isOnGround     = false;
     [SerializeField] bool isWallClose    = false;
     [SerializeField] bool isColLeft      = false;

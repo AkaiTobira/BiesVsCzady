@@ -22,11 +22,10 @@ public class PlayerMove : BaseState
         if( !isMovingLeft && m_detector.isCollideWithRightWall()) velocity.x = 0.0f;
 
         velocity.y += -PlayerUtils.GravityForce * Time.deltaTime;
-        if( ! m_detector.isOnGround() ){
-            velocity.y += -PlayerUtils.GravityForce * Time.deltaTime;
-        }else{
-            velocity.y = 0;
+        if( m_detector.isOnGround() ){
+            velocity.y = -PlayerUtils.GravityForce * Time.deltaTime;
         }
+        
         m_detector.Move(velocity * Time.deltaTime);
     }
 
