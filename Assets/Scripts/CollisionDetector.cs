@@ -17,15 +17,15 @@ public class CollisionDetector : MonoBehaviour
     [SerializeField] protected int horizontalRayNumber = 4;
     protected float horizontalDistanceBeetweenRays     = 1;
     [SerializeField] protected float skinSize              = 15f;
-    [SerializeField] protected Vector2 transition          = new Vector2();
+    protected Vector2 transition          = new Vector2();
     protected CollisionInfo collisionInfo = new CollisionInfo();
     protected Borders borders             = new Borders();
+    [SerializeField] public float maxClimbAngle   = 40.0f;
+    [SerializeField] public float maxDescendAngle = 40.0f;
 
-    [SerializeField] public Text DebuggText = null;
-    [SerializeField] public Text DebuggText2 = null;
-    [SerializeField] public Text DebuggText3 = null;
+    [SerializeField] protected bool autoGravityOn = false;
+    BoxCollider2D m_boxCollider;
 
-    [SerializeField] public float maxClimbAngle = 40.0f;
 
     public struct Borders{
         public float left, right, top, bottom;
@@ -48,8 +48,6 @@ public class CollisionDetector : MonoBehaviour
         }
     }
 
-    BoxCollider2D m_boxCollider;
-
     void Awake() {
         m_boxCollider = GetComponent<BoxCollider2D>();
         CalculateBorders();
@@ -69,10 +67,13 @@ public class CollisionDetector : MonoBehaviour
         verticalDistanceBeetweenRays   = (borders.right - borders.left)  /( verticalRayNumber   -1);
     }
     protected virtual void ProcessCollision(){
+        ProcessSlopeDetection( Mathf.Sign(transition.x) );
+        DescendSlope();
+        ProcessCollisionHorizontal( Mathf.Sign(transition.x));
+        ProcessCollisionVertical(   Mathf.Sign(transition.y));
     }
 
     protected void ProcessSlopeDetection(float directionX){
-        //if( transition.x == 0) return;
         float rayLenght  = Mathf.Abs (transition.x) + skinSize;
         Vector2 rayOrigin = new Vector2( (directionX == DIR_LEFT) ? 
                                                     borders.left : 
@@ -89,9 +90,7 @@ public class CollisionDetector : MonoBehaviour
             if( hit ){
                 if( hit.distance == 0.0f) return;
 
-                float slopeAngle = Vector2.Angle(hit.normal, Vector2.up);
-                DebuggText3.text = slopeAngle.ToString();
-                DebuggText3.text += " : " + hit.distance.ToString(); 
+                float slopeAngle = Vector2.Angle(hit.normal, Vector2.up); 
                 if( slopeAngle < maxClimbAngle){
 
 					if (collisionInfo.descendingSlope) {
@@ -103,11 +102,8 @@ public class CollisionDetector : MonoBehaviour
 						distanceToSlopeStart = hit.distance- skinSize;
                         transition.x -= distanceToSlopeStart * directionX;
 					}
-                    DebuggText3.text += " : " + transition.ToString();
                 	float moveDistance   = Mathf.Abs (transition.x);
 		            float climbVelocityY = Mathf.Sin (slopeAngle * Mathf.Deg2Rad) * moveDistance;
-                    DebuggText3.text += " : " + moveDistance.ToString();
-                    DebuggText3.text += " : " + climbVelocityY.ToString();
 		            if (transition.y <= climbVelocityY) {
 		            	transition.y = climbVelocityY;
 		            	transition.x = Mathf.Cos(slopeAngle * Mathf.Deg2Rad) * 
@@ -119,23 +115,18 @@ public class CollisionDetector : MonoBehaviour
 		            	collisionInfo.slopeAngle    = slopeAngle;
 		            }
 				    transition.x     += distanceToSlopeStart * directionX;
-                    DebuggText3.text += " : " + transition.x.ToString();
 		            transition.y = Mathf.Tan(slopeAngle * Mathf.Deg2Rad) * 
                                    Mathf.Abs(transition.x);
-                    DebuggText3.text += " : " + transition.y.ToString();
                     transition.x = transition.y / Mathf.Tan(slopeAngle * 
                                     Mathf.Deg2Rad) * Mathf.Sign(transition.x);
-                    DebuggText3.text += " : " + transition.x.ToString();
                 }
             }
-                Debug.DrawRay(
-                rayOrigin,
-                new Vector2(directionX * 4, 0) * rayLenght,
-                new Color(0,0,0)
-             );
-    }
 
-    float maxDescendAngle = 40;
+        Debug.DrawRay(
+            rayOrigin,
+            new Vector2(directionX * 4, 0) * rayLenght,
+            new Color(0,0,0));
+    }
 
 	protected void DescendSlope() {
         if( collisionInfo.climbingSlope ) return;
@@ -164,14 +155,11 @@ public class CollisionDetector : MonoBehaviour
 				}
 			}
 		}
-
         Debug.DrawRay(
             rayOrigin,
             new Vector2(-4, 0),
             new Color(0,0,0)
         );
-        
-
 	}
 
     public float GetSlopeAngle(){
@@ -182,11 +170,6 @@ public class CollisionDetector : MonoBehaviour
     protected void ProcessCollisionHorizontal( float directionX ){
         if( transition.x == 0) return;
         float rayLenght  = Mathf.Abs (transition.x) + skinSize;
-
-
-	//	if (Mathf.Abs(transition.x) < skinSize) {
-	//		rayLenght = 2*skinSize;
-	//	}
 
         for( int i = 0; i < horizontalRayNumber; i ++){
             Vector2 rayOrigin = new Vector2( (directionX == DIR_LEFT) ? 
@@ -203,15 +186,8 @@ public class CollisionDetector : MonoBehaviour
 
             if( hit ){
 
-            //    if (hit.distance == 0) {
-			//		continue;
-			//	}
-             //   if( i == 0 ){
+                rayLenght  = hit.distance;
 
-            //    }else{
-                    rayLenght  = hit.distance;
-            //    }
-                
                 collisionInfo.left  = (directionX == DIR_LEFT );
                 collisionInfo.right = (directionX == DIR_RIGHT);
             }
@@ -262,7 +238,7 @@ public class CollisionDetector : MonoBehaviour
              );
         }
         if( !collisionInfo.climbingSlope )
-        transition.y = Mathf.Sign(transition.y) * (rayLenght-skinSize);//Mathf.Max( rayLenght -skinSize, 0.0f );
+        transition.y = Mathf.Sign(transition.y) * (rayLenght-skinSize);
     }
 
 	protected void VerticalCollisions() {
@@ -291,67 +267,48 @@ public class CollisionDetector : MonoBehaviour
 		}
 	}
 
-[SerializeField] float i = 0.0f;
-[SerializeField] float j = 0.0f;
-[SerializeField] float k = 0.0f;
+    public Vector2 GetTransition(){
+        return transition;
+    }
 
-private void printForDebug(){
-        float rayLenght  = 10;
-		float directionY = Mathf.Sign (transition.y);
-        float directionX = Mathf.Sign (transition.x);
-
-		for (int i = 0; i < verticalRayNumber; i ++) {
-
-            Vector2 rayOrigin = new Vector2( borders.left + i * verticalDistanceBeetweenRays, 
-                                            (directionY == DIR_DOWN) ? 
-                                                borders.bottom + skinSize: 
-                                                borders.top    - skinSize );
-
-			Debug.DrawRay(rayOrigin, Vector2.up * rayLenght * directionY,Color.red);
-		}
-
-        for( int i = 0; i < horizontalRayNumber; i ++){
-            Vector2 rayOrigin = new Vector2( (directionX == DIR_LEFT) ? 
-                                             borders.left + j: borders.right +k ,
-                                             borders.bottom + i * horizontalDistanceBeetweenRays );
-
-            Debug.DrawRay(
-                rayOrigin,
-                Vector2.right * directionY* rayLenght,
-                Color.red
-             );
+    protected virtual void ProcessAutoGravity(){
+        if( autoGravityOn ){
+            if( !collisionInfo.below){
+                transition.y = -PlayerUtils.GravityForce * Time.deltaTime;
+                Move( transition );
+            }
         }
-	}
-
-
+    }
 
     void Update()
     {
-
         CalculateBorders();
-    //    CalculateDistanceBeetweenRay();
-    //    printForDebug();
-    //    ResetCollisionInfo();
-    //    CalculateBorders();
-     //   ProcessCollision();        
+        ProcessAutoGravity();
     }
 
     protected virtual void ResetCollisionInfo(){
         collisionInfo.Reset();
     }
+
     public virtual void Move( Vector2 velocity ){
-        DebuggText.text = velocity.ToString();
-        transition = velocity;        
+        transition = velocity;
         if( transition.x != 0) collisionInfo.faceDir = (int) Mathf.Sign(transition.x) ;
         ResetCollisionInfo();
         CalculateDistanceBeetweenRay();
         CalculateBorders();
         ProcessCollision();
         transform.Translate( transition );
-        DebuggText2.text = transition.ToString();
+        transition = new Vector2(0,0);
     }
 
-    public void CheatMove( Vector2 velocity){
+    public void CheatMove( Vector2 velocity, bool resetCollisionFlags = false){
+      /*  if( resetCollisionFlags ){
+            transition = velocity;
+            ResetCollisionInfo();
+            ProcessSlopeDetection( Mathf.Sign(velocity.x) );
+            DescendSlope();
+            ProcessCollisionVertical( Mathf.Sign(velocity.y));
+        } */
         transform.Translate( velocity );
     }
 

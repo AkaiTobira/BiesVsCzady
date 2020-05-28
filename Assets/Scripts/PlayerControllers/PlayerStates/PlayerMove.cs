@@ -25,8 +25,16 @@ public class PlayerMove : BaseState
         if( m_detector.isOnGround() ){
             velocity.y = -PlayerUtils.GravityForce * Time.deltaTime;
         }
-        
+
         m_detector.Move(velocity * Time.deltaTime);
+
+        if( m_detector.isWallClose() ){
+            m_nextState = new PlayerWallHold( m_controllabledObject, 
+                                              ( isMovingLeft )? PlayerUtils.Direction.Left : 
+                                                                PlayerUtils.Direction.Right );
+            m_isOver = true;
+        }
+
     }
 
     public override void HandleInput(){

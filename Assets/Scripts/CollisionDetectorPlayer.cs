@@ -8,6 +8,10 @@ public class CollisionDetectorPlayer : CollisionDetector
     private bool oneWayPlatformBelow;
     private bool closeToWall;
 
+
+    private Transform pullableObject = null;
+    private bool isObjectPullable;
+
     [SerializeField] private float FallByFloorTime = 1.0f;
     private float disableFallByOneWayFloorTimer = 0.0f;
     [SerializeField] private float wallCheckRayLenght = 0.3f;
@@ -20,10 +24,18 @@ public class CollisionDetectorPlayer : CollisionDetector
         return oneWayPlatformBelow;
     }
 
+    public Transform GetPullableObject(){
+        return pullableObject;
+    }
 
     override protected void ResetCollisionInfo(){
         collisionInfo.Reset();
         oneWayPlatformBelow = false;
+        closeToWall         = false;
+    }
+
+    public void DetectWall( ){
+        ProcessCollisionWallClose();
     }
 
     override protected void ProcessCollision(){
@@ -45,9 +57,6 @@ public class CollisionDetectorPlayer : CollisionDetector
                                               borders.bottom + ((horizontalRayNumber+i)/2.0f) * 
                                                                 horizontalDistanceBeetweenRays );
 
-
-
-
             RaycastHit2D hit = Physics2D.Raycast(
                 rayOrigin,
                 new Vector2( collisionInfo.faceDir, 0),
@@ -57,8 +66,18 @@ public class CollisionDetectorPlayer : CollisionDetector
 
             if( hit ){
                 closeToWall = true;
+                isObjectPullable = hit.collider.tag == "Movable";
+                if( isObjectPullable ){
+                    pullableObject = hit.collider.transform;
+                }else{
+                    pullableObject = null;
+                }
             }else{
-                closeToWall = false;
+                closeToWall      = false || closeToWall;
+                if( !closeToWall ){
+                    isObjectPullable = false;
+                    pullableObject   = null;
+                }
             }
 
             Debug.DrawRay(
@@ -68,6 +87,10 @@ public class CollisionDetectorPlayer : CollisionDetector
              );
 
         }
+    }
+
+    public bool IsWallPullable(){
+        return isObjectPullable;
     }
 
     protected void ProcessOneWayPlatformDetection( float directionY ){

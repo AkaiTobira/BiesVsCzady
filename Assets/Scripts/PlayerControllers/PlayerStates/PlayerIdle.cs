@@ -21,6 +21,10 @@ public class PlayerIdle : BaseState
                                                    m_detector.isOnGround() )
         ){
             m_nextState = new PlayerJump(m_controllabledObject, PlayerUtils.Direction.Left);
+        }else if(m_detector.isCollideWithRightWall()){
+            m_nextState = new PlayerWallHold( m_controllabledObject, PlayerUtils.Direction.Right );
+        }else if(m_detector.isCollideWithLeftWall()){
+            m_nextState = new PlayerWallHold( m_controllabledObject, PlayerUtils.Direction.Left );        
         }else if( PlayerUtils.isFallKeyHold() ) {
             m_detector.enableFallForOneWayFloor();
             velocity.y += -PlayerUtils.GravityForce * Time.deltaTime;
