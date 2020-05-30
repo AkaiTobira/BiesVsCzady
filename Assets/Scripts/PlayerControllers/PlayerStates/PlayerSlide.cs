@@ -43,16 +43,16 @@ public class PlayerSlide : BaseState
         velocity.x = (m_dir != PlayerUtils.Direction.Left )? -0.001f : 0.001f;
         velocity.y = Mathf.Max( velocity.y -PlayerUtils.GravityForce * Time.deltaTime,
                                  -PlayerUtils.MaxWallSlideSpeed);
-        if( PlayerUtils.isSpecialKeyHold() ) velocity.y = 0.0f;
+        if( PlayerInput.isSpecialKeyHold() ) velocity.y = 0.0f;
 
 
         m_detector.Move(velocity * Time.deltaTime);
     }
 
     public override void HandleInput(){
-        if( !PlayerUtils.isSpecialKeyHold() ) {
+        if( !PlayerInput.isSpecialKeyHold() ) {
 
-            if( PlayerUtils.isJumpKeyJustPressed() ){
+            if( PlayerInput.isJumpKeyJustPressed() ){
                 m_isOver = true;
                 m_nextState = new PlayerJumpWall(m_controllabledObject, m_dir);
             }

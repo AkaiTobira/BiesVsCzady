@@ -9,8 +9,11 @@ public class CollisionDetectorPlayer : CollisionDetector
     private bool closeToWall;
 
 
-    private Transform pullableObject = null;
+    private Transform pullableObject    = null;
+
+    private Transform destroyableObject = null;
     private bool isObjectPullable;
+    private bool isObjectDestroyable;
 
     [SerializeField] private float FallByFloorTime = 1.0f;
     private float disableFallByOneWayFloorTimer = 0.0f;
@@ -41,7 +44,6 @@ public class CollisionDetectorPlayer : CollisionDetector
     override protected void ProcessCollision(){
         ProcessSlopeDetection( Mathf.Sign(transition.x) );
         DescendSlope();
-    //    DebuggText3.text = transition.ToString();
         ProcessCollisionHorizontal( Mathf.Sign(transition.x));
         ProcessCollisionVertical(   Mathf.Sign(transition.y));
         ProcessOneWayPlatformDetection( Mathf.Sign(transition.y) );
@@ -66,17 +68,14 @@ public class CollisionDetectorPlayer : CollisionDetector
 
             if( hit ){
                 closeToWall = true;
-                isObjectPullable = hit.collider.tag == "Movable";
-                if( isObjectPullable ){
-                    pullableObject = hit.collider.transform;
-                }else{
-                    pullableObject = null;
-                }
+                HandleDestroyable(hit.collider);
+                HandleMoveable(hit.collider);
             }else{
                 closeToWall      = false || closeToWall;
                 if( !closeToWall ){
-                    isObjectPullable = false;
-                    pullableObject   = null;
+                    isObjectPullable  = false;
+                    pullableObject    = null;
+                    destroyableObject = null;
                 }
             }
 
@@ -86,6 +85,25 @@ public class CollisionDetectorPlayer : CollisionDetector
                 new Color(1,1,1)
              );
 
+        }
+    }
+
+    private void HandleDestroyable( Collider2D obj ){
+        isObjectDestroyable = obj.tag == "Destroyable";
+        if( isObjectDestroyable){
+            destroyableObject = obj.transform;
+        }else{
+            destroyableObject = null;
+        }
+    }
+
+
+    private void HandleMoveable( Collider2D obj){
+        isObjectPullable    = obj.tag == "Movable";
+        if( isObjectPullable ){
+            pullableObject = obj.transform;
+        }else{
+            pullableObject = null;
         }
     }
 

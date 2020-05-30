@@ -44,26 +44,25 @@ public class PlayerWallHold : BaseState
     public override void HandleInput(){
         if( PlayerFallHelper.FallRequirementsMeet( m_detector.isOnGround()) ){
             m_nextState = new PlayerFall(m_controllabledObject, PlayerUtils.Direction.Left);
-        }else if ( m_detector.IsWallPullable() && PlayerUtils.isSpecialKeyHold() ){
+        }else if ( m_detector.IsWallPullable() && PlayerInput.isSpecialKeyHold() ){
 
             if( isMovingLeft ){
-                if( PlayerUtils.isMoveRightKeyHold()){
+                if( PlayerInput.isMoveRightKeyHold()){
                     m_nextState = new PlayerPullObj( m_controllabledObject, PlayerUtils.Direction.Left);
-                }else if( PlayerUtils.isMoveLeftKeyHold() ){
+                }else if( PlayerInput.isMoveLeftKeyHold() ){
                     m_nextState = new PlayerPushObj( m_controllabledObject, PlayerUtils.Direction.Left);
                 }
             }else{
-                if( PlayerUtils.isMoveRightKeyHold()){
+                if( PlayerInput.isMoveRightKeyHold()){
                     m_nextState = new PlayerPushObj( m_controllabledObject, PlayerUtils.Direction.Right);
-                }else if( PlayerUtils.isMoveLeftKeyHold() ){
+                }else if( PlayerInput.isMoveLeftKeyHold() ){
                     m_nextState = new PlayerPullObj( m_controllabledObject, PlayerUtils.Direction.Right);
                 }
             } 
-            // m_nextState = new PlayerPullObj
-        }else if( isMovingLeft && PlayerUtils.isMoveRightKeyHold()){
+        }else if( isMovingLeft && PlayerInput.isMoveRightKeyHold()){
             m_isOver = true;
         //    m_nextState = new PlayerMove(m_controllabledObject, PlayerUtils.Direction.Right); 
-        }else if( !isMovingLeft && PlayerUtils.isMoveLeftKeyHold()){
+        }else if( !isMovingLeft && PlayerInput.isMoveLeftKeyHold()){
             m_isOver = true;
         //    m_nextState = new PlayerMove(m_controllabledObject, PlayerUtils.Direction.Left); 
     //    }else if( 
@@ -71,7 +70,7 @@ public class PlayerWallHold : BaseState
     //                                               m_detector.isOnGround() )
     //    ){ 
     //        m_nextState = new PlayerJump(m_controllabledObject, PlayerUtils.Direction.Left);
-        }else if( PlayerUtils.isFallKeyHold() ) {
+        }else if( PlayerInput.isFallKeyHold() ) {
             m_detector.enableFallForOneWayFloor();
             velocity.y += -PlayerUtils.GravityForce * Time.deltaTime;
             m_detector.Move( velocity * Time.deltaTime );

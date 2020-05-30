@@ -27,10 +27,10 @@ public class PlayerDebugInfo : MonoBehaviour
 
     void Update()
     {
-        MoveLeftControll    = PlayerUtils.isMoveLeftKeyHold();
-        MoveRightControll   = PlayerUtils.isMoveRightKeyHold();
-        MoveSpecialControll = PlayerUtils.isSpecialKeyHold();
-        MoveJumpControll    = PlayerUtils.isJumpKeyJustPressed();
+        MoveLeftControll    = PlayerInput.isMoveLeftKeyHold();
+        MoveRightControll   = PlayerInput.isMoveRightKeyHold();
+        MoveSpecialControll = PlayerInput.isSpecialKeyHold();
+        MoveJumpControll    = PlayerInput.isJumpKeyJustPressed();
 
     }
 }

@@ -16,9 +16,7 @@ public class PlayerJump : BaseState
         name = "Jump";
         PlayerFallOfWallHelper.ResetCounter();
 
-        m_detector.CheatMove( new Vector2(0,20.0f));
-
-        Debug.Log(m_detector.isOnGround());
+        m_detector.CheatMove( new Vector2(0,40.0f));
 
     }
 
@@ -63,10 +61,10 @@ public class PlayerJump : BaseState
             m_nextState = new PlayerSlide( m_controllabledObject, PlayerUtils.ReverseDirection(m_dir));
         }
 
-        if( PlayerUtils.isMoveLeftKeyHold() ){
+        if( PlayerInput.isMoveLeftKeyHold() ){
             swipeOn = true;
             m_swipe = PlayerUtils.Direction.Left;
-        }else if( PlayerUtils.isMoveRightKeyHold() ){
+        }else if( PlayerInput.isMoveRightKeyHold() ){
             swipeOn = true;
             m_swipe = PlayerUtils.Direction.Right;
         }else{

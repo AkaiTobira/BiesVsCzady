@@ -40,16 +40,18 @@ public class PlayerMove : BaseState
     public override void HandleInput(){
         if( PlayerFallHelper.FallRequirementsMeet( m_detector.isOnGround()) ){
             m_nextState = new PlayerFall(m_controllabledObject, PlayerUtils.Direction.Left);
-        }else if( isMovingLeft && !PlayerUtils.isMoveLeftKeyHold()){
+        }else if( PlayerInput.isAttackKeyPressed() ){
+            m_nextState = new PlayerAttack1(m_controllabledObject);
+        }else if( isMovingLeft && !PlayerInput.isMoveLeftKeyHold()){
             m_isOver = true;
-        }else if( !isMovingLeft && !PlayerUtils.isMoveRightKeyHold()){
+        }else if( !isMovingLeft && !PlayerInput.isMoveRightKeyHold()){
             m_isOver = true;
         }else if( 
-            PlayerJumpHelper.JumpRequirementsMeet( PlayerUtils.isJumpKeyJustPressed(), 
+            PlayerJumpHelper.JumpRequirementsMeet( PlayerInput.isJumpKeyJustPressed(), 
                                                    m_detector.isOnGround() )
         ){ 
             m_nextState = new PlayerJump(m_controllabledObject, PlayerUtils.Direction.Left);
-        }else if( PlayerUtils.isFallKeyHold() ) {
+        }else if( PlayerInput.isFallKeyHold() ) {
             m_detector.enableFallForOneWayFloor();
             velocity.y += -PlayerUtils.GravityForce * Time.deltaTime;
             m_detector.Move( velocity * Time.deltaTime );

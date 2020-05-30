@@ -6,6 +6,8 @@ public class BaseState
 {
     protected GameObject m_controllabledObject;
     protected CollisionDetectorPlayer m_detector;
+    protected Animator m_animator;
+    
     protected BaseState  m_nextState = null;
     protected PlayerUtils.Direction m_dir;
 
@@ -18,6 +20,9 @@ public class BaseState
     public BaseState( GameObject controllableObject ){
         m_controllabledObject = controllableObject;
         m_detector            = controllableObject.GetComponent<CollisionDetectorPlayer>();
+        m_animator            = controllableObject.transform.GetComponent<Player>().
+                                animationNode.
+                                gameObject.GetComponent<Animator>();
     }
 
     protected bool m_isOver = false;

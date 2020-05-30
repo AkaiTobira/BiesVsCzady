@@ -16,7 +16,7 @@ public static class  PlayerFallOfWallHelper
     }
 
     public static bool FallOfWallRequirementsMeet( ){
-        if( PlayerUtils.isSpecialKeyHold() ){ fallOfWallTime = 0; }
+        if( PlayerInput.isSpecialKeyHold() ){ fallOfWallTime = 0; }
         return shouldFallOff();
     }
 

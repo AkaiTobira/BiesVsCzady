@@ -8,6 +8,8 @@ public class Player : MonoBehaviour
     private PlayerUtils.Direction m_dir = PlayerUtils.Direction.Left;
     private CollisionDetectorPlayer m_detector;
 
+    private Animator m_animator;
+
     [SerializeField] float jumpHeight        = 0.0f;
     [SerializeField] float timeToJumpApex    = 0.0f;
     [SerializeField] float moveDistance      = 15.0f;
@@ -21,6 +23,7 @@ public class Player : MonoBehaviour
     {
         m_detector    = GetComponent<CollisionDetectorPlayer>();
         m_controller  = new SFSMBase( transform.gameObject, new PlayerIdle( gameObject ) );
+        m_animator    = animationNode.gameObject.GetComponent<Animator>();
         CalculateMath();
     }
 

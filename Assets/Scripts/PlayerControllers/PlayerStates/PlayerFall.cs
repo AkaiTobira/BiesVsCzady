@@ -45,10 +45,10 @@ public class PlayerFall : BaseState
 
         if( PlayerSwipeLock.SwipeUnlockRequirementsMeet() ){
 
-            if( PlayerUtils.isMoveLeftKeyHold() ){
+            if( PlayerInput.isMoveLeftKeyHold() ){
                 swipeOn = true;
                 m_swipe = PlayerUtils.Direction.Left;
-            }else if( PlayerUtils.isMoveRightKeyHold() ){
+            }else if( PlayerInput.isMoveRightKeyHold() ){
                 swipeOn = true;
                 m_swipe = PlayerUtils.Direction.Right;
             }else{

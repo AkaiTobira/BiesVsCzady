@@ -29,8 +29,8 @@ public static class  PlayerJumpOffWall
 
     public static bool FallOffWallRequirementsMeet(){
         if( !moveDirectionPressed ){
-            moveDirectionPressed = PlayerUtils.isMoveLeftKeyHold() || 
-                                   PlayerUtils.isMoveRightKeyHold(); 
+            moveDirectionPressed = PlayerInput.isMoveLeftKeyHold() || 
+                                   PlayerInput.isMoveRightKeyHold(); 
             ResetCounters();
         }
         Debug.Log(  ( (MAX_JUMP_OFF_FRAMES_LIMIT > jumpOffTheWallFrames) && moveDirectionPressed));
@@ -39,10 +39,10 @@ public static class  PlayerJumpOffWall
 
     public static bool JumpOffWallRequirementsMeet( ){
         if( !moveDirectionPressed ) 
-            moveDirectionPressed = PlayerUtils.isMoveLeftKeyHold() || 
-                                   PlayerUtils.isMoveRightKeyHold(); 
+            moveDirectionPressed = PlayerInput.isMoveLeftKeyHold() || 
+                                   PlayerInput.isMoveRightKeyHold(); 
         if( !jumpDirectionPressed )
-            jumpDirectionPressed = PlayerUtils.isJumpKeyJustPressed();
+            jumpDirectionPressed = PlayerInput.isJumpKeyJustPressed();
 
         return( (jumpOffTheWallFrames < MAX_JUMP_OFF_FRAMES_LIMIT) && moveDirectionPressed && jumpDirectionPressed);
     }

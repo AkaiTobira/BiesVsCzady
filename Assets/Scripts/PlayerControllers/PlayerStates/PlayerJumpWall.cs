@@ -66,10 +66,10 @@ public class PlayerJumpWall : BaseState
             m_nextState = new PlayerSlide( m_controllabledObject, PlayerUtils.ReverseDirection(m_dir));
         }
 
-        if( PlayerUtils.isMoveLeftKeyHold() ){
+        if( PlayerInput.isMoveLeftKeyHold() ){
             swipeOn = true;
             m_swipe = PlayerUtils.Direction.Left;
-        }else if( PlayerUtils.isMoveRightKeyHold() ){
+        }else if( PlayerInput.isMoveRightKeyHold() ){
             swipeOn = true;
             m_swipe = PlayerUtils.Direction.Right;
         }else{

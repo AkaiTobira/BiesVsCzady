@@ -62,9 +62,9 @@ public class PlayerPushObj : BaseState
     }
 
     public override void HandleInput(){
-        if( !PlayerUtils.isSpecialKeyHold() ) { 
+        if( !PlayerInput.isSpecialKeyHold() ) { 
             m_isOver = true;
-        }else if( !PlayerUtils.isMoveRightKeyHold() && !PlayerUtils.isMoveLeftKeyHold() ){
+        }else if( !PlayerInput.isMoveRightKeyHold() && !PlayerInput.isMoveLeftKeyHold() ){
             m_isOver = true;
         }
     }

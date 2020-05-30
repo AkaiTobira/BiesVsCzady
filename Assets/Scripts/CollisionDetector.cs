@@ -301,6 +301,10 @@ public class CollisionDetector : MonoBehaviour
         transition = new Vector2(0,0);
     }
 
+    public PlayerUtils.Direction GetCurrentDirection(){
+        return (PlayerUtils.Direction) collisionInfo.faceDir;
+    }
+
     public void CheatMove( Vector2 velocity, bool resetCollisionFlags = false){
       /*  if( resetCollisionFlags ){
             transition = velocity;
