@@ -5,7 +5,6 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     private SFSMBase m_controller;
-    private PlayerUtils.Direction m_dir = PlayerUtils.Direction.Left;
     private CollisionDetectorPlayer m_detector;
 
     private Animator m_animator;
@@ -67,6 +66,7 @@ public class Player : MonoBehaviour
         StateName   = m_controller.GetStateName();
         isColLeft =m_detector.isCollideWithLeftWall();
         isColRight= m_detector.isCollideWithLeftWall();
+        
         directionLeft  = m_controller.GetDirection() == PlayerUtils.Direction.Left;
         directionRight = m_controller.GetDirection() == PlayerUtils.Direction.Right;
     }

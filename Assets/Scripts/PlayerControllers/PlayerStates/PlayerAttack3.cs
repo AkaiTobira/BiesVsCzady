@@ -2,18 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerAttack1 : BaseState{    
+public class PlayerAttack3 : BaseState{    
     private bool isMovingLeft = false;
     private float timeToEnd;
 
     private AnimationTransition m_transition;
 
 
-    public PlayerAttack1( GameObject controllable) : base( controllable ){
+    public PlayerAttack3( GameObject controllable) : base( controllable ){
         isMovingLeft = m_detector.GetCurrentDirection() == PlayerUtils.Direction.Left;
-        name = "PlayerAttack1";
-        m_animator.SetBool("Attack1", true);
-        timeToEnd = getAnimationLenght("PlayerAttack1");
+        name = "PlayerAttack3";
+        m_animator.SetBool("Attack3", true);
+        timeToEnd = getAnimationLenght("PlayerAttack3");
 
         m_transition = m_controllabledObject.
                        GetComponent<Player>().animationNode.
@@ -33,12 +33,23 @@ public class PlayerAttack1 : BaseState{
         timeToEnd -= Time.deltaTime;
         if( timeToEnd < 0){
             m_isOver = true;
-            m_animator.SetBool("Attack1", false);
+            m_animator.SetBool("Attack3", false);
+        }
+
+        if( m_detector.isWallClose() ){
+            m_isOver = true;
+            m_animator.SetBool("Attack3", false);
+            //TOWALLHITSTATE 
         }
     }
     private void ProcessMove(){
-        PlayerFallHelper.FallRequirementsMeet( true );
-        velocity = (int)m_detector.GetCurrentDirection() * m_transition.MoveSpeed;
+        velocity.x   = (int)m_detector.GetCurrentDirection() * m_transition.MoveSpeed.x;
+        if( m_detector.isOnGround() ){
+            PlayerFallHelper.FallRequirementsMeet( true );
+            velocity.y = 0;
+        }else{
+            velocity.y += -PlayerUtils.GravityForce*Time.deltaTime;
+        }
         m_detector.Move(velocity*Time.deltaTime);
     }
     public override void Process(){

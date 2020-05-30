@@ -21,8 +21,6 @@ public class PlayerSlide : BaseState
 
     }
 
-    private float timeToFallOffWall = 0.0f;
-
     public override void UpdateDirection(){
 
             m_controllabledObject.GetComponent<Player>().animationNode.position = 

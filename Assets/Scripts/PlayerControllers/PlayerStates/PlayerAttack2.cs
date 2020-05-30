@@ -2,18 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerAttack1 : BaseState{    
+public class PlayerAttack2 : BaseState{    
     private bool isMovingLeft = false;
     private float timeToEnd;
 
     private AnimationTransition m_transition;
 
 
-    public PlayerAttack1( GameObject controllable) : base( controllable ){
+    public PlayerAttack2( GameObject controllable) : base( controllable ){
         isMovingLeft = m_detector.GetCurrentDirection() == PlayerUtils.Direction.Left;
-        name = "PlayerAttack1";
-        m_animator.SetBool("Attack1", true);
-        timeToEnd = getAnimationLenght("PlayerAttack1");
+        name = "PlayerAttack2";
+        m_animator.SetBool("Attack2", true);
+        timeToEnd = getAnimationLenght("PlayerAttack2");
 
         m_transition = m_controllabledObject.
                        GetComponent<Player>().animationNode.
@@ -33,7 +33,7 @@ public class PlayerAttack1 : BaseState{
         timeToEnd -= Time.deltaTime;
         if( timeToEnd < 0){
             m_isOver = true;
-            m_animator.SetBool("Attack1", false);
+            m_animator.SetBool("Attack2", false);
         }
     }
     private void ProcessMove(){

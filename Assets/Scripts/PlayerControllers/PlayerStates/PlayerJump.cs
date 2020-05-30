@@ -8,8 +8,6 @@ public class PlayerJump : BaseState
 
     private bool swipeOn = false;
 
-    private  int timeToCheckJump = 180;
-
     public PlayerJump( GameObject controllable, PlayerUtils.Direction dir) : base( controllable ) {
         isMovingLeft = dir == PlayerUtils.Direction.Left;
         velocity.y = PlayerUtils.PlayerJumpForce;
@@ -22,14 +20,10 @@ public class PlayerJump : BaseState
 
 
     private void checkIfShouldBeOver(){
-
         if( m_detector.isOnCelling()){
             velocity = new Vector2();
             m_isOver = true;
         }
-
-      //  timeToCheckJump --;
-      //  if( timeToCheckJump > 0 ) return;
 
         if( PlayerFallHelper.FallRequirementsMeet( m_detector.isOnGround()) && velocity.y < 0 ){ 
             m_isOver = true;

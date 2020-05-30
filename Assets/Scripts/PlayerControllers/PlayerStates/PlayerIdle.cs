@@ -12,8 +12,12 @@ public class PlayerIdle : BaseState
     public override void HandleInput(){
         if( PlayerFallHelper.FallRequirementsMeet( m_detector.isOnGround() ) ){
             m_nextState = new PlayerFall(m_controllabledObject, PlayerUtils.Direction.Left);
-        }else if( PlayerInput.isAttackKeyPressed() ){
+        }else if( PlayerInput.isAttack1KeyPressed() ){
             m_nextState = new PlayerAttack1(m_controllabledObject);
+        }else if( PlayerInput.isAttack2KeyPressed() ){
+            m_nextState = new PlayerAttack2(m_controllabledObject);
+        }else if( PlayerInput.isAttack3KeyPressed() ){
+            m_nextState = new PlayerAttack3(m_controllabledObject);
         }else if( PlayerInput.isMoveLeftKeyHold() ){
             m_nextState = new PlayerMove(m_controllabledObject, PlayerUtils.Direction.Left); 
         }else if( PlayerInput.isMoveRightKeyHold() ){

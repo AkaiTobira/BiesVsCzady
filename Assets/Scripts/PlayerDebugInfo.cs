@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerDebugInfo : MonoBehaviour
 {
 
-    [SerializeField] bool MoveUpControll      = false;
+  /*  [SerializeField] bool MoveUpControll      = false;
     [SerializeField] bool MoveDownControll    = false;
     [SerializeField] bool MoveLeftControll    = false;
     [SerializeField] bool MoveRightControll   = false;
@@ -22,7 +22,7 @@ public class PlayerDebugInfo : MonoBehaviour
     [SerializeField] float swipeLockTimer = 0.0f; 
     [SerializeField] float fallOfWallTimer   = 0;
 
-*/
+
 
 
     void Update()
@@ -33,4 +33,6 @@ public class PlayerDebugInfo : MonoBehaviour
         MoveJumpControll    = PlayerInput.isJumpKeyJustPressed();
 
     }
+
+    */
 }

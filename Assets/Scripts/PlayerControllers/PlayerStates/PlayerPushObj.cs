@@ -49,7 +49,7 @@ public class PlayerPushObj : BaseState
             Vector3 currentPullableObjectPosition = m_moveable.transform.position;
             m_moveable.GetComponent<CollisionDetector>().Move(pushForce* Time.deltaTime);
             Vector2 playerMoveVector = pushForce + 
-                                       new Vector2( 0,-PlayerUtils.GravityForce);
+                                       new Vector2( 0,-PlayerUtils.GravityForce * Time.deltaTime );
             m_detector.Move( playerMoveVector* Time.deltaTime );
             float updatedDistanceFromObject = Vector3.Distance( m_controllabledObject.transform.position,
                                                                 m_moveable.transform.position );

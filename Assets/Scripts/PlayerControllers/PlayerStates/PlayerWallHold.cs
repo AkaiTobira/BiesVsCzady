@@ -44,6 +44,8 @@ public class PlayerWallHold : BaseState
     public override void HandleInput(){
         if( PlayerFallHelper.FallRequirementsMeet( m_detector.isOnGround()) ){
             m_nextState = new PlayerFall(m_controllabledObject, PlayerUtils.Direction.Left);
+        }else if( PlayerInput.isAttack2KeyPressed() ){
+            m_nextState = new PlayerAttack2(m_controllabledObject);
         }else if ( m_detector.IsWallPullable() && PlayerInput.isSpecialKeyHold() ){
 
             if( isMovingLeft ){
