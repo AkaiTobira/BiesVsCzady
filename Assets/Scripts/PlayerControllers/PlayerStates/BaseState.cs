@@ -9,7 +9,7 @@ public class BaseState
     protected Animator m_animator;
     
     protected BaseState  m_nextState = null;
-    protected PlayerUtils.Direction m_dir;
+    protected GlobalUtils.Direction m_dir;
 
     public string name = ""; 
     protected Vector2    velocity = new Vector2(0,0); 
@@ -48,25 +48,25 @@ public class BaseState
             Vector3.SmoothDamp( m_controllabledObject.GetComponent<Player>().animationNode.position, 
                                 m_controllabledObject.transform.position, ref animationVel, m_smoothTime);
 
-    //    slopeAngle =  (( m_dir == PlayerUtils.Direction.Right) ? 180.0f - m_detector.GetSlopeAngle()  : m_detector.GetSlopeAngle()  );
+    //    slopeAngle =  (( m_dir == GlobalUtils.Direction.Right) ? 180.0f - m_detector.GetSlopeAngle()  : m_detector.GetSlopeAngle()  );
 
         if( velocity.x != 0){
-            PlayerUtils.Direction c_dir = Mathf.Sign( velocity.x ) == -1 ? 
-                                               PlayerUtils.Direction.Left : 
-                                               PlayerUtils.Direction.Right;
+            GlobalUtils.Direction c_dir = Mathf.Sign( velocity.x ) == -1 ? 
+                                               GlobalUtils.Direction.Left : 
+                                               GlobalUtils.Direction.Right;
 
             if( m_dir == c_dir) return;
 
             m_dir = c_dir;
             
-            rotationAngle = ( m_dir == PlayerUtils.Direction.Left) ? 180 :0 ; 
+            rotationAngle = ( m_dir == GlobalUtils.Direction.Left) ? 180 :0 ; 
             m_controllabledObject.GetComponent<Player>().animationNode.eulerAngles = new Vector3( 0, rotationAngle, slopeAngle);
             //m_controllabledObject.transform.GetChild(0).position    = m_controllabledObject.transform.position;
         }
     }
 
-    public PlayerUtils.Direction GetDirection(){
-        return m_dir;
+    public GlobalUtils.Direction GetDirection(){
+        return m_detector.GetCurrentDirection();
     }
 
     public  virtual void Process()

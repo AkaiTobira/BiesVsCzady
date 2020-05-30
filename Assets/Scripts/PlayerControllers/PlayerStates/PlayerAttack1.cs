@@ -10,7 +10,7 @@ public class PlayerAttack1 : BaseState{
 
 
     public PlayerAttack1( GameObject controllable) : base( controllable ){
-        isMovingLeft = m_detector.GetCurrentDirection() == PlayerUtils.Direction.Left;
+        isMovingLeft = m_detector.GetCurrentDirection() == GlobalUtils.Direction.Left;
         name = "PlayerAttack1";
         m_animator.SetBool("Attack1", true);
         timeToEnd = getAnimationLenght("PlayerAttack1");

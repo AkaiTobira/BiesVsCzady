@@ -11,7 +11,7 @@ public class PlayerIdle : BaseState
 
     public override void HandleInput(){
         if( PlayerFallHelper.FallRequirementsMeet( m_detector.isOnGround() ) ){
-            m_nextState = new PlayerFall(m_controllabledObject, PlayerUtils.Direction.Left);
+            m_nextState = new PlayerFall(m_controllabledObject, GlobalUtils.Direction.Left);
         }else if( PlayerInput.isAttack1KeyPressed() ){
             m_nextState = new PlayerAttack1(m_controllabledObject);
         }else if( PlayerInput.isAttack2KeyPressed() ){
@@ -19,18 +19,18 @@ public class PlayerIdle : BaseState
         }else if( PlayerInput.isAttack3KeyPressed() ){
             m_nextState = new PlayerAttack3(m_controllabledObject);
         }else if( PlayerInput.isMoveLeftKeyHold() ){
-            m_nextState = new PlayerMove(m_controllabledObject, PlayerUtils.Direction.Left); 
+            m_nextState = new PlayerMove(m_controllabledObject, GlobalUtils.Direction.Left); 
         }else if( PlayerInput.isMoveRightKeyHold() ){
-            m_nextState = new PlayerMove(m_controllabledObject, PlayerUtils.Direction.Right); 
+            m_nextState = new PlayerMove(m_controllabledObject, GlobalUtils.Direction.Right); 
         }else if( 
             PlayerJumpHelper.JumpRequirementsMeet( PlayerInput.isJumpKeyJustPressed(), 
                                                    m_detector.isOnGround() )
         ){
-            m_nextState = new PlayerJump(m_controllabledObject, PlayerUtils.Direction.Left);
+            m_nextState = new PlayerJump(m_controllabledObject, GlobalUtils.Direction.Left);
         }else if(m_detector.isCollideWithRightWall()){
-            m_nextState = new PlayerWallHold( m_controllabledObject, PlayerUtils.Direction.Right );
+            m_nextState = new PlayerWallHold( m_controllabledObject, GlobalUtils.Direction.Right );
         }else if(m_detector.isCollideWithLeftWall()){
-            m_nextState = new PlayerWallHold( m_controllabledObject, PlayerUtils.Direction.Left );        
+            m_nextState = new PlayerWallHold( m_controllabledObject, GlobalUtils.Direction.Left );        
         }else if( PlayerInput.isFallKeyHold() ) {
             m_detector.enableFallForOneWayFloor();
             velocity.y += -PlayerUtils.GravityForce * Time.deltaTime;

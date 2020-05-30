@@ -4,17 +4,17 @@ using UnityEngine;
 
 public class PlayerJumpWall : BaseState
 {    private bool isMovingLeft = false;
-    private PlayerUtils.Direction m_swipe;
+    private GlobalUtils.Direction m_swipe;
 
     private const float INPUT_LOCK = 0.2f;
     private float inputLock = 0.2f;
 
     private bool swipeOn = false;
 
-    public PlayerJumpWall( GameObject controllable, PlayerUtils.Direction dir) : base( controllable ) {
-        isMovingLeft = dir == PlayerUtils.Direction.Left;
+    public PlayerJumpWall( GameObject controllable, GlobalUtils.Direction dir) : base( controllable ) {
+        isMovingLeft = dir == GlobalUtils.Direction.Left;
         velocity    = PlayerUtils.PlayerWallJumpForce;
-        velocity.x *= (dir == PlayerUtils.Direction.Left)? -1 : 1;
+        velocity.x *= (dir == GlobalUtils.Direction.Left)? -1 : 1;
         name = "WallJump";
         PlayerFallOfWallHelper.ResetCounter();
     }
@@ -47,7 +47,7 @@ public class PlayerJumpWall : BaseState
 
         velocity.y += -PlayerUtils.GravityForce * Time.deltaTime;
         if( swipeOn ){
-            velocity.x = ( m_swipe == PlayerUtils.Direction.Left ) ? 
+            velocity.x = ( m_swipe == GlobalUtils.Direction.Left ) ? 
                             -PlayerUtils.PlayerSpeedInAir : 
                              PlayerUtils.PlayerSpeedInAir;
 
@@ -63,15 +63,15 @@ public class PlayerJumpWall : BaseState
 
         if( m_detector.isWallClose() ){
             m_isOver = true;
-            m_nextState = new PlayerSlide( m_controllabledObject, PlayerUtils.ReverseDirection(m_dir));
+            m_nextState = new PlayerSlide( m_controllabledObject, GlobalUtils.ReverseDirection(m_dir));
         }
 
         if( PlayerInput.isMoveLeftKeyHold() ){
             swipeOn = true;
-            m_swipe = PlayerUtils.Direction.Left;
+            m_swipe = GlobalUtils.Direction.Left;
         }else if( PlayerInput.isMoveRightKeyHold() ){
             swipeOn = true;
-            m_swipe = PlayerUtils.Direction.Right;
+            m_swipe = GlobalUtils.Direction.Right;
         }else{
             swipeOn = false;
         }

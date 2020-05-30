@@ -20,6 +20,7 @@ public class Player : MonoBehaviour
 
     void Start()
     {
+        GlobalUtils.PlayerObject = transform;
         m_detector    = GetComponent<CollisionDetectorPlayer>();
         m_controller  = new SFSMBase( transform.gameObject, new PlayerIdle( gameObject ) );
         m_animator    = animationNode.gameObject.GetComponent<Animator>();
@@ -56,6 +57,46 @@ public class Player : MonoBehaviour
     [SerializeField] bool directionRight = false;
     [SerializeField] string StateName    = "Idle";
     // Update is called once per frame
+
+
+    public GlobalUtils.AttackStateInfo GetPlayerAttackInfo(){
+        GlobalUtils.AttackStateInfo infoPack = new GlobalUtils.AttackStateInfo();
+        infoPack.stateName = m_controller.GetStateName();
+        switch( infoPack.stateName ){
+            case "PlayerAttack1":
+            {
+                infoPack.isValid = true;
+                infoPack.knockBackValue = PlayerUtils.KnockBackValueAttack1;
+                infoPack.attackDamage   = PlayerUtils.Attack1Damage;
+                infoPack.fromCameAttack = m_controller.GetDirection();
+                break;
+            }
+            case "PlayerAttack2":
+            {
+                infoPack.isValid = true;
+                infoPack.knockBackValue = PlayerUtils.KnockBackValueAttack2;
+                infoPack.attackDamage   = PlayerUtils.Attack2Damage;
+                infoPack.fromCameAttack = m_controller.GetDirection();
+                break;
+            }
+            case "PlayerAttack3":
+            {
+                infoPack.isValid = true;
+                infoPack.knockBackValue = PlayerUtils.KnockBackValueAttack3;
+                infoPack.attackDamage   = PlayerUtils.Attack3Damage;
+                infoPack.fromCameAttack = m_controller.GetDirection();
+                break;
+            }
+            default:
+            {
+                infoPack.isValid = false;
+                break;
+            }
+        }
+
+        return infoPack;
+    }
+
     void Update(){
         m_controller.Update();
         UpdateCounters();
@@ -67,7 +108,7 @@ public class Player : MonoBehaviour
         isColLeft =m_detector.isCollideWithLeftWall();
         isColRight= m_detector.isCollideWithLeftWall();
         
-        directionLeft  = m_controller.GetDirection() == PlayerUtils.Direction.Left;
-        directionRight = m_controller.GetDirection() == PlayerUtils.Direction.Right;
+        directionLeft  = m_controller.GetDirection() == GlobalUtils.Direction.Left;
+        directionRight = m_controller.GetDirection() == GlobalUtils.Direction.Right;
     }
 }

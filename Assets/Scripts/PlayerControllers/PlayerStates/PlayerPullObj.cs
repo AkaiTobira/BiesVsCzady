@@ -12,15 +12,15 @@ public class PlayerPullObj : BaseState
 
     float distanceFromObject;
 
-    public PlayerPullObj( GameObject controllable, PlayerUtils.Direction dir) : base( controllable ) {
+    public PlayerPullObj( GameObject controllable, GlobalUtils.Direction dir) : base( controllable ) {
         // play change direction animation;
         // at end of animation call :
         // TEMP
 
-        isFaceingLeft = dir == PlayerUtils.Direction.Left;
+        isFaceingLeft = dir == GlobalUtils.Direction.Left;
         name = "WallPull";
         m_dir = dir;
-        rotationAngle = ( m_dir == PlayerUtils.Direction.Left) ? 180 :0 ; 
+        rotationAngle = ( m_dir == GlobalUtils.Direction.Left) ? 180 :0 ; 
         m_controllabledObject.GetComponent<Player>().animationNode.eulerAngles = new Vector3( 0, rotationAngle, slopeAngle);
 
         m_moveable  = m_detector.GetPullableObject();

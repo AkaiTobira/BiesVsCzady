@@ -12,6 +12,7 @@ public class CollisionDetectorMovable : CollisionDetector
     
     private float accumulatedGravity = 0.0f;
 
+
     protected override void ProcessAutoGravity(){
         if( autoGravityOn ){
             if( !collisionInfo.below){

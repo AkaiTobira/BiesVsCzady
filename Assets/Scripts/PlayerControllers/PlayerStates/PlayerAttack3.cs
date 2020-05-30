@@ -10,7 +10,7 @@ public class PlayerAttack3 : BaseState{
 
 
     public PlayerAttack3( GameObject controllable) : base( controllable ){
-        isMovingLeft = m_detector.GetCurrentDirection() == PlayerUtils.Direction.Left;
+        isMovingLeft = m_detector.GetCurrentDirection() == GlobalUtils.Direction.Left;
         name = "PlayerAttack3";
         m_animator.SetBool("Attack3", true);
         timeToEnd = getAnimationLenght("PlayerAttack3");
@@ -34,9 +34,11 @@ public class PlayerAttack3 : BaseState{
         if( timeToEnd < 0){
             m_isOver = true;
             m_animator.SetBool("Attack3", false);
+            Debug.Log("TimeEnd");
         }
 
         if( m_detector.isWallClose() ){
+            Debug.Log("HIT A WALL");
             m_isOver = true;
             m_animator.SetBool("Attack3", false);
             //TOWALLHITSTATE 

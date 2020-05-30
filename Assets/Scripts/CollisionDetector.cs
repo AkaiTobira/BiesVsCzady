@@ -11,7 +11,8 @@ public class CollisionDetector : MonoBehaviour
     protected const float DIR_UP    =  1;
     protected const float DIR_DOWN  = -1;
 
-    [SerializeField] protected LayerMask m_collsionMask = 0;
+    [SerializeField] protected LayerMask m_collsionMask     = 0;
+    [SerializeField] protected LayerMask m_selfCollsionMask = 0;
     [SerializeField] protected int verticalRayNumber   = 4 ;
     protected float verticalDistanceBeetweenRays       = 1;
     [SerializeField] protected int horizontalRayNumber = 4;
@@ -71,7 +72,88 @@ public class CollisionDetector : MonoBehaviour
         DescendSlope();
         ProcessCollisionHorizontal( Mathf.Sign(transition.x));
         ProcessCollisionVertical(   Mathf.Sign(transition.y));
+
+        ProcessColisionOnTheSameLayer();
     }
+
+    private void  ProcessColisionOnTheSameLayer(){
+        float directionX = Mathf.Sign(transition.x);
+        float directionY = Mathf.Sign(transition.y);
+
+
+        Bounds bounds = m_boxCollider.bounds;
+        bounds.Expand (1.1f);
+        if( transition.x != 0) {
+            float rayLenghtX  = Mathf.Abs (transition.x);
+            for( int i = 0; i < horizontalRayNumber; i ++){
+
+                Vector2 rayOrigin = new Vector2( (directionX == DIR_LEFT) ? 
+                                                    bounds.min.x : 
+                                                    bounds.max.x  ,
+                                            bounds.min.y + i * horizontalDistanceBeetweenRays );
+
+                RaycastHit2D hit = Physics2D.Raycast(
+                    rayOrigin,
+                    new Vector2(directionX, 0),
+                    rayLenghtX,
+                    m_selfCollsionMask
+                );
+
+                if( hit ){
+                    rayLenghtX  = hit.distance;
+
+                    collisionInfo.left  = (directionX == DIR_LEFT );
+                    collisionInfo.right = (directionX == DIR_RIGHT);
+                }
+
+                Debug.DrawRay(
+                    rayOrigin,
+                    new Vector2(directionX, 0) * rayLenghtX,
+                    new Color(1,0,0)
+                );
+                if( !collisionInfo.climbingSlope ){
+                    transition.x = Mathf.Sign(transition.x) * ( rayLenghtX );
+                }else{
+                    if( Mathf.Abs(transition.x) > (rayLenghtX) ){
+                        transition.x = Mathf.Sign(transition.x) * ( rayLenghtX );
+                    }
+                }
+            }
+        }
+
+        if( transition.y != 0 ){
+        float rayLenghtY  = Mathf.Abs (transition.y);
+
+        for( int i = 0; i < verticalRayNumber; i ++){
+            Vector2 rayOrigin = new Vector2( bounds.min.x + i * verticalDistanceBeetweenRays, 
+                                            (directionY == DIR_DOWN) ? bounds.min.y : bounds.max.y  );
+
+            RaycastHit2D hit = Physics2D.Raycast(
+                rayOrigin,
+                new Vector2( 0, directionY),
+                rayLenghtY,
+                m_selfCollsionMask
+            );
+
+            if( hit ){
+                rayLenghtY  = hit.distance;
+
+                collisionInfo.below = (directionY == DIR_DOWN);
+                collisionInfo.above = (directionY == DIR_UP  );
+            }
+
+            Debug.DrawRay(
+                rayOrigin,
+                new Vector2( 0, directionY) * rayLenghtY,
+                new Color(0,1,0)
+             );
+        }
+        if( !collisionInfo.climbingSlope )
+        transition.y = Mathf.Sign(transition.y) * (rayLenghtY);
+        }
+    }
+
+
 
     protected void ProcessSlopeDetection(float directionX){
         float rayLenght  = Mathf.Abs (transition.x) + skinSize;
@@ -167,7 +249,7 @@ public class CollisionDetector : MonoBehaviour
     }
 
 
-    protected void ProcessCollisionHorizontal( float directionX ){
+    protected void ProcessCollisionHorizontal( float directionX){
         if( transition.x == 0) return;
         float rayLenght  = Mathf.Abs (transition.x) + skinSize;
 
@@ -226,11 +308,10 @@ public class CollisionDetector : MonoBehaviour
             if( hit ){
                 rayLenght  = hit.distance;
 
-
                 collisionInfo.below = (directionY == DIR_DOWN);
                 collisionInfo.above = (directionY == DIR_UP  );
             }
-            
+
             Debug.DrawRay(
                 rayOrigin,
                 new Vector2( 0, directionY) * rayLenght,
@@ -301,19 +382,13 @@ public class CollisionDetector : MonoBehaviour
         transition = new Vector2(0,0);
     }
 
-    public PlayerUtils.Direction GetCurrentDirection(){
-        return (PlayerUtils.Direction) collisionInfo.faceDir;
+    public GlobalUtils.Direction GetCurrentDirection(){
+        return (GlobalUtils.Direction) collisionInfo.faceDir;
     }
 
-    public void CheatMove( Vector2 velocity, bool resetCollisionFlags = false){
-      /*  if( resetCollisionFlags ){
-            transition = velocity;
-            ResetCollisionInfo();
-            ProcessSlopeDetection( Mathf.Sign(velocity.x) );
-            DescendSlope();
-            ProcessCollisionVertical( Mathf.Sign(velocity.y));
-        } */
+    public void CheatMove( Vector2 velocity){
         transform.Translate( velocity );
     }
+
 
 }

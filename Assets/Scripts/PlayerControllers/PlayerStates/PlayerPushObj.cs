@@ -10,16 +10,16 @@ public class PlayerPushObj : BaseState
     
     float distanceFromObject;
 
-    public PlayerPushObj( GameObject controllable, PlayerUtils.Direction dir) : base( controllable ) {
+    public PlayerPushObj( GameObject controllable, GlobalUtils.Direction dir) : base( controllable ) {
         // play change direction animation;
         // at end of animation call :
         // TEMP
 
         name = "PlayerPushObj";
-        isMovingLeft = dir == PlayerUtils.Direction.Left;
+        isMovingLeft = dir == GlobalUtils.Direction.Left;
         m_dir = dir;
 
-        rotationAngle = ( m_dir == PlayerUtils.Direction.Left) ? 180 :0 ; 
+        rotationAngle = ( m_dir == GlobalUtils.Direction.Left) ? 180 :0 ; 
         m_controllabledObject.GetComponent<Player>().animationNode.eulerAngles = new Vector3( 0, rotationAngle, slopeAngle);
 
         m_moveable    = m_detector.GetPullableObject();

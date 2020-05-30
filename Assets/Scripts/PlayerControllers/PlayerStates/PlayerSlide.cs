@@ -6,17 +6,17 @@ public class PlayerSlide : BaseState
 {
     private bool isMovingLeft = false;
 
-    public PlayerSlide( GameObject controllable, PlayerUtils.Direction dir) : base( controllable ) {
+    public PlayerSlide( GameObject controllable, GlobalUtils.Direction dir) : base( controllable ) {
         // play change direction animation;
         // at end of animation call :
         // TEMP
 
         PlayerFallOfWallHelper.ResetCounter();
 
-        isMovingLeft = dir == PlayerUtils.Direction.Left;
+        isMovingLeft = dir == GlobalUtils.Direction.Left;
         name = "WallSlide";
         m_dir = dir;
-        rotationAngle = ( m_dir == PlayerUtils.Direction.Left) ? 180 :0 ; 
+        rotationAngle = ( m_dir == GlobalUtils.Direction.Left) ? 180 :0 ; 
         m_controllabledObject.GetComponent<Player>().animationNode.eulerAngles = new Vector3( 0, rotationAngle, slopeAngle);
 
     }
@@ -38,7 +38,7 @@ public class PlayerSlide : BaseState
             m_isOver = true;
         }
 
-        velocity.x = (m_dir != PlayerUtils.Direction.Left )? -0.001f : 0.001f;
+        velocity.x = (m_dir != GlobalUtils.Direction.Left )? -0.001f : 0.001f;
         velocity.y = Mathf.Max( velocity.y -PlayerUtils.GravityForce * Time.deltaTime,
                                  -PlayerUtils.MaxWallSlideSpeed);
         if( PlayerInput.isSpecialKeyHold() ) velocity.y = 0.0f;
@@ -56,10 +56,10 @@ public class PlayerSlide : BaseState
             }
         //    }else if( isMovingLeft && PlayerUtils.isMoveRightKeyHold() ){
         //        m_isOver = true;
-        //        m_nextState = new PlayerFall( m_controllabledObject, PlayerUtils.Direction.Right  );
+        //        m_nextState = new PlayerFall( m_controllabledObject, GlobalUtils.Direction.Right  );
         //    }else if(!isMovingLeft && PlayerUtils.isMoveLeftKeyHold() ){
         //        m_isOver = true;
-        //        m_nextState = new PlayerFall( m_controllabledObject, PlayerUtils.Direction.Left  );
+        //        m_nextState = new PlayerFall( m_controllabledObject, GlobalUtils.Direction.Left  );
         //    }
         }else{
 

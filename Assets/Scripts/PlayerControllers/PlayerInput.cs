@@ -25,11 +25,11 @@ public static class  PlayerInput
     }
 
     public static bool isAttack2KeyPressed(){
-        return Input.GetKeyDown(KeyCode.Z);
+        return Input.GetKeyDown(KeyCode.Z) || Input.GetKeyDown(KeyCode.Q);
     }
 
     public static bool isAttack3KeyPressed(){
-        return Input.GetKeyDown(KeyCode.C);
+        return Input.GetKeyDown(KeyCode.C) || Input.GetButtonDown("Fire2");
     }
 
     public static bool isJumpKeyJustPressed(){

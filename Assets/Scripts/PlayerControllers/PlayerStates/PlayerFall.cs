@@ -6,12 +6,12 @@ public class PlayerFall : BaseState
 {
     private bool isMovingLeft = false;
 
-    private PlayerUtils.Direction m_swipe;
+    private GlobalUtils.Direction m_swipe;
 
     private bool swipeOn = false;
 
-    public PlayerFall( GameObject controllable, PlayerUtils.Direction dir) : base( controllable ) {
-        isMovingLeft = dir == PlayerUtils.Direction.Left;
+    public PlayerFall( GameObject controllable, GlobalUtils.Direction dir) : base( controllable ) {
+        isMovingLeft = dir == GlobalUtils.Direction.Left;
         name = "Fall";
         if( PlayerFallOfWallHelper.FallOfWallRequirementsMeet() ) 
             velocity.x = (isMovingLeft)? - PlayerUtils.PlayerSpeedInAir : PlayerUtils.PlayerSpeedInAir;
@@ -20,7 +20,7 @@ public class PlayerFall : BaseState
     public override void Process(){
         velocity.y += -PlayerUtils.GravityForce * Time.deltaTime;
         if( swipeOn ){
-            velocity.x = ( m_swipe == PlayerUtils.Direction.Left ) ? 
+            velocity.x = ( m_swipe == GlobalUtils.Direction.Left ) ? 
                             -PlayerUtils.PlayerSpeedInAir : 
                              PlayerUtils.PlayerSpeedInAir;
 
@@ -35,22 +35,22 @@ public class PlayerFall : BaseState
     //     if(PlayerJumpHelper.JumpRequirementsMeet( PlayerUtils.isJumpKeyJustPressed(), 
     //                                               m_detector.isOnGround() ))
     //    {
-    //        m_nextState = new PlayerJump(m_controllabledObject, PlayerUtils.Direction.Left);
+    //        m_nextState = new PlayerJump(m_controllabledObject, GlobalUtils.Direction.Left);
     //    }
 
         if( m_detector.isWallClose() && !PlayerFallOfWallHelper.FallOfWallRequirementsMeet() ){
             m_isOver = true;
-            m_nextState = new PlayerSlide( m_controllabledObject,  PlayerUtils.ReverseDirection(m_dir));
+            m_nextState = new PlayerSlide( m_controllabledObject,  GlobalUtils.ReverseDirection(m_dir));
         }
 
         if( PlayerSwipeLock.SwipeUnlockRequirementsMeet() ){
 
             if( PlayerInput.isMoveLeftKeyHold() ){
                 swipeOn = true;
-                m_swipe = PlayerUtils.Direction.Left;
+                m_swipe = GlobalUtils.Direction.Left;
             }else if( PlayerInput.isMoveRightKeyHold() ){
                 swipeOn = true;
-                m_swipe = PlayerUtils.Direction.Right;
+                m_swipe = GlobalUtils.Direction.Right;
             }else{
                 swipeOn = false;
             }

@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class PlayerJump : BaseState
 {    private bool isMovingLeft = false;
-    private PlayerUtils.Direction m_swipe;
+    private GlobalUtils.Direction m_swipe;
 
     private bool swipeOn = false;
 
-    public PlayerJump( GameObject controllable, PlayerUtils.Direction dir) : base( controllable ) {
-        isMovingLeft = dir == PlayerUtils.Direction.Left;
+    public PlayerJump( GameObject controllable, GlobalUtils.Direction dir) : base( controllable ) {
+        isMovingLeft = dir == GlobalUtils.Direction.Left;
         velocity.y = PlayerUtils.PlayerJumpForce;
         name = "Jump";
         PlayerFallOfWallHelper.ResetCounter();
@@ -37,7 +37,7 @@ public class PlayerJump : BaseState
         velocity.y = Mathf.Max( velocity.y, -500 );
 
         if( swipeOn ){
-            velocity.x = ( m_swipe == PlayerUtils.Direction.Left ) ? 
+            velocity.x = ( m_swipe == GlobalUtils.Direction.Left ) ? 
                             -PlayerUtils.PlayerSpeedInAir : 
                              PlayerUtils.PlayerSpeedInAir;
 
@@ -52,19 +52,17 @@ public class PlayerJump : BaseState
 
         if( m_detector.isWallClose() ){
             m_isOver = true;
-            m_nextState = new PlayerSlide( m_controllabledObject, PlayerUtils.ReverseDirection(m_dir));
+            m_nextState = new PlayerSlide( m_controllabledObject, GlobalUtils.ReverseDirection(m_dir));
         }
 
         if( PlayerInput.isMoveLeftKeyHold() ){
             swipeOn = true;
-            m_swipe = PlayerUtils.Direction.Left;
+            m_swipe = GlobalUtils.Direction.Left;
         }else if( PlayerInput.isMoveRightKeyHold() ){
             swipeOn = true;
-            m_swipe = PlayerUtils.Direction.Right;
+            m_swipe = GlobalUtils.Direction.Right;
         }else{
             swipeOn = false;
         }
-
-
     }
 }

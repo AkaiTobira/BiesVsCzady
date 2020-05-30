@@ -6,12 +6,12 @@ public class PlayerWallHold : BaseState
 {
     private bool isMovingLeft = false;
 
-    public PlayerWallHold( GameObject controllable, PlayerUtils.Direction dir) : base( controllable ) {
+    public PlayerWallHold( GameObject controllable, GlobalUtils.Direction dir) : base( controllable ) {
         // play change direction animation;
         // at end of animation call :
         // TEMP
    //     controllable.transform.GetComponent<Player>().changeDirection(dir);
-        isMovingLeft = dir == PlayerUtils.Direction.Left;
+        isMovingLeft = dir == GlobalUtils.Direction.Left;
         name = "WallHold" + ((isMovingLeft)? "L": "R");
 
     }
@@ -32,7 +32,7 @@ public class PlayerWallHold : BaseState
     }
 
     public override void OnExit(){
-        if( m_dir == PlayerUtils.Direction.Left){
+        if( m_dir == GlobalUtils.Direction.Left){
             velocity.x = PlayerUtils.PlayerSpeed * Time.deltaTime;
         }else{
             velocity.x = -PlayerUtils.PlayerSpeed * Time.deltaTime;
@@ -43,35 +43,35 @@ public class PlayerWallHold : BaseState
 
     public override void HandleInput(){
         if( PlayerFallHelper.FallRequirementsMeet( m_detector.isOnGround()) ){
-            m_nextState = new PlayerFall(m_controllabledObject, PlayerUtils.Direction.Left);
+            m_nextState = new PlayerFall(m_controllabledObject, GlobalUtils.Direction.Left);
         }else if( PlayerInput.isAttack2KeyPressed() ){
             m_nextState = new PlayerAttack2(m_controllabledObject);
         }else if ( m_detector.IsWallPullable() && PlayerInput.isSpecialKeyHold() ){
 
             if( isMovingLeft ){
                 if( PlayerInput.isMoveRightKeyHold()){
-                    m_nextState = new PlayerPullObj( m_controllabledObject, PlayerUtils.Direction.Left);
+                    m_nextState = new PlayerPullObj( m_controllabledObject, GlobalUtils.Direction.Left);
                 }else if( PlayerInput.isMoveLeftKeyHold() ){
-                    m_nextState = new PlayerPushObj( m_controllabledObject, PlayerUtils.Direction.Left);
+                    m_nextState = new PlayerPushObj( m_controllabledObject, GlobalUtils.Direction.Left);
                 }
             }else{
                 if( PlayerInput.isMoveRightKeyHold()){
-                    m_nextState = new PlayerPushObj( m_controllabledObject, PlayerUtils.Direction.Right);
+                    m_nextState = new PlayerPushObj( m_controllabledObject, GlobalUtils.Direction.Right);
                 }else if( PlayerInput.isMoveLeftKeyHold() ){
-                    m_nextState = new PlayerPullObj( m_controllabledObject, PlayerUtils.Direction.Right);
+                    m_nextState = new PlayerPullObj( m_controllabledObject, GlobalUtils.Direction.Right);
                 }
             } 
         }else if( isMovingLeft && PlayerInput.isMoveRightKeyHold()){
             m_isOver = true;
-        //    m_nextState = new PlayerMove(m_controllabledObject, PlayerUtils.Direction.Right); 
+        //    m_nextState = new PlayerMove(m_controllabledObject, GlobalUtils.Direction.Right); 
         }else if( !isMovingLeft && PlayerInput.isMoveLeftKeyHold()){
             m_isOver = true;
-        //    m_nextState = new PlayerMove(m_controllabledObject, PlayerUtils.Direction.Left); 
+        //    m_nextState = new PlayerMove(m_controllabledObject, GlobalUtils.Direction.Left); 
     //    }else if( 
     //        PlayerJumpHelper.JumpRequirementsMeet( PlayerUtils.isJumpKeyJustPressed(), 
     //                                               m_detector.isOnGround() )
     //    ){ 
-    //        m_nextState = new PlayerJump(m_controllabledObject, PlayerUtils.Direction.Left);
+    //        m_nextState = new PlayerJump(m_controllabledObject, GlobalUtils.Direction.Left);
         }else if( PlayerInput.isFallKeyHold() ) {
             m_detector.enableFallForOneWayFloor();
             velocity.y += -PlayerUtils.GravityForce * Time.deltaTime;

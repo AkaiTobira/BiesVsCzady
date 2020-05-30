@@ -10,10 +10,12 @@ public class PlayerAttack2 : BaseState{
 
 
     public PlayerAttack2( GameObject controllable) : base( controllable ){
-        isMovingLeft = m_detector.GetCurrentDirection() == PlayerUtils.Direction.Left;
+        isMovingLeft = m_detector.GetCurrentDirection() == GlobalUtils.Direction.Left;
         name = "PlayerAttack2";
         m_animator.SetBool("Attack2", true);
         timeToEnd = getAnimationLenght("PlayerAttack2");
+
+        GlobalUtils.cameraShake.TriggerShake(timeToEnd);
 
         m_transition = m_controllabledObject.
                        GetComponent<Player>().animationNode.

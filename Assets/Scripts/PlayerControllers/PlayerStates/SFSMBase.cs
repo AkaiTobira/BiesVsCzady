@@ -32,7 +32,7 @@ public class SFSMBase
         if( nextState != null ) m_states.Push(nextState);
     }
 
-    public PlayerUtils.Direction GetDirection(){
+    public GlobalUtils.Direction GetDirection(){
         return m_states.Peek().GetDirection();
     }
 

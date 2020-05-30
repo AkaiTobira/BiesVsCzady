@@ -6,12 +6,12 @@ public class PlayerMove : BaseState
 {
     private bool isMovingLeft = false;
 
-    public PlayerMove( GameObject controllable, PlayerUtils.Direction dir) : base( controllable ) {
+    public PlayerMove( GameObject controllable, GlobalUtils.Direction dir) : base( controllable ) {
         // play change direction animation;
         // at end of animation call :
         // TEMP
    //     controllable.transform.GetComponent<Player>().changeDirection(dir);
-        isMovingLeft = dir == PlayerUtils.Direction.Left;
+        isMovingLeft = dir == GlobalUtils.Direction.Left;
         name = "Move";
     //    m_dir = dir;
     }
@@ -30,8 +30,8 @@ public class PlayerMove : BaseState
 
         if( m_detector.isWallClose() ){
             m_nextState = new PlayerWallHold( m_controllabledObject, 
-                                              ( isMovingLeft )? PlayerUtils.Direction.Left : 
-                                                                PlayerUtils.Direction.Right );
+                                              ( isMovingLeft )? GlobalUtils.Direction.Left : 
+                                                                GlobalUtils.Direction.Right );
             m_isOver = true;
         }
 
@@ -39,7 +39,7 @@ public class PlayerMove : BaseState
 
     public override void HandleInput(){
         if( PlayerFallHelper.FallRequirementsMeet( m_detector.isOnGround()) ){
-            m_nextState = new PlayerFall(m_controllabledObject, PlayerUtils.Direction.Left);
+            m_nextState = new PlayerFall(m_controllabledObject, GlobalUtils.Direction.Left);
         }else if( PlayerInput.isAttack1KeyPressed() ){
             m_nextState = new PlayerAttack1(m_controllabledObject);
         }else if( PlayerInput.isAttack2KeyPressed() ){
@@ -54,7 +54,7 @@ public class PlayerMove : BaseState
             PlayerJumpHelper.JumpRequirementsMeet( PlayerInput.isJumpKeyJustPressed(), 
                                                    m_detector.isOnGround() )
         ){ 
-            m_nextState = new PlayerJump(m_controllabledObject, PlayerUtils.Direction.Left);
+            m_nextState = new PlayerJump(m_controllabledObject, GlobalUtils.Direction.Left);
         }else if( PlayerInput.isFallKeyHold() ) {
             m_detector.enableFallForOneWayFloor();
             velocity.y += -PlayerUtils.GravityForce * Time.deltaTime;
