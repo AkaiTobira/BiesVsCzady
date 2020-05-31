@@ -31,7 +31,7 @@ public class EnemyController : MonoBehaviour
 
     void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player").transform;
+        player = GlobalUtils.PlayerObject;
         timeBetweenShots = startTimeBetweenShots;
     }
 
