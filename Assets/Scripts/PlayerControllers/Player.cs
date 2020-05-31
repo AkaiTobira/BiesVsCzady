@@ -4,68 +4,111 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    
-    [SerializeField] private LayerMask m_floorLayerMask = 8; 
-    [SerializeField] private LayerMask m_wallLayerMask = 8; 
     private SFSMBase m_controller;
-    private PlayerUtils.Direction m_dir = PlayerUtils.Direction.Left;
+    private CollisionDetectorPlayer m_detector;
 
-    private BoxCollider2D m_boxCollider;
+    private Animator m_animator;
 
-    public void changeDirection( PlayerUtils.Direction dir ){
-        if( m_dir == dir ) return;
-        Vector3 localTransform = transform.localScale;
-        localTransform.x       = Mathf.Abs( localTransform.x ) * (float)dir * -1 ;
-        transform.localScale   = localTransform;
-        m_dir = dir;
-    }
+    [SerializeField] float jumpHeight        = 0.0f;
+    [SerializeField] float timeToJumpApex    = 0.0f;
+    [SerializeField] float moveDistance      = 15.0f;
+    [SerializeField] float moveDistanceInAir = 5.0f;
+
+    [Range( 0.0f, 1.0f)] public float wallFriction = 1.0f;
+
+    [SerializeField] Vector2 WallJumpFactors = new Vector2(0.0f,0.0f);
 
     void Start()
     {
-        m_boxCollider = GetComponent<BoxCollider2D>(); 
-        m_controller  = new SFSMBase( transform.gameObject, new PlayerIdle( transform.gameObject ) );
+        GlobalUtils.PlayerObject = transform;
+        m_detector    = GetComponent<CollisionDetectorPlayer>();
+        m_controller  = new SFSMBase( transform.gameObject, new PlayerIdle( gameObject ) );
+        m_animator    = animationNode.gameObject.GetComponent<Animator>();
+        CalculateMath();
     }
 
-    public bool isOnGrounded(){
-        float extraHeight = 0.1f;
-        RaycastHit2D rHit = Physics2D.BoxCast(m_boxCollider.bounds.center,
-                                              m_boxCollider.bounds.size,
-                                              0,
-                                              Vector2.down, 
-                                              extraHeight,
-                                              m_floorLayerMask);
-        Color rayColor;
-        if( rHit.collider != null ){
-            rayColor = Color.green;
-        }else {rayColor = Color.red;}
-        Debug.DrawRay( m_boxCollider.bounds.center, Vector2.down * ( m_boxCollider.bounds.extents.y + extraHeight), rayColor, Time.deltaTime, false );
-        return rHit.collider != null ;
+    private void CalculateMath(){
+        PlayerUtils.GravityForce        = (2 * jumpHeight) / Mathf.Pow (timeToJumpApex, 2);
+        PlayerUtils.PlayerSpeed         = moveDistance;
+        PlayerUtils.PlayerJumpForce     = Mathf.Abs(PlayerUtils.GravityForce) * timeToJumpApex;
+        PlayerUtils.PlayerSpeedInAir    = moveDistanceInAir;
+        PlayerUtils.MaxWallSlideSpeed   = PlayerUtils.GravityForce * wallFriction; 
+        PlayerUtils.PlayerWallJumpForce = new Vector2( WallJumpFactors.x * PlayerUtils.PlayerSpeed,
+                                                       WallJumpFactors.y * PlayerUtils.PlayerJumpForce);
     }
 
-    public bool isHittingWall(){
-        float extraHeight = 1f;
-        RaycastHit2D rHit = Physics2D.BoxCast(m_boxCollider.bounds.center,
-                                              m_boxCollider.bounds.size/2,
-                                              0,
-                                              (transform.localScale.x < 0 ) ? Vector2.right : Vector2.left, 
-                                              extraHeight,
-                                              m_wallLayerMask);
-        Color rayColor;
-        if( rHit.collider != null ){
-            rayColor = Color.green;
-        }else {rayColor = Color.red;}
-        Debug.DrawRay( m_boxCollider.bounds.center, 
-                       ((transform.localScale.x < 0 ) ? Vector2.right : Vector2.left) * ( m_boxCollider.bounds.extents.x + extraHeight), 
-                       rayColor, 
-                       Time.deltaTime, 
-                       false );
-        return rHit.collider != null ;
-            
+    private void UpdateCounters(){
+        PlayerJumpHelper.IncrementCounters();
+        PlayerFallHelper.IncrementCounters();
+        PlayerFallOfWallHelper.IncrementCounters();
+        PlayerSwipeLock.IncrementCounters();
+        PlayerJumpOffWall.IncrementCounters();
+
+        if (Debug.isDebugBuild) CalculateMath();
     }
 
+    [SerializeField] public Transform animationNode;
+
+    [SerializeField] bool isOnGround     = false;
+    [SerializeField] bool isWallClose    = false;
+    [SerializeField] bool isColLeft      = false;
+    [SerializeField] bool isColRight     = false;
+    [SerializeField] bool directionLeft  = false;
+    [SerializeField] bool directionRight = false;
+    [SerializeField] string StateName    = "Idle";
     // Update is called once per frame
-    void FixedUpdate(){
+
+
+    public GlobalUtils.AttackStateInfo GetPlayerAttackInfo(){
+        GlobalUtils.AttackStateInfo infoPack = new GlobalUtils.AttackStateInfo();
+        infoPack.stateName = m_controller.GetStateName();
+        switch( infoPack.stateName ){
+            case "PlayerAttack1":
+            {
+                infoPack.isValid = true;
+                infoPack.knockBackValue = PlayerUtils.KnockBackValueAttack1;
+                infoPack.attackDamage   = PlayerUtils.Attack1Damage;
+                infoPack.fromCameAttack = m_controller.GetDirection();
+                break;
+            }
+            case "PlayerAttack2":
+            {
+                infoPack.isValid = true;
+                infoPack.knockBackValue = PlayerUtils.KnockBackValueAttack2;
+                infoPack.attackDamage   = PlayerUtils.Attack2Damage;
+                infoPack.fromCameAttack = m_controller.GetDirection();
+                break;
+            }
+            case "PlayerAttack3":
+            {
+                infoPack.isValid = true;
+                infoPack.knockBackValue = PlayerUtils.KnockBackValueAttack3;
+                infoPack.attackDamage   = PlayerUtils.Attack3Damage;
+                infoPack.fromCameAttack = m_controller.GetDirection();
+                break;
+            }
+            default:
+            {
+                infoPack.isValid = false;
+                break;
+            }
+        }
+
+        return infoPack;
+    }
+
+    void Update(){
         m_controller.Update();
-        isHittingWall();
+        UpdateCounters();
+
+        isOnGround  = m_detector.isOnGround();
+        isWallClose = m_detector.isWallClose();
+        Debug.Log( StateName );
+        StateName   = m_controller.GetStateName();
+        isColLeft =m_detector.isCollideWithLeftWall();
+        isColRight= m_detector.isCollideWithLeftWall();
+        
+        directionLeft  = m_controller.GetDirection() == GlobalUtils.Direction.Left;
+        directionRight = m_controller.GetDirection() == GlobalUtils.Direction.Right;
     }
 }

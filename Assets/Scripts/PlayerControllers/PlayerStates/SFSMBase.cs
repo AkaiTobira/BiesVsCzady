@@ -13,18 +13,27 @@ public class SFSMBase
     }
 
     private void cleanStack(){
-        while( m_states.Peek().isOver() ) m_states.Pop();
+        while( m_states.Peek().isOver() ) m_states.Pop().OnExit();
     }
 
     private void processStack(){
         BaseState current_state = m_states.Peek();
         current_state.HandleInput();
         current_state.Process();
+        current_state.UpdateDirection();
+    }
+
+    public string GetStateName(){
+        return  m_states.Peek().name;
     }
 
     private void switchState(){
         BaseState nextState = m_states.Peek().NextState();
         if( nextState != null ) m_states.Push(nextState);
+    }
+
+    public GlobalUtils.Direction GetDirection(){
+        return m_states.Peek().GetDirection();
     }
 
     public void Update(){
