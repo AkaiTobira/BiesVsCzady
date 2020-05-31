@@ -18,6 +18,7 @@ public class DestroyableObject : MonoBehaviour
     private Vector2 moveValue;
     private Vector2 currentMoveValue;
 
+    private float Gravity = 0.0f;
 
     void Start() {
         m_anim     = GetComponent<Animator>();
@@ -27,9 +28,13 @@ public class DestroyableObject : MonoBehaviour
 
     void MoveObject(){
         if( currentMoveValue.magnitude > 5.0f){
-            
+            m_detector.autoGravityOn = false;
+            Gravity -= PlayerUtils.GravityForce * Time.deltaTime;
             currentMoveValue -= moveValue * decreaseFactor * Time.deltaTime;
-            m_detector.Move(currentMoveValue * Time.deltaTime);
+            m_detector.Move((currentMoveValue + new Vector2( 0, Gravity)) * Time.deltaTime);
+        }else{
+            Gravity = 0.0f;
+            m_detector.autoGravityOn = true;
         }
     }
 
@@ -51,7 +56,8 @@ public class DestroyableObject : MonoBehaviour
                     if( durability < 0 ){
                         Destroy(gameObject);
                     }else if( canBeKnockBacked ){
-                        moveValue        = infoPack.knockBackValue * (int)infoPack.fromCameAttack;
+                        moveValue    = infoPack.knockBackValue;
+                        moveValue.x *=  (int)infoPack.fromCameAttack;
                         currentMoveValue += moveValue;
                         Debug.Log( moveValue );
                     }

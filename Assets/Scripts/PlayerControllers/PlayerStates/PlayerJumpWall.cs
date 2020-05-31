@@ -17,6 +17,13 @@ public class PlayerJumpWall : BaseState
         velocity.x *= (dir == GlobalUtils.Direction.Left)? -1 : 1;
         name = "WallJump";
         PlayerFallOfWallHelper.ResetCounter();
+
+
+        velocity.x = Mathf.Max(PlayerUtils.PlayerWallJumpForce.x * inputLock/INPUT_LOCK, 
+                               PlayerUtils.MaxPlayerMoveSpeedInAir) *
+                               velocity.y/PlayerUtils.PlayerWallJumpForce.y * 
+                     Mathf.Sign(velocity.x);
+
     }
 
 
@@ -39,17 +46,18 @@ public class PlayerJumpWall : BaseState
 
 
 
-        velocity.x = Mathf.Max(PlayerUtils.PlayerWallJumpForce.x * inputLock/INPUT_LOCK, 
-                               PlayerUtils.PlayerSpeedInAir) *
-                               velocity.y/PlayerUtils.PlayerWallJumpForce.y * 
-                     Mathf.Sign(velocity.x);
+
 
 
         velocity.y += -PlayerUtils.GravityForce * Time.deltaTime;
         if( swipeOn ){
             velocity.x = ( m_swipe == GlobalUtils.Direction.Left ) ? 
-                            -PlayerUtils.PlayerSpeedInAir : 
-                             PlayerUtils.PlayerSpeedInAir;
+                            Mathf.Max(  -PlayerUtils.MaxPlayerMoveSpeedInAir,
+                                        velocity.x -PlayerUtils.PlayerMoveSpeedInAir * Time.deltaTime) : 
+                            Mathf.Min(  PlayerUtils.MaxPlayerMoveSpeedInAir,
+                                        velocity.x + PlayerUtils.PlayerMoveSpeedInAir * Time.deltaTime);
+
+            PlayerUtils.swipeSpeedValue = velocity.x;
 
             // if velocity.x > 0 => m_direction = Direction.Left
             // else velocity.x < 0 => m_direction = Direction.Right czy jakoś tak.
@@ -75,7 +83,5 @@ public class PlayerJumpWall : BaseState
         }else{
             swipeOn = false;
         }
-
-
     }
 }

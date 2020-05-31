@@ -9,10 +9,14 @@ public class Player : MonoBehaviour
 
     private Animator m_animator;
 
-    [SerializeField] float jumpHeight        = 0.0f;
-    [SerializeField] float timeToJumpApex    = 0.0f;
-    [SerializeField] float moveDistance      = 15.0f;
-    [SerializeField] float moveDistanceInAir = 5.0f;
+    [SerializeField] float minJumpHeight         = 5.0f;
+    [SerializeField] float jumpHeight            = 0.0f;
+    [SerializeField] float jumpHoldWallTimeDelay = 0.0f;
+    [SerializeField] public float timeToJumpApex = 0.0f;
+    [SerializeField] float moveDistance          = 15.0f;
+    [SerializeField] float moveDistanceInAir     = 5.0f;
+    [SerializeField] float maxMoveSpeedInAir     = 10.0f;
+
 
     [Range( 0.0f, 1.0f)] public float wallFriction = 1.0f;
 
@@ -25,16 +29,22 @@ public class Player : MonoBehaviour
         m_controller  = new SFSMBase( transform.gameObject, new PlayerIdle( gameObject ) );
         m_animator    = animationNode.gameObject.GetComponent<Animator>();
         CalculateMath();
+        Debug.Log( PlayerUtils.PlayerJumpForceMin.ToString() + " " + PlayerUtils.PlayerJumpForceMax.ToString() );
     }
 
     private void CalculateMath(){
-        PlayerUtils.GravityForce        = (2 * jumpHeight) / Mathf.Pow (timeToJumpApex, 2);
-        PlayerUtils.PlayerSpeed         = moveDistance;
-        PlayerUtils.PlayerJumpForce     = Mathf.Abs(PlayerUtils.GravityForce) * timeToJumpApex;
-        PlayerUtils.PlayerSpeedInAir    = moveDistanceInAir;
-        PlayerUtils.MaxWallSlideSpeed   = PlayerUtils.GravityForce * wallFriction; 
-        PlayerUtils.PlayerWallJumpForce = new Vector2( WallJumpFactors.x * PlayerUtils.PlayerSpeed,
-                                                       WallJumpFactors.y * PlayerUtils.PlayerJumpForce);
+        PlayerUtils.GravityForce          = (2 * jumpHeight) / Mathf.Pow (timeToJumpApex, 2);
+        PlayerUtils.PlayerJumpForceMin    = Mathf.Sqrt (2 * Mathf.Abs (PlayerUtils.GravityForce) * minJumpHeight);
+        PlayerUtils.PlayerSpeed           = moveDistance;
+        PlayerUtils.PlayerJumpForceMax    = Mathf.Abs(PlayerUtils.GravityForce) * timeToJumpApex;
+        PlayerUtils.JumpMaxTime           = timeToJumpApex;
+        PlayerUtils.JumpHoldTimeDelay     = jumpHoldWallTimeDelay;
+        PlayerUtils.PlayerMoveSpeedInAir      = moveDistanceInAir;
+        PlayerUtils.MaxWallSlideSpeed     = PlayerUtils.GravityForce * wallFriction; 
+        PlayerUtils.PlayerWallJumpForce   = new Vector2( WallJumpFactors.x * PlayerUtils.PlayerSpeed,
+                                                         WallJumpFactors.y * PlayerUtils.PlayerJumpForceMax);
+
+        PlayerUtils.MaxPlayerMoveSpeedInAir = maxMoveSpeedInAir;
     }
 
     private void UpdateCounters(){

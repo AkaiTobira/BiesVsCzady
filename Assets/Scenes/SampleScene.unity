@@ -901,6 +901,16 @@ PrefabInstance:
       propertyPath: m_LocalScale.y
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5368838613019971324, guid: 93175970ab2ecca41a426ff164496ae3,
+        type: 3}
+      propertyPath: MaxGravityForce
+      value: 2000
+      objectReference: {fileID: 0}
+    - target: {fileID: 5368838613019971324, guid: 93175970ab2ecca41a426ff164496ae3,
+        type: 3}
+      propertyPath: GravityForce
+      value: 40
+      objectReference: {fileID: 0}
     - target: {fileID: 5368838613019971325, guid: 93175970ab2ecca41a426ff164496ae3,
         type: 3}
       propertyPath: m_Name
@@ -1140,19 +1150,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be12501bceeac5c4c9f60f2d3c019401, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  minJumpHeight: 300
   jumpHeight: 2000
-  timeToJumpApex: 0.55
+  jumpHoldWallTimeDelay: 0
+  timeToJumpApex: 0.7
   moveDistance: 3000
-  moveDistanceInAir: 2800
+  moveDistanceInAir: 4000
+  maxMoveSpeedInAir: 4000
   wallFriction: 0.04
-  WallJumpFactors: {x: 3, y: 0.75}
+  WallJumpFactors: {x: 1, y: 0.75}
   animationNode: {fileID: 32769804}
-  isOnGround: 0
+  isOnGround: 1
   isWallClose: 0
   isColLeft: 0
   isColRight: 0
   directionLeft: 0
-  directionRight: 0
+  directionRight: 1
   StateName: Idle
 --- !u!50 &239379941
 Rigidbody2D:
@@ -1522,6 +1535,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_selfCollsionMask.m_Bits
       value: 1024
+      objectReference: {fileID: 0}
+    - target: {fileID: 5368838613019971324, guid: 93175970ab2ecca41a426ff164496ae3,
+        type: 3}
+      propertyPath: MaxGravityForce
+      value: 2000
+      objectReference: {fileID: 0}
+    - target: {fileID: 5368838613019971324, guid: 93175970ab2ecca41a426ff164496ae3,
+        type: 3}
+      propertyPath: GravityForce
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 5368838613019971325, guid: 93175970ab2ecca41a426ff164496ae3,
         type: 3}
@@ -2053,6 +2076,16 @@ PrefabInstance:
         type: 3}
       propertyPath: autoGravityOn
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2695046210730010642, guid: d5d5bde3a86031347a1f83f472a7000d,
+        type: 3}
+      propertyPath: MaxGravityForce
+      value: 2000
+      objectReference: {fileID: 0}
+    - target: {fileID: 2695046210730010642, guid: d5d5bde3a86031347a1f83f472a7000d,
+        type: 3}
+      propertyPath: GravityForce
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 2695046210730010670, guid: d5d5bde3a86031347a1f83f472a7000d,
         type: 3}
@@ -3164,6 +3197,16 @@ PrefabInstance:
         type: 3}
       propertyPath: durability
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2695046210730010642, guid: d5d5bde3a86031347a1f83f472a7000d,
+        type: 3}
+      propertyPath: MaxGravityForce
+      value: 2000
+      objectReference: {fileID: 0}
+    - target: {fileID: 2695046210730010642, guid: d5d5bde3a86031347a1f83f472a7000d,
+        type: 3}
+      propertyPath: GravityForce
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 2695046210730010670, guid: d5d5bde3a86031347a1f83f472a7000d,
         type: 3}
@@ -5384,6 +5427,16 @@ PrefabInstance:
       propertyPath: m_selfCollsionMask.m_Bits
       value: 1024
       objectReference: {fileID: 0}
+    - target: {fileID: 5368838613019971324, guid: 93175970ab2ecca41a426ff164496ae3,
+        type: 3}
+      propertyPath: MaxGravityForce
+      value: 2000
+      objectReference: {fileID: 0}
+    - target: {fileID: 5368838613019971324, guid: 93175970ab2ecca41a426ff164496ae3,
+        type: 3}
+      propertyPath: GravityForce
+      value: 40
+      objectReference: {fileID: 0}
     - target: {fileID: 5368838613019971325, guid: 93175970ab2ecca41a426ff164496ae3,
         type: 3}
       propertyPath: m_Name
@@ -5661,6 +5714,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.y
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5368838613019971324, guid: 93175970ab2ecca41a426ff164496ae3,
+        type: 3}
+      propertyPath: MaxGravityForce
+      value: 2000
+      objectReference: {fileID: 0}
+    - target: {fileID: 5368838613019971324, guid: 93175970ab2ecca41a426ff164496ae3,
+        type: 3}
+      propertyPath: GravityForce
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 5368838613019971325, guid: 93175970ab2ecca41a426ff164496ae3,
         type: 3}
@@ -6932,6 +6995,16 @@ PrefabInstance:
       propertyPath: m_selfCollsionMask.m_Bits
       value: 1024
       objectReference: {fileID: 0}
+    - target: {fileID: 5368838613019971324, guid: 93175970ab2ecca41a426ff164496ae3,
+        type: 3}
+      propertyPath: MaxGravityForce
+      value: 2000
+      objectReference: {fileID: 0}
+    - target: {fileID: 5368838613019971324, guid: 93175970ab2ecca41a426ff164496ae3,
+        type: 3}
+      propertyPath: GravityForce
+      value: 40
+      objectReference: {fileID: 0}
     - target: {fileID: 5368838613019971325, guid: 93175970ab2ecca41a426ff164496ae3,
         type: 3}
       propertyPath: m_Name
@@ -7588,15 +7661,25 @@ PrefabInstance:
       propertyPath: m_selfCollsionMask.m_Bits
       value: 2048
       objectReference: {fileID: 0}
+    - target: {fileID: 2695046210730010642, guid: d5d5bde3a86031347a1f83f472a7000d,
+        type: 3}
+      propertyPath: MaxGravityForce
+      value: 2000
+      objectReference: {fileID: 0}
+    - target: {fileID: 2695046210730010642, guid: d5d5bde3a86031347a1f83f472a7000d,
+        type: 3}
+      propertyPath: GravityForce
+      value: 40
+      objectReference: {fileID: 0}
     - target: {fileID: 2695046210730010670, guid: d5d5bde3a86031347a1f83f472a7000d,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 9.55
+      value: 11.06
       objectReference: {fileID: 0}
     - target: {fileID: 2695046210730010670, guid: d5d5bde3a86031347a1f83f472a7000d,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.99
+      value: -2.57
       objectReference: {fileID: 0}
     - target: {fileID: 2695046210730010670, guid: d5d5bde3a86031347a1f83f472a7000d,
         type: 3}
@@ -7987,6 +8070,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.y
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5368838613019971324, guid: 93175970ab2ecca41a426ff164496ae3,
+        type: 3}
+      propertyPath: MaxGravityForce
+      value: 2000
+      objectReference: {fileID: 0}
+    - target: {fileID: 5368838613019971324, guid: 93175970ab2ecca41a426ff164496ae3,
+        type: 3}
+      propertyPath: GravityForce
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 5368838613019971325, guid: 93175970ab2ecca41a426ff164496ae3,
         type: 3}

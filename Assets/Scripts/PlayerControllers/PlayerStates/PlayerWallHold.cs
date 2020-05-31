@@ -44,6 +44,8 @@ public class PlayerWallHold : BaseState
     public override void HandleInput(){
         if( PlayerFallHelper.FallRequirementsMeet( m_detector.isOnGround()) ){
             m_nextState = new PlayerFall(m_controllabledObject, GlobalUtils.Direction.Left);
+        }else if( PlayerInput.isAttack1KeyPressed() ){
+            m_nextState = new PlayerAttack1(m_controllabledObject);
         }else if( PlayerInput.isAttack2KeyPressed() ){
             m_nextState = new PlayerAttack2(m_controllabledObject);
         }else if ( m_detector.IsWallPullable() && PlayerInput.isSpecialKeyHold() ){
@@ -67,11 +69,11 @@ public class PlayerWallHold : BaseState
         }else if( !isMovingLeft && PlayerInput.isMoveLeftKeyHold()){
             m_isOver = true;
         //    m_nextState = new PlayerMove(m_controllabledObject, GlobalUtils.Direction.Left); 
-    //    }else if( 
-    //        PlayerJumpHelper.JumpRequirementsMeet( PlayerUtils.isJumpKeyJustPressed(), 
-    //                                               m_detector.isOnGround() )
-    //    ){ 
-    //        m_nextState = new PlayerJump(m_controllabledObject, GlobalUtils.Direction.Left);
+        }else if( 
+            PlayerJumpHelper.JumpRequirementsMeet( PlayerInput.isJumpKeyJustPressed(), 
+                                                   m_detector.isOnGround() )
+        ){ 
+            m_nextState = new PlayerJump(m_controllabledObject, GlobalUtils.Direction.Left);
         }else if( PlayerInput.isFallKeyHold() ) {
             m_detector.enableFallForOneWayFloor();
             velocity.y += -PlayerUtils.GravityForce * Time.deltaTime;

@@ -24,7 +24,7 @@ public class CollisionDetector : MonoBehaviour
     [SerializeField] public float maxClimbAngle   = 40.0f;
     [SerializeField] public float maxDescendAngle = 40.0f;
 
-    [SerializeField] protected bool autoGravityOn = false;
+    [SerializeField] public bool autoGravityOn = false;
     BoxCollider2D m_boxCollider;
 
 

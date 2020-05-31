@@ -20,6 +20,14 @@ public static class  PlayerInput
         return Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow);
     }
 
+    public static bool isFallKeyPressed(){
+        return Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow);
+    }
+
+    public static bool isClimbKeyPressed(){
+        return Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow);
+    }
+
     public static bool isAttack1KeyPressed(){
         return Input.GetKeyDown(KeyCode.X) || Input.GetButtonDown("Fire1");
     }
@@ -30,6 +38,10 @@ public static class  PlayerInput
 
     public static bool isAttack3KeyPressed(){
         return Input.GetKeyDown(KeyCode.C) || Input.GetButtonDown("Fire2");
+    }
+
+    public static bool isJumpKeyHold(){
+        return Input.GetKey( KeyCode.Space );
     }
 
     public static bool isJumpKeyJustPressed(){

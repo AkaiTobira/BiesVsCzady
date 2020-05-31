@@ -13,22 +13,31 @@ public class PlayerFall : BaseState
     public PlayerFall( GameObject controllable, GlobalUtils.Direction dir) : base( controllable ) {
         isMovingLeft = dir == GlobalUtils.Direction.Left;
         name = "Fall";
-        if( PlayerFallOfWallHelper.FallOfWallRequirementsMeet() ) 
-            velocity.x = (isMovingLeft)? - PlayerUtils.PlayerSpeedInAir : PlayerUtils.PlayerSpeedInAir;
+        velocity.x = PlayerUtils.swipeSpeedValue;
+        if( PlayerFallOfWallHelper.FallOfWallRequirementsMeet() ) {
+            velocity.x = PlayerUtils.FallOffWallFactor * ((isMovingLeft)? -PlayerUtils.PlayerMoveSpeedInAir : PlayerUtils.PlayerMoveSpeedInAir);
+        }
     }
 
     public override void Process(){
         velocity.y += -PlayerUtils.GravityForce * Time.deltaTime;
         if( swipeOn ){
             velocity.x = ( m_swipe == GlobalUtils.Direction.Left ) ? 
-                            -PlayerUtils.PlayerSpeedInAir : 
-                             PlayerUtils.PlayerSpeedInAir;
+                            Mathf.Max(   -PlayerUtils.MaxPlayerMoveSpeedInAir,
+                                        velocity.x -PlayerUtils.PlayerMoveSpeedInAir * Time.deltaTime) : 
+                            Mathf.Min(   PlayerUtils.MaxPlayerMoveSpeedInAir,
+                                        velocity.x + PlayerUtils.PlayerMoveSpeedInAir * Time.deltaTime);
 
-            // if velocity.x > 0 => m_direction = Direction.Left
+            // if velocity.x  > 0 => m_direction = Direction.Left
             // else velocity.x < 0 => m_direction = Direction.Right czy jakoś tak.
         }
         m_detector.Move(velocity * Time.deltaTime);
         if( m_detector.isOnGround() ) m_isOver = true;
+    }
+
+    public override void OnExit(){
+        velocity = new Vector2();
+        PlayerUtils.swipeSpeedValue = 0;
     }
 
     public override void HandleInput(){
@@ -38,9 +47,18 @@ public class PlayerFall : BaseState
     //        m_nextState = new PlayerJump(m_controllabledObject, GlobalUtils.Direction.Left);
     //    }
 
-        if( m_detector.isWallClose() && !PlayerFallOfWallHelper.FallOfWallRequirementsMeet() ){
+        if( m_detector.canClimbLedge() ){
             m_isOver = true;
-            m_nextState = new PlayerSlide( m_controllabledObject,  GlobalUtils.ReverseDirection(m_dir));
+            m_nextState = new PlayerLedgeClimb( m_controllabledObject, m_dir);
+        }else if( m_detector.isWallClose() ){
+            if( m_swipe == GlobalUtils.Direction.Left && PlayerInput.isMoveLeftKeyHold() ){
+                m_isOver = true;
+                m_nextState = new PlayerSlide( m_controllabledObject, GlobalUtils.ReverseDirection(m_dir));
+            }else 
+            if ( m_swipe == GlobalUtils.Direction.Right && PlayerInput.isMoveRightKeyHold()){
+                m_isOver = true;
+                m_nextState = new PlayerSlide( m_controllabledObject, GlobalUtils.ReverseDirection(m_dir));
+            }
         }
 
         if( PlayerSwipeLock.SwipeUnlockRequirementsMeet() ){
