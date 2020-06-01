@@ -23,13 +23,13 @@ Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor 
 Project is: _working on_
 
 ## Credits
-Marcin Data      - Lead Programmer
-Tomasz Kowalczyk - Designer
-Katarzyna Płaczkowska - Sound Designer
-Piotr Wajnert   - Team Leader/Lead Designer
-Mateusz Wdowiak - Programmer
-Tomasz Wlaźlak  - Character Graphic/Animator
-Aldona Zaręba   - Enviromental Graphic
+* Marcin Data      - Lead Programmer
+* Tomasz Kowalczyk - Designer
+* Katarzyna Płaczkowska - Sound Designer
+* Piotr Wajnert   - Team Leader/Lead Designer
+* Mateusz Wdowiak - Programmer
+* Tomasz Wlaźlak  - Character Graphic/Animator
+* Aldona Zaręba   - Enviromental Graphic
 
  
  
