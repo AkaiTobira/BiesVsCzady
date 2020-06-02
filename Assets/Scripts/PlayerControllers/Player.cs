@@ -17,6 +17,9 @@ public class Player : MonoBehaviour
     [SerializeField] float moveDistanceInAir     = 5.0f;
     [SerializeField] float maxMoveSpeedInAir     = 10.0f;
 
+    [SerializeField] float maxWallClimbSpeed     = 10.0f;
+    [SerializeField] float wallClimbSpeed        = 10.0f;
+
 
     [Range( 0.0f, 1.0f)] public float wallFriction = 1.0f;
 
@@ -39,12 +42,14 @@ public class Player : MonoBehaviour
         PlayerUtils.PlayerJumpForceMax    = Mathf.Abs(PlayerUtils.GravityForce) * timeToJumpApex;
         PlayerUtils.JumpMaxTime           = timeToJumpApex;
         PlayerUtils.JumpHoldTimeDelay     = jumpHoldWallTimeDelay;
-        PlayerUtils.PlayerMoveSpeedInAir      = moveDistanceInAir;
+        PlayerUtils.MoveSpeedInAir      = moveDistanceInAir;
         PlayerUtils.MaxWallSlideSpeed     = PlayerUtils.GravityForce * wallFriction; 
         PlayerUtils.PlayerWallJumpForce   = new Vector2( WallJumpFactors.x * PlayerUtils.PlayerSpeed,
                                                          WallJumpFactors.y * PlayerUtils.PlayerJumpForceMax);
 
-        PlayerUtils.MaxPlayerMoveSpeedInAir = maxMoveSpeedInAir;
+        PlayerUtils.MaxMoveSpeedInAir = maxMoveSpeedInAir;
+        PlayerUtils.MaxWallClimbSpeed = maxWallClimbSpeed;
+        PlayerUtils.WallClimbSpeed    = wallClimbSpeed;
     }
 
     private void UpdateCounters(){

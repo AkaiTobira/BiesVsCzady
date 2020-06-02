@@ -11,6 +11,7 @@ public class PlayerWallHold : BaseState
         // at end of animation call :
         // TEMP
    //     controllable.transform.GetComponent<Player>().changeDirection(dir);
+        PlayerUtils.ResetStamina();
         isMovingLeft = dir == GlobalUtils.Direction.Left;
         name = "WallHold" + ((isMovingLeft)? "L": "R");
 
@@ -78,6 +79,9 @@ public class PlayerWallHold : BaseState
             m_detector.enableFallForOneWayFloor();
             velocity.y += -PlayerUtils.GravityForce * Time.deltaTime;
             m_detector.Move( velocity * Time.deltaTime );
+        }else if( PlayerInput.isClimbKeyPressed() ){
+            m_isOver = true;
+            m_nextState = new PlayerWallClimb( m_controllabledObject, m_dir);
         }
     }
 

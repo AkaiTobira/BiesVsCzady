@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerLedgeClimb : BaseState
 {
     private bool isMovingLeft = false;
-    private bool climbing = false;
+    //private bool climbing = false;
 
     private float timeToEnd;
     private AnimationTransition m_transition;

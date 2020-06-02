@@ -40,6 +40,10 @@ public static class  PlayerInput
         return Input.GetKeyDown(KeyCode.C) || Input.GetButtonDown("Fire2");
     }
 
+    public static bool isClimbKeyHold(){
+        return Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow);
+    }
+
     public static bool isJumpKeyHold(){
         return Input.GetKey( KeyCode.Space );
     }

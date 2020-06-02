@@ -1157,6 +1157,8 @@ MonoBehaviour:
   moveDistance: 3000
   moveDistanceInAir: 4000
   maxMoveSpeedInAir: 4000
+  maxWallClimbSpeed: 1000
+  wallClimbSpeed: 200
   wallFriction: 0.04
   WallJumpFactors: {x: 1, y: 0.75}
   animationNode: {fileID: 32769804}

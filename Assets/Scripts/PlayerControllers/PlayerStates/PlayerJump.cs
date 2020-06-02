@@ -64,10 +64,10 @@ public class PlayerJump : BaseState
 
         if( swipeOn ){
             velocity.x = ( m_swipe == GlobalUtils.Direction.Left ) ? 
-                            Mathf.Max(  -PlayerUtils.MaxPlayerMoveSpeedInAir,
-                                        velocity.x -PlayerUtils.PlayerMoveSpeedInAir * Time.deltaTime) : 
-                            Mathf.Min(  PlayerUtils.MaxPlayerMoveSpeedInAir,
-                                        velocity.x + PlayerUtils.PlayerMoveSpeedInAir * Time.deltaTime);
+                            Mathf.Max(  -PlayerUtils.MaxMoveSpeedInAir,
+                                        velocity.x -PlayerUtils.MoveSpeedInAir * Time.deltaTime) : 
+                            Mathf.Min(  PlayerUtils.MaxMoveSpeedInAir,
+                                        velocity.x + PlayerUtils.MoveSpeedInAir * Time.deltaTime);
             PlayerUtils.swipeSpeedValue = velocity.x;
             // if velocity.x > 0 => m_direction = Direction.Left
             // else velocity.x < 0 => m_direction = Direction.Right czy jakoś tak.
@@ -85,11 +85,11 @@ public class PlayerJump : BaseState
         }else if( m_detector.isWallClose() && timeOfIgnoringWallStick < 0 ){
             if( m_swipe == GlobalUtils.Direction.Left && PlayerInput.isMoveLeftKeyHold() ){
                 m_isOver = true;
-                m_nextState = new PlayerSlide( m_controllabledObject, GlobalUtils.ReverseDirection(m_dir));
+                m_nextState = new PlayerWallSlide( m_controllabledObject, GlobalUtils.ReverseDirection(m_dir));
             }else 
             if ( m_swipe == GlobalUtils.Direction.Right && PlayerInput.isMoveRightKeyHold()){
                 m_isOver = true;
-                m_nextState = new PlayerSlide( m_controllabledObject, GlobalUtils.ReverseDirection(m_dir));
+                m_nextState = new PlayerWallSlide( m_controllabledObject, GlobalUtils.ReverseDirection(m_dir));
             }
         }
 

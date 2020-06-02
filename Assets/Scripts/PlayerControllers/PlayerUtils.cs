@@ -10,13 +10,16 @@ public static class  PlayerUtils
     public static float PlayerJumpForceMax       = 20.0f;
     public static float PlayerJumpForceMin       = 0.0f;
     public static float GravityForce          = 15.0f;
-    public static float PlayerMoveSpeedInAir      = 5.0f;
+    public static float MoveSpeedInAir      = 5.0f;
     public static float MaxWallSlideSpeed     = 2.0f;
+
+    public static float WallClimbSpeed      = 5.0f;
+    public static float MaxWallClimbSpeed     = 2.0f;
     public static float FallOffWallFactor     = 0.1f;
 
     public static float JumpAccelerationSpeed = 0;
 
-    public static float MaxPlayerMoveSpeedInAir   = 0.0f;
+    public static float MaxMoveSpeedInAir   = 0.0f;
 
     public static float JumpHoldTimeDelay = 0;
     public static Vector2 PlayerWallJumpForce = new Vector2( 100, 400);
@@ -29,8 +32,13 @@ public static class  PlayerUtils
     public static Vector2 KnockBackValueAttack2 =  new Vector2( 100, 400);
     public static Vector2 KnockBackValueAttack3 =  new Vector2( 100, 400);
 
-
-
+    //Its not related to up ones
     public static float swipeSpeedValue = 0.0f;
 
+
+    public static void ResetStamina(){
+        stamina = 700;
+    }
+
+    public static float stamina = 700;
 }

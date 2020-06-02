@@ -15,7 +15,7 @@ public class PlayerFall : BaseState
         name = "Fall";
         velocity.x = PlayerUtils.swipeSpeedValue;
         if( PlayerFallOfWallHelper.FallOfWallRequirementsMeet() ) {
-            velocity.x = PlayerUtils.FallOffWallFactor * ((isMovingLeft)? -PlayerUtils.PlayerMoveSpeedInAir : PlayerUtils.PlayerMoveSpeedInAir);
+            velocity.x = PlayerUtils.FallOffWallFactor * ((isMovingLeft)? -PlayerUtils.MoveSpeedInAir : PlayerUtils.MoveSpeedInAir);
         }
     }
 
@@ -23,10 +23,10 @@ public class PlayerFall : BaseState
         velocity.y += -PlayerUtils.GravityForce * Time.deltaTime;
         if( swipeOn ){
             velocity.x = ( m_swipe == GlobalUtils.Direction.Left ) ? 
-                            Mathf.Max(   -PlayerUtils.MaxPlayerMoveSpeedInAir,
-                                        velocity.x -PlayerUtils.PlayerMoveSpeedInAir * Time.deltaTime) : 
-                            Mathf.Min(   PlayerUtils.MaxPlayerMoveSpeedInAir,
-                                        velocity.x + PlayerUtils.PlayerMoveSpeedInAir * Time.deltaTime);
+                            Mathf.Max(   -PlayerUtils.MaxMoveSpeedInAir,
+                                        velocity.x -PlayerUtils.MoveSpeedInAir * Time.deltaTime) : 
+                            Mathf.Min(   PlayerUtils.MaxMoveSpeedInAir,
+                                        velocity.x + PlayerUtils.MoveSpeedInAir * Time.deltaTime);
 
             // if velocity.x  > 0 => m_direction = Direction.Left
             // else velocity.x < 0 => m_direction = Direction.Right czy jakoś tak.
@@ -53,11 +53,11 @@ public class PlayerFall : BaseState
         }else if( m_detector.isWallClose() ){
             if( m_swipe == GlobalUtils.Direction.Left && PlayerInput.isMoveLeftKeyHold() ){
                 m_isOver = true;
-                m_nextState = new PlayerSlide( m_controllabledObject, GlobalUtils.ReverseDirection(m_dir));
+                m_nextState = new PlayerWallSlide( m_controllabledObject, GlobalUtils.ReverseDirection(m_dir));
             }else 
             if ( m_swipe == GlobalUtils.Direction.Right && PlayerInput.isMoveRightKeyHold()){
                 m_isOver = true;
-                m_nextState = new PlayerSlide( m_controllabledObject, GlobalUtils.ReverseDirection(m_dir));
+                m_nextState = new PlayerWallSlide( m_controllabledObject, GlobalUtils.ReverseDirection(m_dir));
             }
         }
 

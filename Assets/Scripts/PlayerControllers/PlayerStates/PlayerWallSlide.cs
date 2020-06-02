@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerSlide : BaseState
+public class PlayerWallSlide : BaseState
 {
     private bool isMovingLeft = false;
 
-    public PlayerSlide( GameObject controllable, GlobalUtils.Direction dir) : base( controllable ) {
+    public PlayerWallSlide( GameObject controllable, GlobalUtils.Direction dir) : base( controllable ) {
         // play change direction animation;
         // at end of animation call :
         // TEMP
@@ -48,11 +48,15 @@ public class PlayerSlide : BaseState
     }
 
     public override void HandleInput(){
+        if( PlayerInput.isClimbKeyPressed() ){
+            m_isOver = true;
+            m_nextState = new PlayerWallClimb( m_controllabledObject, m_dir);
+        }
         if( !PlayerInput.isSpecialKeyHold() ) {
 
             if( PlayerInput.isJumpKeyJustPressed() ){
                 m_isOver = true;
-                m_nextState = new PlayerJumpWall(m_controllabledObject, m_dir);
+                m_nextState = new PlayerWallJump(m_controllabledObject, m_dir);
             }
         //    }else if( isMovingLeft && PlayerUtils.isMoveRightKeyHold() ){
         //        m_isOver = true;

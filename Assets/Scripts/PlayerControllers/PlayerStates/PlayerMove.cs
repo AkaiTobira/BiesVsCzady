@@ -23,6 +23,7 @@ public class PlayerMove : BaseState
 
         velocity.y += -PlayerUtils.GravityForce * Time.deltaTime;
         if( m_detector.isOnGround() ){
+            PlayerUtils.ResetStamina();
             velocity.y = -PlayerUtils.GravityForce * Time.deltaTime;
         }
 
