@@ -13,6 +13,12 @@ public static class  PlayerChangeRules
         }
     }
 
+    public static bool CanTransformInCurrentState( string currentStateName ){
+        if( currentStateName.Contains("LedgeClimb"))  return false;
+        return true;
+    }
+        
+
     public static BaseState GetIdleState( string formName ){
         switch(formName){
             case "Cat" : return new CatIdle ( GlobalUtils.PlayerObject.gameObject );

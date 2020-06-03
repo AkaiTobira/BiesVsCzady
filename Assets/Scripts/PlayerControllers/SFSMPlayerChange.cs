@@ -34,10 +34,10 @@ public class SFSMPlayerChange : SFSMBase
 
     private void ProcessCharacterChange(){
         if( ! PlayerInput.isChangeFormKeyJustPressed() ) return;
-        if( GetStateName().Contains("Ledge"))            return;
         string currentStateName = RemoveDirectionInfo(GetStateName());
         string currentFormName  = GetCurrentFormName(currentStateName);
         currentStateName = RemoveFormName( currentStateName);
+        if( !PlayerChangeRules.CanTransformInCurrentState( currentStateName )) return;
         GlobalUtils.Direction currentDirection = m_states.Peek().GetDirection();
         m_states.Clear();
         currentFormName = PlayerChangeRules.ChangeFormName( currentFormName );

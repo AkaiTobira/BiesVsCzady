@@ -30,7 +30,7 @@ public class CatMove : BaseState
         m_detector.Move(velocity * Time.deltaTime);
 
         if( m_detector.isWallClose() ){
-            m_nextState = new PlayerWallHold( m_controllabledObject, 
+            m_nextState = new CatWallHold( m_controllabledObject, 
                                               ( isMovingLeft )? GlobalUtils.Direction.Left : 
                                                                 GlobalUtils.Direction.Right );
             m_isOver = true;

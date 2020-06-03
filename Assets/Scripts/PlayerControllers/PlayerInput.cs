@@ -53,6 +53,6 @@ public static class  PlayerInput
     }
 
     public static bool isChangeFormKeyJustPressed(){
-        return Input.GetKeyDown( KeyCode.F) || Input.GetKeyDown(KeyCode.V);
+        return Input.GetKeyDown( KeyCode.E) || Input.GetKeyDown(KeyCode.V);
     }
 }
