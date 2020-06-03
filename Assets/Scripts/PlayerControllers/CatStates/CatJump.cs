@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerJump : BaseState
+public class CatJump : BaseState
 {    private bool isMovingLeft = false;
     private GlobalUtils.Direction m_swipe;
 
@@ -17,15 +17,15 @@ public class PlayerJump : BaseState
     float JumpForce    = 0.0f;
     float GravityForce = 0.0f;
 
-    public PlayerJump( GameObject controllable, GlobalUtils.Direction dir) : base( controllable ) {
+    public CatJump( GameObject controllable, GlobalUtils.Direction dir) : base( controllable ) {
         isMovingLeft = dir == GlobalUtils.Direction.Left;
-        JumpForce    = PlayerUtils.PlayerJumpForceMin;
+        JumpForce    = CatUtils.PlayerJumpForceMin;
 
-        name = "Jump";
+        name = "CatJump";
         PlayerFallOfWallHelper.ResetCounter();
 
         m_detector.CheatMove( new Vector2(0,40.0f));
-        MaxJUMPRISING           = PlayerUtils.JumpMaxTime;
+        MaxJUMPRISING           = CatUtils.JumpMaxTime;
         timeOfJumpForceRising   = MaxJUMPRISING;
         timeOfIgnoringWallStick = m_controllabledObject.GetComponent<Player>().timeToJumpApex / 2.0f;
     }
@@ -50,25 +50,25 @@ public class PlayerJump : BaseState
         //    Debug.Log(JumpForce.ToString());
             JumpForce  = Mathf.Min(
                             JumpForce
-                            + (PlayerUtils.PlayerJumpForceMax - PlayerUtils.PlayerJumpForceMin) * Time.deltaTime //* Time.deltaTime
-                            + PlayerUtils.GravityForce * Time.deltaTime,
-                            PlayerUtils.PlayerJumpForceMax
+                            + (CatUtils.PlayerJumpForceMax - CatUtils.PlayerJumpForceMin) * Time.deltaTime //* Time.deltaTime
+                            + CatUtils.GravityForce * Time.deltaTime,
+                            CatUtils.PlayerJumpForceMax
                             );
         }else{
             timeOfJumpForceRising = 0.0f;
         }
         timeOfJumpForceRising   -= Time.deltaTime;
-        GravityForce += -PlayerUtils.GravityForce * Time.deltaTime;
+        GravityForce += -CatUtils.GravityForce * Time.deltaTime;
         velocity.y = JumpForce + GravityForce; 
         velocity.y = Mathf.Max( velocity.y, -500 );
 
         if( swipeOn ){
             velocity.x = ( m_swipe == GlobalUtils.Direction.Left ) ? 
-                            Mathf.Max(  -PlayerUtils.MaxMoveSpeedInAir,
-                                        velocity.x -PlayerUtils.MoveSpeedInAir * Time.deltaTime) : 
-                            Mathf.Min(  PlayerUtils.MaxMoveSpeedInAir,
-                                        velocity.x + PlayerUtils.MoveSpeedInAir * Time.deltaTime);
-            PlayerUtils.swipeSpeedValue = velocity.x;
+                            Mathf.Max(  -CatUtils.MaxMoveSpeedInAir,
+                                        velocity.x -CatUtils.MoveSpeedInAir * Time.deltaTime) : 
+                            Mathf.Min(  CatUtils.MaxMoveSpeedInAir,
+                                        velocity.x + CatUtils.MoveSpeedInAir * Time.deltaTime);
+            CatUtils.swipeSpeedValue = velocity.x;
             // if velocity.x > 0 => m_direction = Direction.Left
             // else velocity.x < 0 => m_direction = Direction.Right czy jakoś tak.
         }
@@ -81,15 +81,15 @@ public class PlayerJump : BaseState
 
         if( m_detector.canClimbLedge() ){
             m_isOver = true;
-            m_nextState = new PlayerLedgeClimb( m_controllabledObject, m_dir);
+            m_nextState = new CatLedgeClimb( m_controllabledObject, m_dir);
         }else if( m_detector.isWallClose() && timeOfIgnoringWallStick < 0 ){
             if( m_swipe == GlobalUtils.Direction.Left && PlayerInput.isMoveLeftKeyHold() ){
                 m_isOver = true;
-                m_nextState = new PlayerWallSlide( m_controllabledObject, GlobalUtils.ReverseDirection(m_dir));
+                m_nextState = new CatWallSlide( m_controllabledObject, GlobalUtils.ReverseDirection(m_dir));
             }else 
             if ( m_swipe == GlobalUtils.Direction.Right && PlayerInput.isMoveRightKeyHold()){
                 m_isOver = true;
-                m_nextState = new PlayerWallSlide( m_controllabledObject, GlobalUtils.ReverseDirection(m_dir));
+                m_nextState = new CatWallSlide( m_controllabledObject, GlobalUtils.ReverseDirection(m_dir));
             }
         }
 

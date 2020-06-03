@@ -51,4 +51,8 @@ public static class  PlayerInput
     public static bool isJumpKeyJustPressed(){
         return Input.GetKeyDown( KeyCode.Space );
     }
+
+    public static bool isChangeFormKeyJustPressed(){
+        return Input.GetKeyDown( KeyCode.F) || Input.GetKeyDown(KeyCode.V);
+    }
 }

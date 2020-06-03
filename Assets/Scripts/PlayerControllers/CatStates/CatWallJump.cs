@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerWallJump : BaseState
+public class CatWallJump : BaseState
 {    private bool isMovingLeft = false;
     private GlobalUtils.Direction m_swipe;
 
@@ -11,19 +11,18 @@ public class PlayerWallJump : BaseState
 
     private bool swipeOn = false;
 
-    public PlayerWallJump( GameObject controllable, GlobalUtils.Direction dir) : base( controllable ) {
+    public CatWallJump( GameObject controllable, GlobalUtils.Direction dir) : base( controllable ) {
         isMovingLeft = dir == GlobalUtils.Direction.Left;
-        velocity    = PlayerUtils.PlayerWallJumpForce;
+        velocity    = CatUtils.PlayerWallJumpForce;
         velocity.x *= (dir == GlobalUtils.Direction.Left)? -1 : 1;
-        name = "WallJump";
+        name = "CatWallJump";
         PlayerFallOfWallHelper.ResetCounter();
-        PlayerUtils.ResetStamina();
+        CatUtils.ResetStamina();
 
-        velocity.x = Mathf.Max(PlayerUtils.PlayerWallJumpForce.x * inputLock/INPUT_LOCK, 
-                               PlayerUtils.MaxMoveSpeedInAir) *
-                               velocity.y/PlayerUtils.PlayerWallJumpForce.y * 
+        velocity.x = Mathf.Max(CatUtils.PlayerWallJumpForce.x * inputLock/INPUT_LOCK, 
+                               CatUtils.MaxMoveSpeedInAir) *
+                               velocity.y/CatUtils.PlayerWallJumpForce.y * 
                      Mathf.Sign(velocity.x);
-
     }
 
 
@@ -44,20 +43,15 @@ public class PlayerWallJump : BaseState
         
         checkIfShouldBeOver();
 
-
-
-
-
-
-        velocity.y += -PlayerUtils.GravityForce * Time.deltaTime;
+        velocity.y += -CatUtils.GravityForce * Time.deltaTime;
         if( swipeOn ){
             velocity.x = ( m_swipe == GlobalUtils.Direction.Left ) ? 
-                            Mathf.Max(  -PlayerUtils.MaxMoveSpeedInAir,
-                                        velocity.x -PlayerUtils.MoveSpeedInAir * Time.deltaTime) : 
-                            Mathf.Min(  PlayerUtils.MaxMoveSpeedInAir,
-                                        velocity.x + PlayerUtils.MoveSpeedInAir * Time.deltaTime);
+                            Mathf.Max(  -CatUtils.MaxMoveSpeedInAir,
+                                        velocity.x -CatUtils.MoveSpeedInAir * Time.deltaTime) : 
+                            Mathf.Min(  CatUtils.MaxMoveSpeedInAir,
+                                        velocity.x + CatUtils.MoveSpeedInAir * Time.deltaTime);
 
-            PlayerUtils.swipeSpeedValue = velocity.x;
+            CatUtils.swipeSpeedValue = velocity.x;
 
             // if velocity.x > 0 => m_direction = Direction.Left
             // else velocity.x < 0 => m_direction = Direction.Right czy jakoś tak.
@@ -71,7 +65,7 @@ public class PlayerWallJump : BaseState
 
         if( m_detector.isWallClose() ){
             m_isOver = true;
-            m_nextState = new PlayerWallSlide( m_controllabledObject, GlobalUtils.ReverseDirection(m_dir));
+            m_nextState = new CatWallSlide( m_controllabledObject, GlobalUtils.ReverseDirection(m_dir));
         }
 
         if( PlayerInput.isMoveLeftKeyHold() ){

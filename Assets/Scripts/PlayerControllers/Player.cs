@@ -29,27 +29,34 @@ public class Player : MonoBehaviour
     {
         GlobalUtils.PlayerObject = transform;
         m_detector    = GetComponent<CollisionDetectorPlayer>();
-        m_controller  = new SFSMBase( transform.gameObject, new PlayerIdle( gameObject ) );
+        m_controller  = new SFSMPlayerChange( transform.gameObject, new BiesIdle( gameObject ) );
         m_animator    = animationNode.gameObject.GetComponent<Animator>();
         CalculateMath();
         Debug.Log( PlayerUtils.PlayerJumpForceMin.ToString() + " " + PlayerUtils.PlayerJumpForceMax.ToString() );
     }
 
     private void CalculateMath(){
-        PlayerUtils.GravityForce          = (2 * jumpHeight) / Mathf.Pow (timeToJumpApex, 2);
-        PlayerUtils.PlayerJumpForceMin    = Mathf.Sqrt (2 * Mathf.Abs (PlayerUtils.GravityForce) * minJumpHeight);
-        PlayerUtils.PlayerSpeed           = moveDistance;
-        PlayerUtils.PlayerJumpForceMax    = Mathf.Abs(PlayerUtils.GravityForce) * timeToJumpApex;
-        PlayerUtils.JumpMaxTime           = timeToJumpApex;
-        PlayerUtils.JumpHoldTimeDelay     = jumpHoldWallTimeDelay;
-        PlayerUtils.MoveSpeedInAir      = moveDistanceInAir;
-        PlayerUtils.MaxWallSlideSpeed     = PlayerUtils.GravityForce * wallFriction; 
-        PlayerUtils.PlayerWallJumpForce   = new Vector2( WallJumpFactors.x * PlayerUtils.PlayerSpeed,
-                                                         WallJumpFactors.y * PlayerUtils.PlayerJumpForceMax);
+        BiesUtils.GravityForce        = (2 * jumpHeight) / Mathf.Pow (timeToJumpApex, 2);
+        CatUtils.GravityForce         = (2 * jumpHeight) / Mathf.Pow (timeToJumpApex, 2);
+        BiesUtils.PlayerJumpForceMin  = Mathf.Sqrt (2 * Mathf.Abs (BiesUtils.GravityForce) * minJumpHeight);
+        CatUtils.PlayerJumpForceMin   = Mathf.Sqrt (2 * Mathf.Abs (CatUtils.GravityForce) * minJumpHeight);
+        BiesUtils.PlayerSpeed         = moveDistance;
+        CatUtils.PlayerSpeed          = moveDistance;
+        BiesUtils.PlayerJumpForceMax  = Mathf.Abs(BiesUtils.GravityForce) * timeToJumpApex;
+        CatUtils.PlayerJumpForceMax   = Mathf.Abs(CatUtils.GravityForce) * timeToJumpApex;
+        BiesUtils.JumpMaxTime         = timeToJumpApex;
+        CatUtils.JumpMaxTime         = timeToJumpApex;
+        PlayerUtils.JumpHoldTimeDelay = jumpHoldWallTimeDelay;
+        BiesUtils.MoveSpeedInAir     = moveDistanceInAir;
+        CatUtils.MoveSpeedInAir      = moveDistanceInAir;
+        CatUtils.MaxWallSlideSpeed   = CatUtils.GravityForce * wallFriction; 
+        CatUtils.PlayerWallJumpForce = new Vector2( WallJumpFactors.x * CatUtils.PlayerSpeed,
+                                                    WallJumpFactors.y * CatUtils.PlayerJumpForceMax);
 
-        PlayerUtils.MaxMoveSpeedInAir = maxMoveSpeedInAir;
-        PlayerUtils.MaxWallClimbSpeed = maxWallClimbSpeed;
-        PlayerUtils.WallClimbSpeed    = wallClimbSpeed;
+        BiesUtils.MaxMoveSpeedInAir = maxMoveSpeedInAir;
+        CatUtils.MaxMoveSpeedInAir  = maxMoveSpeedInAir;
+        CatUtils.MaxWallClimbSpeed  = maxWallClimbSpeed;
+        CatUtils.WallClimbSpeed     = wallClimbSpeed;
     }
 
     private void UpdateCounters(){
@@ -78,27 +85,27 @@ public class Player : MonoBehaviour
         GlobalUtils.AttackStateInfo infoPack = new GlobalUtils.AttackStateInfo();
         infoPack.stateName = m_controller.GetStateName();
         switch( infoPack.stateName ){
-            case "PlayerAttack1":
+            case "BiesAttack1":
             {
                 infoPack.isValid = true;
-                infoPack.knockBackValue = PlayerUtils.KnockBackValueAttack1;
-                infoPack.attackDamage   = PlayerUtils.Attack1Damage;
+                infoPack.knockBackValue = BiesUtils.KnockBackValueAttack1;
+                infoPack.attackDamage   = BiesUtils.Attack1Damage;
                 infoPack.fromCameAttack = m_controller.GetDirection();
                 break;
             }
-            case "PlayerAttack2":
+            case "BiesAttack2":
             {
                 infoPack.isValid = true;
-                infoPack.knockBackValue = PlayerUtils.KnockBackValueAttack2;
-                infoPack.attackDamage   = PlayerUtils.Attack2Damage;
+                infoPack.knockBackValue = BiesUtils.KnockBackValueAttack2;
+                infoPack.attackDamage   = BiesUtils.Attack2Damage;
                 infoPack.fromCameAttack = m_controller.GetDirection();
                 break;
             }
-            case "PlayerAttack3":
+            case "BiesAttack3":
             {
                 infoPack.isValid = true;
-                infoPack.knockBackValue = PlayerUtils.KnockBackValueAttack3;
-                infoPack.attackDamage   = PlayerUtils.Attack3Damage;
+                infoPack.knockBackValue = BiesUtils.KnockBackValueAttack3;
+                infoPack.attackDamage   = BiesUtils.Attack3Damage;
                 infoPack.fromCameAttack = m_controller.GetDirection();
                 break;
             }

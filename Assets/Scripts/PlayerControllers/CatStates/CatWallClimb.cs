@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerWallClimb : BaseState
+public class CatWallClimb : BaseState
 {
     private bool isMovingLeft = false;
 
-    public PlayerWallClimb( GameObject controllable, GlobalUtils.Direction dir) : base( controllable ) {
+    public CatWallClimb( GameObject controllable, GlobalUtils.Direction dir) : base( controllable ) {
         // play change direction animation;
         // at end of animation call :
         // TEMP
@@ -14,7 +14,7 @@ public class PlayerWallClimb : BaseState
     //    PlayerFallOfWallHelper.ResetCounter();
 
         isMovingLeft = dir == GlobalUtils.Direction.Left;
-        name = "WallClimb";
+        name = "CatWallClimb";
         m_dir = dir;
         rotationAngle = ( m_dir == GlobalUtils.Direction.Left) ? 180 :0 ; 
         m_controllabledObject.GetComponent<Player>().animationNode.eulerAngles = new Vector3( 0, rotationAngle, slopeAngle);
@@ -41,12 +41,12 @@ public class PlayerWallClimb : BaseState
         velocity.x = velocity.y;
         velocity.x *= -( int )m_dir;
 
-    //    velocity.x = (m_dir != GlobalUtils.Direction.Left )? -PlayerUtils.WallClimbSpeed * Time.deltaTime : 0.001f;
+    //    velocity.x = (m_dir != GlobalUtils.Direction.Left )? -CatUtils.WallClimbSpeed * Time.deltaTime : 0.001f;
 
-        velocity.y = Mathf.Max( velocity.y + PlayerUtils.WallClimbSpeed * Time.deltaTime,
-                                PlayerUtils.MaxWallClimbSpeed);
+        velocity.y = Mathf.Max( velocity.y + CatUtils.WallClimbSpeed * Time.deltaTime,
+                                CatUtils.MaxWallClimbSpeed);
         if( PlayerInput.isSpecialKeyHold() ) velocity.y = 0.0f;
-        PlayerUtils.stamina -= velocity.y * Time.deltaTime;
+        CatUtils.stamina -= velocity.y * Time.deltaTime;
         m_detector.Move(velocity * Time.deltaTime);
     }
 
@@ -54,17 +54,17 @@ public class PlayerWallClimb : BaseState
 
         if( PlayerInput.isJumpKeyJustPressed() ){
             m_isOver = true;
-            m_nextState = new PlayerWallJump(m_controllabledObject, GlobalUtils.ReverseDirection(m_dir));
+            m_nextState = new CatWallJump(m_controllabledObject, GlobalUtils.ReverseDirection(m_dir));
         }
 
         if( m_detector.canClimbLedge() ){
             m_isOver = true;
-            m_nextState = new PlayerLedgeClimb( m_controllabledObject, m_dir);
+            m_nextState = new CatLedgeClimb( m_controllabledObject, m_dir);
         }else if( PlayerInput.isSpecialKeyHold() ){
 
-        }else if( !PlayerInput.isClimbKeyHold() || PlayerUtils.stamina < 0){
+        }else if( !PlayerInput.isClimbKeyHold() || CatUtils.stamina < 0){
             m_isOver = true;
-            m_nextState = new PlayerWallSlide(m_controllabledObject, m_dir);
+            m_nextState = new CatWallSlide(m_controllabledObject, m_dir);
         }
     }
 }

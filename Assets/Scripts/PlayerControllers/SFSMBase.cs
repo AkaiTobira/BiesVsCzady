@@ -5,7 +5,7 @@ using UnityEngine;
 public class SFSMBase
 {
     public GameObject m_controllabledObject { get; private set; }
-    private Stack<BaseState> m_states = new Stack<BaseState>();
+    protected Stack<BaseState> m_states = new Stack<BaseState>();
 
     public SFSMBase ( GameObject controlledObj, BaseState baseState ){
         m_controllabledObject = controlledObj;
@@ -36,7 +36,7 @@ public class SFSMBase
         return m_states.Peek().GetDirection();
     }
 
-    public void Update(){
+    public virtual void Update(){
         cleanStack();
         processStack();
         switchState();
