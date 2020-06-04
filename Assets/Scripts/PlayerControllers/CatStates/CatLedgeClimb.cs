@@ -23,8 +23,8 @@ public class CatLedgeClimb : BaseState
         rotationAngle = ( m_dir == GlobalUtils.Direction.Left) ? 180 :0 ; 
         m_controllabledObject.GetComponent<Player>().animationNode.eulerAngles = new Vector3( 0, rotationAngle, slopeAngle);
 
-        timeToEnd = getAnimationLenght("PlayerLedgeClimb");
-        m_animator.SetTrigger("Climb");
+        timeToEnd = getAnimationLenght("CatLedgeClimb");
+        m_animator.SetTrigger("CatClimb");
         m_transition = m_controllabledObject.
                        GetComponent<Player>().animationNode.
                        GetComponent<AnimationTransition>();

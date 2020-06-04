@@ -5,6 +5,41 @@ using UnityEngine;
 public static class  PlayerChangeRules
 {
 
+    private static List<string> triggersList = new List<string>{
+        "SwitchToCatIdle",
+        "SwitchToBiesIdle"
+    };
+
+    public static void ChangeAnimation( string formName, string stateName, 
+                                        GlobalUtils.Direction dir // This Argument will be removed
+    ){
+        
+        Animator playerAnimator = GlobalUtils.PlayerObject
+                                .GetComponent<Player>().animationNode
+                                .GetComponent<Animator>();
+        foreach( string trigger in triggersList){
+            playerAnimator.ResetTrigger( trigger );
+        }
+
+        if( formName.Contains("Cat") ){
+            GlobalUtils.PlayerObject.localScale = new Vector3(-75, 75, 75);
+        }else{
+            GlobalUtils.PlayerObject.localScale = new Vector3(-100, 100, 100);
+        }
+
+        if( stateName.Contains("Hold") ){
+            if( formName.Contains("Bies")){
+                Vector2 Translation = new Vector2(-29, 0 ) * (int)dir; 
+                GlobalUtils.PlayerObject.GetComponent<CollisionDetectorPlayer>().CheatMove(Translation);
+            }
+                
+        }
+
+        playerAnimator.SetTrigger( "SwitchTo" + formName + "Idle");
+        // Target when animations will be done :
+        //playerAnimator.SetTrigger( "SwitchTo" + formName+ stateName );
+    }
+
     public static string ChangeFormName( string formName){
         switch(formName){
             case "Cat" : return "Bies";
@@ -17,7 +52,6 @@ public static class  PlayerChangeRules
         if( currentStateName.Contains("LedgeClimb"))  return false;
         return true;
     }
-        
 
     public static BaseState GetIdleState( string formName ){
         switch(formName){

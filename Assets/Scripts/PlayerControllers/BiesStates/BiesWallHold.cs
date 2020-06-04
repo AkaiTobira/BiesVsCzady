@@ -14,7 +14,6 @@ public class BiesWallHold : BaseState
         CatUtils.ResetStamina();
         isMovingLeft = dir == GlobalUtils.Direction.Left;
         name = "BiesWallHold" + ((isMovingLeft)? "L": "R");
-
     }
 
     public override void Process(){

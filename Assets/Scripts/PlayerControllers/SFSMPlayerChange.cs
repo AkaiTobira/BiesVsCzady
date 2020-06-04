@@ -43,6 +43,7 @@ public class SFSMPlayerChange : SFSMBase
         currentFormName = PlayerChangeRules.ChangeFormName( currentFormName );
         m_states.Push( PlayerChangeRules.GetIdleState(currentFormName) );
         BaseState newState = PlayerChangeRules.TranslateActiveState( currentFormName, currentStateName, currentDirection);
+        PlayerChangeRules.ChangeAnimation( currentFormName, currentStateName, currentDirection);
         if( newState == null || newState.name.Contains("Idle") ) return;
         m_states.Push( newState );
     }

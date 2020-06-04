@@ -24,7 +24,7 @@ public class BiesLedgeClimb : BaseState
         m_controllabledObject.GetComponent<Player>().animationNode.eulerAngles = new Vector3( 0, rotationAngle, slopeAngle);
 
         timeToEnd = getAnimationLenght("PlayerLedgeClimb");
-        m_animator.SetTrigger("Climb");
+        m_animator.SetTrigger("BiesClimb");
         m_transition = m_controllabledObject.
                        GetComponent<Player>().animationNode.
                        GetComponent<AnimationTransition>();
