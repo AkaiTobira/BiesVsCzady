@@ -18,16 +18,21 @@ public class CatWallClimb : BaseState
         m_dir = dir;
         rotationAngle = ( m_dir == GlobalUtils.Direction.Left) ? 180 :0 ; 
         m_controllabledObject.GetComponent<Player>().animationNode.eulerAngles = new Vector3( 0, rotationAngle, slopeAngle);
+        CatUtils.swipeSpeedValue = 0;
+        m_detector.CheatMove(new Vector2(2,0));
 
+    //    velocity.x = CatUtils.MoveSpeedInAir;
+    //    velocity.x *= -( int )m_dir;
     }
 
     public override void UpdateDirection(){
-
             m_controllabledObject.GetComponent<Player>().animationNode.position = 
                 Vector3.SmoothDamp( m_controllabledObject.GetComponent<Player>().animationNode.position, 
                                     m_controllabledObject.transform.position, ref animationVel, m_smoothTime);
+    }
 
-
+    public override void OnExit(){
+        CatUtils.swipeSpeedValue = 0;
     }
 
     public override void Process(){
@@ -38,8 +43,8 @@ public class CatWallClimb : BaseState
     //        m_isOver = true;
     //    }
 
-        velocity.x = velocity.y;
-        velocity.x *= -( int )m_dir;
+     //   velocity.x = CatUtils.MoveSpeedInAir;
+      //  velocity.x *= ( int )m_dir;
 
     //    velocity.x = (m_dir != GlobalUtils.Direction.Left )? -CatUtils.WallClimbSpeed * Time.deltaTime : 0.001f;
 

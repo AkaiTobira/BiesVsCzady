@@ -9,22 +9,6 @@ public class Player : MonoBehaviour
 
     private Animator m_animator;
 
-    [SerializeField] float minJumpHeight         = 5.0f;
-    [SerializeField] float jumpHeight            = 0.0f;
-    [SerializeField] float jumpHoldWallTimeDelay = 0.0f;
-    [SerializeField] public float timeToJumpApex = 0.0f;
-    [SerializeField] float moveDistance          = 15.0f;
-    [SerializeField] float moveDistanceInAir     = 5.0f;
-    [SerializeField] float maxMoveSpeedInAir     = 10.0f;
-
-    [SerializeField] float maxWallClimbSpeed     = 10.0f;
-    [SerializeField] float wallClimbSpeed        = 10.0f;
-
-
-    [Range( 0.0f, 1.0f)] public float wallFriction = 1.0f;
-
-    [SerializeField] Vector2 WallJumpFactors = new Vector2(0.0f,0.0f);
-
     void Start()
     {
         GlobalUtils.PlayerObject = transform;
@@ -36,27 +20,7 @@ public class Player : MonoBehaviour
     }
 
     private void CalculateMath(){
-        BiesUtils.GravityForce        = (2 * jumpHeight) / Mathf.Pow (timeToJumpApex, 2);
-        CatUtils.GravityForce         = (2 * jumpHeight) / Mathf.Pow (timeToJumpApex, 2);
-        BiesUtils.PlayerJumpForceMin  = Mathf.Sqrt (2 * Mathf.Abs (BiesUtils.GravityForce) * minJumpHeight);
-        CatUtils.PlayerJumpForceMin   = Mathf.Sqrt (2 * Mathf.Abs (CatUtils.GravityForce) * minJumpHeight);
-        BiesUtils.PlayerSpeed         = moveDistance;
-        CatUtils.PlayerSpeed          = moveDistance;
-        BiesUtils.PlayerJumpForceMax  = Mathf.Abs(BiesUtils.GravityForce) * timeToJumpApex;
-        CatUtils.PlayerJumpForceMax   = Mathf.Abs(CatUtils.GravityForce) * timeToJumpApex;
-        BiesUtils.JumpMaxTime         = timeToJumpApex;
-        CatUtils.JumpMaxTime         = timeToJumpApex;
-        PlayerUtils.JumpHoldTimeDelay = jumpHoldWallTimeDelay;
-        BiesUtils.MoveSpeedInAir     = moveDistanceInAir;
-        CatUtils.MoveSpeedInAir      = moveDistanceInAir;
-        CatUtils.MaxWallSlideSpeed   = CatUtils.GravityForce * wallFriction; 
-        CatUtils.PlayerWallJumpForce = new Vector2( WallJumpFactors.x * CatUtils.PlayerSpeed,
-                                                    WallJumpFactors.y * CatUtils.PlayerJumpForceMax);
 
-        BiesUtils.MaxMoveSpeedInAir = maxMoveSpeedInAir;
-        CatUtils.MaxMoveSpeedInAir  = maxMoveSpeedInAir;
-        CatUtils.MaxWallClimbSpeed  = maxWallClimbSpeed;
-        CatUtils.WallClimbSpeed     = wallClimbSpeed;
     }
 
     private void UpdateCounters(){
@@ -69,6 +33,8 @@ public class Player : MonoBehaviour
         if (Debug.isDebugBuild) CalculateMath();
     }
 
+
+    [Header("DebugInfo")]
     [SerializeField] public Transform animationNode;
 
     [SerializeField] bool isOnGround     = false;

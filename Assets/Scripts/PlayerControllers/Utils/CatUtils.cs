@@ -6,26 +6,22 @@ public static class  CatUtils
 {
     public static float PlayerSpeed           = 15.0f;
     public static float JumpMaxTime           = 0.25f;
-    public static float PlayerJumpForceMax       = 20.0f;
-    public static float PlayerJumpForceMin       = 0.0f;
+    public static float PlayerJumpForceMax    = 20.0f;
+    public static float PlayerJumpForceMin    = 0.0f;
     public static float GravityForce          = 15.0f;
-    public static float MoveSpeedInAir      = 5.0f;
+    public static float MoveSpeedInAir        = 5.0f;
     public static float MaxWallSlideSpeed     = 2.0f;
-
-    public static float WallClimbSpeed      = 5.0f;
+    public static Vector2 MinWallJumpForce    = new Vector2( 100, 400);
+    public static Vector2 MaxWallJumpForce    = new Vector2( 100, 400);
+    public static float WallClimbSpeed        = 5.0f;
     public static float MaxWallClimbSpeed     = 2.0f;
     public static float FallOffWallFactor     = 0.1f;
-
     public static float JumpAccelerationSpeed = 0;
-
-    public static float MaxMoveSpeedInAir   = 0.0f;
-
-    public static float JumpHoldTimeDelay = 0;
-    public static Vector2 PlayerWallJumpForce = new Vector2( 100, 400);
-
-    public static float Attack1Damage = 2;
-    public static float Attack2Damage = 0;
-    public static float Attack3Damage = 5;
+    public static float maxMoveDistanceInAir  = 0.0f;
+    public static float JumpHoldTimeDelay     = 0;
+    public static float Attack1Damage         = 2;
+    public static float Attack2Damage         = 0;
+    public static float Attack3Damage         = 5;
 
     public static Vector2 KnockBackValueAttack1 =  new Vector2( 100, 1000);
     public static Vector2 KnockBackValueAttack2 =  new Vector2( 100, 400);
@@ -36,8 +32,8 @@ public static class  CatUtils
 
 
     public static void ResetStamina(){
-        stamina = 700;
+        stamina = 800;
     }
 
-    public static float stamina = 700;
+    public static float stamina = 800;
 }

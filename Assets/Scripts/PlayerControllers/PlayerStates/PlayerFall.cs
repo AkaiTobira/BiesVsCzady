@@ -13,9 +13,10 @@ public class PlayerFall : BaseState
     public PlayerFall( GameObject controllable, GlobalUtils.Direction dir) : base( controllable ) {
         isMovingLeft = dir == GlobalUtils.Direction.Left;
         name = "Fall";
-        velocity.x = PlayerUtils.swipeSpeedValue;
         if( PlayerFallOfWallHelper.FallOfWallRequirementsMeet() ) {
             velocity.x = PlayerUtils.FallOffWallFactor * ((isMovingLeft)? -PlayerUtils.MoveSpeedInAir : PlayerUtils.MoveSpeedInAir);
+        }else{
+            velocity.x = Mathf.Abs(PlayerUtils.swipeSpeedValue) * (int) dir;
         }
     }
 
@@ -23,9 +24,9 @@ public class PlayerFall : BaseState
         velocity.y += -PlayerUtils.GravityForce * Time.deltaTime;
         if( swipeOn ){
             velocity.x = ( m_swipe == GlobalUtils.Direction.Left ) ? 
-                            Mathf.Max(   -PlayerUtils.MaxMoveSpeedInAir,
+                            Mathf.Max(   -PlayerUtils.maxMoveDistanceInAir,
                                         velocity.x -PlayerUtils.MoveSpeedInAir * Time.deltaTime) : 
-                            Mathf.Min(   PlayerUtils.MaxMoveSpeedInAir,
+                            Mathf.Min(   PlayerUtils.maxMoveDistanceInAir,
                                         velocity.x + PlayerUtils.MoveSpeedInAir * Time.deltaTime);
 
             // if velocity.x  > 0 => m_direction = Direction.Left

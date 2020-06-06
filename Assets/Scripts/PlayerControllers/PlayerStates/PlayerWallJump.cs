@@ -6,8 +6,8 @@ public class PlayerWallJump : BaseState
 {    private bool isMovingLeft = false;
     private GlobalUtils.Direction m_swipe;
 
-    private const float INPUT_LOCK = 0.2f;
-    private float inputLock = 0.2f;
+    private const float INPUT_LOCK = 0.15f;
+    private float inputLock = 0.15f;
 
     private bool swipeOn = false;
 
@@ -20,9 +20,9 @@ public class PlayerWallJump : BaseState
         PlayerUtils.ResetStamina();
 
         velocity.x = Mathf.Max(PlayerUtils.PlayerWallJumpForce.x * inputLock/INPUT_LOCK, 
-                               PlayerUtils.MaxMoveSpeedInAir) *
+                               PlayerUtils.maxMoveDistanceInAir) *
                                velocity.y/PlayerUtils.PlayerWallJumpForce.y * 
-                     Mathf.Sign(velocity.x);
+                               ((dir == GlobalUtils.Direction.Left)? -1 : 1);
 
     }
 
@@ -41,20 +41,13 @@ public class PlayerWallJump : BaseState
     }
 
     public override void Process(){
-        
         checkIfShouldBeOver();
-
-
-
-
-
-
         velocity.y += -PlayerUtils.GravityForce * Time.deltaTime;
         if( swipeOn ){
             velocity.x = ( m_swipe == GlobalUtils.Direction.Left ) ? 
-                            Mathf.Max(  -PlayerUtils.MaxMoveSpeedInAir,
-                                        velocity.x -PlayerUtils.MoveSpeedInAir * Time.deltaTime) : 
-                            Mathf.Min(  PlayerUtils.MaxMoveSpeedInAir,
+                            Mathf.Max( -PlayerUtils.maxMoveDistanceInAir,
+                                        velocity.x - PlayerUtils.MoveSpeedInAir * Time.deltaTime): 
+                            Mathf.Min(  PlayerUtils.maxMoveDistanceInAir,
                                         velocity.x + PlayerUtils.MoveSpeedInAir * Time.deltaTime);
 
             PlayerUtils.swipeSpeedValue = velocity.x;

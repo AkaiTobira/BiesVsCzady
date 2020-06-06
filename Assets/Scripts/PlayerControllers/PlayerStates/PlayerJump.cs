@@ -27,7 +27,7 @@ public class PlayerJump : BaseState
         m_detector.CheatMove( new Vector2(0,40.0f));
         MaxJUMPRISING           = PlayerUtils.JumpMaxTime;
         timeOfJumpForceRising   = MaxJUMPRISING;
-        timeOfIgnoringWallStick = m_controllabledObject.GetComponent<Player>().timeToJumpApex / 2.0f;
+    //    timeOfIgnoringWallStick = m_controllabledObject.GetComponent<Player>().timeToJumpApex / 2.0f;
     }
 
 
@@ -64,9 +64,9 @@ public class PlayerJump : BaseState
 
         if( swipeOn ){
             velocity.x = ( m_swipe == GlobalUtils.Direction.Left ) ? 
-                            Mathf.Max(  -PlayerUtils.MaxMoveSpeedInAir,
+                            Mathf.Max(  -PlayerUtils.maxMoveDistanceInAir,
                                         velocity.x -PlayerUtils.MoveSpeedInAir * Time.deltaTime) : 
-                            Mathf.Min(  PlayerUtils.MaxMoveSpeedInAir,
+                            Mathf.Min(  PlayerUtils.maxMoveDistanceInAir,
                                         velocity.x + PlayerUtils.MoveSpeedInAir * Time.deltaTime);
             PlayerUtils.swipeSpeedValue = velocity.x;
             // if velocity.x > 0 => m_direction = Direction.Left

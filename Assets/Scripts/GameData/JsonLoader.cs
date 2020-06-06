@@ -41,4 +41,21 @@ public class JsonLoader : MonoBehaviour
         public string name1;
         public string name2;
     }
+    [System.Serializable]
+    public class BiesValues{
+    }
+
+    [System.Serializable]
+    public class CatValues{
+        float minJumpHeight;
+        float targetJumpHeight;
+        float timeToJumpApex;
+        float moveDistancef;
+        float moveDistanceInAir;
+        float maxMoveDistanceInAir;
+        float wallFriction;
+        float WallJumpFactorsX;
+        float WallJumpFactorsY;
+    }
+
 }

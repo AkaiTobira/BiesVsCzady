@@ -19,7 +19,7 @@ public static class  PlayerUtils
 
     public static float JumpAccelerationSpeed = 0;
 
-    public static float MaxMoveSpeedInAir   = 0.0f;
+    public static float maxMoveDistanceInAir   = 0.0f;
 
     public static float JumpHoldTimeDelay = 0;
     public static Vector2 PlayerWallJumpForce = new Vector2( 100, 400);

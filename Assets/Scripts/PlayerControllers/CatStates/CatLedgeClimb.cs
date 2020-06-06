@@ -15,6 +15,7 @@ public class CatLedgeClimb : BaseState
         // at end of animation call :
         // TEMP
 
+        CatUtils.swipeSpeedValue = 0;
         PlayerFallOfWallHelper.ResetCounter();
 
         isMovingLeft = dir == GlobalUtils.Direction.Left;

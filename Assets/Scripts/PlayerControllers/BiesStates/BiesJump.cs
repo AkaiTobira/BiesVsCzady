@@ -27,7 +27,7 @@ public class BiesJump : BaseState
         m_detector.CheatMove( new Vector2(0,40.0f));
         MaxJUMPRISING           = BiesUtils.JumpMaxTime;
         timeOfJumpForceRising   = MaxJUMPRISING;
-        timeOfIgnoringWallStick = m_controllabledObject.GetComponent<Player>().timeToJumpApex / 2.0f;
+        timeOfIgnoringWallStick = m_controllabledObject.GetComponent<BiesBalance>().timeToJumpApex / 2.0f;
     }
 
 
@@ -64,9 +64,9 @@ public class BiesJump : BaseState
 
         if( swipeOn ){
             velocity.x = ( m_swipe == GlobalUtils.Direction.Left ) ? 
-                            Mathf.Max(  -BiesUtils.MaxMoveSpeedInAir,
+                            Mathf.Max(  -BiesUtils.maxMoveDistanceInAir,
                                         velocity.x -BiesUtils.MoveSpeedInAir * Time.deltaTime) : 
-                            Mathf.Min(  BiesUtils.MaxMoveSpeedInAir,
+                            Mathf.Min(  BiesUtils.maxMoveDistanceInAir,
                                         velocity.x + BiesUtils.MoveSpeedInAir * Time.deltaTime);
             BiesUtils.swipeSpeedValue = velocity.x;
             // if velocity.x > 0 => m_direction = Direction.Left

@@ -20,9 +20,9 @@ public class BiesFall : BaseState
         velocity.y += -BiesUtils.GravityForce * Time.deltaTime;
         if( swipeOn ){
             velocity.x = ( m_swipe == GlobalUtils.Direction.Left ) ? 
-                            Mathf.Max(   -BiesUtils.MaxMoveSpeedInAir,
+                            Mathf.Max(   -BiesUtils.maxMoveDistanceInAir,
                                         velocity.x -BiesUtils.MoveSpeedInAir * Time.deltaTime) : 
-                            Mathf.Min(    BiesUtils.MaxMoveSpeedInAir,
+                            Mathf.Min(    BiesUtils.maxMoveDistanceInAir,
                                         velocity.x + BiesUtils.MoveSpeedInAir * Time.deltaTime);
 
             // if velocity.x  > 0 => m_direction = Direction.Left
@@ -46,7 +46,7 @@ public class BiesFall : BaseState
 
         if( m_detector.canClimbLedge() ){
             m_isOver = true;
-            m_nextState = new PlayerLedgeClimb( m_controllabledObject, m_dir);
+            m_nextState = new BiesLedgeClimb( m_controllabledObject, m_dir);
         }
         /*
         else if( m_detector.isWallClose() ){

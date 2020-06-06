@@ -12,7 +12,7 @@ public class CatWallSlide : BaseState
         // TEMP
 
         PlayerFallOfWallHelper.ResetCounter();
-
+        CatUtils.swipeSpeedValue = 0;
         isMovingLeft = dir == GlobalUtils.Direction.Left;
         name = "CatWallSlide";
         m_dir = dir;
@@ -38,7 +38,10 @@ public class CatWallSlide : BaseState
             m_isOver = true;
         }
 
-        velocity.x = (m_dir != GlobalUtils.Direction.Left )? -0.001f : 0.001f;
+        velocity.x = velocity.y;
+        velocity.x *= ( int )m_dir;
+
+        //velocity.x = (m_dir != GlobalUtils.Direction.Left )? -0.001f : 0.001f;
         velocity.y = Mathf.Max( velocity.y -CatUtils.GravityForce * Time.deltaTime,
                                  -CatUtils.MaxWallSlideSpeed);
         if( PlayerInput.isSpecialKeyHold() ) velocity.y = 0.0f;

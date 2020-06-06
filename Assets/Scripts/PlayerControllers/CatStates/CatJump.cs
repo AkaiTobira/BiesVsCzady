@@ -12,7 +12,6 @@ public class CatJump : BaseState
 
     float timeOfIgnoringWallStick = 0;
     float timeOfJumpForceRising   = 0;
-    float  MaxJUMPRISING = 0;
 
     float JumpForce    = 0.0f;
     float GravityForce = 0.0f;
@@ -23,11 +22,10 @@ public class CatJump : BaseState
 
         name = "CatJump";
         PlayerFallOfWallHelper.ResetCounter();
-
+        CatUtils.swipeSpeedValue = 0;
         m_detector.CheatMove( new Vector2(0,40.0f));
-        MaxJUMPRISING           = CatUtils.JumpMaxTime;
-        timeOfJumpForceRising   = MaxJUMPRISING;
-        timeOfIgnoringWallStick = m_controllabledObject.GetComponent<Player>().timeToJumpApex / 2.0f;
+        timeOfJumpForceRising   = CatUtils.JumpMaxTime;
+        timeOfIgnoringWallStick = m_controllabledObject.GetComponent<CatBalance>().timeToJumpApex / 2.0f;
     }
 
 
@@ -39,8 +37,14 @@ public class CatJump : BaseState
 
         if( PlayerFallHelper.FallRequirementsMeet( m_detector.isOnGround()) && velocity.y < 0 ){ 
             m_isOver = true;
+            CatUtils.swipeSpeedValue = velocity.x;
+            m_nextState = new CatFall( m_controllabledObject, m_detector.GetCurrentDirection());
         }
+    }
 
+    public override void OnExit(){
+        CatUtils.swipeSpeedValue = velocity.x;
+        velocity = new Vector2(0,0);
     }
 
     public override void Process(){
@@ -64,9 +68,9 @@ public class CatJump : BaseState
 
         if( swipeOn ){
             velocity.x = ( m_swipe == GlobalUtils.Direction.Left ) ? 
-                            Mathf.Max(  -CatUtils.MaxMoveSpeedInAir,
+                            Mathf.Max(  -CatUtils.maxMoveDistanceInAir,
                                         velocity.x -CatUtils.MoveSpeedInAir * Time.deltaTime) : 
-                            Mathf.Min(  CatUtils.MaxMoveSpeedInAir,
+                            Mathf.Min(  CatUtils.maxMoveDistanceInAir,
                                         velocity.x + CatUtils.MoveSpeedInAir * Time.deltaTime);
             CatUtils.swipeSpeedValue = velocity.x;
             // if velocity.x > 0 => m_direction = Direction.Left

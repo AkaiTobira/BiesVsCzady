@@ -11,7 +11,7 @@ public static class  BiesUtils
     public static float GravityForce        = 15.0f;
     public static float MoveSpeedInAir      = 5.0f;
 
-    public static float MaxMoveSpeedInAir   = 0.0f;
+    public static float maxMoveDistanceInAir   = 0.0f;
 
     public static float Attack1Damage = 2;
     public static float Attack2Damage = 0;

@@ -27,12 +27,11 @@ public static class  PlayerChangeRules
             GlobalUtils.PlayerObject.localScale = new Vector3(-100, 100, 100);
         }
 
-        if( stateName.Contains("Hold") ){
-            if( formName.Contains("Bies")){
+        if( formName.Contains("Bies")){
+            if( stateName.Contains("Hold") || stateName.Contains("Slide") ){
                 Vector2 Translation = new Vector2(-29, 0 ) * (int)dir; 
                 GlobalUtils.PlayerObject.GetComponent<CollisionDetectorPlayer>().CheatMove(Translation);
             }
-                
         }
 
         playerAnimator.SetTrigger( "SwitchTo" + formName + "Idle");
@@ -49,6 +48,7 @@ public static class  PlayerChangeRules
     }
 
     public static bool CanTransformInCurrentState( string currentStateName ){
+//        Debug.Log( currentStateName.Contains("LedgeClimb") );
         if( currentStateName.Contains("LedgeClimb"))  return false;
         return true;
     }
