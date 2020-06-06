@@ -15,6 +15,7 @@ public class CatWallHold : BaseState
         isMovingLeft = dir == GlobalUtils.Direction.Left;
         name = "CatWallHold" + ((isMovingLeft)? "L": "R");
         CatUtils.swipeSpeedValue = 0;
+        m_dir = dir;
     }
 
     public override void Process(){
@@ -68,12 +69,12 @@ public class CatWallHold : BaseState
         }else if( PlayerInput.isClimbKeyPressed() ){
         //    m_isOver = true;
             m_isOver = true;
-            if( m_dir == GlobalUtils.Direction.Left){
-                velocity.x = CatUtils.PlayerSpeed * Time.deltaTime;
-            }else{
-                velocity.x = -CatUtils.PlayerSpeed * Time.deltaTime;
-            }
-            m_detector.Move(velocity * Time.deltaTime);
+         //   if( m_dir == GlobalUtils.Direction.Left){
+         //       velocity.x = CatUtils.PlayerSpeed * Time.deltaTime;
+         //   }else{
+         //       velocity.x = -CatUtils.PlayerSpeed * Time.deltaTime;
+        //    }
+        //    m_detector.Move(velocity * Time.deltaTime);
             m_nextState = new CatWallClimb( m_controllabledObject, m_dir);
         }
     }

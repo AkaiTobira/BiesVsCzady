@@ -31,7 +31,10 @@ public class CatWallSlide : BaseState
     }
 
     public override void Process(){
-        if( m_detector.isOnGround()   ) m_isOver = true;
+        if( m_detector.isOnGround()   ){
+            m_isOver = true;
+            m_nextState = new CatWallHold( m_controllabledObject, m_dir);
+        }
         if( !m_detector.isWallClose() ) m_isOver = true;
         if( PlayerFallOfWallHelper.FallOfWallRequirementsMeet()){
             PlayerSwipeLock.ResetCounter();
@@ -53,12 +56,13 @@ public class CatWallSlide : BaseState
     public override void HandleInput(){
         if( PlayerInput.isClimbKeyPressed() ){
             m_isOver = true;
-            m_nextState = new CatWallClimb( m_controllabledObject, m_dir);
+            m_nextState = new CatWallClimb( m_controllabledObject, GlobalUtils.ReverseDirection(m_dir));
         }
         if( !PlayerInput.isSpecialKeyHold() ) {
 
             if( PlayerInput.isJumpKeyJustPressed() ){
                 m_isOver = true;
+                CatUtils.swipeSpeedValue = 0;
                 m_nextState = new CatWallJump(m_controllabledObject, m_dir);
             }
         //    }else if( isMovingLeft && CatUtils.isMoveRightKeyHold() ){

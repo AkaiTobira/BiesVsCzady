@@ -19,10 +19,10 @@ public class CatWallClimb : BaseState
         rotationAngle = ( m_dir == GlobalUtils.Direction.Left) ? 180 :0 ; 
         m_controllabledObject.GetComponent<Player>().animationNode.eulerAngles = new Vector3( 0, rotationAngle, slopeAngle);
         CatUtils.swipeSpeedValue = 0;
-        m_detector.CheatMove(new Vector2(2,0));
+        m_detector.CheatMove(new Vector2(0,2));
 
-    //    velocity.x = CatUtils.MoveSpeedInAir;
-    //    velocity.x *= -( int )m_dir;
+        velocity.x = CatUtils.MoveSpeedInAir;
+        velocity.x *= ( int )m_dir;
     }
 
     public override void UpdateDirection(){
@@ -69,7 +69,7 @@ public class CatWallClimb : BaseState
 
         }else if( !PlayerInput.isClimbKeyHold() || CatUtils.stamina < 0){
             m_isOver = true;
-            m_nextState = new CatWallSlide(m_controllabledObject, m_dir);
+            m_nextState = new CatWallSlide(m_controllabledObject, GlobalUtils.ReverseDirection(m_dir));
         }
     }
 }
