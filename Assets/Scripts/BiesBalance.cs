@@ -18,12 +18,13 @@ public class BiesBalance : MonoBehaviour
     [SerializeField] Vector2 KnockBackValueAttack2 =  new Vector2( 100, 400);
     [SerializeField] float Attack3Damage = 5;
     [SerializeField] Vector2 KnockBackValueAttack3 =  new Vector2( 100, 400);
+
     void Start()
     {
-        
+        LoadBalance("BiesValues");
     }
 
-    // Update is called once per frame
+
     void Update()
     {
         BiesUtils.GravityForce          = (2 * targetJumpHeight) / Mathf.Pow (timeToJumpApex, 2);
@@ -33,11 +34,65 @@ public class BiesBalance : MonoBehaviour
         BiesUtils.JumpMaxTime           = timeToJumpApex;
         BiesUtils.MoveSpeedInAir        = moveDistanceInAir;
         BiesUtils.maxMoveDistanceInAir     = maxMoveDistanceInAir;
+
         BiesUtils.Attack1Damage         = Attack1Damage;
         BiesUtils.Attack2Damage         = Attack2Damage;
         BiesUtils.Attack3Damage         = Attack3Damage;
         BiesUtils.KnockBackValueAttack1 = KnockBackValueAttack1;
         BiesUtils.KnockBackValueAttack2 = KnockBackValueAttack2;
         BiesUtils.KnockBackValueAttack3 = KnockBackValueAttack3;
+    }
+
+    public void SaveBalance(){
+        JsonLoader.BiesValues newBiesValues = new JsonLoader.BiesValues();
+
+        newBiesValues.minJumpHeight        = minJumpHeight;
+        newBiesValues.targetJumpHeight     = targetJumpHeight;
+        newBiesValues.timeToJumpApex       = timeToJumpApex;
+        newBiesValues.moveDistance         = moveDistance;
+        newBiesValues.moveDistanceInAir    = moveDistanceInAir;
+        newBiesValues.maxMoveDistanceInAir = maxMoveDistanceInAir;
+
+        newBiesValues.Attack1Damage = Attack1Damage;
+        newBiesValues.Attack2Damage = Attack2Damage;
+        newBiesValues.Attack3Damage = Attack3Damage;
+
+        newBiesValues.KnockBackValueAttack1X = KnockBackValueAttack1.x;
+        newBiesValues.KnockBackValueAttack1Y = KnockBackValueAttack1.y;
+        newBiesValues.KnockBackValueAttack2X = KnockBackValueAttack2.x;
+        newBiesValues.KnockBackValueAttack2Y = KnockBackValueAttack2.y;
+        newBiesValues.KnockBackValueAttack3X = KnockBackValueAttack3.x;
+        newBiesValues.KnockBackValueAttack3Y = KnockBackValueAttack3.y;
+
+        string catValues = JsonUtility.ToJson(newBiesValues);
+        System.IO.File.WriteAllText( Application.dataPath +  "/Resources/Temp/BiesValues.json", catValues);
+    }
+
+
+     public void LoadBalance( string path){
+        var jsonFile = System.IO.File.ReadAllText( Application.dataPath +  "/Resources/" + path + ".json" );
+        var newBiesValues = JsonUtility.FromJson<JsonLoader.BiesValues>(jsonFile);
+
+        Attack1Damage = newBiesValues.Attack1Damage;
+        Attack2Damage = newBiesValues.Attack2Damage;
+        Attack3Damage = newBiesValues.Attack3Damage;
+
+        KnockBackValueAttack1 = new Vector2(newBiesValues.KnockBackValueAttack1X, newBiesValues.KnockBackValueAttack1Y);
+        KnockBackValueAttack2 = new Vector2(newBiesValues.KnockBackValueAttack2X, newBiesValues.KnockBackValueAttack2Y);
+        KnockBackValueAttack3 = new Vector2(newBiesValues.KnockBackValueAttack3X, newBiesValues.KnockBackValueAttack3Y);
+
+        minJumpHeight        = newBiesValues.minJumpHeight;
+        targetJumpHeight     = newBiesValues.targetJumpHeight;
+        timeToJumpApex       = newBiesValues.timeToJumpApex;
+        moveDistance         = newBiesValues.moveDistance;
+        moveDistanceInAir    = newBiesValues.moveDistanceInAir;
+        maxMoveDistanceInAir = newBiesValues.maxMoveDistanceInAir;
+    }
+
+    public void LockCurrentTemp(){
+        var jsonFile = System.IO.File.ReadAllText( Application.dataPath +  "/Resources/Temp/BiesValues.json" );
+        var newBiesValues = JsonUtility.FromJson<JsonLoader.BiesValues>(jsonFile);
+        string BiesValues = JsonUtility.ToJson(newBiesValues);
+        System.IO.File.WriteAllText( Application.dataPath +  "/Resources/BiesValues.json", BiesValues);
     }
 }

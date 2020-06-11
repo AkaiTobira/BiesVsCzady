@@ -19,7 +19,7 @@ public class CatBalance : MonoBehaviour
 
     void Start()
     {
-        
+        LoadBalance("CatValues");
     }
 
     // Update is called once per frame
@@ -42,4 +42,47 @@ public class CatBalance : MonoBehaviour
         CatUtils.MaxWallClimbSpeed    = maxWallClimbSpeed;
         CatUtils.WallClimbSpeed       = wallClimbSpeed;
     }
+
+    public void SaveBalance(){
+        JsonLoader.CatValues newCatValues = new JsonLoader.CatValues();
+
+        newCatValues.minJumpHeight        = minJumpHeight;
+        newCatValues.targetJumpHeight     = targetJumpHeight;
+        newCatValues.timeToJumpApex       = timeToJumpApex;
+        newCatValues.moveDistance         = moveDistance;
+        newCatValues.moveDistanceInAir    = moveDistanceInAir;
+        newCatValues.maxMoveDistanceInAir = maxMoveDistanceInAir;
+        newCatValues.wallClimbSpeed       = wallClimbSpeed;
+        newCatValues.maxWallClimbSpeed    = maxWallClimbSpeed;
+        newCatValues.wallSlideFriction    = wallSlideFriction;
+        newCatValues.WallJumpFactorsX     = WallJumpFactors.x;
+        newCatValues.WallJumpFactorsY     = WallJumpFactors.y;
+
+        string catValues = JsonUtility.ToJson(newCatValues);
+        System.IO.File.WriteAllText( Application.dataPath +  "/Resources/Temp/CatValues.json", catValues);
+    }
+
+    public void LoadBalance( string path){
+        var jsonFile = System.IO.File.ReadAllText( Application.dataPath +  "/Resources/" + path + ".json" );
+        var newCatValues = JsonUtility.FromJson<JsonLoader.CatValues>(jsonFile);
+
+        minJumpHeight        = newCatValues.minJumpHeight;
+        targetJumpHeight     = newCatValues.targetJumpHeight;
+        timeToJumpApex       = newCatValues.timeToJumpApex;
+        moveDistance         = newCatValues.moveDistance;
+        moveDistanceInAir    = newCatValues.moveDistanceInAir;
+        maxMoveDistanceInAir = newCatValues.maxMoveDistanceInAir;
+        wallClimbSpeed       = newCatValues.wallClimbSpeed;
+        maxWallClimbSpeed    = newCatValues.maxWallClimbSpeed;
+        wallSlideFriction    = newCatValues.wallSlideFriction;
+        WallJumpFactors      = new Vector2( newCatValues.WallJumpFactorsX, newCatValues.WallJumpFactorsY );
+    }
+
+    public void LockCurrentTemp(){
+        var jsonFile = System.IO.File.ReadAllText( Application.dataPath +  "/Resources/Temp/CatValues.json" );
+        var newCatValues = JsonUtility.FromJson<JsonLoader.BiesValues>(jsonFile);
+        string catValues = JsonUtility.ToJson(newCatValues);
+        System.IO.File.WriteAllText( Application.dataPath +  "/Resources/CatValues.json", catValues);
+    }
+
 }

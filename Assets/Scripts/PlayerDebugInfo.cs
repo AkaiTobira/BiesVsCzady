@@ -5,34 +5,21 @@ using UnityEngine;
 public class PlayerDebugInfo : MonoBehaviour
 {
 
-  /*  [SerializeField] bool MoveUpControll      = false;
-    [SerializeField] bool MoveDownControll    = false;
-    [SerializeField] bool MoveLeftControll    = false;
-    [SerializeField] bool MoveRightControll   = false;
-    [SerializeField] bool MoveSpecialControll = false;
-    [SerializeField] bool MoveJumpControll    = false;
-    
-/*
-
-    [SerializeField] int frameFallCounter = 0;
-
-    [SerializeField] int jumpCounter1 = 0;
-    [SerializeField] int jumpCounter2 = 0;
-
-    [SerializeField] float swipeLockTimer = 0.0f; 
-    [SerializeField] float fallOfWallTimer   = 0;
-
-
-
-
-    void Update()
-    {
-        MoveLeftControll    = PlayerInput.isMoveLeftKeyHold();
-        MoveRightControll   = PlayerInput.isMoveRightKeyHold();
-        MoveSpecialControll = PlayerInput.isSpecialKeyHold();
-        MoveJumpControll    = PlayerInput.isJumpKeyJustPressed();
-
+    public void LockBiesValue(){
+        GetComponent<BiesBalance>().LockCurrentTemp();
     }
 
-    */
+    public void LockCatValues(){
+        GetComponent<CatBalance>().LockCurrentTemp();
+    }
+
+    public void SaveValues(){
+        GetComponent<BiesBalance>().SaveBalance();
+        GetComponent<CatBalance>().SaveBalance();
+    }
+
+    public void LoadValues(){
+        GetComponent<BiesBalance>().LoadBalance("Temp/BiesValues");
+        GetComponent<CatBalance>().LoadBalance("Temp/CatValues");
+    }
 }
