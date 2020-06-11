@@ -85,6 +85,10 @@ public class Player : MonoBehaviour
         return infoPack;
     }
 
+    void OnTriggerEnter2D(Collider2D other) {
+        Debug.Log(other.gameObject.name);
+    }
+
     void Update(){
         m_controller.Update();
         UpdateCounters();
