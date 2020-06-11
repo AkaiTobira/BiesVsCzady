@@ -55,7 +55,7 @@ public class BiesMove : BaseState
                                                    m_detector.isOnGround() )
         ){ 
             m_nextState = new BiesJump(m_controllabledObject, GlobalUtils.Direction.Left);
-        }else if( PlayerInput.isFallKeyHold() ) {
+        }else if( PlayerInput.isFallKeyHold() && m_detector.canFallByFloor() ) {
             m_detector.enableFallForOneWayFloor();
             velocity.y += -BiesUtils.GravityForce * Time.deltaTime;
             m_detector.Move( velocity * Time.deltaTime );

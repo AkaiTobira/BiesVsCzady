@@ -56,7 +56,7 @@ public class CatMove : BaseState
                                                    m_detector.isOnGround() )
         ){ 
             m_nextState = new CatJump(m_controllabledObject, GlobalUtils.Direction.Left);
-        }else if( PlayerInput.isFallKeyHold() ) {
+        }else if( PlayerInput.isFallKeyHold() && m_detector.canFallByFloor() ) {
             m_detector.enableFallForOneWayFloor();
             velocity.y += -CatUtils.GravityForce * Time.deltaTime;
             m_detector.Move( velocity * Time.deltaTime );

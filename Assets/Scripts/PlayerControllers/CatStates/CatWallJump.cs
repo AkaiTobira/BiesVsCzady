@@ -6,16 +6,16 @@ public class CatWallJump : BaseState
 {    private bool isMovingLeft = false;
     private GlobalUtils.Direction m_swipe;
 
-    private const float INPUT_LOCK = 0.1f;
-    private float inputLock = 0.1f;
-
-
+    private const float INPUT_LOCK = 0.05f;
+    private float inputLock = 0.05f;
     float timeOfJumpForceRising   = 0;
-
     private bool swipeOn = false;
 
 
     float JumpForce    = 0.0f;
+
+    float accelerationSpeed = 2;
+
     float GravityForce = 0.0f;
 
     public CatWallJump( GameObject controllable, GlobalUtils.Direction dir) : base( controllable ) {
@@ -71,13 +71,16 @@ public class CatWallJump : BaseState
         velocity.y = Mathf.Max( velocity.y, -500 );
 
         if( swipeOn ){
+
+            Debug.Log( velocity.x );
+
             velocity.x = ( m_swipe == GlobalUtils.Direction.Left ) ? 
                             Mathf.Max(  -CatUtils.maxMoveDistanceInAir,
-                                        velocity.x -CatUtils.MoveSpeedInAir * Time.deltaTime) : 
+                                        velocity.x - CatUtils.MoveSpeedInAir * Time.deltaTime * accelerationSpeed) : 
                             Mathf.Min(  CatUtils.maxMoveDistanceInAir,
-                                        velocity.x + CatUtils.MoveSpeedInAir * Time.deltaTime);
+                                        velocity.x + CatUtils.MoveSpeedInAir * Time.deltaTime * accelerationSpeed);
 
-            
+            Debug.Log( velocity.x );
 
             // if velocity.x > 0 => m_direction = Direction.Left
             // else velocity.x < 0 => m_direction = Direction.Right czy jakoś tak.

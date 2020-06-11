@@ -51,6 +51,7 @@ public class CatWallSlide : BaseState
 
 
         m_detector.Move(velocity * Time.deltaTime);
+        CatUtils.stamina = Mathf.Min( CatUtils.stamina + Mathf.Abs(velocity.y) * Time.deltaTime, CatUtils.MaxStamina );
     }
 
     public override void HandleInput(){
@@ -73,7 +74,11 @@ public class CatWallSlide : BaseState
         //        m_nextState = new PlayerFall( m_controllabledObject, GlobalUtils.Direction.Left  );
         //    }
         }else{
-
+            if( PlayerInput.isJumpKeyJustPressed() ){
+                m_isOver = true;
+                CatUtils.swipeSpeedValue = 0;
+                m_nextState = new CatWallJump(m_controllabledObject, m_dir);
+            }
         }
     }
 }

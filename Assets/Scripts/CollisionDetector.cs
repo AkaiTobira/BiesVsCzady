@@ -69,11 +69,15 @@ public class CollisionDetector : MonoBehaviour
     }
     protected virtual void ProcessCollision(){
         ProcessSlopeDetection( Mathf.Sign(transition.x) );
+        //        Debug.Log( "After Slope Det " +  transition );
         DescendSlope();
+         //       Debug.Log( "After Slope Det1 " +  transition );
         ProcessCollisionHorizontal( Mathf.Sign(transition.x));
+         //       Debug.Log( "After Slope Det2 " +  transition );
         ProcessCollisionVertical(   Mathf.Sign(transition.y));
-
+         //       Debug.Log( "After Slope Det3 " +  transition );
         ProcessColisionOnTheSameLayer();
+         //       Debug.Log( "After Slope Det4 " +  transition );
     }
 
     private void  ProcessColisionOnTheSameLayer(){
@@ -171,10 +175,10 @@ public class CollisionDetector : MonoBehaviour
 
             if( hit ){
                 if( hit.distance == 0.0f) return;
-
                 float slopeAngle = Vector2.Angle(hit.normal, Vector2.up); 
+                if( slopeAngle == 0 ) return;
                 if( slopeAngle < maxClimbAngle){
-
+                    Debug.Log( slopeAngle.ToString() +  hit.distance.ToString() );
 					if (collisionInfo.descendingSlope) {
 						collisionInfo.descendingSlope = false;
 //						transition = collisionInfo.velocityOld;

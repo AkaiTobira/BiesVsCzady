@@ -30,10 +30,11 @@ public static class  CatUtils
     //Its not related to up ones
     public static float swipeSpeedValue = 0.0f;
 
+    public static float MaxStamina = 800;
 
     public static void ResetStamina(){
-        stamina = 800;
+        stamina = MaxStamina;
     }
 
-    public static float stamina = 800;
+    public static float stamina = MaxStamina;
 }

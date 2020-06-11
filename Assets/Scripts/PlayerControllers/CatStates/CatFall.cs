@@ -54,6 +54,9 @@ public class CatFall : BaseState
             m_isOver = true;
             m_nextState = new CatLedgeClimb( m_controllabledObject, m_dir);
         }else if( m_detector.isWallClose() ){
+            m_isOver = true;
+            m_nextState = new CatWallSlide( m_controllabledObject, GlobalUtils.ReverseDirection(m_dir));
+            /*
             if( m_swipe == GlobalUtils.Direction.Left && PlayerInput.isMoveLeftKeyHold() ){
                 m_isOver = true;
                 m_nextState = new CatWallSlide( m_controllabledObject, GlobalUtils.ReverseDirection(m_dir));
@@ -62,6 +65,7 @@ public class CatFall : BaseState
                 m_isOver = true;
                 m_nextState = new CatWallSlide( m_controllabledObject, GlobalUtils.ReverseDirection(m_dir));
             }
+            */
         }
 
         if( PlayerSwipeLock.SwipeUnlockRequirementsMeet() ){

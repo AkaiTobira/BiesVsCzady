@@ -51,7 +51,7 @@ public class CatWallClimb : BaseState
         velocity.y = Mathf.Max( velocity.y + CatUtils.WallClimbSpeed * Time.deltaTime,
                                 CatUtils.MaxWallClimbSpeed);
         if( PlayerInput.isSpecialKeyHold() ) velocity.y = 0.0f;
-        CatUtils.stamina -= velocity.y * Time.deltaTime;
+        CatUtils.stamina -= Mathf.Abs(velocity.y * Time.deltaTime);
         m_detector.Move(velocity * Time.deltaTime);
     }
 
