@@ -178,7 +178,6 @@ public class CollisionDetector : MonoBehaviour
                 float slopeAngle = Vector2.Angle(hit.normal, Vector2.up); 
                 if( slopeAngle == 0 ) return;
                 if( slopeAngle < maxClimbAngle){
-                    Debug.Log( slopeAngle.ToString() +  hit.distance.ToString() );
 					if (collisionInfo.descendingSlope) {
 						collisionInfo.descendingSlope = false;
 //						transition = collisionInfo.velocityOld;

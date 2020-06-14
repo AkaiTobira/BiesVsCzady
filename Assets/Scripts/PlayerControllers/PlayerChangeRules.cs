@@ -22,14 +22,14 @@ public static class  PlayerChangeRules
         }
 
         if( formName.Contains("Cat") ){
-            GlobalUtils.PlayerObject.localScale = new Vector3(-75, 75, 75);
+            GlobalUtils.PlayerObject.localScale = new Vector3(120, 120, 75);
         }else{
-            GlobalUtils.PlayerObject.localScale = new Vector3(-100, 100, 100);
+            GlobalUtils.PlayerObject.localScale = new Vector3(180, 180, 100);
         }
 
         if( formName.Contains("Bies")){
             if( stateName.Contains("Hold") || stateName.Contains("Slide") ){
-                Vector2 Translation = new Vector2(-29, 0 ) * (int)dir; 
+                Vector2 Translation = new Vector2(-138f, 0 ) * (int)dir; 
                 GlobalUtils.PlayerObject.GetComponent<CollisionDetectorPlayer>().CheatMove(Translation);
             }
         }
@@ -93,12 +93,13 @@ public static class  PlayerChangeRules
     }
 
     public static BaseState TranslateActiveState( string formName, string stateName, GlobalUtils.Direction dir ){
+        Debug.Log( "TRanslation info :" + formName + " " + stateName);
+        
         switch( formName ){
-            case "Cat" : return CatToBiesTranslation(ref stateName, ref dir);
-            case "Bies": return BiesToCatTranslation(ref stateName, ref dir);
+            case "Bies" : return CatToBiesTranslation(ref stateName, ref dir);
+            case "Cat"  : return BiesToCatTranslation(ref stateName, ref dir);
             default :    return null;
         }
     }
-
 
 }

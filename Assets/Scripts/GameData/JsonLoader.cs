@@ -56,6 +56,8 @@ public class JsonLoader : MonoBehaviour
         public float wallFriction;
         public float WallJumpFactorsX;
         public float WallJumpFactorsY;
+        public float moveDistanceInAirWallJump;
+        public float maxMoveDistanceInAirWallJump ;
     }
 
     [System.Serializable]

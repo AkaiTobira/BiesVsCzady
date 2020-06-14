@@ -18,6 +18,7 @@ public class SFSMBase
 
     private void processStack(){
         BaseState current_state = m_states.Peek();
+        if( current_state.isOver() ) return;
         current_state.HandleInput();
         current_state.Process();
         current_state.UpdateDirection();

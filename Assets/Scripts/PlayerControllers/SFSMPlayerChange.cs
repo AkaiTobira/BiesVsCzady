@@ -7,9 +7,18 @@ public class SFSMPlayerChange : SFSMBase
     public SFSMPlayerChange ( GameObject controlledObj, BaseState baseState ) : base(controlledObj, baseState )
     {}
 
+    public void StackStatusPrint(){
+        string stackInfo = "";
+        foreach( BaseState b in m_states ){
+            stackInfo += b.name + " ";
+        }
+        Debug.Log( stackInfo );
+    }
+
     public override void Update(){
         base.Update();
         ProcessCharacterChange();
+        StackStatusPrint();
     }
 
     private string RemoveDirectionInfo( string stateName ){
@@ -26,7 +35,6 @@ public class SFSMPlayerChange : SFSMBase
     }
 
     private string RemoveFormName( string stateName ){
-        Debug.Log( "RemoveFormName :: " +  stateName.ToString() );
         if( stateName.StartsWith("Cat"))  return stateName.Substring(3, stateName.Length-3);
         if( stateName.StartsWith("Bies")) return stateName.Substring(4, stateName.Length-4);
         return "InvalidStateName";

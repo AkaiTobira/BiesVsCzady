@@ -95,7 +95,7 @@ public class Player : MonoBehaviour
 
         isOnGround  = m_detector.isOnGround();
         isWallClose = m_detector.isWallClose();
-        Debug.Log( StateName );
+    //    Debug.Log( StateName );
         StateName   = m_controller.GetStateName();
         isColLeft =m_detector.isCollideWithLeftWall();
         isColRight= m_detector.isCollideWithLeftWall();

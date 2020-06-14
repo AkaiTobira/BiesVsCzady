@@ -50,8 +50,8 @@ public class BaseState
 
     //    slopeAngle =  (( m_dir == GlobalUtils.Direction.Right) ? 180.0f - m_detector.GetSlopeAngle()  : m_detector.GetSlopeAngle()  );
 
-        if( velocity.x != 0){
-            GlobalUtils.Direction c_dir = Mathf.Sign( velocity.x ) == -1 ? 
+        if( CommonValues.PlayerVelocity.x != 0){
+            GlobalUtils.Direction c_dir = Mathf.Sign( CommonValues.PlayerVelocity.x ) == -1 ? 
                                                GlobalUtils.Direction.Left : 
                                                GlobalUtils.Direction.Right;
 
@@ -74,7 +74,7 @@ public class BaseState
     }
 
     public virtual void OnExit(){
-        velocity = new Vector2();
+    //    velocity = new Vector2();
     }
 
 }

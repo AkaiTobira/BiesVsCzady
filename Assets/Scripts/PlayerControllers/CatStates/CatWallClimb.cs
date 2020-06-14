@@ -18,11 +18,10 @@ public class CatWallClimb : BaseState
         m_dir = dir;
         rotationAngle = ( m_dir == GlobalUtils.Direction.Left) ? 180 :0 ; 
         m_controllabledObject.GetComponent<Player>().animationNode.eulerAngles = new Vector3( 0, rotationAngle, slopeAngle);
-        CatUtils.swipeSpeedValue = 0;
         m_detector.CheatMove(new Vector2(0,2));
 
-        velocity.x = CatUtils.MoveSpeedInAir;
-        velocity.x *= ( int )m_dir;
+        CommonValues.PlayerVelocity.x = CatUtils.MoveSpeedInAir * ( int )m_dir;
+
     }
 
     public override void UpdateDirection(){
@@ -32,7 +31,6 @@ public class CatWallClimb : BaseState
     }
 
     public override void OnExit(){
-        CatUtils.swipeSpeedValue = 0;
     }
 
     public override void Process(){
@@ -48,11 +46,13 @@ public class CatWallClimb : BaseState
 
     //    velocity.x = (m_dir != GlobalUtils.Direction.Left )? -CatUtils.WallClimbSpeed * Time.deltaTime : 0.001f;
 
-        velocity.y = Mathf.Max( velocity.y + CatUtils.WallClimbSpeed * Time.deltaTime,
+        Debug.Log( CommonValues.PlayerVelocity);
+
+        CommonValues.PlayerVelocity.y = Mathf.Max( CommonValues.PlayerVelocity.y + CatUtils.WallClimbSpeed * Time.deltaTime,
                                 CatUtils.MaxWallClimbSpeed);
-        if( PlayerInput.isSpecialKeyHold() ) velocity.y = 0.0f;
-        CatUtils.stamina -= Mathf.Abs(velocity.y * Time.deltaTime);
-        m_detector.Move(velocity * Time.deltaTime);
+        if( PlayerInput.isSpecialKeyHold() ) CommonValues.PlayerVelocity.y = 0.0f;
+        CatUtils.stamina -= Mathf.Abs(CommonValues.PlayerVelocity.y * Time.deltaTime);
+        m_detector.Move(CommonValues.PlayerVelocity * Time.deltaTime);
     }
 
     public override void HandleInput(){

@@ -14,48 +14,39 @@ public class CatWallHold : BaseState
         CatUtils.ResetStamina();
         isMovingLeft = dir == GlobalUtils.Direction.Left;
         name = "CatWallHold" + ((isMovingLeft)? "L": "R");
-        CatUtils.swipeSpeedValue = 0;
         m_dir = dir;
+        CommonValues.PlayerVelocity.y =0;
     }
 
     public override void Process(){
-    //    velocity.x = CatUtils.PlayerSpeed * ( isMovingLeft ? -1 : 1);
-    //    if( isMovingLeft  && m_detector.isCollideWithLeftWall() ) velocity.x = 0.0f;
-    //    if( !isMovingLeft && m_detector.isCollideWithRightWall()) velocity.x = 0.0f;
-
         if( !m_detector.isWallClose()) m_isOver = true;
 
-        velocity.y += -CatUtils.GravityForce * Time.deltaTime;
-        if( m_detector.isOnGround() ){
-            CatUtils.swipeSpeedValue = 0;
-            velocity.y = -CatUtils.GravityForce * Time.deltaTime;
+        if( !m_detector.isOnGround() ){
+            CommonValues.PlayerVelocity.y = -CatUtils.GravityForce * Time.deltaTime;
+            m_detector.Move(CommonValues.PlayerVelocity * Time.deltaTime);
+        }else{
+            CommonValues.PlayerVelocity.y = 0.0f;
         }
-        
-        m_detector.Move(velocity * Time.deltaTime);
     }
 
     public override void OnExit(){
-
-        CatUtils.swipeSpeedValue = 0;
-
-        velocity = new Vector2();
     }
 
     public override void HandleInput(){
         if( PlayerFallHelper.FallRequirementsMeet( m_detector.isOnGround()) ){
-            CatUtils.swipeSpeedValue = 0;
+            //m_isOver = true;
             m_nextState = new CatFall(m_controllabledObject, m_detector.GetCurrentDirection());
         }else if( PlayerInput.isAttack2KeyPressed() ){
             m_nextState = new CatAttack2(m_controllabledObject);
         }else if( isMovingLeft && PlayerInput.isMoveRightKeyHold()){
             m_isOver = true;
-            velocity.x = CatUtils.PlayerSpeed * Time.deltaTime;
-            m_detector.Move(velocity * Time.deltaTime);
+            CommonValues.PlayerVelocity.x = CatUtils.PlayerSpeed * Time.deltaTime;
+            m_detector.Move(CommonValues.PlayerVelocity * Time.deltaTime);
         //    m_nextState = new PlayerMove(m_controllabledObject, GlobalUtils.Direction.Right); 
         }else if( !isMovingLeft && PlayerInput.isMoveLeftKeyHold()){
             m_isOver = true;
-            velocity.x = -CatUtils.PlayerSpeed * Time.deltaTime;
-            m_detector.Move(velocity * Time.deltaTime);
+            CommonValues.PlayerVelocity.x = -CatUtils.PlayerSpeed * Time.deltaTime;
+            m_detector.Move(CommonValues.PlayerVelocity * Time.deltaTime);
         //    m_nextState = new PlayerMove(m_controllabledObject, GlobalUtils.Direction.Left); 
         }else if( 
             PlayerJumpHelper.JumpRequirementsMeet( PlayerInput.isJumpKeyJustPressed(), 
@@ -64,17 +55,11 @@ public class CatWallHold : BaseState
             m_nextState = new CatJump(m_controllabledObject, GlobalUtils.Direction.Left);
         }else if( PlayerInput.isFallKeyHold() ) {
             m_detector.enableFallForOneWayFloor();
-            velocity.y += -CatUtils.GravityForce * Time.deltaTime;
-            m_detector.Move( velocity * Time.deltaTime );
+            CommonValues.PlayerVelocity.y += -CatUtils.GravityForce * Time.deltaTime;
+            m_detector.Move( CommonValues.PlayerVelocity * Time.deltaTime );
         }else if( PlayerInput.isClimbKeyPressed() ){
         //    m_isOver = true;
             m_isOver = true;
-         //   if( m_dir == GlobalUtils.Direction.Left){
-         //       velocity.x = CatUtils.PlayerSpeed * Time.deltaTime;
-         //   }else{
-         //       velocity.x = -CatUtils.PlayerSpeed * Time.deltaTime;
-        //    }
-        //    m_detector.Move(velocity * Time.deltaTime);
             m_nextState = new CatWallClimb( m_controllabledObject, m_dir);
         }
     }

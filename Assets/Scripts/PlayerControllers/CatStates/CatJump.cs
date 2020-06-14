@@ -22,29 +22,33 @@ public class CatJump : BaseState
 
         name = "CatJump";
         PlayerFallOfWallHelper.ResetCounter();
-        CatUtils.swipeSpeedValue = 0;
         m_detector.CheatMove( new Vector2(0,40.0f));
         timeOfJumpForceRising   = CatUtils.JumpMaxTime;
         timeOfIgnoringWallStick = m_controllabledObject.GetComponent<CatBalance>().timeToJumpApex / 2.0f;
+        CommonValues.PlayerVelocity.x = 0;
     }
 
 
     private void checkIfShouldBeOver(){
         if( m_detector.isOnCelling()){
+            CommonValues.PlayerVelocity.y = 0;
+            CommonValues.PlayerVelocity.x = 0;
+
             velocity.y = 0;
+            timeOfJumpForceRising = 0.0f;
             m_isOver   = true;
         }
 
-        if( PlayerFallHelper.FallRequirementsMeet( m_detector.isOnGround()) && velocity.y < 0 ){ 
+        if( PlayerFallHelper.FallRequirementsMeet( m_detector.isOnGround()) && CommonValues.PlayerVelocity.y < 0 ){ 
             m_isOver = true;
-            CatUtils.swipeSpeedValue = velocity.x;
+            timeOfJumpForceRising = 0.0f;
             m_nextState = new CatFall( m_controllabledObject, m_detector.GetCurrentDirection());
         }
     }
 
     public override void OnExit(){
-        CatUtils.swipeSpeedValue = velocity.x;
-        velocity = new Vector2(0,0);
+        GravityForce = 0;
+        JumpForce    = 0;
     }
 
     public override void Process(){
@@ -63,21 +67,28 @@ public class CatJump : BaseState
         }
         timeOfJumpForceRising   -= Time.deltaTime;
         GravityForce += -CatUtils.GravityForce * Time.deltaTime;
+        CommonValues.PlayerVelocity.y = JumpForce + GravityForce;
+        CommonValues.PlayerVelocity.y = velocity.y = Mathf.Max( CommonValues.PlayerVelocity.y, -500 );
+
         velocity.y = JumpForce + GravityForce; 
         velocity.y = Mathf.Max( velocity.y, -500 );
 
         if( swipeOn ){
+
+            CommonValues.PlayerVelocity.x = ( m_swipe == GlobalUtils.Direction.Left ) ? 
+                            Mathf.Max(  -CatUtils.maxMoveDistanceInAir,
+                                        CommonValues.PlayerVelocity.x -CatUtils.MoveSpeedInAir * Time.deltaTime) : 
+                            Mathf.Min(  CatUtils.maxMoveDistanceInAir,
+                                        CommonValues.PlayerVelocity.x + CatUtils.MoveSpeedInAir * Time.deltaTime);
+
             velocity.x = ( m_swipe == GlobalUtils.Direction.Left ) ? 
                             Mathf.Max(  -CatUtils.maxMoveDistanceInAir,
                                         velocity.x -CatUtils.MoveSpeedInAir * Time.deltaTime) : 
                             Mathf.Min(  CatUtils.maxMoveDistanceInAir,
                                         velocity.x + CatUtils.MoveSpeedInAir * Time.deltaTime);
-            CatUtils.swipeSpeedValue = velocity.x;
-            // if velocity.x > 0 => m_direction = Direction.Left
-            // else velocity.x < 0 => m_direction = Direction.Right czy jakoś tak.
         }
 
-        m_detector.Move(velocity * Time.deltaTime);
+        m_detector.Move(CommonValues.PlayerVelocity * Time.deltaTime);
         checkIfShouldBeOver();
     }
 
