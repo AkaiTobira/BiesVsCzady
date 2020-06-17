@@ -11,7 +11,8 @@ public class BiesIdle : BaseState
 
     public override void HandleInput(){
         if( PlayerFallHelper.FallRequirementsMeet( m_detector.isOnGround() ) ){
-            m_nextState = new BiesFall(m_controllabledObject, GlobalUtils.Direction.Left);
+            CommonValues.PlayerVelocity.x = 0;
+            m_nextState = new BiesFall(m_controllabledObject, m_detector.GetCurrentDirection());
         }else if( PlayerInput.isAttack1KeyPressed() ){
             m_nextState = new BiesAttack1(m_controllabledObject);
         }else if( PlayerInput.isAttack2KeyPressed() ){
@@ -33,18 +34,18 @@ public class BiesIdle : BaseState
             m_nextState = new BiesJump(m_controllabledObject, GlobalUtils.Direction.Left);     
         }else if( PlayerInput.isFallKeyHold() ) {
             m_detector.enableFallForOneWayFloor();
-            velocity.y += -PlayerUtils.GravityForce * Time.deltaTime;
-            m_detector.Move( velocity * Time.deltaTime );
+            CommonValues.PlayerVelocity.y += -PlayerUtils.GravityForce * Time.deltaTime;
+            m_detector.Move( CommonValues.PlayerVelocity * Time.deltaTime );
         }
     }
 
     public override void Process(){
         if( ! m_detector.isOnGround() ){
-            velocity.y += -BiesUtils.GravityForce * Time.deltaTime;
+            CommonValues.PlayerVelocity.y += -BiesUtils.GravityForce * Time.deltaTime;
         }else{
             CatUtils.ResetStamina();
-            velocity.y = -BiesUtils.GravityForce * Time.deltaTime;
+            CommonValues.PlayerVelocity.y = -BiesUtils.GravityForce * Time.deltaTime;
         }
-        m_detector.Move( velocity * Time.deltaTime );
+        m_detector.Move( CommonValues.PlayerVelocity * Time.deltaTime );
     }
 }

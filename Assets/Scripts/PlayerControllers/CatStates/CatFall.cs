@@ -16,7 +16,7 @@ public class CatFall : BaseState
         isMovingLeft = dir == GlobalUtils.Direction.Left;
         name = "CatFall";
         
-        if( PlayerFallOfWallHelper.FallOfWallRequirementsMeet() ) {
+        if( PlayerFallOfWallHelper.FallOfWallRequirementsMeet() || PlayerMoveOfWallHelper.MoveOfWallRequirementsMeet() ) {
             CommonValues.PlayerVelocity.x = CatUtils.FallOffWallFactor * ((isMovingLeft)? -CatUtils.MoveSpeedInAir : CatUtils.MoveSpeedInAir);
         }
     }

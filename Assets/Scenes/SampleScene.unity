@@ -1442,6 +1442,8 @@ MonoBehaviour:
   moveDistance: 3000
   moveDistanceInAir: 4000
   maxMoveDistanceInAir: 2000
+  moveDistanceInAirWallJump: 5
+  maxMoveDistanceInAirWallJump: 10
   wallClimbSpeed: 200
   maxWallClimbSpeed: 1000
   wallSlideFriction: 0.04
@@ -4962,7 +4964,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &917724061
 Transform:
   m_ObjectHideFlags: 0

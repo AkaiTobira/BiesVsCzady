@@ -28,6 +28,7 @@ public class Player : MonoBehaviour
         PlayerFallHelper.IncrementCounters();
         PlayerFallOfWallHelper.IncrementCounters();
         PlayerSwipeLock.IncrementCounters();
+        PlayerMoveOfWallHelper.IncrementCounters();
         PlayerJumpOffWall.IncrementCounters();
 
         if (Debug.isDebugBuild) CalculateMath();

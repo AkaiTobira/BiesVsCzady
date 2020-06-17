@@ -71,13 +71,11 @@ public class CatWallJump : BaseState
         CommonValues.PlayerVelocity.y = Mathf.Max( CommonValues.PlayerVelocity.y, -500 );
 
         if( swipeOn ){
-
-
             CommonValues.PlayerVelocity.x = ( m_swipe == GlobalUtils.Direction.Left ) ? 
                             Mathf.Max(  -CatUtils.maxMoveDistanceInAir,
-                                        CommonValues.PlayerVelocity.x - CatUtils.MoveSpeedInAirWallJump * Time.deltaTime * accelerationSpeed) : 
+                                        CommonValues.PlayerVelocity.x - CatUtils.MoveSpeedInAir * Time.deltaTime * accelerationSpeed) : 
                             Mathf.Min(  CatUtils.maxMoveDistanceInAir,
-                                        CommonValues.PlayerVelocity.x + CatUtils.MoveSpeedInAirWallJump * Time.deltaTime * accelerationSpeed);
+                                        CommonValues.PlayerVelocity.x + CatUtils.MoveSpeedInAir * Time.deltaTime * accelerationSpeed);
 
             // if velocity.x > 0 => m_direction = Direction.Left
             // else velocity.x < 0 => m_direction = Direction.Right czy jakoś tak.

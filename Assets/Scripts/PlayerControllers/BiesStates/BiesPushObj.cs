@@ -32,8 +32,8 @@ public class BiesPushObj : BaseState
     }
 
     public override void OnExit(){
-        velocity = new Vector2(0,0);
-        m_detector.Move(velocity);
+        CommonValues.PlayerVelocity = new Vector2(0,0);
+        m_detector.Move(CommonValues.PlayerVelocity);
     }
 
     public override void UpdateDirection(){

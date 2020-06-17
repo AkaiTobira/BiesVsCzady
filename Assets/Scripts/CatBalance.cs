@@ -64,8 +64,8 @@ public class CatBalance : MonoBehaviour
         newCatValues.WallJumpFactorsX     = WallJumpFactors.x;
         newCatValues.WallJumpFactorsY     = WallJumpFactors.y;
 
-        newCatValues.moveDistanceInAirWallJump        = moveDistanceInAirWallJump;
-        newCatValues.maxMoveDistanceInAirWallJump  = maxMoveDistanceInAirWallJump;
+        newCatValues.moveDistanceInAirWallJump    = moveDistanceInAirWallJump;
+        newCatValues.maxMoveDistanceInAirWallJump = maxMoveDistanceInAirWallJump;
 
         string catValues = JsonUtility.ToJson(newCatValues);
         System.IO.File.WriteAllText( Application.dataPath +  "/Resources/Temp/CatValues.json", catValues);

@@ -12,6 +12,7 @@ public class CatWallSlide : BaseState
         // TEMP
 
         PlayerFallOfWallHelper.ResetCounter();
+        PlayerMoveOfWallHelper.DisableCounter();
         isMovingLeft = dir == GlobalUtils.Direction.Left;
         name = "CatWallSlide";
         m_dir = dir;
@@ -50,6 +51,13 @@ public class CatWallSlide : BaseState
 
         m_detector.Move(CommonValues.PlayerVelocity * Time.deltaTime);
         CatUtils.stamina = Mathf.Min( CatUtils.stamina + Mathf.Abs(CommonValues.PlayerVelocity.y) * Time.deltaTime, CatUtils.MaxStamina );
+
+        if( PlayerMoveOfWallHelper.MoveOfWallRequirementsMeet()  ){
+            m_isOver = true;
+            m_detector.Move( new Vector2( ( isMovingLeft)?-40 : 40, 0));
+            m_nextState = new CatFall( m_controllabledObject, m_dir );//GlobalUtils.ReverseDirection(m_dir)  );
+        }
+
     }
 
     public override void HandleInput(){
@@ -63,14 +71,11 @@ public class CatWallSlide : BaseState
                 m_isOver = true;
                 CommonValues.PlayerVelocity.x = 0;
                 m_nextState = new CatWallJump(m_controllabledObject, m_dir);
+            }else if( ( m_dir != GlobalUtils.Direction.Left) && PlayerInput.isMoveRightKeyHold() ){
+                PlayerMoveOfWallHelper.EnableCounter();
+            }else if( ( m_dir == GlobalUtils.Direction.Left)  && PlayerInput.isMoveLeftKeyHold() ){
+                PlayerMoveOfWallHelper.EnableCounter();
             }
-        //    }else if( isMovingLeft && CatUtils.isMoveRightKeyHold() ){
-        //        m_isOver = true;
-        //        m_nextState = new PlayerFall( m_controllabledObject, GlobalUtils.Direction.Right  );
-        //    }else if(!isMovingLeft && CatUtils.isMoveLeftKeyHold() ){
-        //        m_isOver = true;
-        //        m_nextState = new PlayerFall( m_controllabledObject, GlobalUtils.Direction.Left  );
-        //    }
         }else{
             if( PlayerInput.isJumpKeyJustPressed() ){
                 m_isOver = true;

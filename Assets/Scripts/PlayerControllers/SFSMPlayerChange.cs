@@ -18,7 +18,7 @@ public class SFSMPlayerChange : SFSMBase
     public override void Update(){
         base.Update();
         ProcessCharacterChange();
-        StackStatusPrint();
+//        StackStatusPrint();
     }
 
     private string RemoveDirectionInfo( string stateName ){

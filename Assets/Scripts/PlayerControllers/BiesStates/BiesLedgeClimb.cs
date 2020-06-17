@@ -17,6 +17,9 @@ public class BiesLedgeClimb : BaseState
 
         PlayerFallOfWallHelper.ResetCounter();
 
+        CommonValues.PlayerVelocity = new Vector2(0,0);
+
+
         isMovingLeft = dir == GlobalUtils.Direction.Left;
         name = "BiesLedgeClimb";
         m_dir = dir;
@@ -28,6 +31,10 @@ public class BiesLedgeClimb : BaseState
         m_transition = m_controllabledObject.
                        GetComponent<Player>().animationNode.
                        GetComponent<AnimationTransition>();
+    }
+
+    public override void OnExit(){
+        CommonValues.PlayerVelocity = new Vector2(0,0);
     }
 
     public override void UpdateDirection(){

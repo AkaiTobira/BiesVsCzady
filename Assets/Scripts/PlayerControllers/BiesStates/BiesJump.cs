@@ -19,6 +19,7 @@ public class BiesJump : BaseState
 
     public BiesJump( GameObject controllable, GlobalUtils.Direction dir) : base( controllable ) {
         isMovingLeft = dir == GlobalUtils.Direction.Left;
+        
         JumpForce    = BiesUtils.PlayerJumpForceMin;
 
         name = "BiesJump";
@@ -28,19 +29,31 @@ public class BiesJump : BaseState
         MaxJUMPRISING           = BiesUtils.JumpMaxTime;
         timeOfJumpForceRising   = MaxJUMPRISING;
         timeOfIgnoringWallStick = m_controllabledObject.GetComponent<BiesBalance>().timeToJumpApex / 2.0f;
+        CommonValues.PlayerVelocity.x = 0;
+
     }
 
 
     private void checkIfShouldBeOver(){
         if( m_detector.isOnCelling()){
+            CommonValues.PlayerVelocity.y = 0;
+            CommonValues.PlayerVelocity.x = 0;
+
             velocity.y = 0;
+            timeOfJumpForceRising = 0.0f;
             m_isOver   = true;
         }
 
-        if( PlayerFallHelper.FallRequirementsMeet( m_detector.isOnGround()) && velocity.y < 0 ){ 
+        if( PlayerFallHelper.FallRequirementsMeet( m_detector.isOnGround()) && CommonValues.PlayerVelocity.y < 0 ){ 
             m_isOver = true;
+            timeOfJumpForceRising = 0.0f;
+            m_nextState = new BiesFall( m_controllabledObject, m_detector.GetCurrentDirection());
         }
+    }
 
+    public override void OnExit(){
+        GravityForce = 0;
+        JumpForce    = 0;
     }
 
     public override void Process(){
@@ -59,21 +72,21 @@ public class BiesJump : BaseState
         }
         timeOfJumpForceRising   -= Time.deltaTime;
         GravityForce += -BiesUtils.GravityForce * Time.deltaTime;
-        velocity.y = JumpForce + GravityForce; 
-        velocity.y = Mathf.Max( velocity.y, -500 );
+        CommonValues.PlayerVelocity.y = JumpForce + GravityForce; 
+        CommonValues.PlayerVelocity.y = Mathf.Max( CommonValues.PlayerVelocity.y, -500 );
 
         if( swipeOn ){
-            velocity.x = ( m_swipe == GlobalUtils.Direction.Left ) ? 
+             CommonValues.PlayerVelocity.x = ( m_swipe == GlobalUtils.Direction.Left ) ? 
                             Mathf.Max(  -BiesUtils.maxMoveDistanceInAir,
-                                        velocity.x -BiesUtils.MoveSpeedInAir * Time.deltaTime) : 
+                                         CommonValues.PlayerVelocity.x -BiesUtils.MoveSpeedInAir * Time.deltaTime) : 
                             Mathf.Min(  BiesUtils.maxMoveDistanceInAir,
-                                        velocity.x + BiesUtils.MoveSpeedInAir * Time.deltaTime);
+                                         CommonValues.PlayerVelocity.x + BiesUtils.MoveSpeedInAir * Time.deltaTime);
             BiesUtils.swipeSpeedValue = velocity.x;
             // if velocity.x > 0 => m_direction = Direction.Left
             // else velocity.x < 0 => m_direction = Direction.Right czy jakoś tak.
         }
 
-        m_detector.Move(velocity * Time.deltaTime);
+        m_detector.Move( CommonValues.PlayerVelocity * Time.deltaTime);
         checkIfShouldBeOver();
     }
 

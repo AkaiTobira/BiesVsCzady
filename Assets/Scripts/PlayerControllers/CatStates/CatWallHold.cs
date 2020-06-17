@@ -16,6 +16,7 @@ public class CatWallHold : BaseState
         name = "CatWallHold" + ((isMovingLeft)? "L": "R");
         m_dir = dir;
         CommonValues.PlayerVelocity.y =0;
+
     }
 
     public override void Process(){

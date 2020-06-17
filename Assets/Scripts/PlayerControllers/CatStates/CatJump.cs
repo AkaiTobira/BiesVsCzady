@@ -22,6 +22,7 @@ public class CatJump : BaseState
 
         name = "CatJump";
         PlayerFallOfWallHelper.ResetCounter();
+        PlayerMoveOfWallHelper.ResetCounter();
         m_detector.CheatMove( new Vector2(0,40.0f));
         timeOfJumpForceRising   = CatUtils.JumpMaxTime;
         timeOfIgnoringWallStick = m_controllabledObject.GetComponent<CatBalance>().timeToJumpApex / 2.0f;
