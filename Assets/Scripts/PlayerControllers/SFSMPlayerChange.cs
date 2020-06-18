@@ -21,6 +21,54 @@ public class SFSMPlayerChange : SFSMBase
 //        StackStatusPrint();
     }
 
+    public override void OverriteStates(string targetState, GlobalUtils.AttackInfo attackInfo){
+
+        string currentStateName = RemoveDirectionInfo(GetStateName());
+        string currentFormName  = GetCurrentFormName(currentStateName);
+        if( GetStateName().Contains("Dead")) return;
+        if( GetStateName().Contains("Hurt")) return;
+        
+        currentStateName = RemoveFormName( currentStateName);
+        m_states.Clear();
+        m_states.Push( PlayerChangeRules.GetIdleState(currentFormName) );
+        
+        switch( targetState){
+            case "Hurt" : 
+                switch( currentFormName ){
+                    case "Bies" : 
+                        m_states.Push( new BiesHurt(m_controllabledObject, attackInfo));
+                    break;
+                    case "Cat" :
+                        m_states.Push( new CatHurt(m_controllabledObject, attackInfo));
+                    break;
+                }
+                break;
+            case "Stun" : 
+                switch( currentFormName ){
+                    case "Bies" : 
+                        m_states.Push( new BiesStun(m_controllabledObject, attackInfo));
+                    break;
+                    case "Cat" :
+                        m_states.Push( new CatStun(m_controllabledObject, attackInfo));
+                    break;
+                }
+                break;
+            case "Dead" : 
+                switch( currentFormName ){
+                    case "Bies" : 
+                        m_states.Push( new BiesDead(m_controllabledObject, attackInfo));
+                    break;
+                    case "Cat" :
+                        m_states.Push( new CatDead(m_controllabledObject, attackInfo));
+                    break;
+                }
+                break;
+        }
+
+
+    }
+
+
     private string RemoveDirectionInfo( string stateName ){
         if( stateName.EndsWith("L") || stateName.EndsWith("R")){
             return stateName.Substring( 0, stateName.Length-1);

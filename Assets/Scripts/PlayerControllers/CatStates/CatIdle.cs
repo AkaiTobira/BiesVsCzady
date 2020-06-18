@@ -7,12 +7,16 @@ public class CatIdle : BaseState
 
     public CatIdle( GameObject controllable ) : base( controllable ) {
         name = "CatIdle";
+    }
 
+    private void HandleStopping(){
+        float acceleration = (CatUtils.PlayerSpeed / CatUtils.MoveBrakingTime) * Time.deltaTime;
+        float currentValue = Mathf.Max( Mathf.Abs( CommonValues.PlayerVelocity.x) - acceleration, 0);
+        CommonValues.PlayerVelocity.x = currentValue * (int)m_detector.GetCurrentDirection();
     }
 
     public override void HandleInput(){
         if( PlayerFallHelper.FallRequirementsMeet( m_detector.isOnGround() ) ){
-            CommonValues.PlayerVelocity.x = 0;
             m_nextState = new CatFall(m_controllabledObject, m_detector.GetCurrentDirection());
         }else if( PlayerInput.isAttack2KeyPressed() ){
             m_nextState = new CatAttack2(m_controllabledObject);
@@ -37,6 +41,8 @@ public class CatIdle : BaseState
     }
 
     public override void Process(){
+        HandleStopping();
+
         if( ! m_detector.isOnGround() ){
             CommonValues.PlayerVelocity.y += -CatUtils.GravityForce * Time.deltaTime;
         }else{

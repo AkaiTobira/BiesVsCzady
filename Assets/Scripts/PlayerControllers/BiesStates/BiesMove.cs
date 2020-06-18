@@ -5,6 +5,7 @@ using UnityEngine;
 public class BiesMove : BaseState
 {
     private bool isMovingLeft = false;
+    private bool isAccelerating = true;
 
     public BiesMove( GameObject controllable, GlobalUtils.Direction dir) : base( controllable ) {
         // play change direction animation;
@@ -14,14 +15,16 @@ public class BiesMove : BaseState
         isMovingLeft = dir == GlobalUtils.Direction.Left;
         name = "BiesMove";
         CommonValues.PlayerVelocity.x = 0;
-    //    m_dir = dir;
+        m_dir = dir;
+
+        rotationAngle = ( m_dir == GlobalUtils.Direction.Left) ? 180 :0; 
+        m_controllabledObject.GetComponent<Player>().animationNode.eulerAngles = new Vector3( 0, rotationAngle, slopeAngle);
     }
-   public override void OnExit(){
-        CommonValues.PlayerVelocity.x = 0;
-    }
+   public override void OnExit(){}
 
     public override void Process(){
-        CommonValues.PlayerVelocity.x = BiesUtils.PlayerSpeed * ( isMovingLeft ? -1 : 1);
+        HandleAcceleration();
+    //    CommonValues.PlayerVelocity.x = BiesUtils.PlayerSpeed * ( isMovingLeft ? -1 : 1);
         if( isMovingLeft  && m_detector.isCollideWithLeftWall() ) CommonValues.PlayerVelocity.x = 0.0f;
         if( !isMovingLeft && m_detector.isCollideWithRightWall()) CommonValues.PlayerVelocity.x = 0.0f;
 
@@ -41,7 +44,18 @@ public class BiesMove : BaseState
         }
     }
 
+    private void HandleAcceleration(){
+        if( ! isAccelerating ) return;
+        float acceleration = (BiesUtils.PlayerSpeed / BiesUtils.MoveAccelerationTime) * Time.deltaTime;
+        float currentValue = Mathf.Min( Mathf.Abs( CommonValues.PlayerVelocity.x) + acceleration, BiesUtils.PlayerSpeed );
+        CommonValues.PlayerVelocity.x = currentValue * (int)m_dir;
+    }
+
     public override void HandleInput(){
+        if( PlayerInput.isMoveLeftKeyHold() || PlayerInput.isMoveRightKeyHold()) {
+            isAccelerating = true;
+        }
+
         if( PlayerFallHelper.FallRequirementsMeet( m_detector.isOnGround()) ){
             m_nextState = new BiesFall(m_controllabledObject, GlobalUtils.Direction.Left);
         }else if( PlayerInput.isAttack1KeyPressed() ){

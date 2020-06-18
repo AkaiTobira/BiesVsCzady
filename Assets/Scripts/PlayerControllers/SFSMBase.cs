@@ -42,4 +42,9 @@ public class SFSMBase
         processStack();
         switchState();
     }
+
+    public virtual void OverriteStates( string targetState, GlobalUtils.AttackInfo attackInfo = new GlobalUtils.AttackInfo() ){
+
+    }
+
 }

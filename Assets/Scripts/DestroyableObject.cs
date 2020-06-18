@@ -47,7 +47,7 @@ public class DestroyableObject : MonoBehaviour
         if( other.tag == "PlayerHitBox"){
 
             if( durability < 0) return;
-            GlobalUtils.AttackStateInfo infoPack =  
+            GlobalUtils.AttackInfo infoPack =  
                 GlobalUtils.PlayerObject.GetComponent<Player>().GetPlayerAttackInfo();
             
             if( infoPack.isValid){

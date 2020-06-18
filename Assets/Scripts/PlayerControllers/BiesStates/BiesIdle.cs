@@ -39,7 +39,15 @@ public class BiesIdle : BaseState
         }
     }
 
+    private void HandleStopping(){
+        float acceleration = (CatUtils.PlayerSpeed / BiesUtils.MoveBrakingTime) * Time.deltaTime;
+        float currentValue = Mathf.Max( Mathf.Abs( CommonValues.PlayerVelocity.x) - acceleration, 0);
+        CommonValues.PlayerVelocity.x = currentValue * (int)m_detector.GetCurrentDirection();
+    }
+
     public override void Process(){
+        HandleStopping();
+
         if( ! m_detector.isOnGround() ){
             CommonValues.PlayerVelocity.y += -BiesUtils.GravityForce * Time.deltaTime;
         }else{

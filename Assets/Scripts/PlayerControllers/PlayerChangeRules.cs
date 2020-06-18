@@ -71,6 +71,9 @@ public static class  PlayerChangeRules
     public static bool CanTransformInCurrentState( string currentStateName ){
 //        Debug.Log( currentStateName.Contains("LedgeClimb") );
         if( currentStateName.Contains("LedgeClimb"))  return false;
+        if( currentStateName.Contains("Stun"))  return false;
+        if( currentStateName.Contains("Hurt"))  return false;
+        if( currentStateName.Contains("Dead"))  return false;
         return true;
     }
 

@@ -58,6 +58,10 @@ public class JsonLoader : MonoBehaviour
         public float WallJumpFactorsY;
         public float moveDistanceInAirWallJump;
         public float maxMoveDistanceInAirWallJump ;
+
+        public float moveAccelerationTime;
+
+        public float moveBrakingTime;
     }
 
     [System.Serializable]
@@ -80,5 +84,9 @@ public class JsonLoader : MonoBehaviour
         public float KnockBackValueAttack2Y;
         public float KnockBackValueAttack3X; 
         public float KnockBackValueAttack3Y;
+
+        public float moveAccelerationTime;
+
+        public float moveBrakingTime;
     }
 }

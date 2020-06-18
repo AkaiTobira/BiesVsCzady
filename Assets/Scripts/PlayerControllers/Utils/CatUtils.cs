@@ -19,6 +19,10 @@ public static class  CatUtils
     public static float JumpAccelerationSpeed = 0;
     public static float maxMoveDistanceInAir  = 0.0f;
 
+    public static float MoveAccelerationTime      = 0.0f;
+    public static float MoveBrakingTime      = 0.0f;
+    
+
     public static float MoveSpeedInAirWallJump        = 5.0f;
     public static float maxMoveDistanceInAirWallJump  = 0.0f;
     public static float JumpHoldTimeDelay     = 0;

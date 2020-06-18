@@ -9,11 +9,14 @@ public static class  GlobalUtils
         Right = 1
     }
 
-    public struct AttackStateInfo{
+    public struct AttackInfo{
         public bool isValid;
+
+        public float stunDuration;
         public Vector2 knockBackValue;
         public Direction fromCameAttack;
         public float attackDamage;
+        public float knockBackFrictionX;
         public string stateName;
     };
 

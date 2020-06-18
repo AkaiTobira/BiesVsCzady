@@ -19,6 +19,8 @@ public class CatBalance : MonoBehaviour
     [Range( 0.0f, 1.0f)] public float wallSlideFriction = 1.0f;
     [SerializeField] Vector2 WallJumpFactors = new Vector2(0.0f,0.0f);
 
+    [Range( 0.0001f, 10.0f)] public float MoveAccelerationTime      = 0.0f;
+    [Range( 0.0001f, 10.0f)] public float MoveBrakingTime      = 0.0f;
 
 
     void Start()
@@ -47,6 +49,10 @@ public class CatBalance : MonoBehaviour
         CatUtils.WallClimbSpeed       = wallClimbSpeed;
         CatUtils.MoveSpeedInAirWallJump        = moveDistanceInAirWallJump;
         CatUtils.maxMoveDistanceInAirWallJump  = maxMoveDistanceInAirWallJump;
+        CatUtils.MoveAccelerationTime     = MoveAccelerationTime;
+        CatUtils.MoveBrakingTime          = MoveBrakingTime;
+
+
     }
 
     public void SaveBalance(){
@@ -66,6 +72,9 @@ public class CatBalance : MonoBehaviour
 
         newCatValues.moveDistanceInAirWallJump    = moveDistanceInAirWallJump;
         newCatValues.maxMoveDistanceInAirWallJump = maxMoveDistanceInAirWallJump;
+
+        newCatValues.moveAccelerationTime = MoveAccelerationTime;
+        newCatValues.moveBrakingTime      = MoveBrakingTime;
 
         string catValues = JsonUtility.ToJson(newCatValues);
         System.IO.File.WriteAllText( Application.dataPath +  "/Resources/Temp/CatValues.json", catValues);
@@ -87,6 +96,10 @@ public class CatBalance : MonoBehaviour
         WallJumpFactors      = new Vector2( newCatValues.WallJumpFactorsX, newCatValues.WallJumpFactorsY );
         moveDistanceInAirWallJump        = newCatValues.moveDistanceInAirWallJump;
         maxMoveDistanceInAirWallJump  = newCatValues.maxMoveDistanceInAirWallJump;
+
+        MoveAccelerationTime = newCatValues.moveAccelerationTime;
+        MoveBrakingTime      = newCatValues.moveBrakingTime;
+
     }
 
     public void LockCurrentTemp(){
