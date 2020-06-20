@@ -51,7 +51,7 @@ public class BiesIdle : BaseState
     public override void Process(){
         HandleStopping();
 
-        Debug.Log("IDLE" + m_dir.ToString());
+    //    Debug.Log("IDLE" + m_dir.ToString());
 
         m_animator.SetFloat( "FallVelocity", 0);
         m_animator.SetFloat("MoveVelocity", Mathf.Abs(CommonValues.PlayerVelocity.x));

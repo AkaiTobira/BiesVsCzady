@@ -92,7 +92,7 @@ public class Player : MonoBehaviour
     }
 
     void OnTriggerEnter2D(Collider2D other) {
-        Debug.Log(other.gameObject.name);
+//        Debug.Log(other.gameObject.name);
     }
 
     public void OnHit( GlobalUtils.AttackInfo infoPack ){
@@ -116,6 +116,8 @@ public class Player : MonoBehaviour
     void Update(){
         m_controller.Update();
         UpdateCounters();
+
+        m_animator.SetBool("isGrounded", m_detector.isOnGround());
 
         isOnGround  = m_detector.isOnGround();
         isWallClose = m_detector.isWallClose();

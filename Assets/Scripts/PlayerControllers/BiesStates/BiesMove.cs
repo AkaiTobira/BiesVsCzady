@@ -62,9 +62,7 @@ public class BiesMove : BaseState
     public override void Process(){
         HandleAcceleration();
 
-        Debug.Log("MOVE" + m_dir.ToString());
-
-
+   //     Debug.Log("MOVE" + m_dir.ToString());
 
         m_animator.SetFloat( "FallVelocity", 0);
         m_animator.SetFloat("MoveVelocity", Mathf.Abs(CommonValues.PlayerVelocity.x));

@@ -18,7 +18,7 @@ public class SFSMPlayerChange : SFSMBase
     public override void Update(){
         base.Update();
         ProcessCharacterChange();
-//        StackStatusPrint();
+        StackStatusPrint();
     }
 
     public override void OverriteStates(string targetState, GlobalUtils.AttackInfo attackInfo){

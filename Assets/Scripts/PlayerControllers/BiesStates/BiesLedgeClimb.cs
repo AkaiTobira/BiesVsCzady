@@ -20,6 +20,8 @@ public class BiesLedgeClimb : BaseState
         CommonValues.PlayerVelocity = new Vector2(0,0);
 
 
+
+
         isMovingLeft = dir == GlobalUtils.Direction.Left;
         name = "BiesLedgeClimb";
         m_dir = dir;
@@ -27,6 +29,9 @@ public class BiesLedgeClimb : BaseState
         m_controllabledObject.GetComponent<Player>().animationNode.eulerAngles = new Vector3( 0, rotationAngle, slopeAngle);
 
         timeToEnd = getAnimationLenght("PlayerLedgeClimb");
+
+//        Debug.Log( timeToEnd );
+
         m_animator.SetTrigger("BiesClimb");
         m_transition = m_controllabledObject.
                        GetComponent<Player>().animationNode.
@@ -53,6 +58,8 @@ public class BiesLedgeClimb : BaseState
     }
 
     public override void Process(){
+        CommonValues.PlayerVelocity = new Vector2(0,0);
+
         velocity.x   = (int)m_detector.GetCurrentDirection() * m_transition.MoveSpeed.x;
         velocity.y   = m_transition.MoveSpeed.y;
 

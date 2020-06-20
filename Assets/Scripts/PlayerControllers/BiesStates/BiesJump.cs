@@ -29,21 +29,22 @@ public class BiesJump : BaseState
 
         startAnimationDelay = getAnimationLenght( "BiesJumpPreparation");
 
-        m_animator.SetBool( "isJumping" , true);
+        m_animator.SetTrigger("BiesJumpPressed");
 
         MaxJUMPRISING           = BiesUtils.JumpMaxTime;
         timeOfJumpForceRising   = MaxJUMPRISING;
         timeOfIgnoringWallStick = m_controllabledObject.GetComponent<BiesBalance>().timeToJumpApex / 2.0f;
         CommonValues.PlayerVelocity.x = 0;
         
-        
         GlobalUtils.PlayerObject.GetComponent<Player>().StartCoroutine(StartJump(startAnimationDelay));
     }
 
     IEnumerator StartJump( float time ){
         yield return new WaitForSeconds(time);
+        if( m_isOver ) yield break;
         m_detector.CheatMove( new Vector2(0,40.0f));
         CommonValues.PlayerVelocity.y = JumpForce + GravityForce; 
+        m_animator.ResetTrigger("BiesJumpPressed");
         Debug.Log("ALL IS FINE");
     }
 
@@ -62,17 +63,17 @@ public class BiesJump : BaseState
         if( m_detector.isOnCelling()){
             CommonValues.PlayerVelocity.y = 0;
             CommonValues.PlayerVelocity.x = 0;
-            m_animator.SetBool( "isJumping" , false);
-
             velocity.y = 0;
             timeOfJumpForceRising = 0.0f;
             m_isOver   = true;
+            m_animator.ResetTrigger("BiesJumpPressed");
+
         }
 
         if( PlayerFallHelper.FallRequirementsMeet( m_detector.isOnGround()) && CommonValues.PlayerVelocity.y < 0 ){ 
+            m_animator.ResetTrigger("BiesJumpPressed");
             m_isOver = true;
             timeOfJumpForceRising = 0.0f;
-            m_animator.SetBool( "isJumping" , false);
             m_nextState = new BiesFall( m_controllabledObject, m_detector.GetCurrentDirection());
         }
     }
@@ -80,7 +81,6 @@ public class BiesJump : BaseState
     public override void OnExit(){
         GravityForce = 0;
         JumpForce    = 0;
-        m_animator.SetBool( "isJumping" , false);
     }
 
     public override void Process(){
@@ -125,7 +125,7 @@ public class BiesJump : BaseState
 
         if( m_detector.canClimbLedge() ){
             m_isOver = true;
-            m_animator.SetBool( "isJumping" , false);
+            m_animator.ResetTrigger("BiesJumpPressed");
             m_nextState = new BiesLedgeClimb( m_controllabledObject, m_dir);
         }
 
