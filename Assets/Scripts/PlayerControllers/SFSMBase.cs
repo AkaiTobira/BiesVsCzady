@@ -30,7 +30,9 @@ public class SFSMBase
 
     private void switchState(){
         BaseState nextState = m_states.Peek().NextState();
-        if( nextState != null ) m_states.Push(nextState);
+        if( nextState == null ) return;
+        m_states.Push(nextState);
+        m_states.Peek().OnEnter();
     }
 
     public GlobalUtils.Direction GetDirection(){

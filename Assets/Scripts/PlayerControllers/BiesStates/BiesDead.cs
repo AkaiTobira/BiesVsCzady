@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 public class BiesDead : BaseState{    
     private bool isMovingLeft = false;
     private float timeToEnd;
@@ -13,7 +13,7 @@ public class BiesDead : BaseState{
         isMovingLeft = m_detector.GetCurrentDirection() == GlobalUtils.Direction.Left;
         name = "BiesDead";
         m_animator.SetTrigger( "BiesDead" );
-        timeToEnd = getAnimationLenght("BiesDead");
+        timeToEnd = 3;//getAnimationLenght("BiesDead");
 
         velocity          = infoPack.knockBackValue;
         velocity.x        *= (int)infoPack.fromCameAttack;
@@ -37,7 +37,7 @@ public class BiesDead : BaseState{
         timeToEnd -= Time.deltaTime;
         if( timeToEnd < 0){
  //           m_isOver = true;
-            m_animator.ResetTrigger( "BiesHurt" );
+             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
     }
 

@@ -16,15 +16,59 @@ public class BiesMove : BaseState
         name = "BiesMove";
         CommonValues.PlayerVelocity.x = 0;
         m_dir = dir;
-
+        savedDir = m_dir;
+    //    m_animator.ResetTrigger( "BiesChangingDirection");
         rotationAngle = ( m_dir == GlobalUtils.Direction.Left) ? 180 :0; 
         m_controllabledObject.GetComponent<Player>().animationNode.eulerAngles = new Vector3( 0, rotationAngle, slopeAngle);
+    
+        if( CommonValues.PlayerFaceDirection != m_dir ){
+            m_animator.SetTrigger( "BiesChangingDirection");
+        }
+        CommonValues.PlayerFaceDirection = m_dir;
     }
    public override void OnExit(){}
 
+    private GlobalUtils.Direction savedDir;
+
+    public override void UpdateDirection(){
+
+        if( savedDir != m_detector.GetCurrentDirection() ){
+            savedDir = m_detector.GetCurrentDirection();
+            m_animator.SetTrigger( "BiesChangingDirection");
+        }
+
+        base.UpdateDirection();
+/*
+        m_controllabledObject.GetComponent<Player>().animationNode.position = 
+            Vector3.SmoothDamp( m_controllabledObject.GetComponent<Player>().animationNode.position, 
+                                m_controllabledObject.transform.position, ref animationVel, m_smoothTime);
+
+        if( CommonValues.PlayerVelocity.x != 0){
+            GlobalUtils.Direction c_dir = Mathf.Sign( CommonValues.PlayerVelocity.x ) == -1 ? 
+                                               GlobalUtils.Direction.Left : 
+                                               GlobalUtils.Direction.Right;
+
+            if( m_dir == c_dir) return;
+
+            m_dir = c_dir;
+            
+            rotationAngle = ( m_dir == GlobalUtils.Direction.Left) ? 180 :0 ; 
+            m_controllabledObject.GetComponent<Player>().animationNode.eulerAngles = new Vector3( 0, rotationAngle, slopeAngle);
+            //m_controllabledObject.transform.GetChild(0).position    = m_controllabledObject.transform.position;
+        }
+*/
+    }
+
     public override void Process(){
         HandleAcceleration();
-    //    CommonValues.PlayerVelocity.x = BiesUtils.PlayerSpeed * ( isMovingLeft ? -1 : 1);
+
+        Debug.Log("MOVE" + m_dir.ToString());
+
+
+
+        m_animator.SetFloat( "FallVelocity", 0);
+        m_animator.SetFloat("MoveVelocity", Mathf.Abs(CommonValues.PlayerVelocity.x));
+
         if( isMovingLeft  && m_detector.isCollideWithLeftWall() ) CommonValues.PlayerVelocity.x = 0.0f;
         if( !isMovingLeft && m_detector.isCollideWithRightWall()) CommonValues.PlayerVelocity.x = 0.0f;
 

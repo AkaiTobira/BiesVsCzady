@@ -13,9 +13,13 @@ public class BiesFall : BaseState
     public BiesFall( GameObject controllable, GlobalUtils.Direction dir) : base( controllable ) {
         isMovingLeft = dir == GlobalUtils.Direction.Left;
         name = "BiesFall";
+
+        
+
     }
 
     public override void Process(){
+        m_animator.SetFloat( "FallVelocity", CommonValues.PlayerVelocity.y);
         CommonValues.PlayerVelocity.y += -BiesUtils.GravityForce * Time.deltaTime;
         if( swipeOn ){
             CommonValues.PlayerVelocity.x = ( m_swipe == GlobalUtils.Direction.Left ) ? 
@@ -28,6 +32,7 @@ public class BiesFall : BaseState
             // else velocity.x < 0 => m_direction = Direction.Right czy jakoś tak.
         }
         m_detector.Move(CommonValues.PlayerVelocity * Time.deltaTime);
+        CommonValues.PlayerFaceDirection = m_detector.GetCurrentDirection();
         if( m_detector.isOnGround() ) m_isOver = true;
     }
 

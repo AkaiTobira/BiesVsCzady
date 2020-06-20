@@ -48,8 +48,6 @@ public class BaseState
             Vector3.SmoothDamp( m_controllabledObject.GetComponent<Player>().animationNode.position, 
                                 m_controllabledObject.transform.position, ref animationVel, m_smoothTime);
 
-    //    slopeAngle =  (( m_dir == GlobalUtils.Direction.Right) ? 180.0f - m_detector.GetSlopeAngle()  : m_detector.GetSlopeAngle()  );
-
         if( CommonValues.PlayerVelocity.x != 0){
             GlobalUtils.Direction c_dir = Mathf.Sign( CommonValues.PlayerVelocity.x ) == -1 ? 
                                                GlobalUtils.Direction.Left : 
@@ -76,5 +74,10 @@ public class BaseState
     public virtual void OnExit(){
     //    velocity = new Vector2();
     }
+
+    public virtual void OnEnter(){
+    //    velocity = new Vector2();
+    }
+
 
 }

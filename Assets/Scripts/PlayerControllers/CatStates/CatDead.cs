@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 public class CatDead : BaseState{    
     private bool isMovingLeft = false;
     private float timeToEnd;
@@ -13,7 +13,8 @@ public class CatDead : BaseState{
         isMovingLeft = m_detector.GetCurrentDirection() == GlobalUtils.Direction.Left;
         name = "CatDead";
         m_animator.SetTrigger( "CatDead" );
-        timeToEnd = getAnimationLenght("CatDead");
+        timeToEnd = 3;
+    //    timeToEnd = getAnimationLenght("CatDead");
 
         velocity          = infoPack.knockBackValue;
         velocity.x        *= (int)infoPack.fromCameAttack;
@@ -36,8 +37,10 @@ public class CatDead : BaseState{
     private void  ProcessStateEnd(){
         timeToEnd -= Time.deltaTime;
         if( timeToEnd < 0){
+
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
  //           m_isOver = true;
-            m_animator.ResetTrigger( "CatHurt" );
+//            m_animator.ResetTrigger( "CatHurt" );
         }
     }
 
