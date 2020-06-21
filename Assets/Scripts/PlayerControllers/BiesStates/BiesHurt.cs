@@ -13,10 +13,8 @@ public class BiesHurt : BaseState{
         isMovingLeft = m_detector.GetCurrentDirection() == GlobalUtils.Direction.Left;
         name = "BiesHurt";
         m_animator.SetTrigger( "BiesHurt" );
-//        timeToEnd = getAnimationLenght("BiesHurt");
-
-        timeToEnd = 3;
-
+        timeToEnd = getAnimationLenght("BiesHurt");
+        
         velocity          = infoPack.knockBackValue;
         velocity.x        *= (int)infoPack.fromCameAttack;
         velocitXFriction  = infoPack.knockBackFrictionX;

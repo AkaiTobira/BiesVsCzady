@@ -13,7 +13,7 @@ public class BiesDead : BaseState{
         isMovingLeft = m_detector.GetCurrentDirection() == GlobalUtils.Direction.Left;
         name = "BiesDead";
         m_animator.SetTrigger( "BiesDead" );
-        timeToEnd = 3;//getAnimationLenght("BiesDead");
+        timeToEnd = getAnimationLenght("BiesDead") + 3;
 
         velocity          = infoPack.knockBackValue;
         velocity.x        *= (int)infoPack.fromCameAttack;

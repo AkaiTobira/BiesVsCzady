@@ -118,6 +118,7 @@ public class Player : MonoBehaviour
         UpdateCounters();
 
         m_animator.SetBool("isGrounded", m_detector.isOnGround());
+        m_animator.SetBool("isWallClose", m_detector.isWallClose());
 
         isOnGround  = m_detector.isOnGround();
         isWallClose = m_detector.isWallClose();

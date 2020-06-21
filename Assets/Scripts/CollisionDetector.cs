@@ -247,6 +247,16 @@ public class CollisionDetector : MonoBehaviour
         );
 	}
 
+
+    enum SlopeState{
+        Equal,
+        Descending,
+        Increasing
+    };
+
+///    public 
+
+
     public float GetSlopeAngle(){
         return collisionInfo.slopeAngle;
     }

@@ -43,6 +43,7 @@ public class BiesPushObj : BaseState
     }
 
     public override void Process(){
+        
         if( PlayerFallHelper.FallRequirementsMeet( m_detector.isOnGround()) )m_isOver = true;
 
         if( m_moveable ){
@@ -59,6 +60,8 @@ public class BiesPushObj : BaseState
                 distanceFromObject/updatedDistanceFromObject +
                 currentPullableObjectPosition;
         }
+
+        m_animator.SetBool("isPushing", !m_isOver);
     }
 
     public override void HandleInput(){

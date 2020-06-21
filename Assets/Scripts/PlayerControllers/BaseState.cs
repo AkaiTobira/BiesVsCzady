@@ -53,10 +53,10 @@ public class BaseState
                                                GlobalUtils.Direction.Left : 
                                                GlobalUtils.Direction.Right;
 
-            if( m_dir == c_dir) return;
+//            if( m_dir == c_dir) return;
 
             m_dir = c_dir;
-            
+            slopeAngle = m_detector.GetSlopeAngle();
             rotationAngle = ( m_dir == GlobalUtils.Direction.Left) ? 180 :0 ; 
             m_controllabledObject.GetComponent<Player>().animationNode.eulerAngles = new Vector3( 0, rotationAngle, slopeAngle);
             //m_controllabledObject.transform.GetChild(0).position    = m_controllabledObject.transform.position;
