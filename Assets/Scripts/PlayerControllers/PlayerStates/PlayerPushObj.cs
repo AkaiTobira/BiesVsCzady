@@ -36,11 +36,7 @@ public class PlayerPushObj : BaseState
         m_detector.Move(velocity);
     }
 
-    public override void UpdateDirection(){
-        m_controllabledObject.GetComponent<Player>().animationNode.position = 
-            Vector3.SmoothDamp( m_controllabledObject.GetComponent<Player>().animationNode.position, 
-                                m_controllabledObject.transform.position, ref animationVel, m_smoothTime);
-    }
+    protected override void UpdateDirection(){}
 
     public override void Process(){
         if( PlayerFallHelper.FallRequirementsMeet( m_detector.isOnGround()) )m_isOver = true;

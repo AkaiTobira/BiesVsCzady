@@ -6,7 +6,7 @@ public class BiesMove : BaseState
 {
     private bool isMovingLeft = false;
     private bool isAccelerating = true;
-
+    private GlobalUtils.Direction savedDir;
     public BiesMove( GameObject controllable, GlobalUtils.Direction dir) : base( controllable ) {
         // play change direction animation;
         // at end of animation call :
@@ -28,9 +28,9 @@ public class BiesMove : BaseState
     }
    public override void OnExit(){}
 
-    private GlobalUtils.Direction savedDir;
 
-    public override void UpdateDirection(){
+
+    protected override void UpdateDirection(){
 
         if( savedDir != m_detector.GetCurrentDirection() ){
             savedDir = m_detector.GetCurrentDirection();
@@ -38,25 +38,6 @@ public class BiesMove : BaseState
         }
 
         base.UpdateDirection();
-/*
-        m_controllabledObject.GetComponent<Player>().animationNode.position = 
-            Vector3.SmoothDamp( m_controllabledObject.GetComponent<Player>().animationNode.position, 
-                                m_controllabledObject.transform.position, ref animationVel, m_smoothTime);
-
-        if( CommonValues.PlayerVelocity.x != 0){
-            GlobalUtils.Direction c_dir = Mathf.Sign( CommonValues.PlayerVelocity.x ) == -1 ? 
-                                               GlobalUtils.Direction.Left : 
-                                               GlobalUtils.Direction.Right;
-
-            if( m_dir == c_dir) return;
-
-            m_dir = c_dir;
-            
-            rotationAngle = ( m_dir == GlobalUtils.Direction.Left) ? 180 :0 ; 
-            m_controllabledObject.GetComponent<Player>().animationNode.eulerAngles = new Vector3( 0, rotationAngle, slopeAngle);
-            //m_controllabledObject.transform.GetChild(0).position    = m_controllabledObject.transform.position;
-        }
-*/
     }
 
     public override void Process(){

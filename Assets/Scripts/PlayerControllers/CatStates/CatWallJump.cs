@@ -22,15 +22,22 @@ public class CatWallJump : BaseState
         isMovingLeft = dir == GlobalUtils.Direction.Left;
         velocity    = CatUtils.MinWallJumpForce;
         JumpForce   = velocity.y;
-        velocity.x *= (dir == GlobalUtils.Direction.Left)? -1 : 1;
+
+        Debug.Log( dir );
+
+        m_dir = dir;
+
+
+        velocity.x *= (int)dir;
         name = "CatWallJump";
         PlayerFallOfWallHelper.ResetCounter();
         CatUtils.ResetStamina();
 
-    //    velocity.x = Mathf.Max(CatUtils.PlayerWallJumpForce.x * inputLock/INPUT_LOCK, 
-    //                           CatUtils.maxMoveDistanceInAir) *
-     //                          velocity.y/CatUtils.PlayerWallJumpForce.y * 
-     //                           ((dir == GlobalUtils.Direction.Left)? -1 : 1);
+
+        m_detector.CheatMove(  new Vector2( 40 * (int)dir, 0) );
+
+        Debug.Log( velocity );
+
         timeOfJumpForceRising    = CatUtils.JumpMaxTime;
         CommonValues.PlayerVelocity = velocity;
     }
@@ -104,7 +111,7 @@ public class CatWallJump : BaseState
 
         if( m_detector.isWallClose() ){
             m_isOver = true;
-            m_nextState = new CatWallSlide( m_controllabledObject, GlobalUtils.ReverseDirection(m_dir));
+            m_nextState = new CatWallSlide( m_controllabledObject, m_dir);//GlobalUtils.ReverseDirection(m_dir));
         }
     }
 }

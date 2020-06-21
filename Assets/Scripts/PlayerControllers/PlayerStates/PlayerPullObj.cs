@@ -33,10 +33,7 @@ public class PlayerPullObj : BaseState
                                                m_moveable.transform.position );
     }
 
-    public override void UpdateDirection(){
-        m_controllabledObject.GetComponent<Player>().animationNode.position = 
-            Vector3.SmoothDamp( m_controllabledObject.GetComponent<Player>().animationNode.position, 
-                                m_controllabledObject.transform.position, ref animationVel, m_smoothTime);
+    protected override void UpdateDirection(){
     }
 
     public override void OnExit(){

@@ -7,6 +7,7 @@ public class CatMove : BaseState
     private bool isMovingLeft = false;
 
     private bool isAccelerating = false;
+    private GlobalUtils.Direction savedDir;
 
     public CatMove( GameObject controllable, GlobalUtils.Direction dir) : base( controllable ) {
         // play change direction animation;
@@ -20,9 +21,14 @@ public class CatMove : BaseState
         name = "CatMove";
         CommonValues.PlayerVelocity.x = 0;
         m_dir = dir;
+        savedDir = m_dir;
 
+        if( CommonValues.PlayerFaceDirection != m_dir ){
+            m_animator.SetTrigger( "CatChangingDirection");
+        }
         rotationAngle = ( m_dir == GlobalUtils.Direction.Left) ? 180 :0 ; 
         m_controllabledObject.GetComponent<Player>().animationNode.eulerAngles = new Vector3( 0, rotationAngle, slopeAngle);
+        CommonValues.PlayerFaceDirection = m_dir;
     }
 
 
@@ -36,6 +42,17 @@ public class CatMove : BaseState
         }
     }
 
+
+    protected override void UpdateDirection(){
+
+        if( savedDir != m_detector.GetCurrentDirection() ){
+            savedDir = m_detector.GetCurrentDirection();
+            m_animator.SetTrigger( "CatChangingDirection");
+        }
+
+        base.UpdateDirection();
+    }
+
     private void HandleAcceleration(){
         if( ! isAccelerating ) return;
         float acceleration = (CatUtils.PlayerSpeed / CatUtils.MoveAccelerationTime) * Time.deltaTime;
@@ -46,6 +63,9 @@ public class CatMove : BaseState
     public override void Process(){
 
         HandleAcceleration();
+
+        m_animator.SetFloat( "FallVelocity", 0);
+        m_animator.SetFloat("MoveVelocity", Mathf.Abs(CommonValues.PlayerVelocity.x));
 
         if( isMovingLeft  && m_detector.isCollideWithLeftWall() ) CommonValues.PlayerVelocity.x = 0.0f;
         if( !isMovingLeft && m_detector.isCollideWithRightWall()) CommonValues.PlayerVelocity.x = 0.0f;

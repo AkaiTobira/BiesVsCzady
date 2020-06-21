@@ -14,6 +14,7 @@ public class CatFall : BaseState
 
     public CatFall( GameObject controllable, GlobalUtils.Direction dir) : base( controllable ) {
         isMovingLeft = dir == GlobalUtils.Direction.Left;
+        m_dir = dir;
         name = "CatFall";
         
         if( PlayerFallOfWallHelper.FallOfWallRequirementsMeet() || PlayerMoveOfWallHelper.MoveOfWallRequirementsMeet() ) {
@@ -22,6 +23,7 @@ public class CatFall : BaseState
     }
 
     public override void Process(){
+        m_animator.SetFloat( "FallVelocity", CommonValues.PlayerVelocity.y);
         WallSlideDelay -= Time.deltaTime;
         CommonValues.PlayerVelocity.y += -CatUtils.GravityForce * Time.deltaTime;
         if( swipeOn ){
@@ -31,8 +33,8 @@ public class CatFall : BaseState
                             Mathf.Min(   CatUtils.maxMoveDistanceInAir,
                                         CommonValues.PlayerVelocity.x + CatUtils.MoveSpeedInAir * Time.deltaTime);
 
-            // if velocity.x  > 0 => m_direction = Direction.Left
-            // else velocity.x < 0 => m_direction = Direction.Right czy jakoś tak.
+//            if ( CommonValues.PlayerVelocity.x < 0 ) m_dir = GlobalUtils.Direction.Left;
+//            else if ( CommonValues.PlayerVelocity.x > 0 ) m_dir = GlobalUtils.Direction.Right;
         }
         
         m_detector.Move(CommonValues.PlayerVelocity * Time.deltaTime);
@@ -57,7 +59,7 @@ public class CatFall : BaseState
         }else if( m_detector.isWallClose() && WallSlideDelay < 0){
             m_isOver = true;
             CommonValues.PlayerVelocity.x = 0;
-            m_nextState = new CatWallSlide( m_controllabledObject, GlobalUtils.ReverseDirection(m_dir));
+            m_nextState = new CatWallSlide( m_controllabledObject, m_dir);
             /*
             if( m_swipe == GlobalUtils.Direction.Left && PlayerInput.isMoveLeftKeyHold() ){
                 m_isOver = true;
@@ -71,7 +73,6 @@ public class CatFall : BaseState
         }
 
         if( PlayerSwipeLock.SwipeUnlockRequirementsMeet() ){
-
             if( PlayerInput.isMoveLeftKeyHold() ){
                 swipeOn = true;
                 m_swipe = GlobalUtils.Direction.Left;
@@ -82,7 +83,5 @@ public class CatFall : BaseState
                 swipeOn = false;
             }
         }
-
     }
-
 }

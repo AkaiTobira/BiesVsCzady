@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public static class  GlobalUtils
 {
@@ -22,6 +23,8 @@ public static class  GlobalUtils
 
     public static Transform   PlayerObject   = null;
     public static CameraShake cameraShake    = null;
+
+    public static Text        debugConsole   = null;
 
     public static Direction ReverseDirection( Direction curr ){
         return (curr == Direction.Left) ? Direction.Right : Direction.Left;

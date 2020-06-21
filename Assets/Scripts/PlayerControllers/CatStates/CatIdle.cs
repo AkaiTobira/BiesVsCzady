@@ -4,9 +4,11 @@ using UnityEngine;
 
 public class CatIdle : BaseState
 {
+    GlobalUtils.Direction lastFacingDir;
 
     public CatIdle( GameObject controllable ) : base( controllable ) {
         name = "CatIdle";
+        lastFacingDir = m_detector.GetCurrentDirection();
     }
 
     private void HandleStopping(){
@@ -42,6 +44,8 @@ public class CatIdle : BaseState
 
     public override void Process(){
         HandleStopping();
+        m_animator.SetFloat( "FallVelocity", 0);
+        m_animator.SetFloat("MoveVelocity", Mathf.Abs(CommonValues.PlayerVelocity.x));
 
         if( ! m_detector.isOnGround() ){
             CommonValues.PlayerVelocity.y += -CatUtils.GravityForce * Time.deltaTime;

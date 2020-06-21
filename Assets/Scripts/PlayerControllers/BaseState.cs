@@ -42,24 +42,47 @@ public class BaseState
 
     protected Vector3 animationVel = Vector3.zero;
     protected float m_smoothTime = 0.03f;
-    public virtual void UpdateDirection(){
+
+
+    public void UpdateAnimator(){
+        UpdateDirection();
+        UpdateFloorAligment();
+        UpdateAnimatorPosition();
+
+    }
+
+
+    protected virtual void UpdateAnimatorPosition(){
 
         m_controllabledObject.GetComponent<Player>().animationNode.position = 
             Vector3.SmoothDamp( m_controllabledObject.GetComponent<Player>().animationNode.position, 
                                 m_controllabledObject.transform.position, ref animationVel, m_smoothTime);
+        m_controllabledObject.GetComponent<Player>().animationNode.eulerAngles = new Vector3( 0, rotationAngle, slopeAngle);
+
+    }
+
+
+    protected virtual void UpdateFloorAligment(){
+        float newSlopeAngle = m_detector.GetSlopeAngle(); 
+
+        float changeSpeed = 10f;
+
+        if( newSlopeAngle < 0 ){
+            slopeAngle = Mathf.Max( newSlopeAngle, slopeAngle + (newSlopeAngle - slopeAngle) * changeSpeed * Time.deltaTime) ;
+        }else{
+            slopeAngle = Mathf.Min( newSlopeAngle, slopeAngle + (newSlopeAngle - slopeAngle) * changeSpeed * Time.deltaTime) ;
+        }
+    }
+
+    protected virtual void UpdateDirection(){
 
         if( CommonValues.PlayerVelocity.x != 0){
             GlobalUtils.Direction c_dir = Mathf.Sign( CommonValues.PlayerVelocity.x ) == -1 ? 
                                                GlobalUtils.Direction.Left : 
                                                GlobalUtils.Direction.Right;
 
-            if( m_dir == c_dir) return;
-
             m_dir = c_dir;
-            slopeAngle = m_detector.GetSlopeAngle();
-            rotationAngle = ( m_dir == GlobalUtils.Direction.Left) ? 180 :0 ; 
-            m_controllabledObject.GetComponent<Player>().animationNode.eulerAngles = new Vector3( 0, rotationAngle, slopeAngle);
-            //m_controllabledObject.transform.GetChild(0).position    = m_controllabledObject.transform.position;
+            rotationAngle = ( c_dir == GlobalUtils.Direction.Left) ? 180 :0 ; 
         }
     }
 
