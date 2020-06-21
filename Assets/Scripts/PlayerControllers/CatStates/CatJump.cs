@@ -26,7 +26,7 @@ public class CatJump : BaseState
         m_detector.CheatMove( new Vector2(0,40.0f));
         timeOfJumpForceRising   = CatUtils.JumpMaxTime;
         timeOfIgnoringWallStick = m_controllabledObject.GetComponent<CatBalance>().timeToJumpApex / 2.0f;
-        CommonValues.PlayerVelocity.x = 0;
+    //    CommonValues.PlayerVelocity.x = 0;
     }
 
 

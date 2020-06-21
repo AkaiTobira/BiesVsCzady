@@ -53,7 +53,7 @@ public class BaseState
                                                GlobalUtils.Direction.Left : 
                                                GlobalUtils.Direction.Right;
 
-//            if( m_dir == c_dir) return;
+            if( m_dir == c_dir) return;
 
             m_dir = c_dir;
             slopeAngle = m_detector.GetSlopeAngle();

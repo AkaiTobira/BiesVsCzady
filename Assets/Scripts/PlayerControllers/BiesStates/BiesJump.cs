@@ -34,7 +34,7 @@ public class BiesJump : BaseState
         MaxJUMPRISING           = BiesUtils.JumpMaxTime;
         timeOfJumpForceRising   = MaxJUMPRISING;
         timeOfIgnoringWallStick = m_controllabledObject.GetComponent<BiesBalance>().timeToJumpApex / 2.0f;
-        CommonValues.PlayerVelocity.x = 0;
+    //    CommonValues.PlayerVelocity.x = 0;
         
         GlobalUtils.PlayerObject.GetComponent<Player>().StartCoroutine(StartJump(startAnimationDelay));
     }
