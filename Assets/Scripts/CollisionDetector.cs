@@ -485,4 +485,12 @@ public class CollisionDetector : MonoBehaviour
     public void CheatMove( Vector2 velocity){
         transform.Translate( velocity );
     }
+
+    public bool isOnCelling(){
+        return collisionInfo.above;
+    }
+
+    public bool isOnGround(){
+        return collisionInfo.below;
+    }
 }

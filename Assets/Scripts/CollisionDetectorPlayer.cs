@@ -230,10 +230,5 @@ public class CollisionDetectorPlayer : CollisionDetector
         return collisionInfo.right;
     }
 
-    public bool isOnCelling(){
-        return collisionInfo.above;
-    }
-    public bool isOnGround(){
-        return collisionInfo.below;
-    }
+
 }
