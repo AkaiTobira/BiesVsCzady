@@ -60,7 +60,7 @@ public class CatWallSlide : BaseState
     public override void HandleInput(){
         if( PlayerInput.isClimbKeyPressed() ){
             m_isOver = true;
-            m_nextState = new CatWallClimb( m_controllabledObject, GlobalUtils.ReverseDirection(m_dir));
+        //    m_nextState = new CatWallClimb( m_controllabledObject, GlobalUtils.ReverseDirection(m_dir));
         }
         if( !PlayerInput.isSpecialKeyHold() ) {
 

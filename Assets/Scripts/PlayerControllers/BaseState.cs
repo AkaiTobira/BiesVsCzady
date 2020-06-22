@@ -46,9 +46,9 @@ public class BaseState
 
     public void UpdateAnimator(){
         UpdateDirection();
-        UpdateFloorAligment();
-        UpdateAnimatorPosition();
 
+        UpdateAnimatorPosition();
+        UpdateFloorAligment();
     }
 
 
@@ -57,32 +57,33 @@ public class BaseState
         m_controllabledObject.GetComponent<Player>().animationNode.position = 
             Vector3.SmoothDamp( m_controllabledObject.GetComponent<Player>().animationNode.position, 
                                 m_controllabledObject.transform.position, ref animationVel, m_smoothTime);
-        m_controllabledObject.GetComponent<Player>().animationNode.eulerAngles = new Vector3( 0, rotationAngle, slopeAngle);
+
+
+//        m_controllabledObject.GetComponent<Player>().animationNode.eulerAngles = new Vector3( 0, rotationAngle, slopeAngle);
 
     }
 
 
     protected virtual void UpdateFloorAligment(){
         float newSlopeAngle = m_detector.GetSlopeAngle(); 
+        m_controllabledObject.GetComponent<Player>().animationNode.transform.up = m_detector.GetSlopeAngle2();
+        Debug.Log( m_detector.GetSlopeAngle2());
+        Debug.Log( m_controllabledObject.GetComponent<Player>().animationNode.transform.up );
 
-        float changeSpeed = 10f;
-
-        if( newSlopeAngle < 0 ){
-            slopeAngle = Mathf.Max( newSlopeAngle, slopeAngle + (newSlopeAngle - slopeAngle) * changeSpeed * Time.deltaTime) ;
-        }else{
-            slopeAngle = Mathf.Min( newSlopeAngle, slopeAngle + (newSlopeAngle - slopeAngle) * changeSpeed * Time.deltaTime) ;
-        }
     }
 
     protected virtual void UpdateDirection(){
 
         if( CommonValues.PlayerVelocity.x != 0){
-            GlobalUtils.Direction c_dir = Mathf.Sign( CommonValues.PlayerVelocity.x ) == -1 ? 
-                                               GlobalUtils.Direction.Left : 
-                                               GlobalUtils.Direction.Right;
-
-            m_dir = c_dir;
-            rotationAngle = ( c_dir == GlobalUtils.Direction.Left) ? 180 :0 ; 
+            m_dir = Mathf.Sign( CommonValues.PlayerVelocity.x ) == -1 ? 
+                                GlobalUtils.Direction.Left : 
+                                GlobalUtils.Direction.Right;
+                                
+       Vector3 lScale =  m_controllabledObject.GetComponent<Player>().animationNode.localScale;
+       lScale.x       = Mathf.Abs( lScale.x) * (int)m_dir;
+       m_controllabledObject.GetComponent<Player>().animationNode.localScale = lScale;
+        //    m_dir = c_dir;
+        //    rotationAngle = ( m_dir == GlobalUtils.Direction.Left) ? 180 :0 ; 
         }
     }
 
