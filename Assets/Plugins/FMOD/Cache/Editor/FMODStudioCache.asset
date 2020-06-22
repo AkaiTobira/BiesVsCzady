@@ -18,6 +18,47 @@ MonoBehaviour:
   LoadResult: 0
   FileSizes: []
   Exists: 0
+--- !u!114 &-5973503903738894509
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.bank
+  m_EditorClassIdentifier: 
+  Path: Assets/FMOD/BiesVsCzady/Build/Desktop/Master.bank
+  SubDir: 
+  lastModified: 637284323859765578
+  LoadResult: 0
+  FileSizes: []
+  Exists: 1
+--- !u!114 &-5018176193449460393
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/Bies/roar-sound-effect
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/Bies/roar-sound-effect
+  guid: 54208e0a78b1ec468498ee40e272d271
+  Banks:
+  - {fileID: -5973503903738894509}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
 --- !u!114 &-3370499722121650074
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -72,6 +113,26 @@ MonoBehaviour:
   LoadResult: 0
   FileSizes: []
   Exists: 1
+--- !u!114 &-1680195924780916626
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.strings.bank
+  m_EditorClassIdentifier: 
+  Path: Assets/FMOD/BiesVsCzady/Build/Desktop/Master.strings.bank
+  SubDir: 
+  lastModified: 637284323859805481
+  LoadResult: 0
+  FileSizes:
+  - Name: Desktop
+    Value: 828
+  Exists: 1
 --- !u!114 &-1357145633310816025
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -103,16 +164,17 @@ MonoBehaviour:
   m_Name: FMODStudioCache
   m_EditorClassIdentifier: 
   EditorBanks:
-  - {fileID: 7749895200071374444}
-  - {fileID: -2033126207230547726}
+  - {fileID: -1680195924780916626}
+  - {fileID: -5973503903738894509}
   EditorEvents:
-  - {fileID: 1100676432403404092}
+  - {fileID: -5018176193449460393}
+  - {fileID: 7822720913392955782}
   EditorParameters: []
   MasterBanks:
-  - {fileID: -2033126207230547726}
+  - {fileID: -5973503903738894509}
   StringsBanks:
-  - {fileID: 7749895200071374444}
-  stringsBankWriteTime: 637283389632899905
+  - {fileID: -1680195924780916626}
+  stringsBankWriteTime: 637284323859805481
   cacheVersion: 3
 --- !u!114 &1100676432403404092
 MonoBehaviour:
@@ -175,3 +237,26 @@ MonoBehaviour:
   - Name: Desktop
     Value: 742
   Exists: 1
+--- !u!114 &7822720913392955782
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/Kot/kot-bies-przemiana
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/Kot/kot-bies-przemiana
+  guid: ce6455acdcde144ab61d237e498e4ea5
+  Banks:
+  - {fileID: -5973503903738894509}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 1570

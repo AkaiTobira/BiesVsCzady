@@ -1218,6 +1218,8 @@ GameObject:
   - component: {fileID: 239379943}
   - component: {fileID: 239379942}
   - component: {fileID: 239379944}
+  - component: {fileID: 239379946}
+  - component: {fileID: 239379945}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -1451,6 +1453,33 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_debugText: {fileID: 1823003368}
+--- !u!114 &239379945
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 239379935}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e658f23aef23e6a4cb81a304af87e1ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  selectsound: event:/SFX/Bies/roar-sound-effect
+--- !u!114 &239379946
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 239379935}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86c6556701af9e04380698b89f691b6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attenuationObject: {fileID: 0}
+  ListenerNumber: -1
 --- !u!4 &256530484 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5310617170085545500, guid: 16bfcf7edbb4a96468c9c2a7117fea6c,
@@ -2288,7 +2317,7 @@ SpriteRenderer:
   m_SortingLayer: 1
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 0a580382dcdc2454a82a599c35dca219, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.56078434}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -2673,7 +2702,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 1000
+  orthographic size: 1700
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -11359,6 +11388,8 @@ MonoBehaviour:
   canBeKnockBacked: 0
   m_detector: {fileID: 0}
   decreaseFactor: 0
+  massFactor: 0
+  timeToHitApex: 1
 --- !u!1001 &5310617169020069961
 PrefabInstance:
   m_ObjectHideFlags: 0
