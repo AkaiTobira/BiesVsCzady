@@ -33,15 +33,11 @@ public class BiesPullObj : BaseState
                                                m_moveable.transform.position );
     }
 
-    public override void UpdateDirection(){
-        m_controllabledObject.GetComponent<Player>().animationNode.position = 
-            Vector3.SmoothDamp( m_controllabledObject.GetComponent<Player>().animationNode.position, 
-                                m_controllabledObject.transform.position, ref animationVel, m_smoothTime);
-    }
+    protected override void UpdateDirection(){}
 
     public override void OnExit(){
-        velocity = new Vector2(0,0);
-        m_detector.Move(velocity);
+        CommonValues.PlayerVelocity = new Vector2(0,0);
+        m_detector.Move(CommonValues.PlayerVelocity);
     }
     public override void Process(){
         if( PlayerFallHelper.FallRequirementsMeet( m_detector.isOnGround()) ){
@@ -79,6 +75,8 @@ public class BiesPullObj : BaseState
             m_isOver = true;
         }else if( !PlayerInput.isMoveRightKeyHold() && !PlayerInput.isMoveLeftKeyHold() ){
             m_isOver = true;
+            pullForce.x *= -1;
+            m_detector.Move( pullForce * Time.deltaTime );
         }
     }
 }

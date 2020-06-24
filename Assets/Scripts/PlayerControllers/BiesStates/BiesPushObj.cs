@@ -32,17 +32,14 @@ public class BiesPushObj : BaseState
     }
 
     public override void OnExit(){
-        velocity = new Vector2(0,0);
-        m_detector.Move(velocity);
+        CommonValues.PlayerVelocity = new Vector2(0,0);
+        m_detector.Move(CommonValues.PlayerVelocity);
     }
 
-    public override void UpdateDirection(){
-        m_controllabledObject.GetComponent<Player>().animationNode.position = 
-            Vector3.SmoothDamp( m_controllabledObject.GetComponent<Player>().animationNode.position, 
-                                m_controllabledObject.transform.position, ref animationVel, m_smoothTime);
-    }
+    protected override void UpdateDirection(){}
 
     public override void Process(){
+        
         if( PlayerFallHelper.FallRequirementsMeet( m_detector.isOnGround()) )m_isOver = true;
 
         if( m_moveable ){
@@ -59,6 +56,8 @@ public class BiesPushObj : BaseState
                 distanceFromObject/updatedDistanceFromObject +
                 currentPullableObjectPosition;
         }
+
+        m_animator.SetBool("isPushing", !m_isOver);
     }
 
     public override void HandleInput(){

@@ -5,9 +5,7 @@ using UnityEngine;
 public class BiesAttack1 : BaseState{    
     private bool isMovingLeft = false;
     private float timeToEnd;
-
     private AnimationTransition m_transition;
-
 
     public BiesAttack1( GameObject controllable) : base( controllable ){
         isMovingLeft = m_detector.GetCurrentDirection() == GlobalUtils.Direction.Left;

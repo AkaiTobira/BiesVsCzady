@@ -58,6 +58,22 @@ public class CollisionDetectorPlayer : CollisionDetector
         ProcessLedgeDetection();
     }
 
+    public float GetDistanceToClosestWall(){
+
+        Vector2 rayOrigin = new Vector2( (collisionInfo.faceDir == DIR_LEFT) ? 
+                                            borders.left + skinSize: borders.right -skinSize ,
+                                            (borders.top + borders.bottom)/2.0f  );
+
+        RaycastHit2D hit = Physics2D.Raycast(
+                rayOrigin,
+                new Vector2( collisionInfo.faceDir, 0),
+                Mathf.Infinity,
+                m_collsionMask
+            );
+
+        return hit.distance - skinSize;
+    }
+
 
     protected void ProcessLedgeDetection(){
     //    if( !closeToWall ) return;
@@ -214,10 +230,5 @@ public class CollisionDetectorPlayer : CollisionDetector
         return collisionInfo.right;
     }
 
-    public bool isOnCelling(){
-        return collisionInfo.above;
-    }
-    public bool isOnGround(){
-        return collisionInfo.below;
-    }
+
 }

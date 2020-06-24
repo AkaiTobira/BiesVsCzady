@@ -5,13 +5,17 @@ using UnityEngine;
 public class BiesIdle : BaseState
 {
 
+    GlobalUtils.Direction lastFacingDir;
+
     public BiesIdle( GameObject controllable ) : base( controllable ) {
         name = "BiesIdle";
+        lastFacingDir = m_detector.GetCurrentDirection();
     }
 
     public override void HandleInput(){
         if( PlayerFallHelper.FallRequirementsMeet( m_detector.isOnGround() ) ){
-            m_nextState = new BiesFall(m_controllabledObject, GlobalUtils.Direction.Left);
+            CommonValues.PlayerVelocity.x = 0;
+            m_nextState = new BiesFall(m_controllabledObject, m_detector.GetCurrentDirection());
         }else if( PlayerInput.isAttack1KeyPressed() ){
             m_nextState = new BiesAttack1(m_controllabledObject);
         }else if( PlayerInput.isAttack2KeyPressed() ){
@@ -33,18 +37,31 @@ public class BiesIdle : BaseState
             m_nextState = new BiesJump(m_controllabledObject, GlobalUtils.Direction.Left);     
         }else if( PlayerInput.isFallKeyHold() ) {
             m_detector.enableFallForOneWayFloor();
-            velocity.y += -PlayerUtils.GravityForce * Time.deltaTime;
-            m_detector.Move( velocity * Time.deltaTime );
+            CommonValues.PlayerVelocity.y += -PlayerUtils.GravityForce * Time.deltaTime;
+            m_detector.Move( CommonValues.PlayerVelocity * Time.deltaTime );
         }
     }
 
+    private void HandleStopping(){
+        float acceleration = (BiesUtils.PlayerSpeed / BiesUtils.MoveBrakingTime) * Time.deltaTime;
+        float currentValue = Mathf.Max( Mathf.Abs( CommonValues.PlayerVelocity.x) - acceleration, 0);
+        CommonValues.PlayerVelocity.x = currentValue * (int)m_detector.GetCurrentDirection();
+    }
+
     public override void Process(){
+        HandleStopping();
+
+    //    Debug.Log("IDLE" + m_dir.ToString());
+
+        m_animator.SetFloat( "FallVelocity", 0);
+        m_animator.SetFloat("MoveVelocity", Mathf.Abs(CommonValues.PlayerVelocity.x));
+
         if( ! m_detector.isOnGround() ){
-            velocity.y += -BiesUtils.GravityForce * Time.deltaTime;
+            CommonValues.PlayerVelocity.y += -BiesUtils.GravityForce * Time.deltaTime;
         }else{
             CatUtils.ResetStamina();
-            velocity.y = -BiesUtils.GravityForce * Time.deltaTime;
+            CommonValues.PlayerVelocity.y = -BiesUtils.GravityForce * Time.deltaTime;
         }
-        m_detector.Move( velocity * Time.deltaTime );
+        m_detector.Move( CommonValues.PlayerVelocity * Time.deltaTime );
     }
 }

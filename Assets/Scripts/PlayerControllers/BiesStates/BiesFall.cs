@@ -13,27 +13,31 @@ public class BiesFall : BaseState
     public BiesFall( GameObject controllable, GlobalUtils.Direction dir) : base( controllable ) {
         isMovingLeft = dir == GlobalUtils.Direction.Left;
         name = "BiesFall";
-        velocity.x = BiesUtils.swipeSpeedValue;
+
+        
+
     }
 
     public override void Process(){
-        velocity.y += -BiesUtils.GravityForce * Time.deltaTime;
+        m_animator.SetFloat( "FallVelocity", CommonValues.PlayerVelocity.y);
+        CommonValues.PlayerVelocity.y += -BiesUtils.GravityForce * Time.deltaTime;
         if( swipeOn ){
-            velocity.x = ( m_swipe == GlobalUtils.Direction.Left ) ? 
+            CommonValues.PlayerVelocity.x = ( m_swipe == GlobalUtils.Direction.Left ) ? 
                             Mathf.Max(   -BiesUtils.maxMoveDistanceInAir,
-                                        velocity.x -BiesUtils.MoveSpeedInAir * Time.deltaTime) : 
+                                        CommonValues.PlayerVelocity.x -BiesUtils.MoveSpeedInAir * Time.deltaTime) : 
                             Mathf.Min(    BiesUtils.maxMoveDistanceInAir,
-                                        velocity.x + BiesUtils.MoveSpeedInAir * Time.deltaTime);
+                                        CommonValues.PlayerVelocity.x + BiesUtils.MoveSpeedInAir * Time.deltaTime);
 
             // if velocity.x  > 0 => m_direction = Direction.Left
             // else velocity.x < 0 => m_direction = Direction.Right czy jakoś tak.
         }
-        m_detector.Move(velocity * Time.deltaTime);
+        m_detector.Move(CommonValues.PlayerVelocity * Time.deltaTime);
+        CommonValues.PlayerFaceDirection = m_detector.GetCurrentDirection();
         if( m_detector.isOnGround() ) m_isOver = true;
     }
 
     public override void OnExit(){
-        velocity = new Vector2();
+        CommonValues.PlayerVelocity = new Vector2();
         BiesUtils.swipeSpeedValue = 0;
     }
 

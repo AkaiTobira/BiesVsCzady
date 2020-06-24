@@ -157,8 +157,6 @@ public class CollisionDetector : MonoBehaviour
         }
     }
 
-
-
     protected void ProcessSlopeDetection(float directionX){
         float rayLenght  = Mathf.Abs (transition.x) + skinSize;
         Vector2 rayOrigin = new Vector2( (directionX == DIR_LEFT) ? 
@@ -178,7 +176,6 @@ public class CollisionDetector : MonoBehaviour
                 float slopeAngle = Vector2.Angle(hit.normal, Vector2.up); 
                 if( slopeAngle == 0 ) return;
                 if( slopeAngle < maxClimbAngle){
-                    Debug.Log( slopeAngle.ToString() +  hit.distance.ToString() );
 					if (collisionInfo.descendingSlope) {
 						collisionInfo.descendingSlope = false;
 //						transition = collisionInfo.velocityOld;
@@ -248,8 +245,103 @@ public class CollisionDetector : MonoBehaviour
         );
 	}
 
+
     public float GetSlopeAngle(){
-        return collisionInfo.slopeAngle;
+        Vector2 rayOrigin = new Vector2( //(collisionInfo.faceDir == DIR_LEFT) ? 
+                                          borders.left + ( borders.right - borders.left)/2.0f,
+                                          borders.bottom);
+
+        RaycastHit2D hit = Physics2D.Raycast(
+            rayOrigin,
+            new Vector2(0, -1),
+            100,
+            m_collsionMask
+        );
+
+        Vector2 rayOriginDescend = new Vector2( (collisionInfo.faceDir == DIR_LEFT) ? 
+                                                borders.left : borders.right,
+                                                borders.bottom);
+
+        RaycastHit2D hit2 = Physics2D.Raycast (rayOriginDescend, new Vector2( collisionInfo.faceDir, 0 ), 200, m_collsionMask);
+
+
+        Debug.DrawRay(
+            rayOriginDescend,
+            new Vector2(100 * collisionInfo.faceDir, -0),
+            new Color(1,1,1)
+        );
+
+        Debug.DrawRay(
+            rayOrigin,
+            new Vector2(0, -100),
+            new Color(0,0,0)
+        );
+
+        float slopeAngle  = Vector2.Angle(hit.normal,  Vector2.up); 
+        float slopeAngle2 = Vector2.Angle(hit2.normal, Vector2.up);
+        if( hit.distance == 0) return 0;
+
+     //   if( Mathf.Abs(slopeAngle2 - slopeAngle) > 5 ){ 
+    //        slopeAngle *= -1;
+    //    }
+
+    //    if( collisionInfo.descendingSlope ){
+    //        slopeAngle *= -1;
+    //    }
+
+    //    if( slopeAngle > 80 ) slopeAngle -= 90;
+
+        return slopeAngle;
+        
+    }
+
+    public Vector2 GetSlopeAngle2(){
+        Vector2 rayOrigin = new Vector2( //(collisionInfo.faceDir == DIR_LEFT) ? 
+                                          borders.left + ( borders.right - borders.left)/2.0f,
+                                          borders.bottom);
+
+        RaycastHit2D hit = Physics2D.Raycast(
+            rayOrigin,
+            new Vector2(0, -1),
+            100,
+            m_collsionMask
+        );
+
+        Vector2 rayOriginDescend = new Vector2( (collisionInfo.faceDir == DIR_LEFT) ? 
+                                                borders.left : borders.right,
+                                                borders.bottom);
+
+        RaycastHit2D hit2 = Physics2D.Raycast (rayOriginDescend, new Vector2( collisionInfo.faceDir, 0 ), 200, m_collsionMask);
+
+
+        Debug.DrawRay(
+            rayOriginDescend,
+            new Vector2(100 * collisionInfo.faceDir, -0),
+            new Color(1,1,1)
+        );
+
+        Debug.DrawRay(
+            rayOrigin,
+            new Vector2(0, -100),
+            new Color(0,0,0)
+        );
+
+        float newNormal  = Vector2.Angle(hit.normal,  Vector2.up); 
+        float slopeAngle2 = Vector2.Angle(hit2.normal, Vector2.up);
+    //    if( hit.distance == 0) return 0;
+
+     //   if( Mathf.Abs(slopeAngle2 - slopeAngle) > 5 ){ 
+    //        slopeAngle *= -1;
+    //    }
+
+    //    if( collisionInfo.descendingSlope ){
+    //        slopeAngle *= -1;
+    //    }
+
+    //    if( slopeAngle > 80 ) slopeAngle -= 90;
+
+        return hit.normal;
+        
     }
 
 
@@ -394,5 +486,11 @@ public class CollisionDetector : MonoBehaviour
         transform.Translate( velocity );
     }
 
+    public bool isOnCelling(){
+        return collisionInfo.above;
+    }
 
+    public bool isOnGround(){
+        return collisionInfo.below;
+    }
 }

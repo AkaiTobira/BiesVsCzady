@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public static class  GlobalUtils
 {
@@ -9,16 +10,21 @@ public static class  GlobalUtils
         Right = 1
     }
 
-    public struct AttackStateInfo{
+    public struct AttackInfo{
         public bool isValid;
+
+        public float stunDuration;
         public Vector2 knockBackValue;
         public Direction fromCameAttack;
         public float attackDamage;
+        public float knockBackFrictionX;
         public string stateName;
     };
 
     public static Transform   PlayerObject   = null;
     public static CameraShake cameraShake    = null;
+
+    public static Text        debugConsole   = null;
 
     public static Direction ReverseDirection( Direction curr ){
         return (curr == Direction.Left) ? Direction.Right : Direction.Left;

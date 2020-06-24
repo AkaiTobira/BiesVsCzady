@@ -18,6 +18,13 @@ public static class  CatUtils
     public static float FallOffWallFactor     = 0.1f;
     public static float JumpAccelerationSpeed = 0;
     public static float maxMoveDistanceInAir  = 0.0f;
+
+    public static float MoveAccelerationTime      = 0.0f;
+    public static float MoveBrakingTime      = 0.0f;
+    
+
+    public static float MoveSpeedInAirWallJump        = 5.0f;
+    public static float maxMoveDistanceInAirWallJump  = 0.0f;
     public static float JumpHoldTimeDelay     = 0;
     public static float Attack1Damage         = 2;
     public static float Attack2Damage         = 0;
@@ -26,9 +33,6 @@ public static class  CatUtils
     public static Vector2 KnockBackValueAttack1 =  new Vector2( 100, 1000);
     public static Vector2 KnockBackValueAttack2 =  new Vector2( 100, 400);
     public static Vector2 KnockBackValueAttack3 =  new Vector2( 100, 400);
-
-    //Its not related to up ones
-    public static float swipeSpeedValue = 0.0f;
 
     public static float MaxStamina = 800;
 

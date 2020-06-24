@@ -18,9 +18,10 @@ public class SFSMBase
 
     private void processStack(){
         BaseState current_state = m_states.Peek();
+        if( current_state.isOver() ) return;
         current_state.HandleInput();
         current_state.Process();
-        current_state.UpdateDirection();
+        current_state.UpdateAnimator();
     }
 
     public string GetStateName(){
@@ -29,7 +30,9 @@ public class SFSMBase
 
     private void switchState(){
         BaseState nextState = m_states.Peek().NextState();
-        if( nextState != null ) m_states.Push(nextState);
+        if( nextState == null ) return;
+        m_states.Push(nextState);
+        m_states.Peek().OnEnter();
     }
 
     public GlobalUtils.Direction GetDirection(){
@@ -41,4 +44,9 @@ public class SFSMBase
         processStack();
         switchState();
     }
+
+    public virtual void OverriteStates( string targetState, GlobalUtils.AttackInfo attackInfo = new GlobalUtils.AttackInfo() ){
+
+    }
+
 }

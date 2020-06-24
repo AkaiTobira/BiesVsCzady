@@ -19,6 +19,9 @@ public class BiesBalance : MonoBehaviour
     [SerializeField] float Attack3Damage = 5;
     [SerializeField] Vector2 KnockBackValueAttack3 =  new Vector2( 100, 400);
 
+    [Range( 0.0001f, 10.0f)] public float MoveAccelerationTime      = 0.0f;
+    [Range( 0.0001f, 10.0f)] public float MoveBrakingTime      = 0.0f;
+
     void Start()
     {
         LoadBalance("BiesValues");
@@ -41,6 +44,10 @@ public class BiesBalance : MonoBehaviour
         BiesUtils.KnockBackValueAttack1 = KnockBackValueAttack1;
         BiesUtils.KnockBackValueAttack2 = KnockBackValueAttack2;
         BiesUtils.KnockBackValueAttack3 = KnockBackValueAttack3;
+
+        BiesUtils.MoveAccelerationTime     = MoveAccelerationTime;
+        BiesUtils.MoveBrakingTime          = MoveBrakingTime;
+
     }
 
     public void SaveBalance(){
@@ -63,6 +70,11 @@ public class BiesBalance : MonoBehaviour
         newBiesValues.KnockBackValueAttack2Y = KnockBackValueAttack2.y;
         newBiesValues.KnockBackValueAttack3X = KnockBackValueAttack3.x;
         newBiesValues.KnockBackValueAttack3Y = KnockBackValueAttack3.y;
+
+        newBiesValues.moveAccelerationTime = MoveAccelerationTime;
+        newBiesValues.moveBrakingTime      = MoveBrakingTime;
+
+
 
         string catValues = JsonUtility.ToJson(newBiesValues);
         System.IO.File.WriteAllText( Application.dataPath +  "/Resources/Temp/BiesValues.json", catValues);
@@ -87,6 +99,9 @@ public class BiesBalance : MonoBehaviour
         moveDistance         = newBiesValues.moveDistance;
         moveDistanceInAir    = newBiesValues.moveDistanceInAir;
         maxMoveDistanceInAir = newBiesValues.maxMoveDistanceInAir;
+
+        MoveAccelerationTime = newBiesValues.moveAccelerationTime;
+        MoveBrakingTime      = newBiesValues.moveBrakingTime;
     }
 
     public void LockCurrentTemp(){

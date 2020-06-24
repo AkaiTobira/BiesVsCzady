@@ -15,8 +15,9 @@ public class CatLedgeClimb : BaseState
         // at end of animation call :
         // TEMP
 
-        CatUtils.swipeSpeedValue = 0;
         PlayerFallOfWallHelper.ResetCounter();
+
+        CommonValues.PlayerVelocity = new Vector2(0,0);
 
         isMovingLeft = dir == GlobalUtils.Direction.Left;
         name = "CatLedgeClimb";
@@ -31,11 +32,11 @@ public class CatLedgeClimb : BaseState
                        GetComponent<AnimationTransition>();
     }
 
-    public override void UpdateDirection(){
-            m_controllabledObject.GetComponent<Player>().animationNode.position = 
-                Vector3.SmoothDamp( m_controllabledObject.GetComponent<Player>().animationNode.position, 
-                                    m_controllabledObject.transform.position, ref animationVel, m_smoothTime);
+    public override void OnExit(){
+        CommonValues.PlayerVelocity = new Vector2(0,0);
     }
+
+    protected override void UpdateDirection(){}
 
     private float getAnimationLenght(string animationName){
         RuntimeAnimatorController ac = m_animator.runtimeAnimatorController;   

@@ -23,6 +23,7 @@ public class BiesWallHold : BaseState
 
         if( !m_detector.isWallClose()) m_isOver = true;
 
+        m_animator.SetFloat( "FallVelocity", 0);
         velocity.y += -BiesUtils.GravityForce * Time.deltaTime;
         if( m_detector.isOnGround() ){
             velocity.y = -BiesUtils.GravityForce * Time.deltaTime;
