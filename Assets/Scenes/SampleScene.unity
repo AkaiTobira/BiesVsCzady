@@ -7225,12 +7225,12 @@ PrefabInstance:
     - target: {fileID: 3200260619233471722, guid: 5ddc61534d8b0cf4b8ffac6014528323,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 11410
+      value: 11407
       objectReference: {fileID: 0}
     - target: {fileID: 3200260619233471722, guid: 5ddc61534d8b0cf4b8ffac6014528323,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -846.3
+      value: -939
       objectReference: {fileID: 0}
     - target: {fileID: 3200260619233471722, guid: 5ddc61534d8b0cf4b8ffac6014528323,
         type: 3}
@@ -7250,12 +7250,12 @@ PrefabInstance:
     - target: {fileID: 3200260619233471722, guid: 5ddc61534d8b0cf4b8ffac6014528323,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.6883546
+      value: 0.67559016
       objectReference: {fileID: 0}
     - target: {fileID: 3200260619233471722, guid: 5ddc61534d8b0cf4b8ffac6014528323,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.72537434
+      value: 0.7372774
       objectReference: {fileID: 0}
     - target: {fileID: 3200260619233471722, guid: 5ddc61534d8b0cf4b8ffac6014528323,
         type: 3}
@@ -7275,7 +7275,7 @@ PrefabInstance:
     - target: {fileID: 3200260619233471722, guid: 5ddc61534d8b0cf4b8ffac6014528323,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 87
+      value: 85
       objectReference: {fileID: 0}
     - target: {fileID: 3200260619233471722, guid: 5ddc61534d8b0cf4b8ffac6014528323,
         type: 3}
@@ -12619,7 +12619,7 @@ PrefabInstance:
     - target: {fileID: 5368838613019971323, guid: 93175970ab2ecca41a426ff164496ae3,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2464
+      value: -2442.5
       objectReference: {fileID: 0}
     - target: {fileID: 5368838613019971323, guid: 93175970ab2ecca41a426ff164496ae3,
         type: 3}
@@ -12674,7 +12674,7 @@ PrefabInstance:
     - target: {fileID: 5368838613019971323, guid: 93175970ab2ecca41a426ff164496ae3,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 298.89096
+      value: 325.7938
       objectReference: {fileID: 0}
     - target: {fileID: 5368838613019971324, guid: 93175970ab2ecca41a426ff164496ae3,
         type: 3}
@@ -12695,6 +12695,16 @@ PrefabInstance:
         type: 3}
       propertyPath: GravityForce
       value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 5368838613019971324, guid: 93175970ab2ecca41a426ff164496ae3,
+        type: 3}
+      propertyPath: PullFriction
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5368838613019971324, guid: 93175970ab2ecca41a426ff164496ae3,
+        type: 3}
+      propertyPath: PushFriction
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 5368838613019971325, guid: 93175970ab2ecca41a426ff164496ae3,
         type: 3}
