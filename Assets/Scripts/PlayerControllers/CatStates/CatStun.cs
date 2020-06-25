@@ -2,37 +2,34 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CatStun : BaseState{    
-    private bool isMovingLeft = false;
+public class CatStun : BaseState{
     private float timeToEnd;
     private AnimationTransition m_transition;
 
     private float velocitXFriction = 0.0f;
 
     public CatStun( GameObject controllable, GlobalUtils.AttackInfo infoPack) : base( controllable ){
-        isMovingLeft = m_detector.GetCurrentDirection() == GlobalUtils.Direction.Left;
         name = "CatStun";
+        fillKnockbackInfo(infoPack);
+    }
+
+
+    protected override void SetUpAnimation(){
         m_animator.SetBool("isStunOver", false);
         m_animator.SetTrigger( "CatStun" );
-        timeToEnd = infoPack.stunDuration;
 
+        m_transition = m_controllabledObject.
+               GetComponent<Player>().animationNode.
+               GetComponent<AnimationTransition>();
+    }
+
+
+    private void fillKnockbackInfo( GlobalUtils.AttackInfo infoPack ){
+        timeToEnd = infoPack.stunDuration;
         velocity          = infoPack.knockBackValue;
         velocity.x        *= (int)infoPack.fromCameAttack;
         velocitXFriction  = infoPack.knockBackFrictionX * (int)infoPack.fromCameAttack;
-
-        m_transition = m_controllabledObject.
-                       GetComponent<Player>().animationNode.
-                       GetComponent<AnimationTransition>();
-    }
-
-    private float getAnimationLenght(string animationName){
-        RuntimeAnimatorController ac = m_animator.runtimeAnimatorController;   
-        for (int i = 0; i < ac.animationClips.Length; i++){
-            if (ac.animationClips[i].name == animationName)
-                return ac.animationClips[i].length;
-        }
-        return 0.0f;
-    }
+    }    
 
     private void  ProcessStateEnd(){
         timeToEnd -= Time.deltaTime;
@@ -54,6 +51,5 @@ public class CatStun : BaseState{
         ProcessStateEnd();
         ProcessMove();
     }
-    public override void HandleInput(){
-    }
+    public override void HandleInput(){}
 }

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class CatWallJump : BaseState
-{    private bool isMovingLeft = false;
+{    
     private GlobalUtils.Direction m_swipe;
 
     private const float INPUT_LOCK = 0.05f;
@@ -19,11 +19,9 @@ public class CatWallJump : BaseState
     float GravityForce = 0.0f;
 
     public CatWallJump( GameObject controllable, GlobalUtils.Direction dir) : base( controllable ) {
-        isMovingLeft = dir == GlobalUtils.Direction.Left;
+
         velocity    = CatUtils.MinWallJumpForce;
         JumpForce   = velocity.y;
-
-        Debug.Log( dir );
 
         m_dir = dir;
 
@@ -35,8 +33,6 @@ public class CatWallJump : BaseState
 
 
         m_detector.CheatMove(  new Vector2( 40 * (int)dir, 0) );
-
-        Debug.Log( velocity );
 
         timeOfJumpForceRising    = CatUtils.JumpMaxTime;
         CommonValues.PlayerVelocity = velocity;
@@ -111,7 +107,7 @@ public class CatWallJump : BaseState
 
         if( m_detector.isWallClose() ){
             m_isOver = true;
-            m_nextState = new CatWallSlide( m_controllabledObject, m_dir);//GlobalUtils.ReverseDirection(m_dir));
+            m_nextState = new CatWallSlide( m_controllabledObject, m_dir);
         }
     }
 }

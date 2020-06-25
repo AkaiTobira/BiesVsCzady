@@ -18,6 +18,24 @@ MonoBehaviour:
   LoadResult: 0
   FileSizes: []
   Exists: 0
+--- !u!114 &-6832340556850828588
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.bank
+  m_EditorClassIdentifier: 
+  Path: Assets/FMOD/BiesVsCzady/Build/Desktop/Master.bank
+  SubDir: 
+  lastModified: 637284547823659240
+  LoadResult: 0
+  FileSizes: []
+  Exists: 1
 --- !u!114 &-5973503903738894509
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -35,7 +53,7 @@ MonoBehaviour:
   lastModified: 637284323859765578
   LoadResult: 0
   FileSizes: []
-  Exists: 1
+  Exists: 0
 --- !u!114 &-5018176193449460393
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -51,7 +69,7 @@ MonoBehaviour:
   Path: event:/SFX/Bies/roar-sound-effect
   guid: 54208e0a78b1ec468498ee40e272d271
   Banks:
-  - {fileID: -5973503903738894509}
+  - {fileID: -6832340556850828588}
   IsStream: 0
   Is3D: 1
   IsOneShot: 1
@@ -127,7 +145,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Path: Assets/FMOD/BiesVsCzady/Build/Desktop/Master.strings.bank
   SubDir: 
-  lastModified: 637284323859805481
+  lastModified: 637284547823689149
   LoadResult: 0
   FileSizes:
   - Name: Desktop
@@ -165,16 +183,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EditorBanks:
   - {fileID: -1680195924780916626}
-  - {fileID: -5973503903738894509}
+  - {fileID: -6832340556850828588}
   EditorEvents:
   - {fileID: -5018176193449460393}
   - {fileID: 7822720913392955782}
   EditorParameters: []
   MasterBanks:
-  - {fileID: -5973503903738894509}
+  - {fileID: -6832340556850828588}
   StringsBanks:
   - {fileID: -1680195924780916626}
-  stringsBankWriteTime: 637284323859805481
+  stringsBankWriteTime: 637284547823689149
   cacheVersion: 3
 --- !u!114 &1100676432403404092
 MonoBehaviour:
@@ -252,7 +270,7 @@ MonoBehaviour:
   Path: event:/SFX/Kot/kot-bies-przemiana
   guid: ce6455acdcde144ab61d237e498e4ea5
   Banks:
-  - {fileID: -5973503903738894509}
+  - {fileID: -6832340556850828588}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1

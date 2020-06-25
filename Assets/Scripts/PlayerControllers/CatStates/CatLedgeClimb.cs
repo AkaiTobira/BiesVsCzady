@@ -4,27 +4,24 @@ using UnityEngine;
 
 public class CatLedgeClimb : BaseState
 {
-    private bool isMovingLeft = false;
-    //private bool climbing = false;
 
     private float timeToEnd;
     private AnimationTransition m_transition;
 
     public CatLedgeClimb( GameObject controllable, GlobalUtils.Direction dir) : base( controllable ) {
-        // play change direction animation;
-        // at end of animation call :
-        // TEMP
-
-        PlayerFallOfWallHelper.ResetCounter();
-
-        CommonValues.PlayerVelocity = new Vector2(0,0);
-
-        isMovingLeft = dir == GlobalUtils.Direction.Left;
         name = "CatLedgeClimb";
+        CommonValues.PlayerVelocity = new Vector2(0,0);
         m_dir = dir;
-        rotationAngle = ( m_dir == GlobalUtils.Direction.Left) ? 180 :0 ; 
-        m_controllabledObject.GetComponent<Player>().animationNode.eulerAngles = new Vector3( 0, rotationAngle, slopeAngle);
+        SetUpRotation();
+        PlayerFallOfWallHelper.ResetCounter();
+    }
 
+    private void SetUpRotation(){
+        rotationAngle = isLeftOriented() ? 180 :0 ; 
+        m_controllabledObject.GetComponent<Player>().animationNode.eulerAngles = new Vector3( 0, rotationAngle, slopeAngle);
+    }
+
+    protected override void  SetUpAnimation(){
         timeToEnd = getAnimationLenght("CatLedgeClimb");
         m_animator.SetTrigger("CatClimb");
         m_transition = m_controllabledObject.
@@ -38,15 +35,6 @@ public class CatLedgeClimb : BaseState
 
     protected override void UpdateDirection(){}
 
-    private float getAnimationLenght(string animationName){
-        RuntimeAnimatorController ac = m_animator.runtimeAnimatorController;   
-        for (int i = 0; i < ac.animationClips.Length; i++){
-            if (ac.animationClips[i].name == animationName)
-                return ac.animationClips[i].length;
-        }
-        return 0.0f;
-    }
-
     public override void Process(){
         velocity.x   = (int)m_detector.GetCurrentDirection() * m_transition.MoveSpeed.x;
         velocity.y   = m_transition.MoveSpeed.y;
@@ -56,6 +44,5 @@ public class CatLedgeClimb : BaseState
         if( timeToEnd < 0 ) m_isOver = true;
     }
 
-    public override void HandleInput(){
-    }
+    public override void HandleInput(){}
 }

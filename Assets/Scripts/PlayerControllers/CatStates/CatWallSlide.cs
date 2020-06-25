@@ -28,7 +28,7 @@ public class CatWallSlide : BaseState
     public override void Process(){
         if( m_detector.isOnGround()   ){
             m_isOver = true;
-            m_nextState = new CatWallHold( m_controllabledObject, GlobalUtils.ReverseDirection(m_dir));
+            m_nextState = new CatWallHold( m_controllabledObject, m_dir);
         }
         if( !m_detector.isWallClose() ) m_isOver = true;
         if( PlayerFallOfWallHelper.FallOfWallRequirementsMeet()){

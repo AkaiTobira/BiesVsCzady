@@ -10,7 +10,7 @@ public class SFSMPlayerChange : SFSMBase
     public void StackStatusPrint(){
         string stackInfo = "";
         foreach( BaseState b in m_states ){
-            stackInfo += b.name + "\n";
+            stackInfo += b.name + " : " + b.isOver() + " :  " + b.GetDirection().ToString() + "\n";
         }
         GlobalUtils.debugConsole.text = stackInfo;
     }
