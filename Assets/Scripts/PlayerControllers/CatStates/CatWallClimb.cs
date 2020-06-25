@@ -10,8 +10,8 @@ public class CatWallClimb : BaseState
         // TEMP
 
     //    PlayerFallOfWallHelper.ResetCounter();
-        name = "CatWallClimb";
         m_dir = dir;
+        name = "CatWallClimb" + ((isLeftOriented()) ? "L" : "R");
 
         SetUpRotation();
         m_detector.CheatMove(new Vector2(0,2));
@@ -41,7 +41,7 @@ public class CatWallClimb : BaseState
     //  velocity.x *= ( int )m_dir;
 
     //    velocity.x = (m_dir != GlobalUtils.Direction.Left )? -CatUtils.WallClimbSpeed * Time.deltaTime : 0.001f;
-
+        m_animator.SetFloat( "FallVelocity", CommonValues.PlayerVelocity.y);
         CommonValues.PlayerVelocity.y = Mathf.Max( CommonValues.PlayerVelocity.y + CatUtils.WallClimbSpeed * Time.deltaTime,
                                                     CatUtils.MaxWallClimbSpeed);
         if( PlayerInput.isSpecialKeyHold() ) CommonValues.PlayerVelocity.y = 0.0f;
@@ -63,7 +63,7 @@ public class CatWallClimb : BaseState
 
         }else if( !PlayerInput.isClimbKeyHold() || CatUtils.stamina < 0){
             m_isOver = true;
-            m_nextState = new CatWallSlide(m_controllabledObject, GlobalUtils.ReverseDirection(m_dir));
+            m_nextState = new CatWallSlide(m_controllabledObject, m_dir);
         }
     }
 }

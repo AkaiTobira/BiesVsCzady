@@ -5,10 +5,10 @@ using UnityEngine;
 public class CatWallSlide : BaseState
 {
     public CatWallSlide( GameObject controllable, GlobalUtils.Direction dir) : base( controllable ) {
-        name = "CatWallSlide";
+        m_dir = dir;
+        name = "CatWallSlide" + ((isLeftOriented()) ? "L" : "R");
         PlayerFallOfWallHelper.ResetCounter();
         PlayerMoveOfWallHelper.DisableCounter();
-        m_dir = dir;
         CommonValues.PlayerVelocity = new Vector2(0,0);
     }
 
@@ -56,6 +56,7 @@ public class CatWallSlide : BaseState
         if( m_isOver){
             m_animator.SetBool("isWallClose", false);
             m_animator.SetBool("isSliding", false);
+            m_animator.SetBool("isSliding", m_detector.isOnGround());
         }
     }
 
@@ -83,7 +84,7 @@ public class CatWallSlide : BaseState
     public override void HandleInput(){
         if( PlayerInput.isClimbKeyPressed() ){
             m_isOver = true;
-        //    m_nextState = new CatWallClimb( m_controllabledObject, GlobalUtils.ReverseDirection(m_dir));
+            m_nextState = new CatWallClimb( m_controllabledObject, m_dir);
         }
         if( !PlayerInput.isSpecialKeyHold() ) {
             m_animator.SetBool("isSliding", false);
