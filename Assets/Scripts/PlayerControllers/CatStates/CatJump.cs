@@ -119,7 +119,6 @@ public class CatJump : BaseState
                                     CommonValues.PlayerVelocity.x + CatUtils.MoveSpeedInAir * Time.deltaTime);
 
         m_dir = (GlobalUtils.Direction) Mathf.Sign(CommonValues.PlayerVelocity.x);
-
     }
 
     private void HandleInputSwipe(){

@@ -4,57 +4,65 @@ using UnityEngine;
 
 public class CatWallSlide : BaseState
 {
-    private bool isMovingLeft = false;
-
     public CatWallSlide( GameObject controllable, GlobalUtils.Direction dir) : base( controllable ) {
-        // play change direction animation;
-        // at end of animation call :
-        // TEMP
-
-        Debug.Log( dir );
-
+        name = "CatWallSlide";
         PlayerFallOfWallHelper.ResetCounter();
         PlayerMoveOfWallHelper.DisableCounter();
-        isMovingLeft = dir == GlobalUtils.Direction.Left;
-        name = "CatWallSlide";
         m_dir = dir;
-    //    rotationAngle = ( m_dir == GlobalUtils.Direction.Left) ? 180 :0 ; 
-    //    m_controllabledObject.GetComponent<Player>().animationNode.eulerAngles = new Vector3( 0, rotationAngle, slopeAngle);
         CommonValues.PlayerVelocity = new Vector2(0,0);
     }
 
     protected override void UpdateDirection(){}
 
-    public override void Process(){
-        if( m_detector.isOnGround()   ){
-            m_isOver = true;
+
+    private bool isOnGround(){
+        if( m_detector.isOnGround() ){
             m_nextState = new CatWallHold( m_controllabledObject, m_dir);
+            return true;
         }
-        if( !m_detector.isWallClose() ) m_isOver = true;
+        return false;
+    }
+
+    private bool isFallingOffWall(){
         if( PlayerFallOfWallHelper.FallOfWallRequirementsMeet()){
             PlayerSwipeLock.ResetCounter();
-            m_isOver = true;
+            return true;
         }
+        return false;
+    }
 
-    //    CommonValues.PlayerVelocity.x = CommonValues.PlayerVelocity.y * ( int )m_dir;
-
-        //velocity.x = (m_dir != GlobalUtils.Direction.Left )? -0.001f : 0.001f;
-        CommonValues.PlayerVelocity.y = Mathf.Max( CommonValues.PlayerVelocity.y -CatUtils.GravityForce * Time.deltaTime,
-                                 -CatUtils.MaxWallSlideSpeed);
-        if( PlayerInput.isSpecialKeyHold() ) CommonValues.PlayerVelocity.y = 0.0f;
-
-
-        m_detector.Move(CommonValues.PlayerVelocity * Time.deltaTime);
-        CatUtils.stamina = Mathf.Min( CatUtils.stamina + Mathf.Abs(CommonValues.PlayerVelocity.y) * Time.deltaTime, CatUtils.MaxStamina );
-
-        Debug.Log( PlayerMoveOfWallHelper.MoveOfWallRequirementsMeet() );
-
+    private bool isMovingOffWall(){
         if( PlayerMoveOfWallHelper.MoveOfWallRequirementsMeet()  ){
-            m_isOver = true;
-            m_detector.Move( new Vector2( ( isMovingLeft) ? -40 : 40, 0));
+            m_detector.Move( new Vector2( ( isLeftOriented() ) ? -40 : 40, 0));
             m_nextState = new CatFall( m_controllabledObject, m_dir );
+            return true;
         }
+        return false;
+    }
 
+    private bool isFarFromWall(){
+        return !m_detector.isWallClose();
+    }
+
+    private void  ProcessStateEnd(){
+        m_isOver |= isOnGround() || isFallingOffWall() || isMovingOffWall() || isFarFromWall();
+    }
+
+    public override void Process(){
+
+        CommonValues.PlayerVelocity.y = Mathf.Max( CommonValues.PlayerVelocity.y -CatUtils.GravityForce * Time.deltaTime,
+                                                    -CatUtils.MaxWallSlideSpeed);
+        if( PlayerInput.isSpecialKeyHold() ) CommonValues.PlayerVelocity.y = 0.0f;
+        
+        m_detector.Move(CommonValues.PlayerVelocity * Time.deltaTime);
+
+        ProcessStaminaUpdate();
+        ProcessStateEnd();
+    }
+
+    private void ProcessStaminaUpdate(){
+        CatUtils.stamina = Mathf.Min( CatUtils.stamina + Mathf.Abs(CommonValues.PlayerVelocity.y) * Time.deltaTime, 
+                                      CatUtils.MaxStamina );
     }
 
     public override void HandleInput(){
@@ -78,7 +86,6 @@ public class CatWallSlide : BaseState
             if( PlayerInput.isJumpKeyJustPressed() ){
                 m_isOver = true;
                 CommonValues.PlayerVelocity.x = 0;
-        //        
                 m_nextState = new CatWallJump(m_controllabledObject, GlobalUtils.ReverseDirection(m_dir));
             }
         }
