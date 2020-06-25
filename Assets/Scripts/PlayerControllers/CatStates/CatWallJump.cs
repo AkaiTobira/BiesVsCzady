@@ -15,6 +15,10 @@ public class CatWallJump : BaseState
 
     float GravityForce = 0.0f;
 
+    float startAnimationDelay = 0;
+
+    bool MoveDisabled = true;
+
     public CatWallJump( GameObject controllable, GlobalUtils.Direction dir) : base( controllable ) {
         name = "CatWallJump";
         m_dir = dir;
@@ -25,13 +29,32 @@ public class CatWallJump : BaseState
         CatUtils.ResetStamina();
 
         timeOfJumpForceRising       = CatUtils.JumpMaxTime;
+
+        m_animator.SetTrigger("isWallJumpPressed");
+        GlobalUtils.PlayerObject.GetComponent<Player>().StartCoroutine(StartJump(startAnimationDelay));
+    }
+
+    protected override void SetUpAnimation(){
+        startAnimationDelay = getAnimationLenght( "CatJumpPreparation");
+        m_animator.SetTrigger("isWallJumpPressed");
+
+        GlobalUtils.PlayerObject.GetComponent<Player>().StartCoroutine(StartJump(startAnimationDelay));
+    }
+
+
+    IEnumerator StartJump( float time ){
+        yield return new WaitForSeconds(time);
+        if( m_isOver ) yield break;
+        m_detector.CheatMove(  new Vector2( 40 * (int)m_dir, 0) );
+        CommonValues.PlayerVelocity.y = JumpForce + GravityForce; 
+        m_animator.ResetTrigger("isWallJumpPressed");
+        MoveDisabled = false;
     }
 
     private void SetUpVariables(){
         CommonValues.PlayerVelocity    = CatUtils.MinWallJumpForce;
         JumpForce                      = CommonValues.PlayerVelocity.y;
         CommonValues.PlayerVelocity.x *= (int)m_dir;
-        m_detector.CheatMove(  new Vector2( 40 * (int)m_dir, 0) );
     }
 
     private bool isFalling(){
@@ -62,11 +85,16 @@ public class CatWallJump : BaseState
     private void  ProcessStateEnd(){
         if( inputLock > 0.0f){ return; }
         m_isOver |= isFalling() || isOnCelling() || isCloseToWall();
+        if( m_isOver){
+             m_animator.ResetTrigger("isWallJumpPressed");
+        }
     }
 
     public override void Process(){
-        
+        //        m_animator.SetBool("isWallJumpPressed", true);
         ProcessJumpAcceleration();
+
+        if( MoveDisabled ) return;
 
         GravityForce += -CatUtils.GravityForce * Time.deltaTime;
         CommonValues.PlayerVelocity.y = JumpForce + GravityForce; 
@@ -90,7 +118,6 @@ public class CatWallJump : BaseState
         }else{
             timeOfJumpForceRising = 0.0f;
         }
-        
     }
 
     private void ProcessSwipe(){
@@ -107,6 +134,7 @@ public class CatWallJump : BaseState
     public override void OnExit(){}
 
     public override void HandleInput(){
+        if( MoveDisabled ) return;
         inputLock -= Time.deltaTime;
 
         if( PlayerInput.isMoveLeftKeyHold() ){
