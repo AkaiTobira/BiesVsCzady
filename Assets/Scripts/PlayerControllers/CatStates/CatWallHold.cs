@@ -15,6 +15,7 @@ public class CatWallHold : BaseState
     public override void Process(){
         if( !m_detector.isWallClose()) m_isOver = true;
 
+        m_animator.SetFloat( "FallVelocity", 0);
         if( !m_detector.isOnGround() ){
             CommonValues.PlayerVelocity.y = -CatUtils.GravityForce * Time.deltaTime;
             m_detector.Move(CommonValues.PlayerVelocity * Time.deltaTime);

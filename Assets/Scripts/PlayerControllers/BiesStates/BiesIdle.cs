@@ -5,11 +5,22 @@ using UnityEngine;
 public class BiesIdle : BaseState
 {
 
-    GlobalUtils.Direction lastFacingDir;
-
     public BiesIdle( GameObject controllable ) : base( controllable ) {
         name = "BiesIdle";
-        lastFacingDir = m_detector.GetCurrentDirection();
+        m_dir = GlobalUtils.Direction.Left;
+    }
+
+    private void HandleStopping(){
+        float acceleration = (BiesUtils.PlayerSpeed / BiesUtils.MoveBrakingTime) * Time.deltaTime;
+        float currentValue = Mathf.Max( Mathf.Abs( CommonValues.PlayerVelocity.x) - acceleration, 0);
+        CommonValues.PlayerVelocity.x = currentValue * (int)m_detector.GetCurrentDirection();
+    }
+
+    private void HandleInputMoveState(GlobalUtils.Direction dir){
+            m_dir = m_detector.GetCurrentDirection();
+            if( m_dir !=  dir ) CommonValues.needChangeDirection = true;
+            m_dir = dir;
+            m_nextState = new BiesMove(m_controllabledObject, m_dir); 
     }
 
     public override void HandleInput(){
@@ -23,9 +34,9 @@ public class BiesIdle : BaseState
         }else if( PlayerInput.isAttack3KeyPressed() ){
             m_nextState = new BiesAttack3(m_controllabledObject);
         }else if( PlayerInput.isMoveLeftKeyHold() ){
-            m_nextState = new BiesMove(m_controllabledObject, GlobalUtils.Direction.Left); 
+            HandleInputMoveState( GlobalUtils.Direction.Left);
         }else if( PlayerInput.isMoveRightKeyHold() ){
-            m_nextState = new BiesMove(m_controllabledObject, GlobalUtils.Direction.Right); 
+            HandleInputMoveState( GlobalUtils.Direction.Right);
         }else if(m_detector.isCollideWithRightWall()){
             m_nextState = new BiesWallHold( m_controllabledObject, GlobalUtils.Direction.Right );
         }else if(m_detector.isCollideWithLeftWall()){
@@ -42,19 +53,14 @@ public class BiesIdle : BaseState
         }
     }
 
-    private void HandleStopping(){
-        float acceleration = (BiesUtils.PlayerSpeed / BiesUtils.MoveBrakingTime) * Time.deltaTime;
-        float currentValue = Mathf.Max( Mathf.Abs( CommonValues.PlayerVelocity.x) - acceleration, 0);
-        CommonValues.PlayerVelocity.x = currentValue * (int)m_detector.GetCurrentDirection();
+    private void ProcessAnimationUpdate(){
+        m_animator.SetFloat( "FallVelocity", 0);
+        m_animator.SetFloat("MoveVelocity", Mathf.Abs(CommonValues.PlayerVelocity.x));
     }
 
     public override void Process(){
         HandleStopping();
-
-    //    Debug.Log("IDLE" + m_dir.ToString());
-
-        m_animator.SetFloat( "FallVelocity", 0);
-        m_animator.SetFloat("MoveVelocity", Mathf.Abs(CommonValues.PlayerVelocity.x));
+        ProcessAnimationUpdate();
 
         if( ! m_detector.isOnGround() ){
             CommonValues.PlayerVelocity.y += -BiesUtils.GravityForce * Time.deltaTime;

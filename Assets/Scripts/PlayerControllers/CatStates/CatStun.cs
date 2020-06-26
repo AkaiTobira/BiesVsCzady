@@ -32,6 +32,7 @@ public class CatStun : BaseState{
     }    
 
     private void  ProcessStateEnd(){
+        m_animator.SetBool("isStunOver", false);
         timeToEnd -= Time.deltaTime;
         if( timeToEnd < 0){
             m_isOver = true;

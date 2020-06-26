@@ -37,9 +37,6 @@ public class CatJump : BaseState
         GlobalUtils.PlayerObject.GetComponent<Player>().StartCoroutine(StartJump(startAnimationDelay));
     }
 
-    
-
-
     IEnumerator StartJump( float time ){
         yield return new WaitForSeconds(time);
         if( m_isOver ) yield break;
@@ -134,7 +131,6 @@ public class CatJump : BaseState
     }
 
     public override void HandleInput(){
-
         if( m_detector.canClimbLedge() ){
             m_isOver = true;
             m_animator.ResetTrigger("CatJumpPressed");
@@ -151,7 +147,6 @@ public class CatJump : BaseState
                 m_nextState = new CatWallSlide( m_controllabledObject, m_dir);
             }
         }
-
         HandleInputSwipe();
     }
 }

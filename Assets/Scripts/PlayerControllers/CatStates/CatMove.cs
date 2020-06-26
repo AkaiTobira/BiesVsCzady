@@ -24,11 +24,7 @@ public class CatMove : BaseState
         rotationAngle = isLeftOriented() ? 180 :0 ; 
         m_controllabledObject.GetComponent<Player>().animationNode.eulerAngles = new Vector3( 0, rotationAngle, slopeAngle);
     }
-
-    public override void OnExit(){
-        m_animator.ResetTrigger( "CatChangingDirection");
-    }
-
+    
     private void ProcessGravity(){
         CommonValues.PlayerVelocity.y += -CatUtils.GravityForce * Time.deltaTime;
         if( m_detector.isOnGround() ){
@@ -71,6 +67,9 @@ public class CatMove : BaseState
                                                 GlobalUtils.Direction.Left : 
                                                 GlobalUtils.Direction.Right );
             m_isOver = true;
+        }
+        if( m_isOver ){
+            m_animator.ResetTrigger( "CatChangingDirection");
         }
     }
 

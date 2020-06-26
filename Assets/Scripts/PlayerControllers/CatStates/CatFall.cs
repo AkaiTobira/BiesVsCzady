@@ -79,5 +79,7 @@ public class CatFall : BaseState
             CommonValues.PlayerVelocity.x = 0; // To check if is needed;
             m_nextState = new CatWallSlide( m_controllabledObject, m_dir);
         }
+
+        HandleInputSwipe();
     }
 }

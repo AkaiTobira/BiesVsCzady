@@ -11,8 +11,6 @@ public class CatWallJump : BaseState
 
     float JumpForce    = 0.0f;
 
-    float accelerationSpeed = 2;
-
     float GravityForce = 0.0f;
 
     float startAnimationDelay = 0;
@@ -22,16 +20,7 @@ public class CatWallJump : BaseState
     public CatWallJump( GameObject controllable, GlobalUtils.Direction dir) : base( controllable ) {
         name = "CatWallJump";
         m_dir = dir;
-
         SetUpVariables();
-
-        PlayerFallOfWallHelper.ResetCounter();
-        CatUtils.ResetStamina();
-
-        timeOfJumpForceRising       = CatUtils.JumpMaxTime;
-
-        m_animator.SetTrigger("isWallJumpPressed");
-        GlobalUtils.PlayerObject.GetComponent<Player>().StartCoroutine(StartJump(startAnimationDelay));
     }
 
     protected override void SetUpAnimation(){
@@ -55,6 +44,11 @@ public class CatWallJump : BaseState
         CommonValues.PlayerVelocity    = CatUtils.MinWallJumpForce;
         JumpForce                      = CommonValues.PlayerVelocity.y;
         CommonValues.PlayerVelocity.x *= (int)m_dir;
+        
+        PlayerFallOfWallHelper.ResetCounter();
+        CatUtils.ResetStamina();
+
+        timeOfJumpForceRising       = CatUtils.JumpMaxTime;
     }
 
     private bool isFalling(){

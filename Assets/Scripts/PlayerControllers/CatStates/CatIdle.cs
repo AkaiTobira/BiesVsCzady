@@ -4,12 +4,9 @@ using UnityEngine;
 
 public class CatIdle : BaseState
 {
-    GlobalUtils.Direction lastFacingDir;
-
     public CatIdle( GameObject controllable ) : base( controllable ) {
         name = "CatIdle";
         m_dir = GlobalUtils.Direction.Left;
-        lastFacingDir = m_detector.GetCurrentDirection();
     }
 
     private void HandleStopping(){
@@ -18,23 +15,22 @@ public class CatIdle : BaseState
         CommonValues.PlayerVelocity.x = currentValue * (int)m_detector.GetCurrentDirection();
     }
 
-    public override void HandleInput(){
-        
+    private void HandleInputMoveState(GlobalUtils.Direction dir){
+            m_dir = m_detector.GetCurrentDirection();
+            if( m_dir !=  dir ) CommonValues.needChangeDirection = true;
+            m_dir = dir;
+            m_nextState = new CatMove(m_controllabledObject, m_dir); 
+    }
 
+    public override void HandleInput(){
         if( PlayerFallHelper.FallRequirementsMeet( m_detector.isOnGround() ) ){
             m_nextState = new CatFall(m_controllabledObject, m_dir);
         }else if( PlayerInput.isAttack2KeyPressed() ){
             m_nextState = new CatAttack2(m_controllabledObject);
         }else if( PlayerInput.isMoveLeftKeyHold() ){
-            m_dir = m_detector.GetCurrentDirection();
-            if( m_dir !=  GlobalUtils.Direction.Left ) CommonValues.needChangeDirection = true;
-            m_dir = GlobalUtils.Direction.Left;
-            m_nextState = new CatMove(m_controllabledObject, m_dir); 
+            HandleInputMoveState( GlobalUtils.Direction.Left);
         }else if( PlayerInput.isMoveRightKeyHold() ){
-            m_dir = m_detector.GetCurrentDirection();
-            if( m_dir !=  GlobalUtils.Direction.Right ) CommonValues.needChangeDirection = true;
-            m_dir = GlobalUtils.Direction.Right;
-            m_nextState = new CatMove(m_controllabledObject, m_dir); 
+            HandleInputMoveState( GlobalUtils.Direction.Right);
         }else if( 
             PlayerJumpHelper.JumpRequirementsMeet( PlayerInput.isJumpKeyJustPressed(), 
                                                    m_detector.isOnGround() )
