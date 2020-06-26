@@ -11,6 +11,8 @@ public class PlayerDebugInfo : MonoBehaviour
     }
 
     [SerializeField] public Text m_debugText = null;
+    [SerializeField] public Text m_debugText2 = null;
+    [SerializeField] public Text m_debugText3 = null;
 
     public void LockBiesValue(){
         GetComponent<BiesBalance>().LockCurrentTemp();
@@ -29,4 +31,10 @@ public class PlayerDebugInfo : MonoBehaviour
         GetComponent<BiesBalance>().LoadBalance("Temp/BiesValues");
         GetComponent<CatBalance>().LoadBalance("Temp/CatValues");
     }
+
+    void Update()
+    {
+        m_debugText2.text = CatUtils.PlayerJumpForceMax.ToString() + " " + CatUtils.PlayerJumpForceMin.ToString();
+    }
+
 }

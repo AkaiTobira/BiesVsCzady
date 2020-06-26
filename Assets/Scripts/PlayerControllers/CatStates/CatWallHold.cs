@@ -4,19 +4,12 @@ using UnityEngine;
 
 public class CatWallHold : BaseState
 {
-    private bool isMovingLeft = false;
 
     public CatWallHold( GameObject controllable, GlobalUtils.Direction dir) : base( controllable ) {
-        // play change direction animation;
-        // at end of animation call :
-        // TEMP
-   //     controllable.transform.GetComponent<Player>().changeDirection(dir);
         CatUtils.ResetStamina();
-        isMovingLeft = dir == GlobalUtils.Direction.Left;
-        name = "CatWallHold" + ((isMovingLeft)? "L": "R");
         m_dir = dir;
+        name = "CatWallHold" + ((isLeftOriented())? "L": "R");
         CommonValues.PlayerVelocity.y =0;
-
     }
 
     public override void Process(){
@@ -30,8 +23,7 @@ public class CatWallHold : BaseState
         }
     }
 
-    public override void OnExit(){
-    }
+    public override void OnExit(){}
 
     public override void HandleInput(){
         if( PlayerFallHelper.FallRequirementsMeet( m_detector.isOnGround()) ){
@@ -39,16 +31,14 @@ public class CatWallHold : BaseState
             m_nextState = new CatFall(m_controllabledObject, m_detector.GetCurrentDirection());
         }else if( PlayerInput.isAttack2KeyPressed() ){
             m_nextState = new CatAttack2(m_controllabledObject);
-        }else if( isMovingLeft && PlayerInput.isMoveRightKeyHold()){
+        }else if( isLeftOriented() && PlayerInput.isMoveRightKeyHold()){
             m_isOver = true;
-            CommonValues.PlayerVelocity.x = CatUtils.PlayerSpeed * Time.deltaTime;
-            m_detector.Move(CommonValues.PlayerVelocity * Time.deltaTime);
-        //    m_nextState = new PlayerMove(m_controllabledObject, GlobalUtils.Direction.Right); 
-        }else if( !isMovingLeft && PlayerInput.isMoveLeftKeyHold()){
+            CommonValues.needChangeDirection = true;
+            m_nextState = new CatMove(m_controllabledObject, GlobalUtils.Direction.Right); 
+        }else if( isRightOriented() && PlayerInput.isMoveLeftKeyHold()){
             m_isOver = true;
-            CommonValues.PlayerVelocity.x = -CatUtils.PlayerSpeed * Time.deltaTime;
-            m_detector.Move(CommonValues.PlayerVelocity * Time.deltaTime);
-        //    m_nextState = new PlayerMove(m_controllabledObject, GlobalUtils.Direction.Left); 
+            CommonValues.needChangeDirection = true;
+            m_nextState = new CatMove(m_controllabledObject, GlobalUtils.Direction.Left); 
         }else if( 
             PlayerJumpHelper.JumpRequirementsMeet( PlayerInput.isJumpKeyJustPressed(), 
                                                    m_detector.isOnGround() )
@@ -59,7 +49,6 @@ public class CatWallHold : BaseState
             CommonValues.PlayerVelocity.y += -CatUtils.GravityForce * Time.deltaTime;
             m_detector.Move( CommonValues.PlayerVelocity * Time.deltaTime );
         }else if( PlayerInput.isClimbKeyPressed() ){
-        //    m_isOver = true;
             m_isOver = true;
             m_nextState = new CatWallClimb( m_controllabledObject, m_dir);
         }

@@ -22,7 +22,7 @@ public class BiesAttack2 : BaseState{
                        GetComponent<AnimationTransition>();
     }
 
-    private float getAnimationLenght(string animationName){
+    protected float getAnimationLenght(string animationName){
         RuntimeAnimatorController ac = m_animator.runtimeAnimatorController;   
         for (int i = 0; i < ac.animationClips.Length; i++){
             if (ac.animationClips[i].name == animationName)

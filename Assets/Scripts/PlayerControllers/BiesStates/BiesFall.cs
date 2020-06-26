@@ -37,7 +37,8 @@ public class BiesFall : BaseState
     }
 
     public override void OnExit(){
-        CommonValues.PlayerVelocity = new Vector2();
+
+        if( !PlayerInput.isMoveLeftKeyHold() && !PlayerInput.isMoveRightKeyHold()) CommonValues.PlayerVelocity = new Vector2();
         BiesUtils.swipeSpeedValue = 0;
     }
 

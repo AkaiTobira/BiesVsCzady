@@ -82,7 +82,8 @@ public class BiesBalance : MonoBehaviour
 
 
      public void LoadBalance( string path){
-        var jsonFile = System.IO.File.ReadAllText( Application.dataPath +  "/Resources/" + path + ".json" );
+        var jsonFile = Resources.Load<TextAsset>(path).ToString();
+        
         var newBiesValues = JsonUtility.FromJson<JsonLoader.BiesValues>(jsonFile);
 
         Attack1Damage = newBiesValues.Attack1Damage;

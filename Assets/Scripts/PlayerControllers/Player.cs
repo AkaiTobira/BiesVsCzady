@@ -110,9 +110,6 @@ public class Player : MonoBehaviour
         Debug.Log( "Player object is hurt : hp reduced to " + healthPoints.ToString());
     }
 
-
-
-
     void Update(){
         m_controller.Update();
         UpdateCounters();
@@ -196,9 +193,6 @@ public class Player : MonoBehaviour
         info.stunDuration   = 0;
         OnHit( info );
     }
-
-
-
     }
 
 

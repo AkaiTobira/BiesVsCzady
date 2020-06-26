@@ -54,7 +54,7 @@ public class DestroyableObject : MonoBehaviour
     }
 
     void MoveObject(){
-        Debug.Log( currentMoveValue);
+///        Debug.Log( currentMoveValue);
         HandleXMove();
         HandleYMove();
         if( moveValue != new Vector2(0,0)) m_detector.Move( currentMoveValue * Time.deltaTime);

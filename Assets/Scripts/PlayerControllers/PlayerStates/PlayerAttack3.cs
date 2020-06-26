@@ -3,14 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerAttack3 : BaseState{    
-    private bool isMovingLeft = false;
     private float timeToEnd;
-
     private AnimationTransition m_transition;
 
-
     public PlayerAttack3( GameObject controllable) : base( controllable ){
-        isMovingLeft = m_detector.GetCurrentDirection() == GlobalUtils.Direction.Left;
         name = "PlayerAttack3";
         m_animator.SetBool("Attack3", true);
         timeToEnd = getAnimationLenght("PlayerAttack3");
@@ -20,29 +16,27 @@ public class PlayerAttack3 : BaseState{
                        GetComponent<AnimationTransition>();
     }
 
-    private float getAnimationLenght(string animationName){
-        RuntimeAnimatorController ac = m_animator.runtimeAnimatorController;   
-        for (int i = 0; i < ac.animationClips.Length; i++){
-            if (ac.animationClips[i].name == animationName)
-                return ac.animationClips[i].length;
+    private bool isAnimationFinished(){
+        if( timeToEnd < 0){
+            m_animator.SetBool("Attack3", false);
+            return true;
         }
-        return 0.0f;
+        return false;
     }
+
+    private bool isCloseToWall(){
+        if( m_detector.isWallClose() ){
+            m_animator.SetBool("Attack3", false);
+            return true;
+            //TOWALLHITSTATE 
+        }
+        return false;
+    }
+
 
     private void  ProcessStateEnd(){
         timeToEnd -= Time.deltaTime;
-        if( timeToEnd < 0){
-            m_isOver = true;
-            m_animator.SetBool("Attack3", false);
-            Debug.Log("TimeEnd");
-        }
-
-        if( m_detector.isWallClose() ){
-            Debug.Log("HIT A WALL");
-            m_isOver = true;
-            m_animator.SetBool("Attack3", false);
-            //TOWALLHITSTATE 
-        }
+        m_isOver = isAnimationFinished() || isCloseToWall();
     }
     private void ProcessMove(){
         velocity.x   = (int)m_detector.GetCurrentDirection() * m_transition.MoveSpeed.x;
@@ -54,10 +48,10 @@ public class PlayerAttack3 : BaseState{
         }
         m_detector.Move(velocity*Time.deltaTime);
     }
+
     public override void Process(){
         ProcessStateEnd();
         ProcessMove();
     }
-    public override void HandleInput(){
-    }
+    public override void HandleInput(){}
 }

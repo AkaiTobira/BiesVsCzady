@@ -8,6 +8,7 @@ public class CatIdle : BaseState
 
     public CatIdle( GameObject controllable ) : base( controllable ) {
         name = "CatIdle";
+        m_dir = GlobalUtils.Direction.Left;
         lastFacingDir = m_detector.GetCurrentDirection();
     }
 
@@ -18,14 +19,22 @@ public class CatIdle : BaseState
     }
 
     public override void HandleInput(){
+        
+
         if( PlayerFallHelper.FallRequirementsMeet( m_detector.isOnGround() ) ){
-            m_nextState = new CatFall(m_controllabledObject, m_detector.GetCurrentDirection());
+            m_nextState = new CatFall(m_controllabledObject, m_dir);
         }else if( PlayerInput.isAttack2KeyPressed() ){
             m_nextState = new CatAttack2(m_controllabledObject);
         }else if( PlayerInput.isMoveLeftKeyHold() ){
-            m_nextState = new CatMove(m_controllabledObject, GlobalUtils.Direction.Left); 
+            m_dir = m_detector.GetCurrentDirection();
+            if( m_dir !=  GlobalUtils.Direction.Left ) CommonValues.needChangeDirection = true;
+            m_dir = GlobalUtils.Direction.Left;
+            m_nextState = new CatMove(m_controllabledObject, m_dir); 
         }else if( PlayerInput.isMoveRightKeyHold() ){
-            m_nextState = new CatMove(m_controllabledObject, GlobalUtils.Direction.Right); 
+            m_dir = m_detector.GetCurrentDirection();
+            if( m_dir !=  GlobalUtils.Direction.Right ) CommonValues.needChangeDirection = true;
+            m_dir = GlobalUtils.Direction.Right;
+            m_nextState = new CatMove(m_controllabledObject, m_dir); 
         }else if( 
             PlayerJumpHelper.JumpRequirementsMeet( PlayerInput.isJumpKeyJustPressed(), 
                                                    m_detector.isOnGround() )
@@ -42,10 +51,14 @@ public class CatIdle : BaseState
         }
     }
 
-    public override void Process(){
-        HandleStopping();
+    private void ProcessAnimationUpdate(){
         m_animator.SetFloat( "FallVelocity", 0);
         m_animator.SetFloat("MoveVelocity", Mathf.Abs(CommonValues.PlayerVelocity.x));
+    }
+
+    public override void Process(){
+        HandleStopping();
+        ProcessAnimationUpdate();
 
         if( ! m_detector.isOnGround() ){
             CommonValues.PlayerVelocity.y += -CatUtils.GravityForce * Time.deltaTime;
