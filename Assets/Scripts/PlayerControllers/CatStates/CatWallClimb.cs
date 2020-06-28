@@ -15,7 +15,7 @@ public class CatWallClimb : BaseState
 
         SetUpRotation();
         m_detector.CheatMove(new Vector2(0,2));
-        CommonValues.PlayerVelocity.x = CatUtils.MoveSpeedInAir * ( int )m_dir;
+//        CommonValues.PlayerVelocity.x = CatUtils.MoveSpeedInAir * ( int )m_dir;
     }
 
     private void SetUpRotation(){

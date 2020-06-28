@@ -7,7 +7,8 @@ public class PlayerDebugInfo : MonoBehaviour
 {
 
     public void Awake() {
-        GlobalUtils.debugConsole = m_debugText;
+        GlobalUtils.debugConsole  = m_debugText;
+        GlobalUtils.debugConsole2 = m_debugText3;
     }
 
     [SerializeField] public Text m_debugText = null;
@@ -35,6 +36,9 @@ public class PlayerDebugInfo : MonoBehaviour
     void Update()
     {
         m_debugText2.text = CatUtils.PlayerJumpForceMax.ToString() + " " + CatUtils.PlayerJumpForceMin.ToString();
+        
+        m_debugText3.text = transform.position + "\n";
+        m_debugText3.text += CommonValues.PlayerVelocity.ToString();
     }
 
 }

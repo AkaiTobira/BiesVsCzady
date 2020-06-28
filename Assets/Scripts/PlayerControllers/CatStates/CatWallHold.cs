@@ -44,7 +44,8 @@ public class CatWallHold : BaseState
             PlayerJumpHelper.JumpRequirementsMeet( PlayerInput.isJumpKeyJustPressed(), 
                                                    m_detector.isOnGround() )
         ){ 
-            m_nextState = new CatJump(m_controllabledObject, GlobalUtils.Direction.Left);
+            m_isOver = true;
+            m_nextState = new CatJump(m_controllabledObject, m_dir);
         }else if( PlayerInput.isFallKeyHold() ) {
             m_detector.enableFallForOneWayFloor();
             CommonValues.PlayerVelocity.y += -CatUtils.GravityForce * Time.deltaTime;

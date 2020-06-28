@@ -47,9 +47,8 @@ public class CatJump : BaseState
 
     private bool isOnCelling(){
         if( m_detector.isOnCelling()){
-            CommonValues.PlayerVelocity =  new Vector2();
+            CommonValues.PlayerVelocity.y = 0;
             timeOfJumpForceRising = 0.0f;
-            m_animator.ResetTrigger("CatJumpPressed");
             return true;
         }
         return false;
@@ -57,7 +56,6 @@ public class CatJump : BaseState
 
     private bool isFalling(){
         if( PlayerFallHelper.FallRequirementsMeet( m_detector.isOnGround()) && CommonValues.PlayerVelocity.y < 0 ){ 
-            m_animator.ResetTrigger("CatJumpPressed");
             timeOfJumpForceRising = 0.0f;
             m_nextState = new CatFall( m_controllabledObject, m_detector.GetCurrentDirection());
             return true;
@@ -67,6 +65,9 @@ public class CatJump : BaseState
 
     private void ProcessStateEnd(){
         m_isOver |= isOnCelling() || isFalling();
+        if( m_isOver ){
+            m_animator.ResetTrigger("CatJumpPressed");
+        }
     }
 
     public override void OnExit(){

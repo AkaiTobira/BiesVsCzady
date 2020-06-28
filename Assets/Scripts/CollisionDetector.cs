@@ -461,6 +461,18 @@ public class CollisionDetector : MonoBehaviour
     {
         CalculateBorders();
         ProcessAutoGravity();
+
+        if( LOCKED_BY_FORCE ){
+            CommonValues.PlayerVelocity = new Vector2();
+            transition = new Vector2();
+        }
+
+        Debug.DrawRay(
+            GetComponent<Transform>().position,
+            new Vector2(1, 0) * 500,
+            new Color(1,0,0));
+
+
     }
 
     protected virtual void ResetCollisionInfo(){
@@ -468,6 +480,7 @@ public class CollisionDetector : MonoBehaviour
     }
 
     public virtual void Move( Vector2 velocity ){
+        if(LOCKED_BY_FORCE) return;
         transition = velocity;
         if( transition.x != 0) collisionInfo.faceDir = (int) Mathf.Sign(transition.x) ;
         ResetCollisionInfo();
@@ -493,4 +506,11 @@ public class CollisionDetector : MonoBehaviour
     public bool isOnGround(){
         return collisionInfo.below;
     }
+
+    private bool LOCKED_BY_FORCE = false;
+
+    public void setLock( bool foceStatus_yeyIamJedi){
+        LOCKED_BY_FORCE = foceStatus_yeyIamJedi;
+    }
+
 }

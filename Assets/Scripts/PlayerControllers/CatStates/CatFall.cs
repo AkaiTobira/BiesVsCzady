@@ -14,9 +14,14 @@ public class CatFall : BaseState
         m_dir = dir;
         name = "CatFall";
         HandleSpecialBehaviour();
+//        Debug.Log( CommonValues.PlayerVelocity);
+        CommonValues.PlayerVelocity.y = 0;
     }
 
-    private void HandleSpecialBehaviour(){
+    private void HandleSpecialBehaviour(){        
+        Debug.Log( PlayerFallOfWallHelper.FallOfWallRequirementsMeet());
+        Debug.Log( PlayerMoveOfWallHelper.MoveOfWallRequirementsMeet());
+
         if( PlayerFallOfWallHelper.FallOfWallRequirementsMeet() || 
             PlayerMoveOfWallHelper.MoveOfWallRequirementsMeet() ) {
             CommonValues.PlayerVelocity.x = CatUtils.FallOffWallFactor * 
