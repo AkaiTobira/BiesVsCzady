@@ -3,47 +3,70 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class CatJump : BaseState
-{    private bool isMovingLeft = false;
+{    
     private GlobalUtils.Direction m_swipe;
 
     private bool swipeOn = false;
-
-
 
     float timeOfIgnoringWallStick = 0;
     float timeOfJumpForceRising   = 0;
 
     float JumpForce    = 0.0f;
     float GravityForce = 0.0f;
+    float startAnimationDelay = 0.0f;
 
     public CatJump( GameObject controllable, GlobalUtils.Direction dir) : base( controllable ) {
-        isMovingLeft = dir == GlobalUtils.Direction.Left;
-        JumpForce    = CatUtils.PlayerJumpForceMin;
-
         name = "CatJump";
-        PlayerFallOfWallHelper.ResetCounter();
-        PlayerMoveOfWallHelper.ResetCounter();
-        m_detector.CheatMove( new Vector2(0,40.0f));
-        timeOfJumpForceRising   = CatUtils.JumpMaxTime;
-        timeOfIgnoringWallStick = m_controllabledObject.GetComponent<CatBalance>().timeToJumpApex / 2.0f;
-    //    CommonValues.PlayerVelocity.x = 0;
+        JumpForce    = CatUtils.PlayerJumpForceMin;
+        m_dir = dir;
+        SetUpCounters();
     }
 
+    private void SetUpCounters(){
+        PlayerFallOfWallHelper.ResetCounter();
+        PlayerMoveOfWallHelper.ResetCounter();
 
-    private void checkIfShouldBeOver(){
+        timeOfJumpForceRising   = CatUtils.JumpMaxTime;
+        timeOfIgnoringWallStick = m_controllabledObject.GetComponent<CatBalance>().timeToJumpApex / 2.0f;
+    }
+
+    protected override void SetUpAnimation(){
+        startAnimationDelay = getAnimationLenght( "CatJumpPreparation");
+        m_animator.SetTrigger("CatJumpPressed");
+
+        GlobalUtils.PlayerObject.GetComponent<Player>().StartCoroutine(StartJump(startAnimationDelay));
+    }
+
+    IEnumerator StartJump( float time ){
+        yield return new WaitForSeconds(time);
+        if( m_isOver ) yield break;
+        m_detector.CheatMove( new Vector2(0,40.0f));
+        CommonValues.PlayerVelocity.y = JumpForce + GravityForce; 
+        m_animator.ResetTrigger("CatJumpPressed");
+    }
+
+    private bool isOnCelling(){
         if( m_detector.isOnCelling()){
             CommonValues.PlayerVelocity.y = 0;
-            CommonValues.PlayerVelocity.x = 0;
-
-            velocity.y = 0;
             timeOfJumpForceRising = 0.0f;
-            m_isOver   = true;
+            return true;
         }
+        return false;
+    }
 
+    private bool isFalling(){
         if( PlayerFallHelper.FallRequirementsMeet( m_detector.isOnGround()) && CommonValues.PlayerVelocity.y < 0 ){ 
-            m_isOver = true;
             timeOfJumpForceRising = 0.0f;
             m_nextState = new CatFall( m_controllabledObject, m_detector.GetCurrentDirection());
+            return true;
+        }
+        return false;
+    }
+
+    private void ProcessStateEnd(){
+        m_isOver |= isOnCelling() || isFalling();
+        if( m_isOver ){
+            m_animator.ResetTrigger("CatJumpPressed");
         }
     }
 
@@ -54,61 +77,49 @@ public class CatJump : BaseState
 
     public override void Process(){
         timeOfIgnoringWallStick -= Time.deltaTime;
+        startAnimationDelay     -= Time.deltaTime;
+        
+        ProcessJumpAcceleration();
+        ProcessMove();
+        ProcessStateEnd();
+    }
 
+    private void ProcessJumpAcceleration(){
         if( timeOfJumpForceRising > 0 && PlayerInput.isJumpKeyHold() ){
-        //    Debug.Log(JumpForce.ToString());
             JumpForce  = Mathf.Min(
                             JumpForce
-                            + (CatUtils.PlayerJumpForceMax - CatUtils.PlayerJumpForceMin) * Time.deltaTime //* Time.deltaTime
+                            + (CatUtils.PlayerJumpForceMax - CatUtils.PlayerJumpForceMin) * Time.deltaTime
                             + CatUtils.GravityForce * Time.deltaTime,
                             CatUtils.PlayerJumpForceMax
                             );
+            timeOfJumpForceRising -= Time.deltaTime;
         }else{
-            timeOfJumpForceRising = 0.0f;
+            timeOfJumpForceRising  = 0.0f;
         }
-        timeOfJumpForceRising   -= Time.deltaTime;
-        GravityForce += -CatUtils.GravityForce * Time.deltaTime;
-        CommonValues.PlayerVelocity.y = JumpForce + GravityForce;
-        CommonValues.PlayerVelocity.y = velocity.y = Mathf.Max( CommonValues.PlayerVelocity.y, -500 );
-
-        velocity.y = JumpForce + GravityForce; 
-        velocity.y = Mathf.Max( velocity.y, -500 );
-
-        if( swipeOn ){
-
-            CommonValues.PlayerVelocity.x = ( m_swipe == GlobalUtils.Direction.Left ) ? 
-                            Mathf.Max(  -CatUtils.maxMoveDistanceInAir,
-                                        CommonValues.PlayerVelocity.x -CatUtils.MoveSpeedInAir * Time.deltaTime) : 
-                            Mathf.Min(  CatUtils.maxMoveDistanceInAir,
-                                        CommonValues.PlayerVelocity.x + CatUtils.MoveSpeedInAir * Time.deltaTime);
-
-            velocity.x = ( m_swipe == GlobalUtils.Direction.Left ) ? 
-                            Mathf.Max(  -CatUtils.maxMoveDistanceInAir,
-                                        velocity.x -CatUtils.MoveSpeedInAir * Time.deltaTime) : 
-                            Mathf.Min(  CatUtils.maxMoveDistanceInAir,
-                                        velocity.x + CatUtils.MoveSpeedInAir * Time.deltaTime);
-        }
-
-        m_detector.Move(CommonValues.PlayerVelocity * Time.deltaTime);
-        checkIfShouldBeOver();
     }
 
-    public override void HandleInput(){
+    private void ProcessMove(){
+        if( startAnimationDelay > 0 ) return;
+        GravityForce += -CatUtils.GravityForce * Time.deltaTime;
+        CommonValues.PlayerVelocity.y = JumpForce + GravityForce;
+        CommonValues.PlayerVelocity.y = Mathf.Max( CommonValues.PlayerVelocity.y, -500 );
+        ProcessSwipe();
+        m_detector.Move(CommonValues.PlayerVelocity * Time.deltaTime);
+        CommonValues.PlayerFaceDirection = m_detector.GetCurrentDirection();
+    }
 
-        if( m_detector.canClimbLedge() ){
-            m_isOver = true;
-            m_nextState = new CatLedgeClimb( m_controllabledObject, m_dir);
-        }else if( m_detector.isWallClose() && timeOfIgnoringWallStick < 0 ){
-            if( m_swipe == GlobalUtils.Direction.Left && PlayerInput.isMoveLeftKeyHold() ){
-                m_isOver = true;
-                m_nextState = new CatWallSlide( m_controllabledObject, GlobalUtils.ReverseDirection(m_dir));
-            }else 
-            if ( m_swipe == GlobalUtils.Direction.Right && PlayerInput.isMoveRightKeyHold()){
-                m_isOver = true;
-                m_nextState = new CatWallSlide( m_controllabledObject, GlobalUtils.ReverseDirection(m_dir));
-            }
-        }
+    private void ProcessSwipe(){
+        if( !swipeOn ) return;
+        CommonValues.PlayerVelocity.x = ( m_swipe == GlobalUtils.Direction.Left)  ? 
+                        Mathf.Max(  -CatUtils.maxMoveDistanceInAir,
+                                    CommonValues.PlayerVelocity.x - CatUtils.MoveSpeedInAir * Time.deltaTime): 
+                        Mathf.Min(  CatUtils.maxMoveDistanceInAir,
+                                    CommonValues.PlayerVelocity.x + CatUtils.MoveSpeedInAir * Time.deltaTime);
 
+        m_dir = (GlobalUtils.Direction) Mathf.Sign(CommonValues.PlayerVelocity.x);
+    }
+
+    private void HandleInputSwipe(){
         if( PlayerInput.isMoveLeftKeyHold() ){
             swipeOn = true;
             m_swipe = GlobalUtils.Direction.Left;
@@ -118,5 +129,25 @@ public class CatJump : BaseState
         }else{
             swipeOn = false;
         }
+    }
+
+    public override void HandleInput(){
+        if( m_detector.canClimbLedge() ){
+            m_isOver = true;
+            m_animator.ResetTrigger("CatJumpPressed");
+            m_nextState = new CatLedgeClimb( m_controllabledObject, m_dir);
+        }else if( m_detector.isWallClose() && timeOfIgnoringWallStick < 0 ){
+            if( isLeftOriented() && PlayerInput.isMoveLeftKeyHold() ){
+                m_isOver = true;
+                m_animator.ResetTrigger("CatJumpPressed");
+                m_nextState = new CatWallSlide( m_controllabledObject, m_dir);
+            }else 
+            if ( isRightOriented() && PlayerInput.isMoveRightKeyHold()){
+                m_isOver = true;
+                m_animator.ResetTrigger("CatJumpPressed");
+                m_nextState = new CatWallSlide( m_controllabledObject, m_dir);
+            }
+        }
+        HandleInputSwipe();
     }
 }

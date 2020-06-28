@@ -4,83 +4,109 @@ using UnityEngine;
 
 public class CatWallSlide : BaseState
 {
-    private bool isMovingLeft = false;
-
     public CatWallSlide( GameObject controllable, GlobalUtils.Direction dir) : base( controllable ) {
-        // play change direction animation;
-        // at end of animation call :
-        // TEMP
-
+        m_dir = dir;
+        name = "CatWallSlide" + ((isLeftOriented()) ? "L" : "R");
         PlayerFallOfWallHelper.ResetCounter();
         PlayerMoveOfWallHelper.DisableCounter();
-        isMovingLeft = dir == GlobalUtils.Direction.Left;
-        name = "CatWallSlide";
-        m_dir = dir;
-        rotationAngle = ( m_dir == GlobalUtils.Direction.Left) ? 180 :0 ; 
-        m_controllabledObject.GetComponent<Player>().animationNode.eulerAngles = new Vector3( 0, rotationAngle, slopeAngle);
         CommonValues.PlayerVelocity = new Vector2(0,0);
     }
 
-    public override void UpdateDirection(){
+    protected override void SetUpAnimation(){
+        m_animator.SetBool("isWallClose", true);
+        m_animator.SetBool("isSliding", true);
+    }
 
-            m_controllabledObject.GetComponent<Player>().animationNode.position = 
-                Vector3.SmoothDamp( m_controllabledObject.GetComponent<Player>().animationNode.position, 
-                                    m_controllabledObject.transform.position, ref animationVel, m_smoothTime);
+
+    protected override void UpdateDirection(){}
 
 
+    private bool isOnGround(){
+        if( m_detector.isOnGround() ){
+            m_nextState = new CatWallHold( m_controllabledObject, m_dir);
+            return true;
+        }
+        return false;
+    }
+
+    private bool isFallingOffWall(){
+        if( PlayerFallOfWallHelper.FallOfWallRequirementsMeet()){
+            PlayerSwipeLock.ResetCounter();
+            return true;
+        }
+        return false;
+    }
+
+    private bool isMovingOffWall(){
+        if( PlayerMoveOfWallHelper.MoveOfWallRequirementsMeet()  ){
+            m_detector.Move( new Vector2( ( isRightOriented() ) ? -40 : 40, 0));
+            m_nextState = new CatFall( m_controllabledObject,  GlobalUtils.ReverseDirection( m_dir ) );
+            return true;
+        }
+        return false;
+    }
+
+    private bool isFarFromWall(){
+        return !m_detector.isWallClose();
+    }
+
+    private void  ProcessStateEnd(){
+        m_isOver |= isOnGround() || isFallingOffWall() || isMovingOffWall() || isFarFromWall();
+
+        if( m_isOver){
+            m_animator.SetBool("isWallClose", false);
+            m_animator.SetBool("isSliding", false);
+            m_animator.SetBool("isSliding", m_detector.isOnGround());
+        }
     }
 
     public override void Process(){
-        if( m_detector.isOnGround()   ){
-            m_isOver = true;
-            m_nextState = new CatWallHold( m_controllabledObject, GlobalUtils.ReverseDirection(m_dir));
-        }
-        if( !m_detector.isWallClose() ) m_isOver = true;
-        if( PlayerFallOfWallHelper.FallOfWallRequirementsMeet()){
-            PlayerSwipeLock.ResetCounter();
-            m_isOver = true;
-        }
 
-    //    CommonValues.PlayerVelocity.x = CommonValues.PlayerVelocity.y * ( int )m_dir;
-
-        //velocity.x = (m_dir != GlobalUtils.Direction.Left )? -0.001f : 0.001f;
+        m_animator.SetFloat( "FallVelocity", CommonValues.PlayerVelocity.y);
+        m_animator.SetBool("isSliding", true);
+        m_animator.SetBool("isWallClose", m_detector.isWallClose());
+        
         CommonValues.PlayerVelocity.y = Mathf.Max( CommonValues.PlayerVelocity.y -CatUtils.GravityForce * Time.deltaTime,
-                                 -CatUtils.MaxWallSlideSpeed);
+                                                    -CatUtils.MaxWallSlideSpeed);
         if( PlayerInput.isSpecialKeyHold() ) CommonValues.PlayerVelocity.y = 0.0f;
-
-
+        
         m_detector.Move(CommonValues.PlayerVelocity * Time.deltaTime);
-        CatUtils.stamina = Mathf.Min( CatUtils.stamina + Mathf.Abs(CommonValues.PlayerVelocity.y) * Time.deltaTime, CatUtils.MaxStamina );
 
-        if( PlayerMoveOfWallHelper.MoveOfWallRequirementsMeet()  ){
-            m_isOver = true;
-            m_detector.Move( new Vector2( ( isMovingLeft)?-40 : 40, 0));
-            m_nextState = new CatFall( m_controllabledObject, m_dir );//GlobalUtils.ReverseDirection(m_dir)  );
-        }
+        ProcessStaminaUpdate();
+        ProcessStateEnd();
+    }
 
+    private void ProcessStaminaUpdate(){
+        CatUtils.stamina = Mathf.Min( CatUtils.stamina + Mathf.Abs(CommonValues.PlayerVelocity.y) * Time.deltaTime, 
+                                      CatUtils.MaxStamina );
     }
 
     public override void HandleInput(){
         if( PlayerInput.isClimbKeyPressed() ){
             m_isOver = true;
-            m_nextState = new CatWallClimb( m_controllabledObject, GlobalUtils.ReverseDirection(m_dir));
+            m_nextState = new CatWallClimb( m_controllabledObject, m_dir);
         }
         if( !PlayerInput.isSpecialKeyHold() ) {
+            m_animator.SetBool("isSliding", false);
+            m_animator.SetBool("isHoldKeyPressed", false);
 
             if( PlayerInput.isJumpKeyJustPressed() ){
                 m_isOver = true;
                 CommonValues.PlayerVelocity.x = 0;
-                m_nextState = new CatWallJump(m_controllabledObject, m_dir);
-            }else if( ( m_dir != GlobalUtils.Direction.Left) && PlayerInput.isMoveRightKeyHold() ){
+                
+                m_nextState = new CatWallJump(m_controllabledObject, GlobalUtils.ReverseDirection(m_dir));
+            }else if( ( m_dir == GlobalUtils.Direction.Left ) && PlayerInput.isMoveRightKeyHold() ){
                 PlayerMoveOfWallHelper.EnableCounter();
-            }else if( ( m_dir == GlobalUtils.Direction.Left)  && PlayerInput.isMoveLeftKeyHold() ){
+            }else if( ( m_dir == GlobalUtils.Direction.Right) && PlayerInput.isMoveLeftKeyHold() ){
                 PlayerMoveOfWallHelper.EnableCounter();
             }
         }else{
+            m_animator.SetBool("isHoldKeyPressed", true);
+            m_animator.SetBool("isSliding", true);
             if( PlayerInput.isJumpKeyJustPressed() ){
                 m_isOver = true;
                 CommonValues.PlayerVelocity.x = 0;
-                m_nextState = new CatWallJump(m_controllabledObject, m_dir);
+                m_nextState = new CatWallJump(m_controllabledObject, GlobalUtils.ReverseDirection(m_dir));
             }
         }
     }

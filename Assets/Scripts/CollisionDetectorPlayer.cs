@@ -11,6 +11,10 @@ public class CollisionDetectorPlayer : CollisionDetector
 
     private Transform pullableObject    = null;
 
+
+    private Transform objectWithLedgde  = null;
+
+
     private Transform destroyableObject = null;
     private bool isObjectPullable;
     private bool isObjectDestroyable;
@@ -31,6 +35,10 @@ public class CollisionDetectorPlayer : CollisionDetector
 
     public bool canFallByFloor(){
         return oneWayPlatformBelow;
+    }
+
+    public Transform GetClimbableObject(){
+        return objectWithLedgde;
     }
 
     public Transform GetPullableObject(){
@@ -117,6 +125,7 @@ public class CollisionDetectorPlayer : CollisionDetector
 
         if( !hit1 && hit2 ){
             isLedgeDetected = true;
+            objectWithLedgde = hit2.collider.transform;
         }
     }
 
@@ -230,10 +239,5 @@ public class CollisionDetectorPlayer : CollisionDetector
         return collisionInfo.right;
     }
 
-    public bool isOnCelling(){
-        return collisionInfo.above;
-    }
-    public bool isOnGround(){
-        return collisionInfo.below;
-    }
+
 }

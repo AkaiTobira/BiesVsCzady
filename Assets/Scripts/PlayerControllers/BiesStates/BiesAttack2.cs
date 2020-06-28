@@ -3,15 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class BiesAttack2 : BaseState{    
-    private bool isMovingLeft = false;
     private float timeToEnd;
 
     private AnimationTransition m_transition;
 
-
     public BiesAttack2( GameObject controllable) : base( controllable ){
-        isMovingLeft = m_detector.GetCurrentDirection() == GlobalUtils.Direction.Left;
         name = "BiesAttack2";
+    }
+
+    protected override void SetUpAnimation(){
         m_animator.SetBool("Attack2", true);
         timeToEnd = getAnimationLenght("PlayerAttack2");
 
@@ -20,15 +20,6 @@ public class BiesAttack2 : BaseState{
         m_transition = m_controllabledObject.
                        GetComponent<Player>().animationNode.
                        GetComponent<AnimationTransition>();
-    }
-
-    private float getAnimationLenght(string animationName){
-        RuntimeAnimatorController ac = m_animator.runtimeAnimatorController;   
-        for (int i = 0; i < ac.animationClips.Length; i++){
-            if (ac.animationClips[i].name == animationName)
-                return ac.animationClips[i].length;
-        }
-        return 0.0f;
     }
 
     private void  ProcessStateEnd(){

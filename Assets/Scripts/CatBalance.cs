@@ -81,7 +81,7 @@ public class CatBalance : MonoBehaviour
     }
 
     public void LoadBalance( string path){
-        var jsonFile = System.IO.File.ReadAllText( Application.dataPath +  "/Resources/" + path + ".json" );
+        var jsonFile = Resources.Load<TextAsset>(path).ToString();
         var newCatValues = JsonUtility.FromJson<JsonLoader.CatValues>(jsonFile);
 
         minJumpHeight        = newCatValues.minJumpHeight;

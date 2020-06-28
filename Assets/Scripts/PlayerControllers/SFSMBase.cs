@@ -21,7 +21,7 @@ public class SFSMBase
         if( current_state.isOver() ) return;
         current_state.HandleInput();
         current_state.Process();
-        current_state.UpdateDirection();
+        current_state.UpdateAnimator();
     }
 
     public string GetStateName(){

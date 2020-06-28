@@ -3,44 +3,34 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 public class CatDead : BaseState{    
-    private bool isMovingLeft = false;
     private float timeToEnd;
     private AnimationTransition m_transition;
-
     private float velocitXFriction = 0.0f;
 
     public CatDead( GameObject controllable, GlobalUtils.AttackInfo infoPack) : base( controllable ){
-        isMovingLeft = m_detector.GetCurrentDirection() == GlobalUtils.Direction.Left;
         name = "CatDead";
-        m_animator.SetTrigger( "CatDead" );
-        timeToEnd = 3;
-    //    timeToEnd = getAnimationLenght("CatDead");
+    }
 
-        velocity          = infoPack.knockBackValue;
-        velocity.x        *= (int)infoPack.fromCameAttack;
-        velocitXFriction  = infoPack.knockBackFrictionX * (int)infoPack.fromCameAttack;
+    protected override void  SetUpAnimation(){
+        m_animator.SetTrigger( "CatDead" );
+        timeToEnd = getAnimationLenght("CatDead") + 3f;
 
         m_transition = m_controllabledObject.
                        GetComponent<Player>().animationNode.
                        GetComponent<AnimationTransition>();
     }
 
-    private float getAnimationLenght(string animationName){
-        RuntimeAnimatorController ac = m_animator.runtimeAnimatorController;   
-        for (int i = 0; i < ac.animationClips.Length; i++){
-            if (ac.animationClips[i].name == animationName)
-                return ac.animationClips[i].length;
-        }
-        return 0.0f;
+    private void fillKnockbackInfo( GlobalUtils.AttackInfo infoPack ){
+        velocity          = infoPack.knockBackValue;
+        velocity.x        *= (int)infoPack.fromCameAttack;
+        velocitXFriction  = infoPack.knockBackFrictionX * (int)infoPack.fromCameAttack;
     }
 
     private void  ProcessStateEnd(){
         timeToEnd -= Time.deltaTime;
         if( timeToEnd < 0){
-
+            //TODO ... reload form chekcpoint
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
- //           m_isOver = true;
-//            m_animator.ResetTrigger( "CatHurt" );
         }
     }
 
@@ -55,6 +45,5 @@ public class CatDead : BaseState{
         ProcessStateEnd();
         ProcessMove();
     }
-    public override void HandleInput(){
-    }
+    public override void HandleInput(){}
 }

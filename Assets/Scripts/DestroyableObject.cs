@@ -15,27 +15,49 @@ public class DestroyableObject : MonoBehaviour
 
     [SerializeField] public float decreaseFactor;
 
+    [SerializeField] public float massFactor;
+
+    [SerializeField] public float timeToHitApex = 1.0f;
+
+    private float gravityForce = 0.0f;
+
     private Vector2 moveValue;
     private Vector2 currentMoveValue;
 
-    private float Gravity = 0.0f;
 
     void Start() {
         m_anim     = GetComponent<Animator>();
         m_detector = GetComponent<CollisionDetector>(); 
     }
 
+    private void HandleXMove(){
+        if( Mathf.Abs( currentMoveValue.x ) > 10.0f){
+            if( m_detector.isOnGround() ){
+                float xFactor = Mathf.Abs( currentMoveValue.x );
+                xFactor = Mathf.Max( xFactor - (decreaseFactor*massFactor), 0 );
+                currentMoveValue.x = xFactor * Mathf.Sign(currentMoveValue.x);
+            }
+        }else{ 
+            currentMoveValue.x = 0;
+        };
+    }
+
+    private void HandleYMove(){
+        if( m_detector.isOnCelling()){ 
+            currentMoveValue.y = 0;
+        }else if( !m_detector.isOnGround() ){
+            currentMoveValue.y -= gravityForce * massFactor * Time.deltaTime;
+        }else{
+            currentMoveValue.y = 0;
+            m_detector.autoGravityOn = true;
+        };
+    }
 
     void MoveObject(){
-        if( currentMoveValue.magnitude > 5.0f){
-            m_detector.autoGravityOn = false;
-            Gravity -= PlayerUtils.GravityForce * Time.deltaTime;
-            currentMoveValue -= moveValue * decreaseFactor * Time.deltaTime;
-            m_detector.Move((currentMoveValue + new Vector2( 0, Gravity)) * Time.deltaTime);
-        }else{
-            Gravity = 0.0f;
-            m_detector.autoGravityOn = true;
-        }
+///        Debug.Log( currentMoveValue);
+        HandleXMove();
+        HandleYMove();
+        if( moveValue != new Vector2(0,0)) m_detector.Move( currentMoveValue * Time.deltaTime);
     }
 
     void Update() {
@@ -59,6 +81,10 @@ public class DestroyableObject : MonoBehaviour
                         moveValue    = infoPack.knockBackValue;
                         moveValue.x *=  (int)infoPack.fromCameAttack;
                         currentMoveValue += moveValue;
+                        m_detector.autoGravityOn = false;
+                        m_detector.CheatMove( new Vector2(0,  moveValue.y * Time.deltaTime) );
+                        m_detector.Move(  new Vector2(0,  moveValue.y * Time.deltaTime) );
+                        gravityForce = (2 * moveValue.y) / Mathf.Pow (timeToHitApex, 2);
                         Debug.Log( moveValue );
                     }
                 }else{

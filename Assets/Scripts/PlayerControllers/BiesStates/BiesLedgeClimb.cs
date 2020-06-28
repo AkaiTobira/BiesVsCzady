@@ -4,34 +4,23 @@ using UnityEngine;
 
 public class BiesLedgeClimb : BaseState
 {
-    private bool isMovingLeft = false;
-    //private bool climbing = false;
-
     private float timeToEnd;
     private AnimationTransition m_transition;
 
     public BiesLedgeClimb( GameObject controllable, GlobalUtils.Direction dir) : base( controllable ) {
-        // play change direction animation;
-        // at end of animation call :
-        // TEMP
-
-        PlayerFallOfWallHelper.ResetCounter();
-
-        CommonValues.PlayerVelocity = new Vector2(0,0);
-
-
-
-
-        isMovingLeft = dir == GlobalUtils.Direction.Left;
         name = "BiesLedgeClimb";
+        CommonValues.PlayerVelocity = new Vector2(0,0);
         m_dir = dir;
-        rotationAngle = ( m_dir == GlobalUtils.Direction.Left) ? 180 :0 ; 
+        SetUpRotation();
+        PlayerFallOfWallHelper.ResetCounter();
+    }
+    private void SetUpRotation(){
+        rotationAngle = isLeftOriented() ? 180 :0 ; 
         m_controllabledObject.GetComponent<Player>().animationNode.eulerAngles = new Vector3( 0, rotationAngle, slopeAngle);
+    }
 
+    protected override void  SetUpAnimation(){
         timeToEnd = getAnimationLenght("PlayerLedgeClimb");
-
-//        Debug.Log( timeToEnd );
-
         m_animator.SetTrigger("BiesClimb");
         m_transition = m_controllabledObject.
                        GetComponent<Player>().animationNode.
@@ -42,24 +31,9 @@ public class BiesLedgeClimb : BaseState
         CommonValues.PlayerVelocity = new Vector2(0,0);
     }
 
-    public override void UpdateDirection(){
-            m_controllabledObject.GetComponent<Player>().animationNode.position = 
-                Vector3.SmoothDamp( m_controllabledObject.GetComponent<Player>().animationNode.position, 
-                                    m_controllabledObject.transform.position, ref animationVel, m_smoothTime);
-    }
-
-    private float getAnimationLenght(string animationName){
-        RuntimeAnimatorController ac = m_animator.runtimeAnimatorController;   
-        for (int i = 0; i < ac.animationClips.Length; i++){
-            if (ac.animationClips[i].name == animationName)
-                return ac.animationClips[i].length;
-        }
-        return 0.0f;
-    }
+    protected override void UpdateDirection(){}
 
     public override void Process(){
-        CommonValues.PlayerVelocity = new Vector2(0,0);
-
         velocity.x   = (int)m_detector.GetCurrentDirection() * m_transition.MoveSpeed.x;
         velocity.y   = m_transition.MoveSpeed.y;
 

@@ -7,4 +7,6 @@ public static class  CommonValues
     public static Vector2 PlayerVelocity = new Vector2();
     public static GlobalUtils.Direction PlayerFaceDirection = GlobalUtils.Direction.Left;
 
+    public static bool needChangeDirection = false;
+
 }

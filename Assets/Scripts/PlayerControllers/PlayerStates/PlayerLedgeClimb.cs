@@ -30,20 +30,9 @@ public class PlayerLedgeClimb : BaseState
                        GetComponent<AnimationTransition>();
     }
 
-    public override void UpdateDirection(){
-            m_controllabledObject.GetComponent<Player>().animationNode.position = 
-                Vector3.SmoothDamp( m_controllabledObject.GetComponent<Player>().animationNode.position, 
-                                    m_controllabledObject.transform.position, ref animationVel, m_smoothTime);
+    protected override void UpdateDirection(){
     }
 
-    private float getAnimationLenght(string animationName){
-        RuntimeAnimatorController ac = m_animator.runtimeAnimatorController;   
-        for (int i = 0; i < ac.animationClips.Length; i++){
-            if (ac.animationClips[i].name == animationName)
-                return ac.animationClips[i].length;
-        }
-        return 0.0f;
-    }
 
     public override void Process(){
         velocity.x   = (int)m_detector.GetCurrentDirection() * m_transition.MoveSpeed.x;

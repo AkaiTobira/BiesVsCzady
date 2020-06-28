@@ -4,62 +4,102 @@ using UnityEngine;
 
 public class CatLedgeClimb : BaseState
 {
-    private bool isMovingLeft = false;
-    //private bool climbing = false;
 
     private float timeToEnd;
     private AnimationTransition m_transition;
 
+    private float targetClimbHight = 0;
+    private float targetStayHightY  = 0; 
+    private float targetStayHightX = 0;
+
     public CatLedgeClimb( GameObject controllable, GlobalUtils.Direction dir) : base( controllable ) {
-        // play change direction animation;
-        // at end of animation call :
-        // TEMP
-
-        PlayerFallOfWallHelper.ResetCounter();
-
-        CommonValues.PlayerVelocity = new Vector2(0,0);
-
-        isMovingLeft = dir == GlobalUtils.Direction.Left;
         name = "CatLedgeClimb";
+        CommonValues.PlayerVelocity = new Vector2(0,0);
         m_dir = dir;
-        rotationAngle = ( m_dir == GlobalUtils.Direction.Left) ? 180 :0 ; 
-        m_controllabledObject.GetComponent<Player>().animationNode.eulerAngles = new Vector3( 0, rotationAngle, slopeAngle);
+        SetUpRotation();
+        PlayerFallOfWallHelper.ResetCounter();
+        SetUpVariables();
 
-        timeToEnd = getAnimationLenght("CatLedgeClimb");
+    }
+
+    private void SetUpVariables(){ //TODO Calculation of target position will require slight update;
+        BoxCollider2D ledgeBox  = m_detector.GetClimbableObject().GetComponent<BoxCollider2D>();
+        BoxCollider2D playerBox = m_detector.GetComponent<BoxCollider2D>();
+        Vector2 pos             = m_detector.GetComponent<Transform>().position;
+
+        targetClimbHight = Mathf.Max( ledgeBox.bounds.max.y, ledgeBox.bounds.min.y);
+        targetStayHightY = targetClimbHight;//+ ( playerBox.bounds.max.y - playerBox.bounds.min.x )/2.0f;// + 900.0f;
+
+        GlobalUtils.Direction obstacleDir = ( playerBox.bounds.max.x > ledgeBox.bounds.max.x ) ? 
+                                                    GlobalUtils.Direction.Left : 
+                                                    GlobalUtils.Direction.Right;
+        targetStayHightX = pos.x + 321f * (int)obstacleDir;
+
+        Vector2 velocityS = new Vector2( 0, targetClimbHight - pos.y);
+        m_detector.CheatMove( velocityS );
+    }
+
+    private void SetUpRotation(){
+        rotationAngle = isLeftOriented() ? 180 :0 ; 
+        m_controllabledObject.GetComponent<Player>().animationNode.eulerAngles = new Vector3( 0, rotationAngle, slopeAngle);
+    }
+
+    protected override void  SetUpAnimation(){
         m_animator.SetTrigger("CatClimb");
+        timeToEnd = getAnimationLenght("CatLedgeClimb");
+
         m_transition = m_controllabledObject.
                        GetComponent<Player>().animationNode.
                        GetComponent<AnimationTransition>();
     }
 
-    public override void OnExit(){
-        CommonValues.PlayerVelocity = new Vector2(0,0);
-    }
+    public override void OnExit(){ }
 
-    public override void UpdateDirection(){
-            m_controllabledObject.GetComponent<Player>().animationNode.position = 
-                Vector3.SmoothDamp( m_controllabledObject.GetComponent<Player>().animationNode.position, 
-                                    m_controllabledObject.transform.position, ref animationVel, m_smoothTime);
-    }
+    protected override void UpdateDirection(){}
 
-    private float getAnimationLenght(string animationName){
-        RuntimeAnimatorController ac = m_animator.runtimeAnimatorController;   
-        for (int i = 0; i < ac.animationClips.Length; i++){
-            if (ac.animationClips[i].name == animationName)
-                return ac.animationClips[i].length;
-        }
-        return 0.0f;
-    }
+    bool doITFuckingOnce = true;
 
     public override void Process(){
-        velocity.x   = (int)m_detector.GetCurrentDirection() * m_transition.MoveSpeed.x;
-        velocity.y   = m_transition.MoveSpeed.y;
 
-        m_detector.CheatMove( velocity * Time.deltaTime );
+        if( doITFuckingOnce){
+            Vector2 pos = m_detector.GetComponent<Transform>().position;
+            Vector2 velocityS = new Vector2( 0, targetClimbHight - pos.y);
+            m_detector.CheatMove( velocityS );
+            doITFuckingOnce = false;
+        }
+       
+        PlayerFallOfWallHelper.ResetCounter();
+
         timeToEnd -= Time.deltaTime;
-        if( timeToEnd < 0 ) m_isOver = true;
+        if( timeToEnd < 0 ) {
+            Vector2 pos = m_detector.GetComponent<Transform>().position;
+
+            pos = new Vector2( targetStayHightX, targetStayHightY +100 );
+
+            m_detector.GetComponent<Transform>().position = pos;
+
+            Debug.Log( m_detector.GetComponent<Transform>().position.ToString() + ":::" + 
+            new Vector2 ( targetStayHightX ,targetStayHightY +100 ) );
+
+
+            if( m_detector.isOnGround() ){
+                CommonValues.PlayerVelocity.y = 0;
+                m_isOver = true;
+                m_nextState = new CatMove(m_controllabledObject, m_dir);
+            }else{
+
+                    Vector2 pos2 = m_detector.GetComponent<Transform>().position;
+
+                    pos = new Vector2( targetStayHightX, targetStayHightY +100 );
+
+                    m_detector.GetComponent<Transform>().position = pos;
+
+                 CommonValues.PlayerVelocity.y += -CatUtils.GravityForce * Time.deltaTime;
+                 m_detector.Move(CommonValues.PlayerVelocity * Time.deltaTime);
+            }
+
+        }
     }
 
-    public override void HandleInput(){
-    }
+    public override void HandleInput(){}
 }
