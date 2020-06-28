@@ -57,7 +57,7 @@ public class BiesJump : BaseState
     }
 
     private bool isFalling(){
-        if( PlayerFallHelper.FallRequirementsMeet( m_detector.isOnGround()) && CommonValues.PlayerVelocity.y < 0 ){ 
+        if( PlayerFallHelper.FallRequirementsMeet( m_detector.isOnGround()) && CommonValues.PlayerVelocity.y <= 0 ){ 
             timeOfJumpForceRising = 0.0f;
             m_nextState = new BiesFall( m_controllabledObject, m_detector.GetCurrentDirection());
             return true;

@@ -18,6 +18,7 @@ public class CatJump : BaseState
     public CatJump( GameObject controllable, GlobalUtils.Direction dir) : base( controllable ) {
         name = "CatJump";
         JumpForce    = CatUtils.PlayerJumpForceMin;
+        m_animator.SetFloat( "FallVelocity", JumpForce);
         m_dir = dir;
         SetUpCounters();
     }
@@ -100,6 +101,7 @@ public class CatJump : BaseState
 
     private void ProcessMove(){
         if( startAnimationDelay > 0 ) return;
+    //    m_animator.SetFloat( "FallVelocity", CommonValues.PlayerVelocity.y);
         GravityForce += -CatUtils.GravityForce * Time.deltaTime;
         CommonValues.PlayerVelocity.y = JumpForce + GravityForce;
         CommonValues.PlayerVelocity.y = Mathf.Max( CommonValues.PlayerVelocity.y, -500 );

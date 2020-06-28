@@ -16,6 +16,8 @@ public class CatFall : BaseState
         HandleSpecialBehaviour();
 //        Debug.Log( CommonValues.PlayerVelocity);
         CommonValues.PlayerVelocity.y = 0;
+        m_animator.SetFloat( "FallVelocity", -1000);
+
     }
 
     private void HandleSpecialBehaviour(){        
@@ -43,7 +45,7 @@ public class CatFall : BaseState
     }
 
     public override void Process(){
-        m_animator.SetFloat( "FallVelocity", CommonValues.PlayerVelocity.y);
+        m_animator.SetFloat( "FallVelocity", -1000);
         WallSlideDelay -= Time.deltaTime;
         CommonValues.PlayerVelocity.y += -CatUtils.GravityForce * Time.deltaTime;
         ProcessSwipe();

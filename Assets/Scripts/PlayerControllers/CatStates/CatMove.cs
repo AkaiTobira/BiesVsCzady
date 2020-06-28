@@ -41,7 +41,7 @@ public class CatMove : BaseState
     }
 
     private void ProcessAnimationUpdate(){
-        m_animator.SetFloat( "FallVelocity", 0);
+        m_animator.SetFloat( "FallVelocity", -2);
         m_animator.SetFloat("MoveVelocity", Mathf.Abs(CommonValues.PlayerVelocity.x));
     }
     public override void Process(){
