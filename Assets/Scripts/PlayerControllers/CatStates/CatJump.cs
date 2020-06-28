@@ -101,7 +101,7 @@ public class CatJump : BaseState
 
     private void ProcessMove(){
         if( startAnimationDelay > 0 ) return;
-    //    m_animator.SetFloat( "FallVelocity", CommonValues.PlayerVelocity.y);
+        m_animator.SetFloat( "FallVelocity", CommonValues.PlayerVelocity.y);
         GravityForce += -CatUtils.GravityForce * Time.deltaTime;
         CommonValues.PlayerVelocity.y = JumpForce + GravityForce;
         CommonValues.PlayerVelocity.y = Mathf.Max( CommonValues.PlayerVelocity.y, -500 );
@@ -132,7 +132,6 @@ public class CatJump : BaseState
             swipeOn = false;
         }
     }
-
     public override void HandleInput(){
         if( m_detector.canClimbLedge() ){
             m_isOver = true;
@@ -143,11 +142,14 @@ public class CatJump : BaseState
                 m_isOver = true;
                 m_animator.ResetTrigger("CatJumpPressed");
                 m_nextState = new CatWallSlide( m_controllabledObject, m_dir);
-            }else 
-            if ( isRightOriented() && PlayerInput.isMoveRightKeyHold()){
+            }else if ( isRightOriented() && PlayerInput.isMoveRightKeyHold()){
                 m_isOver = true;
                 m_animator.ResetTrigger("CatJumpPressed");
                 m_nextState = new CatWallSlide( m_controllabledObject, m_dir);
+            }else if( PlayerInput.isClimbKeyHold() ){
+                m_isOver = true;
+                m_animator.ResetTrigger("CatJumpPressed");
+                m_nextState = new CatWallClimb( m_controllabledObject, m_dir);
             }
         }
         HandleInputSwipe();

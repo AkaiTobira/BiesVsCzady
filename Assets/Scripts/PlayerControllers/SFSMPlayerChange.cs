@@ -64,11 +64,8 @@ public class SFSMPlayerChange : SFSMBase
                 }
                 break;
         }
-
-
     }
-
-
+    
     private string RemoveDirectionInfo( string stateName ){
         if( stateName.EndsWith("L") || stateName.EndsWith("R")){
             return stateName.Substring( 0, stateName.Length-1);

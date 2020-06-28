@@ -45,19 +45,39 @@ public static class  PlayerChangeRules
             var playerDetector = GlobalUtils.PlayerObject.GetComponent<CollisionDetectorPlayer>();
             Vector2 Translation = new Vector2();
 
-            float distanceToWall = playerDetector.GetDistanceToClosestWall();
-
             if( stateName.Contains("Hold") || stateName.Contains("Slide") ){
                 Translation = new Vector2(-SHIFT_BASED_ON_SCALE, 0 ) * (int)playerDetector.GetCurrentDirection();
             }
-            
-            if( distanceToWall < SHIFT_BASED_ON_SCALE ){
-                Translation = new Vector2(-SHIFT_BASED_ON_SCALE, 0 ) * (int)playerDetector.GetCurrentDirection();
-            }
 
+            Translation = CorrectTransition( playerDetector );
+ 
             Debug.Log(Translation);
             playerDetector.CheatMove(Translation);
         }
+    }
+
+    private static void CorrectTransitionFront( ref Vector2 translationVector,  CollisionDetectorPlayer playerDetector){
+        float distanceToWall = playerDetector.GetDistanceToClosestWallFront();
+
+        if( distanceToWall < SHIFT_BASED_ON_SCALE ){
+            translationVector = new Vector2(-SHIFT_BASED_ON_SCALE, 0 ) * (int)playerDetector.GetCurrentDirection();
+        }
+    }
+
+    private static void CorrectTransitionBack( ref Vector2 translationVector,  CollisionDetectorPlayer playerDetector){
+        float distanceToWall = playerDetector.GetDistanceToClosestWallBack();
+
+        if( distanceToWall < SHIFT_BASED_ON_SCALE ){
+            translationVector = new Vector2(SHIFT_BASED_ON_SCALE, 0 ) * (int)playerDetector.GetCurrentDirection();
+        }
+    }
+    private static Vector2 CorrectTransition( CollisionDetectorPlayer playerDetector){
+        Vector2 Translation = new Vector2();
+
+        CorrectTransitionFront( ref Translation, playerDetector);
+        CorrectTransitionBack ( ref Translation, playerDetector);
+
+        return Translation;
     }
 
     public static string ChangeFormName( string formName){
@@ -66,6 +86,13 @@ public static class  PlayerChangeRules
             case "Bies": return "Cat";
             default :    return "InvalidName";
         }
+    }
+
+    private static bool HasEnoughtSpace(){
+
+        
+
+        return true;
     }
 
     public static bool CanTransformInCurrentState( string currentStateName ){

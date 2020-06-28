@@ -15,7 +15,7 @@ public class CatWallClimb : BaseState
 
         SetUpRotation();
         m_detector.CheatMove(new Vector2(0,2));
-//        CommonValues.PlayerVelocity.x = CatUtils.MoveSpeedInAir * ( int )m_dir;
+        CommonValues.PlayerVelocity.x = 100 * ( int )m_dir;
     }
 
     private void SetUpRotation(){
@@ -31,7 +31,6 @@ public class CatWallClimb : BaseState
 
     public override void Process(){
     //    if( m_detector.isOnGround()   ) m_isOver = true;
-    //    if( !m_detector.isWallClose() ) m_isOver = true;
     //    if( PlayerFallOfWallHelper.FallOfWallRequirementsMeet()){
     //        PlayerSwipeLock.ResetCounter();
     //        m_isOver = true;
@@ -47,6 +46,9 @@ public class CatWallClimb : BaseState
         if( PlayerInput.isSpecialKeyHold() ) CommonValues.PlayerVelocity.y = 0.0f;
         CatUtils.stamina -= Mathf.Abs(CommonValues.PlayerVelocity.y * Time.deltaTime);
         m_detector.Move(CommonValues.PlayerVelocity * Time.deltaTime);
+
+        m_animator.SetBool("isWallClose", m_detector.isWallClose());
+        if( !m_detector.isWallClose() ) m_isOver = true;
     }
 
     public override void HandleInput(){

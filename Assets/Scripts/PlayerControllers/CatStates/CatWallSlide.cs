@@ -82,7 +82,7 @@ public class CatWallSlide : BaseState
     }
 
     public override void HandleInput(){
-        if( PlayerInput.isClimbKeyPressed() ){
+        if( PlayerInput.isClimbKeyHold() && CatUtils.stamina > CatUtils.MaxStamina/2.0f ){
             m_isOver = true;
             m_nextState = new CatWallClimb( m_controllabledObject, m_dir);
         }
