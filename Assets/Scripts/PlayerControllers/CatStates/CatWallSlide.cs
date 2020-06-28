@@ -99,6 +99,8 @@ public class CatWallSlide : BaseState
                 PlayerMoveOfWallHelper.EnableCounter();
             }else if( ( m_dir == GlobalUtils.Direction.Right) && PlayerInput.isMoveLeftKeyHold() ){
                 PlayerMoveOfWallHelper.EnableCounter();
+            }else if( PlayerInput.isFallKeyHold() ){
+                PlayerMoveOfWallHelper.EnableCounter();
             }
         }else{
             m_animator.SetBool("isHoldKeyPressed", true);

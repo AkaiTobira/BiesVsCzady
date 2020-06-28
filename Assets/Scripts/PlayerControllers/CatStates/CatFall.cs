@@ -20,10 +20,7 @@ public class CatFall : BaseState
 
     }
 
-    private void HandleSpecialBehaviour(){        
-        Debug.Log( PlayerFallOfWallHelper.FallOfWallRequirementsMeet());
-        Debug.Log( PlayerMoveOfWallHelper.MoveOfWallRequirementsMeet());
-
+    private void HandleSpecialBehaviour(){
         if( PlayerFallOfWallHelper.FallOfWallRequirementsMeet() || 
             PlayerMoveOfWallHelper.MoveOfWallRequirementsMeet() ) {
             CommonValues.PlayerVelocity.x = CatUtils.FallOffWallFactor * 

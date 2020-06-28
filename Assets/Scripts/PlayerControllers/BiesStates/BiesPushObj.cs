@@ -63,7 +63,9 @@ public class BiesPushObj : BaseState
     public override void HandleInput(){
         if( !PlayerInput.isSpecialKeyHold() ) { 
             m_isOver = true;
-        }else if( !PlayerInput.isMoveRightKeyHold() && !PlayerInput.isMoveLeftKeyHold() ){
+        }else if( isRightOriented() && !PlayerInput.isMoveRightKeyHold() ){
+            m_isOver = true;
+        }else if(  isLeftOriented() && !PlayerInput.isMoveLeftKeyHold() ){
             m_isOver = true;
         }
     }

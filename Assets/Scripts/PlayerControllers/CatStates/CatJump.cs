@@ -28,7 +28,7 @@ public class CatJump : BaseState
         PlayerMoveOfWallHelper.ResetCounter();
 
         timeOfJumpForceRising   = CatUtils.JumpMaxTime;
-        timeOfIgnoringWallStick = m_controllabledObject.GetComponent<CatBalance>().timeToJumpApex / 2.0f;
+        timeOfIgnoringWallStick = 2;//m_controllabledObject.GetComponent<CatBalance>().timeToJumpApex / 2.0f;
     }
 
     protected override void SetUpAnimation(){

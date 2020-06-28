@@ -73,7 +73,11 @@ public class BiesPullObj : BaseState
     public override void HandleInput(){
         if( !PlayerInput.isSpecialKeyHold() ) { 
             m_isOver = true;
-        }else if( !PlayerInput.isMoveRightKeyHold() && !PlayerInput.isMoveLeftKeyHold() ){
+        }else if( isLeftOriented() && !PlayerInput.isMoveRightKeyHold() ){
+            m_isOver = true;
+            pullForce.x *= -1;
+            m_detector.Move( pullForce * Time.deltaTime );
+        }else if( isRightOriented() && !PlayerInput.isMoveLeftKeyHold() ){
             m_isOver = true;
             pullForce.x *= -1;
             m_detector.Move( pullForce * Time.deltaTime );
