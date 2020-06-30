@@ -9,6 +9,7 @@ public class Player : MonoBehaviour
 
     private Animator m_animator;
 
+    [SerializeField] public bool invincible = true;
     void Start()
     {
         GlobalUtils.PlayerObject = transform;
@@ -17,6 +18,10 @@ public class Player : MonoBehaviour
         m_animator    = animationNode.gameObject.GetComponent<Animator>();
         CalculateMath();
         Debug.Log( PlayerUtils.PlayerJumpForceMin.ToString() + " " + PlayerUtils.PlayerJumpForceMax.ToString() );
+    }
+
+    public bool isImmortal(){
+        return invincible;
     }
 
     private void CalculateMath(){
@@ -48,7 +53,7 @@ public class Player : MonoBehaviour
     // Update is called once per frame
 
 
-    [SerializeField] float healthPoints = 10;
+    [SerializeField] public float healthPoints = 10;
 
     public GlobalUtils.AttackInfo GetPlayerAttackInfo(){
         GlobalUtils.AttackInfo infoPack = new GlobalUtils.AttackInfo();
@@ -95,7 +100,7 @@ public class Player : MonoBehaviour
 //        Debug.Log(other.gameObject.name);
     }
 
-    [SerializeField] public bool invincible = true;
+
 
     public string GetCurrentFormName(){
         return m_controller.GetCurrentForm();

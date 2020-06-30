@@ -7,13 +7,11 @@ public class PlayerDebugInfo : MonoBehaviour
 {
 
     public void Awake() {
-        GlobalUtils.debugConsole  = m_debugText;
-        GlobalUtils.debugConsole2 = m_debugText3;
+        GlobalUtils.debugConsole  = m_debugText[0];
+        GlobalUtils.debugConsole2 = m_debugText[2];
     }
 
-    [SerializeField] public Text m_debugText = null;
-    [SerializeField] public Text m_debugText2 = null;
-    [SerializeField] public Text m_debugText3 = null;
+    [SerializeField] public Text[] m_debugText;
 
     public void LockBiesValue(){
         GetComponent<BiesBalance>().LockCurrentTemp();
@@ -35,10 +33,12 @@ public class PlayerDebugInfo : MonoBehaviour
 
     void Update()
     {
-        m_debugText2.text = CatUtils.PlayerJumpForceMax.ToString() + " " + CatUtils.PlayerJumpForceMin.ToString();
-        
-        m_debugText3.text = transform.position + "\n";
-        m_debugText3.text += CommonValues.PlayerVelocity.ToString();
+        m_debugText[1].text = CatUtils.PlayerJumpForceMax.ToString() + " " + CatUtils.PlayerJumpForceMin.ToString();
+   //     
+        m_debugText[2].text = transform.position + "\n";
+        m_debugText[2].text += CommonValues.PlayerVelocity.ToString();
+        m_debugText[3].text = "HP : " +  GetComponent<Player>().healthPoints.ToString();
+        m_debugText[4].text = "Invincible : " + GetComponent<Player>().isImmortal();
     }
 
 }
