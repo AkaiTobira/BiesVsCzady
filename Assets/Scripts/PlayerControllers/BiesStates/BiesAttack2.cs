@@ -13,7 +13,7 @@ public class BiesAttack2 : BaseState{
 
     protected override void SetUpAnimation(){
         m_animator.SetBool("Attack2", true);
-        timeToEnd = getAnimationLenght("PlayerAttack2");
+        timeToEnd = getAnimationLenght("BiesRoar");
 
         GlobalUtils.cameraShake.TriggerShake(timeToEnd);
 

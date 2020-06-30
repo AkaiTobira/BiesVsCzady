@@ -7,10 +7,22 @@ public class BiesHurt : BaseState{
     private AnimationTransition m_transition;
     private float velocitXFriction = 0.0f;
 
+    private float knocBackDirection;
+
     public BiesHurt( GameObject controllable, GlobalUtils.AttackInfo infoPack) : base( controllable ){
         name = "BiesHurt";
+
+        m_dir = infoPack.fromCameAttack;
+        knocBackDirection = (int)infoPack.fromCameAttack;
+
         fillKnockbackInfo( infoPack );
     }
+
+  //  protected override void UpdateDirection(){
+
+
+ //   }
+
 
     protected override void SetUpAnimation(){
         m_animator.SetTrigger( "BiesHurt" );
@@ -24,8 +36,12 @@ public class BiesHurt : BaseState{
 
 
     private void fillKnockbackInfo( GlobalUtils.AttackInfo infoPack ){
-        velocity          = infoPack.knockBackValue;
-        velocity.x        *= (int)infoPack.fromCameAttack;
+        CommonValues.PlayerVelocity   = infoPack.knockBackValue;
+        CommonValues.PlayerVelocity.x *= (int)infoPack.fromCameAttack;
+
+     //   if(Mathf.Abs( CommonValues.PlayerVelocity.x ) > infoPack.knockBackValue.x ) 
+    //        velocity.x = (int)infoPack.fromCameAttack * Mathf.Abs( CommonValues.PlayerVelocity.x );
+ 
         velocitXFriction  = infoPack.knockBackFrictionX;
 
         if( velocitXFriction > 0){
@@ -39,15 +55,26 @@ public class BiesHurt : BaseState{
         if( timeToEnd < 0){
             m_isOver = true;
             m_animator.ResetTrigger( "BiesHurt" );
+
+            
+            if( !m_detector.isOnGround() ){
+                m_nextState = new BiesFall( m_controllabledObject, m_dir);
+            }
         }
     }
 
     private void ProcessMove(){
+        m_animator.SetFloat( "FallVelocity", CommonValues.PlayerVelocity.y);
         PlayerFallHelper.FallRequirementsMeet( true );
-        velocity.y += -BiesUtils.GravityForce * Time.deltaTime;
-        float xMax = Mathf.Max(Mathf.Abs( velocity.x ) - velocitXFriction * Time.deltaTime, 0 );
-        velocity.x = Mathf.Sign(velocity.x) * xMax;
-        m_detector.Move(velocity*Time.deltaTime);
+        CommonValues.PlayerVelocity.y += -BiesUtils.GravityForce * Time.deltaTime;
+
+        if( knocBackDirection == -1 ) {
+            CommonValues.PlayerVelocity.x = CommonValues.PlayerVelocity.x - velocitXFriction * Time.deltaTime;
+        }else{
+            CommonValues.PlayerVelocity.x = CommonValues.PlayerVelocity.x + velocitXFriction * Time.deltaTime;
+        }
+
+        m_detector.Move(CommonValues.PlayerVelocity*Time.deltaTime);
     }
 
     public override void Process(){

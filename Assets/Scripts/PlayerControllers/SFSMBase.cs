@@ -45,6 +45,10 @@ public class SFSMBase
         switchState();
     }
 
+    public virtual string GetCurrentForm(){
+        return "";
+    }
+
     public virtual void OverriteStates( string targetState, GlobalUtils.AttackInfo attackInfo = new GlobalUtils.AttackInfo() ){
 
     }

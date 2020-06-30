@@ -73,6 +73,11 @@ public class SFSMPlayerChange : SFSMBase
         return stateName;
     }
 
+    public override string GetCurrentForm(){
+        return GetCurrentFormName( GetStateName() );
+    }
+
+
     private string GetCurrentFormName( string stateName){
         if( stateName.StartsWith("Cat"))  return "Cat";
         if( stateName.StartsWith("Bies")) return "Bies";

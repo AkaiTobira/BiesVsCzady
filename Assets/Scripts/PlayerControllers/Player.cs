@@ -95,9 +95,16 @@ public class Player : MonoBehaviour
 //        Debug.Log(other.gameObject.name);
     }
 
+    [SerializeField] public bool invincible = true;
+
+    public string GetCurrentFormName(){
+        return m_controller.GetCurrentForm();
+    }
+
+
     public void OnHit( GlobalUtils.AttackInfo infoPack ){
         if( !infoPack.isValid ) return;
-        healthPoints -= infoPack.attackDamage;
+        if( !invincible ) healthPoints -= infoPack.attackDamage;
         if( healthPoints > 0 ){
             if( infoPack.stunDuration > 0){
                 m_controller.OverriteStates( "Stun", infoPack );
