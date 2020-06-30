@@ -96,6 +96,7 @@ public static class  PlayerChangeRules
     }
 
     public static bool CanTransformInCurrentState( string currentStateName ){
+        if( LockAreaOverseer.isChangeLocked )        return false;
         if( currentStateName.Contains("LedgeClimb")) return false;
         if( currentStateName.Contains("Attack"))     return false;
         if( currentStateName.Contains("Stun"))       return false;
