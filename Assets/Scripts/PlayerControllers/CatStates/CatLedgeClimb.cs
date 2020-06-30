@@ -39,6 +39,17 @@ public class CatLedgeClimb : BaseState
         m_detector.CheatMove( velocityS );
     }
 
+    protected override void UpdateFloorAligment(){
+        float distanceToRight  = Vector3.Distance( m_detector.GetClimbableObject().transform.up, m_animator.transform.up );  
+        //= Vector3.Angle( m_detector.GetClimbableObject().transform.up,    m_animator.transform.up);
+        float distanceToUp     = Vector3.Distance( m_detector.GetClimbableObject().transform.right, m_animator.transform.up ); 
+        //= Vector3.Angle( m_detector.GetClimbableObject().transform.right, m_animator.transform.up);
+
+        m_animator.transform.up = ( distanceToRight < distanceToUp ) ? 
+                                    m_detector.GetClimbableObject().transform.up : 
+                                    m_detector.GetClimbableObject().transform.right;        
+    }
+
     private void SetUpRotation(){
         rotationAngle = isLeftOriented() ? 180 :0 ; 
         m_controllabledObject.GetComponent<Player>().animationNode.eulerAngles = new Vector3( 0, rotationAngle, slopeAngle);
@@ -78,8 +89,8 @@ public class CatLedgeClimb : BaseState
 
             m_detector.GetComponent<Transform>().position = pos;
 
-            Debug.Log( m_detector.GetComponent<Transform>().position.ToString() + ":::" + 
-            new Vector2 ( targetStayHightX ,targetStayHightY +100 ) );
+      //      Debug.Log( m_detector.GetComponent<Transform>().position.ToString() + ":::" + 
+     //       new Vector2 ( targetStayHightX ,targetStayHightY +100 ) );
 
 
             if( m_detector.isOnGround() ){

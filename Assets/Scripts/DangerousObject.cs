@@ -19,8 +19,6 @@ public class DangerousObject : MonoBehaviour
 
     [SerializeField] public float timeToHitApex = 1.0f;
 
-    private float gravityForce = 0.0f;
-
     [SerializeField] public float damage = 3;
     [SerializeField] public Vector2 CatKnockback = new Vector2( 0, 0);
     [SerializeField] public Vector2 BiesKnockback = new Vector2( 0, 0);

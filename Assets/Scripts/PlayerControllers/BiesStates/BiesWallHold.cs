@@ -25,12 +25,13 @@ public class BiesWallHold : BaseState
     }
 
     public override void OnExit(){
-        if( isLeftOriented() ){
+        if( isLeftOriented() &&  PlayerInput.isMoveRightKeyHold()  ){
             velocity.x = BiesUtils.PlayerSpeed * Time.deltaTime;
-        }else{
+            m_detector.Move(velocity * Time.deltaTime);
+        }else if( isRightOriented() && PlayerInput.isMoveLeftKeyHold() ){
             velocity.x = -BiesUtils.PlayerSpeed * Time.deltaTime;
+            m_detector.Move(velocity * Time.deltaTime);
         }
-        m_detector.Move(velocity * Time.deltaTime);
         velocity = new Vector2();
     }
 

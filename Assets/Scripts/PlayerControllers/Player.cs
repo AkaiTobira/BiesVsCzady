@@ -17,7 +17,7 @@ public class Player : MonoBehaviour
         m_controller  = new SFSMPlayerChange( transform.gameObject, new BiesIdle( gameObject ) );
         m_animator    = animationNode.gameObject.GetComponent<Animator>();
         CalculateMath();
-        Debug.Log( PlayerUtils.PlayerJumpForceMin.ToString() + " " + PlayerUtils.PlayerJumpForceMax.ToString() );
+//        Debug.Log( PlayerUtils.PlayerJumpForceMin.ToString() + " " + PlayerUtils.PlayerJumpForceMax.ToString() );
     }
 
     public bool isImmortal(){

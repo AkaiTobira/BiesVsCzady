@@ -88,13 +88,6 @@ public static class  PlayerChangeRules
         }
     }
 
-    private static bool HasEnoughtSpace(){
-
-        
-
-        return true;
-    }
-
     public static bool CanTransformInCurrentState( string currentStateName ){
         if( LockAreaOverseer.isChangeLocked )        return false;
         if( currentStateName.Contains("LedgeClimb")) return false;
