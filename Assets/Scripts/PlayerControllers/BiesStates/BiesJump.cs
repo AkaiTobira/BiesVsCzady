@@ -41,14 +41,14 @@ public class BiesJump : PlayerBaseState
     IEnumerator StartJump( float time ){
         yield return new WaitForSeconds(time);
         if( m_isOver ) yield break;
-        m_detector.CheatMove( new Vector2(0,40.0f));
+        m_FloorDetector.CheatMove( new Vector2(0,40.0f));
         CommonValues.PlayerVelocity.y = JumpForce + GravityForce; 
         m_animator.ResetTrigger("BiesJumpPressed");
     }
 
 
     private bool isOnCelling(){
-        if( m_detector.isOnCelling()){
+        if( m_FloorDetector.isOnCelling()){
             timeOfJumpForceRising = 0.0f;
             m_animator.ResetTrigger("BiesJumpPressed");
             return true;
@@ -57,9 +57,9 @@ public class BiesJump : PlayerBaseState
     }
 
     private bool isFalling(){
-        if( PlayerFallHelper.FallRequirementsMeet( m_detector.isOnGround()) && CommonValues.PlayerVelocity.y <= 0 ){ 
+        if( PlayerFallHelper.FallRequirementsMeet( m_FloorDetector.isOnGround()) && CommonValues.PlayerVelocity.y <= 0 ){ 
             timeOfJumpForceRising = 0.0f;
-            m_nextState = new BiesFall( m_controllabledObject, m_detector.GetCurrentDirection());
+            m_nextState = new BiesFall( m_controllabledObject, m_FloorDetector.GetCurrentDirection());
             return true;
         }
         return false;
@@ -97,8 +97,8 @@ public class BiesJump : PlayerBaseState
             CommonValues.PlayerVelocity.y = JumpForce + GravityForce; 
             CommonValues.PlayerVelocity.y = Mathf.Max( CommonValues.PlayerVelocity.y, -500 );
             ProcessSwipe();
-            m_detector.Move( CommonValues.PlayerVelocity * Time.deltaTime);
-            CommonValues.PlayerFaceDirection = m_detector.GetCurrentDirection();
+            m_FloorDetector.Move( CommonValues.PlayerVelocity * Time.deltaTime);
+            CommonValues.PlayerFaceDirection = m_FloorDetector.GetCurrentDirection();
     }
 
     private void ProcessSwipe(){
@@ -136,7 +136,7 @@ public class BiesJump : PlayerBaseState
 
 
     public override void HandleInput(){
-        if( m_detector.canClimbLedge() ){
+        if( m_ObjectInteractionDetector.canClimbLedge() ){
             m_isOver = true;
             m_animator.ResetTrigger("BiesJumpPressed");
             m_nextState = new BiesLedgeClimb( m_controllabledObject, m_dir);

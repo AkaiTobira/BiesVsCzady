@@ -33,7 +33,7 @@ public class CatHurt : PlayerBaseState{
  
 
         if( velocitXFriction > 0){
-            m_detector.CheatMove( new Vector2(0,40.0f));
+            m_FloorDetector.CheatMove( new Vector2(0,40.0f));
         }
     }
 
@@ -52,7 +52,7 @@ public class CatHurt : PlayerBaseState{
             m_isOver = true;
             m_animator.ResetTrigger( "CatHurt" );
 
-            if( !m_detector.isOnGround() ){
+            if( !m_FloorDetector.isOnGround() ){
                 m_nextState = new CatFall( m_controllabledObject, m_dir);
             }
 
@@ -61,7 +61,7 @@ public class CatHurt : PlayerBaseState{
 
     private void ProcessMove(){
         m_animator.SetFloat( "FallVelocity", velocity.y);
-        m_animator.SetBool("isGrounded", m_detector.isOnGround());
+        m_animator.SetBool("isGrounded", m_FloorDetector.isOnGround());
         PlayerFallHelper.FallRequirementsMeet( true );
 
         Debug.Log( CommonValues.PlayerVelocity);
@@ -74,7 +74,7 @@ public class CatHurt : PlayerBaseState{
             CommonValues.PlayerVelocity.x = CommonValues.PlayerVelocity.x + velocitXFriction * Time.deltaTime;
         }
 
-        m_detector.Move(CommonValues.PlayerVelocity*Time.deltaTime);
+        m_FloorDetector.Move(CommonValues.PlayerVelocity*Time.deltaTime);
     }
 
     public override void Process(){

@@ -30,8 +30,8 @@ public class BiesAttack5 : PlayerBaseState
     }
     private void ProcessMove(){
         PlayerFallHelper.FallRequirementsMeet( true );
-        velocity = (int)m_detector.GetCurrentDirection() * m_transition.MoveSpeed;
-        m_detector.Move(velocity*Time.deltaTime);
+        velocity = (int)m_FloorDetector.GetCurrentDirection() * m_transition.MoveSpeed;
+        m_FloorDetector.Move(velocity*Time.deltaTime);
     }
     public override void Process(){
         ProcessStateEnd();

@@ -22,6 +22,8 @@ public class BiesBalance : MonoBehaviour
     [Range( 0.0001f, 10.0f)] public float MoveAccelerationTime      = 0.0f;
     [Range( 0.0001f, 10.0f)] public float MoveBrakingTime      = 0.0f;
 
+    BiesUtils.BiesValues infoPack = new BiesUtils.BiesValues();
+
     void Start()
     {
         LoadBalance("BiesValues");
@@ -36,18 +38,34 @@ public class BiesBalance : MonoBehaviour
         BiesUtils.PlayerJumpForceMax    = Mathf.Abs(BiesUtils.GravityForce) * timeToJumpApex;
         BiesUtils.JumpMaxTime           = timeToJumpApex;
         BiesUtils.MoveSpeedInAir        = moveDistanceInAir;
-        BiesUtils.maxMoveDistanceInAir     = maxMoveDistanceInAir;
-
+        BiesUtils.maxMoveDistanceInAir  = maxMoveDistanceInAir;
         BiesUtils.Attack1Damage         = Attack1Damage;
         BiesUtils.Attack2Damage         = Attack2Damage;
         BiesUtils.Attack3Damage         = Attack3Damage;
         BiesUtils.KnockBackValueAttack1 = KnockBackValueAttack1;
         BiesUtils.KnockBackValueAttack2 = KnockBackValueAttack2;
         BiesUtils.KnockBackValueAttack3 = KnockBackValueAttack3;
+        BiesUtils.MoveAccelerationTime  = MoveAccelerationTime;
+        BiesUtils.MoveBrakingTime       = MoveBrakingTime;
 
-        BiesUtils.MoveAccelerationTime     = MoveAccelerationTime;
-        BiesUtils.MoveBrakingTime          = MoveBrakingTime;
+        
 
+        infoPack.GravityForce           = BiesUtils.GravityForce         ; 
+        infoPack.PlayerJumpForceMin     = BiesUtils.PlayerJumpForceMin   ; 
+        infoPack.PlayerSpeed            = BiesUtils.PlayerSpeed          ; 
+        infoPack.PlayerJumpForceMax     = BiesUtils.PlayerJumpForceMax   ; 
+        infoPack.JumpMaxTime            = BiesUtils.JumpMaxTime          ; 
+        infoPack.MoveSpeedInAir         = BiesUtils.MoveSpeedInAir       ; 
+        infoPack.maxMoveDistanceInAir   = BiesUtils.maxMoveDistanceInAir ; 
+        infoPack.Attack1Damage          = BiesUtils.Attack1Damage        ; 
+        infoPack.Attack2Damage          = BiesUtils.Attack2Damage        ; 
+        infoPack.Attack3Damage          = BiesUtils.Attack3Damage        ; 
+        infoPack.KnockBackValueAttack1  = BiesUtils.KnockBackValueAttack1; 
+        infoPack.KnockBackValueAttack2  = BiesUtils.KnockBackValueAttack2; 
+        infoPack.KnockBackValueAttack3  = BiesUtils.KnockBackValueAttack3; 
+        infoPack.MoveAccelerationTime   = BiesUtils.MoveAccelerationTime ; 
+        infoPack.MoveBrakingTime        = BiesUtils.MoveBrakingTime      ; 
+        BiesUtils.infoPack = infoPack;
     }
 
     public void SaveBalance(){

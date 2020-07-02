@@ -8,21 +8,23 @@ public class PlayerBaseState : IBaseState
     protected float slopeAngle    = 0.0f;
     protected float rotationAngle = 0;
 
-
-    protected CollisionDetectorPlayer m_detector;
+    protected ICollisionWallDetector         m_WallDetector;
+    protected ICollisionInteractableDetector m_ObjectInteractionDetector;
 
 
     public PlayerBaseState( GameObject controllableObject ){
-        m_controllabledObject = controllableObject;
-        m_detector            = controllableObject.GetComponent<CollisionDetectorPlayer>();
-        m_animator            = controllableObject.transform.GetComponent<Player>().
-                                animationNode.
-                                gameObject.GetComponent<Animator>();
+        m_controllabledObject       = controllableObject;
+        m_FloorDetector             = controllableObject.GetComponent<CollisionDetectorPlayer>();
+        m_WallDetector              = controllableObject.GetComponent<CollisionDetectorPlayer>();
+        m_ObjectInteractionDetector = controllableObject.GetComponent<CollisionDetectorPlayer>();
+        m_animator                  = controllableObject.transform.GetComponent<Player>().
+                                      animationNode.
+                                      gameObject.GetComponent<Animator>();
         SetUpAnimation();
     }
 
     public override GlobalUtils.Direction GetDirection(){
-        return m_detector.GetCurrentDirection();
+        return m_FloorDetector.GetCurrentDirection();
     }
 
     protected Vector3 animationVel = Vector3.zero;
@@ -34,7 +36,6 @@ public class PlayerBaseState : IBaseState
         UpdateFloorAligment();
     }
 
-
     protected virtual void UpdateAnimatorPosition(){
 
         m_controllabledObject.GetComponent<Player>().animationNode.position = 
@@ -42,12 +43,10 @@ public class PlayerBaseState : IBaseState
                                 m_controllabledObject.transform.position, ref animationVel, m_smoothTime);
 
     }
-
-
     protected virtual void UpdateFloorAligment(){
-        float newSlopeAngle = m_detector.GetSlopeAngle(); 
-        m_controllabledObject.GetComponent<Player>().animationNode.transform.up = m_detector.GetSlopeAngle2();
-    //    Debug.Log( m_detector.GetSlopeAngle2());
+
+        m_controllabledObject.GetComponent<Player>().animationNode.transform.up = m_FloorDetector.GetSlopeAngle();
+    //    Debug.Log( m_FloorDetector.GetSlopeAngle2());
     //    Debug.Log( m_controllabledObject.GetComponent<Player>().animationNode.transform.up );
 
     }

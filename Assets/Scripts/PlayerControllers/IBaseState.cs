@@ -8,6 +8,8 @@ public abstract class IBaseState
 
     protected Animator m_animator;
 
+    protected ICollisionFloorDetector m_FloorDetector;
+
     public string name = ""; 
 
     protected bool m_isOver = false;

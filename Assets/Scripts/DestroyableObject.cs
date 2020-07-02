@@ -11,7 +11,7 @@ public class DestroyableObject : MonoBehaviour
 
     [SerializeField] public bool canBeKnockBacked = false;
 
-    [SerializeField] public CollisionDetector m_detector;
+    [SerializeField] public CollisionDetector m_FloorDetector;
 
     [SerializeField] public float decreaseFactor;
 
@@ -27,12 +27,12 @@ public class DestroyableObject : MonoBehaviour
 
     void Start() {
         m_anim     = GetComponent<Animator>();
-        m_detector = GetComponent<CollisionDetector>(); 
+        m_FloorDetector = GetComponent<CollisionDetector>(); 
     }
 
     private void HandleXMove(){
         if( Mathf.Abs( currentMoveValue.x ) > 10.0f){
-            if( m_detector.isOnGround() ){
+            if( m_FloorDetector.isOnGround() ){
                 float xFactor = Mathf.Abs( currentMoveValue.x );
                 xFactor = Mathf.Max( xFactor - (decreaseFactor*massFactor), 0 );
                 currentMoveValue.x = xFactor * Mathf.Sign(currentMoveValue.x);
@@ -43,13 +43,13 @@ public class DestroyableObject : MonoBehaviour
     }
 
     private void HandleYMove(){
-        if( m_detector.isOnCelling()){ 
+        if( m_FloorDetector.isOnCelling()){ 
             currentMoveValue.y = 0;
-        }else if( !m_detector.isOnGround() ){
+        }else if( !m_FloorDetector.isOnGround() ){
             currentMoveValue.y -= gravityForce * massFactor * Time.deltaTime;
         }else{
             currentMoveValue.y = 0;
-            m_detector.autoGravityOn = true;
+            m_FloorDetector.autoGravityOn = true;
         };
     }
 
@@ -57,7 +57,7 @@ public class DestroyableObject : MonoBehaviour
 ///        Debug.Log( currentMoveValue);
         HandleXMove();
         HandleYMove();
-        if( moveValue != new Vector2(0,0)) m_detector.Move( currentMoveValue * Time.deltaTime);
+        if( moveValue != new Vector2(0,0)) m_FloorDetector.Move( currentMoveValue * Time.deltaTime);
     }
 
     void Update() {
@@ -81,9 +81,9 @@ public class DestroyableObject : MonoBehaviour
                         moveValue    = infoPack.knockBackValue;
                         moveValue.x *=  (int)infoPack.fromCameAttack;
                         currentMoveValue += moveValue;
-                        m_detector.autoGravityOn = false;
-                        m_detector.CheatMove( new Vector2(0,  moveValue.y * Time.deltaTime) );
-                        m_detector.Move(  new Vector2(0,  moveValue.y * Time.deltaTime) );
+                        m_FloorDetector.autoGravityOn = false;
+                        m_FloorDetector.CheatMove( new Vector2(0,  moveValue.y * Time.deltaTime) );
+                        m_FloorDetector.Move(  new Vector2(0,  moveValue.y * Time.deltaTime) );
                         gravityForce = (2 * moveValue.y) / Mathf.Pow (timeToHitApex, 2);
                         Debug.Log( moveValue );
                     }

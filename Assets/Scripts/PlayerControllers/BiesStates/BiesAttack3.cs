@@ -29,7 +29,7 @@ public class BiesAttack3 : PlayerBaseState{
     }
 
     private bool isWallHit(){
-        if( m_detector.isWallClose() ){
+        if( m_WallDetector.isWallClose() ){
             //TOWALLHITSTATE 
             return true;
         }
@@ -46,14 +46,14 @@ public class BiesAttack3 : PlayerBaseState{
     }
 
     private void ProcessMove(){
-        velocity.x   = (int)m_detector.GetCurrentDirection() * m_transition.MoveSpeed.x;
-        if( m_detector.isOnGround() ){
+        velocity.x   = (int)m_FloorDetector.GetCurrentDirection() * m_transition.MoveSpeed.x;
+        if( m_FloorDetector.isOnGround() ){
             PlayerFallHelper.FallRequirementsMeet( true );
             velocity.y = 0;
         }else{
             velocity.y += -PlayerUtils.GravityForce*Time.deltaTime;
         }
-        m_detector.Move(velocity*Time.deltaTime);
+        m_FloorDetector.Move(velocity*Time.deltaTime);
     }
     public override void Process(){
         ProcessStateEnd();

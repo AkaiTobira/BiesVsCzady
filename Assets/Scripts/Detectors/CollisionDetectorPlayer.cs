@@ -2,15 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CollisionDetectorPlayer : CollisionDetector
+public class CollisionDetectorPlayer : CollisionDetector, ICollisionWallDetector, ICollisionInteractableDetector
 {
     [SerializeField] private LayerMask m_oneWayFloorMask   = 0;
     private bool oneWayPlatformBelow;
     private bool closeToWall;
 
-
     private Transform pullableObject    = null;
-
 
     private Transform objectWithLedgde  = null;
 

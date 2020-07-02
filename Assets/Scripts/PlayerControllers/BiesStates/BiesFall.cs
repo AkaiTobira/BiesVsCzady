@@ -14,8 +14,8 @@ public class BiesFall : PlayerBaseState
         m_animator.SetFloat( "FallVelocity", CommonValues.PlayerVelocity.y);
         CommonValues.PlayerVelocity.y += -BiesUtils.GravityForce * Time.deltaTime;
         ProcessSwipe();
-        m_detector.Move(CommonValues.PlayerVelocity * Time.deltaTime);
-        if( m_detector.isOnGround() ) m_isOver = true;
+        m_FloorDetector.Move(CommonValues.PlayerVelocity * Time.deltaTime);
+        if( m_FloorDetector.isOnGround() ) m_isOver = true;
     }
 
     private void ProcessSwipe(){
@@ -49,12 +49,12 @@ public class BiesFall : PlayerBaseState
 
     public override void HandleInput(){
     //     if(PlayerJumpHelper.JumpRequirementsMeet( PlayerUtils.isJumpKeyJustPressed(), 
-    //                                               m_detector.isOnGround() ))
+    //                                               m_FloorDetector.isOnGround() ))
     //    {
     //        m_nextState = new PlayerJump(m_controllabledObject, GlobalUtils.Direction.Left);
     //    }
 
-        if( m_detector.canClimbLedge() ){
+        if( m_ObjectInteractionDetector.canClimbLedge() ){
             m_isOver = true;
             m_nextState = new BiesLedgeClimb( m_controllabledObject, m_dir);
         }

@@ -12,12 +12,12 @@ public class BiesWallHold : PlayerBaseState
     }
 
     public override void Process(){
-        if( !m_detector.isWallClose()) m_isOver = true;
+        if( !m_WallDetector.isWallClose()) m_isOver = true;
 
         m_animator.SetFloat( "FallVelocity", 0);
-        if( !m_detector.isOnGround() ){
+        if( !m_FloorDetector.isOnGround() ){
             CommonValues.PlayerVelocity.y = -BiesUtils.GravityForce * Time.deltaTime;
-            m_detector.Move(CommonValues.PlayerVelocity * Time.deltaTime);
+            m_FloorDetector.Move(CommonValues.PlayerVelocity * Time.deltaTime);
         }else{
             CommonValues.PlayerVelocity.y = 0;
         }
@@ -27,22 +27,22 @@ public class BiesWallHold : PlayerBaseState
     public override void OnExit(){
         if( isLeftOriented() &&  PlayerInput.isMoveRightKeyHold()  ){
             velocity.x = BiesUtils.PlayerSpeed * Time.deltaTime;
-            m_detector.Move(velocity * Time.deltaTime);
+            m_FloorDetector.Move(velocity * Time.deltaTime);
         }else if( isRightOriented() && PlayerInput.isMoveLeftKeyHold() ){
             velocity.x = -BiesUtils.PlayerSpeed * Time.deltaTime;
-            m_detector.Move(velocity * Time.deltaTime);
+            m_FloorDetector.Move(velocity * Time.deltaTime);
         }
         velocity = new Vector2();
     }
 
     public override void HandleInput(){
-        if( PlayerFallHelper.FallRequirementsMeet( m_detector.isOnGround()) ){
+        if( PlayerFallHelper.FallRequirementsMeet( m_FloorDetector.isOnGround()) ){
             m_nextState = new BiesFall(m_controllabledObject, GlobalUtils.Direction.Left);
         }else if( PlayerInput.isAttack1KeyPressed() ){
             m_nextState = new BiesAttack1(m_controllabledObject);
         }else if( PlayerInput.isAttack2KeyPressed() ){
             m_nextState = new BiesAttack2(m_controllabledObject);
-        }else if ( m_detector.IsWallPullable() && PlayerInput.isSpecialKeyHold() ){
+        }else if ( m_ObjectInteractionDetector.IsWallPullable() && PlayerInput.isSpecialKeyHold() ){
 
             if( isLeftOriented() ){
                 if( PlayerInput.isMoveRightKeyHold()){
@@ -67,13 +67,13 @@ public class BiesWallHold : PlayerBaseState
             m_nextState = new BiesMove(m_controllabledObject, GlobalUtils.Direction.Left); 
         }else if( 
             PlayerJumpHelper.JumpRequirementsMeet( PlayerInput.isJumpKeyJustPressed(), 
-                                                   m_detector.isOnGround() )
+                                                   m_FloorDetector.isOnGround() )
         ){ 
             m_nextState = new BiesJump(m_controllabledObject, GlobalUtils.Direction.Left);
         }else if( PlayerInput.isFallKeyHold() ) {
-            m_detector.enableFallForOneWayFloor();
+            m_ObjectInteractionDetector.enableFallForOneWayFloor();
             velocity.y += -BiesUtils.GravityForce * Time.deltaTime;
-            m_detector.Move( velocity * Time.deltaTime );
+            m_FloorDetector.Move( velocity * Time.deltaTime );
         }
     }
 

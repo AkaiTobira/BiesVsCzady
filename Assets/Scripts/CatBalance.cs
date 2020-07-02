@@ -22,6 +22,7 @@ public class CatBalance : MonoBehaviour
     [Range( 0.0001f, 10.0f)] public float MoveAccelerationTime      = 0.0f;
     [Range( 0.0001f, 10.0f)] public float MoveBrakingTime      = 0.0f;
 
+    CatUtils.CatValues infoPack = new CatUtils.CatValues();
 
     void Start()
     {
@@ -31,28 +32,44 @@ public class CatBalance : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        CatUtils.GravityForce         = (2 * targetJumpHeight) / Mathf.Pow (timeToJumpApex, 2);
-        CatUtils.PlayerJumpForceMin   = Mathf.Sqrt (2 * Mathf.Abs (CatUtils.GravityForce) * minJumpHeight);
-        CatUtils.PlayerSpeed          = moveDistance;
-        CatUtils.PlayerJumpForceMax   = Mathf.Abs(CatUtils.GravityForce) * timeToJumpApex;
-        CatUtils.JumpMaxTime          = timeToJumpApex;
-        CatUtils.MoveSpeedInAir       = moveDistanceInAir;
-        CatUtils.MaxWallSlideSpeed    = CatUtils.GravityForce * wallSlideFriction; 
-        CatUtils.MinWallJumpForce     = new Vector2( WallJumpFactors.x * CatUtils.PlayerSpeed,
-                                                     WallJumpFactors.y * CatUtils.PlayerJumpForceMin);
-
-        CatUtils.MaxWallJumpForce     = new Vector2( WallJumpFactors.x * CatUtils.PlayerSpeed  * 1.25f,
-                                                     WallJumpFactors.y * CatUtils.PlayerJumpForceMax * 1.25f);
-
-        CatUtils.maxMoveDistanceInAir = maxMoveDistanceInAir;
-        CatUtils.MaxWallClimbSpeed    = maxWallClimbSpeed;
-        CatUtils.WallClimbSpeed       = wallClimbSpeed;
+        CatUtils.GravityForce                  = (2 * targetJumpHeight) / Mathf.Pow (timeToJumpApex, 2);
+        CatUtils.PlayerJumpForceMin            = Mathf.Sqrt (2 * Mathf.Abs (CatUtils.GravityForce) * minJumpHeight);
+        CatUtils.PlayerSpeed                   = moveDistance;
+        CatUtils.PlayerJumpForceMax            = Mathf.Abs(CatUtils.GravityForce) * timeToJumpApex;
+        CatUtils.JumpMaxTime                   = timeToJumpApex;
+        CatUtils.MoveSpeedInAir                = moveDistanceInAir;
+        CatUtils.MaxWallSlideSpeed             = CatUtils.GravityForce * wallSlideFriction; 
+        CatUtils.MinWallJumpForce              = new Vector2( WallJumpFactors.x * CatUtils.PlayerSpeed,
+                                                              WallJumpFactors.y * CatUtils.PlayerJumpForceMin);
+        CatUtils.MaxWallJumpForce              = new Vector2( WallJumpFactors.x * CatUtils.PlayerSpeed  * 1.25f,
+                                                              WallJumpFactors.y * CatUtils.PlayerJumpForceMax * 1.25f);
+        CatUtils.maxMoveDistanceInAir          = maxMoveDistanceInAir;
+        CatUtils.MaxWallClimbSpeed             = maxWallClimbSpeed;
+        CatUtils.WallClimbSpeed                = wallClimbSpeed;
         CatUtils.MoveSpeedInAirWallJump        = moveDistanceInAirWallJump;
         CatUtils.maxMoveDistanceInAirWallJump  = maxMoveDistanceInAirWallJump;
-        CatUtils.MoveAccelerationTime     = MoveAccelerationTime;
-        CatUtils.MoveBrakingTime          = MoveBrakingTime;
+        CatUtils.MoveAccelerationTime          = MoveAccelerationTime;
+        CatUtils.MoveBrakingTime               = MoveBrakingTime;
 
 
+        infoPack.GravityForce                 = CatUtils.GravityForce                ; 
+        infoPack.PlayerJumpForceMin           = CatUtils.PlayerJumpForceMin          ; 
+        infoPack.PlayerSpeed                  = CatUtils.PlayerSpeed                 ; 
+        infoPack.PlayerJumpForceMax           = CatUtils.PlayerJumpForceMax          ; 
+        infoPack.JumpMaxTime                  = CatUtils.JumpMaxTime                 ; 
+        infoPack.MoveSpeedInAir               = CatUtils.MoveSpeedInAir              ; 
+        infoPack.MaxWallSlideSpeed            = CatUtils.MaxWallSlideSpeed           ; 
+        infoPack.MinWallJumpForce             = CatUtils.MinWallJumpForce            ; 
+        infoPack.MaxWallJumpForce             = CatUtils.MaxWallJumpForce            ; 
+        infoPack.maxMoveDistanceInAir         = CatUtils.maxMoveDistanceInAir        ; 
+        infoPack.MaxWallClimbSpeed            = CatUtils.MaxWallClimbSpeed           ; 
+        infoPack.WallClimbSpeed               = CatUtils.WallClimbSpeed              ; 
+        infoPack.MoveSpeedInAirWallJump       = CatUtils.MoveSpeedInAirWallJump      ; 
+        infoPack.maxMoveDistanceInAirWallJump = CatUtils.maxMoveDistanceInAirWallJump; 
+        infoPack.MoveAccelerationTime         = CatUtils.MoveAccelerationTime        ; 
+        infoPack.MoveBrakingTime              = CatUtils.MoveBrakingTime             ; 
+
+        CatUtils.infoPack = infoPack;
     }
 
     public void SaveBalance(){

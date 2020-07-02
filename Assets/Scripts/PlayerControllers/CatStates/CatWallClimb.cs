@@ -14,7 +14,7 @@ public class CatWallClimb : PlayerBaseState
         name = "CatWallClimb" + ((isLeftOriented()) ? "L" : "R");
 
         SetUpRotation();
-        m_detector.CheatMove(new Vector2(0,2));
+        m_FloorDetector.CheatMove(new Vector2(0,2));
         CommonValues.PlayerVelocity.x = 100 * ( int )m_dir;
     }
 
@@ -30,7 +30,7 @@ public class CatWallClimb : PlayerBaseState
     }
 
     public override void Process(){
-    //    if( m_detector.isOnGround()   ) m_isOver = true;
+    //    if( m_FloorDetector.isOnGround()   ) m_isOver = true;
     //    if( PlayerFallOfWallHelper.FallOfWallRequirementsMeet()){
     //        PlayerSwipeLock.ResetCounter();
     //        m_isOver = true;
@@ -45,10 +45,10 @@ public class CatWallClimb : PlayerBaseState
                                                     CatUtils.MaxWallClimbSpeed);
         if( PlayerInput.isSpecialKeyHold() ) CommonValues.PlayerVelocity.y = 0.0f;
         CatUtils.stamina -= Mathf.Abs(CommonValues.PlayerVelocity.y * Time.deltaTime);
-        m_detector.Move(CommonValues.PlayerVelocity * Time.deltaTime);
+        m_FloorDetector.Move(CommonValues.PlayerVelocity * Time.deltaTime);
 
-        m_animator.SetBool("isWallClose", m_detector.isWallClose());
-        if( !m_detector.isWallClose() ) m_isOver = true;
+        m_animator.SetBool("isWallClose", m_WallDetector.isWallClose());
+        if( !m_WallDetector.isWallClose() ) m_isOver = true;
     }
 
     public override void HandleInput(){
@@ -58,7 +58,7 @@ public class CatWallClimb : PlayerBaseState
             m_nextState = new CatWallJump(m_controllabledObject, GlobalUtils.ReverseDirection(m_dir));
         }
 
-        if( m_detector.canClimbLedge() ){
+        if( m_ObjectInteractionDetector.canClimbLedge() ){
             m_isOver = true;
             m_nextState = new CatLedgeClimb( m_controllabledObject, m_dir);
         }else if( PlayerInput.isSpecialKeyHold() ){

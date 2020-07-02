@@ -12,18 +12,18 @@ public class CatIdle : PlayerBaseState
     private void HandleStopping(){
         float acceleration = (CatUtils.PlayerSpeed / CatUtils.MoveBrakingTime) * Time.deltaTime;
         float currentValue = Mathf.Max( Mathf.Abs( CommonValues.PlayerVelocity.x) - acceleration, 0);
-        CommonValues.PlayerVelocity.x = currentValue * (int)m_detector.GetCurrentDirection();
+        CommonValues.PlayerVelocity.x = currentValue * (int)m_FloorDetector.GetCurrentDirection();
     }
 
     private void HandleInputMoveState(GlobalUtils.Direction dir){
-            m_dir = m_detector.GetCurrentDirection();
+            m_dir = m_FloorDetector.GetCurrentDirection();
             if( m_dir !=  dir ) CommonValues.needChangeDirection = true;
             m_dir = dir;
             m_nextState = new CatMove(m_controllabledObject, m_dir); 
     }
 
     public override void HandleInput(){
-        if( PlayerFallHelper.FallRequirementsMeet( m_detector.isOnGround() ) ){
+        if( PlayerFallHelper.FallRequirementsMeet( m_FloorDetector.isOnGround() ) ){
             CommonValues.PlayerVelocity.y = 0;
             m_nextState = new CatFall(m_controllabledObject, m_dir);
         }else if( PlayerInput.isAttack2KeyPressed() ){
@@ -40,25 +40,25 @@ public class CatIdle : PlayerBaseState
             HandleInputMoveState( GlobalUtils.Direction.Right);
         }else if( 
             PlayerJumpHelper.JumpRequirementsMeet( PlayerInput.isJumpKeyJustPressed(), 
-                                                   m_detector.isOnGround() )
+                                                   m_FloorDetector.isOnGround() )
         ){
             CommonValues.PlayerVelocity.y = 0;
 
             m_nextState = new CatJump(m_controllabledObject, GlobalUtils.Direction.Left);
-        }else if(m_detector.isCollideWithRightWall()){
+        }else if(m_WallDetector.isCollideWithRightWall()){
             CommonValues.PlayerVelocity.y = 0;
 
             m_nextState = new CatWallHold( m_controllabledObject, GlobalUtils.Direction.Right );
-        }else if(m_detector.isCollideWithLeftWall()){
+        }else if(m_WallDetector.isCollideWithLeftWall()){
             CommonValues.PlayerVelocity.y = 0;
 
             m_nextState = new CatWallHold( m_controllabledObject, GlobalUtils.Direction.Left );        
         }else if( PlayerInput.isFallKeyHold() ) {
             CommonValues.PlayerVelocity.y = 0;
 
-            m_detector.enableFallForOneWayFloor();
+            m_ObjectInteractionDetector.enableFallForOneWayFloor();
             CommonValues.PlayerVelocity.y += -CatUtils.GravityForce * Time.deltaTime; 
-            m_detector.Move( CommonValues.PlayerVelocity * Time.deltaTime );
+            m_FloorDetector.Move( CommonValues.PlayerVelocity * Time.deltaTime );
         }
     }
 
@@ -73,13 +73,13 @@ public class CatIdle : PlayerBaseState
 
         CommonValues.PlayerVelocity.y = 0;
 
-        if( ! m_detector.isOnGround() ){
+        if( ! m_FloorDetector.isOnGround() ){
             CommonValues.PlayerVelocity.y += -CatUtils.GravityForce * Time.deltaTime;
         }else{
             CatUtils.ResetStamina();
             CommonValues.PlayerVelocity.y = 0;
         }
 
-        m_detector.Move( CommonValues.PlayerVelocity * Time.deltaTime );
+        m_FloorDetector.Move( CommonValues.PlayerVelocity * Time.deltaTime );
     }
 }

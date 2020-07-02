@@ -39,7 +39,7 @@ public class BiesDead : PlayerBaseState{
         PlayerFallHelper.FallRequirementsMeet( true );
         velocity.y += -CatUtils.GravityForce * Time.deltaTime;
         velocity.x = Mathf.Max( velocity.x - velocitXFriction, 0 );
-        m_detector.Move(velocity*Time.deltaTime);
+        m_FloorDetector.Move(velocity*Time.deltaTime);
     }
 
     public override void Process(){

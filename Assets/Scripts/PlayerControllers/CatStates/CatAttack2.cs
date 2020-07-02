@@ -10,7 +10,7 @@ public class CatAttack2 : PlayerBaseState{
 
 
     public CatAttack2( GameObject controllable) : base( controllable ){
-        isMovingLeft = m_detector.GetCurrentDirection() == GlobalUtils.Direction.Left;
+        isMovingLeft = m_FloorDetector.GetCurrentDirection() == GlobalUtils.Direction.Left;
     //    name = "CatAttack2";
     //    m_animator.SetBool("Attack2", true);
     //    timeToEnd = getAnimationLenght("PlayerAttack2");
@@ -34,8 +34,8 @@ public class CatAttack2 : PlayerBaseState{
     }
     private void ProcessMove(){
         PlayerFallHelper.FallRequirementsMeet( true );
-        velocity = (int)m_detector.GetCurrentDirection() * m_transition.MoveSpeed;
-        m_detector.Move(velocity*Time.deltaTime);
+        velocity = (int)m_FloorDetector.GetCurrentDirection() * m_transition.MoveSpeed;
+        m_FloorDetector.Move(velocity*Time.deltaTime);
     }
     public override void Process(){
     //    ProcessStateEnd();

@@ -6,7 +6,6 @@ public class Player : MonoBehaviour
 {
     private SFSMBase m_controller;
     private CollisionDetectorPlayer m_detector;
-
     private Animator m_animator;
 
     [SerializeField] public bool invincible = true;
@@ -152,8 +151,8 @@ public class Player : MonoBehaviour
         isWallClose = m_detector.isWallClose();
     //    Debug.Log( StateName );
         StateName   = m_controller.GetStateName();
-        isColLeft =m_detector.isCollideWithLeftWall();
-        isColRight= m_detector.isCollideWithLeftWall();
+        isColLeft   =m_detector.isCollideWithLeftWall();
+        isColRight  = m_detector.isCollideWithLeftWall();
         
         directionLeft  = m_controller.GetDirection() == GlobalUtils.Direction.Left;
         directionRight = m_controller.GetDirection() == GlobalUtils.Direction.Right;

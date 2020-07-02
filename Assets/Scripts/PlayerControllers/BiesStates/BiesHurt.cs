@@ -45,7 +45,7 @@ public class BiesHurt : PlayerBaseState{
         velocitXFriction  = infoPack.knockBackFrictionX;
 
         if( velocitXFriction > 0){
-            m_detector.CheatMove( new Vector2(0,40.0f));
+            m_FloorDetector.CheatMove( new Vector2(0,40.0f));
         }
     }
 
@@ -57,7 +57,7 @@ public class BiesHurt : PlayerBaseState{
             m_animator.ResetTrigger( "BiesHurt" );
 
             
-            if( !m_detector.isOnGround() ){
+            if( !m_FloorDetector.isOnGround() ){
                 m_nextState = new BiesFall( m_controllabledObject, m_dir);
             }
         }
@@ -74,7 +74,7 @@ public class BiesHurt : PlayerBaseState{
             CommonValues.PlayerVelocity.x = CommonValues.PlayerVelocity.x + velocitXFriction * Time.deltaTime;
         }
 
-        m_detector.Move(CommonValues.PlayerVelocity*Time.deltaTime);
+        m_FloorDetector.Move(CommonValues.PlayerVelocity*Time.deltaTime);
     }
 
     public override void Process(){

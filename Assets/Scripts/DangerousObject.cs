@@ -11,7 +11,7 @@ public class DangerousObject : MonoBehaviour
 
     [SerializeField] public bool canBeKnockBacked = false;
 
-    [SerializeField] public CollisionDetector m_detector;
+    [SerializeField] public CollisionDetector m_FloorDetector;
 
     [SerializeField] public float decreaseFactor;
 
@@ -29,7 +29,7 @@ public class DangerousObject : MonoBehaviour
 
     void Start() {
         m_anim     = GetComponent<Animator>();
-        m_detector = GetComponent<CollisionDetector>(); 
+        m_FloorDetector = GetComponent<CollisionDetector>(); 
     }
 
     private GlobalUtils.AttackInfo GetAttackInfo( Transform HittedObj ){
@@ -73,9 +73,9 @@ public class DangerousObject : MonoBehaviour
                         moveValue    = infoPack.knockBackValue;
                         moveValue.x *=  (int)infoPack.fromCameAttack;
                         currentMoveValue += moveValue;
-                        m_detector.autoGravityOn = false;
-                        m_detector.CheatMove( new Vector2(0,  moveValue.y * Time.deltaTime) );
-                        m_detector.Move(  new Vector2(0,  moveValue.y * Time.deltaTime) );
+                        m_FloorDetector.autoGravityOn = false;
+                        m_FloorDetector.CheatMove( new Vector2(0,  moveValue.y * Time.deltaTime) );
+                        m_FloorDetector.Move(  new Vector2(0,  moveValue.y * Time.deltaTime) );
                         gravityForce = (2 * moveValue.y) / Mathf.Pow (timeToHitApex, 2);
                         Debug.Log( moveValue );
                     }

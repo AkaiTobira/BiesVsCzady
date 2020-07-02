@@ -4,6 +4,12 @@ using UnityEngine;
 
 public static class  CatUtils
 {
+
+    public class CatValues : ICharacterSettings
+    { }
+
+    public static CatValues infoPack; 
+
     public static float PlayerSpeed           = 15.0f;
     public static float JumpMaxTime           = 0.25f;
     public static float PlayerJumpForceMax    = 20.0f;
