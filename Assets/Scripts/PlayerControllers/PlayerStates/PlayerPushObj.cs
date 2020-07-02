@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerPushObj : BaseState
+public class PlayerPushObj : PlayerBaseState
 {
     private bool isMovingLeft = false;
     Vector2 pushForce = new Vector2(0,0);

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CatMove : BaseState
+public class CatMove : PlayerBaseState
 {
     private bool isAccelerating = false;
 

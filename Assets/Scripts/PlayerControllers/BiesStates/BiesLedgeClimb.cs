@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BiesLedgeClimb : BaseState
+public class BiesLedgeClimb : PlayerBaseState
 {
     private float timeToEnd;
     private AnimationTransition m_transition;

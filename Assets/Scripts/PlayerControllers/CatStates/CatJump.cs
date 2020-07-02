@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CatJump : BaseState
+public class CatJump : PlayerBaseState
 {    
     private GlobalUtils.Direction m_swipe;
 

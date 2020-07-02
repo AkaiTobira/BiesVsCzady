@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerLedgeClimb : BaseState
+public class PlayerLedgeClimb : PlayerBaseState
 {
     private bool isMovingLeft = false;
     //private bool climbing = false;

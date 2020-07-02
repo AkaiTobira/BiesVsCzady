@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CatWallClimb : BaseState
+public class CatWallClimb : PlayerBaseState
 {
     public CatWallClimb( GameObject controllable, GlobalUtils.Direction dir) : base( controllable ) {
         // play change direction animation;

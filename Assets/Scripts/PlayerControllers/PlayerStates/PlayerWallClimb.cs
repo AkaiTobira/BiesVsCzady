@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerWallClimb : BaseState
+public class PlayerWallClimb : PlayerBaseState
 {
     private bool isMovingLeft = false;
 

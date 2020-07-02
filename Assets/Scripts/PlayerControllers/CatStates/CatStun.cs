@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CatStun : BaseState{
+public class CatStun : PlayerBaseState{
     private float timeToEnd;
     private AnimationTransition m_transition;
 

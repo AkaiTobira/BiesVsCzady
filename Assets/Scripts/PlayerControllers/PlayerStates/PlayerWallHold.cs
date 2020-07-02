@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerWallHold : BaseState
+public class PlayerWallHold : PlayerBaseState
 {
     private bool isMovingLeft = false;
 

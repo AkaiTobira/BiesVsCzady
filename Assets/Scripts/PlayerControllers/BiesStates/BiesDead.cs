@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-public class BiesDead : BaseState{    
+public class BiesDead : PlayerBaseState{    
 
     private float timeToEnd;
     private AnimationTransition m_transition;

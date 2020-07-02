@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BiesMove : BaseState
+public class BiesMove : PlayerBaseState
 {
     private bool isAccelerating = true;
     public BiesMove( GameObject controllable, GlobalUtils.Direction dir) : base( controllable ) {

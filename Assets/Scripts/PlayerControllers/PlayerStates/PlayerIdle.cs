@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerIdle : BaseState
+public class PlayerIdle : PlayerBaseState
 {
 
     public PlayerIdle( GameObject controllable ) : base( controllable ) {

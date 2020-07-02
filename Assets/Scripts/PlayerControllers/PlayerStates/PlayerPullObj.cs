@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerPullObj : BaseState
+public class PlayerPullObj : PlayerBaseState
 {
     private bool isFaceingLeft = false;
     Vector2 pullForce = new Vector2(0,0);

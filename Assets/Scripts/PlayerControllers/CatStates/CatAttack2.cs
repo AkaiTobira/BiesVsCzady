@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CatAttack2 : BaseState{    
+public class CatAttack2 : PlayerBaseState{    
     private bool isMovingLeft = false;
     private float timeToEnd;
 

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerWallSlide : BaseState
+public class PlayerWallSlide : PlayerBaseState
 {
     private bool isMovingLeft = false;
 

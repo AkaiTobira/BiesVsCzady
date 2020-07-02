@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BiesWallHold : BaseState
+public class BiesWallHold : PlayerBaseState
 {
     public BiesWallHold( GameObject controllable, GlobalUtils.Direction dir) : base( controllable ) {
         CatUtils.ResetStamina();

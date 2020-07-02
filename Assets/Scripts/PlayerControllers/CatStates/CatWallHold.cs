@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CatWallHold : BaseState
+public class CatWallHold : PlayerBaseState
 {
 
     public CatWallHold( GameObject controllable, GlobalUtils.Direction dir) : base( controllable ) {

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BiesHurt : BaseState{    
+public class BiesHurt : PlayerBaseState{    
     private float timeToEnd;
     private AnimationTransition m_transition;
     private float velocitXFriction = 0.0f;

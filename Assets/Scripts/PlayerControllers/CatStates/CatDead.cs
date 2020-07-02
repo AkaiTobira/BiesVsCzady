@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-public class CatDead : BaseState{    
+public class CatDead : PlayerBaseState{    
     private float timeToEnd;
     private AnimationTransition m_transition;
     private float velocitXFriction = 0.0f;

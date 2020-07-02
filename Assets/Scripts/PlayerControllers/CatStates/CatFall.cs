@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CatFall : BaseState
+public class CatFall : PlayerBaseState
 {
     private GlobalUtils.Direction m_swipe;
 

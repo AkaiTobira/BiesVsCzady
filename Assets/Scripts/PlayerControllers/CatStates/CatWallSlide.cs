@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CatWallSlide : BaseState
+public class CatWallSlide : PlayerBaseState
 {
     public CatWallSlide( GameObject controllable, GlobalUtils.Direction dir) : base( controllable ) {
         m_dir = dir;

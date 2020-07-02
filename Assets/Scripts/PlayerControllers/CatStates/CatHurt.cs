@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CatHurt : BaseState{    
+public class CatHurt : PlayerBaseState{    
     private float timeToEnd;
     private AnimationTransition m_transition;
     private float velocitXFriction = 0.0f;

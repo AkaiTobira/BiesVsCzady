@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CatWallJump : BaseState
+public class CatWallJump : PlayerBaseState
 {    
     private GlobalUtils.Direction m_swipe;
     private float inputLock = 0.05f;

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CatLedgeClimb : BaseState
+public class CatLedgeClimb : PlayerBaseState
 {
 
     private float timeToEnd;

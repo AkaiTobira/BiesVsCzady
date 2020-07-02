@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BiesAttack2 : BaseState{    
+public class BiesAttack2 : PlayerBaseState{    
     private float timeToEnd;
 
     private AnimationTransition m_transition;

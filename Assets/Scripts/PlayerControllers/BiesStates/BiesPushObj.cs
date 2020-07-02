@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BiesPushObj : BaseState
+public class BiesPushObj : PlayerBaseState
 {
     private bool isMovingLeft = false;
     Vector2 pushForce = new Vector2(0,0);

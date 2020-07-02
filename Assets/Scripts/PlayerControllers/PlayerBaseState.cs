@@ -2,22 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BaseState
+public class PlayerBaseState : IBaseState
 {
-    protected GameObject m_controllabledObject;
-    protected CollisionDetectorPlayer m_detector;
-    protected Animator m_animator;
-    
-    protected BaseState  m_nextState = null;
-    protected GlobalUtils.Direction m_dir;
-
-    public string name = ""; 
     protected Vector2    velocity = new Vector2(0,0); 
-
-    protected float slopeAngle   = 0.0f;
+    protected float slopeAngle    = 0.0f;
     protected float rotationAngle = 0;
 
-    public BaseState( GameObject controllableObject ){
+
+    protected CollisionDetectorPlayer m_detector;
+
+
+    public PlayerBaseState( GameObject controllableObject ){
         m_controllabledObject = controllableObject;
         m_detector            = controllableObject.GetComponent<CollisionDetectorPlayer>();
         m_animator            = controllableObject.transform.GetComponent<Player>().
@@ -26,26 +21,14 @@ public class BaseState
         SetUpAnimation();
     }
 
-    protected bool m_isOver = false;
-
-    public bool isOver(){
-        return m_isOver;
-    }
-
-    public virtual void HandleInput(){
-    }
-
-    public BaseState NextState(){
-        BaseState temp = m_nextState;
-        m_nextState = null;
-        return temp;
+    public override GlobalUtils.Direction GetDirection(){
+        return m_detector.GetCurrentDirection();
     }
 
     protected Vector3 animationVel = Vector3.zero;
     protected float m_smoothTime = 0.03f;
 
-
-    public void UpdateAnimator(){
+    public override void UpdateAnimator(){
         UpdateDirection();
         UpdateAnimatorPosition();
         UpdateFloorAligment();
@@ -69,14 +52,6 @@ public class BaseState
 
     }
 
-    protected bool isRightOriented(){
-        return m_dir == GlobalUtils.Direction.Right;
-    }
-
-    protected bool isLeftOriented(){
-        return m_dir == GlobalUtils.Direction.Left;
-    }
-
     protected virtual void UpdateDirection(){
         if( CommonValues.PlayerVelocity.x != 0){
 
@@ -98,11 +73,4 @@ public class BaseState
         return 0.0f;
     }
 
-    public GlobalUtils.Direction GetDirection(){
-        return m_detector.GetCurrentDirection();
-    }
-
-    public  virtual void Process(){}
-    public virtual void OnExit(){}
-    public virtual void OnEnter(){}
 }

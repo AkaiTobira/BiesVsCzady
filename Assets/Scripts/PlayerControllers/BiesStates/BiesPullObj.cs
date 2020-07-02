@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BiesPullObj : BaseState
+public class BiesPullObj : PlayerBaseState
 {
     private bool isFaceingLeft = false;
     Vector2 pullForce = new Vector2(0,0);

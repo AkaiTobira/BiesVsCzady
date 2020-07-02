@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CatIdle : BaseState
+public class CatIdle : PlayerBaseState
 {
     public CatIdle( GameObject controllable ) : base( controllable ) {
         name = "CatIdle";

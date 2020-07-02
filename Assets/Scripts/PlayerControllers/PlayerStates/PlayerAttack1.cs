@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerAttack1 : BaseState{    
+public class PlayerAttack1 : PlayerBaseState{    
     private float timeToEnd;
 
     private AnimationTransition m_transition;

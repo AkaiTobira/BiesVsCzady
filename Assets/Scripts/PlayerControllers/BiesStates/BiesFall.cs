@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BiesFall : BaseState
+public class BiesFall : PlayerBaseState
 {
     private GlobalUtils.Direction m_swipe;
     private bool swipeOn = false;

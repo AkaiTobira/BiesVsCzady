@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BiesAttack4 : BaseState
+public class BiesAttack4 : PlayerBaseState
 { 
 
     private float animationTime;    

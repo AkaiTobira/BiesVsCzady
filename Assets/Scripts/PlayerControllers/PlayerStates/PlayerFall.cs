@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerFall : BaseState
+public class PlayerFall : PlayerBaseState
 {
     private bool isMovingLeft = false;
 

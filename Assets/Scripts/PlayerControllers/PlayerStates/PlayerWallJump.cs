@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerWallJump : BaseState
+public class PlayerWallJump : PlayerBaseState
 {    private bool isMovingLeft = false;
     private GlobalUtils.Direction m_swipe;
 

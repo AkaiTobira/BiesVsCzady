@@ -98,7 +98,7 @@ public static class  PlayerChangeRules
         return true;
     }
 
-    public static BaseState GetIdleState( string formName ){
+    public static PlayerBaseState GetIdleState( string formName ){
         switch(formName){
             case "Cat" : return new CatIdle ( GlobalUtils.PlayerObject.gameObject );
             case "Bies": return new BiesIdle( GlobalUtils.PlayerObject.gameObject );
@@ -106,7 +106,7 @@ public static class  PlayerChangeRules
         }
     }
 
-    private static BaseState CatToBiesTranslation(ref string stateName, ref GlobalUtils.Direction dir){
+    private static PlayerBaseState CatToBiesTranslation(ref string stateName, ref GlobalUtils.Direction dir){
         switch( stateName ){
             case "Idle": return new BiesIdle( GlobalUtils.PlayerObject.gameObject );
             case "Move": return new BiesMove( GlobalUtils.PlayerObject.gameObject, dir);
@@ -121,7 +121,7 @@ public static class  PlayerChangeRules
         }
     }
 
-    private static BaseState BiesToCatTranslation(ref string stateName, ref GlobalUtils.Direction dir){
+    private static PlayerBaseState BiesToCatTranslation(ref string stateName, ref GlobalUtils.Direction dir){
         switch( stateName ){
             case "Idle": return new CatIdle( GlobalUtils.PlayerObject.gameObject );
             case "Move": return new CatMove( GlobalUtils.PlayerObject.gameObject, dir);
@@ -137,7 +137,7 @@ public static class  PlayerChangeRules
         }
     }
 
-    public static BaseState TranslateActiveState( string formName, string stateName, GlobalUtils.Direction dir ){
+    public static PlayerBaseState TranslateActiveState( string formName, string stateName, GlobalUtils.Direction dir ){
         Debug.Log( "TRanslation info :" + formName + " " + stateName);
         
         switch( formName ){
