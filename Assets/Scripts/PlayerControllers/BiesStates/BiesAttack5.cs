@@ -2,21 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BiesAttack1 : BaseState
+public class BiesAttack5 : BaseState
 { 
-
-    private float animationTime;
     private float timeToEnd;
     private AnimationTransition m_transition;
 
-    public BiesAttack1( GameObject controllable) : base( controllable ){
-        name = "BiesAttack1";
+    public BiesAttack5( GameObject controllable) : base( controllable ){
+        name = "BiesAttack5";
     }
 
     protected override void SetUpAnimation(){
-        m_animator.SetBool("Attack1", true);
-        animationTime = getAnimationLenght("PlayerAttack1");
-        timeToEnd     = animationTime;
+        m_animator.SetBool("Attack5", true);
+        timeToEnd = getAnimationLenght("PlayerAttack5");
 
         m_transition = m_controllabledObject.
                        GetComponent<Player>().animationNode.
@@ -28,6 +25,7 @@ public class BiesAttack1 : BaseState
         if( timeToEnd < 0){
             m_isOver = true;
             m_animator.SetBool("Attack1", false);
+            m_animator.SetBool("Attack5", false);
         }
     }
     private void ProcessMove(){
@@ -40,12 +38,5 @@ public class BiesAttack1 : BaseState
         ProcessMove();
     }
     public override void HandleInput(){
-
-        if( PlayerInput.isAttack1KeyPressed() && timeToEnd < 0.5 * animationTime ){
-            m_isOver = true;
-            m_nextState = new BiesAttack4( m_controllabledObject);
-        }
-
-
     }
 }

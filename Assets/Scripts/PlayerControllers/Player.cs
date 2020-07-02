@@ -75,6 +75,7 @@ public class Player : MonoBehaviour
                 infoPack.attackDamage   = BiesUtils.Attack2Damage;
                 infoPack.fromCameAttack = m_controller.GetDirection();
                 infoPack.knockBackFrictionX = 0;
+                infoPack.stunDuration       = 2.0f;
                 break;
             }
             case "BiesAttack3":
@@ -82,6 +83,24 @@ public class Player : MonoBehaviour
                 infoPack.isValid = true;
                 infoPack.knockBackValue = BiesUtils.KnockBackValueAttack3;
                 infoPack.attackDamage   = BiesUtils.Attack3Damage;
+                infoPack.fromCameAttack = m_controller.GetDirection();
+                infoPack.knockBackFrictionX = 0;
+                break;
+            }
+            case "BiesAttack4":
+            {
+                infoPack.isValid = true;
+                infoPack.knockBackValue = BiesUtils.KnockBackValueAttack1;
+                infoPack.attackDamage   = BiesUtils.Attack1Damage;
+                infoPack.fromCameAttack = m_controller.GetDirection();
+                infoPack.knockBackFrictionX = 0;
+                break;
+            }
+            case "BiesAttack5":
+            {
+                infoPack.isValid = true;
+                infoPack.knockBackValue = BiesUtils.KnockBackValueAttack1;
+                infoPack.attackDamage   = BiesUtils.Attack1Damage;
                 infoPack.fromCameAttack = m_controller.GetDirection();
                 infoPack.knockBackFrictionX = 0;
                 break;
