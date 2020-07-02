@@ -8,21 +8,26 @@ public class EnemyController : MonoBehaviour
     public static EnemyController instance;
 
     public bool shootingType = false;
+    public bool isTriggered = false;
+    public bool facingRight = true;
 
-    [Header("Movement")]
+    [Header("Enemy Properties")]
+    [Range(15,30)] public int health = 15;
     public float speed;
     public float lookRadius = 7f;
     public float retreatDistance;
-    public float attackDistance;
-    public bool isTriggered = false;
-    bool facingRight = true;
+    public float meleeRange;
+    public float shootRange;
 
-    Transform player;
+    public Transform player;
+    public Animator anim;
 
     [Header("Bullet")]
     public GameObject projectile;
-    private float timeBetweenShots;
-    public float startTimeBetweenShots;
+    public GameObject shootPosition;
+    public float shootTimer;
+    public float shootCoolDown;
+    public bool canShoot;
 
     void Awake()
     {
@@ -31,61 +36,8 @@ public class EnemyController : MonoBehaviour
 
     void Start()
     {
-        player = GlobalUtils.PlayerObject;
-        timeBetweenShots = startTimeBetweenShots;
-    }
-
-    void Update()
-    {
-        if (Vector2.Distance(transform.position, player.position) < lookRadius)
-        {
-            isTriggered = true;
-        }
-
-        FollowPlayer();
-    }
-
-    public void FollowPlayer()
-    {
-        if (isTriggered)
-        {
-            if (shootingType == true)
-            {
-                if (Vector2.Distance(transform.position, player.position) > attackDistance)
-                {
-                    transform.position = Vector2.MoveTowards(transform.position, player.position, speed * Time.deltaTime);
-
-                    if (player.position.x > transform.position.x && !facingRight)
-                        FlipEnemySprite();
-                    if (player.position.x < transform.position.x && facingRight)
-                        FlipEnemySprite();
-                }
-                //else if (Vector2.Distance(transform.position, player.position) < retreatDistance)
-                //{
-                //    transform.position = Vector2.MoveTowards(transform.position, player.position, -speed * Time.deltaTime);
-                //}
-                else
-                {
-                    transform.position = transform.position;
-                }
-            }
-            else
-            {
-                //TODO: change attack distance later 
-                if (Vector2.Distance(transform.position, player.position) > 2)
-                {
-                    transform.position = Vector2.MoveTowards(transform.position, player.position, speed * Time.deltaTime);
-
-                    if (player.position.x > transform.position.x && !facingRight)
-                        FlipEnemySprite();
-                    if (player.position.x < transform.position.x && facingRight)
-                        FlipEnemySprite();
-                }
-            }
-
-            if (shootingType == true)
-                Shoot();
-        }
+        anim = GetComponent<Animator>();
+        //player = GlobalUtils.PlayerObject;
     }
 
     void FlipEnemySprite()
@@ -94,18 +46,5 @@ public class EnemyController : MonoBehaviour
         scale.x *= -1;
         transform.localScale = scale;
         facingRight = !facingRight;
-    }
-
-    void Shoot()
-    {
-        if (timeBetweenShots <= 0)
-        {
-            Instantiate(projectile, transform.position, Quaternion.identity);
-            timeBetweenShots = startTimeBetweenShots;
-        }
-        else
-        {
-            timeBetweenShots -= Time.deltaTime;
-        }
     }
 }
