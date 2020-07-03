@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerBaseState : IBaseState
+public class PlayerBaseState : IBaseState, IInputProcessingState
 {
     protected Vector2    velocity = new Vector2(0,0); 
     protected float slopeAngle    = 0.0f;
@@ -35,6 +35,10 @@ public class PlayerBaseState : IBaseState
         UpdateAnimatorPosition();
         UpdateFloorAligment();
     }
+
+    public virtual void HandleInput(){}
+
+    public override void Process(){}
 
     protected virtual void UpdateAnimatorPosition(){
 

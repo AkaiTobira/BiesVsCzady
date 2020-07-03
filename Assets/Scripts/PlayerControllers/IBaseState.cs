@@ -15,7 +15,7 @@ public abstract class IBaseState : IDirectionInfo
     protected bool m_isOver = false;
     public bool isOver(){ return m_isOver; }
 
-    public  virtual void Process(){}
+    public  abstract void Process();
 
     public IBaseState GetNextState(){
         IBaseState temp = m_nextState;
@@ -23,10 +23,7 @@ public abstract class IBaseState : IDirectionInfo
         return temp;
     }
 
-    public virtual void UpdateAnimator(){}
-
+    public abstract void UpdateAnimator();
     public virtual void OnExit(){}
     public virtual void OnEnter(){}
-
-    public virtual void HandleInput(){}
 }

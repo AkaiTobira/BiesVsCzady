@@ -69,6 +69,7 @@ public class CatFall : PlayerBaseState
     }
 
     public override void HandleInput(){
+        if( m_isOver ) return;
     //     if(PlayerJumpHelper.JumpRequirementsMeet( CatUtils.isJumpKeyJustPressed(), 
     //                                               m_FloorDetector.isOnGround() ))
     //    {

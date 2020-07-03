@@ -7,7 +7,7 @@ public class AutoDestroyablePlatform : MonoBehaviour
     
     [SerializeField] float rayNumber = 2;
     [SerializeField] float rayLenght = 100;
-    [SerializeField] LayerMask playerLayer;
+    [SerializeField] LayerMask playerLayer = 0;
 
     [HideInInspector] BoxCollider2D m_box;
 
