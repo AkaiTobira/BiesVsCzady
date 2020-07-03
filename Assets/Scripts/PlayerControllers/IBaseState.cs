@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public abstract class IBaseState
+public abstract class IBaseState : IDirectionInfo
 {
     protected GameObject m_controllabledObject;
 
@@ -14,19 +14,6 @@ public abstract class IBaseState
 
     protected bool m_isOver = false;
     public bool isOver(){ return m_isOver; }
-    protected GlobalUtils.Direction m_dir;
-
-    protected bool isRightOriented(){
-        return m_dir == GlobalUtils.Direction.Right;
-    }
-
-    protected bool isLeftOriented(){
-        return m_dir == GlobalUtils.Direction.Left;
-    }
-
-    public virtual GlobalUtils.Direction GetDirection(){
-        return m_dir;
-    }
 
     public  virtual void Process(){}
 
