@@ -114,6 +114,11 @@ public class Player : MonoBehaviour
         return infoPack;
     }
 
+
+    public void SwitchGoodMode(){
+        invincible = !invincible;
+    }
+
     void OnTriggerEnter2D(Collider2D other) {
 //        Debug.Log(other.gameObject.name);
     }
