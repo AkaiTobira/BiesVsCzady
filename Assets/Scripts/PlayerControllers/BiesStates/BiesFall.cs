@@ -15,7 +15,10 @@ public class BiesFall : PlayerBaseState
         CommonValues.PlayerVelocity.y += -BiesUtils.GravityForce * Time.deltaTime;
         ProcessSwipe();
         m_FloorDetector.Move(CommonValues.PlayerVelocity * Time.deltaTime);
-        if( m_FloorDetector.isOnGround() ) m_isOver = true;
+        if( m_FloorDetector.isOnGround() ) {
+            m_isOver = true;
+            GlobalUtils.cameraShake.TriggerShake(0.3f);
+        }
     }
 
     private void ProcessSwipe(){

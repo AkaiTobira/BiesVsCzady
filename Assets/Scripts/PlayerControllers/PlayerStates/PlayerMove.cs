@@ -17,7 +17,6 @@ public class PlayerMove : PlayerBaseState
         name = formName + "Move";
         m_settings = settings;
         m_formName = formName;
-        Debug.Log( m_formName );
         m_dir = dir;
         SetUpRotation();
     }

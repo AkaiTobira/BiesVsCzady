@@ -9,7 +9,12 @@ public static class  PlayerChangeRules
 
     private static List<string> triggersList = new List<string>{
         "SwitchToCatIdle",
-        "SwitchToBiesIdle"
+        "SwitchToCatMove",
+        "SwitchToCatFall",
+        "SwitchToBiesIdle",
+        "SwitchToBiesMove",
+        "SwitchToBiesWallHold",
+        "SwitchToBiesFall",
     };
 
     public static void ChangeAnimation( string formName, string stateName, 
@@ -26,9 +31,7 @@ public static class  PlayerChangeRules
         ScalePlayer( formName );
         PositionCorrenciton( formName, stateName);
 
-        playerAnimator.SetTrigger( "SwitchTo" + formName + "Idle");
-        // Target when animations will be done :
-        //playerAnimator.SetTrigger( "SwitchTo" + formName+ stateName );
+        playerAnimator.SetTrigger( "SwitchTo" + formName+ stateName );
     }
 
     private static void ScalePlayer( string formName){
@@ -50,8 +53,7 @@ public static class  PlayerChangeRules
             }
 
             Translation = CorrectTransition( playerDetector );
- 
-            Debug.Log(Translation);
+
             playerDetector.CheatMove(Translation);
         }
     }
@@ -113,8 +115,8 @@ public static class  PlayerChangeRules
             case "Fall": return new BiesFall( GlobalUtils.PlayerObject.gameObject, dir);
             case "Jump": return new BiesFall( GlobalUtils.PlayerObject.gameObject, dir);
             case "WallHold" : return new BiesWallHold( GlobalUtils.PlayerObject.gameObject, dir);
-            case "JumpWall" : return new BiesFall( GlobalUtils.PlayerObject.gameObject, dir);
-            case "JumpSlide": return new BiesFall( GlobalUtils.PlayerObject.gameObject, dir);
+            case "WallJump" : return new BiesFall( GlobalUtils.PlayerObject.gameObject, dir);
+            case "WallSlide": return new BiesFall( GlobalUtils.PlayerObject.gameObject, dir);
             case "WallClimb": return new BiesFall( GlobalUtils.PlayerObject.gameObject, dir);
         //    case "Attack2"  : return new BiesAttack2( GlobalUtils.PlayerObject.gameObject);
             default : return null;
@@ -138,7 +140,7 @@ public static class  PlayerChangeRules
     }
 
     public static PlayerBaseState TranslateActiveState( string formName, string stateName, GlobalUtils.Direction dir ){
-        Debug.Log( "TRanslation info :" + formName + " " + stateName);
+//        Debug.Log( "TRanslation info :" + formName + " " + stateName);
         
         switch( formName ){
             case "Bies" : return CatToBiesTranslation(ref stateName, ref dir);

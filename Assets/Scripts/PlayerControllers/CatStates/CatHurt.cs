@@ -64,8 +64,6 @@ public class CatHurt : PlayerBaseState{
         m_animator.SetBool("isGrounded", m_FloorDetector.isOnGround());
         PlayerFallHelper.FallRequirementsMeet( true );
 
-        Debug.Log( CommonValues.PlayerVelocity);
-
         CommonValues.PlayerVelocity.y += -CatUtils.GravityForce * Time.deltaTime;
 
         if( knocBackDirection == -1 ) {

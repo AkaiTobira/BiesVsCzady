@@ -13,15 +13,24 @@ public class AutoDestroyablePlatform : MonoBehaviour
 
     [SerializeField] float m_existingTimer;
 
-    private float distanceBeetweenRay;
+    private float distanceBeetweenRayH;
 
+    private float distanceBeetweenRayV;
     private bool startTimer = false;
     private float maxOfTimerValue = 0;
 
+    private Vector2 LeftOriginTop = new Vector2();
+    private Vector2 RightOriginTop = new Vector2();
+    
+    private Vector2 LeftOriginBottom = new Vector2();
+    private Vector2 RightOriginBottom = new Vector2();
+
+    [SerializeField] bool reverseRays = false;
 
     void Start()
     {
         m_box = GetComponent<BoxCollider2D>();
+        CalculateColliderVertexPositions();
     }
 
 
@@ -29,10 +38,20 @@ public class AutoDestroyablePlatform : MonoBehaviour
         if( startTimer ) return;
         for( int i = 0 ; i < rayNumber; i++){
 
-            Vector2 rayOrigin = new Vector2( m_box.bounds.min.x + distanceBeetweenRay * i,
-                                             m_box.bounds.max.y + 1); 
+            Vector2 rayOrigin;
+            Vector2 upDirection;
+            if( !reverseRays ){
+                rayOrigin = new Vector2(RightOriginTop.x + distanceBeetweenRayH * i,
+                                        RightOriginTop.y + distanceBeetweenRayV * i); 
+                upDirection = transform.up;
+            }else{
+                rayOrigin = new Vector2(RightOriginBottom.x + distanceBeetweenRayH * i,
+                                        RightOriginBottom.y + distanceBeetweenRayV * i); 
+                upDirection = -transform.up;
+            }
 
-            RaycastHit2D hit = Physics2D.Raycast( rayOrigin, Vector2.up, rayLenght, playerLayer );
+
+            RaycastHit2D hit = Physics2D.Raycast( rayOrigin, upDirection, rayLenght, playerLayer );
 
             if( hit ){
                 if( hit.collider.tag == "PlayerHurtBox") {
@@ -42,11 +61,23 @@ public class AutoDestroyablePlatform : MonoBehaviour
                 }
             }
 
-            Debug.DrawLine( rayOrigin, rayOrigin + Vector2.up * rayLenght, new Color( 0, 0.5f,0 ));
+            Debug.DrawLine( rayOrigin, rayOrigin + upDirection * rayLenght, new Color( 0, 0.5f,0 ));
 
         }
 ;
 
+    }
+
+
+    public void  CalculateColliderVertexPositions ()  
+    {
+        RightOriginTop    = gameObject.transform.TransformPoint(m_box.offset + new Vector2(-m_box.size.x,  m_box.size.y) * 0.5f);
+        LeftOriginTop     = gameObject.transform.TransformPoint(m_box.offset + new Vector2( m_box.size.x,  m_box.size.y) * 0.5f);
+        RightOriginBottom = gameObject.transform.TransformPoint(m_box.offset + new Vector2(-m_box.size.x, -m_box.size.y) * 0.5f);
+        LeftOriginBottom  = gameObject.transform.TransformPoint(m_box.offset + new Vector2(m_box.size.x,  -m_box.size.y) * 0.5f);
+
+        distanceBeetweenRayH = (LeftOriginTop.x - RightOriginTop.x)/( rayNumber - 1.0f); 
+        distanceBeetweenRayV = (LeftOriginTop.y - RightOriginTop.y)/( rayNumber - 1.0f); 
     }
 
     void ProcessAutoDestroy(){
@@ -62,8 +93,18 @@ public class AutoDestroyablePlatform : MonoBehaviour
 
     void Update()
     {
-        distanceBeetweenRay = (m_box.bounds.max.x - m_box.bounds.min.x)/( rayNumber - 1.0f); 
-        
+        CalculateColliderVertexPositions();
+
+    //    var a = GetColliderVertexPositions( gameObject );
+
+    //    for( int t = 0; t < 2; t ++){
+    //        Debug.Log( a[t]);
+    //        Debug.DrawLine( a[t],    a[t] +   (Vector2) transform.up * rayLenght, new Color( 0.5f, 0.5f,0 ));
+    //    }
+
+    //    Debug.DrawLine( m_box.bounds.min,    m_box.bounds.min +    Vector3.up * rayLenght, new Color( 0.5f, 0.5f,0 ));
+    //    Debug.DrawLine( m_box.bounds.center, m_box.bounds.center + Vector3.up * rayLenght, new Color( 0.5f, 0.5f,0 ));
+
         ProcessPlayerDetection();
         ProcessAutoDestroy();
     }
