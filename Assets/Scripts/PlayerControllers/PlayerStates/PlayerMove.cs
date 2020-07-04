@@ -2,65 +2,88 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerMove : BaseState
+public class PlayerMove : PlayerBaseState
 {
-    private bool isMovingLeft = false;
+    private bool isAccelerating = true;
 
-    public PlayerMove( GameObject controllable, GlobalUtils.Direction dir) : base( controllable ) {
-        // play change direction animation;
-        // at end of animation call :
-        // TEMP
-   //     controllable.transform.GetComponent<Player>().changeDirection(dir);
-        isMovingLeft = dir == GlobalUtils.Direction.Left;
-        name = "Move";
-    //    m_dir = dir;
+    ICharacterSettings m_settings;
+
+    string m_formName;
+    public PlayerMove(  GameObject controllable, 
+                        GlobalUtils.Direction dir,
+                        ICharacterSettings settings,
+                        string formName
+                     ) : base( controllable ) {
+        name = formName + "Move";
+        m_settings = settings;
+        m_formName = formName;
+        m_dir = dir;
+        SetUpRotation();
+    }
+/*
+    protected override void  SetUpAnimation(){
+        if( CommonValues.needChangeDirection ){
+            m_animator.SetTrigger( m_formName + "ChangingDirection");
+            CommonValues.needChangeDirection = false;
+        }
+    }*/
+
+    private void SetUpRotation(){
+        rotationAngle = isLeftOriented() ? 180 :0 ; 
+        m_controllabledObject.GetComponent<Player>().animationNode.eulerAngles = new Vector3( 0, rotationAngle, slopeAngle);
+    
+        if( CommonValues.needChangeDirection ){
+            m_animator.SetTrigger( m_formName + "ChangingDirection");
+            CommonValues.needChangeDirection = false;
+        }
+    }
+
+    private void ProcessGravity(){
+        CommonValues.PlayerVelocity.y += -m_settings.GravityForce * Time.deltaTime;
+        if( m_FloorDetector.isOnGround() ){
+            CatUtils.ResetStamina();
+            CommonValues.PlayerVelocity.y = -m_settings.GravityForce * Time.deltaTime;
+        }
+    }
+
+
+    private void ProcessAcceleration(){
+        if( ! isAccelerating ) return;
+        float acceleration = (m_settings.PlayerSpeed / m_settings.MoveAccelerationTime) * Time.deltaTime;
+        float currentValue = Mathf.Min( Mathf.Abs( CommonValues.PlayerVelocity.x) + acceleration, m_settings.PlayerSpeed );
+        CommonValues.PlayerVelocity.x = currentValue * (int)m_dir;
+    }
+
+    private void ProcessAnimationUpdate(){
+        m_animator.SetFloat("FallVelocity", -2);
+        m_animator.SetFloat("MoveVelocity", Mathf.Abs(CommonValues.PlayerVelocity.x));
+    }
+
+    private void ProcessWallDetectiong(){
+        if( isLeftOriented()   && m_WallDetector.isCollideWithLeftWall() ) CommonValues.PlayerVelocity.x = 0.0f;
+        if( isRightOriented()  && m_WallDetector.isCollideWithRightWall()) CommonValues.PlayerVelocity.x = 0.0f;
     }
 
     public override void Process(){
-        velocity.x = PlayerUtils.PlayerSpeed * ( isMovingLeft ? -1 : 1);
-        if( isMovingLeft  && m_detector.isCollideWithLeftWall() ) velocity.x = 0.0f;
-        if( !isMovingLeft && m_detector.isCollideWithRightWall()) velocity.x = 0.0f;
+        ProcessAcceleration();
+        ProcessAnimationUpdate();
+        ProcessWallDetectiong();
+        ProcessGravity();
 
-        velocity.y += -PlayerUtils.GravityForce * Time.deltaTime;
-        if( m_detector.isOnGround() ){
-            PlayerUtils.ResetStamina();
-            velocity.y = -PlayerUtils.GravityForce * Time.deltaTime;
+        m_FloorDetector.Move(CommonValues.PlayerVelocity * Time.deltaTime);
+
+        ProcessStateEnd();
+    }
+
+    protected virtual void ProcessStateEnd(){
+        if( m_isOver ){
+            m_animator.ResetTrigger( m_formName + "ChangingDirection");
         }
-
-        m_detector.Move(velocity * Time.deltaTime);
-
-        if( m_detector.isWallClose() ){
-            m_nextState = new PlayerWallHold( m_controllabledObject, 
-                                              ( isMovingLeft )? GlobalUtils.Direction.Left : 
-                                                                GlobalUtils.Direction.Right );
-            m_isOver = true;
-        }
-
     }
 
     public override void HandleInput(){
-        if( PlayerFallHelper.FallRequirementsMeet( m_detector.isOnGround()) ){
-            m_nextState = new PlayerFall(m_controllabledObject, GlobalUtils.Direction.Left);
-        }else if( PlayerInput.isAttack1KeyPressed() ){
-            m_nextState = new PlayerAttack1(m_controllabledObject);
-        }else if( PlayerInput.isAttack2KeyPressed() ){
-            m_nextState = new PlayerAttack2(m_controllabledObject);
-        }else if( PlayerInput.isAttack3KeyPressed() ){
-            m_nextState = new PlayerAttack3(m_controllabledObject);
-        }else if( isMovingLeft && !PlayerInput.isMoveLeftKeyHold()){
-            m_isOver = true;
-        }else if( !isMovingLeft && !PlayerInput.isMoveRightKeyHold()){
-            m_isOver = true;
-        }else if( 
-            PlayerJumpHelper.JumpRequirementsMeet( PlayerInput.isJumpKeyJustPressed(), 
-                                                   m_detector.isOnGround() )
-        ){ 
-            m_nextState = new PlayerJump(m_controllabledObject, GlobalUtils.Direction.Left);
-        }else if( PlayerInput.isFallKeyHold() ) {
-            m_detector.enableFallForOneWayFloor();
-            velocity.y += -PlayerUtils.GravityForce * Time.deltaTime;
-            m_detector.Move( velocity * Time.deltaTime );
+        if( PlayerInput.isMoveLeftKeyHold() || PlayerInput.isMoveRightKeyHold()) {
+            isAccelerating = true;
         }
     }
-
 }

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BiesIdle : BaseState
+public class BiesIdle : PlayerBaseState
 {
 
     public BiesIdle( GameObject controllable ) : base( controllable ) {
@@ -13,20 +13,20 @@ public class BiesIdle : BaseState
     private void HandleStopping(){
         float acceleration = (BiesUtils.PlayerSpeed / BiesUtils.MoveBrakingTime) * Time.deltaTime;
         float currentValue = Mathf.Max( Mathf.Abs( CommonValues.PlayerVelocity.x) - acceleration, 0);
-        CommonValues.PlayerVelocity.x = currentValue * (int)m_detector.GetCurrentDirection();
+        CommonValues.PlayerVelocity.x = currentValue * (int)m_FloorDetector.GetCurrentDirection();
     }
 
     private void HandleInputMoveState(GlobalUtils.Direction dir){
-            m_dir = m_detector.GetCurrentDirection();
+            m_dir = m_FloorDetector.GetCurrentDirection();
             if( m_dir !=  dir ) CommonValues.needChangeDirection = true;
             m_dir = dir;
             m_nextState = new BiesMove(m_controllabledObject, m_dir); 
     }
 
     public override void HandleInput(){
-        if( PlayerFallHelper.FallRequirementsMeet( m_detector.isOnGround() ) ){
+        if( PlayerFallHelper.FallRequirementsMeet( m_FloorDetector.isOnGround() ) ){
             CommonValues.PlayerVelocity.x = 0;
-            m_nextState = new BiesFall(m_controllabledObject, m_detector.GetCurrentDirection());
+            m_nextState = new BiesFall(m_controllabledObject, m_FloorDetector.GetCurrentDirection());
         }else if( PlayerInput.isAttack1KeyPressed() ){
             m_nextState = new BiesAttack1(m_controllabledObject);
         }else if( PlayerInput.isAttack2KeyPressed() ){
@@ -37,19 +37,19 @@ public class BiesIdle : BaseState
             HandleInputMoveState( GlobalUtils.Direction.Left);
         }else if( PlayerInput.isMoveRightKeyHold() ){
             HandleInputMoveState( GlobalUtils.Direction.Right);
-        }else if(m_detector.isCollideWithRightWall()){
+        }else if(m_WallDetector.isCollideWithRightWall()){
             m_nextState = new BiesWallHold( m_controllabledObject, GlobalUtils.Direction.Right );
-        }else if(m_detector.isCollideWithLeftWall()){
+        }else if(m_WallDetector.isCollideWithLeftWall()){
             m_nextState = new BiesWallHold( m_controllabledObject, GlobalUtils.Direction.Left );        
         }else if( 
             PlayerJumpHelper.JumpRequirementsMeet( PlayerInput.isJumpKeyJustPressed(), 
-                                                   m_detector.isOnGround() )
+                                                   m_FloorDetector.isOnGround() )
         ){
             m_nextState = new BiesJump(m_controllabledObject, GlobalUtils.Direction.Left);     
         }else if( PlayerInput.isFallKeyHold() ) {
-            m_detector.enableFallForOneWayFloor();
+            m_ObjectInteractionDetector.enableFallForOneWayFloor();
             CommonValues.PlayerVelocity.y += -PlayerUtils.GravityForce * Time.deltaTime;
-            m_detector.Move( CommonValues.PlayerVelocity * Time.deltaTime );
+            m_FloorDetector.Move( CommonValues.PlayerVelocity * Time.deltaTime );
         }
     }
 
@@ -62,12 +62,12 @@ public class BiesIdle : BaseState
         HandleStopping();
         ProcessAnimationUpdate();
 
-        if( ! m_detector.isOnGround() ){
+        if( ! m_FloorDetector.isOnGround() ){
             CommonValues.PlayerVelocity.y += -BiesUtils.GravityForce * Time.deltaTime;
         }else{
             CatUtils.ResetStamina();
             CommonValues.PlayerVelocity.y = -BiesUtils.GravityForce * Time.deltaTime;
         }
-        m_detector.Move( CommonValues.PlayerVelocity * Time.deltaTime );
+        m_FloorDetector.Move( CommonValues.PlayerVelocity * Time.deltaTime );
     }
 }

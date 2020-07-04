@@ -6,16 +6,25 @@ public class Projectile : MonoBehaviour
 {
     public float speed;
 
-    private Transform player;
-    private Vector2 moveDir;
+    public EnemyController enemyController;
     Rigidbody2D rb;
+    public Vector2 dir;
 
     void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player").transform;
-        moveDir = (player.position - transform.position).normalized * speed;
         rb = GetComponent<Rigidbody2D>();
-        rb.velocity = new Vector2(moveDir.x, moveDir.y);
+        enemyController = FindObjectOfType<EnemyController>();
+    }
+
+    private void Update()
+    {
+        rb.velocity = dir * 850f;
+    }
+
+    public void LookAt()
+    {
+            transform.localScale = new Vector3(transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
+
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

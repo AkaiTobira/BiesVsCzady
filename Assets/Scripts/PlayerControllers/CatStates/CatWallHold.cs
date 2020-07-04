@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CatWallHold : BaseState
+public class CatWallHold : PlayerBaseState
 {
 
     public CatWallHold( GameObject controllable, GlobalUtils.Direction dir) : base( controllable ) {
@@ -13,12 +13,12 @@ public class CatWallHold : BaseState
     }
 
     public override void Process(){
-        if( !m_detector.isWallClose()) m_isOver = true;
+        if( !m_WallDetector.isWallClose()) m_isOver = true;
 
         m_animator.SetFloat( "FallVelocity", 0);
-        if( !m_detector.isOnGround() ){
+        if( !m_FloorDetector.isOnGround() ){
             CommonValues.PlayerVelocity.y = -CatUtils.GravityForce * Time.deltaTime;
-            m_detector.Move(CommonValues.PlayerVelocity * Time.deltaTime);
+            m_FloorDetector.Move(CommonValues.PlayerVelocity * Time.deltaTime);
         }else{
             CommonValues.PlayerVelocity.y = 0.0f;
         }
@@ -27,9 +27,9 @@ public class CatWallHold : BaseState
     public override void OnExit(){}
 
     public override void HandleInput(){
-        if( PlayerFallHelper.FallRequirementsMeet( m_detector.isOnGround()) ){
+        if( PlayerFallHelper.FallRequirementsMeet( m_FloorDetector.isOnGround()) ){
             //m_isOver = true;
-            m_nextState = new CatFall(m_controllabledObject, m_detector.GetCurrentDirection());
+            m_nextState = new CatFall(m_controllabledObject, m_FloorDetector.GetCurrentDirection());
         }else if( PlayerInput.isAttack2KeyPressed() ){
             m_nextState = new CatAttack2(m_controllabledObject);
         }else if( isLeftOriented() && PlayerInput.isMoveRightKeyHold()){
@@ -42,14 +42,14 @@ public class CatWallHold : BaseState
             m_nextState = new CatMove(m_controllabledObject, GlobalUtils.Direction.Left); 
         }else if( 
             PlayerJumpHelper.JumpRequirementsMeet( PlayerInput.isJumpKeyJustPressed(), 
-                                                   m_detector.isOnGround() )
+                                                   m_FloorDetector.isOnGround() )
         ){ 
             m_isOver = true;
             m_nextState = new CatJump(m_controllabledObject, m_dir);
         }else if( PlayerInput.isFallKeyHold() ) {
-            m_detector.enableFallForOneWayFloor();
+            m_ObjectInteractionDetector.enableFallForOneWayFloor();
             CommonValues.PlayerVelocity.y += -CatUtils.GravityForce * Time.deltaTime;
-            m_detector.Move( CommonValues.PlayerVelocity * Time.deltaTime );
+            m_FloorDetector.Move( CommonValues.PlayerVelocity * Time.deltaTime );
         }else if( PlayerInput.isClimbKeyPressed() ){
             m_isOver = true;
             m_nextState = new CatWallClimb( m_controllabledObject, m_dir);

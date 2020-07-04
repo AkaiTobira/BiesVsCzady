@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BiesLedgeClimb : BaseState
+public class BiesLedgeClimb : PlayerBaseState
 {
     private float timeToEnd;
     private AnimationTransition m_transition;
@@ -34,10 +34,10 @@ public class BiesLedgeClimb : BaseState
     protected override void UpdateDirection(){}
 
     public override void Process(){
-        velocity.x   = (int)m_detector.GetCurrentDirection() * m_transition.MoveSpeed.x;
+        velocity.x   = (int)m_FloorDetector.GetCurrentDirection() * m_transition.MoveSpeed.x;
         velocity.y   = m_transition.MoveSpeed.y;
 
-        m_detector.CheatMove( velocity * Time.deltaTime );
+        m_FloorDetector.CheatMove( velocity * Time.deltaTime );
         timeToEnd -= Time.deltaTime;
         if( timeToEnd < 0 ) m_isOver = true;
     }

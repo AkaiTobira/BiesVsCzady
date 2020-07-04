@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class SFSMPlayerChange : SFSMBase
 {
-    public SFSMPlayerChange ( GameObject controlledObj, BaseState baseState ) : base(controlledObj, baseState )
+    public SFSMPlayerChange ( GameObject controlledObj, PlayerBaseState PlayerBaseState ) : base(controlledObj, PlayerBaseState )
     {}
 
     public void StackStatusPrint(){
         string stackInfo = "";
-        foreach( BaseState b in m_states ){
+        foreach( PlayerBaseState b in m_states ){
             stackInfo += b.name + " : " + b.isOver() + " :  " + b.GetDirection().ToString() + "\n";
         }
         GlobalUtils.debugConsole.text = stackInfo;
@@ -78,6 +78,10 @@ public class SFSMPlayerChange : SFSMBase
     }
 
 
+    public override GlobalUtils.Direction GetDirection(){
+        return m_states.Peek().GetDirection();
+    }
+
     private string GetCurrentFormName( string stateName){
         if( stateName.StartsWith("Cat"))  return "Cat";
         if( stateName.StartsWith("Bies")) return "Bies";
@@ -100,11 +104,16 @@ public class SFSMPlayerChange : SFSMBase
         m_states.Clear();
         currentFormName = PlayerChangeRules.ChangeFormName( currentFormName );
         m_states.Push( PlayerChangeRules.GetIdleState(currentFormName) );
-        BaseState newState = PlayerChangeRules.TranslateActiveState( currentFormName, currentStateName, currentDirection);
+        
+        PlayerBaseState newState = PlayerChangeRules.TranslateActiveState( currentFormName, currentStateName, currentDirection);
+        
+        if( newState != null ){
+           currentStateName = RemoveFormName( RemoveDirectionInfo( newState.name ));
+           if( !newState.name.Contains("Idle") ) m_states.Push( newState );
+        }else if( newState.name.Contains("Idle") ){
+            currentStateName = "Idle";    
+        }
         PlayerChangeRules.ChangeAnimation( currentFormName, currentStateName, currentDirection);
-        if( newState == null || newState.name.Contains("Idle") ) return;
-        m_states.Push( newState );
+        
     }
-
-
 }

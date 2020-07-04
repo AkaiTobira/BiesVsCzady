@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BiesPullObj : BaseState
+public class BiesPullObj : PlayerBaseState
 {
     private bool isFaceingLeft = false;
     Vector2 pullForce = new Vector2(0,0);
@@ -23,7 +23,7 @@ public class BiesPullObj : BaseState
         rotationAngle = ( m_dir == GlobalUtils.Direction.Left) ? 180 :0 ; 
         m_controllabledObject.GetComponent<Player>().animationNode.eulerAngles = new Vector3( 0, rotationAngle, slopeAngle);
 
-        m_moveable  = m_detector.GetPullableObject();
+        m_moveable  = m_ObjectInteractionDetector.GetPullableObject();
 
         pullForce.x = -BiesUtils.PlayerSpeed * (int)dir;
         pullForce.y = -BiesUtils.GravityForce * Time.deltaTime;
@@ -37,24 +37,24 @@ public class BiesPullObj : BaseState
 
     public override void OnExit(){
         CommonValues.PlayerVelocity = new Vector2(0,0);
-        m_detector.Move(CommonValues.PlayerVelocity);
+        m_FloorDetector.Move(CommonValues.PlayerVelocity);
     }
     public override void Process(){
-        if( PlayerFallHelper.FallRequirementsMeet( m_detector.isOnGround()) ){
+        if( PlayerFallHelper.FallRequirementsMeet( m_FloorDetector.isOnGround()) ){
             m_isOver = true;
         } 
 
-        if( !isFaceingLeft && m_detector.isCollideWithLeftWall() ) lockMove = true;
-        if( isFaceingLeft && m_detector.isCollideWithRightWall() ) lockMove = true;
+        if( !isFaceingLeft && m_WallDetector.isCollideWithLeftWall() ) lockMove = true;
+        if( isFaceingLeft && m_WallDetector.isCollideWithRightWall() ) lockMove = true;
 
         if( m_moveable && !lockMove ){
 
-            m_detector.Move( pullForce* Time.deltaTime );
+            m_FloorDetector.Move( pullForce* Time.deltaTime );
 
             Vector3 oldMoveablePosition = m_moveable.transform.position;
 
             Vector2 adaptedPullForce = pullForce * Time.deltaTime;
-            adaptedPullForce.y       = m_detector.GetTransition().y;
+            adaptedPullForce.y       = m_FloorDetector.GetTransition().y;
 
             m_moveable.GetComponent<CollisionDetector>().Move( adaptedPullForce );
 
@@ -76,11 +76,11 @@ public class BiesPullObj : BaseState
         }else if( isLeftOriented() && !PlayerInput.isMoveRightKeyHold() ){
             m_isOver = true;
             pullForce.x *= -1;
-            m_detector.Move( pullForce * Time.deltaTime );
+            m_FloorDetector.Move( pullForce * Time.deltaTime );
         }else if( isRightOriented() && !PlayerInput.isMoveLeftKeyHold() ){
             m_isOver = true;
             pullForce.x *= -1;
-            m_detector.Move( pullForce * Time.deltaTime );
+            m_FloorDetector.Move( pullForce * Time.deltaTime );
         }
     }
 }

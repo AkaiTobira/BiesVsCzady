@@ -4,15 +4,20 @@ using UnityEngine;
 
 public class Patrol : MonoBehaviour
 {
-    public float speed;
+    float speed;
     public float distance;
 
-    public bool movingRight = true;
+    bool movingRight = true;
     public Transform patrolPath;
+
+    private void Start()
+    {
+        speed = EnemyController.instance.speed;
+    }
 
     void Update()
     {
-        EnemyPatrol();
+        //EnemyPatrol();
     }
 
     void EnemyPatrol()
@@ -36,6 +41,8 @@ public class Patrol : MonoBehaviour
                     movingRight = true;
                 }
             }
+
+            EnemyController.instance.anim.SetBool("isRunning", true);
         }
     }
 }

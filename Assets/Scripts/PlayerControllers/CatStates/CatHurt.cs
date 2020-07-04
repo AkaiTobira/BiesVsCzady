@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CatHurt : BaseState{    
+public class CatHurt : PlayerBaseState{    
     private float timeToEnd;
     private AnimationTransition m_transition;
     private float velocitXFriction = 0.0f;
@@ -33,7 +33,7 @@ public class CatHurt : BaseState{
  
 
         if( velocitXFriction > 0){
-            m_detector.CheatMove( new Vector2(0,40.0f));
+            m_FloorDetector.CheatMove( new Vector2(0,40.0f));
         }
     }
 
@@ -52,7 +52,7 @@ public class CatHurt : BaseState{
             m_isOver = true;
             m_animator.ResetTrigger( "CatHurt" );
 
-            if( !m_detector.isOnGround() ){
+            if( !m_FloorDetector.isOnGround() ){
                 m_nextState = new CatFall( m_controllabledObject, m_dir);
             }
 
@@ -61,10 +61,8 @@ public class CatHurt : BaseState{
 
     private void ProcessMove(){
         m_animator.SetFloat( "FallVelocity", velocity.y);
-        m_animator.SetBool("isGrounded", m_detector.isOnGround());
+        m_animator.SetBool("isGrounded", m_FloorDetector.isOnGround());
         PlayerFallHelper.FallRequirementsMeet( true );
-
-        Debug.Log( CommonValues.PlayerVelocity);
 
         CommonValues.PlayerVelocity.y += -CatUtils.GravityForce * Time.deltaTime;
 
@@ -74,7 +72,7 @@ public class CatHurt : BaseState{
             CommonValues.PlayerVelocity.x = CommonValues.PlayerVelocity.x + velocitXFriction * Time.deltaTime;
         }
 
-        m_detector.Move(CommonValues.PlayerVelocity*Time.deltaTime);
+        m_FloorDetector.Move(CommonValues.PlayerVelocity*Time.deltaTime);
     }
 
     public override void Process(){

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CatWallJump : BaseState
+public class CatWallJump : PlayerBaseState
 {    
     private GlobalUtils.Direction m_swipe;
     private float inputLock = 0.05f;
@@ -34,7 +34,7 @@ public class CatWallJump : BaseState
     IEnumerator StartJump( float time ){
         yield return new WaitForSeconds(time);
         if( m_isOver ) yield break;
-        m_detector.CheatMove(  new Vector2( 40 * (int)m_dir, 0) );
+        m_FloorDetector.CheatMove(  new Vector2( 40 * (int)m_dir, 0) );
         CommonValues.PlayerVelocity.y = JumpForce + GravityForce; 
         m_animator.ResetTrigger("isWallJumpPressed");
         MoveDisabled = false;
@@ -52,15 +52,15 @@ public class CatWallJump : BaseState
     }
 
     private bool isFalling(){
-        if( PlayerFallHelper.FallRequirementsMeet( m_detector.isOnGround()) && CommonValues.PlayerVelocity.y < 0 ){
-            m_nextState = new CatFall( m_controllabledObject, m_detector.GetCurrentDirection());
+        if( PlayerFallHelper.FallRequirementsMeet( m_FloorDetector.isOnGround()) && CommonValues.PlayerVelocity.y < 0 ){
+            m_nextState = new CatFall( m_controllabledObject, m_FloorDetector.GetCurrentDirection());
             return true;
         }
         return false;
     }
 
     private bool isOnCelling(){
-        if( m_detector.isOnCelling()){
+        if( m_FloorDetector.isOnCelling()){
             CommonValues.PlayerVelocity = new Vector2();
             timeOfJumpForceRising = 0.0f;
             return true;
@@ -69,7 +69,7 @@ public class CatWallJump : BaseState
     }
 
     private bool isCloseToWall(){
-        if( m_detector.isWallClose() ){
+        if( m_WallDetector.isWallClose() ){
             m_nextState = new CatWallSlide( m_controllabledObject, m_dir);
             return true;
         }
@@ -96,7 +96,7 @@ public class CatWallJump : BaseState
 
         ProcessSwipe();
 
-        m_detector.Move(CommonValues.PlayerVelocity * Time.deltaTime);
+        m_FloorDetector.Move(CommonValues.PlayerVelocity * Time.deltaTime);
         ProcessStateEnd();
     }
 

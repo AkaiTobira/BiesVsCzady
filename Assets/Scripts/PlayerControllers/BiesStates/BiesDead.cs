@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-public class BiesDead : BaseState{    
+public class BiesDead : PlayerBaseState{    
 
     private float timeToEnd;
     private AnimationTransition m_transition;
@@ -39,7 +39,7 @@ public class BiesDead : BaseState{
         PlayerFallHelper.FallRequirementsMeet( true );
         velocity.y += -CatUtils.GravityForce * Time.deltaTime;
         velocity.x = Mathf.Max( velocity.x - velocitXFriction, 0 );
-        m_detector.Move(velocity*Time.deltaTime);
+        m_FloorDetector.Move(velocity*Time.deltaTime);
     }
 
     public override void Process(){

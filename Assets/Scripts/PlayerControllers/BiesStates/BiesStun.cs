@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BiesStun : BaseState{    
+public class BiesStun : PlayerBaseState{    
     private float timeToEnd;
     private AnimationTransition m_transition;
     private float velocitXFriction = 0.0f;
@@ -42,7 +42,7 @@ public class BiesStun : BaseState{
         PlayerFallHelper.FallRequirementsMeet( true );
         velocity.y += -BiesUtils.GravityForce * Time.deltaTime;
         velocity.x = Mathf.Max( velocity.x - velocitXFriction, 0 );
-        m_detector.Move(velocity*Time.deltaTime);
+        m_FloorDetector.Move(velocity*Time.deltaTime);
     }
 
     public override void Process(){

@@ -9,7 +9,12 @@ public static class  PlayerChangeRules
 
     private static List<string> triggersList = new List<string>{
         "SwitchToCatIdle",
-        "SwitchToBiesIdle"
+        "SwitchToCatMove",
+        "SwitchToCatFall",
+        "SwitchToBiesIdle",
+        "SwitchToBiesMove",
+        "SwitchToBiesWallHold",
+        "SwitchToBiesFall",
     };
 
     public static void ChangeAnimation( string formName, string stateName, 
@@ -26,9 +31,7 @@ public static class  PlayerChangeRules
         ScalePlayer( formName );
         PositionCorrenciton( formName, stateName);
 
-        playerAnimator.SetTrigger( "SwitchTo" + formName + "Idle");
-        // Target when animations will be done :
-        //playerAnimator.SetTrigger( "SwitchTo" + formName+ stateName );
+        playerAnimator.SetTrigger( "SwitchTo" + formName+ stateName );
     }
 
     private static void ScalePlayer( string formName){
@@ -50,8 +53,7 @@ public static class  PlayerChangeRules
             }
 
             Translation = CorrectTransition( playerDetector );
- 
-            Debug.Log(Translation);
+
             playerDetector.CheatMove(Translation);
         }
     }
@@ -98,7 +100,7 @@ public static class  PlayerChangeRules
         return true;
     }
 
-    public static BaseState GetIdleState( string formName ){
+    public static PlayerBaseState GetIdleState( string formName ){
         switch(formName){
             case "Cat" : return new CatIdle ( GlobalUtils.PlayerObject.gameObject );
             case "Bies": return new BiesIdle( GlobalUtils.PlayerObject.gameObject );
@@ -106,22 +108,22 @@ public static class  PlayerChangeRules
         }
     }
 
-    private static BaseState CatToBiesTranslation(ref string stateName, ref GlobalUtils.Direction dir){
+    private static PlayerBaseState CatToBiesTranslation(ref string stateName, ref GlobalUtils.Direction dir){
         switch( stateName ){
             case "Idle": return new BiesIdle( GlobalUtils.PlayerObject.gameObject );
             case "Move": return new BiesMove( GlobalUtils.PlayerObject.gameObject, dir);
             case "Fall": return new BiesFall( GlobalUtils.PlayerObject.gameObject, dir);
             case "Jump": return new BiesFall( GlobalUtils.PlayerObject.gameObject, dir);
             case "WallHold" : return new BiesWallHold( GlobalUtils.PlayerObject.gameObject, dir);
-            case "JumpWall" : return new BiesFall( GlobalUtils.PlayerObject.gameObject, dir);
-            case "JumpSlide": return new BiesFall( GlobalUtils.PlayerObject.gameObject, dir);
+            case "WallJump" : return new BiesFall( GlobalUtils.PlayerObject.gameObject, dir);
+            case "WallSlide": return new BiesFall( GlobalUtils.PlayerObject.gameObject, dir);
             case "WallClimb": return new BiesFall( GlobalUtils.PlayerObject.gameObject, dir);
         //    case "Attack2"  : return new BiesAttack2( GlobalUtils.PlayerObject.gameObject);
             default : return null;
         }
     }
 
-    private static BaseState BiesToCatTranslation(ref string stateName, ref GlobalUtils.Direction dir){
+    private static PlayerBaseState BiesToCatTranslation(ref string stateName, ref GlobalUtils.Direction dir){
         switch( stateName ){
             case "Idle": return new CatIdle( GlobalUtils.PlayerObject.gameObject );
             case "Move": return new CatMove( GlobalUtils.PlayerObject.gameObject, dir);
@@ -137,8 +139,8 @@ public static class  PlayerChangeRules
         }
     }
 
-    public static BaseState TranslateActiveState( string formName, string stateName, GlobalUtils.Direction dir ){
-        Debug.Log( "TRanslation info :" + formName + " " + stateName);
+    public static PlayerBaseState TranslateActiveState( string formName, string stateName, GlobalUtils.Direction dir ){
+//        Debug.Log( "TRanslation info :" + formName + " " + stateName);
         
         switch( formName ){
             case "Bies" : return CatToBiesTranslation(ref stateName, ref dir);
