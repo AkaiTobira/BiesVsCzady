@@ -20,6 +20,11 @@ public class BiesAttack3 : PlayerBaseState{
                        GetComponent<AnimationTransition>();
     }
 
+
+    public override void OnExit(){
+        m_animator.SetBool("Attack3", false);
+    }
+
     private bool isTimerOver(){
         if( timeToEnd < 0){
             m_isOver = true;

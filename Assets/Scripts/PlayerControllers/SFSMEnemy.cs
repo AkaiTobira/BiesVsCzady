@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SFSMPlayerChange : ISFSMBase
+public class SFSMEnemy : ISFSMBase
 {
-    public SFSMPlayerChange ( GameObject controlledObj, PlayerBaseState PlayerBaseState ) : 
+    public SFSMEnemy ( GameObject controlledObj, IBaseState PlayerBaseState ) : 
         base(controlledObj, PlayerBaseState )
     {}
 
@@ -16,21 +16,32 @@ public class SFSMPlayerChange : ISFSMBase
         GlobalUtils.debugConsole.text = stackInfo;
     }
 
-    protected override void processStack(){
-        base.processStack();
-        PlayerBaseState current_state = (PlayerBaseState) m_states.Peek();
-        if( current_state.isOver() ) return;
-        current_state.HandleInput();
-    }
 
-    public override void Update(){
-        base.Update();
-        ProcessCharacterChange();
-        StackStatusPrint();
-    }
 
     public override void OverriteStates(string targetState, GlobalUtils.AttackInfo attackInfo){
 
+        string currentStateName = GetStateName();
+
+        while( m_states.Count != 1 ) m_states.Pop();
+
+        switch( targetState ) {
+            case "CombatEngage" : 
+                m_states.Push( new CzadPlayerDetected( m_controllabledObject ));
+            break;
+            case "Hurt" :
+                m_states.Push( new CzadPlayerDetected( m_controllabledObject ));
+                m_states.Push( new CzadHurt(m_controllabledObject, attackInfo));
+            break;
+            case "Dead":
+                m_states.Push(new CzadDead(m_controllabledObject, attackInfo));
+            break;
+            default :
+                Debug.Log( targetState + " :: Not found");
+            break;
+        }
+
+
+/*
         string currentStateName = RemoveDirectionInfo(GetStateName());
         string currentFormName  = GetCurrentFormName(currentStateName);
         if( GetStateName().Contains("Dead")) return;
@@ -72,6 +83,7 @@ public class SFSMPlayerChange : ISFSMBase
                 }
                 break;
         }
+  */
     }
     
     private string RemoveDirectionInfo( string stateName ){
@@ -80,48 +92,13 @@ public class SFSMPlayerChange : ISFSMBase
         }
         return stateName;
     }
-
+/*
     public  string GetCurrentForm(){
         return GetCurrentFormName( GetStateName() );
     }
-
+*/
 
     public override GlobalUtils.Direction GetDirection(){
         return m_states.Peek().GetDirection();
-    }
-
-    private string GetCurrentFormName( string stateName){
-        if( stateName.StartsWith("Cat"))  return "Cat";
-        if( stateName.StartsWith("Bies")) return "Bies";
-        return "InvalidStateName";
-    }
-
-    private string RemoveFormName( string stateName ){
-        if( stateName.StartsWith("Cat"))  return stateName.Substring(3, stateName.Length-3);
-        if( stateName.StartsWith("Bies")) return stateName.Substring(4, stateName.Length-4);
-        return "InvalidStateName";
-    }
-
-    private void ProcessCharacterChange(){
-        if( ! PlayerInput.isChangeFormKeyJustPressed() ) return;
-        string currentStateName = RemoveDirectionInfo(GetStateName());
-        string currentFormName  = GetCurrentFormName(currentStateName);
-        currentStateName = RemoveFormName( currentStateName);
-        if( !PlayerChangeRules.CanTransformInCurrentState( currentStateName )) return;
-        GlobalUtils.Direction currentDirection = m_states.Peek().GetDirection();
-        m_states.Clear();
-        currentFormName = PlayerChangeRules.ChangeFormName( currentFormName );
-        m_states.Push( PlayerChangeRules.GetIdleState(currentFormName) );
-        
-        PlayerBaseState newState = PlayerChangeRules.TranslateActiveState( currentFormName, currentStateName, currentDirection);
-        
-        if( newState != null ){
-           currentStateName = RemoveFormName( RemoveDirectionInfo( newState.name ));
-           if( !newState.name.Contains("Idle") ) m_states.Push( newState );
-        }else if( newState.name.Contains("Idle") ){
-            currentStateName = "Idle";    
-        }
-        PlayerChangeRules.ChangeAnimation( currentFormName, currentStateName, currentDirection);
-        
     }
 }

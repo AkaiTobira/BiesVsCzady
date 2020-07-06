@@ -70,7 +70,7 @@ public class DestroyableObject : MonoBehaviour
 
             if( durability < 0) return;
             GlobalUtils.AttackInfo infoPack =  
-                GlobalUtils.PlayerObject.GetComponent<Player>().GetPlayerAttackInfo();
+                GlobalUtils.PlayerObject.GetComponent<Player>().GetAttackInfo();
             
             if( infoPack.isValid){
                 durability -= infoPack.attackDamage;

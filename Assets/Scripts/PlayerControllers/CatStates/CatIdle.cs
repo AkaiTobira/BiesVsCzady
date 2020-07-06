@@ -75,11 +75,11 @@ public class CatIdle : PlayerBaseState
 
         if( ! m_FloorDetector.isOnGround() ){
             CommonValues.PlayerVelocity.y += -CatUtils.GravityForce * Time.deltaTime;
+            m_FloorDetector.Move( CommonValues.PlayerVelocity * Time.deltaTime );
         }else{
             CatUtils.ResetStamina();
             CommonValues.PlayerVelocity.y = 0;
         }
 
-        m_FloorDetector.Move( CommonValues.PlayerVelocity * Time.deltaTime );
     }
 }

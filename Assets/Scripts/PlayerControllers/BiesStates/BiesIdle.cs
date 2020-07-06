@@ -56,6 +56,14 @@ public class BiesIdle : PlayerBaseState
     private void ProcessAnimationUpdate(){
         m_animator.SetFloat( "FallVelocity", 0);
         m_animator.SetFloat("MoveVelocity", Mathf.Abs(CommonValues.PlayerVelocity.x));
+
+
+        m_animator.SetBool("Attack1", false);
+        m_animator.SetBool("Attack2", false);
+        m_animator.SetBool("Attack3", false);
+        m_animator.SetBool("Attack4", false);
+        m_animator.SetBool("Attack5", false);
+
     }
 
     public override void Process(){
