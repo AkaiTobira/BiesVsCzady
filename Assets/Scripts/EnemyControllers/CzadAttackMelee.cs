@@ -2,22 +2,21 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CzadAttack : EnemyBaseState
+public class CzadAttackMelee : EnemyBaseState
 {
 
     float timeToEnd = 0;
 
-    public CzadAttack( GameObject controllable ) : base( controllable ){
-        name = "CzadAttack";
-
+    public CzadAttackMelee( GameObject controllable ) : base( controllable ){
+        name = "CzadAttackMelee";
         timeToEnd = getAnimationLenght("CzadAttack");
     }
 
     public void SelectNextState(){
         if( timeToEnd < 0 ) m_isOver = true;
-
-        if( m_isOver ) m_animator.SetBool( "Attack", false);
+        m_animator.SetBool( "Attack", !m_isOver);
     }
+
 
     public override void Process(){
         base.Process();
@@ -26,18 +25,9 @@ public class CzadAttack : EnemyBaseState
         timeToEnd -= Time.deltaTime;
     }
 
-    protected float getAnimationLenght(string animationName){
-        RuntimeAnimatorController ac = m_animator.runtimeAnimatorController;   
-        for (int i = 0; i < ac.animationClips.Length; i++){
-            if (ac.animationClips[i].name == animationName)
-                return ac.animationClips[i].length;
-        }
-        return 0.0f;
-    }
-
     public override void UpdateAnimator(){
         base.UpdateAnimator();
-        m_animator.SetBool( "Attack", true);
+        m_animator.SetBool( "Attack", !m_isOver);
         m_animator.SetFloat("HorizontalSpeed", Mathf.Abs( entityScript.velocity.x ));
     }
 

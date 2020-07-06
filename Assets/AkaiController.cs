@@ -7,6 +7,8 @@ public class AkaiController : IEntity
 {
     [HideInInspector] public Vector2 velocity;
 
+    [Header("MoveValues")]
+
     public float moveBrakingTime = 0;
     public float moveAccelerationTime = 0;
 
@@ -29,13 +31,27 @@ public class AkaiController : IEntity
 
     public float maxMoveDistance = 0;
 
+    [Header("MeeleAttackBehaviour")]
+
+
+    [SerializeField]  public float massFactor = 0.2f;
+
+    public float breakBeetweenAttacks = 0;
+
+    public float attackDamage         = 0;
+
+    public Vector2 knockbackValues    = new Vector2();
+
+    public float stunDuration         = 0;
+
     [Header("Debug")]
 
     [SerializeField] public Text DebugConsoleInfo1;
     [SerializeField] public Text DebugConsoleInfo2;
 
-
     public IFieldSightDetector m_sightController;
+
+    [HideInInspector] public bool isDead = false;
 
     void Start()
     {
@@ -44,13 +60,28 @@ public class AkaiController : IEntity
         m_animator      = transform.Find("Animator").GetComponent<Animator>();
         m_controller    = new SFSMEnemy( gameObject, new CzadIdle( gameObject ) );
         m_FloorDetector.Move( new Vector2(0.1f, 0) );
+
+    }
+
+
+    [HideInInspector] public bool isAlreadyInCombat = false;
+
+    void UpdatePlayerDetection(){
+        if( m_sightController.isPlayerSeen() && !isAlreadyInCombat ){
+            m_controller.OverriteStates( "CombatEngage" );
+            isAlreadyInCombat = true;
+        }
     }
 
     void Update() {
         m_controller.Update();
 
+        UpdatePlayerDetection();
 
         UpdateDebugConsole();
+
+
+        if( isDead ) Destroy(gameObject);
     }
 
     void UpdateDebugConsole(){
@@ -59,6 +90,47 @@ public class AkaiController : IEntity
         DebugConsoleInfo1.text += velocity.ToString() + "\n";
         DebugConsoleInfo1.text += "Player seen :" + m_sightController.isPlayerSeen().ToString() + "\n";
     }
+
+
+    public override GlobalUtils.AttackInfo GetAttackInfo(){
+
+        string currentStateName = m_controller.GetStateName();
+
+        GlobalUtils.AttackInfo infoPack = new GlobalUtils.AttackInfo();
+
+        switch( currentStateName ){
+
+            case "CzadAttackMelee":
+                infoPack.isValid = true;
+                infoPack.knockBackValue = knockbackValues;
+                infoPack.stunDuration   = 0.0f;
+                infoPack.attackDamage   = attackDamage;
+                infoPack.fromCameAttack = m_FloorDetector.GetCurrentDirection();
+            break;
+            default: break;
+
+        }
+
+        return infoPack;
+    }
+
+    float healthPoints = 5;
+
+    public override void OnHit(GlobalUtils.AttackInfo infoPack){
+        if( !infoPack.isValid ) return;
+         healthPoints -= infoPack.attackDamage;
+        if( healthPoints > 0 ){
+            if( infoPack.stunDuration > 0){
+                m_controller.OverriteStates( "Stun", infoPack );
+            }else{
+                m_controller.OverriteStates( "Hurt", infoPack );
+            }
+        }else{
+            m_controller.OverriteStates( "Dead", infoPack );
+        }
+    }
+
+
 
     void OnDrawGizmos(){
         Debug.DrawLine( transform.position, transform.position + new Vector3( patrolRangeLeft  - autoCorrectionRight , 0,0), new Color(0,1,1));

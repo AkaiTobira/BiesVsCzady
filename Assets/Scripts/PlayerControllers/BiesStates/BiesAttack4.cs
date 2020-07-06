@@ -13,6 +13,11 @@ public class BiesAttack4 : PlayerBaseState
         name = "BiesAttack4";
     }
 
+
+    public override void OnExit(){
+        m_animator.SetBool("Attack4", false);
+    }
+
     protected override void SetUpAnimation(){
         m_animator.SetBool("Attack4", true);
         timeToEnd = getAnimationLenght("PlayerAttack4");

@@ -2,38 +2,49 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BiesAttack1 : PlayerBaseState
+public class BiesAttackBase : PlayerBaseState
 { 
 
-    private float animationTime;
-    private float timeToEnd;
+    protected float animationTime;
+    protected float timeToEnd;
     private AnimationTransition m_transition;
 
-    public BiesAttack1( GameObject controllable) : base( controllable ){
-        name = "BiesAttack1";
+    protected string animatorTriggerName = "";
+
+    protected string animatorName = "";
+
+
+    public BiesAttackBase( GameObject controllable, string triggerName, string annimation ) : base( controllable ){
+        animatorTriggerName = triggerName;
+        animatorName = annimation;
+
+
+        
+        SetUpAnimationOverride();
     }
 
-    protected override void SetUpAnimation(){
-        m_animator.SetBool("Attack1", true);
-        animationTime = getAnimationLenght("PlayerAttack1");
+    protected void SetUpAnimationOverride(){
+        m_animator.SetBool(animatorTriggerName, true);
         timeToEnd     = animationTime;
+        animationTime = getAnimationLenght(animatorName);
 
         m_transition = m_controllabledObject.
                        GetComponent<Player>().animationNode.
                        GetComponent<AnimationTransition>();
     }
 
-
-    public override void OnExit(){
-        m_animator.SetBool("Attack1", false);
+    protected override void SetUpAnimation(){
     }
 
+    public override void OnExit(){
+        m_animator.SetBool(animatorTriggerName, false);
+    }
 
     private void  ProcessStateEnd(){
         timeToEnd -= Time.deltaTime;
         if( timeToEnd < 0){
             m_isOver = true;
-            m_animator.SetBool("Attack1", false);
+            m_animator.SetBool( animatorTriggerName, false);
         }
     }
     private void ProcessMove(){
@@ -45,13 +56,5 @@ public class BiesAttack1 : PlayerBaseState
         ProcessStateEnd();
         ProcessMove();
     }
-    public override void HandleInput(){
 
-        if( PlayerInput.isAttack1KeyPressed() && timeToEnd < 0.5 * animationTime ){
-            m_isOver = true;
-            m_nextState = new BiesAttack4( m_controllabledObject);
-        }
-
-
-    }
 }

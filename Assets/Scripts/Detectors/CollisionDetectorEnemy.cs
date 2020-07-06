@@ -164,7 +164,6 @@ public class CollisionDetectorEnemy : CollisionDetector, IPlatformEdgeDetector, 
              );
 
         if( !hit ) return false;
-
         return hit.collider.tag == "PlayerHurtBox";
     }
 

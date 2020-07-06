@@ -8,21 +8,44 @@ public class CzadPlayerDetected : EnemyBaseState
         name = "CzadPlayerDetected";
     }
 
+
+    float meeleCombatTimer = 3;
+
+    private bool CanMeeleAttack(){
+        float distance = Vector3.Distance( GlobalUtils.PlayerObject.transform.position, 
+                                            m_FloorDetector.GetComponent<Transform>().position);
+
+        meeleCombatTimer -= Time.deltaTime;
+        if( distance < 300 )       return false;
+        if( meeleCombatTimer > 0 ) return false;
+        meeleCombatTimer = entityScript.breakBeetweenAttacks;
+        return true;
+    }
+
+
     public void SelectNextState(){
         if( entityScript.velocity.x != 0 ) return; 
 
-        float distance = Vector3.Distance( GlobalUtils.PlayerObject.transform.position, m_controllabledObject.transform.position);
+        float distance = Vector3.Distance( GlobalUtils.PlayerObject.transform.position, 
+                                            m_FloorDetector.GetComponent<Transform>().position);
 
-        if( distance  < 300){
-            m_nextState = new CzadAttack( m_controllabledObject );
+        if( CanMeeleAttack() ){
+            m_nextState = new CzadAttackMelee( m_controllabledObject );
         }else{
+            if( distance > 1000 ) {
+                m_isOver                       = true;
+                entityScript.isAlreadyInCombat = false;
+            }
+        }
+        /*
+        else{
             
             float direction = (GlobalUtils.PlayerObject.transform.position.x < 
                                 m_controllabledObject.transform.position.x) ? -1 : 1;
 
             m_nextState = new CzadMove(m_controllabledObject, new Vector2( distance * direction, 0) );
         }
-
+        */
     }
 
     public override void Process(){

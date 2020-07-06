@@ -19,6 +19,28 @@ public class SFSMEnemy : ISFSMBase
 
 
     public override void OverriteStates(string targetState, GlobalUtils.AttackInfo attackInfo){
+
+        string currentStateName = GetStateName();
+
+        while( m_states.Count != 1 ) m_states.Pop();
+
+        switch( targetState ) {
+            case "CombatEngage" : 
+                m_states.Push( new CzadPlayerDetected( m_controllabledObject ));
+            break;
+            case "Hurt" :
+                m_states.Push( new CzadPlayerDetected( m_controllabledObject ));
+                m_states.Push( new CzadHurt(m_controllabledObject, attackInfo));
+            break;
+            case "Dead":
+                m_states.Push(new CzadDead(m_controllabledObject, attackInfo));
+            break;
+            default :
+                Debug.Log( targetState + " :: Not found");
+            break;
+        }
+
+
 /*
         string currentStateName = RemoveDirectionInfo(GetStateName());
         string currentFormName  = GetCurrentFormName(currentStateName);
