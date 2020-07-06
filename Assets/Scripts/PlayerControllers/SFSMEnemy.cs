@@ -22,6 +22,8 @@ public class SFSMEnemy : ISFSMBase
 
         string currentStateName = GetStateName();
 
+        if( currentStateName.Contains("Dead")) return;
+
         while( m_states.Count != 1 ) m_states.Pop();
 
         switch( targetState ) {

@@ -15,7 +15,7 @@ public class CzadHurt : EnemyBaseState{
         knocBackDirection = (int)infoPack.fromCameAttack;
 
         fillKnockbackInfo( infoPack );
-        timeToEnd = 5;
+        timeToEnd = 3;
         m_animator.SetTrigger( "GetHit" );
 
     }
