@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CollisionDetectorEnemy : CollisionDetector, IPlatformEdgeDetector, ICollisionWallDetector
+public class CollisionDetectorEnemy : CollisionDetector, IPlatformEdgeDetector, ICollisionWallDetector, IFieldSightDetector
 {
 
     [SerializeField] float ledgeRayLenght  = 20;
@@ -140,6 +140,32 @@ public class CollisionDetectorEnemy : CollisionDetector, IPlatformEdgeDetector, 
 
     public bool isCollideWithRightWall(){
         return collisionInfo.right;
+    }
+
+    public LayerMask playerHitBoxLayer = 0;
+    public float sightLenght     = 500;
+
+    public bool isPlayerSeen(){
+        Vector2 rayOrigin = new Vector2( (collisionInfo.faceDir == DIR_LEFT) ? 
+                                            borders.left + skinSize: borders.right -skinSize ,
+                                            (borders.top + borders.bottom)/2.0f  );
+
+        RaycastHit2D hit = Physics2D.Raycast(
+                rayOrigin,
+                new Vector2( collisionInfo.faceDir, 0),
+                sightLenght,
+                playerHitBoxLayer
+            );
+
+        Debug.DrawRay(
+                rayOrigin,
+                new Vector2( collisionInfo.faceDir, 0) * sightLenght,
+                new Color(1,1,1)
+             );
+
+        if( !hit ) return false;
+
+        return hit.collider.tag == "PlayerHurtBox";
     }
 
 

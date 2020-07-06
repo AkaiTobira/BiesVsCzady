@@ -37,8 +37,8 @@ public class CzadMove : EnemyBaseState
 
     private void AdaptPatrolRange(){
         if( entityScript.canPatrol ){
-            if( isLeftOriented()  ){ entityScript.patrolRangeLeft  = entityScript.patrolRangeLeft  - leftToMove.x; }
-            if( isRightOriented() ){ entityScript.patrolRangeRight = entityScript.patrolRangeRight - leftToMove.x; }
+            if( isRightOriented() ){ entityScript.autoCorrectionLeft  = leftToMove.x; }
+            if( isLeftOriented () ){ entityScript.autoCorrectionRight = leftToMove.x; }
         }
         entityScript.velocity.x = 0;
     }

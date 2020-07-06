@@ -20,6 +20,10 @@ public class AkaiController : IEntity
     public float patrolRangeLeft    = 0;
     public float patrolRangeRight    = 0;
 
+    public float autoCorrectionLeft = 0;
+    public float autoCorrectionRight = 0;
+
+
     [Header("RandomMoveBehaviour")]
     public bool canRandomMove   = false;
 
@@ -30,17 +34,22 @@ public class AkaiController : IEntity
     [SerializeField] public Text DebugConsoleInfo1;
     [SerializeField] public Text DebugConsoleInfo2;
 
+
+    public IFieldSightDetector m_sightController;
+
     void Start()
     {
-        m_FloorDetector = transform.Find("Detector").GetComponent<ICollisionFloorDetector>();
+        m_FloorDetector   = transform.Find("Detector").GetComponent<ICollisionFloorDetector>();
+        m_sightController = transform.Find("Detector").GetComponent<IFieldSightDetector>();
         m_animator      = transform.Find("Animator").GetComponent<Animator>();
         m_controller    = new SFSMEnemy( gameObject, new CzadIdle( gameObject ) );
         m_FloorDetector.Move( new Vector2(0.1f, 0) );
     }
 
-
     void Update() {
         m_controller.Update();
+
+
         UpdateDebugConsole();
     }
 
@@ -48,11 +57,13 @@ public class AkaiController : IEntity
         DebugConsoleInfo2.text = m_controller.GetStackStatus();
         DebugConsoleInfo1.text = "";
         DebugConsoleInfo1.text += velocity.ToString() + "\n";
+        DebugConsoleInfo1.text += "Player seen :" + m_sightController.isPlayerSeen().ToString() + "\n";
     }
 
     void OnDrawGizmos(){
-        Debug.DrawLine( transform.position, transform.position + new Vector3( patrolRangeRight, 0,0), new Color(0,1,1));
-        Debug.DrawLine( transform.position, transform.position + new Vector3( patrolRangeLeft , 0,0), new Color(0,1,1));
+        Debug.DrawLine( transform.position, transform.position + new Vector3( patrolRangeLeft  - autoCorrectionRight , 0,0), new Color(0,1,1));
+        Debug.DrawLine( transform.position, transform.position + new Vector3( patrolRangeRight - autoCorrectionLeft, 0,0), new Color(0,1,1));
     }
+
 
 }
