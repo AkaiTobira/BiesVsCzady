@@ -7,7 +7,8 @@ public class BiesIdle : PlayerBaseState
 
     public BiesIdle( GameObject controllable ) : base( controllable ) {
         name = "BiesIdle";
-        m_dir = GlobalUtils.Direction.Left;
+        m_dir = m_FloorDetector.GetCurrentDirection();
+    //    m_dir = GlobalUtils.Direction.Left;
     }
 
     private void HandleStopping(){
@@ -63,7 +64,6 @@ public class BiesIdle : PlayerBaseState
         m_animator.SetBool("Attack3", false);
         m_animator.SetBool("Attack4", false);
         m_animator.SetBool("Attack5", false);
-
     }
 
     public override void Process(){

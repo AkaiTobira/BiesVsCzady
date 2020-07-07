@@ -6,7 +6,7 @@ public class CatIdle : PlayerBaseState
 {
     public CatIdle( GameObject controllable ) : base( controllable ) {
         name = "CatIdle";
-        m_dir = GlobalUtils.Direction.Left;
+        m_dir = m_FloorDetector.GetCurrentDirection();
     }
 
     private void HandleStopping(){

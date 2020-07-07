@@ -13,14 +13,13 @@ public class CzadIdle : EnemyBaseState
 
         //TODO Magnificent random behaviour selector based on random list - in future
 
-
         if( entityScript.canPatrol ){
             m_nextState = new CzadPatrol( m_controllabledObject );
         }else{
             float direction = Random.Range( -1, 2);
             while( direction == 0 ) direction = Random.Range( -1, 2);
             float distance  = Random.Range( 0, entityScript.maxMoveDistance);
-            m_nextState = new CzadMove( m_controllabledObject, new Vector2( direction * distance, 0));
+            m_nextState = new CzadAttackMove( m_controllabledObject, new Vector2( direction * distance, 0));
         }
 
     }

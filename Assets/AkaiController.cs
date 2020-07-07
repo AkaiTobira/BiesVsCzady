@@ -40,6 +40,8 @@ public class AkaiController : IEntity
 
     public float attackDamage         = 0;
 
+    public float combatRange          = 300;
+
     public Vector2 knockbackValues    = new Vector2();
 
     public float stunDuration         = 0;
@@ -77,11 +79,15 @@ public class AkaiController : IEntity
         m_controller.Update();
 
         UpdatePlayerDetection();
-
         UpdateDebugConsole();
 
 
         if( isDead ) Destroy(gameObject);
+    }
+
+    public void ResetPatrolValues(){
+        autoCorrectionRight = 0;
+        autoCorrectionLeft  = 0;
     }
 
     void UpdateDebugConsole(){
@@ -89,6 +95,10 @@ public class AkaiController : IEntity
         DebugConsoleInfo1.text = "";
         DebugConsoleInfo1.text += velocity.ToString() + "\n";
         DebugConsoleInfo1.text += "Player seen :" + m_sightController.isPlayerSeen().ToString() + "\n";
+
+        Vector2 RayPosition = transform.Find("Detector").transform.position + new Vector3( 0, -75, 0);
+        Debug.DrawLine( RayPosition - new Vector2( combatRange, 0 ), RayPosition + new Vector2( combatRange, 0 ), new Color(1,0,1));
+
     }
 
 
@@ -104,6 +114,7 @@ public class AkaiController : IEntity
                 infoPack.isValid = true;
                 infoPack.knockBackValue = knockbackValues;
                 infoPack.stunDuration   = 0.0f;
+                infoPack.lockFaceDirectionDuringKnockback = true;
                 infoPack.attackDamage   = attackDamage;
                 infoPack.fromCameAttack = m_FloorDetector.GetCurrentDirection();
             break;
@@ -135,7 +146,7 @@ public class AkaiController : IEntity
     void OnDrawGizmos(){
         Debug.DrawLine( transform.position, transform.position + new Vector3( patrolRangeLeft  - autoCorrectionRight , 0,0), new Color(0,1,1));
         Debug.DrawLine( transform.position, transform.position + new Vector3( patrolRangeRight - autoCorrectionLeft, 0,0), new Color(0,1,1));
-    }
 
+    }
 
 }

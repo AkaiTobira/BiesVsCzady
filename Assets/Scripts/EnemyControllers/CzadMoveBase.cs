@@ -2,46 +2,23 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CzadMove : EnemyBaseState
+public class CzadMoveBase : EnemyBaseState
 {
 
-    Vector2 leftToMove = new Vector2();
+    protected Vector2 leftToMove = new Vector2();
 
-    IPlatformEdgeDetector  m_edgeDetector;
-    ICollisionWallDetector m_wallDetector;
+    protected IPlatformEdgeDetector  m_edgeDetector;
+    protected ICollisionWallDetector m_wallDetector;
 
-    public CzadMove( GameObject controllable, Vector2 moveVector ) : base( controllable ){
-        name = "CzadMove";
-        
+    public CzadMoveBase( GameObject controllable, Vector2 moveVector ) : base( controllable ){
+
         m_edgeDetector = controllable.GetComponent<Transform>().Find("Detector").GetComponent<IPlatformEdgeDetector>();
         m_wallDetector = controllable.GetComponent<Transform>().Find("Detector").GetComponent<ICollisionWallDetector>();
         m_FloorDetector.Move( new Vector2(0.01f * Mathf.Sign( moveVector.x ), 0 ));
         leftToMove = moveVector;
     }
 
-    public void SelectNextState(){
-        if( Mathf.Abs( leftToMove.x ) < 100 ) m_isOver = true;
-        if( m_edgeDetector.hasReachedPlatformEdge( ) ) {
-            AdaptPatrolRange();
-            m_isOver = true;
-        }
-
-       // if( Vector3.Distance( GlobalUtils.PlayerObject.transform.position, m_controllabledObject.transform.position) < 400){
-      //      m_nextState = new CzadPlayerDetected( m_controllabledObject );
-    //    }else if( Vector3.Distance( GlobalUtils.PlayerObject.transform.position, m_controllabledObject.transform.position) < 100){
-  //          m_nextState = new CzadAttack( m_controllabledObject );
-//        }
-
-
-    }
-
-    private void AdaptPatrolRange(){
-        if( entityScript.canPatrol ){
-            if( isRightOriented() ){ entityScript.autoCorrectionLeft  = leftToMove.x; }
-            if( isLeftOriented () ){ entityScript.autoCorrectionRight = leftToMove.x; }
-        }
-        entityScript.velocity.x = 0;
-    }
+    public virtual void SelectNextState(){}
 
     public override void Process(){
         base.Process();
@@ -64,5 +41,4 @@ public class CzadMove : EnemyBaseState
         float currentValue = Mathf.Min( Mathf.Abs( entityScript.velocity.x ) + acceleration,  entityScript.maxMoveSpeed );
         entityScript.velocity.x = currentValue * (int)m_dir;
     }
-
 }

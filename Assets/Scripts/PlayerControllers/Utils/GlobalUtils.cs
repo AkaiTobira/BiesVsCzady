@@ -14,6 +14,7 @@ public static class  GlobalUtils
         public bool isValid;
 
         public float stunDuration;
+        public bool lockFaceDirectionDuringKnockback;
         public Vector2 knockBackValue;
         public Direction fromCameAttack;
         public float attackDamage;

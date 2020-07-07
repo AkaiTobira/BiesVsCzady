@@ -9,19 +9,24 @@ public class BiesHurt : PlayerBaseState{
 
     private float knocBackDirection;
 
+    private bool isFaceLocked = false;
+
+    private GlobalUtils.Direction savedDir;
+
     public BiesHurt( GameObject controllable, GlobalUtils.AttackInfo infoPack) : base( controllable ){
         name = "BiesHurt";
 
-        m_dir = infoPack.fromCameAttack;
+        savedDir     = m_FloorDetector.GetCurrentDirection();
+        isFaceLocked = infoPack.lockFaceDirectionDuringKnockback;
+        if( !isFaceLocked ) m_dir = infoPack.fromCameAttack;
         knocBackDirection = (int)infoPack.fromCameAttack;
 
         fillKnockbackInfo( infoPack );
     }
 
-  //  protected override void UpdateDirection(){
-
-
- //   }
+    protected override void UpdateDirection(){
+        if( !isFaceLocked ) base.UpdateDirection();
+    }
 
 
     protected override void SetUpAnimation(){
@@ -54,9 +59,12 @@ public class BiesHurt : PlayerBaseState{
         timeToEnd -= Time.deltaTime;
         if( timeToEnd < 0){
             m_isOver = true;
+            CommonValues.PlayerVelocity = new Vector2();
+            if( isFaceLocked ) m_FloorDetector.Move( new Vector2( 0.001f, 0) * (int)savedDir);
+            Debug.Log( isFaceLocked );
+
             m_animator.ResetTrigger( "BiesHurt" );
 
-            
             if( !m_FloorDetector.isOnGround() ){
                 m_nextState = new BiesFall( m_controllabledObject, m_dir);
             }

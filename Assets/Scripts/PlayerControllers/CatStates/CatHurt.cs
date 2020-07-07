@@ -9,10 +9,15 @@ public class CatHurt : PlayerBaseState{
 
     private int knocBackDirection = 0;
 
+    private bool isFaceLocked = false;
+    private GlobalUtils.Direction savedDir;
+
     public CatHurt( GameObject controllable, GlobalUtils.AttackInfo infoPack) : base( controllable ){
         name = "CatHurt";
 
-        m_dir = infoPack.fromCameAttack;
+        savedDir     = m_FloorDetector.GetCurrentDirection();
+        isFaceLocked = infoPack.lockFaceDirectionDuringKnockback;
+        if( !isFaceLocked ) m_dir = infoPack.fromCameAttack;
         knocBackDirection = (int)infoPack.fromCameAttack;
 
         fillKnockbackInfo( infoPack );
@@ -37,6 +42,11 @@ public class CatHurt : PlayerBaseState{
         }
     }
 
+
+    protected override void UpdateDirection(){
+        if( !isFaceLocked ) base.UpdateDirection();
+    }
+
     protected override void SetUpAnimation(){
         m_animator.SetTrigger( "CatHurt" );
         timeToEnd = getAnimationLenght("CatHurt");
@@ -51,6 +61,11 @@ public class CatHurt : PlayerBaseState{
         if( timeToEnd < 0){
             m_isOver = true;
             m_animator.ResetTrigger( "CatHurt" );
+
+            if( isFaceLocked ) {
+                CommonValues.PlayerVelocity = new Vector2();
+                m_FloorDetector.Move( new Vector2( 0.001f, 0) * (int)savedDir);
+            }
 
             if( !m_FloorDetector.isOnGround() ){
                 m_nextState = new CatFall( m_controllabledObject, m_dir);

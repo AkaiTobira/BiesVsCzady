@@ -26,16 +26,16 @@ public class CzadPatrol : EnemyBaseState
         else if( entityScript.velocity.x != 0 ) HandleStopping();
         else{
             if( nextMoves[0] == Stage.StartLeft ){
-                m_nextState = new CzadMove( m_controllabledObject, new Vector2( entityScript.patrolRangeLeft, 0 ) );
+                m_nextState = new CzadPatrolMove( m_controllabledObject, new Vector2( entityScript.patrolRangeLeft, 0 ) );
                 nextMoves.Add( Stage.BackL );
             }else if( nextMoves[0] == Stage.StartRight  ){
-                m_nextState = new CzadMove( m_controllabledObject, new Vector2( entityScript.patrolRangeRight, 0 ) );
+                m_nextState = new CzadPatrolMove( m_controllabledObject, new Vector2( entityScript.patrolRangeRight, 0 ) );
                 nextMoves.Add( Stage.BackR );
             }else if( nextMoves[0] == Stage.BackL  ){
-                m_nextState = new CzadMove( m_controllabledObject, new Vector2( entityScript.patrolRangeRight - entityScript.autoCorrectionLeft + entityScript.autoCorrectionRight  - entityScript.patrolRangeLeft, 0 ) );
+                m_nextState = new CzadPatrolMove( m_controllabledObject, new Vector2( entityScript.patrolRangeRight - entityScript.autoCorrectionLeft + entityScript.autoCorrectionRight  - entityScript.patrolRangeLeft, 0 ) );
                 nextMoves.Add( Stage.BackR );
             }else if( nextMoves[0] == Stage.BackR  ){
-                m_nextState = new CzadMove( m_controllabledObject, new Vector2( entityScript.patrolRangeLeft  - entityScript.autoCorrectionRight + entityScript.autoCorrectionLeft  - entityScript.patrolRangeRight, 0 ) );
+                m_nextState = new CzadPatrolMove( m_controllabledObject, new Vector2( entityScript.patrolRangeLeft  - entityScript.autoCorrectionRight + entityScript.autoCorrectionLeft  - entityScript.patrolRangeRight, 0 ) );
                 nextMoves.Add( Stage.BackL );
             }
             nextMoves.RemoveAt(0);
@@ -46,6 +46,7 @@ public class CzadPatrol : EnemyBaseState
     public override void Process(){
         base.Process();
         SelectNextState();
+        m_FloorDetector.Move( entityScript.velocity * Time.deltaTime);
     }
 
     private void HandleStopping(){
