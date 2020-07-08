@@ -2796,7 +2796,7 @@ MonoBehaviour:
   moveBrakingTime: 1
   moveAccelerationTime: 1
   maxMoveSpeed: 500
-  gravityForce: 100
+  gravityForce: 500
   canPatrol: 1
   patrolRangeLeft: -1200
   patrolRangeRight: 500
@@ -2804,12 +2804,15 @@ MonoBehaviour:
   autoCorrectionRight: 0
   canRandomMove: 1
   maxMoveDistance: 1500
+  massFactor: 0.2
   breakBeetweenAttacks: 2
   attackDamage: 1
+  combatRange: 600
   knockbackValues: {x: 100, y: 0}
   stunDuration: 0
   DebugConsoleInfo1: {fileID: 350063132}
   DebugConsoleInfo2: {fileID: 1082363236}
+  isDead: 0
   isAlreadyInCombat: 0
 --- !u!50 &1458479969
 Rigidbody2D:
