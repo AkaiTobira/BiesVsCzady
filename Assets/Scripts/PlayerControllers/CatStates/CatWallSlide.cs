@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CatWallSlide : BaseState
+public class CatWallSlide : PlayerBaseState
 {
     public CatWallSlide( GameObject controllable, GlobalUtils.Direction dir) : base( controllable ) {
         m_dir = dir;
@@ -22,7 +22,7 @@ public class CatWallSlide : BaseState
 
 
     private bool isOnGround(){
-        if( m_detector.isOnGround() ){
+        if( m_FloorDetector.isOnGround() ){
             m_nextState = new CatWallHold( m_controllabledObject, m_dir);
             return true;
         }
@@ -39,7 +39,7 @@ public class CatWallSlide : BaseState
 
     private bool isMovingOffWall(){
         if( PlayerMoveOfWallHelper.MoveOfWallRequirementsMeet()  ){
-            m_detector.Move( new Vector2( ( isRightOriented() ) ? -40 : 40, 0));
+            m_FloorDetector.Move( new Vector2( ( isRightOriented() ) ? -40 : 40, 0));
             m_nextState = new CatFall( m_controllabledObject,  GlobalUtils.ReverseDirection( m_dir ) );
             return true;
         }
@@ -47,7 +47,7 @@ public class CatWallSlide : BaseState
     }
 
     private bool isFarFromWall(){
-        return !m_detector.isWallClose();
+        return !m_WallDetector.isWallClose();
     }
 
     private void  ProcessStateEnd(){
@@ -56,7 +56,7 @@ public class CatWallSlide : BaseState
         if( m_isOver){
             m_animator.SetBool("isWallClose", false);
             m_animator.SetBool("isSliding", false);
-            m_animator.SetBool("isSliding", m_detector.isOnGround());
+            m_animator.SetBool("isSliding", m_FloorDetector.isOnGround());
         }
     }
 
@@ -64,13 +64,13 @@ public class CatWallSlide : BaseState
 
         m_animator.SetFloat( "FallVelocity", CommonValues.PlayerVelocity.y);
         m_animator.SetBool("isSliding", true);
-        m_animator.SetBool("isWallClose", m_detector.isWallClose());
+        m_animator.SetBool("isWallClose", m_WallDetector.isWallClose());
         
         CommonValues.PlayerVelocity.y = Mathf.Max( CommonValues.PlayerVelocity.y -CatUtils.GravityForce * Time.deltaTime,
                                                     -CatUtils.MaxWallSlideSpeed);
         if( PlayerInput.isSpecialKeyHold() ) CommonValues.PlayerVelocity.y = 0.0f;
         
-        m_detector.Move(CommonValues.PlayerVelocity * Time.deltaTime);
+        m_FloorDetector.Move(CommonValues.PlayerVelocity * Time.deltaTime);
 
         ProcessStaminaUpdate();
         ProcessStateEnd();
@@ -82,7 +82,7 @@ public class CatWallSlide : BaseState
     }
 
     public override void HandleInput(){
-        if( PlayerInput.isClimbKeyPressed() ){
+        if( PlayerInput.isClimbKeyHold() && CatUtils.stamina > CatUtils.MaxStamina/2.0f ){
             m_isOver = true;
             m_nextState = new CatWallClimb( m_controllabledObject, m_dir);
         }
@@ -98,6 +98,8 @@ public class CatWallSlide : BaseState
             }else if( ( m_dir == GlobalUtils.Direction.Left ) && PlayerInput.isMoveRightKeyHold() ){
                 PlayerMoveOfWallHelper.EnableCounter();
             }else if( ( m_dir == GlobalUtils.Direction.Right) && PlayerInput.isMoveLeftKeyHold() ){
+                PlayerMoveOfWallHelper.EnableCounter();
+            }else if( PlayerInput.isFallKeyHold() ){
                 PlayerMoveOfWallHelper.EnableCounter();
             }
         }else{

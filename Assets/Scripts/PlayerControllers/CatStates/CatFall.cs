@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CatFall : BaseState
+public class CatFall : PlayerBaseState
 {
     private GlobalUtils.Direction m_swipe;
 
@@ -14,6 +14,10 @@ public class CatFall : BaseState
         m_dir = dir;
         name = "CatFall";
         HandleSpecialBehaviour();
+//        Debug.Log( CommonValues.PlayerVelocity);
+        CommonValues.PlayerVelocity.y = 0;
+        m_animator.SetFloat( "FallVelocity", -1000);
+
     }
 
     private void HandleSpecialBehaviour(){
@@ -38,12 +42,12 @@ public class CatFall : BaseState
     }
 
     public override void Process(){
-        m_animator.SetFloat( "FallVelocity", CommonValues.PlayerVelocity.y);
+        m_animator.SetFloat( "FallVelocity", -1000);
         WallSlideDelay -= Time.deltaTime;
         CommonValues.PlayerVelocity.y += -CatUtils.GravityForce * Time.deltaTime;
         ProcessSwipe();
-        m_detector.Move(CommonValues.PlayerVelocity * Time.deltaTime);
-        if( m_detector.isOnGround() ) m_isOver = true;
+        m_FloorDetector.Move(CommonValues.PlayerVelocity * Time.deltaTime);
+        if( m_FloorDetector.isOnGround() ) m_isOver = true;
     }
 
     public override void OnExit(){
@@ -65,19 +69,22 @@ public class CatFall : BaseState
     }
 
     public override void HandleInput(){
+        if( m_isOver ) return;
     //     if(PlayerJumpHelper.JumpRequirementsMeet( CatUtils.isJumpKeyJustPressed(), 
-    //                                               m_detector.isOnGround() ))
+    //                                               m_FloorDetector.isOnGround() ))
     //    {
     //        m_nextState = new PlayerJump(m_controllabledObject, GlobalUtils.Direction.Left);
     //    }
 
-        if( m_detector.canClimbLedge() ){
+        if( m_ObjectInteractionDetector.canClimbLedge() ){
             m_isOver = true;
             m_nextState = new CatLedgeClimb( m_controllabledObject, m_dir);
-        }else if( m_detector.isWallClose() && WallSlideDelay < 0){
+        }else if( m_WallDetector.isWallClose() && WallSlideDelay < 0){
             m_isOver = true;
             CommonValues.PlayerVelocity.x = 0; // To check if is needed;
             m_nextState = new CatWallSlide( m_controllabledObject, m_dir);
         }
+
+        HandleInputSwipe();
     }
 }

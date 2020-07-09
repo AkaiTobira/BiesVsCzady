@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CatJump : BaseState
+public class CatJump : PlayerBaseState
 {    
     private GlobalUtils.Direction m_swipe;
 
@@ -18,6 +18,7 @@ public class CatJump : BaseState
     public CatJump( GameObject controllable, GlobalUtils.Direction dir) : base( controllable ) {
         name = "CatJump";
         JumpForce    = CatUtils.PlayerJumpForceMin;
+        m_animator.SetFloat( "FallVelocity", JumpForce);
         m_dir = dir;
         SetUpCounters();
     }
@@ -27,7 +28,7 @@ public class CatJump : BaseState
         PlayerMoveOfWallHelper.ResetCounter();
 
         timeOfJumpForceRising   = CatUtils.JumpMaxTime;
-        timeOfIgnoringWallStick = m_controllabledObject.GetComponent<CatBalance>().timeToJumpApex / 2.0f;
+        timeOfIgnoringWallStick = 2;//m_controllabledObject.GetComponent<CatBalance>().timeToJumpApex / 2.0f;
     }
 
     protected override void SetUpAnimation(){
@@ -37,32 +38,27 @@ public class CatJump : BaseState
         GlobalUtils.PlayerObject.GetComponent<Player>().StartCoroutine(StartJump(startAnimationDelay));
     }
 
-    
-
-
     IEnumerator StartJump( float time ){
         yield return new WaitForSeconds(time);
         if( m_isOver ) yield break;
-        m_detector.CheatMove( new Vector2(0,40.0f));
+        m_FloorDetector.CheatMove( new Vector2(0,40.0f));
         CommonValues.PlayerVelocity.y = JumpForce + GravityForce; 
         m_animator.ResetTrigger("CatJumpPressed");
     }
 
     private bool isOnCelling(){
-        if( m_detector.isOnCelling()){
-            CommonValues.PlayerVelocity =  new Vector2();
+        if( m_FloorDetector.isOnCelling()){
+            CommonValues.PlayerVelocity.y = 0;
             timeOfJumpForceRising = 0.0f;
-            m_animator.ResetTrigger("CatJumpPressed");
             return true;
         }
         return false;
     }
 
     private bool isFalling(){
-        if( PlayerFallHelper.FallRequirementsMeet( m_detector.isOnGround()) && CommonValues.PlayerVelocity.y < 0 ){ 
-            m_animator.ResetTrigger("CatJumpPressed");
+        if( PlayerFallHelper.FallRequirementsMeet( m_FloorDetector.isOnGround()) && CommonValues.PlayerVelocity.y < 0 ){ 
             timeOfJumpForceRising = 0.0f;
-            m_nextState = new CatFall( m_controllabledObject, m_detector.GetCurrentDirection());
+            m_nextState = new CatFall( m_controllabledObject, m_FloorDetector.GetCurrentDirection());
             return true;
         }
         return false;
@@ -70,6 +66,9 @@ public class CatJump : BaseState
 
     private void ProcessStateEnd(){
         m_isOver |= isOnCelling() || isFalling();
+        if( m_isOver ){
+            m_animator.ResetTrigger("CatJumpPressed");
+        }
     }
 
     public override void OnExit(){
@@ -102,12 +101,13 @@ public class CatJump : BaseState
 
     private void ProcessMove(){
         if( startAnimationDelay > 0 ) return;
+        m_animator.SetFloat( "FallVelocity", CommonValues.PlayerVelocity.y);
         GravityForce += -CatUtils.GravityForce * Time.deltaTime;
         CommonValues.PlayerVelocity.y = JumpForce + GravityForce;
         CommonValues.PlayerVelocity.y = Mathf.Max( CommonValues.PlayerVelocity.y, -500 );
         ProcessSwipe();
-        m_detector.Move(CommonValues.PlayerVelocity * Time.deltaTime);
-        CommonValues.PlayerFaceDirection = m_detector.GetCurrentDirection();
+        m_FloorDetector.Move(CommonValues.PlayerVelocity * Time.deltaTime);
+        CommonValues.PlayerFaceDirection = m_FloorDetector.GetCurrentDirection();
     }
 
     private void ProcessSwipe(){
@@ -132,26 +132,26 @@ public class CatJump : BaseState
             swipeOn = false;
         }
     }
-
     public override void HandleInput(){
-
-        if( m_detector.canClimbLedge() ){
+        if( m_ObjectInteractionDetector.canClimbLedge() ){
             m_isOver = true;
             m_animator.ResetTrigger("CatJumpPressed");
             m_nextState = new CatLedgeClimb( m_controllabledObject, m_dir);
-        }else if( m_detector.isWallClose() && timeOfIgnoringWallStick < 0 ){
+        }else if( m_WallDetector.isWallClose() && timeOfIgnoringWallStick < 0 ){
             if( isLeftOriented() && PlayerInput.isMoveLeftKeyHold() ){
                 m_isOver = true;
                 m_animator.ResetTrigger("CatJumpPressed");
                 m_nextState = new CatWallSlide( m_controllabledObject, m_dir);
-            }else 
-            if ( isRightOriented() && PlayerInput.isMoveRightKeyHold()){
+            }else if ( isRightOriented() && PlayerInput.isMoveRightKeyHold()){
                 m_isOver = true;
                 m_animator.ResetTrigger("CatJumpPressed");
                 m_nextState = new CatWallSlide( m_controllabledObject, m_dir);
+            }else if( PlayerInput.isClimbKeyHold() ){
+                m_isOver = true;
+                m_animator.ResetTrigger("CatJumpPressed");
+                m_nextState = new CatWallClimb( m_controllabledObject, m_dir);
             }
         }
-
         HandleInputSwipe();
     }
 }

@@ -14,6 +14,7 @@ public static class  GlobalUtils
         public bool isValid;
 
         public float stunDuration;
+        public bool lockFaceDirectionDuringKnockback;
         public Vector2 knockBackValue;
         public Direction fromCameAttack;
         public float attackDamage;
@@ -25,6 +26,7 @@ public static class  GlobalUtils
     public static CameraShake cameraShake    = null;
 
     public static Text        debugConsole   = null;
+    public static Text        debugConsole2  = null;
 
     public static Direction ReverseDirection( Direction curr ){
         return (curr == Direction.Left) ? Direction.Right : Direction.Left;

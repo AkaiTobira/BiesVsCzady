@@ -4,6 +4,12 @@ using UnityEngine;
 
 public static class  CatUtils
 {
+
+    public class CatValues : ICharacterSettings
+    { }
+
+    public static CatValues infoPack; 
+
     public static float PlayerSpeed           = 15.0f;
     public static float JumpMaxTime           = 0.25f;
     public static float PlayerJumpForceMax    = 20.0f;
@@ -34,7 +40,7 @@ public static class  CatUtils
     public static Vector2 KnockBackValueAttack2 =  new Vector2( 100, 400);
     public static Vector2 KnockBackValueAttack3 =  new Vector2( 100, 400);
 
-    public static float MaxStamina = 800;
+    public static float MaxStamina = 2000;
 
     public static void ResetStamina(){
         stamina = MaxStamina;

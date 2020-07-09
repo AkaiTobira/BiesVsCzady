@@ -2,25 +2,26 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player : MonoBehaviour
+public class Player : IEntity
 {
-    private SFSMBase m_controller;
-    private CollisionDetectorPlayer m_detector;
 
-    private Animator m_animator;
+    [SerializeField] public bool invincible = true;
+
+    private ICollisionWallDetector m_WallDetector;
+    private ICollisionInteractableDetector m_InteractionDetector;
 
     void Start()
     {
         GlobalUtils.PlayerObject = transform;
-        m_detector    = GetComponent<CollisionDetectorPlayer>();
+        m_FloorDetector       = GetComponent<CollisionDetectorPlayer>();
+        m_WallDetector        = GetComponent<CollisionDetectorPlayer>();
+        m_InteractionDetector = GetComponent<CollisionDetectorPlayer>();
         m_controller  = new SFSMPlayerChange( transform.gameObject, new BiesIdle( gameObject ) );
         m_animator    = animationNode.gameObject.GetComponent<Animator>();
-        CalculateMath();
-        Debug.Log( PlayerUtils.PlayerJumpForceMin.ToString() + " " + PlayerUtils.PlayerJumpForceMax.ToString() );
     }
 
-    private void CalculateMath(){
-
+    public bool isImmortal(){
+        return invincible;
     }
 
     private void UpdateCounters(){
@@ -31,7 +32,6 @@ public class Player : MonoBehaviour
         PlayerMoveOfWallHelper.IncrementCounters();
         PlayerJumpOffWall.IncrementCounters();
 
-        if (Debug.isDebugBuild) CalculateMath();
     }
 
 
@@ -48,9 +48,9 @@ public class Player : MonoBehaviour
     // Update is called once per frame
 
 
-    [SerializeField] float healthPoints = 10;
+    [SerializeField] public float healthPoints = 10;
 
-    public GlobalUtils.AttackInfo GetPlayerAttackInfo(){
+    public override GlobalUtils.AttackInfo GetAttackInfo(){
         GlobalUtils.AttackInfo infoPack = new GlobalUtils.AttackInfo();
         infoPack.stateName = m_controller.GetStateName();
         switch( infoPack.stateName ){
@@ -70,6 +70,7 @@ public class Player : MonoBehaviour
                 infoPack.attackDamage   = BiesUtils.Attack2Damage;
                 infoPack.fromCameAttack = m_controller.GetDirection();
                 infoPack.knockBackFrictionX = 0;
+                infoPack.stunDuration       = 2.0f;
                 break;
             }
             case "BiesAttack3":
@@ -77,6 +78,24 @@ public class Player : MonoBehaviour
                 infoPack.isValid = true;
                 infoPack.knockBackValue = BiesUtils.KnockBackValueAttack3;
                 infoPack.attackDamage   = BiesUtils.Attack3Damage;
+                infoPack.fromCameAttack = m_controller.GetDirection();
+                infoPack.knockBackFrictionX = 0;
+                break;
+            }
+            case "BiesAttack4":
+            {
+                infoPack.isValid = true;
+                infoPack.knockBackValue = BiesUtils.KnockBackValueAttack1;
+                infoPack.attackDamage   = BiesUtils.Attack1Damage;
+                infoPack.fromCameAttack = m_controller.GetDirection();
+                infoPack.knockBackFrictionX = 0;
+                break;
+            }
+            case "BiesAttack5":
+            {
+                infoPack.isValid = true;
+                infoPack.knockBackValue = BiesUtils.KnockBackValueAttack1;
+                infoPack.attackDamage   = BiesUtils.Attack1Damage;
                 infoPack.fromCameAttack = m_controller.GetDirection();
                 infoPack.knockBackFrictionX = 0;
                 break;
@@ -91,13 +110,28 @@ public class Player : MonoBehaviour
         return infoPack;
     }
 
+
+    public void SwitchGoodMode(){
+        invincible = !invincible;
+    }
+
     void OnTriggerEnter2D(Collider2D other) {
 //        Debug.Log(other.gameObject.name);
     }
 
-    public void OnHit( GlobalUtils.AttackInfo infoPack ){
+
+
+    public string GetCurrentFormName(){
+        string stateName = m_controller.GetStateName();
+
+
+        return m_controller.GetStateName();
+    }
+
+
+    public override void OnHit( GlobalUtils.AttackInfo infoPack ){
         if( !infoPack.isValid ) return;
-        healthPoints -= infoPack.attackDamage;
+        if( !invincible ) healthPoints -= infoPack.attackDamage;
         if( healthPoints > 0 ){
             if( infoPack.stunDuration > 0){
                 m_controller.OverriteStates( "Stun", infoPack );
@@ -114,15 +148,15 @@ public class Player : MonoBehaviour
         m_controller.Update();
         UpdateCounters();
 
-        m_animator.SetBool("isGrounded", m_detector.isOnGround());
-        m_animator.SetBool("isWallClose", m_detector.isWallClose());
+        m_animator.SetBool("isGrounded", m_FloorDetector.isOnGround());
+        m_animator.SetBool("isWallClose", m_WallDetector.isWallClose());
 
-        isOnGround  = m_detector.isOnGround();
-        isWallClose = m_detector.isWallClose();
+        isOnGround  = m_FloorDetector.isOnGround();
+        isWallClose = m_WallDetector.isWallClose();
     //    Debug.Log( StateName );
         StateName   = m_controller.GetStateName();
-        isColLeft =m_detector.isCollideWithLeftWall();
-        isColRight= m_detector.isCollideWithLeftWall();
+        isColLeft   =m_WallDetector.isCollideWithLeftWall();
+        isColRight  = m_WallDetector.isCollideWithLeftWall();
         
         directionLeft  = m_controller.GetDirection() == GlobalUtils.Direction.Left;
         directionRight = m_controller.GetDirection() == GlobalUtils.Direction.Right;

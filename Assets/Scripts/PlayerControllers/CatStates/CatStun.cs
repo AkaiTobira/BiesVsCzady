@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CatStun : BaseState{
+public class CatStun : PlayerBaseState{
     private float timeToEnd;
     private AnimationTransition m_transition;
 
@@ -32,6 +32,7 @@ public class CatStun : BaseState{
     }    
 
     private void  ProcessStateEnd(){
+        m_animator.SetBool("isStunOver", false);
         timeToEnd -= Time.deltaTime;
         if( timeToEnd < 0){
             m_isOver = true;
@@ -44,7 +45,7 @@ public class CatStun : BaseState{
         PlayerFallHelper.FallRequirementsMeet( true );
         velocity.y += -CatUtils.GravityForce * Time.deltaTime;
         velocity.x = Mathf.Max( velocity.x - velocitXFriction, 0 );
-        m_detector.Move(velocity*Time.deltaTime);
+        m_FloorDetector.Move(velocity*Time.deltaTime);
     }
 
     public override void Process(){

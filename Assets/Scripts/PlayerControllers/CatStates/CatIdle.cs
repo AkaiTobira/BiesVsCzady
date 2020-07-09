@@ -2,57 +2,68 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CatIdle : BaseState
+public class CatIdle : PlayerBaseState
 {
-    GlobalUtils.Direction lastFacingDir;
-
     public CatIdle( GameObject controllable ) : base( controllable ) {
         name = "CatIdle";
-        m_dir = GlobalUtils.Direction.Left;
-        lastFacingDir = m_detector.GetCurrentDirection();
+        m_dir = m_FloorDetector.GetCurrentDirection();
     }
 
     private void HandleStopping(){
         float acceleration = (CatUtils.PlayerSpeed / CatUtils.MoveBrakingTime) * Time.deltaTime;
         float currentValue = Mathf.Max( Mathf.Abs( CommonValues.PlayerVelocity.x) - acceleration, 0);
-        CommonValues.PlayerVelocity.x = currentValue * (int)m_detector.GetCurrentDirection();
+        CommonValues.PlayerVelocity.x = currentValue * (int)m_FloorDetector.GetCurrentDirection();
+    }
+
+    private void HandleInputMoveState(GlobalUtils.Direction dir){
+            m_dir = m_FloorDetector.GetCurrentDirection();
+            if( m_dir !=  dir ) CommonValues.needChangeDirection = true;
+            m_dir = dir;
+            m_nextState = new CatMove(m_controllabledObject, m_dir); 
     }
 
     public override void HandleInput(){
-        
-
-        if( PlayerFallHelper.FallRequirementsMeet( m_detector.isOnGround() ) ){
+        if( PlayerFallHelper.FallRequirementsMeet( m_FloorDetector.isOnGround() ) ){
+            CommonValues.PlayerVelocity.y = 0;
             m_nextState = new CatFall(m_controllabledObject, m_dir);
         }else if( PlayerInput.isAttack2KeyPressed() ){
+            CommonValues.PlayerVelocity.y = 0;
+
             m_nextState = new CatAttack2(m_controllabledObject);
         }else if( PlayerInput.isMoveLeftKeyHold() ){
-            m_dir = m_detector.GetCurrentDirection();
-            if( m_dir !=  GlobalUtils.Direction.Left ) CommonValues.needChangeDirection = true;
-            m_dir = GlobalUtils.Direction.Left;
-            m_nextState = new CatMove(m_controllabledObject, m_dir); 
+            CommonValues.PlayerVelocity.y = 0;
+
+            HandleInputMoveState( GlobalUtils.Direction.Left);
         }else if( PlayerInput.isMoveRightKeyHold() ){
-            m_dir = m_detector.GetCurrentDirection();
-            if( m_dir !=  GlobalUtils.Direction.Right ) CommonValues.needChangeDirection = true;
-            m_dir = GlobalUtils.Direction.Right;
-            m_nextState = new CatMove(m_controllabledObject, m_dir); 
+            CommonValues.PlayerVelocity.y = 0;
+
+            HandleInputMoveState( GlobalUtils.Direction.Right);
         }else if( 
             PlayerJumpHelper.JumpRequirementsMeet( PlayerInput.isJumpKeyJustPressed(), 
-                                                   m_detector.isOnGround() )
+                                                   m_FloorDetector.isOnGround() )
         ){
+            CommonValues.PlayerVelocity.y = 0;
+
             m_nextState = new CatJump(m_controllabledObject, GlobalUtils.Direction.Left);
-        }else if(m_detector.isCollideWithRightWall()){
+        }else if(m_WallDetector.isCollideWithRightWall()){
+            CommonValues.PlayerVelocity.y = 0;
+
             m_nextState = new CatWallHold( m_controllabledObject, GlobalUtils.Direction.Right );
-        }else if(m_detector.isCollideWithLeftWall()){
+        }else if(m_WallDetector.isCollideWithLeftWall()){
+            CommonValues.PlayerVelocity.y = 0;
+
             m_nextState = new CatWallHold( m_controllabledObject, GlobalUtils.Direction.Left );        
         }else if( PlayerInput.isFallKeyHold() ) {
-            m_detector.enableFallForOneWayFloor();
+            CommonValues.PlayerVelocity.y = 0;
+
+            m_ObjectInteractionDetector.enableFallForOneWayFloor();
             CommonValues.PlayerVelocity.y += -CatUtils.GravityForce * Time.deltaTime; 
-            m_detector.Move( CommonValues.PlayerVelocity * Time.deltaTime );
+            m_FloorDetector.Move( CommonValues.PlayerVelocity * Time.deltaTime );
         }
     }
 
     private void ProcessAnimationUpdate(){
-        m_animator.SetFloat( "FallVelocity", 0);
+        m_animator.SetFloat( "FallVelocity", -2);
         m_animator.SetFloat("MoveVelocity", Mathf.Abs(CommonValues.PlayerVelocity.x));
     }
 
@@ -60,12 +71,15 @@ public class CatIdle : BaseState
         HandleStopping();
         ProcessAnimationUpdate();
 
-        if( ! m_detector.isOnGround() ){
+        CommonValues.PlayerVelocity.y = 0;
+
+        if( ! m_FloorDetector.isOnGround() ){
             CommonValues.PlayerVelocity.y += -CatUtils.GravityForce * Time.deltaTime;
+            m_FloorDetector.Move( CommonValues.PlayerVelocity * Time.deltaTime );
         }else{
             CatUtils.ResetStamina();
-            CommonValues.PlayerVelocity.y = -CatUtils.GravityForce * Time.deltaTime;
+            CommonValues.PlayerVelocity.y = 0;
         }
-        m_detector.Move( CommonValues.PlayerVelocity * Time.deltaTime );
+
     }
 }

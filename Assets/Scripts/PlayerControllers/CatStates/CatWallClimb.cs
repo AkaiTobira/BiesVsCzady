@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CatWallClimb : BaseState
+public class CatWallClimb : PlayerBaseState
 {
     public CatWallClimb( GameObject controllable, GlobalUtils.Direction dir) : base( controllable ) {
         // play change direction animation;
@@ -14,8 +14,8 @@ public class CatWallClimb : BaseState
         name = "CatWallClimb" + ((isLeftOriented()) ? "L" : "R");
 
         SetUpRotation();
-        m_detector.CheatMove(new Vector2(0,2));
-        CommonValues.PlayerVelocity.x = CatUtils.MoveSpeedInAir * ( int )m_dir;
+        m_FloorDetector.CheatMove(new Vector2(0,2));
+        CommonValues.PlayerVelocity.x = 100 * ( int )m_dir;
     }
 
     private void SetUpRotation(){
@@ -30,8 +30,7 @@ public class CatWallClimb : BaseState
     }
 
     public override void Process(){
-    //    if( m_detector.isOnGround()   ) m_isOver = true;
-    //    if( !m_detector.isWallClose() ) m_isOver = true;
+    //    if( m_FloorDetector.isOnGround()   ) m_isOver = true;
     //    if( PlayerFallOfWallHelper.FallOfWallRequirementsMeet()){
     //        PlayerSwipeLock.ResetCounter();
     //        m_isOver = true;
@@ -46,7 +45,10 @@ public class CatWallClimb : BaseState
                                                     CatUtils.MaxWallClimbSpeed);
         if( PlayerInput.isSpecialKeyHold() ) CommonValues.PlayerVelocity.y = 0.0f;
         CatUtils.stamina -= Mathf.Abs(CommonValues.PlayerVelocity.y * Time.deltaTime);
-        m_detector.Move(CommonValues.PlayerVelocity * Time.deltaTime);
+        m_FloorDetector.Move(CommonValues.PlayerVelocity * Time.deltaTime);
+
+        m_animator.SetBool("isWallClose", m_WallDetector.isWallClose());
+        if( !m_WallDetector.isWallClose() ) m_isOver = true;
     }
 
     public override void HandleInput(){
@@ -56,7 +58,7 @@ public class CatWallClimb : BaseState
             m_nextState = new CatWallJump(m_controllabledObject, GlobalUtils.ReverseDirection(m_dir));
         }
 
-        if( m_detector.canClimbLedge() ){
+        if( m_ObjectInteractionDetector.canClimbLedge() ){
             m_isOver = true;
             m_nextState = new CatLedgeClimb( m_controllabledObject, m_dir);
         }else if( PlayerInput.isSpecialKeyHold() ){

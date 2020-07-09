@@ -2,16 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BiesAttack3 : BaseState{    
-    private bool isMovingLeft = false;
+public class BiesAttack3 : PlayerBaseState{    
     private float timeToEnd;
-
     private AnimationTransition m_transition;
 
 
     public BiesAttack3( GameObject controllable) : base( controllable ){
-        isMovingLeft = m_detector.GetCurrentDirection() == GlobalUtils.Direction.Left;
         name = "BiesAttack3";
+    }
+
+    protected override void SetUpAnimation(){
         m_animator.SetBool("Attack3", true);
         timeToEnd = getAnimationLenght("PlayerAttack3");
 
@@ -20,39 +20,45 @@ public class BiesAttack3 : BaseState{
                        GetComponent<AnimationTransition>();
     }
 
-    private float getAnimationLenght(string animationName){
-        RuntimeAnimatorController ac = m_animator.runtimeAnimatorController;   
-        for (int i = 0; i < ac.animationClips.Length; i++){
-            if (ac.animationClips[i].name == animationName)
-                return ac.animationClips[i].length;
-        }
-        return 0.0f;
+
+    public override void OnExit(){
+        m_animator.SetBool("Attack3", false);
     }
+
+    private bool isTimerOver(){
+        if( timeToEnd < 0){
+            m_isOver = true;
+            return true;
+        }
+        return false;
+    }
+
+    private bool isWallHit(){
+        if( m_WallDetector.isWallClose() ){
+            //TOWALLHITSTATE 
+            return true;
+        }
+        return false;
+    }
+
 
     private void  ProcessStateEnd(){
         timeToEnd -= Time.deltaTime;
-        if( timeToEnd < 0){
-            m_isOver = true;
+        m_isOver |= isTimerOver() || isWallHit();
+        if( m_isOver ){
             m_animator.SetBool("Attack3", false);
-            Debug.Log("TimeEnd");
-        }
-
-        if( m_detector.isWallClose() ){
-            Debug.Log("HIT A WALL");
-            m_isOver = true;
-            m_animator.SetBool("Attack3", false);
-            //TOWALLHITSTATE 
         }
     }
+
     private void ProcessMove(){
-        velocity.x   = (int)m_detector.GetCurrentDirection() * m_transition.MoveSpeed.x;
-        if( m_detector.isOnGround() ){
+        velocity.x   = (int)m_FloorDetector.GetCurrentDirection() * m_transition.MoveSpeed.x;
+        if( m_FloorDetector.isOnGround() ){
             PlayerFallHelper.FallRequirementsMeet( true );
             velocity.y = 0;
         }else{
             velocity.y += -PlayerUtils.GravityForce*Time.deltaTime;
         }
-        m_detector.Move(velocity*Time.deltaTime);
+        m_FloorDetector.Move(velocity*Time.deltaTime);
     }
     public override void Process(){
         ProcessStateEnd();

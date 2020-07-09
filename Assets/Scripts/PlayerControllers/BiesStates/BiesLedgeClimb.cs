@@ -2,36 +2,25 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BiesLedgeClimb : BaseState
+public class BiesLedgeClimb : PlayerBaseState
 {
-    private bool isMovingLeft = false;
-    //private bool climbing = false;
-
     private float timeToEnd;
     private AnimationTransition m_transition;
 
     public BiesLedgeClimb( GameObject controllable, GlobalUtils.Direction dir) : base( controllable ) {
-        // play change direction animation;
-        // at end of animation call :
-        // TEMP
-
-        PlayerFallOfWallHelper.ResetCounter();
-
-        CommonValues.PlayerVelocity = new Vector2(0,0);
-
-
-
-
-        isMovingLeft = dir == GlobalUtils.Direction.Left;
         name = "BiesLedgeClimb";
+        CommonValues.PlayerVelocity = new Vector2(0,0);
         m_dir = dir;
-        rotationAngle = ( m_dir == GlobalUtils.Direction.Left) ? 180 :0 ; 
+        SetUpRotation();
+        PlayerFallOfWallHelper.ResetCounter();
+    }
+    private void SetUpRotation(){
+        rotationAngle = isLeftOriented() ? 180 :0 ; 
         m_controllabledObject.GetComponent<Player>().animationNode.eulerAngles = new Vector3( 0, rotationAngle, slopeAngle);
+    }
 
+    protected override void  SetUpAnimation(){
         timeToEnd = getAnimationLenght("PlayerLedgeClimb");
-
-//        Debug.Log( timeToEnd );
-
         m_animator.SetTrigger("BiesClimb");
         m_transition = m_controllabledObject.
                        GetComponent<Player>().animationNode.
@@ -44,22 +33,11 @@ public class BiesLedgeClimb : BaseState
 
     protected override void UpdateDirection(){}
 
-    private float getAnimationLenght(string animationName){
-        RuntimeAnimatorController ac = m_animator.runtimeAnimatorController;   
-        for (int i = 0; i < ac.animationClips.Length; i++){
-            if (ac.animationClips[i].name == animationName)
-                return ac.animationClips[i].length;
-        }
-        return 0.0f;
-    }
-
     public override void Process(){
-        CommonValues.PlayerVelocity = new Vector2(0,0);
-
-        velocity.x   = (int)m_detector.GetCurrentDirection() * m_transition.MoveSpeed.x;
+        velocity.x   = (int)m_FloorDetector.GetCurrentDirection() * m_transition.MoveSpeed.x;
         velocity.y   = m_transition.MoveSpeed.y;
 
-        m_detector.CheatMove( velocity * Time.deltaTime );
+        m_FloorDetector.CheatMove( velocity * Time.deltaTime );
         timeToEnd -= Time.deltaTime;
         if( timeToEnd < 0 ) m_isOver = true;
     }
