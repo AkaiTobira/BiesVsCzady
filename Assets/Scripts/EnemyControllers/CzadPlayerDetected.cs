@@ -4,18 +4,19 @@ using UnityEngine;
 
 public class CzadPlayerDetected : EnemyBaseState
 {
+
+    float meeleCombatTimer;
     public CzadPlayerDetected( GameObject controllable ) : base( controllable ){
         name = "CzadPlayerDetected";
+        meeleCombatTimer = entityScript.delayOfFirstAttack;
     }
-
-    float meeleCombatTimer = 3;
-
+    
     private bool CanMeeleAttack(){
         float distance = Vector3.Distance( GlobalUtils.PlayerObject.transform.position, 
                                             m_FloorDetector.GetComponent<Transform>().position);
 
-        if( distance > entityScript.combatRange ) return false;
-        if( meeleCombatTimer > 0 )                return false;
+        if( distance > entityScript.combatRange )             return false;
+        if( meeleCombatTimer > 0 ) return false;
         meeleCombatTimer = entityScript.breakBeetweenAttacks;
         return true;
     }
@@ -32,6 +33,7 @@ public class CzadPlayerDetected : EnemyBaseState
             entityScript.isAlreadyInCombat = false;
         }else if(distance > entityScript.combatRange ){
             var direction = (GlobalUtils.PlayerObject.transform.position - m_FloorDetector.GetComponent<Transform>().position).normalized;
+            Debug.Log( direction );
             m_nextState = new CzadAttackMove( m_controllabledObject, direction * 100);
         }else{
             if( CanMeeleAttack() ){
@@ -41,7 +43,7 @@ public class CzadPlayerDetected : EnemyBaseState
     }
 
     public override void Process(){
-        base.Process();
+    //    base.Process();
         HandleStopping();
         SelectNextState();
         m_FloorDetector.Move( entityScript.velocity * Time.deltaTime);

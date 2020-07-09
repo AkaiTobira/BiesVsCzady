@@ -6,7 +6,8 @@ public class CzadAttackMove : CzadMoveBase
 {
     public CzadAttackMove( GameObject controllable, Vector2 moveVector ) : base( controllable, moveVector ){
         name = "CzadAttackMove";
-        Debug.Log( entityScript.velocity);
+
+    //    Debug.Log( leftToMove + "  :: " + moveVector + " :: " + m_FloorDetector.GetCurrentDirection().ToString() + " INHErIt");
     }
 
     public override void SelectNextState(){

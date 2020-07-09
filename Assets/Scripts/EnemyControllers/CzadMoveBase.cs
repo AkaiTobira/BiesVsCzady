@@ -16,6 +16,14 @@ public class CzadMoveBase : EnemyBaseState
         m_wallDetector = controllable.GetComponent<Transform>().Find("Detector").GetComponent<ICollisionWallDetector>();
         m_FloorDetector.Move( new Vector2(0.01f * Mathf.Sign( moveVector.x ), 0 ));
         leftToMove = moveVector;
+
+        m_dir = (GlobalUtils.Direction)  Mathf.Sign( leftToMove.x );
+
+        if( Mathf.Abs(entityScript.velocity.x) > entityScript.maxMoveSpeed ){
+            entityScript.velocity.x = entityScript.maxMoveSpeed * Mathf.Sign( entityScript.velocity.x);
+        }
+
+//        Debug.Log( leftToMove + "  :: " + moveVector + " :: " + m_FloorDetector.GetCurrentDirection().ToString() + " BaseClass");
     }
 
     public virtual void SelectNextState(){}
@@ -36,7 +44,7 @@ public class CzadMoveBase : EnemyBaseState
     }
 
     private void ProcessAcceleration(){
-        if( Mathf.Abs( entityScript.velocity.x ) == entityScript.maxMoveSpeed) return;
+    //    if( Mathf.Abs( entityScript.velocity.x ) == entityScript.maxMoveSpeed) return;
         float acceleration = (entityScript.maxMoveSpeed / entityScript.moveAccelerationTime) * Time.deltaTime;
         float currentValue = Mathf.Min( Mathf.Abs( entityScript.velocity.x ) + acceleration,  entityScript.maxMoveSpeed );
         entityScript.velocity.x = currentValue * (int)m_dir;

@@ -34,7 +34,7 @@ public class CzadAttackMelee : EnemyBaseState
     private void HandleStopping(){
         float acceleration      = (entityScript.maxMoveSpeed / entityScript.moveBrakingTime) * Time.deltaTime;
         float currentValue      = Mathf.Max( Mathf.Abs( entityScript.velocity.x ) - acceleration, 0);
-        entityScript.velocity.x = currentValue * (int)m_FloorDetector.GetCurrentDirection();
+    //    entityScript.velocity.x = currentValue * (int)m_FloorDetector.GetCurrentDirection();
     }
 
 

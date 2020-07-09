@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class CzadHurt : EnemyBaseState{    
     private float timeToEnd;
-    private float velocitXFriction = 0.0f;
 
     private float knocBackDirection;
 
@@ -23,24 +22,27 @@ public class CzadHurt : EnemyBaseState{
         timeToEnd = 3;
         m_animator.SetTrigger( "GetHit" );
 
+        Debug.Log( name + " Set " + entityScript.velocity);
+
     }
 
     public override void UpdateAnimator(){
+        m_dir = saveDir;
         UpdateAnimatorAligment();
         UpdateFloorAligment();
         UpdateAnimatorPosition();
     }
 
     private void fillKnockbackInfo( GlobalUtils.AttackInfo infoPack ){
+        Debug.Log( entityScript.velocity + " fillKnockback before ");
         entityScript.velocity   = infoPack.knockBackValue * entityScript.massFactor;
         entityScript.velocity.x *= (int)infoPack.fromCameAttack;
-
+        Debug.Log( entityScript.velocity + " fillKnockback after " + infoPack.fromCameAttack.ToString());
      //   if(Mathf.Abs( CommonValues.PlayerVelocity.x ) > infoPack.knockBackValue.x ) 
     //        velocity.x = (int)infoPack.fromCameAttack * Mathf.Abs( CommonValues.PlayerVelocity.x );
- 
-        velocitXFriction  = infoPack.knockBackFrictionX;
 
-        if( velocitXFriction > 0){
+
+        if( entityScript.hurtSpeedDropFrictionX > 0){
             m_FloorDetector.CheatMove( new Vector2(0,40.0f));
         }
     }
@@ -56,17 +58,29 @@ public class CzadHurt : EnemyBaseState{
     }
 
     private void ProcessMove(){
-//  /       m_animator.SetFloat( "FallVelocity", m.PlayerVelocity.y);
-    //  /   PlayerFallHelper.FallRequirementsMeet( true );
         entityScript.velocity.y += -entityScript.gravityForce * Time.deltaTime;
 
-        if( knocBackDirection == -1 ) {
-            entityScript.velocity.x = entityScript.velocity.x - velocitXFriction * Time.deltaTime;
-        }else{
-            entityScript.velocity.x = entityScript.velocity.x + velocitXFriction * Time.deltaTime;
-        }
+    // /    Debug.Log( entityScript.velocity.ToString() + "Before if");
 
         m_FloorDetector.Move(entityScript.velocity *Time.deltaTime);
+
+        if( m_FloorDetector.isOnGround() ){
+            if( knocBackDirection == -1  ) {
+                entityScript.velocity.x = Mathf.Min(entityScript.velocity.x + (entityScript.hurtSpeedDropFrictionX * Time.deltaTime), 0);
+            }else{
+                entityScript.velocity.x = Mathf.Max(entityScript.velocity.x - (entityScript.hurtSpeedDropFrictionX * Time.deltaTime), 0);
+            }
+        }
+
+        
+
+  //      Debug.Log( entityScript.velocity.ToString() + "afeter if");
+
+
+
+
+//        Debug.Log( entityScript.velocity.ToString() + "afeter move");
+
     }
 
     public override void Process(){

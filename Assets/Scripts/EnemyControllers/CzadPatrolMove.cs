@@ -19,6 +19,16 @@ public class CzadPatrolMove : CzadMoveBase
             m_isOver = true;
         }
 
+        if( m_wallDetector.isCollideWithRightWall() && isRightOriented()  ){
+            AdaptPatrolRange();
+            m_isOver = true;
+        }
+
+        if( m_wallDetector.isCollideWithLeftWall() && isLeftOriented()  ){
+            AdaptPatrolRange();
+            m_isOver = true;
+        }
+
        // if( Vector3.Distance( GlobalUtils.PlayerObject.transform.position, m_controllabledObject.transform.position) < 400){
       //      m_nextState = new CzadPlayerDetected( m_controllabledObject );
     //    }else if( Vector3.Distance( GlobalUtils.PlayerObject.transform.position, m_controllabledObject.transform.position) < 100){
@@ -32,10 +42,8 @@ public class CzadPatrolMove : CzadMoveBase
         if( entityScript.canPatrol ){
             if( isRightOriented() ){ entityScript.autoCorrectionLeft  = leftToMove.x; }
             if( isLeftOriented () ){ entityScript.autoCorrectionRight = leftToMove.x; }
-        entityScript.velocity.x = 0;
-
+            entityScript.velocity.x = 0;
         }
-        Debug.Log( "REST TO ZERO");
     }
 
 }
