@@ -21,6 +21,7 @@ public class CatJump : PlayerBaseState
         m_animator.SetFloat( "FallVelocity", JumpForce);
         m_dir = dir;
         SetUpCounters();
+        distanceToFixAnimation = new Vector3(0, -60 , 0);
     }
 
     private void SetUpCounters(){

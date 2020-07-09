@@ -24,6 +24,7 @@ public class CatWallClimb : PlayerBaseState
     }
 
     protected override void UpdateDirection(){
+        distanceToFixAnimation = new Vector3( (isLeftOriented())? -125 : 125, -150 , 0);
     }
 
     public override void OnExit(){

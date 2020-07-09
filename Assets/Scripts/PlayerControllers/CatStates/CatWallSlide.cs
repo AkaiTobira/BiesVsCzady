@@ -65,7 +65,9 @@ public class CatWallSlide : PlayerBaseState
         m_animator.SetFloat( "FallVelocity", CommonValues.PlayerVelocity.y);
         m_animator.SetBool("isSliding", true);
         m_animator.SetBool("isWallClose", m_WallDetector.isWallClose());
-        
+        distanceToFixAnimation = new Vector3( (isLeftOriented())? -125 : 125, 0 , 0);
+
+
         CommonValues.PlayerVelocity.y = Mathf.Max( CommonValues.PlayerVelocity.y -CatUtils.GravityForce * Time.deltaTime,
                                                     -CatUtils.MaxWallSlideSpeed);
         if( PlayerInput.isSpecialKeyHold() ) CommonValues.PlayerVelocity.y = 0.0f;

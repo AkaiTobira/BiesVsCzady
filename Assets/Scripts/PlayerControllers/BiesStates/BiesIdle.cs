@@ -8,7 +8,6 @@ public class BiesIdle : PlayerBaseState
     public BiesIdle( GameObject controllable ) : base( controllable ) {
         name = "BiesIdle";
         m_dir = m_FloorDetector.GetCurrentDirection();
-    //    m_dir = GlobalUtils.Direction.Left;
     }
 
     private void HandleStopping(){
@@ -58,6 +57,7 @@ public class BiesIdle : PlayerBaseState
         m_animator.SetFloat( "FallVelocity", 0);
         m_animator.SetFloat("MoveVelocity", Mathf.Abs(CommonValues.PlayerVelocity.x));
 
+        distanceToFixAnimation = new Vector3(0, 0 , 0);
 
         m_animator.SetBool("Attack1", false);
         m_animator.SetBool("Attack2", false);

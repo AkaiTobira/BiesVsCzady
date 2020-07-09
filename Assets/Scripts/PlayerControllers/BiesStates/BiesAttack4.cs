@@ -11,6 +11,7 @@ public class BiesAttack4 : PlayerBaseState
 
     public BiesAttack4( GameObject controllable) : base( controllable ){
         name = "BiesAttack4";
+        distanceToFixAnimation = new Vector3(0, 75 , 0);
     }
 
 

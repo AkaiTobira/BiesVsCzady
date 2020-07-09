@@ -144,9 +144,16 @@ public class Player : IEntity
         Debug.Log( "Player object is hurt : hp reduced to " + healthPoints.ToString());
     }
 
+    [SerializeField] float someSillyValue;
+    [SerializeField] float someSillyValue2;
     void Update(){
         m_controller.Update();
         UpdateCounters();
+
+        CommonValues.tempModulator  = someSillyValue;
+        CommonValues.tempModulator2 = someSillyValue2;
+        
+
 
         m_animator.SetBool("isGrounded", m_FloorDetector.isOnGround());
         m_animator.SetBool("isWallClose", m_WallDetector.isWallClose());

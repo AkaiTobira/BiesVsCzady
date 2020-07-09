@@ -20,6 +20,8 @@ public class CatLedgeClimb : PlayerBaseState
         PlayerFallOfWallHelper.ResetCounter();
         SetUpVariables();
 
+        distanceToFixAnimation = new Vector3( (isLeftOriented())? -75 : 75, 150 , 0);
+
     }
 
     private void SetUpVariables(){ //TODO Calculation of target position will require slight update;
@@ -28,12 +30,12 @@ public class CatLedgeClimb : PlayerBaseState
         Vector2 pos             = m_FloorDetector.GetComponent<Transform>().position;
 
         targetClimbHight = Mathf.Max( ledgeBox.bounds.max.y, ledgeBox.bounds.min.y);
-        targetStayHightY = targetClimbHight;//+ ( playerBox.bounds.max.y - playerBox.bounds.min.x )/2.0f;// + 900.0f;
+        targetStayHightY = targetClimbHight + 30;//+ ( playerBox.bounds.max.y - playerBox.bounds.min.x )/2.0f;// + 900.0f;
 
         GlobalUtils.Direction obstacleDir = ( playerBox.bounds.max.x > ledgeBox.bounds.max.x ) ? 
                                                     GlobalUtils.Direction.Left : 
                                                     GlobalUtils.Direction.Right;
-        targetStayHightX = pos.x + 321f * (int)obstacleDir;
+        targetStayHightX = pos.x + 350f * (int)obstacleDir;
 
         Vector2 velocityS = new Vector2( 0, targetClimbHight - pos.y);
         m_FloorDetector.CheatMove( velocityS );
