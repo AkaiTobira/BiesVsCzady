@@ -8,8 +8,13 @@ public class CzadHurt : EnemyBaseState{
 
     private float knocBackDirection;
 
+    GlobalUtils.Direction saveDir;
+
+
     public CzadHurt( GameObject controllable, GlobalUtils.AttackInfo infoPack) : base( controllable ){
         name = "CzadHurt";
+
+        saveDir = m_FloorDetector.GetCurrentDirection();
 
         m_dir = infoPack.fromCameAttack;
         knocBackDirection = (int)infoPack.fromCameAttack;
@@ -18,6 +23,12 @@ public class CzadHurt : EnemyBaseState{
         timeToEnd = 3;
         m_animator.SetTrigger( "GetHit" );
 
+    }
+
+    public override void UpdateAnimator(){
+        UpdateAnimatorAligment();
+        UpdateFloorAligment();
+        UpdateAnimatorPosition();
     }
 
     private void fillKnockbackInfo( GlobalUtils.AttackInfo infoPack ){
