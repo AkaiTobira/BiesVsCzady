@@ -10,12 +10,13 @@ public class CatWallHold : PlayerBaseState
         m_dir = dir;
         name = "CatWallHold" + ((isLeftOriented())? "L": "R");
         CommonValues.PlayerVelocity.y =0;
+        distanceToFixAnimation = new Vector3(  (isRightOriented()) ? 75 : -75, -65, 0);
     }
 
     public override void Process(){
         if( !m_WallDetector.isWallClose()) m_isOver = true;
 
-        distanceToFixAnimation = new Vector3( (isLeftOriented())? -125 : 125, 75 , 0);
+       // distanceToFixAnimation = new Vector3( (isLeftOriented())? -125 : 125, 75 , 0);
         m_animator.SetFloat( "FallVelocity", 0);
         if( !m_FloorDetector.isOnGround() ){
             CommonValues.PlayerVelocity.y = -CatUtils.GravityForce * Time.deltaTime;

@@ -17,7 +17,7 @@ public class CatFall : PlayerBaseState
 //        Debug.Log( CommonValues.PlayerVelocity);
         CommonValues.PlayerVelocity.y = 0;
         m_animator.SetFloat( "FallVelocity", -1000);
-
+        //distanceToFixAnimation = new Vector3( (isLeftOriented())? -126 : 125, 0 , 0);
     }
 
     private void HandleSpecialBehaviour(){
@@ -42,6 +42,7 @@ public class CatFall : PlayerBaseState
     }
 
     public override void Process(){
+        distanceToFixAnimation = new Vector3( (isLeftOriented())? -63 : 63, 0 , 0);
         m_animator.SetFloat( "FallVelocity", -1000);
         WallSlideDelay -= Time.deltaTime;
         CommonValues.PlayerVelocity.y += -CatUtils.GravityForce * Time.deltaTime;

@@ -1062,7 +1062,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 2b611a28c08d5ac438b704b80e0e63cf, type: 2}
+  m_Motion: {fileID: 7400000, guid: 85fc1fe7a3106aa48acf8b57c0f95ee3, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -2754,11 +2754,11 @@ AnimatorStateTransition:
   m_Mute: 0
   m_IsExit: 0
   serializedVersion: 3
-  m_TransitionDuration: 0.25
+  m_TransitionDuration: 0
   m_TransitionOffset: 0
-  m_ExitTime: 0.75
-  m_HasExitTime: 1
-  m_HasFixedDuration: 1
+  m_ExitTime: 0
+  m_HasExitTime: 0
+  m_HasFixedDuration: 0
   m_InterruptionSource: 0
   m_OrderedInterruption: 1
   m_CanTransitionToSelf: 1
@@ -2938,11 +2938,11 @@ AnimatorStateTransition:
   m_Mute: 0
   m_IsExit: 0
   serializedVersion: 3
-  m_TransitionDuration: 0.25
+  m_TransitionDuration: 0
   m_TransitionOffset: 0
   m_ExitTime: 0.75
-  m_HasExitTime: 1
-  m_HasFixedDuration: 1
+  m_HasExitTime: 0
+  m_HasFixedDuration: 0
   m_InterruptionSource: 0
   m_OrderedInterruption: 1
   m_CanTransitionToSelf: 1
@@ -3261,7 +3261,7 @@ AnimatorStateMachine:
     m_Position: {x: -1200, y: -540, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -6776183633311493079}
-    m_Position: {x: -1990, y: -280, z: 0}
+    m_Position: {x: -2000, y: -280, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 6310970168246421083}
     m_Position: {x: -1270, y: -340, z: 0}
@@ -3270,7 +3270,7 @@ AnimatorStateMachine:
     m_Position: {x: -460, y: -560, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -5293392577710621377}
-    m_Position: {x: -1930, y: -80, z: 0}
+    m_Position: {x: -2000, y: -140, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -1063861924922961442}
     m_Position: {x: -1470, y: 50, z: 0}
@@ -4015,11 +4015,11 @@ AnimatorStateTransition:
   m_Mute: 0
   m_IsExit: 0
   serializedVersion: 3
-  m_TransitionDuration: 0.25
+  m_TransitionDuration: 0
   m_TransitionOffset: 0
   m_ExitTime: 0.625
-  m_HasExitTime: 1
-  m_HasFixedDuration: 1
+  m_HasExitTime: 0
+  m_HasFixedDuration: 0
   m_InterruptionSource: 0
   m_OrderedInterruption: 1
   m_CanTransitionToSelf: 1
@@ -4422,9 +4422,6 @@ AnimatorStateTransition:
     m_EventTreshold: 0
   - m_ConditionMode: 2
     m_ConditionEvent: isHoldKeyPressed
-    m_EventTreshold: 0
-  - m_ConditionMode: 1
-    m_ConditionEvent: BiesHurt
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -6776183633311493079}

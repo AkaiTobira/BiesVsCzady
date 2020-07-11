@@ -36,13 +36,15 @@ public class DangerousObject : MonoBehaviour
         GlobalUtils.AttackInfo infoPack = new GlobalUtils.AttackInfo();
 
         infoPack.isValid = true;
-        infoPack.fromCameAttack     = ( HittedObj.position.x < transform.position.x ) ? GlobalUtils.Direction.Left : GlobalUtils.Direction.Right;
-        infoPack.attackDamage       = damage;
+        infoPack.fromCameAttack = ( HittedObj.position.x < transform.position.x ) ? 
+                                    GlobalUtils.Direction.Left :
+                                    GlobalUtils.Direction.Right;
+        infoPack.attackDamage   = damage;
 
         if( GlobalUtils.PlayerObject.GetComponent<Player>().GetCurrentFormName() == "Cat" ){
-            infoPack.knockBackValue     = CatKnockback;
+            infoPack.knockBackValue = CatKnockback;
         }else{
-            infoPack.knockBackValue     = BiesKnockback;
+            infoPack.knockBackValue = BiesKnockback;
         }
 
 

@@ -13,6 +13,7 @@ public class AutoDestroyablePlatform : MonoBehaviour
 
     [SerializeField] float m_existingTimer;
 
+    private float existingTimer = 0;
     private float distanceBeetweenRayH;
 
     private float distanceBeetweenRayV;
@@ -57,6 +58,7 @@ public class AutoDestroyablePlatform : MonoBehaviour
                 if( hit.collider.tag == "PlayerHurtBox") {
                 
                     startTimer = true;
+                    existingTimer   = m_existingTimer;
                     maxOfTimerValue = m_existingTimer;
                 }
             }
@@ -80,15 +82,44 @@ public class AutoDestroyablePlatform : MonoBehaviour
         distanceBeetweenRayV = (LeftOriginTop.y - RightOriginTop.y)/( rayNumber - 1.0f); 
     }
 
+    private bool reapear = false;
+    [SerializeField] public float ReapearTimer = 15;
+
+    private float timeToReapear = 0;
+
     void ProcessAutoDestroy(){
         if( !startTimer ) return;
-        m_existingTimer = Mathf.Max( m_existingTimer - Time.deltaTime, 0 );
+        existingTimer = Mathf.Max( existingTimer - Time.deltaTime, 0 );
 
         var colorForAlphaReduction = GetComponent<SpriteRenderer>().color;
-        colorForAlphaReduction.a = 1.0f * ( m_existingTimer/maxOfTimerValue);
+        colorForAlphaReduction.a = 1.0f * ( existingTimer/maxOfTimerValue);
         GetComponent<SpriteRenderer>().color = colorForAlphaReduction;
 
-        if( m_existingTimer == 0 ) Destroy( gameObject );
+        if( existingTimer == 0 ) {
+            GetComponent<BoxCollider2D>().enabled = false;
+            startTimer    = false;
+        //    GetComponent<SpriteRenderer>().enabled = false;
+        //    GetComponent<CollisionDetector>().enabled = false;
+            reapear = true;
+            timeToReapear = ReapearTimer;
+        };
+    }
+
+    void ProcessReapear(){
+        timeToReapear = Mathf.Max( 0, timeToReapear - Time.deltaTime );
+        Debug.Log(timeToReapear);
+        var colorForAlphaReduction = GetComponent<SpriteRenderer>().color;
+        colorForAlphaReduction.a = 1.0f - ( timeToReapear/ReapearTimer);
+        GetComponent<SpriteRenderer>().color = colorForAlphaReduction;
+
+        if( timeToReapear == 0 ){
+            GetComponent<BoxCollider2D>().enabled = true;
+            m_box.enabled = true;
+        //    GetComponent<SpriteRenderer>().enabled = true;
+        //    GetComponent<CollisionDetector>().enabled = true;
+            reapear = false;
+        }
+
     }
 
     void Update()
@@ -104,8 +135,11 @@ public class AutoDestroyablePlatform : MonoBehaviour
 
     //    Debug.DrawLine( m_box.bounds.min,    m_box.bounds.min +    Vector3.up * rayLenght, new Color( 0.5f, 0.5f,0 ));
     //    Debug.DrawLine( m_box.bounds.center, m_box.bounds.center + Vector3.up * rayLenght, new Color( 0.5f, 0.5f,0 ));
-
-        ProcessPlayerDetection();
-        ProcessAutoDestroy();
-    }
+        if( !reapear){
+            ProcessPlayerDetection();
+            ProcessAutoDestroy();
+        }else{
+            ProcessReapear();
+        }
+        }
 }

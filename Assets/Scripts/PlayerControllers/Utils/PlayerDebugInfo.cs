@@ -38,7 +38,9 @@ public class PlayerDebugInfo : MonoBehaviour
         m_debugText[2].text = transform.position + "\n";
         m_debugText[2].text += CommonValues.PlayerVelocity.ToString();
         m_debugText[3].text = "HP : " +  GetComponent<Player>().healthPoints.ToString();
-        m_debugText[4].text = "Invincible : " + GetComponent<Player>().isImmortal();
+        m_debugText[4].text = "Invincible : " + GetComponent<Player>().isImmortal() + "\n";
+        m_debugText[4].text += "Keys : " + GetComponent<Player>().keys;
+        
     }
 
 }
