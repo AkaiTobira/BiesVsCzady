@@ -24,6 +24,5 @@ public class BiesHurt : PlayerHurt{
             }
         }
     }
-    public override void HandleInput(){
-    }
+   // public override void HandleInput(){}
 }

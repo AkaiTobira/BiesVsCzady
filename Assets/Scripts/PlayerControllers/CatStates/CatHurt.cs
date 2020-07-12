@@ -32,5 +32,5 @@ public class CatHurt : PlayerHurt{
         }
     }
 
-    public override void HandleInput(){}
+ ///   public override void HandleInput(){}
 }

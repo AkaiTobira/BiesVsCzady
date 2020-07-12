@@ -58,16 +58,9 @@ public class DangerousObject : MonoBehaviour
         GlobalUtils.AttackInfo infoPack = new GlobalUtils.AttackInfo();
 
         infoPack.isValid = true;
-        infoPack.fromCameAttack = ( HittedObj.position.x < transform.position.x ) ? 
-                                    GlobalUtils.Direction.Left :
-                                    GlobalUtils.Direction.Right;
         infoPack.attackDamage   = damage;
 
-
         Vector2 directions = new Vector2( (int)m_FloorDetector.GetCurrentDirection() , Mathf.Sign( CommonValues.PlayerVelocity.y ) );
-    //    Debug.Log( directions );
-
-        Debug.Log( GlobalUtils.PlayerObject.GetComponent<Player>().GetCurrentFormName() );
 
         if( GlobalUtils.PlayerObject.GetComponent<Player>().GetCurrentFormName() == "Cat" ){
             infoPack.knockBackValue = CatKnockbackValue;
@@ -75,39 +68,42 @@ public class DangerousObject : MonoBehaviour
             infoPack.knockBackValue = BiesKnockbackValue;
         }
 
-    //    infoPack.knockBackValue.x = 0;
-
-
-        if( onHitMoveInDirectionHorizontal == DirectionCorrectionX.Left ){
-            infoPack.knockBackValue.x *= -1;
-        }
-        if( onHitMoveInDirectionHorizontal == DirectionCorrectionX.Same ){
-            infoPack.knockBackValue.x *= directions.x;
-        }
-        if( onHitMoveInDirectionHorizontal == DirectionCorrectionX.Opposite ){
-            infoPack.knockBackValue.x *= directions.x * -1;
-        }
-
-
-
-        if( onHitMoveInDirectionVertical == DirectionCorrectionY.Down ){
-            infoPack.knockBackValue.y *= -1;
-        }
-        else if( onHitMoveInDirectionVertical == DirectionCorrectionY.Same ){
-            infoPack.knockBackValue.y *= directions.y;
-        }
-        else if( onHitMoveInDirectionVertical == DirectionCorrectionY.Opposite ){
-            infoPack.knockBackValue.y *= directions.y * -1;
-        }//else{
-          //  infoPack.knockBackValue.y *= onHitMoveUpAdditionalFactor;
-        //}
-
-        Debug.Log( infoPack.knockBackValue);
+        fillHorizontalInfoPack( ref infoPack, directions.x);
+        fillVerticalInfoPack(   ref infoPack, directions.y);
 
         infoPack.knockBackFrictionX = 10;
 
         return infoPack; 
     }
+
+
+    void fillHorizontalInfoPack( ref GlobalUtils.AttackInfo infoPack, float direction ){
+
+        if( onHitMoveInDirectionHorizontal == DirectionCorrectionX.Left ){
+            infoPack.knockBackValue.x *= -1;
+        }
+        if( onHitMoveInDirectionHorizontal == DirectionCorrectionX.Same ){
+            infoPack.knockBackValue.x *= direction;
+        }
+        if( onHitMoveInDirectionHorizontal == DirectionCorrectionX.Opposite ){
+            infoPack.knockBackValue.x *= direction * -1;
+        }
+    }
+
+
+    void fillVerticalInfoPack( ref GlobalUtils.AttackInfo infoPack, float direction ){
+
+        if( onHitMoveInDirectionVertical == DirectionCorrectionY.Down ){
+            infoPack.knockBackValue.y *= -1;
+        }
+        else if( onHitMoveInDirectionVertical == DirectionCorrectionY.Same ){
+            infoPack.knockBackValue.y *= direction;
+        }
+        else if( onHitMoveInDirectionVertical == DirectionCorrectionY.Opposite ){
+            infoPack.knockBackValue.y *= direction * -1;
+        }
+    }
+
 
     void OnTriggerStay2D(Collider2D other){
 

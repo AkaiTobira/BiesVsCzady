@@ -22,6 +22,10 @@ public class CatJump : PlayerBaseState
         m_dir = dir;
         SetUpCounters();
         distanceToFixAnimation = new Vector3(0, -60 , 0);
+
+        m_FloorDetector.CheatMove( new Vector2(0,40.0f));
+        CommonValues.PlayerVelocity.y = JumpForce + GravityForce; 
+    //    m_animator.ResetTrigger("CatJumpPressed");
     }
 
     private void SetUpCounters(){
@@ -33,9 +37,10 @@ public class CatJump : PlayerBaseState
     }
 
     protected override void SetUpAnimation(){
-        startAnimationDelay = getAnimationLenght( "CatJumpPreparation");
+        startAnimationDelay = 0.1f;//= getAnimationLenght( "CatJumpPreparation");
         m_animator.SetTrigger("CatJumpPressed");
 
+    //    GlobalUtils.PlayerObject.GetComponent<Player>().StartCoroutine(StartJump(startAnimationDelay));
         GlobalUtils.PlayerObject.GetComponent<Player>().StartCoroutine(StartJump(startAnimationDelay));
     }
 
