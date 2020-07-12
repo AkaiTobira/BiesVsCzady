@@ -11,7 +11,7 @@ public class DoorController : MonoBehaviour
 
     void OnTriggerStay2D(Collider2D other) {
     
-        Debug.Log(other.name);
+//        Debug.Log(other.name);
 
         if( other.name.Contains("Player")){
             if( PlayerInput.isActionKeyJustPressed() ){

@@ -79,7 +79,7 @@ public class CatIdle : PlayerBaseState
         HandleStopping();
         ProcessAnimationUpdate();
 
-        CommonValues.PlayerVelocity.y = 0;
+    //    CommonValues.PlayerVelocity.y = 0;
 
         if( ! m_FloorDetector.isOnGround() ){
             CommonValues.PlayerVelocity.y += -CatUtils.GravityForce * Time.deltaTime;

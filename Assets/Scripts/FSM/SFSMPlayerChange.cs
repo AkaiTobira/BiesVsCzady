@@ -29,12 +29,12 @@ public class SFSMPlayerChange : ISFSMBase
         StackStatusPrint();
     }
 
+
+
     public override void OverriteStates(string targetState, GlobalUtils.AttackInfo attackInfo){
 
         string currentStateName = RemoveDirectionInfo(GetStateName());
         string currentFormName  = GetCurrentFormName(currentStateName);
-        if( GetStateName().Contains("Dead")) return;
-        if( GetStateName().Contains("Hurt")) return;
         
         currentStateName = RemoveFormName( currentStateName);
         m_states.Clear();

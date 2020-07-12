@@ -51,7 +51,6 @@ public class CatBalance : MonoBehaviour
         CatUtils.MoveAccelerationTime          = MoveAccelerationTime;
         CatUtils.MoveBrakingTime               = MoveBrakingTime;
 
-
         infoPack.GravityForce                 = CatUtils.GravityForce                ; 
         infoPack.PlayerJumpForceMin           = CatUtils.PlayerJumpForceMin          ; 
         infoPack.PlayerSpeed                  = CatUtils.PlayerSpeed                 ; 

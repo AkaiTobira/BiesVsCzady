@@ -12,11 +12,10 @@ GameObject:
   - component: {fileID: 7819002658321421586}
   - component: {fileID: 7819002658321421587}
   - component: {fileID: 7819002658321421584}
-  - component: {fileID: 7819002658321421585}
   - component: {fileID: 7819002658321421590}
   - component: {fileID: 7819002658321421597}
   m_Layer: 13
-  m_Name: Destroyable (13)
+  m_Name: Dangerous
   m_TagString: Danger
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -133,25 +132,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.6, y: 1.6}
   m_EdgeRadius: 0
---- !u!114 &7819002658321421585
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7819002658321421588}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0118d722975cd484cbae5c7a55202da8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_anim: {fileID: 0}
-  durability: 1
-  canBeKnockBacked: 0
-  m_detector: {fileID: 0}
-  decreaseFactor: 0
-  massFactor: 0
-  timeToHitApex: 1
 --- !u!114 &7819002658321421590
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -191,10 +171,13 @@ MonoBehaviour:
   m_anim: {fileID: 0}
   durability: 0
   canBeKnockBacked: 0
-  m_detector: {fileID: 0}
+  m_FloorDetector: {fileID: 0}
   decreaseFactor: 0
   massFactor: 0
   timeToHitApex: 1
   damage: 3
-  CatKnockback: {x: 600, y: 3000}
-  BiesKnockback: {x: 1200, y: 6000}
+  CatKnockbackValue: {x: 0, y: 0}
+  BiesKnockbackValue: {x: 0, y: 0}
+  onHitMoveInDirectionVertical: 0
+  onHitMoveInDirectionHorizontal: 0
+  onHitMoveUpAdditionalFactor: 1

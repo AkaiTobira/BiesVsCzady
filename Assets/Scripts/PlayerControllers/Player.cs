@@ -128,9 +128,16 @@ public class Player : IEntity
         return m_controller.GetStateName();
     }
 
+    public bool  CanBeHurt(){
+        if( m_controller.GetStateName().Contains("Dead")) return false;
+        if( m_controller.GetStateName().Contains("Hurt")) return false;
+        return true;
+    }
+
 
     public override void OnHit( GlobalUtils.AttackInfo infoPack ){
         if( !infoPack.isValid ) return;
+        if( !CanBeHurt() )      return;
         if( !invincible ) healthPoints -= infoPack.attackDamage;
         if( healthPoints > 0 ){
             if( infoPack.stunDuration > 0){
