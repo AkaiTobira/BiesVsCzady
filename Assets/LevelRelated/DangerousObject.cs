@@ -91,7 +91,7 @@ public class DangerousObject : MonoBehaviour
 
 
         if( onHitMoveInDirectionVertical == DirectionCorrectionY.Down ){
-            infoPack.knockBackValue.y = 0;
+            infoPack.knockBackValue.y *= -1;
         }
         else if( onHitMoveInDirectionVertical == DirectionCorrectionY.Same ){
             infoPack.knockBackValue.y *= directions.y;
