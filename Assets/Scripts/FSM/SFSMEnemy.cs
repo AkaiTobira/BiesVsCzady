@@ -34,6 +34,10 @@ public class SFSMEnemy : ISFSMBase
                 m_states.Push( new CzadPlayerDetected( m_controllabledObject ));
                 m_states.Push( new CzadHurt(m_controllabledObject, attackInfo));
             break;
+            case "Stun" :
+                m_states.Push( new CzadPlayerDetected( m_controllabledObject ));
+                m_states.Push( new CzadStun(m_controllabledObject, attackInfo));
+            break;
             case "Dead":
                 m_states.Push(new CzadDead(m_controllabledObject, attackInfo));
             break;
