@@ -27,6 +27,9 @@ public class SFSMEnemy : ISFSMBase
         while( m_states.Count != 1 ) m_states.Pop();
 
         switch( targetState ) {
+            case "FlyingCombatEngage" : 
+                m_states.Push( new FlyingCzadPlayerDetected( m_controllabledObject ));
+            break;
             case "CombatEngage" : 
                 m_states.Push( new CzadPlayerDetected( m_controllabledObject ));
             break;
