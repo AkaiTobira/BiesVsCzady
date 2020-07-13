@@ -15,8 +15,8 @@ MonoBehaviour:
   SwitchSettingsMigration: 1
   HasSourceProject: 1
   HasPlatforms: 1
-  sourceProjectPath: Assets/FMOD/Examples/Examples.fspro
-  sourceBankPath: Assets\FMOD\Examples\Build
+  sourceProjectPath: Assets/FMOD/BiesVsCzady/BiesVsCzady.fspro
+  sourceBankPath: Assets\FMOD\BiesVsCzady\Build
   SourceBankPathUnformatted: 
   AutomaticEventLoading: 1
   BankLoadType: 0
@@ -78,13 +78,6 @@ MonoBehaviour:
   Plugins: []
   MasterBanks:
   - Master
-  Banks:
-  - Dialogue_CN
-  - Dialogue_EN
-  - Dialogue_JP
-  - Music
-  - SFX
-  - Vehicles
-  - VO
+  Banks: []
   BanksToLoad: []
   LiveUpdatePort: 9264
