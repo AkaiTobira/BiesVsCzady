@@ -23,6 +23,12 @@ public class FlyingCzadAttackMove : CzadMoveBase
 //        }
 
     }
+    public override void UpdateAnimator(){
+        m_dir = (GlobalUtils.Direction)Mathf.Sign(GlobalUtils.PlayerObject.position.x - m_FloorDetector.GetComponent<Transform>().position.x);;
+        UpdateAnimatorAligment();
+        UpdateFloorAligment();
+        UpdateAnimatorPosition();
+    }
 
     public override void Process(){
         ProcessAcceleration();

@@ -11,13 +11,16 @@ public class FlyingCzadPlayerDetected : FlyingEnemyBaseState
     public FlyingCzadPlayerDetected( GameObject controllable ) : base( controllable ){
         name = "FlyingCzadPlayerDetected";
         meeleCombatTimer = entityScript.delayOfFirstAttack;
-        
-        entityScript.lockedInAirPostion.x = m_FloorDetector.GetComponent<Transform>().position.x;
-        Debug.Log( entityScript.lockedInAirPostion );
-        currentActivePosition = entityScript.lockedInAirPostion;
-        m_nextState = new FlyingCzadAttackMove( controllable, entityScript.lockedInAirPostion - (Vector2)m_FloorDetector.GetComponent<Transform>().position );
+        flyToAirPoint();
     }
-    
+
+    private void flyToAirPoint(){
+        entityScript.lockedInAirPostion.x = m_FloorDetector.GetComponent<Transform>().position.x;
+        currentActivePosition = entityScript.lockedInAirPostion;
+        m_nextState = new FlyingCzadAttackMove( m_controllabledObject, entityScript.lockedInAirPostion - (Vector2)m_FloorDetector.GetComponent<Transform>().position );
+    }
+
+
     private bool CanMeeleAttack(){
         float distance = Vector3.Distance( GlobalUtils.PlayerObject.transform.position, 
                                             m_FloorDetector.GetComponent<Transform>().position);
@@ -28,21 +31,51 @@ public class FlyingCzadPlayerDetected : FlyingEnemyBaseState
         return true;
     }
 
+    private int triesToFlyToTarget = 0;
+    private float moveCooldown     = 0;
 
-    public void SelectNextState(){
-        meeleCombatTimer -= Time.deltaTime;
-        float distance = Vector3.Distance( GlobalUtils.PlayerObject.transform.position, 
-                                            m_FloorDetector.GetComponent<Transform>().position);
+    public override void UpdateAnimator(){
+        m_dir = (GlobalUtils.Direction)Mathf.Sign(GlobalUtils.PlayerObject.position.x - m_FloorDetector.GetComponent<Transform>().position.x);
+        UpdateAnimatorAligment();
+        UpdateFloorAligment();
+        UpdateAnimatorPosition();
+    }
 
-        if( Vector2.Distance( m_FloorDetector.GetComponent<Transform>().position, currentActivePosition ) < 300 ){
+    public void SelectMoveState(){
+        if( moveCooldown > 0) return;
 
+        if( Vector2.Distance( m_FloorDetector.GetComponent<Transform>().position, currentActivePosition ) < 300 || 
+            triesToFlyToTarget > 3 
+        ){
             int arrayIndex = Random.Range(0, entityScript.posiblePositions.Count );
-
             currentActivePosition = entityScript.lockedInAirPostion + entityScript.posiblePositions[arrayIndex];
             m_nextState = new FlyingCzadAttackMove( m_controllabledObject, 
                                                     currentActivePosition - 
                                                     (Vector2)m_FloorDetector.GetComponent<Transform>().position );
+            triesToFlyToTarget = 0;
+            moveCooldown = entityScript.moveCooldown;
+        }else{
+            triesToFlyToTarget += 1;
+            m_nextState = new FlyingCzadAttackMove( m_controllabledObject, 
+                                                    currentActivePosition - 
+                                                    (Vector2)m_FloorDetector.GetComponent<Transform>().position );
+        }
+        
+    }
 
+
+    public void SelectNextState(){
+        meeleCombatTimer -= Time.deltaTime;
+        moveCooldown     -= Time.deltaTime;
+        float distance = Vector3.Distance( GlobalUtils.PlayerObject.transform.position, 
+                                            m_FloorDetector.GetComponent<Transform>().position);
+
+        if( distance > entityScript.playerDropRange){
+            entityScript.ResetPatrolValues();
+            m_isOver                       = true;
+            entityScript.isAlreadyInCombat = false;
+        }else{
+            SelectMoveState();
         }
         
         /*

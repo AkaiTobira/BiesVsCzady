@@ -1410,15 +1410,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 852c8905e89bdd548ad4faeb442ec6c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  velocity: {x: 0, y: 0}
+  velocity: {x: 269.61057, y: 0}
   moveBrakingTime: 1
   moveAccelerationTime: 1
-  maxMoveSpeed: 400
+  maxMoveSpeed: 900
   hurtSpeedDropFrictionX: 10
   gravityForce: 20
   canPatrol: 1
   patrolRangeLeft: -500
-  patrolRangeRight: 500
+  patrolRangeRight: 4000
   autoCorrectionLeft: 0
   autoCorrectionRight: 0
   canRandomMove: 0
@@ -1435,13 +1435,16 @@ MonoBehaviour:
   DebugConsoleInfo2: {fileID: 746543372759422715}
   isDead: 0
   isAlreadyInCombat: 0
-  startingHight: 600
+  startingHight: 2000
   posiblePositions:
-  - {x: -200, y: -200}
-  - {x: 200, y: -200}
-  - {x: 500, y: 200}
-  - {x: -500, y: 200}
-  - {x: 0, y: 0}
+  - {x: -600, y: -1000}
+  - {x: 600, y: -1000}
+  - {x: 700, y: 600}
+  - {x: -700, y: 600}
+  saveHightValues: 0
+  moveCooldown: 2
+  playerDropRange: 4000
+  lockedInAirPostion: {x: 0, y: 0}
 --- !u!50 &746543372391577854
 Rigidbody2D:
   serializedVersion: 4

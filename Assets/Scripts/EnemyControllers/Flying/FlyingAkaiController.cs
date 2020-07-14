@@ -54,6 +54,9 @@ public class FlyingAkaiController : AkaiController
 
     public  float saveHightValues;
 
+    public float moveCooldown;
+
+    public float playerDropRange;
 
     public Vector2 lockedInAirPostion;
 
