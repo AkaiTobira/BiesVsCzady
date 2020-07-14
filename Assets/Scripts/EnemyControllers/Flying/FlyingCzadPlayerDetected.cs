@@ -25,7 +25,7 @@ public class FlyingCzadPlayerDetected : FlyingEnemyBaseState
         float distance = Vector3.Distance( GlobalUtils.PlayerObject.transform.position, 
                                             m_FloorDetector.GetComponent<Transform>().position);
 
-        if( distance > entityScript.combatRange )             return false;
+        if( distance > entityScript.combatRange ) return false;
         if( meeleCombatTimer > 0 ) return false;
         meeleCombatTimer = entityScript.breakBeetweenAttacks;
         return true;
@@ -39,6 +39,7 @@ public class FlyingCzadPlayerDetected : FlyingEnemyBaseState
         UpdateAnimatorAligment();
         UpdateFloorAligment();
         UpdateAnimatorPosition();
+        m_animator.SetFloat("HorizontalSpeed", Mathf.Abs( entityScript.velocity.x ));
     }
 
     public void SelectMoveState(){
@@ -100,11 +101,6 @@ public class FlyingCzadPlayerDetected : FlyingEnemyBaseState
         HandleStopping();
         SelectNextState();
         m_FloorDetector.Move( entityScript.velocity * Time.deltaTime);
-    }
-
-    public override void UpdateAnimator(){
-        base.UpdateAnimator();
-        m_animator.SetFloat("HorizontalSpeed", Mathf.Abs( entityScript.velocity.x ));
     }
 
     private void HandleStopping(){

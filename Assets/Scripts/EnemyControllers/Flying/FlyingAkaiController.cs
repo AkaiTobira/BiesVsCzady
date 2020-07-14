@@ -20,6 +20,21 @@ public class FlyingAkaiController : AkaiController
         if( m_sightController.isPlayerSeen() && !isAlreadyInCombat ){
             m_controller.OverriteStates( "FlyingCombatEngage" );
             isAlreadyInCombat = true;
+        }else{
+
+            GlobalUtils.Direction m_direciton = (GlobalUtils.Direction)
+                                                Mathf.Sign(GlobalUtils.PlayerObject.position.x - 
+                                                            m_FloorDetector.GetComponent<Transform>().position.x);
+
+            lockedInAirPostion = 
+            Vector2.SmoothDamp( 
+                                lockedInAirPostion, 
+                                new Vector2(
+                                    GlobalUtils.PlayerObject.position.x + (( m_direciton == GlobalUtils.Direction.Left) ? -closeToFollow : closeToFollow),
+                                    lockedInAirPostion.y
+                                    ), 
+                                ref animationVel, 
+                                slovlyFollowTime);
         }
     }
 
@@ -59,6 +74,14 @@ public class FlyingAkaiController : AkaiController
     public float playerDropRange;
 
     public Vector2 lockedInAirPostion;
+
+    [Header("DistanceToPlayer")]
+
+    public float slovlyFollowTime;
+
+    [SerializeField] private float closeToFollow;
+
+    private Vector2 animationVel;
 
     private void DrawNavigationPoints(){
         lockedInAirPostion.y = saveHightValues + startingHight;
