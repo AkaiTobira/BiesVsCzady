@@ -1435,7 +1435,7 @@ MonoBehaviour:
   DebugConsoleInfo2: {fileID: 746543372759422715}
   isDead: 0
   isAlreadyInCombat: 0
-  startingHight: 2000
+  startingHight: 500
   posiblePositions:
   - {x: -600, y: -1000}
   - {x: 600, y: -1000}
@@ -1443,8 +1443,11 @@ MonoBehaviour:
   - {x: -700, y: 600}
   saveHightValues: 0
   moveCooldown: 2
-  playerDropRange: 4000
+  playerDropRange: 6000
   lockedInAirPostion: {x: 0, y: 0}
+  canFollowPlayer: 1
+  slovlyFollowTime: 5
+  closeToFollow: 500
 --- !u!50 &746543372391577854
 Rigidbody2D:
   serializedVersion: 4

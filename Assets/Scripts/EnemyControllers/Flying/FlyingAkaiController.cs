@@ -20,8 +20,8 @@ public class FlyingAkaiController : AkaiController
         if( m_sightController.isPlayerSeen() && !isAlreadyInCombat ){
             m_controller.OverriteStates( "FlyingCombatEngage" );
             isAlreadyInCombat = true;
-        }else{
-
+        }else if( isAlreadyInCombat && canFollowPlayer ) {
+            
             GlobalUtils.Direction m_direciton = (GlobalUtils.Direction)
                                                 Mathf.Sign(GlobalUtils.PlayerObject.position.x - 
                                                             m_FloorDetector.GetComponent<Transform>().position.x);
@@ -76,6 +76,8 @@ public class FlyingAkaiController : AkaiController
     public Vector2 lockedInAirPostion;
 
     [Header("DistanceToPlayer")]
+
+    public bool canFollowPlayer;
 
     public float slovlyFollowTime;
 
