@@ -14,6 +14,14 @@ public class FlyingAkaiController : AkaiController
         m_controller    = new SFSMEnemy( gameObject, new CzadIdle( gameObject ) );
         m_FloorDetector.Move( new Vector2(0.1f, 0) );
         saveHightValues = m_FloorDetector.GetComponent<Transform>().position.y;
+        CreateAirNavPoints();
+    }
+
+    private void CreateAirNavPoints(){
+        airNavPoints    = new List<Vector2>(posiblePositions.Count); 
+        for( int i = 0; i < posiblePositions.Count; i ++ ){
+            airNavPoints.Add( new Vector2());
+        }
     }
 
     void UpdatePlayerDetection(){
@@ -34,9 +42,20 @@ public class FlyingAkaiController : AkaiController
                                     lockedInAirPostion.y
                                     ), 
                                 ref animationVel, 
-                                slovlyFollowTime);
+                                adjustPositonToPlayerTime);
+            
+            UpdateAirNevPoints();
         }
     }
+
+    [HideInInspector] public List<Vector2> airNavPoints;
+
+    private void UpdateAirNevPoints(){
+        for( int i = 0; i < airNavPoints.Count; i++){
+            airNavPoints[i] = lockedInAirPostion + posiblePositions[i];
+        }
+    }
+
 
     void Update() {
 
@@ -75,13 +94,20 @@ public class FlyingAkaiController : AkaiController
 
     public Vector2 lockedInAirPostion;
 
+    public float maxFlyingSpeed;
+
+    [Header("GlidingAttack")]
+
+    public float glideSpeed = 2400;
+
+
     [Header("DistanceToPlayer")]
 
     public bool canFollowPlayer;
 
-    public float slovlyFollowTime;
+    public float adjustPositonToPlayerTime;
 
-    [SerializeField] private float closeToFollow;
+    [SerializeField] private float closeToFollow = 0;
 
     private Vector2 animationVel;
 
@@ -188,6 +214,21 @@ public class FlyingAkaiController : AkaiController
     
 
     void OnDrawGizmos(){
+
+        float rayLenght = 50;
+
+            Debug.DrawLine( 
+                transform.position + new Vector3(  rayLenght, startingHight + rayLenght),
+                transform.position + new Vector3( -rayLenght, startingHight -rayLenght),
+                new Color( 1,0,0)
+            );
+
+            Debug.DrawLine( 
+                transform.position + new Vector3(  rayLenght, startingHight -rayLenght),
+                transform.position + new Vector3( -rayLenght, startingHight +rayLenght),
+                new Color( 1,0,0)
+            );
+
         Debug.DrawLine( transform.position, transform.position + new Vector3( patrolRangeLeft  - autoCorrectionRight , 0,0), new Color(0,1,1));
         Debug.DrawLine( transform.position, transform.position + new Vector3( patrolRangeRight - autoCorrectionLeft, 0,0), new Color(0,1,1));
     }

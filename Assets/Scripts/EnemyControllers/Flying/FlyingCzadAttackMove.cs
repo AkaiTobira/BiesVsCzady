@@ -4,9 +4,16 @@ using UnityEngine;
 
 public class FlyingCzadAttackMove : CzadMoveBase
 {
-    public FlyingCzadAttackMove( GameObject controllable, Vector2 moveVector ) : base( controllable, moveVector ){
+    //Should be divided in two : for flying up, and following navPoint
+    new protected FlyingAkaiController entityScript = null;
+
+    int targetPostion;
+    public FlyingCzadAttackMove( GameObject controllable, Vector2 moveVector, int airNavPositionIndex ) : base( controllable, moveVector ){
         name = "FlyingCzadAttackMove";
-        Debug.Log( moveVector);
+        if( airNavPositionIndex != -1){
+            targetPostion = airNavPositionIndex;
+        }
+        entityScript = controllable.GetComponent<FlyingAkaiController>();
     //    Debug.Log( leftToMove + "  :: " + moveVector + " :: " + m_FloorDetector.GetCurrentDirection().ToString() + " INHErIt");
     }
 
@@ -33,16 +40,23 @@ public class FlyingCzadAttackMove : CzadMoveBase
     public override void Process(){
         ProcessAcceleration();
 
-        leftToMove -= entityScript.velocity * Time.deltaTime;
+        Debug.Log( targetPostion);
+
+        if( targetPostion != -1){
+            leftToMove = entityScript.airNavPoints[targetPostion] - (Vector2)m_FloorDetector.GetComponent<Transform>().position;
+        }else{
+            leftToMove -= entityScript.velocity * Time.deltaTime;
+        }
+
         m_FloorDetector.Move( entityScript.velocity * Time.deltaTime);
 
         SelectNextState();
     }
 
-    protected virtual void ProcessAcceleration(){
+    protected override void ProcessAcceleration(){
     //    if( Mathf.Abs( entityScript.velocity.x ) == entityScript.maxMoveSpeed) return;
-        float acceleration = (entityScript.maxMoveSpeed / entityScript.moveAccelerationTime) * Time.deltaTime;
-        float currentValue = Mathf.Min( entityScript.velocity.magnitude + acceleration,  entityScript.maxMoveSpeed );
+        float acceleration = (entityScript.maxFlyingSpeed / entityScript.moveAccelerationTime) * Time.deltaTime;
+        float currentValue = Mathf.Min( entityScript.velocity.magnitude + acceleration,  entityScript.maxFlyingSpeed );
 
         entityScript.velocity = leftToMove.normalized * currentValue;
 

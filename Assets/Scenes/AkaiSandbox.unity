@@ -1266,7 +1266,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.3410787, y: -1.3023143}
+  m_Offset: {x: 0.34107876, y: -0.7685621}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -1277,7 +1277,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2.4023504, y: 4.9120903}
+  m_Size: {x: 2.4023504, y: 3.844585}
   m_EdgeRadius: 0
 --- !u!114 &746543371868578271
 MonoBehaviour:
@@ -1413,7 +1413,7 @@ MonoBehaviour:
   velocity: {x: 269.61057, y: 0}
   moveBrakingTime: 1
   moveAccelerationTime: 1
-  maxMoveSpeed: 900
+  maxMoveSpeed: 1200
   hurtSpeedDropFrictionX: 10
   gravityForce: 20
   canPatrol: 1
@@ -1435,6 +1435,7 @@ MonoBehaviour:
   DebugConsoleInfo2: {fileID: 746543372759422715}
   isDead: 0
   isAlreadyInCombat: 0
+  airNavPoints: []
   startingHight: 500
   posiblePositions:
   - {x: -600, y: -1000}
@@ -1445,8 +1446,10 @@ MonoBehaviour:
   moveCooldown: 2
   playerDropRange: 6000
   lockedInAirPostion: {x: 0, y: 0}
+  maxFlyingSpeed: 1200
+  glideSpeed: 2400
   canFollowPlayer: 1
-  slovlyFollowTime: 5
+  adjustPositonToPlayerTime: 3
   closeToFollow: 500
 --- !u!50 &746543372391577854
 Rigidbody2D:

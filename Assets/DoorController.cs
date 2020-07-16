@@ -7,7 +7,7 @@ public class DoorController : MonoBehaviour
 
     [SerializeField] int numberOfRequiredKeys = 1;
 
-    [SerializeField] Transform doorDetector;
+    [SerializeField] Transform doorDetector = null;
 
     void OnTriggerStay2D(Collider2D other) {
     

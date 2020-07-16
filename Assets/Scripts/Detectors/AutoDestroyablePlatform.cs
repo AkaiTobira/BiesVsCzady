@@ -11,7 +11,7 @@ public class AutoDestroyablePlatform : MonoBehaviour
 
     [HideInInspector] BoxCollider2D m_box;
 
-    [SerializeField] float m_existingTimer;
+    [SerializeField] float m_existingTimer = 0;
 
     private float existingTimer = 0;
     private float distanceBeetweenRayH;
