@@ -202,9 +202,9 @@ public class FlyingAkaiController : AkaiController
          healthPoints -= infoPack.attackDamage;
         if( healthPoints > 0 ){
             if( infoPack.stunDuration > 0){
-                m_controller.OverriteStates( "Stun", infoPack );
+                m_controller.OverriteStates( "FlyingStun", infoPack );
             }else{
-                m_controller.OverriteStates( "Hurt", infoPack );
+                m_controller.OverriteStates( "FlyingHurt", infoPack );
             }
         }else{
             m_controller.OverriteStates( "Dead", infoPack );
