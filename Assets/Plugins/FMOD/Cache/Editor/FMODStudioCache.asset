@@ -32,7 +32,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Path: Assets/FMOD/BiesVsCzady/Build/Desktop/Master.strings.bank
   SubDir: 
-  lastModified: 637302605306375770
+  lastModified: 637305850871999507
   LoadResult: 0
   FileSizes:
   - Name: Desktop
@@ -564,14 +564,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EditorBanks:
   - {fileID: -7879603113626757902}
-  - {fileID: 1877765815837384451}
+  - {fileID: 6585264150572672868}
   EditorEvents: []
   EditorParameters: []
   MasterBanks:
-  - {fileID: 1877765815837384451}
+  - {fileID: 6585264150572672868}
   StringsBanks:
   - {fileID: -7879603113626757902}
-  stringsBankWriteTime: 637302605306375770
+  stringsBankWriteTime: 637305850871999507
   cacheVersion: 3
 --- !u!114 &98012782082791664
 MonoBehaviour:
@@ -1165,6 +1165,24 @@ MonoBehaviour:
   FileSizes:
   - Name: Desktop
     Value: 3990
+  Exists: 1
+--- !u!114 &6585264150572672868
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.bank
+  m_EditorClassIdentifier: 
+  Path: Assets/FMOD/BiesVsCzady/Build/Desktop/Master.bank
+  SubDir: 
+  lastModified: 637305850871989526
+  LoadResult: 0
+  FileSizes: []
   Exists: 1
 --- !u!114 &7141169948830884016
 MonoBehaviour:
