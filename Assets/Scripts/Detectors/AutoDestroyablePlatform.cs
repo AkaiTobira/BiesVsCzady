@@ -90,15 +90,14 @@ public class AutoDestroyablePlatform : MonoBehaviour
 
         if( existingTimer == 0 ) {
             GetComponent<BoxCollider2D>().enabled = false;
-            startTimer    = false;
-            reapear = true;
+            startTimer = false;
+            reapear    = true;
             timeToReapear = ReapearTimer;
         };
     }
 
     void ProcessReapear(){
         timeToReapear = Mathf.Max( 0, timeToReapear - Time.deltaTime );
-        Debug.Log(timeToReapear);
         var colorForAlphaReduction = GetComponent<SpriteRenderer>().color;
         colorForAlphaReduction.r = 1.0f;
         colorForAlphaReduction.a = 1.0f - ( timeToReapear/ReapearTimer);
@@ -111,7 +110,6 @@ public class AutoDestroyablePlatform : MonoBehaviour
             colorForAlphaReduction.r = 0.0f;
             GetComponent<SpriteRenderer>().color = colorForAlphaReduction;
         }
-
     }
 
     void Update()

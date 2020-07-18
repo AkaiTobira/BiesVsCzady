@@ -18,6 +18,7 @@ public class CatWallHold : PlayerBaseState
 
        // distanceToFixAnimation = new Vector3( (isLeftOriented())? -125 : 125, 75 , 0);
         m_animator.SetFloat( "FallVelocity", 0);
+        m_animator.SetBool( "isGrounded"   , m_FloorDetector.isOnGround());
         if( !m_FloorDetector.isOnGround() ){
             CommonValues.PlayerVelocity.y = -CatUtils.GravityForce * Time.deltaTime;
             m_FloorDetector.Move(CommonValues.PlayerVelocity * Time.deltaTime);

@@ -34,6 +34,8 @@ public class Player : IEntity
 
     }
 
+    public Vector2 something = new Vector2();
+
 
     [Header("DebugInfo")]
     [SerializeField] public Transform animationNode;
