@@ -4,16 +4,16 @@ using UnityEngine;
 
 public class PlayerJump : PlayerBaseState
 {    
-    private GlobalUtils.Direction m_swipe;
-
-    private bool swipeOn = false;
-
-    float timeOfIgnoringWallStick = 0;
-    float timeOfJumpForceRising   = 0;
-
-    float JumpForce    = 0.0f;
-    float GravityForce = 0.0f;
-    float startAnimationDelay = 0.0f;
+    protected  GlobalUtils.Direction m_swipe;
+ 
+    protected  bool swipeOn = false;
+ 
+    protected float timeOfIgnoringWallStick = 0;
+    protected float timeOfJumpForceRising   = 0;
+ 
+    protected float JumpForce    = 0.0f;
+    protected float GravityForce = 0.0f;
+    protected float startAnimationDelay = 0.0f;
 
     ICharacterSettings m_settings;
 
@@ -53,7 +53,14 @@ public class PlayerJump : PlayerBaseState
         return false;
     }
 
-
+    protected bool isOnGround(){
+        if( m_FloorDetector.isOnGround()){
+            CommonValues.PlayerVelocity.y = 0;
+            timeOfJumpForceRising = 0.0f;
+            return true;
+        }
+        return false;
+    }
 
     protected virtual void ProcessStateEnd(){
 
@@ -70,7 +77,7 @@ public class PlayerJump : PlayerBaseState
         
         ProcessJumpAcceleration();
         ProcessMove();
-        ProcessStateEnd();
+        if( startAnimationDelay <= 0 ) ProcessStateEnd();
     }
 
     private void ProcessJumpAcceleration(){
@@ -90,7 +97,7 @@ public class PlayerJump : PlayerBaseState
     private void ProcessMove(){
         if( startAnimationDelay > 0 ) return;
         m_animator.SetFloat( "FallVelocity", CommonValues.PlayerVelocity.y);
-        GravityForce += -CatUtils.GravityForce * Time.deltaTime;
+        GravityForce += -m_settings.GravityForce * Time.deltaTime;
         CommonValues.PlayerVelocity.y = JumpForce + GravityForce;
         CommonValues.PlayerVelocity.y = Mathf.Max( CommonValues.PlayerVelocity.y, -500 );
         ProcessSwipe();

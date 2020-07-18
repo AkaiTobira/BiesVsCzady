@@ -4,28 +4,12 @@ using UnityEngine;
 
 public class CatJump : PlayerJump
 {    
-    private GlobalUtils.Direction m_swipe;
-
-    private bool swipeOn = false;
-
-    float timeOfIgnoringWallStick = 0;
-    float timeOfJumpForceRising   = 0;
-
-    float JumpForce    = 0.0f;
-    float GravityForce = 0.0f;
-    float startAnimationDelay = 0.0f;
-
     public CatJump( GameObject controllable, GlobalUtils.Direction dir) : base( controllable, dir,  CatUtils.infoPack ) {
         name = "CatJump";
         distanceToFixAnimation = new Vector3(0, -60 , 0);
         StartAnimation();
     }
 
-    private void SetUpCounters(){
-        PlayerFallOfWallHelper.ResetCounter();
-        PlayerMoveOfWallHelper.ResetCounter();
-
-    }
 
     private  void StartAnimation(){
         startAnimationDelay = 0.1f;//= getAnimationLenght( "CatJumpPreparation");
@@ -51,7 +35,7 @@ public class CatJump : PlayerJump
     }
 
     protected override void ProcessStateEnd(){
-        m_isOver |= isOnCelling() || isFalling();
+        m_isOver |= isOnCelling() || isFalling() || isOnGround();
         if( m_isOver ){
             m_animator.ResetTrigger("CatJumpPressed");
         }
@@ -75,7 +59,6 @@ public class CatJump : PlayerJump
             }
         }
         HandleInputSwipe();
-
         if( m_isOver ){
             m_animator.ResetTrigger("CatJumpPressed");
         }
