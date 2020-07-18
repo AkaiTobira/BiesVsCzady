@@ -12,8 +12,11 @@ public class PlayerLedgeClimb : PlayerBaseState
     protected float targetStayHightY  = 0; 
     protected float targetStayHightX = 0;
 
+    protected GlobalUtils.Direction forSureDirection;
+
     public PlayerLedgeClimb( GameObject controllable, GlobalUtils.Direction dir , float someVariable) : base( controllable ) {
         CommonValues.PlayerVelocity = new Vector2(0,0);
+        forSureDirection = dir;
         m_dir = dir;
         SetUpRotation();
         PlayerFallOfWallHelper.ResetCounter();
@@ -89,6 +92,10 @@ public class PlayerLedgeClimb : PlayerBaseState
             m_FloorDetector.CheatMove( shiftValue );
             m_isOver = true;
         }
+    }
+
+    protected override void UpdateDirection(){
+        m_dir = forSureDirection;
     }
 
 /*

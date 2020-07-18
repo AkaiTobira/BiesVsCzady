@@ -10,7 +10,6 @@ public class CatJump : PlayerJump
         StartAnimation();
     }
 
-
     private  void StartAnimation(){
         startAnimationDelay = 0.1f;//= getAnimationLenght( "CatJumpPreparation");
         m_animator.SetTrigger("CatJumpPressed");
@@ -40,7 +39,6 @@ public class CatJump : PlayerJump
             m_animator.ResetTrigger("CatJumpPressed");
         }
     }
-
 
     public override void HandleInput(){
         if( m_ObjectInteractionDetector.canClimbLedge() ){
