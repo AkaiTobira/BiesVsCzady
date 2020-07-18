@@ -32,10 +32,10 @@ public class CzadPatrol : EnemyBaseState
                 m_nextState = new CzadPatrolMove( m_controllabledObject, new Vector2( entityScript.patrolRangeRight, 0 ) );
                 nextMoves.Add( Stage.BackR );
             }else if( nextMoves[0] == Stage.BackL  ){
-                m_nextState = new CzadPatrolMove( m_controllabledObject, new Vector2( entityScript.patrolRangeRight - entityScript.autoCorrectionLeft + entityScript.autoCorrectionRight  - entityScript.patrolRangeLeft, 0 ) );
+                m_nextState = new CzadPatrolMove( m_controllabledObject, new Vector2( entityScript.patrolRangeRight  - entityScript.patrolRangeLeft, 0 ) );
                 nextMoves.Add( Stage.BackR );
             }else if( nextMoves[0] == Stage.BackR  ){
-                m_nextState = new CzadPatrolMove( m_controllabledObject, new Vector2( entityScript.patrolRangeLeft  - entityScript.autoCorrectionRight + entityScript.autoCorrectionLeft  - entityScript.patrolRangeRight, 0 ) );
+                m_nextState = new CzadPatrolMove( m_controllabledObject, new Vector2( entityScript.patrolRangeLeft   - entityScript.patrolRangeRight, 0 ) );
                 nextMoves.Add( Stage.BackL );
             }
             nextMoves.RemoveAt(0);
