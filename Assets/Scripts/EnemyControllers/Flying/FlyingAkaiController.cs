@@ -100,6 +100,9 @@ public class FlyingAkaiController : AkaiController
 
     public float glideSpeed = 2400;
 
+    public Vector2 glideKnockbackValues    = new Vector2();
+
+    public float glideDamage = 3;
 
     [Header("DistanceToPlayer")]
 
@@ -188,6 +191,14 @@ public class FlyingAkaiController : AkaiController
                 infoPack.stunDuration   = 0.0f;
                 infoPack.lockFaceDirectionDuringKnockback = true;
                 infoPack.attackDamage   = attackDamage;
+                infoPack.fromCameAttack = m_FloorDetector.GetCurrentDirection();
+            break;
+            case "FlyingEnemyGliding":
+                infoPack.isValid = true;
+                infoPack.knockBackValue = glideKnockbackValues;
+                infoPack.stunDuration   = 0.0f;
+                infoPack.lockFaceDirectionDuringKnockback = true;
+                infoPack.attackDamage   = glideDamage;
                 infoPack.fromCameAttack = m_FloorDetector.GetCurrentDirection();
             break;
             default: break;

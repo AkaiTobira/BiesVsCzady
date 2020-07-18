@@ -20,6 +20,7 @@ public class FlyingEnemyGliding : FlyingEnemyBaseState
     }
 
     public override void UpdateAnimator(){
+        m_animator.SetBool("isGliding", true);
         UpdateAnimatorAligment();
         UpdateFloorAligment();
         UpdateAnimatorPosition();
@@ -108,6 +109,10 @@ public class FlyingEnemyGliding : FlyingEnemyBaseState
             infoPack.stunDuration = 5f;
             m_isOver = true;
             m_nextState = new CzadStun( m_controllabledObject, infoPack);
+        }
+
+        if( m_isOver){
+                    m_animator.SetBool("isGliding", false);
         }
 
     }

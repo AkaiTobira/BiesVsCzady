@@ -759,7 +759,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21a2a2d06e9a5ac4d8c61e084a2705a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mainScript: {fileID: 0}
+  mainScript: {fileID: 746543372391577794}
 --- !u!212 &746543370919437753
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -844,7 +844,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 746543370919437756}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0.208, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 746543372106984730}
@@ -1086,7 +1086,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23e6bea70ff6d954c8fab62706bab3f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mainEntity: {fileID: 0}
+  mainEntity: {fileID: 746543372391577794}
 --- !u!212 &746543371772932105
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1415,7 +1415,7 @@ MonoBehaviour:
   moveAccelerationTime: 1
   maxMoveSpeed: 1200
   hurtSpeedDropFrictionX: 10
-  gravityForce: 20
+  gravityForce: 500
   canPatrol: 1
   patrolRangeLeft: -500
   patrolRangeRight: 4000
