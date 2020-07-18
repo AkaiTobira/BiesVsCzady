@@ -28,8 +28,8 @@ public class DangerousObject : MonoBehaviour
 
 
 
-    [SerializeField] DirectionCorrectionY onHitMoveInDirectionVertical;
-    [SerializeField] DirectionCorrectionX onHitMoveInDirectionHorizontal;
+    [SerializeField] DirectionCorrectionY onHitMoveInDirectionVertical = 0;
+    [SerializeField] DirectionCorrectionX onHitMoveInDirectionHorizontal = 0;
 
     [Range( 0.0001f, 10.0f)] public float onHitMoveUpAdditionalFactor = 1;
 

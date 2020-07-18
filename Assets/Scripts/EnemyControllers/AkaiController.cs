@@ -133,7 +133,7 @@ public class AkaiController : IEntity
         return infoPack;
     }
 
-    float healthPoints = 30;
+    protected float healthPoints = 30;
 
     public override void OnHit(GlobalUtils.AttackInfo infoPack){
         if( !infoPack.isValid ) return;

@@ -157,8 +157,10 @@ public class Player : IEntity
 
     public void AddKey(){ keys++; }
 
-    [SerializeField] float someSillyValue;
-    [SerializeField] float someSillyValue2;
+
+    //TOREMOVE
+    [SerializeField] float someSillyValue = 0;
+    [SerializeField] float someSillyValue2 = 0;
     void Update(){
         m_controller.Update();
         UpdateCounters();

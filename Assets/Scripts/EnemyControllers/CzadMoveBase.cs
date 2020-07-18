@@ -43,7 +43,7 @@ public class CzadMoveBase : EnemyBaseState
         m_animator.SetFloat("HorizontalSpeed", Mathf.Abs( entityScript.velocity.x ));
     }
 
-    private void ProcessAcceleration(){
+    protected virtual void ProcessAcceleration(){
     //    if( Mathf.Abs( entityScript.velocity.x ) == entityScript.maxMoveSpeed) return;
         float acceleration = (entityScript.maxMoveSpeed / entityScript.moveAccelerationTime) * Time.deltaTime;
         float currentValue = Mathf.Min( Mathf.Abs( entityScript.velocity.x ) + acceleration,  entityScript.maxMoveSpeed );
