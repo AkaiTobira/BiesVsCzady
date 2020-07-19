@@ -11,8 +11,9 @@ public class AutoDestroyablePlatform : MonoBehaviour
 
     [HideInInspector] BoxCollider2D m_box;
 
-    [SerializeField] float m_existingTimer;
+    [SerializeField] float m_existingTimer = 0;
 
+    private float existingTimer = 0;
     private float distanceBeetweenRayH;
 
     private float distanceBeetweenRayV;
@@ -33,7 +34,6 @@ public class AutoDestroyablePlatform : MonoBehaviour
         CalculateColliderVertexPositions();
     }
 
-
     void ProcessPlayerDetection(){
         if( startTimer ) return;
         for( int i = 0 ; i < rayNumber; i++){
@@ -50,25 +50,19 @@ public class AutoDestroyablePlatform : MonoBehaviour
                 upDirection = -transform.up;
             }
 
-
             RaycastHit2D hit = Physics2D.Raycast( rayOrigin, upDirection, rayLenght, playerLayer );
 
             if( hit ){
                 if( hit.collider.tag == "PlayerHurtBox") {
                 
                     startTimer = true;
+                    existingTimer   = m_existingTimer;
                     maxOfTimerValue = m_existingTimer;
                 }
             }
-
             Debug.DrawLine( rayOrigin, rayOrigin + upDirection * rayLenght, new Color( 0, 0.5f,0 ));
-
         }
-;
-
     }
-
-
     public void  CalculateColliderVertexPositions ()  
     {
         RightOriginTop    = gameObject.transform.TransformPoint(m_box.offset + new Vector2(-m_box.size.x,  m_box.size.y) * 0.5f);
@@ -80,32 +74,53 @@ public class AutoDestroyablePlatform : MonoBehaviour
         distanceBeetweenRayV = (LeftOriginTop.y - RightOriginTop.y)/( rayNumber - 1.0f); 
     }
 
+    private bool reapear = false;
+    [SerializeField] public float ReapearTimer = 15;
+
+    private float timeToReapear = 0;
+
     void ProcessAutoDestroy(){
         if( !startTimer ) return;
-        m_existingTimer = Mathf.Max( m_existingTimer - Time.deltaTime, 0 );
+        existingTimer = Mathf.Max( existingTimer - Time.deltaTime, 0 );
 
         var colorForAlphaReduction = GetComponent<SpriteRenderer>().color;
-        colorForAlphaReduction.a = 1.0f * ( m_existingTimer/maxOfTimerValue);
+        colorForAlphaReduction.r = 0.0f;
+        colorForAlphaReduction.a = 1.0f * ( existingTimer/maxOfTimerValue);
         GetComponent<SpriteRenderer>().color = colorForAlphaReduction;
 
-        if( m_existingTimer == 0 ) Destroy( gameObject );
+        if( existingTimer == 0 ) {
+            GetComponent<BoxCollider2D>().enabled = false;
+            startTimer = false;
+            reapear    = true;
+            timeToReapear = ReapearTimer;
+        };
+    }
+
+    void ProcessReapear(){
+        timeToReapear = Mathf.Max( 0, timeToReapear - Time.deltaTime );
+        var colorForAlphaReduction = GetComponent<SpriteRenderer>().color;
+        colorForAlphaReduction.r = 1.0f;
+        colorForAlphaReduction.a = 1.0f - ( timeToReapear/ReapearTimer);
+        GetComponent<SpriteRenderer>().color = colorForAlphaReduction;
+
+        if( timeToReapear == 0 ){
+            GetComponent<BoxCollider2D>().enabled = true;
+            m_box.enabled = true;
+            reapear       = false;
+            colorForAlphaReduction.r = 0.0f;
+            GetComponent<SpriteRenderer>().color = colorForAlphaReduction;
+        }
     }
 
     void Update()
     {
         CalculateColliderVertexPositions();
 
-    //    var a = GetColliderVertexPositions( gameObject );
-
-    //    for( int t = 0; t < 2; t ++){
-    //        Debug.Log( a[t]);
-    //        Debug.DrawLine( a[t],    a[t] +   (Vector2) transform.up * rayLenght, new Color( 0.5f, 0.5f,0 ));
-    //    }
-
-    //    Debug.DrawLine( m_box.bounds.min,    m_box.bounds.min +    Vector3.up * rayLenght, new Color( 0.5f, 0.5f,0 ));
-    //    Debug.DrawLine( m_box.bounds.center, m_box.bounds.center + Vector3.up * rayLenght, new Color( 0.5f, 0.5f,0 ));
-
-        ProcessPlayerDetection();
-        ProcessAutoDestroy();
-    }
+        if( !reapear){
+            ProcessPlayerDetection();
+            ProcessAutoDestroy();
+        }else{
+            ProcessReapear();
+        }
+        }
 }

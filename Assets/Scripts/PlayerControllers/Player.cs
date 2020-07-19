@@ -34,6 +34,8 @@ public class Player : IEntity
 
     }
 
+    public Vector2 something = new Vector2();
+
 
     [Header("DebugInfo")]
     [SerializeField] public Transform animationNode;
@@ -45,9 +47,6 @@ public class Player : IEntity
     [SerializeField] bool directionLeft  = false;
     [SerializeField] bool directionRight = false;
     [SerializeField] string StateName    = "Idle";
-    // Update is called once per frame
-
-
     [SerializeField] public float healthPoints = 10;
 
     public override GlobalUtils.AttackInfo GetAttackInfo(){
@@ -115,11 +114,6 @@ public class Player : IEntity
         invincible = !invincible;
     }
 
-    void OnTriggerEnter2D(Collider2D other) {
-//        Debug.Log(other.gameObject.name);
-    }
-
-
 
     public string GetCurrentFormName(){
         string stateName = m_controller.GetStateName();
@@ -128,9 +122,16 @@ public class Player : IEntity
         return m_controller.GetStateName();
     }
 
+    public bool  CanBeHurt(){
+        if( m_controller.GetStateName().Contains("Dead")) return false;
+        if( m_controller.GetStateName().Contains("Hurt")) return false;
+        return true;
+    }
+
 
     public override void OnHit( GlobalUtils.AttackInfo infoPack ){
         if( !infoPack.isValid ) return;
+        if( !CanBeHurt() )      return;
         if( !invincible ) healthPoints -= infoPack.attackDamage;
         if( healthPoints > 0 ){
             if( infoPack.stunDuration > 0){
@@ -148,23 +149,82 @@ public class Player : IEntity
 
     public void AddKey(){ keys++; }
 
-    [SerializeField] float someSillyValue;
-    [SerializeField] float someSillyValue2;
+
+    private void HurtBehaviourTests(){
+        if( Input.GetKeyDown(KeyCode.Keypad1)){
+            GlobalUtils.AttackInfo info = new GlobalUtils.AttackInfo();
+            
+            info.isValid = true;
+            info.attackDamage = 0;
+            info.fromCameAttack = GlobalUtils.Direction.Left;
+            info.knockBackFrictionX = 0;
+            info.knockBackValue = new Vector2();
+            info.stunDuration   = 0;
+            OnHit( info );
+        }
+
+
+        if( Input.GetKeyDown(KeyCode.Keypad2)){
+            GlobalUtils.AttackInfo info = new GlobalUtils.AttackInfo();
+            
+            info.isValid = true;
+            info.attackDamage = 0;
+            info.fromCameAttack = GlobalUtils.Direction.Left;
+            info.knockBackFrictionX = 0;
+            info.knockBackValue = new Vector2();
+            info.stunDuration   = 3;
+            OnHit( info );
+        }
+
+
+        if( Input.GetKeyDown(KeyCode.Keypad3)){
+            GlobalUtils.AttackInfo info = new GlobalUtils.AttackInfo();
+            
+            info.isValid = true;
+            info.attackDamage = 0;
+            info.fromCameAttack = GlobalUtils.Direction.Left;
+            info.knockBackFrictionX = 0;
+            info.knockBackValue = new Vector2( 30, 4000 );
+            info.stunDuration   = 0;
+            OnHit( info );
+        }
+
+
+        if( Input.GetKeyDown(KeyCode.Keypad4)){
+            GlobalUtils.AttackInfo info = new GlobalUtils.AttackInfo();
+            
+            info.isValid = true;
+            info.attackDamage = 0;
+            info.fromCameAttack = GlobalUtils.Direction.Left;
+            info.knockBackFrictionX = 2;
+            info.knockBackValue = new Vector2( 700, 4000 );
+            info.stunDuration   = 0;
+            OnHit( info );
+        }
+
+
+        if( Input.GetKeyDown(KeyCode.Keypad5)){
+            GlobalUtils.AttackInfo info = new GlobalUtils.AttackInfo();
+            
+            info.isValid = true;
+            info.attackDamage = 100;
+            info.fromCameAttack = GlobalUtils.Direction.Left;
+            info.knockBackFrictionX = 0;
+            info.knockBackValue = new Vector2(  );
+            info.stunDuration   = 0;
+            OnHit( info );
+        }
+    }
+
     void Update(){
         m_controller.Update();
         UpdateCounters();
-
-        CommonValues.tempModulator  = someSillyValue;
-        CommonValues.tempModulator2 = someSillyValue2;
-        
-
 
         m_animator.SetBool("isGrounded", m_FloorDetector.isOnGround());
         m_animator.SetBool("isWallClose", m_WallDetector.isWallClose());
 
         isOnGround  = m_FloorDetector.isOnGround();
         isWallClose = m_WallDetector.isWallClose();
-    //    Debug.Log( StateName );
         StateName   = m_controller.GetStateName();
         isColLeft   =m_WallDetector.isCollideWithLeftWall();
         isColRight  = m_WallDetector.isCollideWithLeftWall();
@@ -172,75 +232,6 @@ public class Player : IEntity
         directionLeft  = m_controller.GetDirection() == GlobalUtils.Direction.Left;
         directionRight = m_controller.GetDirection() == GlobalUtils.Direction.Right;
 
-
-    // TEST SECTION
-
-    if( Input.GetKeyDown(KeyCode.Keypad1)){
-        GlobalUtils.AttackInfo info = new GlobalUtils.AttackInfo();
-        
-        info.isValid = true;
-        info.attackDamage = 0;
-        info.fromCameAttack = GlobalUtils.Direction.Left;
-        info.knockBackFrictionX = 0;
-        info.knockBackValue = new Vector2();
-        info.stunDuration   = 0;
-        OnHit( info );
     }
-
-
-    if( Input.GetKeyDown(KeyCode.Keypad2)){
-        GlobalUtils.AttackInfo info = new GlobalUtils.AttackInfo();
-        
-        info.isValid = true;
-        info.attackDamage = 0;
-        info.fromCameAttack = GlobalUtils.Direction.Left;
-        info.knockBackFrictionX = 0;
-        info.knockBackValue = new Vector2();
-        info.stunDuration   = 3;
-        OnHit( info );
-    }
-
-
-    if( Input.GetKeyDown(KeyCode.Keypad3)){
-        GlobalUtils.AttackInfo info = new GlobalUtils.AttackInfo();
-        
-        info.isValid = true;
-        info.attackDamage = 0;
-        info.fromCameAttack = GlobalUtils.Direction.Left;
-        info.knockBackFrictionX = 0;
-        info.knockBackValue = new Vector2( 30, 4000 );
-        info.stunDuration   = 0;
-        OnHit( info );
-    }
-
-
-    if( Input.GetKeyDown(KeyCode.Keypad4)){
-        GlobalUtils.AttackInfo info = new GlobalUtils.AttackInfo();
-        
-        info.isValid = true;
-        info.attackDamage = 0;
-        info.fromCameAttack = GlobalUtils.Direction.Left;
-        info.knockBackFrictionX = 2;
-        info.knockBackValue = new Vector2( 700, 4000 );
-        info.stunDuration   = 0;
-        OnHit( info );
-    }
-
-
-    if( Input.GetKeyDown(KeyCode.Keypad5)){
-        GlobalUtils.AttackInfo info = new GlobalUtils.AttackInfo();
-        
-        info.isValid = true;
-        info.attackDamage = 100;
-        info.fromCameAttack = GlobalUtils.Direction.Left;
-        info.knockBackFrictionX = 0;
-        info.knockBackValue = new Vector2(  );
-        info.stunDuration   = 0;
-        OnHit( info );
-    }
-    }
-
-
-
 
 }

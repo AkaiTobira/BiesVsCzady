@@ -13,4 +13,8 @@ public class HurtBoxHandler : MonoBehaviour
         }
     }
 
+    public IEntity GetMainEntity(){
+        return mainEntity;
+    }
+
 }

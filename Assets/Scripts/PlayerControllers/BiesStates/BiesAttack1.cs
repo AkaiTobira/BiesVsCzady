@@ -45,7 +45,15 @@ public class BiesAttack1 : PlayerBaseState
     public override void Process(){
         ProcessStateEnd();
         ProcessMove();
+        HandleStopping();
     }
+
+    private void HandleStopping(){
+        float acceleration = (BiesUtils.PlayerSpeed / BiesUtils.MoveBrakingTime) * Time.deltaTime;
+        float currentValue = Mathf.Max( Mathf.Abs( CommonValues.PlayerVelocity.x) - acceleration, 0);
+        CommonValues.PlayerVelocity.x = currentValue * (int)m_FloorDetector.GetCurrentDirection();
+    }
+
     public override void HandleInput(){
 
         if( PlayerInput.isAttack1KeyPressed() && timeToEnd < 0.5 * animationTime ){

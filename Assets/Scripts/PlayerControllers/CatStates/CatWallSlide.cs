@@ -10,6 +10,7 @@ public class CatWallSlide : PlayerBaseState
         PlayerFallOfWallHelper.ResetCounter();
         PlayerMoveOfWallHelper.DisableCounter();
         CommonValues.PlayerVelocity = new Vector2(0,0);
+        distanceToFixAnimation = new Vector3( (isLeftOriented())? -125 : 125, 0 , 0);
     }
 
     protected override void SetUpAnimation(){

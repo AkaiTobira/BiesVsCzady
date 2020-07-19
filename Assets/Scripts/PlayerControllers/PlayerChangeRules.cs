@@ -140,8 +140,6 @@ public static class  PlayerChangeRules
     }
 
     public static PlayerBaseState TranslateActiveState( string formName, string stateName, GlobalUtils.Direction dir ){
-//        Debug.Log( "TRanslation info :" + formName + " " + stateName);
-        
         switch( formName ){
             case "Bies" : return CatToBiesTranslation(ref stateName, ref dir);
             case "Cat"  : return BiesToCatTranslation(ref stateName, ref dir);

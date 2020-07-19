@@ -27,12 +27,27 @@ public class SFSMEnemy : ISFSMBase
         while( m_states.Count != 1 ) m_states.Pop();
 
         switch( targetState ) {
+            case "FlyingCombatEngage" : 
+                m_states.Push( new FlyingCzadPlayerDetected( m_controllabledObject ));
+            break;
+            case "FlyingHurt" : 
+                m_states.Push( new FlyingCzadPlayerDetected( m_controllabledObject ));
+                m_states.Push( new CzadHurt(m_controllabledObject, attackInfo));
+            break;
+            case "FlyingStun" : 
+                m_states.Push( new FlyingCzadPlayerDetected( m_controllabledObject ));
+                m_states.Push( new CzadStun(m_controllabledObject, attackInfo));
+            break;
             case "CombatEngage" : 
                 m_states.Push( new CzadPlayerDetected( m_controllabledObject ));
             break;
             case "Hurt" :
                 m_states.Push( new CzadPlayerDetected( m_controllabledObject ));
                 m_states.Push( new CzadHurt(m_controllabledObject, attackInfo));
+            break;
+            case "Stun" :
+                m_states.Push( new CzadPlayerDetected( m_controllabledObject ));
+                m_states.Push( new CzadStun(m_controllabledObject, attackInfo));
             break;
             case "Dead":
                 m_states.Push(new CzadDead(m_controllabledObject, attackInfo));
@@ -41,51 +56,6 @@ public class SFSMEnemy : ISFSMBase
                 Debug.Log( targetState + " :: Not found");
             break;
         }
-
-
-/*
-        string currentStateName = RemoveDirectionInfo(GetStateName());
-        string currentFormName  = GetCurrentFormName(currentStateName);
-        if( GetStateName().Contains("Dead")) return;
-        if( GetStateName().Contains("Hurt")) return;
-        
-        currentStateName = RemoveFormName( currentStateName);
-        m_states.Clear();
-        m_states.Push( PlayerChangeRules.GetIdleState(currentFormName) );
-        
-        switch( targetState){
-            case "Hurt" : 
-                switch( currentFormName ){
-                    case "Bies" : 
-                        m_states.Push( new BiesHurt(m_controllabledObject, attackInfo));
-                    break;
-                    case "Cat" :
-                        m_states.Push( new CatHurt(m_controllabledObject, attackInfo));
-                    break;
-                }
-                break;
-            case "Stun" : 
-                switch( currentFormName ){
-                    case "Bies" : 
-                        m_states.Push( new BiesStun(m_controllabledObject, attackInfo));
-                    break;
-                    case "Cat" :
-                        m_states.Push( new CatStun(m_controllabledObject, attackInfo));
-                    break;
-                }
-                break;
-            case "Dead" : 
-                switch( currentFormName ){
-                    case "Bies" : 
-                        m_states.Push( new BiesDead(m_controllabledObject, attackInfo));
-                    break;
-                    case "Cat" :
-                        m_states.Push( new CatDead(m_controllabledObject, attackInfo));
-                    break;
-                }
-                break;
-        }
-  */
     }
     
     private string RemoveDirectionInfo( string stateName ){
@@ -94,11 +64,6 @@ public class SFSMEnemy : ISFSMBase
         }
         return stateName;
     }
-/*
-    public  string GetCurrentForm(){
-        return GetCurrentFormName( GetStateName() );
-    }
-*/
 
     public override GlobalUtils.Direction GetDirection(){
         return m_states.Peek().GetDirection();

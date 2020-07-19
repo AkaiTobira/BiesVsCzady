@@ -237,9 +237,6 @@ namespace FMODUnity
         [SerializeField]
         public ushort LiveUpdatePort = 9264;
 
-        [SerializeField]
-        public bool EnableMemoryTracking;
-
         public static FMODPlatform GetParent(FMODPlatform platform)
         {
             switch (platform)
@@ -418,7 +415,6 @@ namespace FMODUnity
             ImportType = ImportType.StreamingAssets;
             AutomaticEventLoading = true;
             AutomaticSampleLoading = false;
-            EnableMemoryTracking = false;
         }
 
         #if UNITY_EDITOR

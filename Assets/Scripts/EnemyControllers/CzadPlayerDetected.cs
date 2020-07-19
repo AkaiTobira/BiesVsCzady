@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class CzadPlayerDetected : EnemyBaseState
 {
-
     float meeleCombatTimer;
     public CzadPlayerDetected( GameObject controllable ) : base( controllable ){
         name = "CzadPlayerDetected";
@@ -33,7 +32,6 @@ public class CzadPlayerDetected : EnemyBaseState
             entityScript.isAlreadyInCombat = false;
         }else if(distance > entityScript.combatRange ){
             var direction = (GlobalUtils.PlayerObject.transform.position - m_FloorDetector.GetComponent<Transform>().position).normalized;
-            Debug.Log( direction );
             m_nextState = new CzadAttackMove( m_controllabledObject, direction * 100);
         }else{
             if( CanMeeleAttack() ){
@@ -43,7 +41,6 @@ public class CzadPlayerDetected : EnemyBaseState
     }
 
     public override void Process(){
-    //    base.Process();
         HandleStopping();
         SelectNextState();
         m_FloorDetector.Move( entityScript.velocity * Time.deltaTime);
@@ -57,7 +54,6 @@ public class CzadPlayerDetected : EnemyBaseState
     private void HandleStopping(){
         float acceleration      = (entityScript.maxMoveSpeed / entityScript.moveBrakingTime) * Time.deltaTime;
         float currentValue      = Mathf.Max( Mathf.Abs( entityScript.velocity.x ) - acceleration, 0);
-//        Debug.Log( currentValue * (int)m_FloorDetector.GetCurrentDirection() );
         entityScript.velocity.x = currentValue * (int)m_FloorDetector.GetCurrentDirection();
     }
 

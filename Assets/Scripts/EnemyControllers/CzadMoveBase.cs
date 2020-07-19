@@ -22,8 +22,6 @@ public class CzadMoveBase : EnemyBaseState
         if( Mathf.Abs(entityScript.velocity.x) > entityScript.maxMoveSpeed ){
             entityScript.velocity.x = entityScript.maxMoveSpeed * Mathf.Sign( entityScript.velocity.x);
         }
-
-//        Debug.Log( leftToMove + "  :: " + moveVector + " :: " + m_FloorDetector.GetCurrentDirection().ToString() + " BaseClass");
     }
 
     public virtual void SelectNextState(){}
@@ -43,8 +41,7 @@ public class CzadMoveBase : EnemyBaseState
         m_animator.SetFloat("HorizontalSpeed", Mathf.Abs( entityScript.velocity.x ));
     }
 
-    private void ProcessAcceleration(){
-    //    if( Mathf.Abs( entityScript.velocity.x ) == entityScript.maxMoveSpeed) return;
+    protected virtual void ProcessAcceleration(){
         float acceleration = (entityScript.maxMoveSpeed / entityScript.moveAccelerationTime) * Time.deltaTime;
         float currentValue = Mathf.Min( Mathf.Abs( entityScript.velocity.x ) + acceleration,  entityScript.maxMoveSpeed );
         entityScript.velocity.x = currentValue * (int)m_dir;

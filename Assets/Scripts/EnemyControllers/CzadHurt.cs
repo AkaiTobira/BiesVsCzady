@@ -19,11 +19,8 @@ public class CzadHurt : EnemyBaseState{
         knocBackDirection = (int)infoPack.fromCameAttack;
 
         fillKnockbackInfo( infoPack );
-        timeToEnd = 3;
+        timeToEnd = entityScript.timeOfBeeingHurt;
         m_animator.SetTrigger( "GetHit" );
-
-        Debug.Log( name + " Set " + entityScript.velocity);
-
     }
 
     public override void UpdateAnimator(){
@@ -34,13 +31,8 @@ public class CzadHurt : EnemyBaseState{
     }
 
     private void fillKnockbackInfo( GlobalUtils.AttackInfo infoPack ){
-        Debug.Log( entityScript.velocity + " fillKnockback before ");
         entityScript.velocity   = infoPack.knockBackValue * entityScript.massFactor;
         entityScript.velocity.x *= (int)infoPack.fromCameAttack;
-        Debug.Log( entityScript.velocity + " fillKnockback after " + infoPack.fromCameAttack.ToString());
-     //   if(Mathf.Abs( CommonValues.PlayerVelocity.x ) > infoPack.knockBackValue.x ) 
-    //        velocity.x = (int)infoPack.fromCameAttack * Mathf.Abs( CommonValues.PlayerVelocity.x );
-
 
         if( entityScript.hurtSpeedDropFrictionX > 0){
             m_FloorDetector.CheatMove( new Vector2(0,40.0f));
@@ -59,9 +51,6 @@ public class CzadHurt : EnemyBaseState{
 
     private void ProcessMove(){
         entityScript.velocity.y += -entityScript.gravityForce * Time.deltaTime;
-
-    // /    Debug.Log( entityScript.velocity.ToString() + "Before if");
-
         m_FloorDetector.Move(entityScript.velocity *Time.deltaTime);
 
         if( m_FloorDetector.isOnGround() ){
@@ -71,16 +60,6 @@ public class CzadHurt : EnemyBaseState{
                 entityScript.velocity.x = Mathf.Max(entityScript.velocity.x - (entityScript.hurtSpeedDropFrictionX * Time.deltaTime), 0);
             }
         }
-
-        
-
-  //      Debug.Log( entityScript.velocity.ToString() + "afeter if");
-
-
-
-
-//        Debug.Log( entityScript.velocity.ToString() + "afeter move");
-
     }
 
     public override void Process(){

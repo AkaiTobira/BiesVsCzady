@@ -54,7 +54,6 @@ public class DestroyableObject : MonoBehaviour
     }
 
     void MoveObject(){
-///        Debug.Log( currentMoveValue);
         HandleXMove();
         HandleYMove();
         if( moveValue != new Vector2(0,0)) m_FloorDetector.Move( currentMoveValue * Time.deltaTime);
@@ -85,7 +84,6 @@ public class DestroyableObject : MonoBehaviour
                         m_FloorDetector.CheatMove( new Vector2(0,  moveValue.y * Time.deltaTime) );
                         m_FloorDetector.Move(  new Vector2(0,  moveValue.y * Time.deltaTime) );
                         gravityForce = (2 * moveValue.y) / Mathf.Pow (timeToHitApex, 2);
-                        Debug.Log( moveValue );
                     }
                 }else{
                     if( durability < 0 ){

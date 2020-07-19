@@ -13,7 +13,7 @@ public class SFSMPlayerChange : ISFSMBase
         foreach( PlayerBaseState b in m_states ){
             stackInfo += b.name + " : " + b.isOver() + " :  " + b.GetDirection().ToString() + "\n";
         }
-        GlobalUtils.debugConsole.text = stackInfo;
+//        GlobalUtils.debugConsole.text = stackInfo;
     }
 
     protected override void processStack(){
@@ -29,12 +29,12 @@ public class SFSMPlayerChange : ISFSMBase
         StackStatusPrint();
     }
 
+
+
     public override void OverriteStates(string targetState, GlobalUtils.AttackInfo attackInfo){
 
         string currentStateName = RemoveDirectionInfo(GetStateName());
         string currentFormName  = GetCurrentFormName(currentStateName);
-        if( GetStateName().Contains("Dead")) return;
-        if( GetStateName().Contains("Hurt")) return;
         
         currentStateName = RemoveFormName( currentStateName);
         m_states.Clear();

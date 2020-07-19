@@ -11,7 +11,9 @@ public abstract class IEntity : MonoBehaviour
         infoPack.isValid = false;
         return infoPack;
     }
-
-    public virtual void OnHit( GlobalUtils.AttackInfo infoPack ){}
+    public string GetCurrentState(){
+        return m_controller.GetStateName();
+    }
+    public abstract void OnHit( GlobalUtils.AttackInfo infoPack );
 
 }

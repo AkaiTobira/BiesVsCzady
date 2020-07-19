@@ -69,15 +69,10 @@ public class CollisionDetector : MonoBehaviour, ICollisionFloorDetector
     }
     protected virtual void ProcessCollision(){
         ProcessSlopeDetection( Mathf.Sign(transition.x) );
-        //        Debug.Log( "After Slope Det " +  transition );
         DescendSlope();
-         //       Debug.Log( "After Slope Det1 " +  transition );
         ProcessCollisionHorizontal( Mathf.Sign(transition.x));
-         //       Debug.Log( "After Slope Det2 " +  transition );
         ProcessCollisionVertical(   Mathf.Sign(transition.y));
-         //       Debug.Log( "After Slope Det3 " +  transition );
         ProcessColisionOnTheSameLayer();
-         //       Debug.Log( "After Slope Det4 " +  transition );
     }
 
     private void  ProcessColisionOnTheSameLayer(){
