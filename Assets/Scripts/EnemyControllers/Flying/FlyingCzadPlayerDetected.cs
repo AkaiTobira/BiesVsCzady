@@ -43,7 +43,7 @@ int arrayIndex;
     }
 
     public void SelectMoveState(){
-        if( moveCooldown > 0) return;
+
 
         if( Vector2.Distance( m_FloorDetector.GetComponent<Transform>().position, currentActivePosition ) < 300 || 
             triesToFlyToTarget > 3 
@@ -79,15 +79,39 @@ int arrayIndex;
             m_isOver                       = true;
             entityScript.isAlreadyInCombat = false;
         }else{
-            if(skipFirst) 
-            {
-                SelectMoveState();
-            }else{
-                m_nextState = new FlyingEnemyGliding(m_controllabledObject);
-                skipFirst = true;
+            SelectNextBehaviour();
+        }
+    }
+
+    private void SelectNextBehaviour(){
+        if( skipFirst ){
+            SelectMoveState();
+        }else{
+            if( moveCooldown > 0) return;
+            int nextMove = Random.Range(0, 7);
+            //Debug.Log( nextMove );
+            switch( nextMove ){
+                case 0:
+                case 1:
+                case 2:
+                {
+                    m_nextState = new FlyingEnemyGliding(m_controllabledObject);
+                    skipFirst = true;
+                }
+                break;
+                case 3:
+                case 4:
+                    SelectMoveState();
+                break;
+                case 5:
+                case 6:
+                default:
+                    moveCooldown = entityScript.moveCooldown;
+                break;
             }
         }
     }
+
 
     public override void Process(){
         HandleStopping();

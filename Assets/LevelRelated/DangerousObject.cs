@@ -127,7 +127,7 @@ public class DangerousObject : MonoBehaviour
 
             IEntity mainEntity = other.GetComponent<HurtBoxHandler>().GetMainEntity();
 
-            Debug.Log(mainEntity.GetCurrentState());
+//            Debug.Log(mainEntity.GetCurrentState());
 
             if( mainEntity.GetCurrentState().Contains("Hurt"   )) mainEntity.OnHit( infoPack);
             if( mainEntity.GetCurrentState().Contains("Gliding")) mainEntity.OnHit( infoPack);

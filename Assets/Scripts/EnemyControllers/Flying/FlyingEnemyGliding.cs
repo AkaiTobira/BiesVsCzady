@@ -86,6 +86,10 @@ public class FlyingEnemyGliding : FlyingEnemyBaseState
             entityScript.velocity = (nextPoint - m_FloorDetector.GetComponent<Transform>().position).normalized * entityScript.glideSpeed;
             m_FloorDetector.Move( entityScript.velocity * Time.deltaTime); 
         }
+
+        if( m_isOver){
+            m_animator.SetBool("isGliding", !m_isOver);
+        }
     }
 
     public override void  Process(){
@@ -113,7 +117,7 @@ public class FlyingEnemyGliding : FlyingEnemyBaseState
         }
 
         if( m_isOver){
-                    m_animator.SetBool("isGliding", false);
+            m_animator.SetBool("isGliding", false);
         }
 
     }

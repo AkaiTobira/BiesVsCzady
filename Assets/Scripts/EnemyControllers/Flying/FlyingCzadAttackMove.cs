@@ -30,6 +30,9 @@ public class FlyingCzadAttackMove : CzadMoveBase
     }
 
     public override void Process(){
+
+        m_animator.SetBool("isGliding", false);
+
         ProcessAcceleration();
 
         if( targetPostion != -1){

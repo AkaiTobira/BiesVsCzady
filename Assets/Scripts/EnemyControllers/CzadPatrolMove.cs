@@ -15,6 +15,7 @@ public class CzadPatrolMove : CzadMoveBase
             m_isOver = true;
         }
         if( m_edgeDetector.hasReachedPlatformEdge( ) ) {
+            entityScript.velocity.x = 0;
             AdaptPatrolRange();
             m_isOver = true;
         }
