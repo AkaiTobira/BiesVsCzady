@@ -247,6 +247,7 @@ GameObject:
   - component: {fileID: 6215110984300056991}
   - component: {fileID: 6215110984300056988}
   - component: {fileID: 6215110984300056990}
+  - component: {fileID: 7754376155194262223}
   m_Layer: 12
   m_Name: HitBox
   m_TagString: PlayerHurtBox
@@ -354,6 +355,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 23e6bea70ff6d954c8fab62706bab3f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mainEntity: {fileID: 6215110984417993949}
+--- !u!114 &7754376155194262223
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6215110984300056986}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32dda53bd9d10d3458b1f4ac1a905032, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   mainEntity: {fileID: 6215110984417993949}
@@ -486,6 +500,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   invincible: 1
+  something: {x: 0, y: 0}
   animationNode: {fileID: 6215110984628717109}
   isOnGround: 1
   isWallClose: 0
@@ -496,8 +511,6 @@ MonoBehaviour:
   StateName: Idle
   healthPoints: 10
   keys: 0
-  someSillyValue: 0
-  someSillyValue2: 0
 --- !u!114 &6215110984417993947
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -630,7 +643,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86c6556701af9e04380698b89f691b6e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attenuationObject: {fileID: 0}
   ListenerNumber: -1
 --- !u!114 &6215110984417993936
 MonoBehaviour:

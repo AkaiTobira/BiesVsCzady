@@ -5,6 +5,11 @@ using UnityEngine.UI;
 
 public class AkaiController : IEntity
 {
+    [SerializeField] protected float healthPoints = 30;
+    [SerializeField] public float onTouchDamage   = 1;
+
+    public Vector2 onTouchKnockbackValues = new Vector2();
+
     [HideInInspector] public Vector2 velocity;
     [HideInInspector] public bool isAlreadyInCombat = false;
 
@@ -132,14 +137,20 @@ public class AkaiController : IEntity
                 infoPack.attackDamage   = attackDamage;
                 infoPack.fromCameAttack = m_FloorDetector.GetCurrentDirection();
             break;
-            default: break;
 
+
+            default: 
+                infoPack.isValid = true;
+                infoPack.knockBackValue = onTouchKnockbackValues;
+                infoPack.stunDuration   = 0.0f;
+                infoPack.lockFaceDirectionDuringKnockback = true;
+                infoPack.attackDamage   = onTouchDamage;
+                infoPack.fromCameAttack = m_FloorDetector.GetCurrentDirection();
+            break;
         }
 
         return infoPack;
     }
-
-    protected float healthPoints = 30;
 
     public override void OnHit(GlobalUtils.AttackInfo infoPack){
         if( !infoPack.isValid ) return;

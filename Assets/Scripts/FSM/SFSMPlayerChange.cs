@@ -13,7 +13,7 @@ public class SFSMPlayerChange : ISFSMBase
         foreach( PlayerBaseState b in m_states ){
             stackInfo += b.name + " : " + b.isOver() + " :  " + b.GetDirection().ToString() + "\n";
         }
-//        GlobalUtils.debugConsole.text = stackInfo;
+        GlobalUtils.debugConsole.text = stackInfo;
     }
 
     protected override void processStack(){

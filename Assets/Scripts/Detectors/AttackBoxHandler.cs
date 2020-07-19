@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class AttackBoxHandler : MonoBehaviour
 {
-
     [SerializeField] public IEntity mainScript; 
 
 }
