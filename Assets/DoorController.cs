@@ -10,11 +10,9 @@ public class DoorController : MonoBehaviour
     [SerializeField] Transform doorDetector = null;
 
     void OnTriggerStay2D(Collider2D other) {
-    
-//        Debug.Log(other.name);
 
         if( other.name.Contains("Player")){
-            if( PlayerInput.isActionKeyJustPressed() ){
+            if( PlayerInput.isActionKeyHold() ){
                 if( other.GetComponent<Player>().keys >= numberOfRequiredKeys){
                     doorDetector.GetComponent<Animator>().SetTrigger("isOpen");
                     other.GetComponent<Player>().keys -= numberOfRequiredKeys;

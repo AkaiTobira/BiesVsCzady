@@ -63,7 +63,7 @@ public class PlayerLedgeClimb : PlayerBaseState
         Vector2 pos             = m_FloorDetector.GetComponent<Transform>().position;
 
         targetClimbHight = CalculateHighOfLedge(ledgeBox);
-        targetStayHightY = targetClimbHight + 30;//+ ( playerBox.bounds.max.y - playerBox.bounds.min.x )/2.0f;// + 900.0f;
+        targetStayHightY = targetClimbHight + 30;
 
         GlobalUtils.Direction obstacleDir = ( playerBox.bounds.max.x > ledgeBox.bounds.max.x ) ? 
                                                     GlobalUtils.Direction.Left : 
@@ -72,7 +72,6 @@ public class PlayerLedgeClimb : PlayerBaseState
 
         Vector2 velocityS = new Vector2( 0, targetClimbHight - pos.y);
         m_FloorDetector.CheatMove( velocityS );
-    //    m_FloorDetector.Move( new Vector2(0.001f * (int)m_dir, 0.001f)); 
     }
 
     protected Vector2 shiftValue;
@@ -98,54 +97,5 @@ public class PlayerLedgeClimb : PlayerBaseState
         m_dir = forSureDirection;
     }
 
-/*
-    public override void OnExit(){ }
-
-    protected override void UpdateDirection(){}
-
-    bool doITFuckingOnce = true;
-
-    public override void Process(){
-
-        if( doITFuckingOnce){
-            Vector2 pos = m_FloorDetector.GetComponent<Transform>().position;
-            Vector2 velocityS = new Vector2( 0, targetClimbHight - pos.y);
-            m_FloorDetector.CheatMove( velocityS );
-            doITFuckingOnce = false;
-        }
-       
-        PlayerFallOfWallHelper.ResetCounter();
-
-        timeToEnd -= Time.deltaTime;
-        if( timeToEnd < 0 ) {
-            Vector2 pos = m_FloorDetector.GetComponent<Transform>().position;
-
-            pos = new Vector2( targetStayHightX, targetStayHightY +100 );
-
-            m_FloorDetector.GetComponent<Transform>().position = pos;
-
-      //      Debug.Log( m_FloorDetector.GetComponent<Transform>().position.ToString() + ":::" + 
-     //       new Vector2 ( targetStayHightX ,targetStayHightY +100 ) );
-
-
-            if( m_FloorDetector.isOnGround() ){
-                CommonValues.PlayerVelocity.y = 0;
-                m_isOver = true;
-                m_nextState = new CatMove(m_controllabledObject, m_dir);
-            }else{
-
-                    Vector2 pos2 = m_FloorDetector.GetComponent<Transform>().position;
-
-                    pos = new Vector2( targetStayHightX, targetStayHightY +100 );
-
-                    m_FloorDetector.GetComponent<Transform>().position = pos;
-
-                 CommonValues.PlayerVelocity.y += -CatUtils.GravityForce * Time.deltaTime;
-                 m_FloorDetector.Move(CommonValues.PlayerVelocity * Time.deltaTime);
-            }
-
-        }
-    }
-*/
     public override void HandleInput(){}
 }

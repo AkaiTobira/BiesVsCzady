@@ -48,30 +48,25 @@ public class PlayerHurt : PlayerBaseState{
 
     private void fillKnockbackInfo( GlobalUtils.AttackInfo infoPack ){
         isFaceLocked = infoPack.lockFaceDirectionDuringKnockback;
-
         if( isFaceLocked ){
             knocBackDirection = (int)infoPack.fromCameAttack;
             CommonValues.PlayerVelocity   = infoPack.knockBackValue;
             CommonValues.PlayerVelocity.x *= (int)infoPack.fromCameAttack;
             disableSwipe = true;
         }else{
-            //m_dir = infoPack.fromCameAttack;
             knocBackDirection = Mathf.Sign(CommonValues.PlayerVelocity.x);
             CommonValues.PlayerVelocity   = infoPack.knockBackValue;
         }
-
+        
         if( velocitXFriction > 0){
             m_FloorDetector.CheatMove( new Vector2(0,40.0f));
         }
-
-        Debug.Log( "PlayerHurt :" +  isFaceLocked.ToString() +  CommonValues.PlayerVelocity.ToString() );
     }
-
 
     protected virtual void ProcessStateEnd(){
         timeToEnd -= Time.deltaTime;
         swipeLock -= Time.deltaTime;
-        if( timeToEnd < 0 ){// && m_FloorDetector.isOnGround()) {
+        if( timeToEnd < 0 ){
             m_isOver = true;
             if( isFaceLocked ) m_FloorDetector.Move( new Vector2( 0.001f, 0) * (int)savedDir);
         }

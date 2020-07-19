@@ -50,11 +50,7 @@ public class PlayerBaseState : IBaseState, IInputProcessingState
 
     }
     protected virtual void UpdateFloorAligment(){
-
         m_controllabledObject.GetComponent<Player>().animationNode.transform.up = m_FloorDetector.GetSlopeAngle();
-    //    Debug.Log( m_FloorDetector.GetSlopeAngle2());
-    //    Debug.Log( m_controllabledObject.GetComponent<Player>().animationNode.transform.up );
-
     }
 
     protected virtual void UpdateDirection(){

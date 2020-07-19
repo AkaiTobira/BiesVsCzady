@@ -17,6 +17,7 @@ public class FlyingEnemyGliding : FlyingEnemyBaseState
         m_dir = (GlobalUtils.Direction)Mathf.Sign(GlobalUtils.PlayerObject.position.x - m_FloorDetector.GetComponent<Transform>().position.x);
         fillInfoPack();
         m_wallDetector = controllable.GetComponent<Transform>().Find("Detector").GetComponent<ICollisionWallDetector>();
+        entityScript.delayOfHurtGoInTimer = 0;
     }
 
     public override void UpdateAnimator(){
@@ -88,7 +89,6 @@ public class FlyingEnemyGliding : FlyingEnemyBaseState
     }
 
     public override void  Process(){
-
         DebugDraw();
         ProcessMove();
         ProcessStateOver();
@@ -102,6 +102,7 @@ public class FlyingEnemyGliding : FlyingEnemyBaseState
             infoPack.stunDuration = 5f;
             m_isOver = true;
             m_nextState = new CzadStun( m_controllabledObject, infoPack);
+            
         }else if( m_wallDetector.isCollideWithRightWall() && isRightOriented()){
             GlobalUtils.AttackInfo infoPack = new GlobalUtils.AttackInfo();
 

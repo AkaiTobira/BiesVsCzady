@@ -14,7 +14,6 @@ public class CatFall : PlayerBaseState
         m_dir = dir;
         name = "CatFall";
         HandleSpecialBehaviour();
-//        Debug.Log( CommonValues.PlayerVelocity);
         CommonValues.PlayerVelocity.y = 0;
         m_animator.SetFloat( "FallVelocity", -1000);
         //distanceToFixAnimation = new Vector3( (isLeftOriented())? -126 : 125, 0 , 0);

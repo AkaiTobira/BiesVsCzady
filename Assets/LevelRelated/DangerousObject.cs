@@ -108,39 +108,8 @@ public class DangerousObject : MonoBehaviour
     void OnTriggerStay2D(Collider2D other){
 
         if( other.tag == "PlayerHurtBox"){
-
             var infoPack = GetAttackInfo( other.transform ); 
             GlobalUtils.PlayerObject.GetComponent<Player>().OnHit( infoPack );
-//            other.gameObject.GetComponent<Player>().OnHit( infoPack );
-
-    /*        if( durability < 0) return;
-            GlobalUtils.AttackInfo infoPack =  
-                GlobalUtils.PlayerObject.GetComponent<Player>().GetAttackInfo();
-            
-            if( infoPack.isValid){
-                durability -= infoPack.attackDamage;
-                if( m_anim == null){
-                    if( durability < 0 ){
-                        Destroy(gameObject);
-                    }else if( canBeKnockBacked ){
-                        moveValue    = infoPack.knockBackValue;
-                        moveValue.x *=  (int)infoPack.fromCameAttack;
-                        currentMoveValue += moveValue;
-                        m_FloorDetector.autoGravityOn = false;
-                        m_FloorDetector.CheatMove( new Vector2(0,  moveValue.y * Time.deltaTime) );
-                        m_FloorDetector.Move(  new Vector2(0,  moveValue.y * Time.deltaTime) );
-                        gravityForce = (2 * moveValue.y) / Mathf.Pow (timeToHitApex, 2);
-                        Debug.Log( moveValue );
-                    }
-                }else{
-                    if( durability < 0 ){
-                        m_anim.SetBool("isDestroyed", true);
-                        //ForExample
-                    }
-                }
-            }
-
-            */
         }
     }
 
@@ -148,39 +117,22 @@ public class DangerousObject : MonoBehaviour
     void OnTriggerEnter2D(Collider2D other){
 
         if( other.tag == "PlayerHurtBox"){
-
             var infoPack = GetAttackInfo( other.transform ); 
             GlobalUtils.PlayerObject.GetComponent<Player>().OnHit( infoPack );
-//            other.gameObject.GetComponent<Player>().OnHit( infoPack );
+        }else if( other.tag == "EnemyHurtBox"){
 
-    /*        if( durability < 0) return;
-            GlobalUtils.AttackInfo infoPack =  
-                GlobalUtils.PlayerObject.GetComponent<Player>().GetAttackInfo();
+            GlobalUtils.AttackInfo infoPack = new GlobalUtils.AttackInfo();
+            infoPack.isValid      = true;
+            infoPack.attackDamage = 1000;
+
+            IEntity mainEntity = other.GetComponent<HurtBoxHandler>().GetMainEntity();
+
+            Debug.Log(mainEntity.GetCurrentState());
+
+            if( mainEntity.GetCurrentState().Contains("Hurt"   )) mainEntity.OnHit( infoPack);
+            if( mainEntity.GetCurrentState().Contains("Gliding")) mainEntity.OnHit( infoPack);
+            if( mainEntity.GetCurrentState().Contains("Stun"   )) mainEntity.OnHit( infoPack);
             
-            if( infoPack.isValid){
-                durability -= infoPack.attackDamage;
-                if( m_anim == null){
-                    if( durability < 0 ){
-                        Destroy(gameObject);
-                    }else if( canBeKnockBacked ){
-                        moveValue    = infoPack.knockBackValue;
-                        moveValue.x *=  (int)infoPack.fromCameAttack;
-                        currentMoveValue += moveValue;
-                        m_FloorDetector.autoGravityOn = false;
-                        m_FloorDetector.CheatMove( new Vector2(0,  moveValue.y * Time.deltaTime) );
-                        m_FloorDetector.Move(  new Vector2(0,  moveValue.y * Time.deltaTime) );
-                        gravityForce = (2 * moveValue.y) / Mathf.Pow (timeToHitApex, 2);
-                        Debug.Log( moveValue );
-                    }
-                }else{
-                    if( durability < 0 ){
-                        m_anim.SetBool("isDestroyed", true);
-                        //ForExample
-                    }
-                }
-            }
-
-            */
         }
     }
 

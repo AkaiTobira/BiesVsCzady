@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class AkaiController : IEntity
 {
     [HideInInspector] public Vector2 velocity;
+    [HideInInspector] public bool isAlreadyInCombat = false;
 
     [Header("MoveValues")]
 
@@ -35,6 +36,9 @@ public class AkaiController : IEntity
 
     [Header("MeeleAttackBehaviour")]
 
+    public float timeOfBeeingHurt = 3.0f;
+
+    public float delayOfHurtStartReEnter = 4.0f;
 
     [SerializeField]  public float massFactor = 0.2f;
 
@@ -61,6 +65,8 @@ public class AkaiController : IEntity
 
     [HideInInspector] public bool isDead = false;
 
+    [HideInInspector] public float delayOfHurtGoInTimer = 0.0f;
+
     void Start()
     {
         m_FloorDetector   = transform.Find("Detector").GetComponent<ICollisionFloorDetector>();
@@ -68,11 +74,9 @@ public class AkaiController : IEntity
         m_animator      = transform.Find("Animator").GetComponent<Animator>();
         m_controller    = new SFSMEnemy( gameObject, new CzadIdle( gameObject ) );
         m_FloorDetector.Move( new Vector2(0.1f, 0) );
-
     }
 
 
-    [HideInInspector] public bool isAlreadyInCombat = false;
 
     void UpdatePlayerDetection(){
         if( m_sightController.isPlayerSeen() && !isAlreadyInCombat ){
@@ -81,14 +85,16 @@ public class AkaiController : IEntity
         }
     }
 
-    void Update() {
+    protected virtual void Update() {
         m_controller.Update();
-
         UpdatePlayerDetection();
+        UpdateHurtDelayTimer();
         UpdateDebugConsole();
-
-
         if( isDead ) Destroy(gameObject);
+    }
+
+    protected void UpdateHurtDelayTimer(){
+        delayOfHurtGoInTimer = Mathf.Max( delayOfHurtGoInTimer - Time.deltaTime, 0);
     }
 
     public void ResetPatrolValues(){
@@ -97,6 +103,7 @@ public class AkaiController : IEntity
     }
 
     void UpdateDebugConsole(){
+
         DebugConsole.transform.position = m_FloorDetector.GetComponent<Transform>().position + new Vector3( -200, 500, 0);
         DebugConsoleInfo2.text = m_controller.GetStackStatus();
         DebugConsoleInfo1.text = "";
@@ -106,7 +113,6 @@ public class AkaiController : IEntity
 
         Vector2 RayPosition = transform.Find("Detector").transform.position + new Vector3( 0, -75, 0);
         Debug.DrawLine( RayPosition - new Vector2( combatRange, 0 ), RayPosition + new Vector2( combatRange, 0 ), new Color(1,0,1));
-
     }
 
 
@@ -142,7 +148,10 @@ public class AkaiController : IEntity
             if( infoPack.stunDuration > 0){
                 m_controller.OverriteStates( "Stun", infoPack );
             }else{
-                m_controller.OverriteStates( "Hurt", infoPack );
+                if( delayOfHurtGoInTimer <= 0.0f){
+                    m_controller.OverriteStates( "Hurt", infoPack );
+                }
+                delayOfHurtGoInTimer = delayOfHurtStartReEnter;
             }
         }else{
             m_controller.OverriteStates( "Dead", infoPack );

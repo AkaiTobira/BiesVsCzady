@@ -14,21 +14,13 @@ public class FlyingCzadAttackMove : CzadMoveBase
             targetPostion = airNavPositionIndex;
         }
         entityScript = controllable.GetComponent<FlyingAkaiController>();
-    //    Debug.Log( leftToMove + "  :: " + moveVector + " :: " + m_FloorDetector.GetCurrentDirection().ToString() + " INHErIt");
     }
 
     public override void SelectNextState(){
         if( leftToMove.magnitude < 10){
             entityScript.velocity = new Vector2();
             m_isOver = true;
-        } 
-    
-    //    if( Mathf.Abs( leftToMove.x ) < 10 ) m_isOver = true;
-    //    if( m_edgeDetector.hasReachedPlatformEdge( ) ) {
-            //AdaptPatrolRange();
-  //          m_isOver = true;
-//        }
-
+        }
     }
     public override void UpdateAnimator(){
         m_dir = (GlobalUtils.Direction)Mathf.Sign(GlobalUtils.PlayerObject.position.x - m_FloorDetector.GetComponent<Transform>().position.x);;
@@ -39,8 +31,6 @@ public class FlyingCzadAttackMove : CzadMoveBase
 
     public override void Process(){
         ProcessAcceleration();
-
-        Debug.Log( targetPostion);
 
         if( targetPostion != -1){
             leftToMove = entityScript.airNavPoints[targetPostion] - (Vector2)m_FloorDetector.GetComponent<Transform>().position;
@@ -54,13 +44,8 @@ public class FlyingCzadAttackMove : CzadMoveBase
     }
 
     protected override void ProcessAcceleration(){
-    //    if( Mathf.Abs( entityScript.velocity.x ) == entityScript.maxMoveSpeed) return;
         float acceleration = (entityScript.maxFlyingSpeed / entityScript.moveAccelerationTime) * Time.deltaTime;
         float currentValue = Mathf.Min( entityScript.velocity.magnitude + acceleration,  entityScript.maxFlyingSpeed );
-
         entityScript.velocity = leftToMove.normalized * currentValue;
-
-        //entityScript.velocity.x = currentValue * (int)m_dir;
     }
-
 }

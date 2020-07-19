@@ -65,9 +65,7 @@ int arrayIndex;
         }
         skipFirst = false;
     }
-
-
-
+    
     private bool skipFirst = true;
 
     public void SelectNextState(){
@@ -89,26 +87,9 @@ int arrayIndex;
                 skipFirst = true;
             }
         }
-        
-        /*
-        if( distance > 2000 ) {
-            entityScript.ResetPatrolValues();
-            m_isOver                       = true;
-            entityScript.isAlreadyInCombat = false;
-        }else if(distance > entityScript.combatRange ){
-            var direction = (GlobalUtils.PlayerObject.transform.position - m_FloorDetector.GetComponent<Transform>().position).normalized;
-            Debug.Log( direction );
-            m_nextState = new CzadAttackMove( m_controllabledObject, direction * 100);
-        }else{
-            if( CanMeeleAttack() ){
-                m_nextState = new CzadAttackMelee( m_controllabledObject );
-            }
-        }
-        */
     }
 
     public override void Process(){
-    //    base.Process();
         HandleStopping();
         SelectNextState();
         m_FloorDetector.Move( entityScript.velocity * Time.deltaTime);
@@ -117,7 +98,6 @@ int arrayIndex;
     private void HandleStopping(){
         float acceleration      = (entityScript.maxMoveSpeed / entityScript.moveBrakingTime) * Time.deltaTime;
         float currentValue      = Mathf.Max( Mathf.Abs( entityScript.velocity.x ) - acceleration, 0);
-//        Debug.Log( currentValue * (int)m_FloorDetector.GetCurrentDirection() );
         entityScript.velocity.x = currentValue * (int)m_FloorDetector.GetCurrentDirection();
     }
 

@@ -594,7 +594,7 @@ MonoBehaviour:
     m_Bits: 3840
   m_selfCollsionMask:
     serializedVersion: 2
-    m_Bits: 16384
+    m_Bits: 0
   verticalRayNumber: 4
   horizontalRayNumber: 4
   skinSize: 15
@@ -621,7 +621,7 @@ GameObject:
   - component: {fileID: 1769509038183446179}
   m_Layer: 12
   m_Name: HitBox
-  m_TagString: Untagged
+  m_TagString: EnemyHurtBox
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -716,18 +716,18 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.3269179, y: -0.24518734}
+  m_Offset: {x: 0.34107876, y: -0.7685621}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 5.1, y: 4.54}
+    newSize: {x: 5.1, y: 4.54}
+    adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2.0160928, y: 3.541709}
+  m_Size: {x: 2.4023504, y: 3.844585}
   m_EdgeRadius: 0
 --- !u!1 &1769509038387440575
 GameObject:
@@ -902,6 +902,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   velocity: {x: 269.61057, y: 0}
+  isAlreadyInCombat: 0
   moveBrakingTime: 1
   moveAccelerationTime: 1
   maxMoveSpeed: 1200
@@ -914,6 +915,8 @@ MonoBehaviour:
   autoCorrectionRight: 0
   canRandomMove: 0
   maxMoveDistance: 0
+  timeOfBeeingHurt: 3
+  delayOfHurtStartReEnter: 4
   massFactor: 0.2
   delayOfFirstAttack: 3
   breakBeetweenAttacks: 1
@@ -925,7 +928,7 @@ MonoBehaviour:
   DebugConsoleInfo1: {fileID: 1769509037496833831}
   DebugConsoleInfo2: {fileID: 1769509038766788703}
   isDead: 0
-  isAlreadyInCombat: 0
+  delayOfHurtGoInTimer: 0
   airNavPoints: []
   startingHight: 500
   posiblePositions:

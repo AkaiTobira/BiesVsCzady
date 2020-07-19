@@ -10,6 +10,7 @@ public class CzadAttackMelee : EnemyBaseState
     public CzadAttackMelee( GameObject controllable ) : base( controllable ){
         name = "CzadAttackMelee";
         timeToEnd = getAnimationLenght("CzadAttack");
+        entityScript.delayOfHurtGoInTimer = 0;
     }
 
     public void SelectNextState(){

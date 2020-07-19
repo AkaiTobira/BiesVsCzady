@@ -207,6 +207,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   velocity: {x: 0, y: 0}
+  isAlreadyInCombat: 0
   moveBrakingTime: 1
   moveAccelerationTime: 1
   maxMoveSpeed: 500
@@ -219,6 +220,8 @@ MonoBehaviour:
   autoCorrectionRight: 0
   canRandomMove: 1
   maxMoveDistance: 1500
+  timeOfBeeingHurt: 3
+  delayOfHurtStartReEnter: 4
   massFactor: 1
   delayOfFirstAttack: 3
   breakBeetweenAttacks: 2
@@ -230,7 +233,6 @@ MonoBehaviour:
   DebugConsoleInfo1: {fileID: 2173679741619918045}
   DebugConsoleInfo2: {fileID: 2173679740213908389}
   isDead: 0
-  isAlreadyInCombat: 0
 --- !u!50 &2173679740509289888
 Rigidbody2D:
   serializedVersion: 4
@@ -482,7 +484,7 @@ MonoBehaviour:
     m_Bits: 3840
   m_selfCollsionMask:
     serializedVersion: 2
-    m_Bits: 16384
+    m_Bits: 0
   verticalRayNumber: 4
   horizontalRayNumber: 4
   skinSize: 15
@@ -509,7 +511,7 @@ GameObject:
   - component: {fileID: 2173679741232756057}
   m_Layer: 12
   m_Name: HitBox
-  m_TagString: Untagged
+  m_TagString: EnemyHurtBox
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

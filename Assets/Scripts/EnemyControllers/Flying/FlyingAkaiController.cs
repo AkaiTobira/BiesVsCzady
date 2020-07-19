@@ -57,13 +57,14 @@ public class FlyingAkaiController : AkaiController
     }
 
 
-    void Update() {
-
+    protected override void Update() {
+        
         m_controller.Update();
 
         UpdatePlayerDetection();
         UpdateDebugConsole();
         DrawNavigationPoints();
+        UpdateHurtDelayTimer();
 
         if( isDead ) Destroy(gameObject);
     }
@@ -215,7 +216,9 @@ public class FlyingAkaiController : AkaiController
             if( infoPack.stunDuration > 0){
                 m_controller.OverriteStates( "FlyingStun", infoPack );
             }else{
+                if( delayOfHurtGoInTimer >= 0 )
                 m_controller.OverriteStates( "FlyingHurt", infoPack );
+                delayOfHurtGoInTimer = delayOfHurtStartReEnter;
             }
         }else{
             m_controller.OverriteStates( "Dead", infoPack );
