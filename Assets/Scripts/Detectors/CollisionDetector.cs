@@ -394,6 +394,8 @@ public class CollisionDetector : MonoBehaviour, ICollisionFloorDetector
         return transition;
     }
 
+  //  public float GravityForce = PlayerUtils.GravityForce;
+
     protected virtual void ProcessAutoGravity(){
         if( autoGravityOn ){
             if( !collisionInfo.below){
