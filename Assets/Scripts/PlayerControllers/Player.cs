@@ -147,6 +147,10 @@ public class Player : IEntity
 
     [SerializeField] public int keys = 0;
 
+    public string GetStackInfo(){
+        return m_controller.StackStatusPrint();
+    }
+
     public void AddKey(){ keys++; }
 
 

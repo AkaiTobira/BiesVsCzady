@@ -6,12 +6,8 @@ public abstract class IEntity : MonoBehaviour
     protected ICollisionFloorDetector m_FloorDetector;
     protected Animator m_animator;
 
-    public virtual GlobalUtils.AttackInfo GetAttackInfo(){
-        GlobalUtils.AttackInfo infoPack = new GlobalUtils.AttackInfo();
-        infoPack.isValid = false;
-        return infoPack;
-    }
-    public string GetCurrentState(){
+    public abstract GlobalUtils.AttackInfo GetAttackInfo();
+    public virtual string GetCurrentState(){
         return m_controller.GetStateName();
     }
     public abstract void OnHit( GlobalUtils.AttackInfo infoPack );

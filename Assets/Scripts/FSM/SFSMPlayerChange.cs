@@ -8,12 +8,12 @@ public class SFSMPlayerChange : ISFSMBase
         base(controlledObj, PlayerBaseState )
     {}
 
-    public void StackStatusPrint(){
+    public override string StackStatusPrint(){
         string stackInfo = "";
         foreach( PlayerBaseState b in m_states ){
             stackInfo += b.name + " : " + b.isOver() + " :  " + b.GetDirection().ToString() + "\n";
         }
-        GlobalUtils.debugConsole.text = stackInfo;
+        return stackInfo;
     }
 
     protected override void processStack(){
@@ -26,7 +26,6 @@ public class SFSMPlayerChange : ISFSMBase
     public override void Update(){
         base.Update();
         ProcessCharacterChange();
-        StackStatusPrint();
     }
 
 

@@ -51,6 +51,10 @@ public abstract class ISFSMBase
         switchState();
     }
 
+    public virtual string StackStatusPrint(){
+        return "";
+    }
+
     public virtual void OverriteStates( string targetState, GlobalUtils.AttackInfo attackInfo = new GlobalUtils.AttackInfo() ){}
 
 }

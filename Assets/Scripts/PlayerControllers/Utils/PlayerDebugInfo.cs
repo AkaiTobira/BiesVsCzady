@@ -33,6 +33,7 @@ public class PlayerDebugInfo : MonoBehaviour
 
     void Update()
     {
+        m_debugText[0].text = GetComponent<Player>().GetStackInfo();
         m_debugText[1].text = CatUtils.PlayerJumpForceMax.ToString() + " " + CatUtils.PlayerJumpForceMin.ToString();     
         m_debugText[2].text = transform.position + "\n";
         m_debugText[2].text += CommonValues.PlayerVelocity.ToString();
