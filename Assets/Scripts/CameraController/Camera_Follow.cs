@@ -18,12 +18,23 @@ public class Camera_Follow : MonoBehaviour
     [SerializeField] private Vector3 centerOfCamera      = new Vector3(0,0,0);
     [SerializeField] private Transform followedObject    = null;
     [SerializeField] public  KeyValuePairs LeftClamping  = new KeyValuePairs(false, 0);
-    [SerializeField] private KeyValuePairs RightClamping = new KeyValuePairs(false, 0);
-    [SerializeField] private KeyValuePairs TopClamping   = new KeyValuePairs(false, 0);
-    [SerializeField] private KeyValuePairs DownClamping  = new KeyValuePairs(false, 0);
+    [SerializeField] public KeyValuePairs RightClamping = new KeyValuePairs(false, 0);
+    [SerializeField] public KeyValuePairs TopClamping   = new KeyValuePairs(false, 0);
+    [SerializeField] public KeyValuePairs DownClamping  = new KeyValuePairs(false, 0);
     [SerializeField] private float m_smoothTime = 10.0f;
 
     Vector3 velocity  = Vector3.zero;
+
+    void Start() {
+        GlobalUtils.Camera = GetComponent<Camera_Follow>();
+    }
+
+    public void SetValues( KeyValuePairs left, KeyValuePairs right, KeyValuePairs up, KeyValuePairs down ){
+        LeftClamping  = left;
+        RightClamping = right;
+        TopClamping   = up;
+        DownClamping  = down;
+    }
 
     float GetXPosition(){
         float minValue = (LeftClamping.enable)  ? LeftClamping.position  : followedObject.position.x - centerOfCamera.x;

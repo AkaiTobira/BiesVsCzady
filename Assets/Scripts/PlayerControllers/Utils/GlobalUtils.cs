@@ -27,6 +27,8 @@ public static class  GlobalUtils
 
     public static Transform    TaskMaster = null;
 
+    public static Camera_Follow Camera = null;
+
     public static Text        debugConsole   = null;
     public static Text        debugConsole2  = null;
 
