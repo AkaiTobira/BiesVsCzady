@@ -73,7 +73,8 @@ public class PlayerHurt : PlayerBaseState{
         if( timeToEnd < 0 ){
             m_isOver = true;
             Debug.Log( savedDir.ToString() + m_FloorDetector.GetCurrentDirection().ToString() );
-            if( isFaceLocked ) m_FloorDetector.Move( new Vector2( 0.001f, 0) * (float)savedDir);
+            if( isFaceLocked ) CommonValues.PlayerVelocity.x = 0;
+            //m_FloorDetector.Move( new Vector2( 0.001f, 0) * (float)savedDir);
         }
     }
 
