@@ -775,6 +775,21 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3227264543136333695, guid: 07662773cb44971489b75afb3b56619d,
+        type: 3}
+      propertyPath: m_Size.x
+      value: 5.82
+      objectReference: {fileID: 0}
+    - target: {fileID: 3227264543136333695, guid: 07662773cb44971489b75afb3b56619d,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 5.76
+      objectReference: {fileID: 0}
+    - target: {fileID: 3227264543136333695, guid: 07662773cb44971489b75afb3b56619d,
+        type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3482047477144512099, guid: 07662773cb44971489b75afb3b56619d,
         type: 3}
       propertyPath: m_IsActive
@@ -810,7 +825,8 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 3227264543136333695, guid: 07662773cb44971489b75afb3b56619d, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 07662773cb44971489b75afb3b56619d, type: 3}
 --- !u!1 &729516428
 GameObject:

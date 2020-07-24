@@ -88,7 +88,7 @@ int arrayIndex;
             SelectMoveState();
         }else{
             if( moveCooldown > 0) return;
-            int nextMove = Random.Range(0, 7);
+            int nextMove = Random.Range(0, 11);
             //Debug.Log( nextMove );
             switch( nextMove ){
                 case 0:
@@ -105,6 +105,11 @@ int arrayIndex;
                 break;
                 case 5:
                 case 6:
+                case 7:
+                case 8:
+                    m_nextState = new FlyingCzadAttackShot(m_controllabledObject);
+                    skipFirst = true;
+                break;
                 default:
                     moveCooldown = entityScript.moveCooldown;
                 break;
