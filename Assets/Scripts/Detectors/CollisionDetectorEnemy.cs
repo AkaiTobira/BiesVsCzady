@@ -146,8 +146,11 @@ public class CollisionDetectorEnemy : CollisionDetector, IPlatformEdgeDetector, 
     public float sightLenght     = 500;
 
     public bool isPlayerSeen(){
+
+//        Debug.Log( "IsLeft=" + (collisionInfo.faceDir == DIR_LEFT).ToString() );
+
         Vector2 rayOrigin = new Vector2( (collisionInfo.faceDir == DIR_LEFT) ? 
-                                            borders.left + skinSize: borders.right -skinSize ,
+                                            borders.left - skinSize: borders.right + skinSize ,
                                             (borders.top + borders.bottom)/2.0f  );
 
         RaycastHit2D hit = Physics2D.Raycast(
@@ -163,7 +166,11 @@ public class CollisionDetectorEnemy : CollisionDetector, IPlatformEdgeDetector, 
                 new Color(1,1,1)
              );
 
+        Debug.Log( "isHit=" + (!hit).ToString()  );
+
         if( !hit ) return false;
+
+        Debug.Log( "isRightTarget=" + ( hit.collider.tag == "PlayerHurtBox").ToString());
         return hit.collider.tag == "PlayerHurtBox";
     }
 

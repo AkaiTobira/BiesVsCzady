@@ -31,8 +31,8 @@ public class BiesIdle : PlayerBaseState
             m_nextState = new BiesAttack1(m_controllabledObject);
         }else if( PlayerInput.isAttack2KeyPressed() ){
             m_nextState = new BiesAttack2(m_controllabledObject);
-        }else if( PlayerInput.isAttack3KeyPressed() ){
-            m_nextState = new BiesAttack3(m_controllabledObject);
+        //}else if( PlayerInput.isAttack3KeyPressed() ){
+        //    m_nextState = new BiesAttack3(m_controllabledObject);
         }else if( PlayerInput.isMoveLeftKeyHold() ){
             HandleInputMoveState( GlobalUtils.Direction.Left);
         }else if( PlayerInput.isMoveRightKeyHold() ){

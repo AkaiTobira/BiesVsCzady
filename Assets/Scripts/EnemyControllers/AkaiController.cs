@@ -15,6 +15,8 @@ public class AkaiController : IEntity
 
     [Header("MoveValues")]
 
+    public bool isPositionLocked = false;
+
     public float moveBrakingTime = 0;
     public float moveAccelerationTime = 0;
 
@@ -41,6 +43,8 @@ public class AkaiController : IEntity
 
     [Header("MeeleAttackBehaviour")]
 
+    public bool canMeeleAttack;
+
     public float timeOfBeeingHurt = 3.0f;
 
     public float delayOfHurtStartReEnter = 4.0f;
@@ -58,6 +62,15 @@ public class AkaiController : IEntity
     public Vector2 knockbackValues    = new Vector2();
 
     public float stunDuration         = 0;
+
+    [Header("ShotAttackBehaviour")]
+
+    public bool canShot;
+    public float breakBeetweenShots =  1.0f ;
+
+    [Range(0,10)] public float probabilityOfShot = 1;
+
+    public float shotRange = 1000;
 
     [Header("Debug")]
 
@@ -84,6 +97,7 @@ public class AkaiController : IEntity
 
 
     void UpdatePlayerDetection(){
+
         if( m_sightController.isPlayerSeen() && !isAlreadyInCombat ){
             m_controller.OverriteStates( "CombatEngage" );
             isAlreadyInCombat = true;

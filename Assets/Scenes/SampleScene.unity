@@ -650,6 +650,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 130843380000604738, guid: 07662773cb44971489b75afb3b56619d,
+        type: 3}
+      propertyPath: onTouchKnockbackValues.x
+      value: 1200
+      objectReference: {fileID: 0}
     - target: {fileID: 130843380000604796, guid: 07662773cb44971489b75afb3b56619d,
         type: 3}
       propertyPath: m_IsActive
@@ -664,6 +669,16 @@ PrefabInstance:
         type: 3}
       propertyPath: patrolRangeLeft
       value: -2250
+      objectReference: {fileID: 0}
+    - target: {fileID: 605021683970070315, guid: 07662773cb44971489b75afb3b56619d,
+        type: 3}
+      propertyPath: moveBrakingTime
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 605021683970070315, guid: 07662773cb44971489b75afb3b56619d,
+        type: 3}
+      propertyPath: healthPoints
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 979010676329438312, guid: 07662773cb44971489b75afb3b56619d,
         type: 3}
@@ -735,6 +750,11 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1842901327322440724, guid: 07662773cb44971489b75afb3b56619d,
+        type: 3}
+      propertyPath: onTouchKnockbackValues.x
+      value: 1200
+      objectReference: {fileID: 0}
     - target: {fileID: 1842901327322440746, guid: 07662773cb44971489b75afb3b56619d,
         type: 3}
       propertyPath: m_IsActive
@@ -785,6 +805,11 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3100618280485987875, guid: 07662773cb44971489b75afb3b56619d,
+        type: 3}
+      propertyPath: onTouchKnockbackValues.x
+      value: 1200
+      objectReference: {fileID: 0}
     - target: {fileID: 3227264543136333695, guid: 07662773cb44971489b75afb3b56619d,
         type: 3}
       propertyPath: m_Size.x
@@ -805,6 +830,11 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3625339136601310299, guid: 07662773cb44971489b75afb3b56619d,
+        type: 3}
+      propertyPath: onTouchKnockbackValues.x
+      value: 1200
+      objectReference: {fileID: 0}
     - target: {fileID: 3625339136601310309, guid: 07662773cb44971489b75afb3b56619d,
         type: 3}
       propertyPath: m_IsActive
@@ -820,10 +850,25 @@ PrefabInstance:
       propertyPath: patrolRangeLeft
       value: -3000
       objectReference: {fileID: 0}
+    - target: {fileID: 3864628042624265504, guid: 07662773cb44971489b75afb3b56619d,
+        type: 3}
+      propertyPath: moveBrakingTime
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3864628042624265504, guid: 07662773cb44971489b75afb3b56619d,
+        type: 3}
+      propertyPath: healthPoints
+      value: 13
+      objectReference: {fileID: 0}
     - target: {fileID: 4024493143006668697, guid: 07662773cb44971489b75afb3b56619d,
         type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4024493143006668711, guid: 07662773cb44971489b75afb3b56619d,
+        type: 3}
+      propertyPath: onTouchKnockbackValues.x
+      value: 1200
       objectReference: {fileID: 0}
     - target: {fileID: 4837304923919554105, guid: 07662773cb44971489b75afb3b56619d,
         type: 3}
@@ -840,6 +885,11 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5644730024532206325, guid: 07662773cb44971489b75afb3b56619d,
+        type: 3}
+      propertyPath: onTouchKnockbackValues.x
+      value: 1200
+      objectReference: {fileID: 0}
     - target: {fileID: 6262464415648961243, guid: 07662773cb44971489b75afb3b56619d,
         type: 3}
       propertyPath: m_IsActive
@@ -854,6 +904,16 @@ PrefabInstance:
         type: 3}
       propertyPath: patrolRangeLeft
       value: -750
+      objectReference: {fileID: 0}
+    - target: {fileID: 8355758606770522197, guid: 07662773cb44971489b75afb3b56619d,
+        type: 3}
+      propertyPath: moveBrakingTime
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8355758606770522197, guid: 07662773cb44971489b75afb3b56619d,
+        type: 3}
+      propertyPath: healthPoints
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 8355758606770522199, guid: 07662773cb44971489b75afb3b56619d,
         type: 3}
@@ -874,6 +934,21 @@ PrefabInstance:
         type: 3}
       propertyPath: patrolRangeLeft
       value: -1500
+      objectReference: {fileID: 0}
+    - target: {fileID: 8869347493443708785, guid: 07662773cb44971489b75afb3b56619d,
+        type: 3}
+      propertyPath: moveBrakingTime
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8869347493443708785, guid: 07662773cb44971489b75afb3b56619d,
+        type: 3}
+      propertyPath: healthPoints
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 8953669751337636641, guid: 07662773cb44971489b75afb3b56619d,
+        type: 3}
+      propertyPath: onHitMoveUpAdditionalFactor
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 3227264543136333695, guid: 07662773cb44971489b75afb3b56619d, type: 3}

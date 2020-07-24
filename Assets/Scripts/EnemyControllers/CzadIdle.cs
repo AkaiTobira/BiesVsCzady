@@ -15,7 +15,7 @@ public class CzadIdle : EnemyBaseState
 
         if( entityScript.canPatrol ){
             m_nextState = new CzadPatrol( m_controllabledObject );
-        }else{
+        }else if( !entityScript.isPositionLocked ) {
             float direction = Random.Range( -1, 2);
             while( direction == 0 ) direction = Random.Range( -1, 2);
             float distance  = Random.Range( 0, entityScript.maxMoveDistance);
@@ -26,6 +26,11 @@ public class CzadIdle : EnemyBaseState
 
     public override void Process(){
         base.Process();
+
+        if( entityScript.isPositionLocked ){
+            m_FloorDetector.Move( new Vector2(0.0000001f, 0 ) * Mathf.Sign(GlobalUtils.PlayerObject.position.x - m_FloorDetector.GetComponent<Transform>().position.x));
+        }
+
         HandleStopping();
         SelectNextState();
     }
