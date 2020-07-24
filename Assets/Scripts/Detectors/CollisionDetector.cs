@@ -249,7 +249,7 @@ public class CollisionDetector : MonoBehaviour, ICollisionFloorDetector
         RaycastHit2D hit = Physics2D.Raycast(
             rayOrigin,
             new Vector2(0, -1),
-            100,
+            200,
             m_collsionMask
         );
 
@@ -262,13 +262,13 @@ public class CollisionDetector : MonoBehaviour, ICollisionFloorDetector
 
         Debug.DrawRay(
             rayOriginDescend,
-            new Vector2(100 * collisionInfo.faceDir, -0),
+            new Vector2(200 * collisionInfo.faceDir, -0),
             new Color(1,1,1)
         );
 
         Debug.DrawRay(
             rayOrigin,
-            new Vector2(0, -100),
+            new Vector2(0, -200),
             new Color(0,0,0)
         );
 
@@ -438,6 +438,31 @@ public class CollisionDetector : MonoBehaviour, ICollisionFloorDetector
         transform.Translate( transition );
         transition = new Vector2(0,0);
     }
+
+    public virtual void Move( float x, float y ){
+        if(LOCKED_BY_FORCE) return;
+        transition = new Vector2(x, y);
+        if( transition.x != 0) collisionInfo.faceDir = (int) Mathf.Sign(transition.x) ;
+        ResetCollisionInfo();
+        CalculateDistanceBeetweenRay();
+        CalculateBorders();
+        ProcessCollision();
+        transform.Translate( transition );
+        transition = new Vector2(0,0);
+    }
+
+    public virtual void Move( Vector2 velocity, bool updateFaceDir ){
+        if(LOCKED_BY_FORCE) return;
+        transition = velocity;
+        if( transition.x != 0 && updateFaceDir) collisionInfo.faceDir = (int) Mathf.Sign(transition.x) ;
+        ResetCollisionInfo();
+        CalculateDistanceBeetweenRay();
+        CalculateBorders();
+        ProcessCollision();
+        transform.Translate( transition );
+        transition = new Vector2(0,0);
+    }
+
 
     public GlobalUtils.Direction GetCurrentDirection(){
         return (GlobalUtils.Direction) collisionInfo.faceDir;

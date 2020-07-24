@@ -29,7 +29,7 @@ public class PlayerHurt : PlayerBaseState{
 
         PlayerFallHelper.FallRequirementsMeet( true );
         m_settings = settings;
-        savedDir     = m_FloorDetector.GetCurrentDirection();
+
         fillKnockbackInfo( infoPack );
         m_FloorDetector.CheatMove( new Vector2(0,40.0f));
 
@@ -48,15 +48,19 @@ public class PlayerHurt : PlayerBaseState{
 
     private void fillKnockbackInfo( GlobalUtils.AttackInfo infoPack ){
         isFaceLocked = infoPack.lockFaceDirectionDuringKnockback;
+        Debug.Log( infoPack.fromCameAttack.ToString() + isFaceLocked.ToString() + savedDir.ToString() + m_FloorDetector.GetCurrentDirection()  );
         if( isFaceLocked ){
-            knocBackDirection = (int)infoPack.fromCameAttack;
+            knocBackDirection             = (int)infoPack.fromCameAttack;
             CommonValues.PlayerVelocity   = infoPack.knockBackValue;
             CommonValues.PlayerVelocity.x *= (int)infoPack.fromCameAttack;
-            disableSwipe = true;
+            disableSwipe                  = true;
+            savedDir                      = GlobalUtils.ReverseDirection(infoPack.fromCameAttack);
         }else{
-            knocBackDirection = Mathf.Sign(CommonValues.PlayerVelocity.x);
+            savedDir                      = m_FloorDetector.GetCurrentDirection();
+            knocBackDirection             = Mathf.Sign(CommonValues.PlayerVelocity.x);
             CommonValues.PlayerVelocity   = infoPack.knockBackValue;
         }
+        Debug.Log( isFaceLocked.ToString() + savedDir.ToString() + m_FloorDetector.GetCurrentDirection()  );
         
         if( velocitXFriction > 0){
             m_FloorDetector.CheatMove( new Vector2(0,40.0f));
@@ -68,7 +72,8 @@ public class PlayerHurt : PlayerBaseState{
         swipeLock -= Time.deltaTime;
         if( timeToEnd < 0 ){
             m_isOver = true;
-            if( isFaceLocked ) m_FloorDetector.Move( new Vector2( 0.001f, 0) * (int)savedDir);
+            Debug.Log( savedDir.ToString() + m_FloorDetector.GetCurrentDirection().ToString() );
+            if( isFaceLocked ) m_FloorDetector.Move( new Vector2( 0.001f, 0) * (float)savedDir);
         }
     }
 
@@ -95,7 +100,8 @@ public class PlayerHurt : PlayerBaseState{
                             Mathf.Min(    m_settings.maxMoveDistanceInAir,
                                         CommonValues.PlayerVelocity.x + m_settings.MoveSpeedInAir * Time.deltaTime);
                                     
-        m_dir = (GlobalUtils.Direction) Mathf.Sign(CommonValues.PlayerVelocity.x);
+    
+    //    m_dir = (GlobalUtils.Direction) Mathf.Sign(CommonValues.PlayerVelocity.x);
     }
 
     private void HandleInputSwipe(){
@@ -112,10 +118,31 @@ public class PlayerHurt : PlayerBaseState{
         }
     }
 
+    private void ProcessMove2(){
+        m_animator.SetFloat( "FallVelocity", CommonValues.PlayerVelocity.y);
+        m_animator.SetBool(  "isGrounded", m_FloorDetector.isOnGround());
+        PlayerFallHelper.FallRequirementsMeet( m_FloorDetector.isOnGround() );
+
+     //   if( knocBackDirection == -1 ) {
+    //        CommonValues.PlayerVelocity.x = CommonValues.PlayerVelocity.x - velocitXFriction * Time.deltaTime;
+    //    }else{
+    //        CommonValues.PlayerVelocity.x = CommonValues.PlayerVelocity.x + velocitXFriction * Time.deltaTime;
+    //    }
+
+        m_FloorDetector.Move(CommonValues.PlayerVelocity*Time.deltaTime, false);
+    }
+
     public override void Process(){
         ProcessStateEnd();
-        ProcessMove();
-        ProcessSwipe();
+
+        if( !isFaceLocked ) {
+            ProcessMove();
+            ProcessSwipe();
+        }
+        else{
+            ProcessMove2();
+        }
+        m_dir = savedDir;
     }
     public override void HandleInput(){
         HandleInputSwipe();

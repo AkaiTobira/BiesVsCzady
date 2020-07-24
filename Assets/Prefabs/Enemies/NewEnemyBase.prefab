@@ -206,6 +206,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e41eb6095dd1d6a4bbc6470d1563367c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  healthPoints: 30
+  onTouchDamage: 1
+  onTouchKnockbackValues: {x: 0, y: 0}
   velocity: {x: 0, y: 0}
   isAlreadyInCombat: 0
   moveBrakingTime: 1
@@ -233,6 +236,7 @@ MonoBehaviour:
   DebugConsoleInfo1: {fileID: 2173679741619918045}
   DebugConsoleInfo2: {fileID: 2173679740213908389}
   isDead: 0
+  delayOfHurtGoInTimer: 0
 --- !u!50 &2173679740509289888
 Rigidbody2D:
   serializedVersion: 4
@@ -346,7 +350,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 12
   m_Sprite: {fileID: 21300000, guid: 3491946afeb19ab4d9453fdc4e8e40e0, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

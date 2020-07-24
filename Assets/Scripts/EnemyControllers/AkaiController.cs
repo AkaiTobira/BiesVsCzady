@@ -145,7 +145,8 @@ public class AkaiController : IEntity
                 infoPack.stunDuration   = 0.0f;
                 infoPack.lockFaceDirectionDuringKnockback = true;
                 infoPack.attackDamage   = onTouchDamage;
-                infoPack.fromCameAttack = m_FloorDetector.GetCurrentDirection();
+                infoPack.fromCameAttack = GlobalUtils.PlayerObject.position.x < m_FloorDetector.GetComponent<Transform>().position.x? 
+                                            GlobalUtils.Direction.Left : GlobalUtils.Direction.Right;
             break;
         }
 
