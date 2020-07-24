@@ -7,6 +7,9 @@ public class Player : IEntity
 
     [SerializeField] public bool invincible = true;
 
+    [SerializeField] public float MaxHealthPoints = 10;
+    public float healthPoints = 10;
+
     private ICollisionWallDetector m_WallDetector;
     private ICollisionInteractableDetector m_InteractionDetector;
 
@@ -18,6 +21,13 @@ public class Player : IEntity
         m_InteractionDetector = GetComponent<CollisionDetectorPlayer>();
         m_controller  = new SFSMPlayerChange( transform.gameObject, new BiesIdle( gameObject ) );
         m_animator    = animationNode.gameObject.GetComponent<Animator>();
+        healthPoints  = MaxHealthPoints;
+    }
+
+    public void ResetPlayer(){
+        animationNode.GetComponent<Animator>().Rebind();
+        m_controller  = new SFSMPlayerChange( transform.gameObject, new BiesIdle( gameObject ) );
+        healthPoints  = MaxHealthPoints;
     }
 
     public bool isImmortal(){
@@ -47,7 +57,7 @@ public class Player : IEntity
     [SerializeField] bool directionLeft  = false;
     [SerializeField] bool directionRight = false;
     [SerializeField] string StateName    = "Idle";
-    [SerializeField] public float healthPoints = 10;
+
 
     public override GlobalUtils.AttackInfo GetAttackInfo(){
         GlobalUtils.AttackInfo infoPack = new GlobalUtils.AttackInfo();

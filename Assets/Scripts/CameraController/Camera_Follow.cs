@@ -36,6 +36,10 @@ public class Camera_Follow : MonoBehaviour
         DownClamping  = down;
     }
 
+    public void SetNewFollowable( Transform obj){
+        followedObject = obj;
+    }
+
     float GetXPosition(){
         float minValue = (LeftClamping.enable)  ? LeftClamping.position  : followedObject.position.x - centerOfCamera.x;
         float maxValue = (RightClamping.enable) ? RightClamping.position : followedObject.position.x - centerOfCamera.x;

@@ -48,7 +48,6 @@ public class PlayerHurt : PlayerBaseState{
 
     private void fillKnockbackInfo( GlobalUtils.AttackInfo infoPack ){
         isFaceLocked = infoPack.lockFaceDirectionDuringKnockback;
-        Debug.Log( infoPack.fromCameAttack.ToString() + isFaceLocked.ToString() + savedDir.ToString() + m_FloorDetector.GetCurrentDirection()  );
         if( isFaceLocked ){
             knocBackDirection             = (int)infoPack.fromCameAttack;
             CommonValues.PlayerVelocity   = infoPack.knockBackValue;
@@ -60,7 +59,6 @@ public class PlayerHurt : PlayerBaseState{
             knocBackDirection             = Mathf.Sign(CommonValues.PlayerVelocity.x);
             CommonValues.PlayerVelocity   = infoPack.knockBackValue;
         }
-        Debug.Log( isFaceLocked.ToString() + savedDir.ToString() + m_FloorDetector.GetCurrentDirection()  );
         
         if( velocitXFriction > 0){
             m_FloorDetector.CheatMove( new Vector2(0,40.0f));
