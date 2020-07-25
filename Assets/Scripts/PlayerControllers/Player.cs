@@ -28,8 +28,17 @@ public class Player : IEntity
         var inAnimator = transform.parent.GetComponent<Animator>();
         inAnimatorBaseSpeed = inAnimator.speed;
         Debug.Log( inAnimatorBaseSpeed );
-        inAnimator.speed = inAnimatorBaseSpeed/timeOfInvincibility;
+        inAnimator.speed = timeOfInvincibility/getAnimationLenght(inAnimator, "Invincibility");
         
+    }
+
+    protected float getAnimationLenght( Animator a, string animationName){
+        RuntimeAnimatorController ac = a.runtimeAnimatorController;   
+        for (int i = 0; i < ac.animationClips.Length; i++){
+            if (ac.animationClips[i].name == animationName)
+                return ac.animationClips[i].length;
+        }
+        return 0.0f;
     }
 
     public void ResetPlayer(){
@@ -249,13 +258,18 @@ public class Player : IEntity
         invincibilityDuration -= Time.deltaTime;
 
         var inAnimator = transform.parent.GetComponent<Animator>();
-        float newSpeed = inAnimatorBaseSpeed/timeOfInvincibility;
+        float newSpeed = timeOfInvincibility/getAnimationLenght(inAnimator, "Invincibility");
 
         if( Mathf.Abs(newSpeed - inAnimator.speed) > 0.0001f ){
             inAnimator.speed = newSpeed;
         }
 
-        if( invincibilityDuration < 0 ) inAnimator.enabled = false;
+        if( invincibilityDuration < 0 ) {
+            inAnimator.enabled = false;
+            Color c = m_animator.GetComponent<SpriteRenderer>().color;
+            c.a = 1;
+            m_animator.GetComponent<SpriteRenderer>().color = c;
+        }
     }
 
     void Update(){

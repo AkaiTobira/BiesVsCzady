@@ -75,7 +75,7 @@ public class CollisionDetector : MonoBehaviour, ICollisionFloorDetector
         ProcessColisionOnTheSameLayer();
     }
 
-    private void  ProcessColisionOnTheSameLayer(){
+    protected void  ProcessColisionOnTheSameLayer(){
         float directionX = Mathf.Sign(transition.x);
         float directionY = Mathf.Sign(transition.y);
 

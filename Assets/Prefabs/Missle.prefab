@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 1810844706881790859}
   - component: {fileID: 7238191301215036695}
   - component: {fileID: 3674367399692196556}
-  - component: {fileID: 5396361739695178436}
   - component: {fileID: 5875238069945865683}
+  - component: {fileID: 1707633265262522901}
   m_Layer: 0
   m_Name: Missle
   m_TagString: Untagged
@@ -84,31 +84,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21a2a2d06e9a5ac4d8c61e084a2705a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mainScript: {fileID: 0}
---- !u!114 &5396361739695178436
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 125843020833069454}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 70a9e98fe12cbef4e81ad6d30beffe78, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_collsionMask:
-    serializedVersion: 2
-    m_Bits: 3840
-  m_selfCollsionMask:
-    serializedVersion: 2
-    m_Bits: 0
-  verticalRayNumber: 4
-  horizontalRayNumber: 4
-  skinSize: 15
-  maxClimbAngle: 40
-  maxDescendAngle: 40
-  autoGravityOn: 0
+  mainScript: {fileID: 7238191301215036695}
 --- !u!61 &5875238069945865683
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -135,6 +111,30 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &1707633265262522901
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 125843020833069454}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6019c0066d0e9e40a70483793e03ac1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_collsionMask:
+    serializedVersion: 2
+    m_Bits: 3840
+  m_selfCollsionMask:
+    serializedVersion: 2
+    m_Bits: 0
+  verticalRayNumber: 4
+  horizontalRayNumber: 4
+  skinSize: 15
+  maxClimbAngle: 40
+  maxDescendAngle: 40
+  autoGravityOn: 0
 --- !u!1 &3394112485970536769
 GameObject:
   m_ObjectHideFlags: 0

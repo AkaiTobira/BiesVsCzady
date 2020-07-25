@@ -9,9 +9,12 @@ public class MissleController : IEntity
 
     public int AttackDamage = 3;
 
+    private ICollisionWallDetector m_wallDetector;
+
     void Start()
     {
-        m_FloorDetector = GetComponent<CollisionDetector>();
+        m_FloorDetector = GetComponent<CollisionDetectorMissle>();
+        m_wallDetector  = GetComponent<CollisionDetectorMissle>();
     }
 
     public override GlobalUtils.AttackInfo GetAttackInfo(){
@@ -32,8 +35,7 @@ public class MissleController : IEntity
     void Update()
     {
         m_FloorDetector.Move( direction * speed * Time.deltaTime );
-        if( m_FloorDetector.isOnGround() ) Destroy(gameObject);
-
+        if( m_FloorDetector.isOnGround() || m_wallDetector.isWallClose() ) Destroy(gameObject);
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -41,6 +43,7 @@ public class MissleController : IEntity
         if( other.tag == "PlayerHurtBox"){
             var infoPack = GetAttackInfo( ); 
             GlobalUtils.PlayerObject.GetComponent<Player>().OnHit( infoPack );
+            Destroy(gameObject);
         }
     }
 
