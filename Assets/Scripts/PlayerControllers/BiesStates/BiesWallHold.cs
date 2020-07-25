@@ -9,6 +9,12 @@ public class BiesWallHold : PlayerBaseState
         m_dir = dir;
         name = "BiesWallHold" + ((isLeftOriented())? "L": "R");
         CommonValues.PlayerVelocity.y =0;
+
+        SetUpAnimValue();
+    }
+
+    private void SetUpAnimValue(){
+        m_animator.SetBool( "isWallMovable",  m_ObjectInteractionDetector.IsWallPullable() );
     }
 
     public override void Process(){
@@ -69,6 +75,7 @@ public class BiesWallHold : PlayerBaseState
             PlayerJumpHelper.JumpRequirementsMeet( PlayerInput.isJumpKeyJustPressed(), 
                                                    m_FloorDetector.isOnGround() )
         ){ 
+            m_isOver = true;
             m_nextState = new BiesJump(m_controllabledObject, GlobalUtils.Direction.Left);
         }else if( PlayerInput.isFallKeyHold() ) {
             m_ObjectInteractionDetector.enableFallForOneWayFloor();

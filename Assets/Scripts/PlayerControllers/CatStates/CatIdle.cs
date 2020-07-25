@@ -6,7 +6,8 @@ public class CatIdle : PlayerBaseState
 {
     public CatIdle( GameObject controllable ) : base( controllable ) {
         name = "CatIdle";
-        m_dir = GlobalUtils.Direction.Left;
+        m_dir = m_FloorDetector.GetCurrentDirection();
+
     }
 
     private void HandleStopping(){
@@ -65,21 +66,30 @@ public class CatIdle : PlayerBaseState
     private void ProcessAnimationUpdate(){
         m_animator.SetFloat( "FallVelocity", -2);
         m_animator.SetFloat("MoveVelocity", Mathf.Abs(CommonValues.PlayerVelocity.x));
+
+        if( m_animator.GetBool("SneakySneaky") ){
+            distanceToFixAnimation = new Vector3(0, -145.51f , 0);
+        }else{
+            distanceToFixAnimation = new Vector3(0, -60 , 0);
+        }
+
     }
 
     public override void Process(){
         HandleStopping();
         ProcessAnimationUpdate();
 
-        CommonValues.PlayerVelocity.y = 0;
+    //    CommonValues.PlayerVelocity.y = 0;
 
         if( ! m_FloorDetector.isOnGround() ){
             CommonValues.PlayerVelocity.y += -CatUtils.GravityForce * Time.deltaTime;
+            m_FloorDetector.Move( CommonValues.PlayerVelocity * Time.deltaTime );
         }else{
+            CommonValues.PlayerVelocity.y = -CatUtils.GravityForce * Time.deltaTime;
+            m_FloorDetector.Move( CommonValues.PlayerVelocity * Time.deltaTime );
             CatUtils.ResetStamina();
             CommonValues.PlayerVelocity.y = 0;
         }
 
-        m_FloorDetector.Move( CommonValues.PlayerVelocity * Time.deltaTime );
     }
 }

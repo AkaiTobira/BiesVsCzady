@@ -31,7 +31,9 @@ public class BiesDead : PlayerBaseState{
         timeToEnd -= Time.deltaTime;
         if( timeToEnd < 0){
             //TODO ... reload form chekcpoint
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            
+            GlobalUtils.TaskMaster.SetPlayerAtLastCheckpoint();
+            //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
     }
 

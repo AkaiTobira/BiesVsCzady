@@ -21,6 +21,7 @@ public class CatWallJump : PlayerBaseState
         name = "CatWallJump";
         m_dir = dir;
         SetUpVariables();
+        distanceToFixAnimation = new Vector3(  (isRightOriented()) ? -175 : 175, 0, 0);
     }
 
     protected override void SetUpAnimation(){
@@ -34,6 +35,7 @@ public class CatWallJump : PlayerBaseState
     IEnumerator StartJump( float time ){
         yield return new WaitForSeconds(time);
         if( m_isOver ) yield break;
+        distanceToFixAnimation = new Vector3();
         m_FloorDetector.CheatMove(  new Vector2( 40 * (int)m_dir, 0) );
         CommonValues.PlayerVelocity.y = JumpForce + GravityForce; 
         m_animator.ResetTrigger("isWallJumpPressed");
@@ -87,6 +89,8 @@ public class CatWallJump : PlayerBaseState
     public override void Process(){
         //        m_animator.SetBool("isWallJumpPressed", true);
         ProcessJumpAcceleration();
+
+        //new Vector3( (isRightOriented())? -125 : 125, 75 , 0);
 
         if( MoveDisabled ) return;
 

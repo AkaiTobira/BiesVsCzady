@@ -2,11 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerBaseState : IBaseState
+public class PlayerBaseState : IBaseState, IInputProcessingState
 {
     protected Vector2    velocity = new Vector2(0,0); 
     protected float slopeAngle    = 0.0f;
     protected float rotationAngle = 0;
+
+    protected Vector3 distanceToFixAnimation = new Vector3();
 
     protected ICollisionWallDetector         m_WallDetector;
     protected ICollisionInteractableDetector m_ObjectInteractionDetector;
@@ -36,19 +38,19 @@ public class PlayerBaseState : IBaseState
         UpdateFloorAligment();
     }
 
+    public virtual void HandleInput(){}
+
+    public override void Process(){}
+
     protected virtual void UpdateAnimatorPosition(){
 
         m_controllabledObject.GetComponent<Player>().animationNode.position = 
             Vector3.SmoothDamp( m_controllabledObject.GetComponent<Player>().animationNode.position, 
-                                m_controllabledObject.transform.position, ref animationVel, m_smoothTime);
+                                m_controllabledObject.transform.position + distanceToFixAnimation + new Vector3(CommonValues.tempModulator2, CommonValues.tempModulator, 0), ref animationVel, m_smoothTime);
 
     }
     protected virtual void UpdateFloorAligment(){
-
         m_controllabledObject.GetComponent<Player>().animationNode.transform.up = m_FloorDetector.GetSlopeAngle();
-    //    Debug.Log( m_FloorDetector.GetSlopeAngle2());
-    //    Debug.Log( m_controllabledObject.GetComponent<Player>().animationNode.transform.up );
-
     }
 
     protected virtual void UpdateDirection(){

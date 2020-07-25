@@ -52,6 +52,15 @@ public static class  PlayerInput
         return Input.GetKeyDown( KeyCode.Space );
     }
 
+    public static bool isActionKeyJustPressed(){
+        return Input.GetKeyDown( KeyCode.F );
+    }
+
+    public static bool isActionKeyHold(){
+        return Input.GetKey( KeyCode.F );
+    }
+
+
     public static bool isChangeFormKeyJustPressed(){
         return Input.GetKeyDown( KeyCode.E) || Input.GetKeyDown(KeyCode.V);
     }

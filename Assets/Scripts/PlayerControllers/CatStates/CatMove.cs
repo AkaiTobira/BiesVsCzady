@@ -9,9 +9,17 @@ public class CatMove : PlayerMove
         base( controllable, dir, CatUtils.infoPack, "Cat" ) 
     {
         name = "CatMove";
+        distanceToFixAnimation = new Vector3(0, -60 , 0);
     }
 
     protected override void ProcessStateEnd(){
+
+        if( m_animator.GetBool("SneakySneaky") ){
+           distanceToFixAnimation = new Vector3(0, -145.51f , 0);
+        }else{
+            distanceToFixAnimation = new Vector3(0, -60 , 0);
+        }
+
         if(  m_WallDetector.isWallClose() && 
             ( m_WallDetector.isCollideWithLeftWall() || m_WallDetector.isCollideWithRightWall() ) ){
             m_nextState = new CatWallHold( m_controllabledObject, 

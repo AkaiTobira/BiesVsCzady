@@ -9,6 +9,12 @@ public class BiesAttack2 : PlayerBaseState{
 
     public BiesAttack2( GameObject controllable) : base( controllable ){
         name = "BiesAttack2";
+        distanceToFixAnimation = new Vector3(0, 75 , 0);
+    }
+
+
+    public override void OnExit(){
+        m_animator.SetBool("Attack2", false);
     }
 
     protected override void SetUpAnimation(){

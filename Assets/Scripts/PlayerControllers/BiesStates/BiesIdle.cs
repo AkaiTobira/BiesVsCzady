@@ -7,7 +7,7 @@ public class BiesIdle : PlayerBaseState
 
     public BiesIdle( GameObject controllable ) : base( controllable ) {
         name = "BiesIdle";
-        m_dir = GlobalUtils.Direction.Left;
+        m_dir = m_FloorDetector.GetCurrentDirection();
     }
 
     private void HandleStopping(){
@@ -31,8 +31,8 @@ public class BiesIdle : PlayerBaseState
             m_nextState = new BiesAttack1(m_controllabledObject);
         }else if( PlayerInput.isAttack2KeyPressed() ){
             m_nextState = new BiesAttack2(m_controllabledObject);
-        }else if( PlayerInput.isAttack3KeyPressed() ){
-            m_nextState = new BiesAttack3(m_controllabledObject);
+        //}else if( PlayerInput.isAttack3KeyPressed() ){
+        //    m_nextState = new BiesAttack3(m_controllabledObject);
         }else if( PlayerInput.isMoveLeftKeyHold() ){
             HandleInputMoveState( GlobalUtils.Direction.Left);
         }else if( PlayerInput.isMoveRightKeyHold() ){
@@ -56,6 +56,14 @@ public class BiesIdle : PlayerBaseState
     private void ProcessAnimationUpdate(){
         m_animator.SetFloat( "FallVelocity", 0);
         m_animator.SetFloat("MoveVelocity", Mathf.Abs(CommonValues.PlayerVelocity.x));
+
+        distanceToFixAnimation = new Vector3(0, 0 , 0);
+
+        m_animator.SetBool("Attack1", false);
+        m_animator.SetBool("Attack2", false);
+        m_animator.SetBool("Attack3", false);
+        m_animator.SetBool("Attack4", false);
+        m_animator.SetBool("Attack5", false);
     }
 
     public override void Process(){

@@ -14,6 +14,7 @@ public static class  GlobalUtils
         public bool isValid;
 
         public float stunDuration;
+        public bool lockFaceDirectionDuringKnockback;
         public Vector2 knockBackValue;
         public Direction fromCameAttack;
         public float attackDamage;
@@ -23,6 +24,10 @@ public static class  GlobalUtils
 
     public static Transform   PlayerObject   = null;
     public static CameraShake cameraShake    = null;
+
+    public static TaskMaster    TaskMaster = null;
+
+    public static Camera_Follow Camera = null;
 
     public static Text        debugConsole   = null;
     public static Text        debugConsole2  = null;

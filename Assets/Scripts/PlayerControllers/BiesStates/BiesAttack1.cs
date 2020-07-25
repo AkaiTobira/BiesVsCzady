@@ -11,17 +11,27 @@ public class BiesAttack1 : PlayerBaseState
 
     public BiesAttack1( GameObject controllable) : base( controllable ){
         name = "BiesAttack1";
+        distanceToFixAnimation = new Vector3(0, 75 , 0);
+        m_animator.SetBool("Attack1", true);
+        animationTime = getAnimationLenght("PlayerAttack1");
+
+// /        Debug.Log(animationTime);
+        timeToEnd     = animationTime;
     }
 
     protected override void SetUpAnimation(){
-        m_animator.SetBool("Attack1", true);
-        animationTime = getAnimationLenght("PlayerAttack1");
-        timeToEnd     = animationTime;
+        
 
         m_transition = m_controllabledObject.
                        GetComponent<Player>().animationNode.
                        GetComponent<AnimationTransition>();
     }
+
+
+    public override void OnExit(){
+        m_animator.SetBool("Attack1", false);
+    }
+
 
     private void  ProcessStateEnd(){
         timeToEnd -= Time.deltaTime;
@@ -38,7 +48,15 @@ public class BiesAttack1 : PlayerBaseState
     public override void Process(){
         ProcessStateEnd();
         ProcessMove();
+        HandleStopping();
     }
+
+    private void HandleStopping(){
+        float acceleration = (BiesUtils.PlayerSpeed / BiesUtils.MoveBrakingTime) * Time.deltaTime;
+        float currentValue = Mathf.Max( Mathf.Abs( CommonValues.PlayerVelocity.x) - acceleration, 0);
+        CommonValues.PlayerVelocity.x = currentValue * (int)m_FloorDetector.GetCurrentDirection();
+    }
+
     public override void HandleInput(){
 
         if( PlayerInput.isAttack1KeyPressed() && timeToEnd < 0.5 * animationTime ){

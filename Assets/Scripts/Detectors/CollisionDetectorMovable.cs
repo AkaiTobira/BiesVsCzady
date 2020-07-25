@@ -22,6 +22,7 @@ public class CollisionDetectorMovable : CollisionDetector
                 transition.y = -accumulatedGravity * Time.deltaTime;
                 Move( transition );
             }else{
+                Move( new Vector2(0,-0.1f));
                 accumulatedGravity = 0.0f;
             }
         }        

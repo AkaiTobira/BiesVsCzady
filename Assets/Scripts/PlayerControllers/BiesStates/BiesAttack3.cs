@@ -9,6 +9,7 @@ public class BiesAttack3 : PlayerBaseState{
 
     public BiesAttack3( GameObject controllable) : base( controllable ){
         name = "BiesAttack3";
+        distanceToFixAnimation = new Vector3(0, 75 , 0);
     }
 
     protected override void SetUpAnimation(){
@@ -18,6 +19,11 @@ public class BiesAttack3 : PlayerBaseState{
         m_transition = m_controllabledObject.
                        GetComponent<Player>().animationNode.
                        GetComponent<AnimationTransition>();
+    }
+
+
+    public override void OnExit(){
+        m_animator.SetBool("Attack3", false);
     }
 
     private bool isTimerOver(){
