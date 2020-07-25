@@ -5,13 +5,15 @@ using UnityEngine;
 public class Player : IEntity
 {
 
-    [SerializeField] public bool invincible = true;
+    [SerializeField] public bool invincible = false;
 
     [SerializeField] public float MaxHealthPoints = 10;
     public float healthPoints = 10;
 
     private ICollisionWallDetector m_WallDetector;
     private ICollisionInteractableDetector m_InteractionDetector;
+
+    private float inAnimatorBaseSpeed;
 
     void Start()
     {
@@ -22,6 +24,12 @@ public class Player : IEntity
         m_controller  = new SFSMPlayerChange( transform.gameObject, new BiesIdle( gameObject ) );
         m_animator    = animationNode.gameObject.GetComponent<Animator>();
         healthPoints  = MaxHealthPoints;
+
+        var inAnimator = transform.parent.GetComponent<Animator>();
+        inAnimatorBaseSpeed = inAnimator.speed;
+        Debug.Log( inAnimatorBaseSpeed );
+        inAnimator.speed = inAnimatorBaseSpeed/timeOfInvincibility;
+        
     }
 
     public void ResetPlayer(){
@@ -41,7 +49,6 @@ public class Player : IEntity
         PlayerSwipeLock.IncrementCounters();
         PlayerMoveOfWallHelper.IncrementCounters();
         PlayerJumpOffWall.IncrementCounters();
-
     }
 
     public Vector2 something = new Vector2();
@@ -132,7 +139,13 @@ public class Player : IEntity
         return m_controller.GetStateName();
     }
 
+//    private 
+
+
+    public float timeOfInvincibility = 1.5f;
+    private float invincibilityDuration = 0f;
     public bool  CanBeHurt(){
+        if( invincibilityDuration > 0 ) return false;
         if( m_controller.GetStateName().Contains("Dead")) return false;
         if( m_controller.GetStateName().Contains("Hurt")) return false;
         return true;
@@ -148,6 +161,8 @@ public class Player : IEntity
                 m_controller.OverriteStates( "Stun", infoPack );
             }else{
                 m_controller.OverriteStates( "Hurt", infoPack );
+                invincibilityDuration = timeOfInvincibility;
+                transform.parent.GetComponent<Animator>().enabled = true;
             }
         }else{
             m_controller.OverriteStates( "Dead", infoPack );
@@ -229,10 +244,24 @@ public class Player : IEntity
             OnHit( info );
         }
     }
+    public void UpdateInvincibility(){
+        if( invincibilityDuration < 0) return;
+        invincibilityDuration -= Time.deltaTime;
+
+        var inAnimator = transform.parent.GetComponent<Animator>();
+        float newSpeed = inAnimatorBaseSpeed/timeOfInvincibility;
+
+        if( Mathf.Abs(newSpeed - inAnimator.speed) > 0.0001f ){
+            inAnimator.speed = newSpeed;
+        }
+
+        if( invincibilityDuration < 0 ) inAnimator.enabled = false;
+    }
 
     void Update(){
         m_controller.Update();
         UpdateCounters();
+        UpdateInvincibility();
 
         m_animator.SetBool("isGrounded", m_FloorDetector.isOnGround());
         m_animator.SetBool("isWallClose", m_WallDetector.isWallClose());

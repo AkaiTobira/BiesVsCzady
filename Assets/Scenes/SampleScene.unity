@@ -2017,6 +2017,31 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1583090135 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6215110983020563212, guid: 7893faa11b82d804c9f4f0025edd4867,
+    type: 3}
+  m_PrefabInstance: {fileID: 6215110984648376633}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &1583090137
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1583090135}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: a9fd13330a3d62f4698a1ee4e81c995a, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1720665010
 GameObject:
   m_ObjectHideFlags: 0
@@ -2818,6 +2843,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_SortingOrder
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6215110984417993949, guid: 7893faa11b82d804c9f4f0025edd4867,
+        type: 3}
+      propertyPath: timeOfInvincibility
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 6215110984417993951, guid: 7893faa11b82d804c9f4f0025edd4867,
         type: 3}

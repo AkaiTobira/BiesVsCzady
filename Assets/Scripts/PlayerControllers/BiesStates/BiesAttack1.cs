@@ -15,7 +15,7 @@ public class BiesAttack1 : PlayerBaseState
         m_animator.SetBool("Attack1", true);
         animationTime = getAnimationLenght("PlayerAttack1");
 
-        Debug.Log(animationTime);
+// /        Debug.Log(animationTime);
         timeToEnd     = animationTime;
     }
 

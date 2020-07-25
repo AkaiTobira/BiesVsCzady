@@ -166,11 +166,11 @@ public class CollisionDetectorEnemy : CollisionDetector, IPlatformEdgeDetector, 
                 new Color(1,1,1)
              );
 
-        Debug.Log( "isHit=" + (!hit).ToString()  );
+  //      Debug.Log( "isHit=" + (!hit).ToString()  );
 
         if( !hit ) return false;
 
-        Debug.Log( "isRightTarget=" + ( hit.collider.tag == "PlayerHurtBox").ToString());
+//        Debug.Log( "isRightTarget=" + ( hit.collider.tag == "PlayerHurtBox").ToString());
         return hit.collider.tag == "PlayerHurtBox";
     }
 
