@@ -145,4 +145,11 @@ public class CatWallJump : PlayerBaseState
             swipeOn = false;
         }
     }
+
+    public override string GetTutorialAdvice(){
+        string msg = "E - ChangeForm";
+        return msg;
+    }
+
+
 }

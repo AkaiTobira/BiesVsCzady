@@ -32,11 +32,11 @@ public static class  PlayerInput
         return Input.GetKeyDown(KeyCode.X) || Input.GetButtonDown("Fire1");
     }
 
-    public static bool isAttack2KeyPressed(){
+    public static bool isAttack3KeyPressed(){
         return Input.GetKeyDown(KeyCode.Z) || Input.GetKeyDown(KeyCode.Q);
     }
 
-    public static bool isAttack3KeyPressed(){
+    public static bool isAttack2KeyPressed(){
         return Input.GetKeyDown(KeyCode.C) || Input.GetButtonDown("Fire2");
     }
 

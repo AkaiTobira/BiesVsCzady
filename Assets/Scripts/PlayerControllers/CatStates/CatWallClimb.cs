@@ -69,4 +69,14 @@ public class CatWallClimb : PlayerBaseState
             m_nextState = new CatWallSlide(m_controllabledObject, m_dir);
         }
     }
+
+    public override string GetTutorialAdvice(){
+        string msg = "E - ChangeForm\nSPACE - Jump";
+        msg += "\n W or Up - Climb up";
+        msg += "\n SHIFT   - hold there";
+        return msg;
+    }
+
+
+
 }

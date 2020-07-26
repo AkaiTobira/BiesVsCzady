@@ -59,4 +59,11 @@ public class CatWallHold : PlayerBaseState
         }
     }
 
+
+    public override string GetTutorialAdvice(){
+        string msg = "E - ChangeForm\nSPACE - Jump";
+        msg += "\n W or Up - Climb up";
+        return msg;
+    }
+
 }

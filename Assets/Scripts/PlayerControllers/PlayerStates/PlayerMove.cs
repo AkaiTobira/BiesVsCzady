@@ -14,8 +14,8 @@ public class PlayerMove : PlayerBaseState
         name = formName + "Move";
         m_settings = settings;
         m_formName = formName;
-        m_dir = dir;
         SetUpRotation();
+        m_dir = dir;
     }
 /*
     protected override void  SetUpAnimation(){
@@ -26,13 +26,13 @@ public class PlayerMove : PlayerBaseState
     }*/
 
     private void SetUpRotation(){
-        rotationAngle = isLeftOriented() ? 180 :0 ; 
-        m_controllabledObject.GetComponent<Player>().animationNode.eulerAngles = new Vector3( 0, rotationAngle, slopeAngle);
-    
         if( CommonValues.needChangeDirection ){
             m_animator.SetTrigger( m_formName + "ChangingDirection");
             CommonValues.needChangeDirection = false;
         }
+
+        rotationAngle = isLeftOriented() ? 180 :0 ; 
+        m_controllabledObject.GetComponent<Player>().animationNode.eulerAngles = new Vector3( 0, rotationAngle, slopeAngle);
     }
 
     private void ProcessGravity(){

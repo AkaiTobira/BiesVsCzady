@@ -83,4 +83,9 @@ public class BiesPullObj : PlayerBaseState
             m_FloorDetector.Move( pullForce * Time.deltaTime );
         }
     }
+
+    public override string GetTutorialAdvice(){
+        return "";
+    }
+
 }

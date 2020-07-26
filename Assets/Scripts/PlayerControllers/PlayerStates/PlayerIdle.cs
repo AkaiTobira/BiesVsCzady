@@ -23,13 +23,6 @@ public class PlayerIdle : PlayerBaseState
     protected virtual void ProcessAnimationUpdate(){
         m_animator.SetFloat( "FallVelocity", -2);
         m_animator.SetFloat("MoveVelocity", Mathf.Abs(CommonValues.PlayerVelocity.x));
-
-        if( m_animator.GetBool("SneakySneaky") ){
-            distanceToFixAnimation = new Vector3(0, -145.51f , 0);
-        }else{
-            distanceToFixAnimation = new Vector3(0, -60 , 0);
-        }
-
     }
 
     public override void Process(){

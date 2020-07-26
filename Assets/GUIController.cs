@@ -16,5 +16,9 @@ public class GUIController : MonoBehaviour
         buttons_node.SetActive( ! buttons_node.activeSelf ); 
     }
 
+    public void SwitchTutorialConsoleVisibility(){
+        var buttons_node = transform.Find("TutorialText").gameObject;
+        buttons_node.SetActive( ! buttons_node.activeSelf ); 
+    }
 
 }

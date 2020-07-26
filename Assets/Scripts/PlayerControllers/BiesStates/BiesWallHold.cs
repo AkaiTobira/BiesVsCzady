@@ -84,4 +84,12 @@ public class BiesWallHold : PlayerBaseState
         }
     }
 
+    public override string GetTutorialAdvice(){
+        string msg = "E - ChangeForm\nSPACE - Jump";
+        msg += ( m_ObjectInteractionDetector.IsWallPullable()   ) ? "\nSHIFT + A/D or arrows to move object" : "";
+        msg += ( m_ObjectInteractionDetector.IsWallDestroyable() ) ? "\nX or LMB - hit to destroy" : "";
+
+        return msg;
+    }
+
 }
