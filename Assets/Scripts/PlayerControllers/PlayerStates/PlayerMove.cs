@@ -5,9 +5,6 @@ using UnityEngine;
 public class PlayerMove : PlayerBaseState
 {
     private bool isAccelerating = true;
-
-    ICharacterSettings m_settings;
-
     string m_formName;
     public PlayerMove(  GameObject controllable, 
                         GlobalUtils.Direction dir,

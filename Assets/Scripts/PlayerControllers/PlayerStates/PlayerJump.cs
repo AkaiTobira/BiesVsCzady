@@ -15,8 +15,6 @@ public class PlayerJump : PlayerBaseState
     protected float GravityForce = 0.0f;
     protected float startAnimationDelay = 0.0f;
 
-    ICharacterSettings m_settings;
-
     public PlayerJump( GameObject controllable, 
                         GlobalUtils.Direction dir,
                         ICharacterSettings settings

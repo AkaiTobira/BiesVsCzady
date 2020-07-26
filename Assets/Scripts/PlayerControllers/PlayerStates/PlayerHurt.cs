@@ -13,8 +13,6 @@ public class PlayerHurt : PlayerBaseState{
 
     protected GlobalUtils.Direction savedDir;
 
-    ICharacterSettings m_settings;
-
     private GlobalUtils.Direction m_swipe;
     private bool swipeOn = false;
 

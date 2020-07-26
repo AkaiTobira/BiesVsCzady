@@ -6,9 +6,6 @@ public class PlayerDead : PlayerBaseState{
     protected float timeToEnd;
     private AnimationTransition m_transition;
     private float velocitXFriction = 0.0f;
-
-    private ICharacterSettings m_settings;
-
     protected float realoadDealay = 3.0f;
 
     public PlayerDead(  GameObject controllable, 

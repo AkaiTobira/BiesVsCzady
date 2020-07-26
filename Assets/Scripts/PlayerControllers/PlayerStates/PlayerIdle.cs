@@ -5,8 +5,6 @@ using UnityEngine;
 public class PlayerIdle : PlayerBaseState
 {
 
-    private ICharacterSettings m_settings;
-
     public PlayerIdle(  GameObject controllable,
                         ICharacterSettings settings
      ) : base( controllable ) {
