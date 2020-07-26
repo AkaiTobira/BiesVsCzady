@@ -192,8 +192,51 @@ namespace FMODUnity
         [SerializeField]
         public ImportType ImportType;
 
+        public string TargetPath
+        {
+            get
+            {
+                if (ImportType == ImportType.AssetBundle)
+                {
+                    return Application.dataPath + "/" + TargetAssetPath;
+                }
+                else
+                { 
+                    return Application.streamingAssetsPath + "/" + TargetBankFolder;
+                }
+            }
+        }
+        public string TargetSubFolder
+        {
+            get
+            {
+                if (ImportType == ImportType.AssetBundle)
+                {
+                    return TargetAssetPath;
+                }
+                else
+                {
+                    return TargetBankFolder;
+                }
+            }
+            set
+            {
+                if (ImportType == ImportType.AssetBundle)
+                {
+                    TargetAssetPath = value; ;
+                }
+                else
+                { 
+                    TargetBankFolder = value;
+                }
+            }
+        }
+
         [SerializeField]
         public string TargetAssetPath = "FMODBanks";
+
+        [SerializeField]
+        public string TargetBankFolder = "";
 
         [SerializeField]
         public FMOD.DEBUG_FLAGS LoggingLevel = FMOD.DEBUG_FLAGS.WARNING;
@@ -236,6 +279,9 @@ namespace FMODUnity
 
         [SerializeField]
         public ushort LiveUpdatePort = 9264;
+
+        [SerializeField]
+        public bool EnableMemoryTracking;
 
         public static FMODPlatform GetParent(FMODPlatform platform)
         {
@@ -415,6 +461,7 @@ namespace FMODUnity
             ImportType = ImportType.StreamingAssets;
             AutomaticEventLoading = true;
             AutomaticSampleLoading = false;
+            EnableMemoryTracking = false;
         }
 
         #if UNITY_EDITOR

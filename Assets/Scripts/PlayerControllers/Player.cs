@@ -29,7 +29,9 @@ public class Player : IEntity
         inAnimatorBaseSpeed = inAnimator.speed;
         Debug.Log( inAnimatorBaseSpeed );
         inAnimator.speed = timeOfInvincibility/getAnimationLenght(inAnimator, "Invincibility");
-        
+
+
+    //    FMODUnity.RuntimeManager.PlayOneShot( "event:/ATM/Atmosphere Cave", m_FloorDetector.GetComponent<Transform>);
     }
 
     protected float getAnimationLenght( Animator a, string animationName){

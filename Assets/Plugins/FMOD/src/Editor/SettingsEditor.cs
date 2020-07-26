@@ -29,7 +29,7 @@ namespace FMODUnity
         bool[] foldoutState = new bool[(int)FMODPlatform.Count];
 
         bool hasBankSourceChanged = false;
-        string targetAssetPath;
+        string targetSubFolder;
         bool focused = false;
         bool bankFoldOutState = true;
 
@@ -566,8 +566,8 @@ namespace FMODUnity
                 settings.ImportType = importType;
 
                 bool deleteBanks = EditorUtility.DisplayDialog(
-                    "FMOD Bank Import Type Changed", "Do you want to delete the " + (importType == ImportType.AssetBundle ? "StreamingAssets" : "AssetBundle") + " banks in " + (importType == ImportType.AssetBundle ? Application.streamingAssetsPath : Application.dataPath + '/' + settings.TargetAssetPath)
-                    , "Yes", "No");
+                    "FMOD Bank Import Type Changed", "Do you want to delete the " + settings.ImportType.ToString() + " banks in " + settings.TargetPath,
+                    "Yes", "No");
                 if (deleteBanks)
                 {
                     // Delete the old banks
@@ -576,12 +576,13 @@ namespace FMODUnity
                 }
             }
 
-            // ----- Text Assets -------------
-            if (settings.ImportType == ImportType.AssetBundle)
+            // ----- Asset Sub Directory -------------
             {
-                GUI.SetNextControlName("targetAssetPath");
-                targetAssetPath = EditorGUILayout.TextField("FMOD Asset Folder", string.IsNullOrEmpty(targetAssetPath) ? settings.TargetAssetPath : targetAssetPath);
-                if (GUI.GetNameOfFocusedControl() == "targetAssetPath")
+                GUI.SetNextControlName("targetSubFolder");
+                targetSubFolder = settings.ImportType == ImportType.AssetBundle
+                    ? EditorGUILayout.TextField("FMOD Asset Sub Folder", string.IsNullOrEmpty(targetSubFolder) ? settings.TargetAssetPath : targetSubFolder)
+                    : EditorGUILayout.TextField("FMOD Bank Sub Folder", string.IsNullOrEmpty(targetSubFolder) ? settings.TargetSubFolder : targetSubFolder);
+                if (GUI.GetNameOfFocusedControl() == "targetSubFolder")
                 {
                     focused = true;
                     if (Event.current.isKey)
@@ -590,24 +591,26 @@ namespace FMODUnity
                         {
                             case KeyCode.Return:
                             case KeyCode.KeypadEnter:
-                                if (settings.TargetAssetPath != targetAssetPath)
+                                if (settings.TargetSubFolder != targetSubFolder)
                                 {
-                                    EventManager.RemoveBanks(Application.dataPath + '/' + settings.TargetAssetPath);
-                                    settings.TargetAssetPath = targetAssetPath;
+                                    EventManager.RemoveBanks(settings.TargetPath);
+                                    settings.TargetSubFolder = targetSubFolder;
                                     hasBankTargetChanged = true;
                                 }
+                                targetSubFolder = "";
                                 break;
                         }
                     }
                 }
                 else if (focused)
                 {
-                    if (settings.TargetAssetPath != targetAssetPath)
+                    if (settings.TargetPath != targetSubFolder)
                     {
-                        EventManager.RemoveBanks(Application.dataPath + '/' + settings.TargetAssetPath);
-                        settings.TargetAssetPath = targetAssetPath;
+                        EventManager.RemoveBanks(settings.TargetPath);
+                        settings.TargetSubFolder = targetSubFolder;
                         hasBankTargetChanged = true;
                     }
+                    targetSubFolder = "";
                 }
             }
 
@@ -623,6 +626,8 @@ namespace FMODUnity
             EditorGUILayout.Separator();
             EditorGUILayout.LabelField("<b>Initialization</b>", style);
             EditorGUI.indentLevel++;
+
+            settings.EnableMemoryTracking = EditorGUILayout.Toggle("Enable Memory Tracking", settings.EnableMemoryTracking);
 
             settings.BankLoadType = (BankLoadType)EditorGUILayout.EnumPopup("Load Banks", settings.BankLoadType);
             switch (settings.BankLoadType)
@@ -668,10 +673,11 @@ namespace FMODUnity
                             if (GUILayout.Button("Browse", GUILayout.ExpandWidth(false)))
                             {
                                 GUI.FocusControl(null);
-                                string path = EditorUtility.OpenFilePanel("Locate Bank", Application.streamingAssetsPath, "bank");
+                                string path = EditorUtility.OpenFilePanel("Locate Bank", settings.TargetPath, "bank");
                                 if (!string.IsNullOrEmpty(path))
                                 {
-                                    settings.BanksToLoad[i] = path.Replace(Application.streamingAssetsPath + Path.AltDirectorySeparatorChar, "");
+                                    path = RuntimeUtils.GetCommonPlatformPath(path);
+                                    settings.BanksToLoad[i] = path.Replace(settings.TargetPath, "");
                                     Repaint();
                                 }
                             }
