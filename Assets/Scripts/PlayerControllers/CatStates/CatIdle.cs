@@ -2,18 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CatIdle : PlayerBaseState
+public class CatIdle : PlayerIdle
 {
-    public CatIdle( GameObject controllable ) : base( controllable ) {
+    public CatIdle( GameObject controllable ) : base( controllable, CatUtils.infoPack ) {
         name = "CatIdle";
         m_dir = m_FloorDetector.GetCurrentDirection();
-
-    }
-
-    private void HandleStopping(){
-        float acceleration = (CatUtils.PlayerSpeed / CatUtils.MoveBrakingTime) * Time.deltaTime;
-        float currentValue = Mathf.Max( Mathf.Abs( CommonValues.PlayerVelocity.x) - acceleration, 0);
-        CommonValues.PlayerVelocity.x = currentValue * (int)m_FloorDetector.GetCurrentDirection();
     }
 
     private void HandleInputMoveState(GlobalUtils.Direction dir){
@@ -63,33 +56,14 @@ public class CatIdle : PlayerBaseState
         }
     }
 
-    private void ProcessAnimationUpdate(){
-        m_animator.SetFloat( "FallVelocity", -2);
-        m_animator.SetFloat("MoveVelocity", Mathf.Abs(CommonValues.PlayerVelocity.x));
+    protected override void ProcessAnimationUpdate(){
+        base.ProcessAnimationUpdate();
 
         if( m_animator.GetBool("SneakySneaky") ){
             distanceToFixAnimation = new Vector3(0, -145.51f , 0);
         }else{
             distanceToFixAnimation = new Vector3(0, -60 , 0);
         }
-
     }
 
-    public override void Process(){
-        HandleStopping();
-        ProcessAnimationUpdate();
-
-    //    CommonValues.PlayerVelocity.y = 0;
-
-        if( ! m_FloorDetector.isOnGround() ){
-            CommonValues.PlayerVelocity.y += -CatUtils.GravityForce * Time.deltaTime;
-            m_FloorDetector.Move( CommonValues.PlayerVelocity * Time.deltaTime );
-        }else{
-            CommonValues.PlayerVelocity.y = -CatUtils.GravityForce * Time.deltaTime;
-            m_FloorDetector.Move( CommonValues.PlayerVelocity * Time.deltaTime );
-            CatUtils.ResetStamina();
-            CommonValues.PlayerVelocity.y = 0;
-        }
-
-    }
 }

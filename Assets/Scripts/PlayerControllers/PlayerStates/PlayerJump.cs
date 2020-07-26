@@ -149,4 +149,8 @@ public class PlayerJump : PlayerBaseState
             m_animator.ResetTrigger("CatJumpPressed");
         }
     }
+
+    public override string GetTutorialAdvice(){
+        return "E - ChangeForm\nWSAD or arrows - Move";
+    }
 }

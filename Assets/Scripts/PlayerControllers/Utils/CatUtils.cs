@@ -8,7 +8,7 @@ public static class  CatUtils
     public class CatValues : ICharacterSettings
     { }
 
-    public static CatValues infoPack; 
+    public static CatValues infoPack = new CatValues(); 
 
     public static float PlayerSpeed           = 15.0f;
     public static float JumpMaxTime           = 0.25f;

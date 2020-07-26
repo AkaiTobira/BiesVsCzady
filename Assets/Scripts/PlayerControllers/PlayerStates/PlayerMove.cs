@@ -86,4 +86,10 @@ public class PlayerMove : PlayerBaseState
             isAccelerating = true;
         }
     }
+
+    public override string GetTutorialAdvice(){
+        return "E - ChangeForm\nSPACE - Jump";
+    }
+
+
 }

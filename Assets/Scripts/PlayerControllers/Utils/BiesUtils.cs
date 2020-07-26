@@ -9,7 +9,7 @@ public static class  BiesUtils
     { }
 
 
-    public static BiesValues infoPack; 
+    public static BiesValues infoPack = new BiesValues(); 
 
     public static float PlayerSpeed         = 15.0f;
     public static float JumpMaxTime         = 0.25f;

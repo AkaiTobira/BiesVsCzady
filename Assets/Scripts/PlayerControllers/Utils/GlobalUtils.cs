@@ -29,6 +29,10 @@ public static class  GlobalUtils
 
     public static Camera_Follow Camera = null;
 
+    public static Text TutorialConsole = null;
+
+    public static GUIController GUIOverlay = null;
+
     public static Text        debugConsole   = null;
     public static Text        debugConsole2  = null;
 

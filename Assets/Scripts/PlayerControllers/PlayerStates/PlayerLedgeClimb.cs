@@ -98,4 +98,9 @@ public class PlayerLedgeClimb : PlayerBaseState
     }
 
     public override void HandleInput(){}
+
+
+    public override string GetTutorialAdvice(){
+        return "";
+    }
 }

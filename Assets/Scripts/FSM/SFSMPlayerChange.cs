@@ -26,8 +26,13 @@ public class SFSMPlayerChange : ISFSMBase
     public override void Update(){
         base.Update();
         ProcessCharacterChange();
+        UpdateTutorialInfo();
     }
 
+
+    private void UpdateTutorialInfo(){
+        GlobalUtils.TutorialConsole.text = m_states.Peek().GetTutorialAdvice();
+    }
 
 
     public override void OverriteStates(string targetState, GlobalUtils.AttackInfo attackInfo){
@@ -107,6 +112,10 @@ public class SFSMPlayerChange : ISFSMBase
         string currentFormName  = GetCurrentFormName(currentStateName);
         currentStateName = RemoveFormName( currentStateName);
         if( !PlayerChangeRules.CanTransformInCurrentState( currentStateName )) return;
+        
+        FMODUnity.RuntimeManager.PlayOneShot( "event:/SFX/Kot/kot-bies-przemiana", GlobalUtils.PlayerObject.position);
+
+
         GlobalUtils.Direction currentDirection = m_states.Peek().GetDirection();
         m_states.Clear();
         currentFormName = PlayerChangeRules.ChangeFormName( currentFormName );

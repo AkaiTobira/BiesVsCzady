@@ -23,6 +23,7 @@ public abstract class IBaseState : IDirectionInfo
         return temp;
     }
 
+    public virtual string GetTutorialAdvice(){ return "Uniplemented"; }
     public abstract void UpdateAnimator();
     public virtual void OnExit(){}
     public virtual void OnEnter(){}
