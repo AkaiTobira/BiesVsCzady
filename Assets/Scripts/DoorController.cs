@@ -15,6 +15,8 @@ public class DoorController : MonoBehaviour
     void Update()
     {
         if( isHeroInArea && !hasBeenActivated ){
+
+            Debug.Log( " SMT ");
             int owendNumberOfKeys = GlobalUtils.PlayerObject.GetComponent<Player>().keys;
             GlobalUtils.TutorialConsole.text += "\n" + owendNumberOfKeys.ToString() + "/" + numberOfRequiredKeys.ToString() + " keys";
             if( owendNumberOfKeys >= numberOfRequiredKeys){

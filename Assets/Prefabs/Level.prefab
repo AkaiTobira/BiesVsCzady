@@ -20119,13 +20119,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2860944143360320385}
-  m_LocalRotation: {x: -0, y: -0, z: 0.72537434, w: 0.6883546}
-  m_LocalPosition: {x: -1514.234, y: 1379.0045, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: 0.70615864, w: 0.7080536}
+  m_LocalPosition: {x: -1514.3, y: 1369.8, z: 0}
   m_LocalScale: {x: 21.061596, y: -113.087944, z: 1}
   m_Children: []
   m_Father: {fileID: 6059651965945774170}
   m_RootOrder: 78
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 93}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 89.846}
 --- !u!61 &1702121635099866992
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -35088,7 +35088,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 42.23092, y: 11.629999}
+  m_Size: {x: 57.286964, y: 32.14}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -39176,6 +39176,11 @@ PrefabInstance:
       propertyPath: ReapearTimer
       value: 2.5
       objectReference: {fileID: 0}
+    - target: {fileID: 4989929133822151171, guid: 09a7f118809de2e45abcbf6159e80622,
+        type: 3}
+      propertyPath: rayLenght
+      value: 30
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 09a7f118809de2e45abcbf6159e80622, type: 3}
 --- !u!4 &5284438754801069611 stripped
@@ -39889,6 +39894,11 @@ PrefabInstance:
       propertyPath: ReapearTimer
       value: 2.5
       objectReference: {fileID: 0}
+    - target: {fileID: 4989929133822151171, guid: 09a7f118809de2e45abcbf6159e80622,
+        type: 3}
+      propertyPath: rayLenght
+      value: 30
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 09a7f118809de2e45abcbf6159e80622, type: 3}
 --- !u!4 &6192055985623968169 stripped
@@ -39983,6 +39993,11 @@ PrefabInstance:
         type: 3}
       propertyPath: ReapearTimer
       value: 2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4989929133822151171, guid: 09a7f118809de2e45abcbf6159e80622,
+        type: 3}
+      propertyPath: rayLenght
+      value: 30
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 09a7f118809de2e45abcbf6159e80622, type: 3}
@@ -40858,6 +40873,11 @@ PrefabInstance:
         type: 3}
       propertyPath: ReapearTimer
       value: 2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4989929133822151171, guid: 09a7f118809de2e45abcbf6159e80622,
+        type: 3}
+      propertyPath: rayLenght
+      value: 30
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 09a7f118809de2e45abcbf6159e80622, type: 3}
@@ -45267,6 +45287,11 @@ PrefabInstance:
       propertyPath: ReapearTimer
       value: 2.5
       objectReference: {fileID: 0}
+    - target: {fileID: 4989929133822151171, guid: 09a7f118809de2e45abcbf6159e80622,
+        type: 3}
+      propertyPath: rayLenght
+      value: 30
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 09a7f118809de2e45abcbf6159e80622, type: 3}
 --- !u!4 &8700546617300615357 stripped
@@ -45854,6 +45879,11 @@ PrefabInstance:
       propertyPath: ReapearTimer
       value: 2.5
       objectReference: {fileID: 0}
+    - target: {fileID: 4989929133822151171, guid: 09a7f118809de2e45abcbf6159e80622,
+        type: 3}
+      propertyPath: rayLenght
+      value: 30
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 09a7f118809de2e45abcbf6159e80622, type: 3}
 --- !u!4 &312523147315108933 stripped
@@ -46052,12 +46082,12 @@ PrefabInstance:
     - target: {fileID: 2342242944410888031, guid: f3d577092eb1c534f9d5d276d91ea1e5,
         type: 3}
       propertyPath: centerOfCamera.y
-      value: 600
+      value: 60
       objectReference: {fileID: 0}
     - target: {fileID: 2342242944410888031, guid: f3d577092eb1c534f9d5d276d91ea1e5,
         type: 3}
       propertyPath: camerSize
-      value: 2400
+      value: 240
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f3d577092eb1c534f9d5d276d91ea1e5, type: 3}
@@ -46153,6 +46183,11 @@ PrefabInstance:
         type: 3}
       propertyPath: ReapearTimer
       value: 2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4989929133822151171, guid: 09a7f118809de2e45abcbf6159e80622,
+        type: 3}
+      propertyPath: rayLenght
+      value: 30
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 09a7f118809de2e45abcbf6159e80622, type: 3}
@@ -46573,6 +46608,11 @@ PrefabInstance:
         type: 3}
       propertyPath: ReapearTimer
       value: 2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4989929133822151171, guid: 09a7f118809de2e45abcbf6159e80622,
+        type: 3}
+      propertyPath: rayLenght
+      value: 30
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 09a7f118809de2e45abcbf6159e80622, type: 3}
@@ -47989,7 +48029,7 @@ PrefabInstance:
     - target: {fileID: 7819002658321421591, guid: 9f677d340930e644fb18f19bafff3b70,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1316.76
+      value: 1307.6
       objectReference: {fileID: 0}
     - target: {fileID: 7819002658321421591, guid: 9f677d340930e644fb18f19bafff3b70,
         type: 3}
@@ -48044,7 +48084,7 @@ PrefabInstance:
     - target: {fileID: 7819002658321421591, guid: 9f677d340930e644fb18f19bafff3b70,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: -69.52374
+      value: -58.07656
       objectReference: {fileID: 0}
     - target: {fileID: 7819002658321421597, guid: 9f677d340930e644fb18f19bafff3b70,
         type: 3}
@@ -50110,6 +50150,11 @@ PrefabInstance:
       propertyPath: ReapearTimer
       value: 2.5
       objectReference: {fileID: 0}
+    - target: {fileID: 4989929133822151171, guid: 09a7f118809de2e45abcbf6159e80622,
+        type: 3}
+      propertyPath: rayLenght
+      value: 30
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 09a7f118809de2e45abcbf6159e80622, type: 3}
 --- !u!4 &2222734467434731720 stripped
@@ -50492,6 +50537,11 @@ PrefabInstance:
       propertyPath: ReapearTimer
       value: 2.5
       objectReference: {fileID: 0}
+    - target: {fileID: 4989929133822151171, guid: 09a7f118809de2e45abcbf6159e80622,
+        type: 3}
+      propertyPath: rayLenght
+      value: 30
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 09a7f118809de2e45abcbf6159e80622, type: 3}
 --- !u!4 &2711719938131097693 stripped
@@ -50586,6 +50636,11 @@ PrefabInstance:
         type: 3}
       propertyPath: ReapearTimer
       value: 2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4989929133822151171, guid: 09a7f118809de2e45abcbf6159e80622,
+        type: 3}
+      propertyPath: rayLenght
+      value: 30
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 09a7f118809de2e45abcbf6159e80622, type: 3}
@@ -51281,6 +51336,11 @@ PrefabInstance:
         type: 3}
       propertyPath: ReapearTimer
       value: 2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4989929133822151171, guid: 09a7f118809de2e45abcbf6159e80622,
+        type: 3}
+      propertyPath: rayLenght
+      value: 30
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 09a7f118809de2e45abcbf6159e80622, type: 3}
@@ -52062,6 +52122,11 @@ PrefabInstance:
       propertyPath: ReapearTimer
       value: 2.5
       objectReference: {fileID: 0}
+    - target: {fileID: 4989929133822151171, guid: 09a7f118809de2e45abcbf6159e80622,
+        type: 3}
+      propertyPath: rayLenght
+      value: 30
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 09a7f118809de2e45abcbf6159e80622, type: 3}
 --- !u!4 &3525464871727225223 stripped
@@ -52161,6 +52226,11 @@ PrefabInstance:
         type: 3}
       propertyPath: reverseRays
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4989929133822151171, guid: 09a7f118809de2e45abcbf6159e80622,
+        type: 3}
+      propertyPath: rayLenght
+      value: 30
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 09a7f118809de2e45abcbf6159e80622, type: 3}
