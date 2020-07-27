@@ -11,7 +11,7 @@ public class BiesAttack1 : PlayerBaseState
 
     public BiesAttack1( GameObject controllable) : base( controllable ){
         name = "BiesAttack1";
-        distanceToFixAnimation = new Vector3(0, 75 , 0);
+        distanceToFixAnimation = new Vector3(0, 7.5f , 0);
         m_animator.SetBool("Attack1", true);
         animationTime = getAnimationLenght("PlayerAttack1");
 

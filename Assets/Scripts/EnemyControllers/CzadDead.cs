@@ -33,7 +33,7 @@ public class CzadDead : EnemyBaseState{
         velocitXFriction  = infoPack.knockBackFrictionX;
 
         if( velocitXFriction > 0){
-            m_FloorDetector.CheatMove( new Vector2(0,40.0f));
+            m_FloorDetector.CheatMove( new Vector2(0,4.0f));
         }
     }
 

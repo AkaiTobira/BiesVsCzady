@@ -46,7 +46,7 @@ int arrayIndex;
     public void SelectMoveState(){
 
 
-        if( Vector2.Distance( m_FloorDetector.GetComponent<Transform>().position, currentActivePosition ) < 300 || 
+        if( Vector2.Distance( m_FloorDetector.GetComponent<Transform>().position, currentActivePosition ) < 30 || 
             triesToFlyToTarget > 3 
         ){
             arrayIndex = Random.Range(0, entityScript.posiblePositions.Count );

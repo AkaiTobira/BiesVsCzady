@@ -9,7 +9,7 @@ public class BiesAttack2 : PlayerBaseState{
 
     public BiesAttack2( GameObject controllable) : base( controllable ){
         name = "BiesAttack2";
-        distanceToFixAnimation = new Vector3(0, 75 , 0);
+        distanceToFixAnimation = new Vector3(0, 7.5f , 0);
     }
 
 

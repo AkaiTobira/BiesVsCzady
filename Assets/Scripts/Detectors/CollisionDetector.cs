@@ -249,7 +249,7 @@ public class CollisionDetector : MonoBehaviour, ICollisionFloorDetector
         RaycastHit2D hit = Physics2D.Raycast(
             rayOrigin,
             new Vector2(0, -1),
-            200,
+            20,
             m_collsionMask
         );
 
@@ -257,18 +257,18 @@ public class CollisionDetector : MonoBehaviour, ICollisionFloorDetector
                                                 borders.left : borders.right,
                                                 borders.bottom);
 
-        RaycastHit2D hit2 = Physics2D.Raycast (rayOriginDescend, new Vector2( collisionInfo.faceDir, 0 ), 200, m_collsionMask);
+        RaycastHit2D hit2 = Physics2D.Raycast (rayOriginDescend, new Vector2( collisionInfo.faceDir, 0 ), 20, m_collsionMask);
 
 
         Debug.DrawRay(
             rayOriginDescend,
-            new Vector2(200 * collisionInfo.faceDir, -0),
+            new Vector2(20 * collisionInfo.faceDir, -0),
             new Color(1,1,1)
         );
 
         Debug.DrawRay(
             rayOrigin,
-            new Vector2(0, -200),
+            new Vector2(0, -20),
             new Color(0,0,0)
         );
 

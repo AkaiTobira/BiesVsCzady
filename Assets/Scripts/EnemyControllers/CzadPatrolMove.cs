@@ -11,7 +11,7 @@ public class CzadPatrolMove : CzadMoveBase
 
     public override void SelectNextState(){
 
-        if( Mathf.Abs( leftToMove.x ) < 100 ){
+        if( Mathf.Abs( leftToMove.x ) < 10 ){
             m_isOver = true;
         }
         if( m_edgeDetector.hasReachedPlatformEdge( ) ) {
