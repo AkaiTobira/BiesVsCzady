@@ -21,7 +21,7 @@ public class CatWallJump : PlayerBaseState
         name = "CatWallJump";
         m_dir = dir;
         SetUpVariables();
-        distanceToFixAnimation = new Vector3(  (isRightOriented()) ? -175 : 175, 0, 0);
+        distanceToFixAnimation = new Vector3(  (isRightOriented()) ? -17.5f : 17.5f, 0, 0);
     }
 
     protected override void SetUpAnimation(){
@@ -36,7 +36,7 @@ public class CatWallJump : PlayerBaseState
         yield return new WaitForSeconds(time);
         if( m_isOver ) yield break;
         distanceToFixAnimation = new Vector3();
-        m_FloorDetector.CheatMove(  new Vector2( 40 * (int)m_dir, 0) );
+        m_FloorDetector.CheatMove(  new Vector2( 4 * (int)m_dir, 0) );
         CommonValues.PlayerVelocity.y = JumpForce + GravityForce; 
         m_animator.ResetTrigger("isWallJumpPressed");
         MoveDisabled = false;
@@ -96,7 +96,7 @@ public class CatWallJump : PlayerBaseState
 
         GravityForce += -CatUtils.GravityForce * Time.deltaTime;
         CommonValues.PlayerVelocity.y = JumpForce + GravityForce; 
-        CommonValues.PlayerVelocity.y = Mathf.Max( CommonValues.PlayerVelocity.y, -500 );
+        CommonValues.PlayerVelocity.y = Mathf.Max( CommonValues.PlayerVelocity.y, -50 );
 
         ProcessSwipe();
 
@@ -147,6 +147,11 @@ public class CatWallJump : PlayerBaseState
     }
 
     public override string GetTutorialAdvice(){
+        string msg = "E - ChangeForm";
+        return msg;
+    }
+
+    public override string GetCombatAdvice(){
         string msg = "E - ChangeForm";
         return msg;
     }

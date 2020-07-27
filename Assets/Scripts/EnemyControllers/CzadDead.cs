@@ -18,6 +18,9 @@ public class CzadDead : EnemyBaseState{
         timeToEnd = 5;
         m_animator.SetTrigger( "isDead" );
 
+
+        GlobalUtils.TaskMaster.EnemyIsOutOfCombat();
+
     }
 
     private void fillKnockbackInfo( GlobalUtils.AttackInfo infoPack ){

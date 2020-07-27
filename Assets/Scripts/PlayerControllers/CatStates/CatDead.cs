@@ -12,5 +12,5 @@ public class CatDead : PlayerDead{
         m_animator.SetTrigger( "CatDead" );
         timeToEnd = getAnimationLenght("CatDead") + realoadDealay;
     }
-    
+
 }

@@ -24,7 +24,7 @@ public class CatFall : PlayerFall
 
     public override void Process(){
         base.Process();
-        distanceToFixAnimation = new Vector3( (isLeftOriented())? -63 : 63, 0 , 0);
+        distanceToFixAnimation = new Vector3( (isLeftOriented())? -6.3f : 6.3f, 0 , 0);
         WallSlideDelay -= Time.deltaTime;
     }
 

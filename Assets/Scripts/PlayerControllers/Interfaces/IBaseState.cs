@@ -23,6 +23,9 @@ public abstract class IBaseState : IDirectionInfo
         return temp;
     }
 
+    public virtual string GetCombatAdvice(){
+        return "X or LBM - hit enemy\nC or RBM - Howl";
+    }
     public virtual string GetTutorialAdvice(){ return "Uniplemented"; }
     public abstract void UpdateAnimator();
     public virtual void OnExit(){}

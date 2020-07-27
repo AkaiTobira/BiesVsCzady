@@ -8,6 +8,18 @@ public class TaskMaster : MonoBehaviour
     public Vector2 lastCheckPoint = new Vector2();
     public Transform PlayerPrefab;
 
+    public int triggeredEnemies = 0;
+
+    public bool IsPlayerInCombat() { return triggeredEnemies != 0 ; }
+
+    public void EnemyTriggered(){
+        triggeredEnemies += 1;
+    }
+
+    public void EnemyIsOutOfCombat(){
+        triggeredEnemies = Mathf.Max(0, triggeredEnemies - 1);
+    }
+
     void Start()
     {
         GlobalUtils.TaskMaster = GetComponent<TaskMaster>();

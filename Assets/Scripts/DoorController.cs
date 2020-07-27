@@ -9,18 +9,38 @@ public class DoorController : MonoBehaviour
 
     [SerializeField] Transform doorDetector = null;
 
-    void OnTriggerStay2D(Collider2D other) {
+    bool isHeroInArea = false;
+    bool hasBeenActivated = false;
 
-        if( other.name.Contains("Player")){
-            if( PlayerInput.isActionKeyHold() ){
-                if( other.GetComponent<Player>().keys >= numberOfRequiredKeys){
+    void Update()
+    {
+        if( isHeroInArea && !hasBeenActivated ){
+            int owendNumberOfKeys = GlobalUtils.PlayerObject.GetComponent<Player>().keys;
+            GlobalUtils.TutorialConsole.text += "\n" + owendNumberOfKeys.ToString() + "/" + numberOfRequiredKeys.ToString() + " keys";
+            if( owendNumberOfKeys >= numberOfRequiredKeys){
+                GlobalUtils.TutorialConsole.text += "\nF - open door";
+                if( PlayerInput.isActionKeyHold() ){
                     doorDetector.GetComponent<Animator>().SetTrigger("isOpen");
-                    other.GetComponent<Player>().keys -= numberOfRequiredKeys;
+                    owendNumberOfKeys -= numberOfRequiredKeys;
                     Destroy(gameObject);
+                    hasBeenActivated = true;
                 }
+            }else{
+                GlobalUtils.TutorialConsole.text += "\ninsufficient number of keys to open";
             }
         }
-    
+    }
+
+    void OnTriggerEnter2D(Collider2D other){
+        if( other.tag == "PlayerHurtBox"){
+            isHeroInArea = true;
+        }  
+    }
+
+    void OnTriggerExit2D(Collider2D other){
+        if( other.tag == "PlayerHurtBox"){
+            isHeroInArea = false;
+        }  
     }
 
 

@@ -12,6 +12,7 @@ int arrayIndex;
         name = "FlyingCzadPlayerDetected";
         meeleCombatTimer = entityScript.delayOfFirstAttack;
         flyToAirPoint();
+        GlobalUtils.TaskMaster.EnemyTriggered();
     }
 
     private void flyToAirPoint(){
@@ -78,6 +79,7 @@ int arrayIndex;
             entityScript.ResetPatrolValues();
             m_isOver                       = true;
             entityScript.isAlreadyInCombat = false;
+            GlobalUtils.TaskMaster.EnemyIsOutOfCombat();
         }else{
             SelectNextBehaviour();
         }

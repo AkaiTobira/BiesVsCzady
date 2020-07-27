@@ -10,6 +10,7 @@ public class CzadPlayerDetected : EnemyBaseState
         name = "CzadPlayerDetected";
         meeleCombatTimer = entityScript.delayOfFirstAttack;
         rangeCombatTimer = entityScript.delayOfFirstAttack;
+        GlobalUtils.TaskMaster.EnemyTriggered();
     }
     
     private bool CanMeeleAttack(){
@@ -39,6 +40,8 @@ public class CzadPlayerDetected : EnemyBaseState
             entityScript.ResetPatrolValues();
             m_isOver                       = true;
             entityScript.isAlreadyInCombat = false;
+            GlobalUtils.TaskMaster.EnemyIsOutOfCombat();
+
         }else if( distance < entityScript.shotRange && entityScript.probabilityOfShot/Random.Range( 1.0f, 11.0f) > 1.0f  ){
             if( CanShot()){
                 m_nextState = new CzadShot( m_controllabledObject );

@@ -58,4 +58,9 @@ public class PlayerFall : PlayerBaseState
     public override void HandleInput(){
         HandleInputSwipe();
     }
+
+    public override string GetTutorialAdvice(){
+        return "";
+    }
+
 }

@@ -48,4 +48,9 @@ public class PlayerDead : PlayerBaseState{
         return "";
     }
 
+    public override string GetCombatAdvice(){
+        return "";
+    }
+
+
 }

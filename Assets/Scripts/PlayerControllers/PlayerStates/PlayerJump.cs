@@ -24,7 +24,7 @@ public class PlayerJump : PlayerBaseState
         m_animator.SetFloat( "FallVelocity", JumpForce);
         m_dir = dir;
         SetUpCounters();
-        m_FloorDetector.CheatMove( new Vector2(0,40.0f));
+        m_FloorDetector.CheatMove( new Vector2(0,4.0f));
         CommonValues.PlayerVelocity.y = JumpForce + GravityForce; 
 
         timeOfJumpForceRising   = m_settings.JumpMaxTime;
@@ -97,7 +97,7 @@ public class PlayerJump : PlayerBaseState
         m_animator.SetFloat( "FallVelocity", CommonValues.PlayerVelocity.y);
         GravityForce += -m_settings.GravityForce * Time.deltaTime;
         CommonValues.PlayerVelocity.y = JumpForce + GravityForce;
-        CommonValues.PlayerVelocity.y = Mathf.Max( CommonValues.PlayerVelocity.y, -500 );
+        CommonValues.PlayerVelocity.y = Mathf.Max( CommonValues.PlayerVelocity.y, -50 );
         ProcessSwipe();
         m_FloorDetector.Move(CommonValues.PlayerVelocity * Time.deltaTime);
         CommonValues.PlayerFaceDirection = m_FloorDetector.GetCurrentDirection();

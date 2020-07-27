@@ -63,7 +63,7 @@ public class PlayerLedgeClimb : PlayerBaseState
         Vector2 pos             = m_FloorDetector.GetComponent<Transform>().position;
 
         targetClimbHight = CalculateHighOfLedge(ledgeBox);
-        targetStayHightY = targetClimbHight + 30;
+        targetStayHightY = targetClimbHight + 3;
 
         GlobalUtils.Direction obstacleDir = ( playerBox.bounds.max.x > ledgeBox.bounds.max.x ) ? 
                                                     GlobalUtils.Direction.Left : 
@@ -80,7 +80,7 @@ public class PlayerLedgeClimb : PlayerBaseState
 
         Vector2 pos     = m_FloorDetector.GetComponent<Transform>().position;
         Vector2 pos2    = shiftValue;
-        float rayLenght = 50.0f;
+        float rayLenght = 5.0f;
 
         Debug.DrawLine(pos + pos2 + new Vector2( rayLenght,  rayLenght), pos + pos2 + new Vector2( -rayLenght, -rayLenght), new Color(0,1,0));
         Debug.DrawLine(pos + pos2 + new Vector2( rayLenght, -rayLenght), pos + pos2 + new Vector2( -rayLenght,  rayLenght), new Color(0,1,0));
@@ -101,6 +101,10 @@ public class PlayerLedgeClimb : PlayerBaseState
 
 
     public override string GetTutorialAdvice(){
+        return "";
+    }
+
+    public override string GetCombatAdvice(){
         return "";
     }
 }

@@ -29,7 +29,7 @@ public class PlayerHurt : PlayerBaseState{
         m_settings = settings;
 
         fillKnockbackInfo( infoPack );
-        m_FloorDetector.CheatMove( new Vector2(0,40.0f));
+        m_FloorDetector.CheatMove( new Vector2(0,4.0f));
 
     }
 
@@ -59,7 +59,7 @@ public class PlayerHurt : PlayerBaseState{
         }
         
         if( velocitXFriction > 0){
-            m_FloorDetector.CheatMove( new Vector2(0,40.0f));
+            m_FloorDetector.CheatMove( new Vector2(0,4.0f));
         }
     }
 
@@ -148,6 +148,8 @@ public class PlayerHurt : PlayerBaseState{
     public override string GetTutorialAdvice(){
         return "";
     }
-
+    public override string GetCombatAdvice(){
+        return "";
+    }
 
 }

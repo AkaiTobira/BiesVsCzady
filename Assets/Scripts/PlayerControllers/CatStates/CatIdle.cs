@@ -60,10 +60,14 @@ public class CatIdle : PlayerIdle
         base.ProcessAnimationUpdate();
 
         if( m_animator.GetBool("SneakySneaky") ){
-            distanceToFixAnimation = new Vector3(0, -145.51f , 0);
+            distanceToFixAnimation = new Vector3(0, -14.551f , 0);
         }else{
-            distanceToFixAnimation = new Vector3(0, -60 , 0);
+            distanceToFixAnimation = new Vector3(0, -6 , 0);
         }
+    }
+
+    public override string GetCombatAdvice(){
+        return "E - Change Form";
     }
 
 }
