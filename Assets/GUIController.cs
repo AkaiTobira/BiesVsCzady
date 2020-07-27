@@ -5,6 +5,9 @@ using UnityEngine.UI;
 
 public class GUIController : MonoBehaviour
 {
+
+    public KeyInfoControll keyInfoScreen;
+
     void Start()
     {   
         GlobalUtils.GUIOverlay      = GetComponent<GUIController>();
