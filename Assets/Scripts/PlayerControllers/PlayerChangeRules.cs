@@ -5,7 +5,7 @@ using UnityEngine;
 public static class  PlayerChangeRules
 {
 
-    const float SHIFT_BASED_ON_SCALE = 138.0f;
+    const float SHIFT_BASED_ON_SCALE = 13.8f;
 
     private static List<string> triggersList = new List<string>{
         "SwitchToCatIdle",
@@ -36,9 +36,9 @@ public static class  PlayerChangeRules
 
     private static void ScalePlayer( string formName){
         if( formName.Contains("Cat") ){
-            GlobalUtils.PlayerObject.localScale = new Vector3(120, 120, 75);
+            GlobalUtils.PlayerObject.localScale = new Vector3(12, 12, 0);
         }else{
-            GlobalUtils.PlayerObject.localScale = new Vector3(180, 180, 100);
+            GlobalUtils.PlayerObject.localScale = new Vector3(18, 18, 0);
         }
     }
 

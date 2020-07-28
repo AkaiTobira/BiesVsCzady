@@ -53,8 +53,9 @@ public class AutoDestroyablePlatform : MonoBehaviour
             RaycastHit2D hit = Physics2D.Raycast( rayOrigin, upDirection, rayLenght, playerLayer );
 
             if( hit ){
-                if( hit.collider.tag == "PlayerHurtBox") {
-                
+                bool isValidHit = hit.collider.tag == "PlayerHurtBox";
+                isValidHit     |= hit.collider.tag == "StalactitHurtBos";
+                if( isValidHit ) {
                     startTimer = true;
                     existingTimer   = m_existingTimer;
                     maxOfTimerValue = m_existingTimer;

@@ -24,6 +24,7 @@ MonoBehaviour:
   EncryptionKey: 
   ImportType: 0
   TargetAssetPath: FMODBanks
+  TargetBankFolder: 
   LoggingLevel: 2
   SpeakerModeSettings:
   - Platform: 2
@@ -81,3 +82,4 @@ MonoBehaviour:
   Banks: []
   BanksToLoad: []
   LiveUpdatePort: 9264
+  EnableMemoryTracking: 0

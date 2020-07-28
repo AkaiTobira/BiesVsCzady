@@ -5,7 +5,7 @@ using UnityEngine;
 public class RoarExtensionAreaController : MonoBehaviour
 {
     
-    [SerializeField] StalactitController[] objectsToTakeDown;
+    [SerializeField] StalactitController[] objectsToTakeDown = null;
 
     bool isHeroInArea = false;
     bool hasBeenActivated = false;
@@ -20,6 +20,7 @@ public class RoarExtensionAreaController : MonoBehaviour
                 ActivateAllObjects(infoPack);
                 hasBeenActivated = true;
             }
+            GlobalUtils.TutorialConsole.text += "\nC or RMB - break the stalactits";
         }
     }
 

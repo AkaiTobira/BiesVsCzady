@@ -345,6 +345,13 @@ namespace FMODUnity
                 bankFolder = bankFolder.Substring(1);
             #endif
 
+            #if !UNITY_EDITOR
+            if (!string.IsNullOrEmpty(Settings.Instance.TargetSubFolder))
+            {
+                bankFolder = Path.Combine(bankFolder, Settings.Instance.TargetSubFolder);
+            }
+            #endif
+
             if (System.IO.Path.GetExtension(bankName) != BankExtension)
             {
                 return string.Format("{0}/{1}.bank", bankFolder, bankName);
@@ -362,7 +369,7 @@ namespace FMODUnity
             #elif UNITY_EDITOR_OSX || UNITY_STANDALONE_OSX
                 string pluginFileName = pluginName + ".bundle";
             #elif UNITY_PS4
-                string pluginFileName = pluginName + ".prx";
+                string pluginFileName = "lib" + pluginName + ".prx";
             #elif UNITY_ANDROID || UNITY_STANDALONE_LINUX
                 string pluginFileName = "lib" + pluginName + ".so";
             #elif UNITY_WEBGL

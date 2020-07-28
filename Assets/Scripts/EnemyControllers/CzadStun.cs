@@ -36,7 +36,7 @@ public class CzadStun : EnemyBaseState{
         entityScript.velocity.x *= (int)infoPack.fromCameAttack;
 
         if( entityScript.hurtSpeedDropFrictionX > 0){
-            m_FloorDetector.CheatMove( new Vector2(0,40.0f));
+            m_FloorDetector.CheatMove( new Vector2(0,4.0f));
         }
     }
 

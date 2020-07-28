@@ -9,7 +9,7 @@ public class CzadAttackMove : CzadMoveBase
     }
 
     public override void SelectNextState(){
-        if( Mathf.Abs( leftToMove.x ) < 10 ) m_isOver = true;
+        if( Mathf.Abs( leftToMove.x ) < 1 ) m_isOver = true;
         if( m_edgeDetector.hasReachedPlatformEdge( ) ) {
             m_isOver = true;
         }

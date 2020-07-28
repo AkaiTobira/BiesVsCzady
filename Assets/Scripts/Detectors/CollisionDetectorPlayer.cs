@@ -43,6 +43,10 @@ public class CollisionDetectorPlayer : CollisionDetector, ICollisionWallDetector
         return pullableObject;
     }
 
+    public bool IsWallDestroyable(){
+        return isObjectDestroyable;
+    }
+
     override protected void ResetCollisionInfo(){
         collisionInfo.Reset();
         oneWayPlatformBelow = false;

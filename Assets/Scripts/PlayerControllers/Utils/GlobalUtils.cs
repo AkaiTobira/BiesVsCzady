@@ -25,9 +25,13 @@ public static class  GlobalUtils
     public static Transform   PlayerObject   = null;
     public static CameraShake cameraShake    = null;
 
-    public static Transform    TaskMaster = null;
+    public static TaskMaster    TaskMaster = null;
 
     public static Camera_Follow Camera = null;
+
+    public static Text TutorialConsole = null;
+
+    public static GUIController GUIOverlay = null;
 
     public static Text        debugConsole   = null;
     public static Text        debugConsole2  = null;

@@ -10,7 +10,7 @@ public class CatWallHold : PlayerBaseState
         m_dir = dir;
         name = "CatWallHold" + ((isLeftOriented())? "L": "R");
         CommonValues.PlayerVelocity.y =0;
-        distanceToFixAnimation = new Vector3(  (isRightOriented()) ? 75 : -75, -65, 0);
+        distanceToFixAnimation = new Vector3(  (isRightOriented()) ? 7.5f : -7.5f, -6.5f, 0);
     }
 
     public override void Process(){
@@ -57,6 +57,19 @@ public class CatWallHold : PlayerBaseState
             m_isOver = true;
             m_nextState = new CatWallClimb( m_controllabledObject, m_dir);
         }
+    }
+
+
+    public override string GetTutorialAdvice(){
+        string msg = "E - ChangeForm\nSPACE - Jump";
+        msg += "\n W or Up - Climb up";
+        return msg;
+    }
+
+    public override string GetCombatAdvice(){
+        string msg = "E - ChangeForm\nSPACE - Jump";
+        msg += "\n W or Up - Climb up";
+        return msg;
     }
 
 }

@@ -9,6 +9,12 @@ public class BiesWallHold : PlayerBaseState
         m_dir = dir;
         name = "BiesWallHold" + ((isLeftOriented())? "L": "R");
         CommonValues.PlayerVelocity.y =0;
+
+        SetUpAnimValue();
+    }
+
+    private void SetUpAnimValue(){
+        m_animator.SetBool( "isWallMovable",  m_ObjectInteractionDetector.IsWallPullable() );
     }
 
     public override void Process(){
@@ -76,6 +82,14 @@ public class BiesWallHold : PlayerBaseState
             velocity.y += -BiesUtils.GravityForce * Time.deltaTime;
             m_FloorDetector.Move( velocity * Time.deltaTime );
         }
+    }
+
+    public override string GetTutorialAdvice(){
+        string msg = "E - ChangeForm\nSPACE - Jump";
+        msg += ( m_ObjectInteractionDetector.IsWallPullable()   ) ? "\nSHIFT + A/D or arrows to move object" : "";
+        msg += ( m_ObjectInteractionDetector.IsWallDestroyable() ) ? "\nX or LMB - hit to destroy" : "";
+
+        return msg;
     }
 
 }

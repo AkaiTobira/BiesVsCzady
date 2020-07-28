@@ -10,6 +10,8 @@ public class PlayerBaseState : IBaseState, IInputProcessingState
 
     protected Vector3 distanceToFixAnimation = new Vector3();
 
+    private protected ICharacterSettings m_settings;
+
     protected ICollisionWallDetector         m_WallDetector;
     protected ICollisionInteractableDetector m_ObjectInteractionDetector;
 

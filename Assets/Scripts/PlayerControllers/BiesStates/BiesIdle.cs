@@ -2,18 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BiesIdle : PlayerBaseState
+public class BiesIdle : PlayerIdle
 {
-
-    public BiesIdle( GameObject controllable ) : base( controllable ) {
+    public BiesIdle( GameObject controllable ) : base( controllable, BiesUtils.infoPack ) {
         name = "BiesIdle";
         m_dir = m_FloorDetector.GetCurrentDirection();
-    }
-
-    private void HandleStopping(){
-        float acceleration = (BiesUtils.PlayerSpeed / BiesUtils.MoveBrakingTime) * Time.deltaTime;
-        float currentValue = Mathf.Max( Mathf.Abs( CommonValues.PlayerVelocity.x) - acceleration, 0);
-        CommonValues.PlayerVelocity.x = currentValue * (int)m_FloorDetector.GetCurrentDirection();
     }
 
     private void HandleInputMoveState(GlobalUtils.Direction dir){
@@ -31,8 +24,8 @@ public class BiesIdle : PlayerBaseState
             m_nextState = new BiesAttack1(m_controllabledObject);
         }else if( PlayerInput.isAttack2KeyPressed() ){
             m_nextState = new BiesAttack2(m_controllabledObject);
-        }else if( PlayerInput.isAttack3KeyPressed() ){
-            m_nextState = new BiesAttack3(m_controllabledObject);
+        //}else if( PlayerInput.isAttack3KeyPressed() ){
+        //    m_nextState = new BiesAttack3(m_controllabledObject);
         }else if( PlayerInput.isMoveLeftKeyHold() ){
             HandleInputMoveState( GlobalUtils.Direction.Left);
         }else if( PlayerInput.isMoveRightKeyHold() ){
@@ -53,9 +46,8 @@ public class BiesIdle : PlayerBaseState
         }
     }
 
-    private void ProcessAnimationUpdate(){
-        m_animator.SetFloat( "FallVelocity", 0);
-        m_animator.SetFloat("MoveVelocity", Mathf.Abs(CommonValues.PlayerVelocity.x));
+    protected override void ProcessAnimationUpdate(){
+        base.ProcessAnimationUpdate();
 
         distanceToFixAnimation = new Vector3(0, 0 , 0);
 
@@ -66,16 +58,4 @@ public class BiesIdle : PlayerBaseState
         m_animator.SetBool("Attack5", false);
     }
 
-    public override void Process(){
-        HandleStopping();
-        ProcessAnimationUpdate();
-
-        if( ! m_FloorDetector.isOnGround() ){
-            CommonValues.PlayerVelocity.y += -BiesUtils.GravityForce * Time.deltaTime;
-        }else{
-            CatUtils.ResetStamina();
-            CommonValues.PlayerVelocity.y = -BiesUtils.GravityForce * Time.deltaTime;
-        }
-        m_FloorDetector.Move( CommonValues.PlayerVelocity * Time.deltaTime );
-    }
 }

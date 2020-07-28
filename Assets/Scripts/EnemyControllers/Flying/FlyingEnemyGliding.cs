@@ -32,9 +32,9 @@ public class FlyingEnemyGliding : FlyingEnemyBaseState
         float tempMultipler = ( isLeftOriented() ) ? 1 : -1;
 
         Vector2 StartPoint    = m_FloorDetector.GetComponent<Transform>().position;
-        Vector2 ControlPoint1 = GlobalUtils.PlayerObject.position + new Vector3( 1500f * tempMultipler, 300f );
-        Vector2 ControlPoint2 = GlobalUtils.PlayerObject.position + new Vector3( 1300f * tempMultipler, 0f );
-        Vector2 EndPoint      = GlobalUtils.PlayerObject.position - new Vector3( 1500f * tempMultipler, 0f );;
+        Vector2 ControlPoint1 = GlobalUtils.PlayerObject.position + new Vector3( 150f * tempMultipler, 30f );
+        Vector2 ControlPoint2 = GlobalUtils.PlayerObject.position + new Vector3( 130f * tempMultipler, 0f );
+        Vector2 EndPoint      = GlobalUtils.PlayerObject.position - new Vector3( 150f * tempMultipler, 0f );;
 
         distanceOfGlide = 
         Vector3.Distance(ControlPoint1,StartPoint)    +
@@ -47,7 +47,7 @@ public class FlyingEnemyGliding : FlyingEnemyBaseState
     }
 
     private void DebugDraw(){
-        float rayLenght = 50;
+        float rayLenght = 5;
 
         Vector3[] tempArray = new Vector3[4];
         tempArray[0] = infoPack.startPoint;

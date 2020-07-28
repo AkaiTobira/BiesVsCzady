@@ -21,7 +21,7 @@ public class StalactitController :IEntity
         if( !infoPack.isValid ) return;
         if( infoPack.stateName.Contains("2")){ 
             hasBeenHit = true;
-            m_FloorDetector.Move( new Vector2(0, 500f));
+            m_FloorDetector.Move( new Vector2(0, 50f));
             m_animator.transform.GetChild(0).gameObject.SetActive(true);
         }
     }

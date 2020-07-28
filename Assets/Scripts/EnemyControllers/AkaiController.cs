@@ -15,6 +15,8 @@ public class AkaiController : IEntity
 
     [Header("MoveValues")]
 
+    public bool isPositionLocked = false;
+
     public float moveBrakingTime = 0;
     public float moveAccelerationTime = 0;
 
@@ -41,6 +43,8 @@ public class AkaiController : IEntity
 
     [Header("MeeleAttackBehaviour")]
 
+    public bool canMeeleAttack;
+
     public float timeOfBeeingHurt = 3.0f;
 
     public float delayOfHurtStartReEnter = 4.0f;
@@ -58,6 +62,15 @@ public class AkaiController : IEntity
     public Vector2 knockbackValues    = new Vector2();
 
     public float stunDuration         = 0;
+
+    [Header("ShotAttackBehaviour")]
+
+    public bool canShot;
+    public float breakBeetweenShots =  1.0f ;
+
+    [Range(0,10)] public float probabilityOfShot = 1;
+
+    public float shotRange = 1000;
 
     [Header("Debug")]
 
@@ -84,6 +97,7 @@ public class AkaiController : IEntity
 
 
     void UpdatePlayerDetection(){
+
         if( m_sightController.isPlayerSeen() && !isAlreadyInCombat ){
             m_controller.OverriteStates( "CombatEngage" );
             isAlreadyInCombat = true;
@@ -109,14 +123,14 @@ public class AkaiController : IEntity
 
     void UpdateDebugConsole(){
 
-        DebugConsole.transform.position = m_FloorDetector.GetComponent<Transform>().position + new Vector3( -200, 500, 0);
+        DebugConsole.transform.position = m_FloorDetector.GetComponent<Transform>().position + new Vector3( -20, 50, 0);
         DebugConsoleInfo2.text = m_controller.GetStackStatus();
         DebugConsoleInfo1.text = "";
         DebugConsoleInfo1.text += velocity.ToString() + "\n";
         DebugConsoleInfo1.text += "Player seen :" + m_sightController.isPlayerSeen().ToString() + "\n";
         DebugConsoleInfo1.text += "EnemyHp : " + healthPoints.ToString() + "\n";
 
-        Vector2 RayPosition = transform.Find("Detector").transform.position + new Vector3( 0, -75, 0);
+        Vector2 RayPosition = transform.Find("Detector").transform.position + new Vector3( 0, -7.5f, 0);
         Debug.DrawLine( RayPosition - new Vector2( combatRange, 0 ), RayPosition + new Vector2( combatRange, 0 ), new Color(1,0,1));
     }
 
@@ -145,7 +159,8 @@ public class AkaiController : IEntity
                 infoPack.stunDuration   = 0.0f;
                 infoPack.lockFaceDirectionDuringKnockback = true;
                 infoPack.attackDamage   = onTouchDamage;
-                infoPack.fromCameAttack = m_FloorDetector.GetCurrentDirection();
+                infoPack.fromCameAttack = GlobalUtils.PlayerObject.position.x < m_FloorDetector.GetComponent<Transform>().position.x? 
+                                            GlobalUtils.Direction.Left : GlobalUtils.Direction.Right;
             break;
         }
 

@@ -2,21 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CatFall : PlayerBaseState
+public class CatFall : PlayerFall
 {
-    private GlobalUtils.Direction m_swipe;
-
-    private bool swipeOn = false;
-
     private float WallSlideDelay = 0.1f;
 
-    public CatFall( GameObject controllable, GlobalUtils.Direction dir) : base( controllable ) {
-        m_dir = dir;
+    public CatFall( GameObject controllable, GlobalUtils.Direction dir) : base( controllable, dir, CatUtils.infoPack ) {
         name = "CatFall";
         HandleSpecialBehaviour();
-        CommonValues.PlayerVelocity.y = 0;
-        m_animator.SetFloat( "FallVelocity", -1000);
-        //distanceToFixAnimation = new Vector3( (isLeftOriented())? -126 : 125, 0 , 0);
     }
 
     private void HandleSpecialBehaviour(){
@@ -29,47 +21,16 @@ public class CatFall : PlayerBaseState
         }
     }
 
-    private void ProcessSwipe(){
-        if( !swipeOn ) return;
-        CommonValues.PlayerVelocity.x = ( m_swipe == GlobalUtils.Direction.Left)  ? 
-                        Mathf.Max(   -CatUtils.maxMoveDistanceInAir,
-                                    CommonValues.PlayerVelocity.x - CatUtils.MoveSpeedInAir * Time.deltaTime): 
-                        Mathf.Min(   CatUtils.maxMoveDistanceInAir,
-                                    CommonValues.PlayerVelocity.x + CatUtils.MoveSpeedInAir * Time.deltaTime);
-                                    
-        m_dir = (GlobalUtils.Direction) Mathf.Sign(CommonValues.PlayerVelocity.x);
-    }
 
     public override void Process(){
-        distanceToFixAnimation = new Vector3( (isLeftOriented())? -63 : 63, 0 , 0);
-        m_animator.SetFloat( "FallVelocity", -1000);
+        base.Process();
+        distanceToFixAnimation = new Vector3( (isLeftOriented())? -6.3f : 6.3f, 0 , 0);
         WallSlideDelay -= Time.deltaTime;
-        CommonValues.PlayerVelocity.y += -CatUtils.GravityForce * Time.deltaTime;
-        ProcessSwipe();
-        m_FloorDetector.Move(CommonValues.PlayerVelocity * Time.deltaTime);
-        if( m_FloorDetector.isOnGround() ) m_isOver = true;
-    }
-
-    public override void OnExit(){
-        if( !PlayerInput.isMoveLeftKeyHold() && !PlayerInput.isMoveRightKeyHold()) CommonValues.PlayerVelocity = new Vector2();
-    }
-
-    private void HandleInputSwipe(){
-        if( PlayerSwipeLock.SwipeUnlockRequirementsMeet() ){
-            if( PlayerInput.isMoveLeftKeyHold() ){
-                swipeOn = true;
-                m_swipe = GlobalUtils.Direction.Left;
-            }else if( PlayerInput.isMoveRightKeyHold() ){
-                swipeOn = true;
-                m_swipe = GlobalUtils.Direction.Right;
-            }else{
-                swipeOn = false;
-            }
-        }
     }
 
     public override void HandleInput(){
         if( m_isOver ) return;
+        HandleInputSwipe();
     //     if(PlayerJumpHelper.JumpRequirementsMeet( CatUtils.isJumpKeyJustPressed(), 
     //                                               m_FloorDetector.isOnGround() ))
     //    {
@@ -85,6 +46,6 @@ public class CatFall : PlayerBaseState
             m_nextState = new CatWallSlide( m_controllabledObject, m_dir);
         }
 
-        HandleInputSwipe();
+
     }
 }

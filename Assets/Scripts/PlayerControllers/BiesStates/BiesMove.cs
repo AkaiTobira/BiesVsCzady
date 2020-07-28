@@ -30,8 +30,8 @@ public class BiesMove : PlayerMove
             m_nextState = new BiesAttack1(m_controllabledObject);
         }else if( PlayerInput.isAttack2KeyPressed() ){
             m_nextState = new BiesAttack2(m_controllabledObject);
-        }else if( PlayerInput.isAttack3KeyPressed() ){
-            m_nextState = new BiesAttack3(m_controllabledObject);
+        //}else if( PlayerInput.isAttack3KeyPressed() ){
+         //   m_nextState = new BiesAttack3(m_controllabledObject);
         }else if( isLeftOriented()  && !PlayerInput.isMoveLeftKeyHold()){
             m_isOver = true;
         }else if( isRightOriented() && !PlayerInput.isMoveRightKeyHold()){

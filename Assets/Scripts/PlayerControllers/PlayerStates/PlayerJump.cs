@@ -15,8 +15,6 @@ public class PlayerJump : PlayerBaseState
     protected float GravityForce = 0.0f;
     protected float startAnimationDelay = 0.0f;
 
-    ICharacterSettings m_settings;
-
     public PlayerJump( GameObject controllable, 
                         GlobalUtils.Direction dir,
                         ICharacterSettings settings
@@ -26,7 +24,7 @@ public class PlayerJump : PlayerBaseState
         m_animator.SetFloat( "FallVelocity", JumpForce);
         m_dir = dir;
         SetUpCounters();
-        m_FloorDetector.CheatMove( new Vector2(0,40.0f));
+        m_FloorDetector.CheatMove( new Vector2(0,4.0f));
         CommonValues.PlayerVelocity.y = JumpForce + GravityForce; 
 
         timeOfJumpForceRising   = m_settings.JumpMaxTime;
@@ -99,7 +97,7 @@ public class PlayerJump : PlayerBaseState
         m_animator.SetFloat( "FallVelocity", CommonValues.PlayerVelocity.y);
         GravityForce += -m_settings.GravityForce * Time.deltaTime;
         CommonValues.PlayerVelocity.y = JumpForce + GravityForce;
-        CommonValues.PlayerVelocity.y = Mathf.Max( CommonValues.PlayerVelocity.y, -500 );
+        CommonValues.PlayerVelocity.y = Mathf.Max( CommonValues.PlayerVelocity.y, -50 );
         ProcessSwipe();
         m_FloorDetector.Move(CommonValues.PlayerVelocity * Time.deltaTime);
         CommonValues.PlayerFaceDirection = m_FloorDetector.GetCurrentDirection();
@@ -148,5 +146,9 @@ public class PlayerJump : PlayerBaseState
         if( m_isOver ){
             m_animator.ResetTrigger("CatJumpPressed");
         }
+    }
+
+    public override string GetTutorialAdvice(){
+        return "E - ChangeForm\nWSAD or arrows - Move";
     }
 }

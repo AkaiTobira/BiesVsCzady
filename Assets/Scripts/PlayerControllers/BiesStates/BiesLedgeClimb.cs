@@ -5,10 +5,10 @@ using UnityEngine;
 public class BiesLedgeClimb : PlayerLedgeClimb
 {
 
-    public BiesLedgeClimb( GameObject controllable, GlobalUtils.Direction dir) : base( controllable, dir, 350 ) {
+    public BiesLedgeClimb( GameObject controllable, GlobalUtils.Direction dir) : base( controllable, dir, 35 ) {
         name = "BiesLedgeClimb";
-        shiftValue = new Vector2((isLeftOriented())? -600 : 600, 400);
-        distanceToFixAnimation = new Vector3( (isLeftOriented())? -381 : 381, 0 , 0);
+        shiftValue = new Vector2((isLeftOriented())? -60 : 60, 40);
+        distanceToFixAnimation = new Vector3( (isLeftOriented())? -38.1f : 38.1f, 0 , 0);
     }
 
     protected override void  SetUpAnimation(){

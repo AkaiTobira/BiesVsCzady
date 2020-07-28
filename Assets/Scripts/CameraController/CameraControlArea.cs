@@ -9,9 +9,12 @@ public class CameraControlArea : MonoBehaviour
     [SerializeField] public Camera_Follow.KeyValuePairs RightClamping = new Camera_Follow.KeyValuePairs(false, 0);
     [SerializeField] public Camera_Follow.KeyValuePairs TopClamping   = new Camera_Follow.KeyValuePairs(false, 0);
     [SerializeField] public Camera_Follow.KeyValuePairs DownClamping  = new Camera_Follow.KeyValuePairs(false, 0);
+    [SerializeField] public Vector3 centerOfCamera = new Vector3(0,-6,0);
+
+    [SerializeField] public float camerSize = 170;
 
     void SetCameraValues(){
-        GlobalUtils.Camera.SetValues(LeftClamping, RightClamping, TopClamping, DownClamping);
+        GlobalUtils.Camera.SetValues(LeftClamping, RightClamping, TopClamping, DownClamping, centerOfCamera, camerSize);
     }
 
     void OnTriggerEnter2D(Collider2D other) {
@@ -28,7 +31,10 @@ public class CameraControlArea : MonoBehaviour
             GlobalUtils.Camera.SetValues(new Camera_Follow.KeyValuePairs(false, 0), 
                                          new Camera_Follow.KeyValuePairs(false, 0), 
                                          new Camera_Follow.KeyValuePairs(false, 0), 
-                                         new Camera_Follow.KeyValuePairs(false, 0));
+                                         new Camera_Follow.KeyValuePairs(false, 0),
+                                         new Vector3(0,-6,0),
+                                         GlobalUtils.Camera.defaultSize
+                                         );
         }
     }
 

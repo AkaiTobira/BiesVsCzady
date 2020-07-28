@@ -10,7 +10,7 @@ public class CatWallSlide : PlayerBaseState
         PlayerFallOfWallHelper.ResetCounter();
         PlayerMoveOfWallHelper.DisableCounter();
         CommonValues.PlayerVelocity = new Vector2(0,0);
-        distanceToFixAnimation = new Vector3( (isLeftOriented())? -125 : 125, 0 , 0);
+        distanceToFixAnimation = new Vector3( (isLeftOriented())? -12.5f : 12.5f, 0 , 0);
     }
 
     protected override void SetUpAnimation(){
@@ -40,7 +40,7 @@ public class CatWallSlide : PlayerBaseState
 
     private bool isMovingOffWall(){
         if( PlayerMoveOfWallHelper.MoveOfWallRequirementsMeet()  ){
-            m_FloorDetector.Move( new Vector2( ( isRightOriented() ) ? -40 : 40, 0));
+            m_FloorDetector.Move( new Vector2( ( isRightOriented() ) ? -4 : 4, 0));
             m_nextState = new CatFall( m_controllabledObject,  GlobalUtils.ReverseDirection( m_dir ) );
             return true;
         }
@@ -66,7 +66,7 @@ public class CatWallSlide : PlayerBaseState
         m_animator.SetFloat( "FallVelocity", CommonValues.PlayerVelocity.y);
         m_animator.SetBool("isSliding", true);
         m_animator.SetBool("isWallClose", m_WallDetector.isWallClose());
-        distanceToFixAnimation = new Vector3( (isLeftOriented())? -125 : 125, 0 , 0);
+        distanceToFixAnimation = new Vector3( (isLeftOriented())? -12.5f : 12.5f, 0 , 0);
 
 
         CommonValues.PlayerVelocity.y = Mathf.Max( CommonValues.PlayerVelocity.y -CatUtils.GravityForce * Time.deltaTime,
@@ -115,4 +115,19 @@ public class CatWallSlide : PlayerBaseState
             }
         }
     }
+
+    public override string GetTutorialAdvice(){
+        string msg = "E - ChangeForm\nSPACE - Jump";
+        msg += "\n W or Up - Climb up";
+        msg += "\n SHIFT   - hold there";
+        return msg;
+    }
+
+    public override string GetCombatAdvice(){
+        string msg = "E - ChangeForm\nSPACE - Jump";
+        msg += "\n W or Up - Climb up";
+        msg += "\n SHIFT   - hold there";
+        return msg;
+    }
+
 }

@@ -14,8 +14,8 @@ public class CatWallClimb : PlayerBaseState
         name = "CatWallClimb" + ((isLeftOriented()) ? "L" : "R");
 
         SetUpRotation();
-        m_FloorDetector.CheatMove(new Vector2(0,2));
-        CommonValues.PlayerVelocity.x = 100 * ( int )m_dir;
+        m_FloorDetector.CheatMove(new Vector2(0,0.2f));
+        CommonValues.PlayerVelocity.x = 10 * ( int )m_dir;
     }
 
     private void SetUpRotation(){
@@ -24,7 +24,7 @@ public class CatWallClimb : PlayerBaseState
     }
 
     protected override void UpdateDirection(){
-        distanceToFixAnimation = new Vector3( (isLeftOriented())? -125 : 125, -150 , 0);
+        distanceToFixAnimation = new Vector3( (isLeftOriented())? -12.5f : 12.5f, -15f , 0);
     }
 
     public override void OnExit(){
@@ -69,4 +69,19 @@ public class CatWallClimb : PlayerBaseState
             m_nextState = new CatWallSlide(m_controllabledObject, m_dir);
         }
     }
+
+    public override string GetTutorialAdvice(){
+        string msg = "E - ChangeForm\nSPACE - Jump";
+        msg += "\n W or Up - Climb up";
+        msg += "\n SHIFT   - hold there";
+        return msg;
+    }
+
+    public override string GetCombatAdvice(){
+        string msg = "E - ChangeForm\nSPACE - Jump";
+        msg += "\n W or Up - Climb up";
+        msg += "\n SHIFT   - hold there";
+        return msg;
+    }
+
 }

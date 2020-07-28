@@ -12,6 +12,7 @@ int arrayIndex;
         name = "FlyingCzadPlayerDetected";
         meeleCombatTimer = entityScript.delayOfFirstAttack;
         flyToAirPoint();
+        GlobalUtils.TaskMaster.EnemyTriggered();
     }
 
     private void flyToAirPoint(){
@@ -45,7 +46,7 @@ int arrayIndex;
     public void SelectMoveState(){
 
 
-        if( Vector2.Distance( m_FloorDetector.GetComponent<Transform>().position, currentActivePosition ) < 300 || 
+        if( Vector2.Distance( m_FloorDetector.GetComponent<Transform>().position, currentActivePosition ) < 30 || 
             triesToFlyToTarget > 3 
         ){
             arrayIndex = Random.Range(0, entityScript.posiblePositions.Count );
@@ -78,6 +79,7 @@ int arrayIndex;
             entityScript.ResetPatrolValues();
             m_isOver                       = true;
             entityScript.isAlreadyInCombat = false;
+            GlobalUtils.TaskMaster.EnemyIsOutOfCombat();
         }else{
             SelectNextBehaviour();
         }
@@ -88,7 +90,7 @@ int arrayIndex;
             SelectMoveState();
         }else{
             if( moveCooldown > 0) return;
-            int nextMove = Random.Range(0, 7);
+            int nextMove = Random.Range(0, 11);
             //Debug.Log( nextMove );
             switch( nextMove ){
                 case 0:
@@ -105,6 +107,11 @@ int arrayIndex;
                 break;
                 case 5:
                 case 6:
+                case 7:
+                case 8:
+                    m_nextState = new FlyingCzadAttackShot(m_controllabledObject);
+                    skipFirst = true;
+                break;
                 default:
                     moveCooldown = entityScript.moveCooldown;
                 break;

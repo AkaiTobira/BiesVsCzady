@@ -18,6 +18,9 @@ public class CzadDead : EnemyBaseState{
         timeToEnd = 5;
         m_animator.SetTrigger( "isDead" );
 
+
+        GlobalUtils.TaskMaster.EnemyIsOutOfCombat();
+
     }
 
     private void fillKnockbackInfo( GlobalUtils.AttackInfo infoPack ){
@@ -30,7 +33,7 @@ public class CzadDead : EnemyBaseState{
         velocitXFriction  = infoPack.knockBackFrictionX;
 
         if( velocitXFriction > 0){
-            m_FloorDetector.CheatMove( new Vector2(0,40.0f));
+            m_FloorDetector.CheatMove( new Vector2(0,4.0f));
         }
     }
 

@@ -9,15 +9,15 @@ public class CatMove : PlayerMove
         base( controllable, dir, CatUtils.infoPack, "Cat" ) 
     {
         name = "CatMove";
-        distanceToFixAnimation = new Vector3(0, -60 , 0);
+        distanceToFixAnimation = new Vector3(0, -6 , 0);
     }
 
     protected override void ProcessStateEnd(){
 
         if( m_animator.GetBool("SneakySneaky") ){
-           distanceToFixAnimation = new Vector3(0, -145.51f , 0);
+           distanceToFixAnimation = new Vector3(0, -14.551f , 0);
         }else{
-            distanceToFixAnimation = new Vector3(0, -60 , 0);
+            distanceToFixAnimation = new Vector3(0, -6 , 0);
         }
 
         if(  m_WallDetector.isWallClose() && 
@@ -54,6 +54,10 @@ public class CatMove : PlayerMove
             CommonValues.PlayerVelocity.y += -CatUtils.infoPack.GravityForce * Time.deltaTime;
             m_FloorDetector.Move( CommonValues.PlayerVelocity * Time.deltaTime );
         }
+    }
+
+    public override string GetCombatAdvice(){
+        return "E - Change Form";
     }
 
 }

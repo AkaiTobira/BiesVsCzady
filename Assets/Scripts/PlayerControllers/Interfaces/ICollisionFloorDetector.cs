@@ -8,6 +8,9 @@ public interface ICollisionFloorDetector {
     Vector2 GetSlopeAngle();
     Vector2 GetTransition();
     void Move( Vector2 velocity);
+
+    void Move( Vector2 velocity, bool updateFaceDir);
+    void Move( float x, float y);
     GlobalUtils.Direction GetCurrentDirection();
     void CheatMove( Vector2 velocity);
     bool isOnCelling();

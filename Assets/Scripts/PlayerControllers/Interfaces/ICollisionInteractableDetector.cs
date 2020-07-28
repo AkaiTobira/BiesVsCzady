@@ -11,4 +11,6 @@ public interface ICollisionInteractableDetector {
     Transform GetClimbableObject();
     Transform GetPullableObject();
     bool IsWallPullable();
+
+    bool IsWallDestroyable();
 }

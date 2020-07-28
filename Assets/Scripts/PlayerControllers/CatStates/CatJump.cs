@@ -6,7 +6,7 @@ public class CatJump : PlayerJump
 {    
     public CatJump( GameObject controllable, GlobalUtils.Direction dir) : base( controllable, dir,  CatUtils.infoPack ) {
         name = "CatJump";
-        distanceToFixAnimation = new Vector3(0, -60 , 0);
+        distanceToFixAnimation = new Vector3(0, -6 , 0);
         StartAnimation();
     }
 
@@ -19,7 +19,7 @@ public class CatJump : PlayerJump
     protected override IEnumerator StartJump( float time ){
         yield return new WaitForSeconds(time);
         if( m_isOver ) yield break;
-        m_FloorDetector.CheatMove( new Vector2(0,40.0f));
+        m_FloorDetector.CheatMove( new Vector2(0,4.0f));
         CommonValues.PlayerVelocity.y = JumpForce + GravityForce; 
         m_animator.ResetTrigger("CatJumpPressed");
     }
@@ -60,5 +60,9 @@ public class CatJump : PlayerJump
         if( m_isOver ){
             m_animator.ResetTrigger("CatJumpPressed");
         }
+    }
+
+    public override string GetCombatAdvice(){
+        return "E - Change Form";
     }
 }

@@ -69,4 +69,10 @@ public class BiesPushObj : PlayerBaseState
             m_isOver = true;
         }
     }
+
+
+    public override string GetTutorialAdvice(){
+        return "";
+    }
+
 }
