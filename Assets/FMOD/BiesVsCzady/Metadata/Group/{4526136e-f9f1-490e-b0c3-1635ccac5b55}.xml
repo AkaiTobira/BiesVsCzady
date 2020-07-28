@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.01.00">
+	<object class="MixerGroup" id="{4526136e-f9f1-490e-b0c3-1635ccac5b55}">
+		<property name="name">
+			<value>BIES SFX</value>
+		</property>
+		<relationship name="effectChain">
+			<destination>{1ea22a48-02e4-4539-9dc6-b5f285cda086}</destination>
+		</relationship>
+		<relationship name="panner">
+			<destination>{596bc266-8eda-4ac9-b033-afb20141faa3}</destination>
+		</relationship>
+		<relationship name="output">
+			<destination>{5876b881-eadb-41de-ab6e-370bf9b436a1}</destination>
+		</relationship>
+	</object>
+	<object class="MixerBusEffectChain" id="{1ea22a48-02e4-4539-9dc6-b5f285cda086}">
+		<relationship name="effects">
+			<destination>{ba46f171-291b-4da2-9c39-a19c1ef7d9f5}</destination>
+			<destination>{1be7245b-b70f-4207-8898-d9dac8497661}</destination>
+		</relationship>
+	</object>
+	<object class="MixerBusPanner" id="{596bc266-8eda-4ac9-b033-afb20141faa3}" />
+	<object class="MixerBusFader" id="{ba46f171-291b-4da2-9c39-a19c1ef7d9f5}" />
+	<object class="MixerSend" id="{1be7245b-b70f-4207-8898-d9dac8497661}">
+		<property name="level">
+			<value>-28</value>
+		</property>
+		<property name="inputFormat">
+			<value>1</value>
+		</property>
+		<relationship name="mixerReturn">
+			<destination>{c396ac54-1725-403e-8076-38ec0ed87096}</destination>
+		</relationship>
+	</object>
+</objects>
