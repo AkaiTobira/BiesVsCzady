@@ -13,7 +13,7 @@ public class TaskMaster : MonoBehaviour
     public bool IsPlayerInCombat() { return triggeredEnemies != 0 ; }
 
     public void EnemyTriggered(){
-        triggeredEnemies += 1;
+    //    triggeredEnemies += 1;
     }
 
     public void EnemyIsOutOfCombat(){

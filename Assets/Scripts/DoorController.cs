@@ -15,11 +15,10 @@ public class DoorController : MonoBehaviour
     void Update()
     {
         if( isHeroInArea && !hasBeenActivated ){
-            int owendNumberOfKeys = GlobalUtils.PlayerObject.GetComponent<Player>().keys;
-            if( owendNumberOfKeys >= numberOfRequiredKeys){
+            if( GlobalUtils.PlayerObject.GetComponent<Player>().keys >= numberOfRequiredKeys){
                 if( PlayerInput.isActionKeyHold() ){
                     doorDetector.GetComponent<Animator>().SetTrigger("isOpen");
-                    owendNumberOfKeys -= numberOfRequiredKeys;
+                    GlobalUtils.PlayerObject.GetComponent<Player>().keys -= numberOfRequiredKeys;
                     Destroy(gameObject);
                     hasBeenActivated = true;
                     GlobalUtils.GUIOverlay.keyInfoScreen.HideAtAreaDoorExit();
@@ -29,14 +28,15 @@ public class DoorController : MonoBehaviour
     }
 
     void OnTriggerEnter2D(Collider2D other){
-        if( other.tag == "PlayerHurtBox"){
+        Debug.Log( other.tag + " :: " + other.name );
+        if( other.tag.Contains("Player")){
             isHeroInArea = true;
             GlobalUtils.GUIOverlay.keyInfoScreen.ShowAtAreaDoorEnter(numberOfRequiredKeys);
         }  
     }
 
     void OnTriggerExit2D(Collider2D other){
-        if( other.tag == "PlayerHurtBox"){
+        if( other.tag.Contains("Player")){
             isHeroInArea = false;
             GlobalUtils.GUIOverlay.keyInfoScreen.HideAtAreaDoorExit();
         }  
