@@ -13,7 +13,11 @@ public class BiesAttack1 : PlayerBaseState
         name = "BiesAttack1";
         distanceToFixAnimation = new Vector3(0, 7.5f , 0);
         m_animator.SetBool("Attack1", true);
-        animationTime = getAnimationLenght("PlayerAttack1");
+        animationTime = getAnimationLenght("PlayerAttack1") / 1.4f;
+
+        m_animator.SetFloat("AnimationSpeed", 1.4f);
+
+    //    Debug.Log( animationTime );
 
 // /        Debug.Log(animationTime);
         timeToEnd     = animationTime;

@@ -39,4 +39,9 @@ public static class  GlobalUtils
     public static Direction ReverseDirection( Direction curr ){
         return (curr == Direction.Left) ? Direction.Right : Direction.Left;
     }
+
+    public static  Direction GetClosestSideToPosition( Vector3 axisPoint, Vector3 sidePoint ){
+        return axisPoint.x < sidePoint.x ? Direction.Right : Direction.Left;
+    }
+
 }

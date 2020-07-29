@@ -49,17 +49,18 @@ public class CzadHurt : EnemyBaseState{
         }
     }
 
+
     private void ProcessMove(){
         entityScript.velocity.y += -entityScript.gravityForce * Time.deltaTime;
-        m_FloorDetector.Move(entityScript.velocity *Time.deltaTime);
+        m_FloorDetector.Move(entityScript.velocity *Time.deltaTime, false);
 
-        if( m_FloorDetector.isOnGround() ){
-            if( knocBackDirection == -1  ) {
-                entityScript.velocity.x = Mathf.Min(entityScript.velocity.x + (entityScript.hurtSpeedDropFrictionX * Time.deltaTime), 0);
-            }else{
-                entityScript.velocity.x = Mathf.Max(entityScript.velocity.x - (entityScript.hurtSpeedDropFrictionX * Time.deltaTime), 0);
-            }
-        }
+    //    if( m_FloorDetector.isOnGround() ){
+    //        if( knocBackDirection == -1  ) {
+    //            entityScript.velocity.x = Mathf.Min(entityScript.velocity.x + (entityScript.hurtSpeedDropFrictionX * Time.deltaTime), 0);
+    //        }else{
+    //            entityScript.velocity.x = Mathf.Max(entityScript.velocity.x - (entityScript.hurtSpeedDropFrictionX * Time.deltaTime), 0);
+     //       }
+     //   }
     }
 
     public override void Process(){

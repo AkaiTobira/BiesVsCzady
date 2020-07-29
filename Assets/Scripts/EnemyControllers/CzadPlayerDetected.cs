@@ -6,6 +6,9 @@ public class CzadPlayerDetected : EnemyBaseState
 {
     float meeleCombatTimer;
     float rangeCombatTimer;
+
+    float jumpAttackTimer;
+
     public CzadPlayerDetected( GameObject controllable ) : base( controllable ){
         name = "CzadPlayerDetected";
         meeleCombatTimer = entityScript.delayOfFirstAttack;
@@ -14,29 +17,41 @@ public class CzadPlayerDetected : EnemyBaseState
     }
     
     private bool CanMeeleAttack(){
-        float distance = Vector3.Distance( GlobalUtils.PlayerObject.transform.position, 
-                                            m_FloorDetector.GetComponent<Transform>().position);
-
+        float distance = Mathf.Abs( GlobalUtils.PlayerObject.transform.position.x - m_FloorDetector.GetComponent<Transform>().position.x) - 4;
+        Debug.Log( distance > entityScript.combatRange );
         if( distance > entityScript.combatRange ) return false;
         if( meeleCombatTimer > 0 )                return false;
         meeleCombatTimer = entityScript.breakBeetweenAttacks;
         return entityScript.canMeeleAttack;
     }
 
+    private bool CanRageJump(){
+        if( jumpAttackTimer > 0) return false;
+        jumpAttackTimer = entityScript.jumpAttackBreak;
+        return entityScript.canJumpOnPlayer;
+    }
+
     private bool CanShot(){
         if( rangeCombatTimer > 0 ) return false;
-        meeleCombatTimer = entityScript.breakBeetweenShots;
+        rangeCombatTimer = entityScript.breakBeetweenShots;
         return entityScript.canShot;
     }
 
     public void SelectNextState(){
         meeleCombatTimer -= Time.deltaTime;
         rangeCombatTimer -= Time.deltaTime;
+        jumpAttackTimer  -= Time.deltaTime;
 
-        float distance = Vector3.Distance( GlobalUtils.PlayerObject.transform.position, 
-                                            m_FloorDetector.GetComponent<Transform>().position);
+        Vector3 playerPosition   = GlobalUtils.PlayerObject.transform.position;
+        Vector3 detectorPosition = m_FloorDetector.GetComponent<Transform>().position;
+        Vector3 playerCombatSide = playerPosition + new Vector3 (entityScript.combatRange * 
+                                            (float)GlobalUtils.GetClosestSideToPosition(playerPosition,
+                                                                                        detectorPosition), 0);
 
-        if( distance > 4000 ) {
+
+        float distance = Vector3.Distance( playerPosition, detectorPosition);
+
+        if( distance > 3000 ) {
             entityScript.ResetPatrolValues();
             m_isOver                       = true;
             entityScript.isAlreadyInCombat = false;
@@ -46,21 +61,25 @@ public class CzadPlayerDetected : EnemyBaseState
             if( CanShot()){
                 m_nextState = new CzadShot( m_controllabledObject );
             }
-        }else if(distance > entityScript.combatRange && entityScript.canMeeleAttack ){
-            var direction = (GlobalUtils.PlayerObject.transform.position - m_FloorDetector.GetComponent<Transform>().position).normalized;
-            m_nextState = new CzadAttackMove( m_controllabledObject, direction * 100);
-        }else{
-            if( CanMeeleAttack() ){
+        }
+        else if( CanMeeleAttack() ){
                 m_nextState = new CzadAttackMelee( m_controllabledObject );
-            } 
+            }
+        else if( CanRageJump()){
+
+        }else if( Mathf.Abs(playerPosition.x  - detectorPosition.x) > entityScript.combatRange && entityScript.canMeeleAttack ){
+
+            Vector3 targetPosition = playerPosition + 
+                                new Vector3( entityScript.combatRange * 
+                                            (float)GlobalUtils.GetClosestSideToPosition(playerPosition,
+                                                                                        detectorPosition ), 0 );
+            targetPosition = targetPosition - detectorPosition;
+
+            m_nextState = new CzadAttackMove( m_controllabledObject, targetPosition );
         }
     }
-
     public override void Process(){
-        if( entityScript.isPositionLocked ){
-            m_FloorDetector.Move( new Vector2(0.0000001f, 0 ) * Mathf.Sign(GlobalUtils.PlayerObject.position.x - m_FloorDetector.GetComponent<Transform>().position.x));
-        }
-
+        m_FloorDetector.Move( new Vector2(0.0000001f, 0 ) * Mathf.Sign(GlobalUtils.PlayerObject.position.x - m_FloorDetector.GetComponent<Transform>().position.x));
         HandleStopping();
         SelectNextState();
         m_FloorDetector.Move( entityScript.velocity * Time.deltaTime);
