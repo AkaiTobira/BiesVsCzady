@@ -27,7 +27,6 @@ public class Player : IEntity
 
         var inAnimator = transform.parent.GetComponent<Animator>();
         inAnimatorBaseSpeed = inAnimator.speed;
-        Debug.Log( inAnimatorBaseSpeed );
         inAnimator.speed = timeOfInvincibility/getAnimationLenght(inAnimator, "Invincibility");
     }
 

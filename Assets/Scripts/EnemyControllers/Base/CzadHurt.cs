@@ -18,6 +18,7 @@ public class CzadHurt : EnemyBaseState{
         m_dir = infoPack.fromCameAttack;
         knocBackDirection = (int)infoPack.fromCameAttack;
 
+
         fillKnockbackInfo( infoPack );
         timeToEnd = entityScript.timeOfBeeingHurt;
         m_animator.SetTrigger( "GetHit" );
@@ -37,6 +38,8 @@ public class CzadHurt : EnemyBaseState{
         if( entityScript.hurtSpeedDropFrictionX > 0){
             m_FloorDetector.CheatMove( new Vector2(0,4.0f));
         }
+
+        Debug.Log( entityScript.velocity);
     }
 
 

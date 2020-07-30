@@ -131,6 +131,10 @@ public class DangerousObject : MonoBehaviour
 
             if( mainEntity.GetCurrentState().Contains("Hurt"   )) mainEntity.OnHit( infoPack);
             if( mainEntity.GetCurrentState().Contains("Gliding")) mainEntity.OnHit( infoPack);
+            if( mainEntity.GetCurrentState().Contains("Chase"  )){
+            //    infoPack.fromCameAttack = mainEntity.GetComponent<ChaserAkaiController>();
+                mainEntity.OnHit( infoPack);
+            } 
             if( mainEntity.GetCurrentState().Contains("Stun"   )) mainEntity.OnHit( infoPack);
             
         }
