@@ -23,9 +23,7 @@ public class RoarExtensionAreaController : MonoBehaviour
     {
         if( isHeroInArea && !hasBeenActivated ){
             foreach( AttackType at in workingTypesOfAttack ){
-                Debug.Log( at.ToString() + " :  " +  ( (int)at ).ToString());
                 if( GlobalUtils.PlayerObject.GetComponent<Player>().GetCurrentState().Contains(( (int)at ).ToString()) ){
-                    Debug.Log("Used"  + ( (int)at ).ToString());
                     GlobalUtils.AttackInfo infoPack = new GlobalUtils.AttackInfo();
                     infoPack.isValid = true;
                     infoPack.stateName = GlobalUtils.PlayerObject.GetComponent<Player>().GetCurrentState();

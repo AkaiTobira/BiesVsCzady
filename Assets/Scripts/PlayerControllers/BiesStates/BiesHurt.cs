@@ -11,7 +11,6 @@ public class BiesHurt : PlayerHurt{
     protected override void SetUpAnimation(){
         m_animator.SetTrigger( "BiesHurt" );
         timeToEnd = getAnimationLenght("BiesHurt");
-
         base.SetUpAnimation();
     }
 

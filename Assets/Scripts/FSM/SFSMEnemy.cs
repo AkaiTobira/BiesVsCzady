@@ -38,6 +38,17 @@ public class SFSMEnemy : ISFSMBase
                 m_states.Push( new FlyingCzadPlayerDetected( m_controllabledObject ));
                 m_states.Push( new CzadStun(m_controllabledObject, attackInfo));
             break;
+            case "ChaserCombatEngage" : 
+                m_states.Push( new ChaserPlayerDetected( m_controllabledObject ));
+            break;
+            case "ChaserHurt" : 
+                m_states.Push( new ChaserPlayerDetected( m_controllabledObject ));
+                m_states.Push( new CzadHurt(m_controllabledObject, attackInfo));
+            break;
+            case "ChaserStun" : 
+                m_states.Push( new ChaserPlayerDetected( m_controllabledObject ));
+                m_states.Push( new CzadStun(m_controllabledObject, attackInfo));
+            break;
             case "CombatEngage" : 
                 m_states.Push( new CzadPlayerDetected( m_controllabledObject ));
             break;

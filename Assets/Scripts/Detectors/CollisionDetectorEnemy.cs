@@ -10,12 +10,17 @@ public class CollisionDetectorEnemy : CollisionDetector, IPlatformEdgeDetector, 
     [SerializeField] private float wallCheckRayLenght = 75f;
 
     bool closeToWall = true;
-/*
+
+    override protected void ResetCollisionInfo(){
+        base.ResetCollisionInfo();
+        closeToWall = false;
+    }
+
     override protected void ProcessCollision(){
         base.ProcessCollision();
         ProcessCollisionWallClose();
     }
-*/
+
     public bool hasReachedPlatformEdge( ){
 
         float direction = collisionInfo.faceDir;
@@ -107,8 +112,9 @@ public class CollisionDetectorEnemy : CollisionDetector, IPlatformEdgeDetector, 
                 m_collsionMask
             );
 
-          //  if( hit ){
-          //      closeToWall = true;
+            if( hit ){
+                closeToWall = true;
+            }
             //    HandleDestroyable(hit.collider);
            //     HandleMoveable(hit.collider);
          //   }else{
@@ -165,6 +171,8 @@ public class CollisionDetectorEnemy : CollisionDetector, IPlatformEdgeDetector, 
                 new Vector2( collisionInfo.faceDir, 0) * sightLenght,
                 new Color(1,1,1)
              );
+
+        base.GetSlopeAngle();
 
   //      Debug.Log( "isHit=" + (!hit).ToString()  );
 
