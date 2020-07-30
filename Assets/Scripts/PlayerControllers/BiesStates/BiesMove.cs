@@ -8,6 +8,8 @@ public class BiesMove : PlayerMove
         base( controllable, dir, BiesUtils.infoPack, "Bies" ) 
     {
         name = "BiesMove";
+
+        m_animator.SetFloat("AnimationSpeed", 1.0f * CommonValues.PlayerVelocity.x/BiesUtils.PlayerSpeed);
     }
 
     protected override void ProcessStateEnd(){
@@ -24,12 +26,16 @@ public class BiesMove : PlayerMove
     public override void HandleInput(){
         base.HandleInput();
 
+        m_animator.SetFloat("AnimationSpeed", 1.0f * CommonValues.PlayerVelocity.x/BiesUtils.PlayerSpeed);
+
         if( PlayerFallHelper.FallRequirementsMeet( m_FloorDetector.isOnGround()) ){
             m_nextState = new BiesFall(m_controllabledObject, GlobalUtils.Direction.Left);
         }else if( PlayerInput.isAttack1KeyPressed() ){
             m_nextState = new BiesAttack1(m_controllabledObject);
         }else if( PlayerInput.isAttack2KeyPressed() ){
             m_nextState = new BiesAttack2(m_controllabledObject);
+        }else if( PlayerInput.isBlockKeyJustPressed() && m_animator.GetCurrentAnimatorStateInfo(0).IsName("BiesWalk") ){
+            m_nextState = new BiesBlock(m_controllabledObject);
         //}else if( PlayerInput.isAttack3KeyPressed() ){
          //   m_nextState = new BiesAttack3(m_controllabledObject);
         }else if( isLeftOriented()  && !PlayerInput.isMoveLeftKeyHold()){

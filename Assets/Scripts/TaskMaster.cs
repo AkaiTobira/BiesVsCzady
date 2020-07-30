@@ -23,7 +23,7 @@ public class TaskMaster : MonoBehaviour
     void Start()
     {
         GlobalUtils.TaskMaster = GetComponent<TaskMaster>();
-        lastCheckPoint = GlobalUtils.PlayerObject.transform.position;
+        if( GlobalUtils.PlayerObject ) lastCheckPoint = GlobalUtils.PlayerObject.transform.position;
     }
 
 

@@ -19,7 +19,10 @@ public class StalactitController :IEntity
 
     public override void OnHit(GlobalUtils.AttackInfo infoPack){
         if( !infoPack.isValid ) return;
-        if( infoPack.stateName.Contains("2")){ 
+        if(    infoPack.stateName.Contains("2") 
+            || infoPack.stateName.Contains("1") 
+            || infoPack.stateName.Contains("4")
+            || infoPack.stateName.Contains("5")){ 
             hasBeenHit = true;
             m_FloorDetector.Move( new Vector2(0, 50f));
             m_animator.transform.GetChild(0).gameObject.SetActive(true);

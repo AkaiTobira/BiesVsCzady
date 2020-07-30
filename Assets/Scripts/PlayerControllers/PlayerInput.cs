@@ -56,6 +56,10 @@ public static class  PlayerInput
         return Input.GetKeyDown( KeyCode.F );
     }
 
+    public static bool isBlockKeyJustPressed(){
+        return Input.GetKeyDown( KeyCode.R );
+    }
+
     public static bool isActionKeyHold(){
         return Input.GetKey( KeyCode.F );
     }

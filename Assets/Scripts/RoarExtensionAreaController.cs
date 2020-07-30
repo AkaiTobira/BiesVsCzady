@@ -10,17 +10,30 @@ public class RoarExtensionAreaController : MonoBehaviour
     bool isHeroInArea = false;
     bool hasBeenActivated = false;
 
+    enum AttackType{
+        Roar = 2,
+        Hit1  = 1,
+        Hit2  = 4,
+        Hit3  = 5
+    }
+
+    [SerializeField] AttackType[] workingTypesOfAttack = null;
+
     void Update()
     {
         if( isHeroInArea && !hasBeenActivated ){
-            if( GlobalUtils.PlayerObject.GetComponent<Player>().GetCurrentState().Contains("2") ){
-                GlobalUtils.AttackInfo infoPack = new GlobalUtils.AttackInfo();
-                infoPack.isValid = true;
-                infoPack.stateName = GlobalUtils.PlayerObject.GetComponent<Player>().GetCurrentState();
-                ActivateAllObjects(infoPack);
-                hasBeenActivated = true;
+            foreach( AttackType at in workingTypesOfAttack ){
+                Debug.Log( at.ToString() + " :  " +  ( (int)at ).ToString());
+                if( GlobalUtils.PlayerObject.GetComponent<Player>().GetCurrentState().Contains(( (int)at ).ToString()) ){
+                    Debug.Log("Used"  + ( (int)at ).ToString());
+                    GlobalUtils.AttackInfo infoPack = new GlobalUtils.AttackInfo();
+                    infoPack.isValid = true;
+                    infoPack.stateName = GlobalUtils.PlayerObject.GetComponent<Player>().GetCurrentState();
+                    ActivateAllObjects(infoPack);
+                    hasBeenActivated = true;
+                }
             }
-            GlobalUtils.TutorialConsole.text += "\nC or RMB - break the stalactits";
+//            GlobalUtils.TutorialConsole.text += "\nC or RMB - break the stalactits";
         }
     }
 

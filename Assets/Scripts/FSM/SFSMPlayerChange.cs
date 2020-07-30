@@ -31,6 +31,7 @@ public class SFSMPlayerChange : ISFSMBase
 
 
     private void UpdateTutorialInfo(){
+        if( GlobalUtils.TutorialConsole == null) return;
         GlobalUtils.TutorialConsole.text = 
         ( GlobalUtils.TaskMaster.IsPlayerInCombat() ) ? m_states.Peek().GetCombatAdvice() :  m_states.Peek().GetTutorialAdvice();
     }

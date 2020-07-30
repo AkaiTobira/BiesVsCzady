@@ -181,16 +181,16 @@ MonoBehaviour:
   isPositionLocked: 0
   moveBrakingTime: 1
   moveAccelerationTime: 1
-  maxMoveSpeed: 500
-  hurtSpeedDropFrictionX: 100
-  gravityForce: 500
+  maxMoveSpeed: 50
+  hurtSpeedDropFrictionX: 10
+  gravityForce: 50
   canPatrol: 1
-  patrolRangeLeft: -1200
-  patrolRangeRight: 500
+  patrolRangeLeft: -120
+  patrolRangeRight: 50
   autoCorrectionLeft: 0
   autoCorrectionRight: 0
   canRandomMove: 1
-  maxMoveDistance: 1500
+  maxMoveDistance: 150
   canMeeleAttack: 1
   timeOfBeeingHurt: 3
   delayOfHurtStartReEnter: 4
@@ -198,13 +198,17 @@ MonoBehaviour:
   delayOfFirstAttack: 3
   breakBeetweenAttacks: 2
   attackDamage: 1
-  combatRange: 600
-  knockbackValues: {x: 100, y: 0}
+  combatRange: 0
+  knockbackValues: {x: 10, y: 0}
   stunDuration: 0
+  canJumpOnPlayer: 1
+  jumpAttackBreak: 2
+  jumpAttackKnockbackValue: {x: 0, y: 0}
+  jumpAttackDamage: 1
   canShot: 1
   breakBeetweenShots: 1
   probabilityOfShot: 1
-  shotRange: 1000
+  shotRange: 100
   DebugConsole: {fileID: 3670785888900843491}
   DebugConsoleInfo1: {fileID: 845694910854541024}
   DebugConsoleInfo2: {fileID: 903373831072970749}
@@ -843,7 +847,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: -53, y: 49}
+  m_AnchoredPosition: {x: -53, y: 30}
   m_SizeDelta: {x: 79.08008, y: 58.763}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &3670785888900843495

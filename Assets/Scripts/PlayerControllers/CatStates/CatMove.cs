@@ -10,6 +10,7 @@ public class CatMove : PlayerMove
     {
         name = "CatMove";
         distanceToFixAnimation = new Vector3(0, -6 , 0);
+        m_animator.SetFloat("AnimationSpeed", 2.0f * CommonValues.PlayerVelocity.x/BiesUtils.PlayerSpeed);
     }
 
     protected override void ProcessStateEnd(){
@@ -33,6 +34,8 @@ public class CatMove : PlayerMove
 
     public override void HandleInput(){
         base.HandleInput();
+
+        m_animator.SetFloat("AnimationSpeed", 2.0f * CommonValues.PlayerVelocity.x/BiesUtils.PlayerSpeed);
 
         if( PlayerFallHelper.FallRequirementsMeet( m_FloorDetector.isOnGround()) ){
             CommonValues.PlayerVelocity.x = 0;

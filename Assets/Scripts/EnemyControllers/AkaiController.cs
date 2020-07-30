@@ -63,6 +63,16 @@ public class AkaiController : IEntity
 
     public float stunDuration         = 0;
 
+    [Header("JumpAttackBehaviour")]
+
+    public bool canJumpOnPlayer = false;
+
+    public float jumpAttackBreak = 2;
+
+    public Vector2 jumpAttackKnockbackValue = new Vector2();
+
+    public float jumpAttackDamage = 1;
+
     [Header("ShotAttackBehaviour")]
 
     public bool canShot;
@@ -94,10 +104,7 @@ public class AkaiController : IEntity
         m_FloorDetector.Move( new Vector2(0.1f, 0) );
     }
 
-
-
     void UpdatePlayerDetection(){
-
         if( m_sightController.isPlayerSeen() && !isAlreadyInCombat ){
             m_controller.OverriteStates( "CombatEngage" );
             isAlreadyInCombat = true;

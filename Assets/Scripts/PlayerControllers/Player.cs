@@ -156,8 +156,11 @@ public class Player : IEntity
         if( invincibilityDuration > 0 ) return false;
         if( m_controller.GetStateName().Contains("Dead")) return false;
         if( m_controller.GetStateName().Contains("Hurt")) return false;
+        if( blockActive ) return false;
         return true;
     }
+
+    public bool blockActive = false;
 
 
     public override void OnHit( GlobalUtils.AttackInfo infoPack ){
