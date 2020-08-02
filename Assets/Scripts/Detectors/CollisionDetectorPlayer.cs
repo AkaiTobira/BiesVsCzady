@@ -141,7 +141,7 @@ public class CollisionDetectorPlayer : CollisionDetector, ICollisionWallDetector
         }
 
         isOverHalfOfRaysOverLedge = isSave1 && isSave2;
-        Debug.Log(isSave1.ToString() + isSave2.ToString() + isOverHalfOfRaysOverLedge.ToString());
+    //    Debug.Log(isSave1.ToString() + isSave2.ToString() + isOverHalfOfRaysOverLedge.ToString());
     }
 
     public bool hasReachedPlatformEdge(){

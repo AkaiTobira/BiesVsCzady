@@ -137,6 +137,7 @@ public class ChaserChaseAttack : EnemyBaseState
         if( isLeftOriented() )        ProcessLeftMove();
         else if ( isRightOriented() ) ProcessRightMove();
 
+        if( !m_wallDetector.isWallClose() )
         m_FloorDetector.Move( entityScript.velocity * Time.deltaTime );
         
 
@@ -161,6 +162,9 @@ public class ChaserChaseAttack : EnemyBaseState
                 infoPack.isValid      = true;
                 infoPack.stunDuration = 5f;
                 m_isOver = true;
+                infoPack.knockBackValue = new Vector2( 10, 0);
+                infoPack.lockFaceDirectionDuringKnockback = true;
+                infoPack.fromCameAttack = GlobalUtils.Direction.Left;
 
                 m_nextState = new CzadStun( m_controllabledObject, infoPack);
                 
@@ -170,6 +174,10 @@ public class ChaserChaseAttack : EnemyBaseState
                 infoPack.isValid      = true;
                 infoPack.stunDuration = 5f;
                 m_isOver = true;
+
+                infoPack.knockBackValue = new Vector2( 10, 0);
+                infoPack.lockFaceDirectionDuringKnockback = true;
+                infoPack.fromCameAttack = GlobalUtils.Direction.Right;
 
                 m_nextState = new CzadStun( m_controllabledObject, infoPack);
             }

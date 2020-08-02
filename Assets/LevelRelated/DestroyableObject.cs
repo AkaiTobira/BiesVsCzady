@@ -65,12 +65,17 @@ public class DestroyableObject : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other){
 
-        if( other.tag == "PlayerHitBox"){
+        Debug.Log( other.name );
+
+        if( other.tag == "PlayerHitBox" || other.tag == "ChaseAttackBox" ){
 
             if( durability < 0) return;
+
+        
+
             GlobalUtils.AttackInfo infoPack =  
-                GlobalUtils.PlayerObject.GetComponent<Player>().GetAttackInfo();
-            
+                other.GetComponent<AttackBoxHandler>().mainScript.GetComponent<IEntity>().GetAttackInfo();
+
             if( infoPack.isValid){
                 durability -= infoPack.attackDamage;
                 if( m_anim == null){
@@ -88,7 +93,8 @@ public class DestroyableObject : MonoBehaviour
                 }else{
                     if( durability < 0 ){
                         m_anim.SetBool("isDestroyed", true);
-                        //ForExample
+                    //    GetComponent<BoxCollider2D>().enabled = false;
+                    //    GetComponent<CollisionDetector>().enabled = false;
                     }
                 }
             }
