@@ -67,35 +67,41 @@ public class DestroyableObject : MonoBehaviour
 
         Debug.Log( other.name );
 
-        if( other.tag == "PlayerHitBox" || other.tag == "ChaseAttackBox" ){
+        if( durability < 0) return;
 
-            if( durability < 0) return;
+        GlobalUtils.AttackInfo infoPack = new GlobalUtils.AttackInfo();
 
-        
+        if( other.tag == "PlayerHitBox" ){
+            infoPack = GlobalUtils.PlayerObject.GetComponent<IEntity>().GetAttackInfo();
+        }else if( other.tag == "ChaseAttackBox" ){
 
-            GlobalUtils.AttackInfo infoPack =  
-                other.GetComponent<AttackBoxHandler>().mainScript.GetComponent<IEntity>().GetAttackInfo();
+            Debug.Log( other.transform.parent.name  );
+            Debug.Log( other.transform.parent.Find("Animator").Find("AttackBox").name);
 
-            if( infoPack.isValid){
-                durability -= infoPack.attackDamage;
-                if( m_anim == null){
-                    if( durability < 0 ){
-                        Destroy(gameObject);
-                    }else if( canBeKnockBacked ){
-                        moveValue    = infoPack.knockBackValue;
-                        moveValue.x *=  (int)infoPack.fromCameAttack;
-                        currentMoveValue += moveValue;
-                        m_FloorDetector.autoGravityOn = false;
-                        m_FloorDetector.CheatMove( new Vector2(0,  moveValue.y * Time.deltaTime) );
-                        m_FloorDetector.Move(  new Vector2(0,  moveValue.y * Time.deltaTime) );
-                        gravityForce = (2 * moveValue.y) / Mathf.Pow (timeToHitApex, 2);
-                    }
-                }else{
-                    if( durability < 0 ){
-                        m_anim.SetBool("isDestroyed", true);
-                    //    GetComponent<BoxCollider2D>().enabled = false;
-                    //    GetComponent<CollisionDetector>().enabled = false;
-                    }
+
+            infoPack =  other.transform.parent.Find("Animator").Find("AttackBox").GetComponent<AttackBoxHandler>().mainScript.GetComponent<IEntity>().GetAttackInfo();
+
+        }
+
+        if( infoPack.isValid){
+            durability -= infoPack.attackDamage;
+            if( m_anim == null){
+                if( durability < 0 ){
+                    Destroy(gameObject);
+                }else if( canBeKnockBacked ){
+                    moveValue    = infoPack.knockBackValue;
+                    moveValue.x *=  (int)infoPack.fromCameAttack;
+                    currentMoveValue += moveValue;
+                    m_FloorDetector.autoGravityOn = false;
+                    m_FloorDetector.CheatMove( new Vector2(0,  moveValue.y * Time.deltaTime) );
+                    m_FloorDetector.Move(  new Vector2(0,  moveValue.y * Time.deltaTime) );
+                    gravityForce = (2 * moveValue.y) / Mathf.Pow (timeToHitApex, 2);
+                }
+            }else{
+                if( durability < 0 ){
+                    m_anim.SetBool("isDestroyed", true);
+                    GetComponent<BoxCollider2D>().enabled = false;
+                    GetComponent<CollisionDetector>().enabled = false;
                 }
             }
         }
