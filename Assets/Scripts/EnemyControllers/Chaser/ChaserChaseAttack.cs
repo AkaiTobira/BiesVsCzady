@@ -7,7 +7,7 @@ public class ChaserChaseAttack : EnemyBaseState
 
     float distanceOfGlide;
     float timeOfMove  = 0.1f;
-    float timeOfGlide = 0;
+    //float timeOfGlide = 0;
 
     GlobalUtils.Direction dir;
     protected ICollisionWallDetector m_wallDetector;
@@ -65,7 +65,7 @@ public class ChaserChaseAttack : EnemyBaseState
     m_nextState = new CzadAttackMove( m_controllabledObject, targetPosition );
 */
 
-    private float overTimeTimer = 1;
+    //private float overTimeTimer = 1;
 
 /*
     private void ProcessSwipe(){

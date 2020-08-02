@@ -64,23 +64,15 @@ public class DestroyableObject : MonoBehaviour
     }
 
     void OnTriggerEnter2D(Collider2D other){
-
-        Debug.Log( other.name );
-
         if( durability < 0) return;
-
         GlobalUtils.AttackInfo infoPack = new GlobalUtils.AttackInfo();
 
         if( other.tag == "PlayerHitBox" ){
             infoPack = GlobalUtils.PlayerObject.GetComponent<IEntity>().GetAttackInfo();
         }else if( other.tag == "ChaseAttackBox" ){
-
-            Debug.Log( other.transform.parent.name  );
-            Debug.Log( other.transform.parent.Find("Animator").Find("AttackBox").name);
-
-
-            infoPack =  other.transform.parent.Find("Animator").Find("AttackBox").GetComponent<AttackBoxHandler>().mainScript.GetComponent<IEntity>().GetAttackInfo();
-
+            infoPack =   other.transform.parent.Find("Animator").
+                                                Find("AttackBox").GetComponent<AttackBoxHandler>().
+                        mainScript.GetComponent<IEntity>().GetAttackInfo();
         }
 
         if( infoPack.isValid){

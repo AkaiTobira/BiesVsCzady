@@ -89,8 +89,8 @@ public class Player : IEntity
             case "BiesAttack2":
             {
                 infoPack.isValid = true;
-                infoPack.knockBackValue = BiesUtils.KnockBackValueAttack2;
-                infoPack.attackDamage   = BiesUtils.Attack2Damage;
+                infoPack.knockBackValue = BiesUtils.KnockBackValueRoar;
+                infoPack.attackDamage   = BiesUtils.RoarDamage;
                 infoPack.fromCameAttack = m_controller.GetDirection();
                 infoPack.knockBackFrictionX = 0;
                 infoPack.stunDuration       = 2.0f;
@@ -108,8 +108,8 @@ public class Player : IEntity
             case "BiesAttack4":
             {
                 infoPack.isValid = true;
-                infoPack.knockBackValue = BiesUtils.KnockBackValueAttack1;
-                infoPack.attackDamage   = BiesUtils.Attack1Damage;
+                infoPack.knockBackValue = BiesUtils.KnockBackValueAttack2;
+                infoPack.attackDamage   = BiesUtils.Attack2Damage;
                 infoPack.fromCameAttack = m_controller.GetDirection();
                 infoPack.knockBackFrictionX = 0;
                 break;
@@ -117,8 +117,8 @@ public class Player : IEntity
             case "BiesAttack5":
             {
                 infoPack.isValid = true;
-                infoPack.knockBackValue = BiesUtils.KnockBackValueAttack1;
-                infoPack.attackDamage   = BiesUtils.Attack1Damage;
+                infoPack.knockBackValue = BiesUtils.KnockBackValueAttack3;
+                infoPack.attackDamage   = BiesUtils.Attack3Damage;
                 infoPack.fromCameAttack = m_controller.GetDirection();
                 infoPack.knockBackFrictionX = 0;
                 break;

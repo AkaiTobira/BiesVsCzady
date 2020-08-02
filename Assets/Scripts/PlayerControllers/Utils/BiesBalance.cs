@@ -14,10 +14,15 @@ public class BiesBalance : MonoBehaviour
 
     [SerializeField] float Attack1Damage = 2;
     [SerializeField] Vector2 KnockBackValueAttack1 =  new Vector2( 100, 1000);
-    [SerializeField] float Attack2Damage = 0;
+
+    [SerializeField] float Attack2Damage = 5;
     [SerializeField] Vector2 KnockBackValueAttack2 =  new Vector2( 100, 400);
+
     [SerializeField] float Attack3Damage = 5;
     [SerializeField] Vector2 KnockBackValueAttack3 =  new Vector2( 100, 400);
+
+    [SerializeField] float RoarDamage = 0;
+    [SerializeField] Vector2 KnockBackValueRoar =  new Vector2( 0, 0);
 
     [Range( 0.0001f, 10.0f)] public float MoveAccelerationTime      = 0.0f;
     [Range( 0.0001f, 10.0f)] public float MoveBrakingTime      = 0.0f;
@@ -42,6 +47,8 @@ public class BiesBalance : MonoBehaviour
         BiesUtils.Attack1Damage         = Attack1Damage;
         BiesUtils.Attack2Damage         = Attack2Damage;
         BiesUtils.Attack3Damage         = Attack3Damage;
+        BiesUtils.RoarDamage            = RoarDamage;
+        BiesUtils.KnockBackValueRoar    = KnockBackValueRoar;
         BiesUtils.KnockBackValueAttack1 = KnockBackValueAttack1;
         BiesUtils.KnockBackValueAttack2 = KnockBackValueAttack2;
         BiesUtils.KnockBackValueAttack3 = KnockBackValueAttack3;
@@ -60,6 +67,8 @@ public class BiesBalance : MonoBehaviour
         infoPack.Attack1Damage          = BiesUtils.Attack1Damage        ; 
         infoPack.Attack2Damage          = BiesUtils.Attack2Damage        ; 
         infoPack.Attack3Damage          = BiesUtils.Attack3Damage        ; 
+        infoPack.RoarDamage             = BiesUtils.RoarDamage;
+        infoPack.KnockBackValueRoar     = BiesUtils.KnockBackValueRoar;
         infoPack.KnockBackValueAttack1  = BiesUtils.KnockBackValueAttack1; 
         infoPack.KnockBackValueAttack2  = BiesUtils.KnockBackValueAttack2; 
         infoPack.KnockBackValueAttack3  = BiesUtils.KnockBackValueAttack3; 
@@ -81,7 +90,10 @@ public class BiesBalance : MonoBehaviour
         newBiesValues.Attack1Damage = Attack1Damage;
         newBiesValues.Attack2Damage = Attack2Damage;
         newBiesValues.Attack3Damage = Attack3Damage;
+        newBiesValues.RoarDamage    = RoarDamage;
 
+        newBiesValues.KnockBackValueRoarX    = KnockBackValueRoar.x;
+        newBiesValues.KnockBackValueRoarY    = KnockBackValueRoar.y;
         newBiesValues.KnockBackValueAttack1X = KnockBackValueAttack1.x;
         newBiesValues.KnockBackValueAttack1Y = KnockBackValueAttack1.y;
         newBiesValues.KnockBackValueAttack2X = KnockBackValueAttack2.x;
@@ -107,7 +119,9 @@ public class BiesBalance : MonoBehaviour
         Attack1Damage = newBiesValues.Attack1Damage;
         Attack2Damage = newBiesValues.Attack2Damage;
         Attack3Damage = newBiesValues.Attack3Damage;
+        RoarDamage    = newBiesValues.RoarDamage;
 
+        KnockBackValueRoar    = new Vector2(newBiesValues.KnockBackValueRoarX, newBiesValues.KnockBackValueRoarY);
         KnockBackValueAttack1 = new Vector2(newBiesValues.KnockBackValueAttack1X, newBiesValues.KnockBackValueAttack1Y);
         KnockBackValueAttack2 = new Vector2(newBiesValues.KnockBackValueAttack2X, newBiesValues.KnockBackValueAttack2Y);
         KnockBackValueAttack3 = new Vector2(newBiesValues.KnockBackValueAttack3X, newBiesValues.KnockBackValueAttack3Y);

@@ -17,6 +17,10 @@ public abstract class  ICharacterSettings
     public Vector2 KnockBackValueAttack1 =  new Vector2( 100, 1000);
     public Vector2 KnockBackValueAttack2 =  new Vector2( 100, 400);
     public Vector2 KnockBackValueAttack3 =  new Vector2( 100, 400);
+
+    public float RoarDamage = 0;
+    public Vector2 KnockBackValueRoar =  new Vector2( 0, 0);
+
     public float MoveAccelerationTime      = 0.0f;
     public float MoveBrakingTime      = 0.0f;
     public float swipeSpeedValue = 0.0f;

@@ -51,7 +51,7 @@ public class BiesAttack4 : PlayerBaseState
     }
     public override void HandleInput(){
 
-        if( PlayerInput.isAttack1KeyPressed() && timeToEnd < 0.5 * animationTime ){
+        if( PlayerInput.isAttack1KeyPressed() && timeToEnd < 0.8 * animationTime ){
             m_isOver = true;
             m_nextState = new BiesAttack5( m_controllabledObject);
         }
