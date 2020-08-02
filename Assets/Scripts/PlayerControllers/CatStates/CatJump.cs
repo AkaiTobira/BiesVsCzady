@@ -11,7 +11,7 @@ public class CatJump : PlayerJump
     }
 
     private  void StartAnimation(){
-        startAnimationDelay = 0.1f;//= getAnimationLenght( "CatJumpPreparation");
+        startAnimationDelay = getAnimationLenght( "CatJumpPreparation")/2.0f;
         m_animator.SetTrigger("CatJumpPressed");
         GlobalUtils.PlayerObject.GetComponent<Player>().StartCoroutine(StartJump(startAnimationDelay));
     }
