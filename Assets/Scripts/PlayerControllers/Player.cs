@@ -93,7 +93,7 @@ public class Player : IEntity
                 infoPack.attackDamage   = BiesUtils.RoarDamage;
                 infoPack.fromCameAttack = m_controller.GetDirection();
                 infoPack.knockBackFrictionX = 0;
-                infoPack.stunDuration       = 2.0f;
+                infoPack.stunDuration       = BiesUtils.RoarStunDuration;
                 break;
             }
             case "BiesAttack3":

@@ -24,6 +24,8 @@ public class BiesBalance : MonoBehaviour
     [SerializeField] float RoarDamage = 0;
     [SerializeField] Vector2 KnockBackValueRoar =  new Vector2( 0, 0);
 
+    [SerializeField] float RoarStunDuration = 2.0f;
+
     [Range( 0.0001f, 10.0f)] public float MoveAccelerationTime      = 0.0f;
     [Range( 0.0001f, 10.0f)] public float MoveBrakingTime      = 0.0f;
 
@@ -54,6 +56,7 @@ public class BiesBalance : MonoBehaviour
         BiesUtils.KnockBackValueAttack3 = KnockBackValueAttack3;
         BiesUtils.MoveAccelerationTime  = MoveAccelerationTime;
         BiesUtils.MoveBrakingTime       = MoveBrakingTime;
+        BiesUtils.RoarStunDuration = RoarStunDuration;
 
         
 
@@ -74,6 +77,7 @@ public class BiesBalance : MonoBehaviour
         infoPack.KnockBackValueAttack3  = BiesUtils.KnockBackValueAttack3; 
         infoPack.MoveAccelerationTime   = BiesUtils.MoveAccelerationTime ; 
         infoPack.MoveBrakingTime        = BiesUtils.MoveBrakingTime      ; 
+        infoPack.RoarStunDuration = BiesUtils.RoarStunDuration;
         BiesUtils.infoPack = infoPack;
     }
 
@@ -103,6 +107,7 @@ public class BiesBalance : MonoBehaviour
 
         newBiesValues.moveAccelerationTime = MoveAccelerationTime;
         newBiesValues.moveBrakingTime      = MoveBrakingTime;
+        newBiesValues.RoarStunDuration = RoarStunDuration;
 
 
 
@@ -132,6 +137,8 @@ public class BiesBalance : MonoBehaviour
         moveDistance         = newBiesValues.moveDistance;
         moveDistanceInAir    = newBiesValues.moveDistanceInAir;
         maxMoveDistanceInAir = newBiesValues.maxMoveDistanceInAir;
+
+        RoarStunDuration = newBiesValues.RoarStunDuration;
 
         MoveAccelerationTime = newBiesValues.moveAccelerationTime;
         MoveBrakingTime      = newBiesValues.moveBrakingTime;

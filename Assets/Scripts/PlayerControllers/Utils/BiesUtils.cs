@@ -31,6 +31,8 @@ public static class  BiesUtils
     public static float RoarDamage = 0;
     public static Vector2 KnockBackValueRoar =  new Vector2( 0, 0);
 
+    public static float RoarStunDuration = 2.0f;
+
     public static float MoveAccelerationTime      = 0.0f;
     public static float MoveBrakingTime      = 0.0f;
 

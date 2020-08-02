@@ -33,11 +33,13 @@ public abstract class  ICharacterSettings
     public float JumpAccelerationSpeed = 0;
     public float MoveSpeedInAirWallJump        = 5.0f;
     public float maxMoveDistanceInAirWallJump  = 0.0f;
+
+    public float RoarStunDuration = 2.0f;
     public float JumpHoldTimeDelay     = 0;
-    public float MaxStamina = 2000;
+    public float MaxStamina = 200;
     public void ResetStamina(){
         stamina = MaxStamina;
     }
-    public float stamina = 2000;
+    public float stamina = 200;
 
 }
