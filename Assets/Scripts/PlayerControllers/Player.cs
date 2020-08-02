@@ -58,12 +58,8 @@ public class Player : IEntity
         PlayerJumpOffWall.IncrementCounters();
     }
 
-    public Vector2 something = new Vector2();
-
-
     [Header("DebugInfo")]
     [SerializeField] public Transform animationNode;
-
     [SerializeField] bool isOnGround     = false;
     [SerializeField] bool isWallClose    = false;
     [SerializeField] bool isColLeft      = false;
@@ -71,7 +67,6 @@ public class Player : IEntity
     [SerializeField] bool directionLeft  = false;
     [SerializeField] bool directionRight = false;
     [SerializeField] string StateName    = "Idle";
-
 
     public override GlobalUtils.AttackInfo GetAttackInfo(){
         GlobalUtils.AttackInfo infoPack = new GlobalUtils.AttackInfo();
