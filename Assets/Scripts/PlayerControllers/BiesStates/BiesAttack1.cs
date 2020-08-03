@@ -9,17 +9,17 @@ public class BiesAttack1 : PlayerBaseState
     private float timeToEnd;
     private AnimationTransition m_transition;
 
+    float ANNIMATION_SPEED = 2f;
+
     public BiesAttack1( GameObject controllable) : base( controllable ){
         name = "BiesAttack1";
         distanceToFixAnimation = new Vector3(0, 7.5f , 0);
         m_animator.SetBool("Attack1", true);
-        animationTime = getAnimationLenght("PlayerAttack1") / 1.4f;
+        animationTime = getAnimationLenght("PlayerAttack1") / (ANNIMATION_SPEED);// * 3.0f);
 
-        m_animator.SetFloat("AnimationSpeed", 1.4f);
+        m_animator.SetFloat("AnimationSpeed", ANNIMATION_SPEED );// 3);
 
-    //    Debug.Log( animationTime );
-
-// /        Debug.Log(animationTime);
+        Debug.Log(animationTime);
         timeToEnd     = animationTime;
     }
 

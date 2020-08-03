@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CollisionDetectorPlayer : CollisionDetector, ICollisionWallDetector, ICollisionInteractableDetector
+public class CollisionDetectorPlayer : CollisionDetector, ICollisionWallDetector, ICollisionInteractableDetector, IPlatformEdgeDetector
 {
     [SerializeField] private LayerMask m_oneWayFloorMask   = 0;
     private bool oneWayPlatformBelow;
@@ -16,6 +16,8 @@ public class CollisionDetectorPlayer : CollisionDetector, ICollisionWallDetector
     private Transform destroyableObject = null;
     private bool isObjectPullable;
     private bool isObjectDestroyable;
+
+    private bool isOverHalfOfRaysOverLedge;
 
     private bool isLedgeDetected;
 
@@ -52,6 +54,7 @@ public class CollisionDetectorPlayer : CollisionDetector, ICollisionWallDetector
         oneWayPlatformBelow = false;
         closeToWall         = false;
         isLedgeDetected     = false;
+        isOverHalfOfRaysOverLedge = false;
     }
 
     public void DetectWall( ){
@@ -66,6 +69,7 @@ public class CollisionDetectorPlayer : CollisionDetector, ICollisionWallDetector
         ProcessOneWayPlatformDetection( Mathf.Sign(transition.y) );
         ProcessCollisionWallClose();
         ProcessLedgeDetection();
+        ProcessEdgeFallDetection();
     }
 
     public float GetDistanceToClosestWallFront(){
@@ -100,6 +104,49 @@ public class CollisionDetectorPlayer : CollisionDetector, ICollisionWallDetector
         return hit.distance - skinSize;
     }
 
+    public int numberOfRayRequiredToFall = 2;
+
+    protected void ProcessEdgeFallDetection(){
+        float directionY = -1;
+        float rayLenght  = 50;
+
+        bool isSave1 = false;
+        bool isSave2 = false;
+
+        for( int i = 0; i < numberOfRayRequiredToFall; i ++){
+
+        Vector2 rayOrigin = new Vector2( (collisionInfo.faceDir == DIR_RIGHT) ? 
+                                            borders.right  - skinSize - i * verticalDistanceBeetweenRays: 
+                                            borders.left + skinSize + i * verticalDistanceBeetweenRays ,
+                                            borders.bottom + skinSize );
+
+            RaycastHit2D hit = Physics2D.Raycast(
+                rayOrigin,
+                new Vector2( 0, directionY),
+                rayLenght,
+                m_collsionMask
+            );
+
+            if( hit ){
+                if( i == 0) isSave1 = true;
+                if( i == 1) isSave2 = true;
+    //            isSave |= true;
+            }
+            
+            Debug.DrawRay(
+                rayOrigin,
+                new Vector2( 0, directionY) * rayLenght,
+                new Color(0,1,0)
+             );
+        }
+
+        isOverHalfOfRaysOverLedge = isSave1 && isSave2;
+    //    Debug.Log(isSave1.ToString() + isSave2.ToString() + isOverHalfOfRaysOverLedge.ToString());
+    }
+
+    public bool hasReachedPlatformEdge(){
+        return isOverHalfOfRaysOverLedge;
+    }
 
 
     protected void ProcessLedgeDetection(){
@@ -176,13 +223,11 @@ public class CollisionDetectorPlayer : CollisionDetector, ICollisionWallDetector
                     destroyableObject = null;
                 }
             }
-
             Debug.DrawRay(
                 rayOrigin,
                 new Vector2( collisionInfo.faceDir, 0) * rayLenght,
                 new Color(1,1,1)
              );
-
         }
     }
 

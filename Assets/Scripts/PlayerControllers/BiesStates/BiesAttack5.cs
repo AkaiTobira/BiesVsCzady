@@ -4,12 +4,20 @@ using UnityEngine;
 
 public class BiesAttack5 : PlayerBaseState
 { 
-    private float timeToEnd;
-    private AnimationTransition m_transition;
 
+    private float timeToEnd;
+
+    private float animationTime;    
+    private AnimationTransition m_transition;
+    float ANNIMATION_SPEED = 1.7f;
     public BiesAttack5( GameObject controllable) : base( controllable ){
         name = "BiesAttack5";
         distanceToFixAnimation = new Vector3(0, 7.5f , 0);
+        m_animator.SetBool("Attack5", true);
+        animationTime = getAnimationLenght("PlayerAttack5") / (ANNIMATION_SPEED);// * 3.0f);
+
+        m_animator.SetFloat("AnimationSpeed", ANNIMATION_SPEED );// 3);
+        timeToEnd     = animationTime;
     }
 
     public override void OnExit(){
@@ -17,8 +25,7 @@ public class BiesAttack5 : PlayerBaseState
     }
 
     protected override void SetUpAnimation(){
-        m_animator.SetBool("Attack5", true);
-        timeToEnd = getAnimationLenght("PlayerAttack5");
+
 
         m_transition = m_controllabledObject.
                        GetComponent<Player>().animationNode.
@@ -30,6 +37,7 @@ public class BiesAttack5 : PlayerBaseState
         if( timeToEnd < 0){
             m_isOver = true;
             m_animator.SetBool("Attack1", false);
+            m_animator.SetBool("Attack4", false);
             m_animator.SetBool("Attack5", false);
         }
     }

@@ -14,6 +14,8 @@ public class CzadStun : EnemyBaseState{
         name = "CzadStun";
         saveDir = m_FloorDetector.GetCurrentDirection();
 
+        //entityScript.velocity = new Vector2();
+
         m_dir = infoPack.fromCameAttack;
         knocBackDirection = (int)infoPack.fromCameAttack;
 
@@ -52,7 +54,7 @@ public class CzadStun : EnemyBaseState{
     }
 
     private void ProcessMove(){
-        entityScript.velocity.y += -entityScript.gravityForce * Time.deltaTime;
+        
         m_FloorDetector.Move(entityScript.velocity *Time.deltaTime);
 
         if( m_FloorDetector.isOnGround() ){
@@ -61,6 +63,8 @@ public class CzadStun : EnemyBaseState{
             }else{
                 entityScript.velocity.x = Mathf.Max(entityScript.velocity.x - (entityScript.hurtSpeedDropFrictionX * Time.deltaTime), 0);
             }
+        }else{
+            entityScript.velocity.y += -entityScript.gravityForce * Time.deltaTime;
         }
     }
 

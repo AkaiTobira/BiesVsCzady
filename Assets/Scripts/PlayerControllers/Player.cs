@@ -58,12 +58,8 @@ public class Player : IEntity
         PlayerJumpOffWall.IncrementCounters();
     }
 
-    public Vector2 something = new Vector2();
-
-
     [Header("DebugInfo")]
     [SerializeField] public Transform animationNode;
-
     [SerializeField] bool isOnGround     = false;
     [SerializeField] bool isWallClose    = false;
     [SerializeField] bool isColLeft      = false;
@@ -71,7 +67,6 @@ public class Player : IEntity
     [SerializeField] bool directionLeft  = false;
     [SerializeField] bool directionRight = false;
     [SerializeField] string StateName    = "Idle";
-
 
     public override GlobalUtils.AttackInfo GetAttackInfo(){
         GlobalUtils.AttackInfo infoPack = new GlobalUtils.AttackInfo();
@@ -89,11 +84,11 @@ public class Player : IEntity
             case "BiesAttack2":
             {
                 infoPack.isValid = true;
-                infoPack.knockBackValue = BiesUtils.KnockBackValueAttack2;
-                infoPack.attackDamage   = BiesUtils.Attack2Damage;
+                infoPack.knockBackValue = BiesUtils.KnockBackValueRoar;
+                infoPack.attackDamage   = BiesUtils.RoarDamage;
                 infoPack.fromCameAttack = m_controller.GetDirection();
                 infoPack.knockBackFrictionX = 0;
-                infoPack.stunDuration       = 2.0f;
+                infoPack.stunDuration       = BiesUtils.RoarStunDuration;
                 break;
             }
             case "BiesAttack3":
@@ -108,8 +103,8 @@ public class Player : IEntity
             case "BiesAttack4":
             {
                 infoPack.isValid = true;
-                infoPack.knockBackValue = BiesUtils.KnockBackValueAttack1;
-                infoPack.attackDamage   = BiesUtils.Attack1Damage;
+                infoPack.knockBackValue = BiesUtils.KnockBackValueAttack2;
+                infoPack.attackDamage   = BiesUtils.Attack2Damage;
                 infoPack.fromCameAttack = m_controller.GetDirection();
                 infoPack.knockBackFrictionX = 0;
                 break;
@@ -117,8 +112,8 @@ public class Player : IEntity
             case "BiesAttack5":
             {
                 infoPack.isValid = true;
-                infoPack.knockBackValue = BiesUtils.KnockBackValueAttack1;
-                infoPack.attackDamage   = BiesUtils.Attack1Damage;
+                infoPack.knockBackValue = BiesUtils.KnockBackValueAttack3;
+                infoPack.attackDamage   = BiesUtils.Attack3Damage;
                 infoPack.fromCameAttack = m_controller.GetDirection();
                 infoPack.knockBackFrictionX = 0;
                 break;

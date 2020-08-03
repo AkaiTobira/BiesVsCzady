@@ -192,20 +192,20 @@ MonoBehaviour:
   canRandomMove: 1
   maxMoveDistance: 150
   canMeeleAttack: 1
-  timeOfBeeingHurt: 3
+  timeOfBeeingHurt: 2
   delayOfHurtStartReEnter: 4
   massFactor: 1
-  delayOfFirstAttack: 3
+  delayOfFirstAttack: 1
   breakBeetweenAttacks: 2
-  attackDamage: 1
+  attackDamage: 2
   combatRange: 0
-  knockbackValues: {x: 10, y: 0}
+  knockbackValues: {x: 120, y: 0}
   stunDuration: 0
   canJumpOnPlayer: 1
   jumpAttackBreak: 2
   jumpAttackKnockbackValue: {x: 0, y: 0}
   jumpAttackDamage: 1
-  canShot: 1
+  canShot: 0
   breakBeetweenShots: 1
   probabilityOfShot: 1
   shotRange: 100

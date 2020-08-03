@@ -22,6 +22,8 @@ public class PlayerJump : PlayerBaseState
         m_settings = settings;
         JumpForce    = m_settings.PlayerJumpForceMin;
         m_animator.SetFloat( "FallVelocity", JumpForce);
+        m_animator.SetFloat( "AnimationSpeed", 2.0f);
+
         m_dir = dir;
         SetUpCounters();
         m_FloorDetector.CheatMove( new Vector2(0,4.0f));

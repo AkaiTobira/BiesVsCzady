@@ -78,12 +78,18 @@ public class JsonLoader : MonoBehaviour
         public float Attack1Damage;
         public float Attack2Damage;
         public float Attack3Damage;
+
+        public float RoarDamage;
+        public float KnockBackValueRoarX;
+        public float KnockBackValueRoarY;
         public float KnockBackValueAttack1X;
         public float KnockBackValueAttack1Y;
         public float KnockBackValueAttack2X;
         public float KnockBackValueAttack2Y;
         public float KnockBackValueAttack3X; 
         public float KnockBackValueAttack3Y;
+
+        public float RoarStunDuration;
 
         public float moveAccelerationTime;
 

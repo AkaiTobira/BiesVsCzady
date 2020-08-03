@@ -13,7 +13,8 @@ public class BiesJump : PlayerJump
 
     private void StartAnimation(){
         m_animator.SetTrigger("BiesJumpPressed");
-        startAnimationDelay = getAnimationLenght( "BiesJumpPreparation");
+                m_animator.SetFloat( "AnimationSpeed", 3.0f);
+        startAnimationDelay = getAnimationLenght( "BiesJumpPreparation")/3.0f;
 
         GlobalUtils.PlayerObject.GetComponent<Player>().StartCoroutine(StartJump(startAnimationDelay));
     }
@@ -21,7 +22,7 @@ public class BiesJump : PlayerJump
     protected override IEnumerator StartJump( float time ){
         yield return new WaitForSeconds(time);
         if( m_isOver ) yield break;
-        m_FloorDetector.CheatMove( new Vector2(0,40.0f));
+        m_FloorDetector.CheatMove( new Vector2(0,4.0f));
         CommonValues.PlayerVelocity.y = JumpForce + GravityForce; 
         m_animator.ResetTrigger("BiesJumpPressed");
     }

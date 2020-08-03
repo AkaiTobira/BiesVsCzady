@@ -8,10 +8,17 @@ public class BiesAttack4 : PlayerBaseState
     private float animationTime;    
     private float timeToEnd;
     private AnimationTransition m_transition;
-
+    float ANNIMATION_SPEED = 1.7f;
     public BiesAttack4( GameObject controllable) : base( controllable ){
         name = "BiesAttack4";
         distanceToFixAnimation = new Vector3(0, 7.5f , 0);
+        m_animator.SetBool("Attack4", true);
+        animationTime = getAnimationLenght("PlayerAttack4") / (ANNIMATION_SPEED);// * 3.0f);
+
+        m_animator.SetFloat("AnimationSpeed", ANNIMATION_SPEED );// 3);
+
+        Debug.Log( animationTime );
+        timeToEnd     = animationTime;
     }
 
 
@@ -20,9 +27,7 @@ public class BiesAttack4 : PlayerBaseState
     }
 
     protected override void SetUpAnimation(){
-        m_animator.SetBool("Attack4", true);
-        timeToEnd = getAnimationLenght("PlayerAttack4");
-        animationTime = timeToEnd;
+
 
         m_transition = m_controllabledObject.
                        GetComponent<Player>().animationNode.
