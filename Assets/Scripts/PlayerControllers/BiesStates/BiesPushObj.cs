@@ -32,6 +32,7 @@ public class BiesPushObj : PlayerBaseState
     }
 
     public override void OnExit(){
+        m_animator.SetBool("isPushing", !m_isOver);
         CommonValues.PlayerVelocity = new Vector2(0,0);
         m_FloorDetector.Move(CommonValues.PlayerVelocity);
     }

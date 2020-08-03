@@ -16,6 +16,8 @@ public class BiesAttack4 : PlayerBaseState
         animationTime = getAnimationLenght("PlayerAttack4") / (ANNIMATION_SPEED);// * 3.0f);
 
         m_animator.SetFloat("AnimationSpeed", ANNIMATION_SPEED );// 3);
+
+        Debug.Log( animationTime );
         timeToEnd     = animationTime;
     }
 
@@ -51,7 +53,7 @@ public class BiesAttack4 : PlayerBaseState
     }
     public override void HandleInput(){
 
-        if( PlayerInput.isAttack1KeyPressed() && timeToEnd < 0.8 * animationTime ){
+        if( PlayerInput.isAttack1KeyPressed() && timeToEnd < 0.5 * animationTime ){
             m_isOver = true;
             m_nextState = new BiesAttack5( m_controllabledObject);
         }

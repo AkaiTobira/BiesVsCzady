@@ -37,6 +37,7 @@ public class BiesAttack5 : PlayerBaseState
         if( timeToEnd < 0){
             m_isOver = true;
             m_animator.SetBool("Attack1", false);
+            m_animator.SetBool("Attack4", false);
             m_animator.SetBool("Attack5", false);
         }
     }

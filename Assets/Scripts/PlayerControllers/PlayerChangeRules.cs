@@ -43,26 +43,30 @@ public static class  PlayerChangeRules
     }
 
     private static void PositionCorrenciton( string formName, string stateName){
-        
+        Vector2 Translation = new Vector2();
+
+       // Translation.y = -10;
+
         if( formName.Contains("Bies")){
             var playerDetector = GlobalUtils.PlayerObject.GetComponent<CollisionDetectorPlayer>();
-            Vector2 Translation = new Vector2();
 
             if( stateName.Contains("Hold") || stateName.Contains("Slide") ){
-                Translation = new Vector2(-SHIFT_BASED_ON_SCALE, 0 ) * (int)playerDetector.GetCurrentDirection();
+                Translation.x = -SHIFT_BASED_ON_SCALE * (int)playerDetector.GetCurrentDirection();
             }
 
             Translation = CorrectTransition( playerDetector );
 
             playerDetector.CheatMove(Translation);
         }
+
+     //   Debug.Log( Translation );
     }
 
     private static void CorrectTransitionFront( ref Vector2 translationVector,  CollisionDetectorPlayer playerDetector){
         float distanceToWall = playerDetector.GetDistanceToClosestWallFront();
 
         if( distanceToWall < SHIFT_BASED_ON_SCALE ){
-            translationVector = new Vector2(-SHIFT_BASED_ON_SCALE, 0 ) * (int)playerDetector.GetCurrentDirection();
+            translationVector.x = -SHIFT_BASED_ON_SCALE * (int)playerDetector.GetCurrentDirection();
         }
     }
 

@@ -3246,11 +3246,11 @@ AnimatorStateTransition:
   m_Mute: 0
   m_IsExit: 0
   serializedVersion: 3
-  m_TransitionDuration: 0.25
+  m_TransitionDuration: 0
   m_TransitionOffset: 0
-  m_ExitTime: 0.66
-  m_HasExitTime: 1
-  m_HasFixedDuration: 1
+  m_ExitTime: 0
+  m_HasExitTime: 0
+  m_HasFixedDuration: 0
   m_InterruptionSource: 0
   m_OrderedInterruption: 1
   m_CanTransitionToSelf: 1
@@ -3626,7 +3626,7 @@ AnimatorStateMachine:
     m_Position: {x: -700, y: 590, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -7547575085954338337}
-    m_Position: {x: 1110, y: 170, z: 0}
+    m_Position: {x: 1320, y: 230, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 8271364751779317576}
     m_Position: {x: -100, y: -160, z: 0}
@@ -3638,10 +3638,10 @@ AnimatorStateMachine:
     m_Position: {x: -60, y: -210, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -5810647040853641178}
-    m_Position: {x: 620, y: -260, z: 0}
+    m_Position: {x: 560, y: -280, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -3291064898138537607}
-    m_Position: {x: 490, y: -90, z: 0}
+    m_Position: {x: 370, y: -70, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -5482914177840025859}
     m_Position: {x: 1330, y: 20, z: 0}
@@ -3650,7 +3650,7 @@ AnimatorStateMachine:
     m_Position: {x: 780, y: 90, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 4303899734519545789}
-    m_Position: {x: 930, y: -350, z: 0}
+    m_Position: {x: 990, y: -150, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -8639257682278549309}
     m_Position: {x: -2180, y: 20, z: 0}
@@ -3731,7 +3731,7 @@ AnimatorStateMachine:
     m_Position: {x: -1480, y: -40, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -583768028959471294}
-    m_Position: {x: 660, y: 230, z: 0}
+    m_Position: {x: 500, y: 200, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -3842471032681240243}
     m_Position: {x: 1980, y: 700, z: 0}
@@ -5350,6 +5350,9 @@ AnimatorStateTransition:
   - m_ConditionMode: 1
     m_ConditionEvent: isWallMovable
     m_EventTreshold: 0
+  - m_ConditionMode: 1
+    m_ConditionEvent: isWallClose
+    m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -583768028959471294}
   m_Solo: 0
@@ -5532,9 +5535,9 @@ AnimatorStateTransition:
   serializedVersion: 3
   m_TransitionDuration: 0
   m_TransitionOffset: 0
-  m_ExitTime: 0.6
-  m_HasExitTime: 1
-  m_HasFixedDuration: 1
+  m_ExitTime: 0.5
+  m_HasExitTime: 0
+  m_HasFixedDuration: 0
   m_InterruptionSource: 0
   m_OrderedInterruption: 1
   m_CanTransitionToSelf: 1
