@@ -195,6 +195,43 @@ public class CollisionDetectorPlayer : CollisionDetector, ICollisionWallDetector
         }
     }
 
+    public void UpdateDestroyableExistance(){
+        float rayLenght = wallCheckRayLenght;
+
+        for( float i = -1.0f; i < 2.0f; i++){
+            Vector2 rayOrigin = new Vector2( (collisionInfo.faceDir == DIR_LEFT) ? 
+                                             borders.left + skinSize: borders.right -skinSize ,
+                                              borders.bottom + ((horizontalRayNumber+i)/2.0f) * 
+                                                                horizontalDistanceBeetweenRays );
+
+            RaycastHit2D hit = Physics2D.Raycast(
+                rayOrigin,
+                new Vector2( collisionInfo.faceDir, 0),
+                rayLenght,
+                m_collsionMask
+            );
+
+            if( hit ){
+                closeToWall = true;
+                HandleDestroyable(hit.collider);
+                HandleMoveable(hit.collider);
+            }else{
+                closeToWall      = false;
+                if( !closeToWall ){
+                    isObjectPullable  = false;
+                    pullableObject    = null;
+                    destroyableObject = null;
+                }
+            }
+            Debug.DrawRay(
+                rayOrigin,
+                new Vector2( collisionInfo.faceDir, 0) * rayLenght,
+                new Color(1,1,1)
+             );
+        }
+    }
+
+
     protected void ProcessCollisionWallClose(){
         float rayLenght = wallCheckRayLenght;
 

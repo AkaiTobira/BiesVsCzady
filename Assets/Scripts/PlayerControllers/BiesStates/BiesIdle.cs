@@ -60,4 +60,8 @@ public class BiesIdle : PlayerIdle
         m_animator.SetBool("Attack5", false);
     }
 
+    public override string GetTutorialAdvice(){
+        return base.GetTutorialAdvice() + "\nC or Q - Roar\nX or LMB - Smash";
+    }
+
 }

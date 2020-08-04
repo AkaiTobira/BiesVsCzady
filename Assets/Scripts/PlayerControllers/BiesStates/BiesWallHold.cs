@@ -18,6 +18,8 @@ public class BiesWallHold : PlayerBaseState
     }
 
     public override void Process(){
+        m_ObjectInteractionDetector.UpdateDestroyableExistance();
+
         if( !m_WallDetector.isWallClose()) m_isOver = true;
 
         m_animator.SetFloat( "FallVelocity", 0);

@@ -28,7 +28,7 @@ public class DoorController : MonoBehaviour
     }
 
     void OnTriggerEnter2D(Collider2D other){
-        Debug.Log( other.tag + " :: " + other.name );
+//        Debug.Log( other.tag + " :: " + other.name );
         if( other.tag.Contains("Player")){
             isHeroInArea = true;
             GlobalUtils.GUIOverlay.keyInfoScreen.ShowAtAreaDoorEnter(numberOfRequiredKeys);
