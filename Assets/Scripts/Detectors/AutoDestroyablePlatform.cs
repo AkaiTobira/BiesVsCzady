@@ -55,6 +55,7 @@ public class AutoDestroyablePlatform : MonoBehaviour
             if( hit ){
                 bool isValidHit = hit.collider.tag == "PlayerHurtBox";
                 isValidHit     |= hit.collider.tag == "StalactitHurtBos";
+
                 if( isValidHit ) {
                     startTimer = true;
                     existingTimer   = m_existingTimer;
