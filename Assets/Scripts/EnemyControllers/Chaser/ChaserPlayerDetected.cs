@@ -34,7 +34,7 @@ public class ChaserPlayerDetected : EnemyBaseState
 
         float distance = Vector3.Distance( playerPosition, detectorPosition);
 
-        if( distance > 3000 ) {
+        if( distance > 300 ) {
             entityScript.ResetPatrolValues();
             m_isOver                       = true;
             entityScript.isAlreadyInCombat = false;

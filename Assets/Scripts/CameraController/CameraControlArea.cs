@@ -20,7 +20,6 @@ public class CameraControlArea : MonoBehaviour
     void OnTriggerEnter2D(Collider2D other) {
         if( other.name.Contains( "Player") ){
             SetCameraValues();
-            Debug.Log("ON");
         }
         
     }

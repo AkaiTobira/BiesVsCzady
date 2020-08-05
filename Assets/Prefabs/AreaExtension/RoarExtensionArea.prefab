@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 6846198544123169617}
   - component: {fileID: 6846198544123169616}
   - component: {fileID: 6846198544123169644}
+  - component: {fileID: 6550701743164698321}
   m_Layer: 0
   m_Name: RoarExtensionArea
   m_TagString: Untagged
@@ -149,3 +150,16 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &6550701743164698321
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6846198544123169623}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 095e605364892e949a025309f63f443d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectId: 0

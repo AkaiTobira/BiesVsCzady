@@ -55,7 +55,7 @@ public class BiesMove : PlayerMove
     }
 
     public override string GetTutorialAdvice(){
-        return base.GetTutorialAdvice() + "\nC or Q - Roar\nX or LMB - Smash";
+        return base.GetTutorialAdvice() + "\nC - Roar\nX or LMB - Smash\nR - Block";
     }
 
 }

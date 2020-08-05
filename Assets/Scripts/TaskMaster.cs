@@ -6,7 +6,10 @@ public class TaskMaster : MonoBehaviour
 {
 
     public Vector2 lastCheckPoint = new Vector2();
-    public Transform PlayerPrefab;
+
+    private int savedNumberOfKeys = 0;
+
+    public LevelController levelControl;
 
     public int triggeredEnemies = 0;
 
@@ -24,21 +27,23 @@ public class TaskMaster : MonoBehaviour
     {
         GlobalUtils.TaskMaster = GetComponent<TaskMaster>();
         if( GlobalUtils.PlayerObject ) lastCheckPoint = GlobalUtils.PlayerObject.transform.position;
+        if( GlobalUtils.PlayerObject ) savedNumberOfKeys = GlobalUtils.PlayerObject.GetComponent<Player>().keys;
     }
 
 
     public void SetPlayerAtLastCheckpoint(){
         GlobalUtils.PlayerObject.position = lastCheckPoint;
         GlobalUtils.PlayerObject.GetComponent<Player>().ResetPlayer();
-        
-        //var newPlayer = Instantiate( PlayerPrefab, (Vector3)lastCheckPoint, Quaternion.identity );
-        //GlobalUtils.Camera.SetNewFollowable( newPlayer );
-        //Destroy(GlobalUtils.PlayerObject.gameObject, 1.0f);
-        //GlobalUtils.PlayerObject = newPlayer;
+        GlobalUtils.PlayerObject.GetComponent<Player>().keys = savedNumberOfKeys;
+
+        levelControl.LoadLevelStatus();
     }
 
     public void UpdateCheckpoint( Vector2 checkpointPosition){
         lastCheckPoint = checkpointPosition;
+        savedNumberOfKeys = GlobalUtils.PlayerObject.GetComponent<Player>().keys;
+
+        levelControl.SaveLevelStatus();
     }
 
 }

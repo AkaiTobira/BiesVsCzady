@@ -17,8 +17,14 @@ public class StalactitController :IEntity
 
     bool hasBeenHit = false;
 
+    public bool HasBeenTouched(){
+        return hasBeenHit;
+    }
+
     public override void OnHit(GlobalUtils.AttackInfo infoPack){
         if( !infoPack.isValid ) return;
+        if( infoPack.stateName == null ) return;
+
         if(    infoPack.stateName.Contains("2") 
             || infoPack.stateName.Contains("1") 
             || infoPack.stateName.Contains("4")
@@ -35,7 +41,7 @@ public class StalactitController :IEntity
         GlobalUtils.AttackInfo infoPack = new GlobalUtils.AttackInfo();
         infoPack.isValid = true;
 
-        if( Vector3.Distance(GlobalUtils.PlayerObject.position, m_FloorDetector.transform.position) < 150 ){ 
+        if( Vector3.Distance(GlobalUtils.PlayerObject.position, m_FloorDetector.transform.position) < 15 ){ 
             infoPack.attackDamage = damage;
         }else{
             infoPack.attackDamage = 10000;

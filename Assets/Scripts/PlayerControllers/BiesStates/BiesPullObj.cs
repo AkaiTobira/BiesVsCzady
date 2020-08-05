@@ -31,6 +31,8 @@ public class BiesPullObj : PlayerBaseState
 
         distanceFromObject = Vector3.Distance( m_controllabledObject.transform.position,
                                                m_moveable.transform.position );
+
+        distanceToFixAnimation = new Vector3(0, 6 , 0);
     }
 
     protected override void UpdateDirection(){}

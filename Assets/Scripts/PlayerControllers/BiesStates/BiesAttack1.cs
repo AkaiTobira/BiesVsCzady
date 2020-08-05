@@ -19,7 +19,7 @@ public class BiesAttack1 : PlayerBaseState
 
         m_animator.SetFloat("AnimationSpeed", ANNIMATION_SPEED );// 3);
 
-        Debug.Log(animationTime);
+//        Debug.Log(animationTime);
         timeToEnd     = animationTime;
     }
 

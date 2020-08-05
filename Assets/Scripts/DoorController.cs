@@ -5,12 +5,12 @@ using UnityEngine;
 public class DoorController : MonoBehaviour
 {
 
-    [SerializeField] int numberOfRequiredKeys = 1;
+    [SerializeField] public int numberOfRequiredKeys = 1;
 
     [SerializeField] Transform doorDetector = null;
 
     bool isHeroInArea = false;
-    bool hasBeenActivated = false;
+    public bool hasBeenActivated = false;
 
     void Update()
     {

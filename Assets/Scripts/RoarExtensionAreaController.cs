@@ -5,10 +5,10 @@ using UnityEngine;
 public class RoarExtensionAreaController : MonoBehaviour
 {
     
-    [SerializeField] StalactitController[] objectsToTakeDown = null;
+    public StalactitController[] objectsToTakeDown = null;
 
     bool isHeroInArea = false;
-    bool hasBeenActivated = false;
+    public bool hasBeenActivated = false;
 
     enum AttackType{
         Roar = 2,
@@ -18,6 +18,7 @@ public class RoarExtensionAreaController : MonoBehaviour
     }
 
     [SerializeField] AttackType[] workingTypesOfAttack = null;
+
 
     void Update()
     {
