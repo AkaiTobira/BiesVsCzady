@@ -9,11 +9,11 @@ public static class  PlayerInput
     }
 
     public static bool isMoveLeftKeyHold(){
-        return Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow);
+        return Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow) || (Input.GetAxis("Horizontal" ) == -1);
     }
 
     public static bool isMoveRightKeyHold(){
-        return Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow);
+        return Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow) || (Input.GetAxis("Horizontal" ) == 1);
     }
 
     public static bool isFallKeyHold(){
@@ -45,11 +45,11 @@ public static class  PlayerInput
     }
 
     public static bool isJumpKeyHold(){
-        return Input.GetKey( KeyCode.Space );
+        return Input.GetButton( "Jump" );
     }
 
     public static bool isJumpKeyJustPressed(){
-        return Input.GetKeyDown( KeyCode.Space );
+        return Input.GetButtonDown( "Jump" );
     }
 
     public static bool isActionKeyJustPressed(){
@@ -63,7 +63,6 @@ public static class  PlayerInput
     public static bool isActionKeyHold(){
         return Input.GetKey( KeyCode.F );
     }
-
 
     public static bool isChangeFormKeyJustPressed(){
         return Input.GetKeyDown( KeyCode.E) || Input.GetKeyDown(KeyCode.V);

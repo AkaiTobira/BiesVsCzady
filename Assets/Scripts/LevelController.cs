@@ -22,7 +22,7 @@ public class LevelController : MonoBehaviour
         m_stalactits.SaveAllObjects();
         m_areaStalactits.SaveAllObjects();
         m_keys.SaveAllObjects();
-        m_doors.SaveAllObjects();
+    //    m_doors.SaveAllObjects();
     }
 
     public void LoadLevelStatus(){
@@ -30,7 +30,7 @@ public class LevelController : MonoBehaviour
         m_destroyable.LoadAllObjects();
         m_stalactits.LoadAllObjects();
         m_areaStalactits.LoadAllObjects();
-        m_doors.LoadAllObjects();
+    //    m_doors.LoadAllObjects();
         m_keys.LoadAllObjects();
     }
 
