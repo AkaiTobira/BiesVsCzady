@@ -16,9 +16,7 @@ public class RoarExtensionAreaController : MonoBehaviour
         Hit2  = 4,
         Hit3  = 5
     }
-
     [SerializeField] AttackType[] workingTypesOfAttack = null;
-
 
     void Update()
     {
@@ -32,7 +30,7 @@ public class RoarExtensionAreaController : MonoBehaviour
                     hasBeenActivated = true;
                 }
             }
-//            GlobalUtils.TutorialConsole.text += "\nC or RMB - break the stalactits";
+        //    GlobalUtils.TutorialConsole.text += "\nC or RMB - break the stalactits";
         }
     }
 

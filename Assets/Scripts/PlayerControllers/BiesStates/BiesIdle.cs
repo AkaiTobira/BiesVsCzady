@@ -61,7 +61,7 @@ public class BiesIdle : PlayerIdle
     }
 
     public override string GetTutorialAdvice(){
-        return base.GetTutorialAdvice() + "\nC - Roar\nX or LMB - Smash\nR - Block";
+        return base.GetTutorialAdvice() + "\nC or RMB - stun/break the stalactits\nX or LMB - Smash\nR - Block";
     }
 
 }
