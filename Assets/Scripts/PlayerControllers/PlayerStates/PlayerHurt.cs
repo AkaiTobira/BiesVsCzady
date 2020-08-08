@@ -45,6 +45,7 @@ public class PlayerHurt : PlayerBaseState{
     }
 
     private void fillKnockbackInfo( GlobalUtils.AttackInfo infoPack ){
+        if( infoPack.knockBackValue.x == 0 && infoPack.knockBackValue.y == 0) return;
         isFaceLocked = infoPack.lockFaceDirectionDuringKnockback;
         if( isFaceLocked ){
             knocBackDirection             = (int)infoPack.fromCameAttack;

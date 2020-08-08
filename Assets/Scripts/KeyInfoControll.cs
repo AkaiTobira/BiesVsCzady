@@ -21,7 +21,7 @@ public class KeyInfoControll : MonoBehaviour
     public void ShowAtAreaDoorEnter(int requiredNumberOfKeys){
         int acquiredKeys = GlobalUtils.PlayerObject.GetComponent<Player>().keys;
         m_text.text = acquiredKeys.ToString() + "/" + requiredNumberOfKeys.ToString();
-        m_text.text += (acquiredKeys >= requiredNumberOfKeys) ?  "\n F - Open" : "\nInsufficient to open";
+        m_text.text += (acquiredKeys >= requiredNumberOfKeys) ?  "\n F - Otwórz" : "\nZbierz więcej";
         m_animator.SetTrigger("Show");
     }
 

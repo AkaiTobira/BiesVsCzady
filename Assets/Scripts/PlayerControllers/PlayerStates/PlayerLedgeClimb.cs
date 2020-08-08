@@ -16,11 +16,14 @@ public class PlayerLedgeClimb : PlayerBaseState
 
     public PlayerLedgeClimb( GameObject controllable, GlobalUtils.Direction dir , float someVariable) : base( controllable ) {
         CommonValues.PlayerVelocity = new Vector2(0,0);
-        forSureDirection = dir;
-        m_dir = dir;
-        SetUpRotation();
-        PlayerFallOfWallHelper.ResetCounter();
+    //    forSureDirection = dir;
         SetUpVariables(someVariable);
+
+        SetUpDirection();
+        SetUpRotation();
+        
+        PlayerFallOfWallHelper.ResetCounter();
+
     }
 
     private float CalculateHighOfLedge(BoxCollider2D ledgeBox){
@@ -49,6 +52,16 @@ public class PlayerLedgeClimb : PlayerBaseState
         }
 
         return Mathf.Max( closestOne.y, closestOne.y);
+    }
+
+    private void SetUpDirection(){
+
+        float ledgeBoxX  = m_ObjectInteractionDetector.GetClimbableObject().GetComponent<Transform>().position.x;
+        float playerBoxX = m_FloorDetector.GetComponent<Transform>().position.x;
+
+        if( ledgeBoxX < playerBoxX) m_dir = GlobalUtils.Direction.Left;
+        if( ledgeBoxX > playerBoxX) m_dir = GlobalUtils.Direction.Right;
+
     }
 
     private void SetUpRotation(){
@@ -93,9 +106,9 @@ public class PlayerLedgeClimb : PlayerBaseState
         }
     }
 
-    protected override void UpdateDirection(){
-        m_dir = forSureDirection;
-    }
+//    protected override void UpdateDirection(){
+//        m_dir = forSureDirection;
+//    }
 
     public override void HandleInput(){}
 

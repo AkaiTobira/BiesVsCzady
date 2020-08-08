@@ -57,7 +57,7 @@ public static class  PlayerInput
     }
 
     public static bool isBlockKeyJustPressed(){
-        return Input.GetKeyDown( KeyCode.R );
+        return Input.GetKeyDown( KeyCode.R ) || Input.GetKeyDown( KeyCode.LeftControl ) || Input.GetKeyDown( KeyCode.RightControl );
     }
 
     public static bool isActionKeyHold(){

@@ -85,7 +85,9 @@ public class PlayerMove : PlayerBaseState
     }
 
     public override string GetTutorialAdvice(){
-        return "E - ChangeForm\nSPACE - Jump";
+        string msg = ( LockAreaOverseer.isChangeLocked ) ? "" : "E - ChangeForm";
+        msg += "\nSPACE - Jump";
+        return msg;
     }
 
 
