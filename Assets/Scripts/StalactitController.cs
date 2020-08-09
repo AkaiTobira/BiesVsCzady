@@ -36,6 +36,7 @@ public class StalactitController :IEntity
     }
 
     public float damage = 3;
+    public float enemyDamage;
 
     public override GlobalUtils.AttackInfo GetAttackInfo(){
         GlobalUtils.AttackInfo infoPack = new GlobalUtils.AttackInfo();
@@ -44,7 +45,7 @@ public class StalactitController :IEntity
         if( Vector3.Distance(GlobalUtils.PlayerObject.position, m_FloorDetector.transform.position) < 15 ){ 
             infoPack.attackDamage = damage;
         }else{
-            infoPack.attackDamage = 10000;
+            infoPack.attackDamage = enemyDamage;
         }
 
         return infoPack;
