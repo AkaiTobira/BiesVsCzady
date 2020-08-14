@@ -53,6 +53,7 @@ public class CollisionDetector : MonoBehaviour, ICollisionFloorDetector
         m_boxCollider = GetComponent<BoxCollider2D>();
         CalculateBorders();
         CalculateDistanceBeetweenRay();
+        collisionInfo.faceDir = (int)GlobalUtils.Direction.Right;
     }
     private void CalculateBorders(){
 		Bounds bounds = m_boxCollider.bounds;

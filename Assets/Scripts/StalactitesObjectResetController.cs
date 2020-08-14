@@ -105,7 +105,5 @@ public class StalactitesObjectResetController : MonoBehaviour
         newInstancion.GetComponent<StalactitController>().damage       = info.damage;
         newInstancion.GetComponent<StalactitController>().GravityForce = info.gravity;
         newInstancion.GetComponent<StalactitController>().enemyDamage  = info.enemyDamage;
-    
     }
-
 }

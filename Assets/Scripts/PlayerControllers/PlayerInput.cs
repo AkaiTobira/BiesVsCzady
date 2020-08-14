@@ -37,7 +37,8 @@ public static class  PlayerInput
     }
 
     public static bool isAttack2KeyPressed(){
-        return Input.GetKeyDown(KeyCode.C) || Input.GetButtonDown("Fire2");
+        return ( Input.GetKeyDown(KeyCode.C) || Input.GetButtonDown("Fire2") )
+                && PlayerRoarHelper.RoarRequirementsMeet() ;
     }
 
     public static bool isClimbKeyHold(){

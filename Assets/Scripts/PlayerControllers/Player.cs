@@ -56,6 +56,7 @@ public class Player : IEntity
         PlayerSwipeLock.IncrementCounters();
         PlayerMoveOfWallHelper.IncrementCounters();
         PlayerJumpOffWall.IncrementCounters();
+        PlayerRoarHelper.IncrementCounters();
     }
 
     [Header("DebugInfo")]

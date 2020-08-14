@@ -11,6 +11,8 @@ public class BiesAttack1 : PlayerBaseState
 
     float ANNIMATION_SPEED = 2f;
 
+    GlobalUtils.Direction m_lockedDirection;
+
     public BiesAttack1( GameObject controllable) : base( controllable ){
         name = "BiesAttack1";
         distanceToFixAnimation = new Vector3(0, 7.5f , 0);
@@ -19,8 +21,12 @@ public class BiesAttack1 : PlayerBaseState
 
         m_animator.SetFloat("AnimationSpeed", ANNIMATION_SPEED );// 3);
 
+        m_lockedDirection = m_FloorDetector.GetCurrentDirection();
+
 //        Debug.Log(animationTime);
         timeToEnd     = animationTime;
+
+        velocity = new Vector2( 30, 0 );
     }
 
     protected override void SetUpAnimation(){
@@ -44,15 +50,16 @@ public class BiesAttack1 : PlayerBaseState
             m_animator.SetBool("Attack1", false);
         }
     }
+
+
     private void ProcessMove(){
         PlayerFallHelper.FallRequirementsMeet( true );
-        velocity = (int)m_FloorDetector.GetCurrentDirection() * m_transition.MoveSpeed;
-        m_FloorDetector.Move(velocity*Time.deltaTime);
+        m_FloorDetector.Move((float)m_lockedDirection * velocity * Time.deltaTime);
     }
     public override void Process(){
         ProcessStateEnd();
         ProcessMove();
-        HandleStopping();
+    //    HandleStopping();
     }
 
     private void HandleStopping(){
