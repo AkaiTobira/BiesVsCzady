@@ -42,7 +42,9 @@ public class StalactitController :IEntity
         GlobalUtils.AttackInfo infoPack = new GlobalUtils.AttackInfo();
         infoPack.isValid = true;
 
-        if( Vector3.Distance(GlobalUtils.PlayerObject.position, m_FloorDetector.transform.position) < 15 ){ 
+        Debug.Log( Vector3.Distance(GlobalUtils.PlayerObject.position, m_FloorDetector.transform.position) );
+
+        if( Vector3.Distance(GlobalUtils.PlayerObject.position, m_FloorDetector.transform.position) < 100 ){ 
             infoPack.attackDamage = damage;
         }else{
             infoPack.attackDamage = enemyDamage;

@@ -5,6 +5,8 @@ using UnityEngine;
 public class StalactitesObjectSaveInfo : GeneralObjectInfoPack{
 
     public float damage;
+
+    public float enemyDamage;
     public float gravity;
 
 
@@ -34,8 +36,9 @@ public class StalactitesObjectResetController : MonoBehaviour
         StalactitesObjectSaveInfo infoPack = new StalactitesObjectSaveInfo();
         infoPack.saveBasics( go );
 
-        infoPack.damage = go.GetComponent<StalactitController>().damage;
-        infoPack.gravity = go.GetComponent<StalactitController>().GravityForce;
+        infoPack.damage      = go.GetComponent<StalactitController>().damage;
+        infoPack.gravity     = go.GetComponent<StalactitController>().GravityForce;
+        infoPack.enemyDamage = go.GetComponent<StalactitController>().enemyDamage;
 
         return infoPack;
     }
@@ -62,7 +65,7 @@ public class StalactitesObjectResetController : MonoBehaviour
             transform.GetChild(i).rotation = info.rotation;
             transform.GetChild(i).localScale = info.scale;
 
-            transform.GetChild(i).GetComponent<StalactitController>().damage = info.damage;
+            transform.GetChild(i).GetComponent<StalactitController>().damage       = info.damage;
             transform.GetChild(i).GetComponent<StalactitController>().GravityForce = info.gravity;
 
         }
@@ -98,6 +101,11 @@ public class StalactitesObjectResetController : MonoBehaviour
         newInstancion.transform.localScale = info.scale;
 
         newInstancion.GetComponent<ObjectIdHolder>().objectId = index;
+    
+        newInstancion.GetComponent<StalactitController>().damage       = info.damage;
+        newInstancion.GetComponent<StalactitController>().GravityForce = info.gravity;
+        newInstancion.GetComponent<StalactitController>().enemyDamage  = info.enemyDamage;
+    
     }
 
 }
