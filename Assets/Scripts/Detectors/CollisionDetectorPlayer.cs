@@ -62,10 +62,15 @@ public class CollisionDetectorPlayer : CollisionDetector, ICollisionWallDetector
     }
 
     override protected void ProcessCollision(){
+    //    Debug.Log( "BEFoRE Slope Calculation" + transition );
         ProcessSlopeDetection( Mathf.Sign(transition.x) );
+    //    Debug.Log( "After SlopeI Calculation" + transition );
         DescendSlope();
+    //    Debug.Log( "After SlopeII Calculation" + transition );
         ProcessCollisionHorizontal( Mathf.Sign(transition.x));
+    //    Debug.Log( "After SlopeIII Calculation" + transition );
         ProcessCollisionVertical(   Mathf.Sign(transition.y));
+    //    Debug.Log( "After SlopeIIII Calculation" + transition );
         ProcessOneWayPlatformDetection( Mathf.Sign(transition.y) );
         ProcessCollisionWallClose();
         ProcessLedgeDetection();

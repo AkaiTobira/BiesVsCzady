@@ -57,6 +57,9 @@ public class PlayerMove : PlayerBaseState
     }
 
     private void ProcessWallDetectiong(){
+
+        Debug.Log( m_WallDetector.isCollideWithLeftWall() + " " +  m_WallDetector.isCollideWithRightWall());
+
         if( isLeftOriented()   && m_WallDetector.isCollideWithLeftWall() ) CommonValues.PlayerVelocity.x = 0.0f;
         if( isRightOriented()  && m_WallDetector.isCollideWithRightWall()) CommonValues.PlayerVelocity.x = 0.0f;
     }
