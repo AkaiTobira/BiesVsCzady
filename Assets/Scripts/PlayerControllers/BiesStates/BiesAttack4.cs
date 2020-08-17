@@ -9,7 +9,7 @@ public class BiesAttack4 : PlayerBaseState
     private float timeToEnd;
     private AnimationTransition m_transition;
     float ANNIMATION_SPEED = 1.7f;
-
+    private bool moveForward = false;
     GlobalUtils.Direction m_lockedDirection;
     public BiesAttack4( GameObject controllable) : base( controllable ){
         name = "BiesAttack4";
@@ -24,6 +24,7 @@ public class BiesAttack4 : PlayerBaseState
 
         m_lockedDirection = m_FloorDetector.GetCurrentDirection();
 
+        if( PlayerInput.isMoveRightKeyHold() || PlayerInput.isMoveLeftKeyHold()  ) moveForward = true;
 
         velocity = new Vector2( 30, 0 );
     }
@@ -51,7 +52,7 @@ public class BiesAttack4 : PlayerBaseState
     }
     private void ProcessMove(){
         PlayerFallHelper.FallRequirementsMeet( true );
-        m_FloorDetector.Move((float)m_lockedDirection * velocity * Time.deltaTime);
+        if( moveForward ) m_FloorDetector.Move((float)m_lockedDirection * velocity * Time.deltaTime);
     }
     public override void Process(){
         ProcessStateEnd();
