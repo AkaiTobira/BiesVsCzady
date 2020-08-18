@@ -9,6 +9,7 @@ public class StalactitesObjectSaveInfo : GeneralObjectInfoPack{
     public float enemyDamage;
     public float gravity;
 
+    public float fallDelay;
 
 }
 
@@ -39,6 +40,7 @@ public class StalactitesObjectResetController : MonoBehaviour
         infoPack.damage      = go.GetComponent<StalactitController>().damage;
         infoPack.gravity     = go.GetComponent<StalactitController>().GravityForce;
         infoPack.enemyDamage = go.GetComponent<StalactitController>().enemyDamage;
+        infoPack.fallDelay   = go.GetComponent<StalactitController>().fallDownDelay;
 
         return infoPack;
     }
@@ -67,7 +69,7 @@ public class StalactitesObjectResetController : MonoBehaviour
 
             transform.GetChild(i).GetComponent<StalactitController>().damage       = info.damage;
             transform.GetChild(i).GetComponent<StalactitController>().GravityForce = info.gravity;
-
+            transform.GetChild(i).GetComponent<StalactitController>().fallDownDelay = info.fallDelay;
         }
     }
 
@@ -105,5 +107,6 @@ public class StalactitesObjectResetController : MonoBehaviour
         newInstancion.GetComponent<StalactitController>().damage       = info.damage;
         newInstancion.GetComponent<StalactitController>().GravityForce = info.gravity;
         newInstancion.GetComponent<StalactitController>().enemyDamage  = info.enemyDamage;
+        newInstancion.GetComponent<StalactitController>().fallDownDelay = info.fallDelay;
     }
 }

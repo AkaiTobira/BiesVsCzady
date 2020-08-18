@@ -25,7 +25,6 @@ public class BiesAttack5 : PlayerBaseState
 
         m_lockedDirection = m_FloorDetector.GetCurrentDirection();
 
-
         velocity = new Vector2( 80, 0 );
     }
 
