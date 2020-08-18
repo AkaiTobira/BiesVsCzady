@@ -13,7 +13,7 @@ public class StalactitController :IEntity
 
     private float fallDownTimer = 0.0f;
 
-    private float dummyTimer    = 0.0f;
+//    private float dummyTimer    = 0.0f;
 
     void Start() {
         m_FloorDetector = transform.Find("Detector").GetComponent<CollisionDetector>();
@@ -93,7 +93,7 @@ public class StalactitController :IEntity
         if( hasBeenHit && !m_FloorDetector.isOnGround() ){
             Gravity += GravityForce * Time.deltaTime;
             m_FloorDetector.Move( new Vector2(0, Gravity )* Time.deltaTime);
-            dummyTimer += Time.deltaTime;
+        //    dummyTimer += Time.deltaTime;
         }else{
             Gravity = 0;
         }
@@ -102,7 +102,7 @@ public class StalactitController :IEntity
         if( onFloor ) return;
         if( hasBeenHit && m_FloorDetector.isOnGround()){
             
-            Debug.Log( transform.position.x + " " + dummyTimer );
+        //    Debug.Log( transform.position.x + " " + dummyTimer );
 
             m_FloorDetector.enabled = false;
             m_FloorDetector.GetComponent<BoxCollider2D>().enabled = false;
@@ -120,6 +120,4 @@ public class StalactitController :IEntity
         }
         return 0.0f;
     }
-
-
 }
