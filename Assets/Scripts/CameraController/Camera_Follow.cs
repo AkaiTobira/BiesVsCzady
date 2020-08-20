@@ -87,6 +87,8 @@ public class Camera_Follow : MonoBehaviour
         targetPosition.x   = GetXPosition();
         targetPosition.y   = GetYPosition();
         transform.position = Vector3.SmoothDamp( transform.position, targetPosition, ref velocity, m_smoothTime+ additionalCameraSmoothTime);
+
+        Debug.Log( m_smoothTime+ additionalCameraSmoothTime );
     }
 
     private bool holdAdditionalSmooth = false;
@@ -98,10 +100,12 @@ public class Camera_Follow : MonoBehaviour
 
     public void DisableMoreSmooth(){
         holdAdditionalSmooth = false;
+        StartCoroutine(ClearAddtionalSmooth());
     }
 
     IEnumerator ClearAddtionalSmooth(){
-        yield return new WaitForSeconds( m_smoothTime + additionalCameraSmoothTime );
+        yield return new WaitForSeconds( (m_smoothTime + additionalCameraSmoothTime) * 2 );
+        Debug.Log( holdAdditionalSmooth );
         if( holdAdditionalSmooth ) yield break;
         additionalCameraSmoothTime = 0;
     }
