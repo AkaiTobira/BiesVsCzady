@@ -30,6 +30,9 @@ public class BiesMove : PlayerMove
 
         if( PlayerFallHelper.FallRequirementsMeet( m_FloorDetector.isOnGround()) ){
             m_nextState = new BiesFall(m_controllabledObject, GlobalUtils.Direction.Left);
+        }else if( m_lowerEdgeDetector.hasReachedPlatformEdge() ){
+            m_isOver = true;
+            m_nextState = new BiesJump(m_controllabledObject, m_dir);
         }else if( PlayerInput.isAttack1KeyPressed() ){
             m_nextState = new BiesAttack1(m_controllabledObject);
         }else if( PlayerInput.isAttack2KeyPressed() ){

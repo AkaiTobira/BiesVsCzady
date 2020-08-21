@@ -129,8 +129,10 @@ public class CollisionDetectorPlayer : CollisionDetector, ICollisionWallDetector
                 rayOrigin,
                 new Vector2( 0, directionY),
                 rayLenght,
-                m_collsionMask
+                m_collsionMask + m_oneWayFloorMask
             );
+
+            Debug.Log( (int)m_collsionMask  );
 
             if( hit ){
                 if( i == 0) isSave1 = true;
@@ -141,7 +143,7 @@ public class CollisionDetectorPlayer : CollisionDetector, ICollisionWallDetector
             Debug.DrawRay(
                 rayOrigin,
                 new Vector2( 0, directionY) * rayLenght,
-                new Color(0,1,0)
+                new Color(0,1,1)
              );
         }
 
@@ -150,7 +152,7 @@ public class CollisionDetectorPlayer : CollisionDetector, ICollisionWallDetector
     }
 
     public bool hasReachedPlatformEdge(){
-        return isOverHalfOfRaysOverLedge;
+        return !isOverHalfOfRaysOverLedge;
     }
 
 
