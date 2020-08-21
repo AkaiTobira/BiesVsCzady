@@ -40,6 +40,9 @@ public class CatMove : PlayerMove
         if( PlayerFallHelper.FallRequirementsMeet( m_FloorDetector.isOnGround()) ){
             CommonValues.PlayerVelocity.x = 0;
             m_nextState = new CatFall(m_controllabledObject, m_FloorDetector.GetCurrentDirection());
+        }else if( m_lowerEdgeDetector.hasReachedPlatformEdge() ){
+            m_isOver = true;
+            m_nextState = new CatAutoJump(m_controllabledObject, m_dir);
         }else if( PlayerInput.isAttack2KeyPressed() ){
             m_nextState = new CatAttack2(m_controllabledObject);
         }else if( isLeftOriented()  && !PlayerInput.isMoveLeftKeyHold()){
