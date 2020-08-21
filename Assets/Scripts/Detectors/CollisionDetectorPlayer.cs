@@ -132,8 +132,6 @@ public class CollisionDetectorPlayer : CollisionDetector, ICollisionWallDetector
                 m_collsionMask + m_oneWayFloorMask
             );
 
-            Debug.Log( (int)m_collsionMask  );
-
             if( hit ){
                 if( i == 0) isSave1 = true;
                 if( i == 1) isSave2 = true;
