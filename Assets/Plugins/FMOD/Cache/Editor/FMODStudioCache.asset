@@ -1,5 +1,23 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-6535743692965327091
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.bank
+  m_EditorClassIdentifier: 
+  Path: Assets/FMOD/BiesVsCzady/Build/Desktop/Master.bank
+  SubDir: 
+  lastModified: 637314592743443752
+  LoadResult: 0
+  FileSizes: []
+  Exists: 1
 --- !u!114 &-4902263680055983602
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15,7 +33,7 @@ MonoBehaviour:
   Path: event:/SFX/Bies/roar-sound-effect
   guid: 54208e0a78b1ec468498ee40e272d271
   Banks:
-  - {fileID: 1710075330792207226}
+  - {fileID: -6535743692965327091}
   IsStream: 0
   Is3D: 1
   IsOneShot: 1
@@ -37,17 +55,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EditorBanks:
   - {fileID: 5864574226408267649}
-  - {fileID: 1710075330792207226}
+  - {fileID: -6535743692965327091}
   EditorEvents:
   - {fileID: -4902263680055983602}
   - {fileID: 883708458752113524}
   - {fileID: 4803489212334083699}
   EditorParameters: []
   MasterBanks:
-  - {fileID: 1710075330792207226}
+  - {fileID: -6535743692965327091}
   StringsBanks:
   - {fileID: 5864574226408267649}
-  stringsBankWriteTime: 637315832480322603
+  stringsBankWriteTime: 637314592743463690
   cacheVersion: 3
 --- !u!114 &883708458752113524
 MonoBehaviour:
@@ -64,7 +82,7 @@ MonoBehaviour:
   Path: event:/ATM/Atmosphere Cave
   guid: 822ed4446d741a4fa9c138ef85b1b3eb
   Banks:
-  - {fileID: 1710075330792207226}
+  - {fileID: -6535743692965327091}
   IsStream: 1
   Is3D: 1
   IsOneShot: 0
@@ -105,7 +123,7 @@ MonoBehaviour:
   Path: event:/SFX/Kot/kot-bies-przemiana
   guid: ce6455acdcde144ab61d237e498e4ea5
   Banks:
-  - {fileID: 1710075330792207226}
+  - {fileID: -6535743692965327091}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -127,7 +145,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Path: Assets/FMOD/BiesVsCzady/Build/Desktop/Master.strings.bank
   SubDir: 
-  lastModified: 637315832480322603
+  lastModified: 637314592743463690
   LoadResult: 0
   FileSizes:
   - Name: Desktop

@@ -113,12 +113,12 @@ public class CollisionDetectorPlayer : CollisionDetector, ICollisionWallDetector
 
     protected void ProcessEdgeFallDetection(){
         float directionY = -1;
-        float rayLenght  = 50;
+        float rayLenght  = 20;
 
         bool isSave1 = false;
         bool isSave2 = false;
 
-        for( int i = 0; i < numberOfRayRequiredToFall; i ++){
+        for( int i = 0; i < numberOfRayRequiredToFall + 1; i ++){
 
         Vector2 rayOrigin = new Vector2( (collisionInfo.faceDir == DIR_RIGHT) ? 
                                             borders.right  - skinSize - i * verticalDistanceBeetweenRays: 
@@ -136,6 +136,11 @@ public class CollisionDetectorPlayer : CollisionDetector, ICollisionWallDetector
                 if( i == 0) isSave1 = true;
                 if( i == 1) isSave2 = true;
     //            isSave |= true;
+            }else{
+                if( i == 2) {
+                    isSave1 = true;
+                    isSave2 = false;
+                }
             }
             
             Debug.DrawRay(
