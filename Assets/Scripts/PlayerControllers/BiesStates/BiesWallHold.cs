@@ -15,9 +15,14 @@ public class BiesWallHold : PlayerBaseState
 
     private void SetUpAnimValue(){
         m_animator.SetBool( "isWallMovable",  m_ObjectInteractionDetector.IsWallPullable() );
+        if( m_ObjectInteractionDetector.IsWallPullable() ){
+            distanceToFixAnimation = new Vector3(0, 6 , 0);
+        }
     }
 
     public override void Process(){
+        m_ObjectInteractionDetector.UpdateDestroyableExistance();
+
         if( !m_WallDetector.isWallClose()) m_isOver = true;
 
         m_animator.SetFloat( "FallVelocity", 0);
@@ -85,7 +90,8 @@ public class BiesWallHold : PlayerBaseState
     }
 
     public override string GetTutorialAdvice(){
-        string msg = "E - ChangeForm\nSPACE - Jump";
+        string msg = (( LockAreaOverseer.isChangeLocked ) ? "" : "E - ChangeForm");
+        msg += "\nSPACE - Jump";
         msg += ( m_ObjectInteractionDetector.IsWallPullable()   ) ? "\nSHIFT + A/D or arrows to move object" : "";
         msg += ( m_ObjectInteractionDetector.IsWallDestroyable() ) ? "\nX or LMB - hit to destroy" : "";
 

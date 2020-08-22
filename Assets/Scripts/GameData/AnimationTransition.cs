@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class AnimationTransition : MonoBehaviour
 {
-    public Vector2 MoveSpeed = new Vector2();
+    public Vector2 MoveSpeed;
+
+    public Vector2 TestVector2;
 
     private Player m_player;
 

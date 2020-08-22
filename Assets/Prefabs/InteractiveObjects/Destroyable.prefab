@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 2695046210730010641}
   - component: {fileID: 347217659123664167}
   - component: {fileID: 8971872061929294310}
+  - component: {fileID: 3562902098057796537}
   m_Layer: 11
   m_Name: Destroyable
   m_TagString: Destroyable
@@ -168,7 +169,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1849812049
   m_SortingLayer: 1
-  m_SortingOrder: 20
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 4f24834d1920fb14bac848452479f324, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -199,3 +200,16 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &3562902098057796537
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2695046210730010640}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 095e605364892e949a025309f63f443d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectId: 0

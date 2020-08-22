@@ -11,6 +11,8 @@ public class MissleController : IEntity
 
     private ICollisionWallDetector m_wallDetector;
 
+    [SerializeField] private Vector2 knockbackInfo;
+
     void Start()
     {
         m_FloorDetector = GetComponent<CollisionDetectorMissle>();
@@ -19,8 +21,11 @@ public class MissleController : IEntity
 
     public override GlobalUtils.AttackInfo GetAttackInfo(){
         GlobalUtils.AttackInfo infoPack = new GlobalUtils.AttackInfo();
-        infoPack.isValid      = true;
-        infoPack.attackDamage = AttackDamage;
+        infoPack.isValid        = true;
+        infoPack.attackDamage   = AttackDamage;
+        infoPack.knockBackValue = knockbackInfo;
+        infoPack.lockFaceDirectionDuringKnockback = true;
+        infoPack.fromCameAttack = (GlobalUtils.Direction)Mathf.Sign( direction.x );
         return infoPack;
     }
 

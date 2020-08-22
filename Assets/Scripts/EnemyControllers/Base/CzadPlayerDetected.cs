@@ -18,7 +18,7 @@ public class CzadPlayerDetected : EnemyBaseState
     
     private bool CanMeeleAttack(){
         float distance = Mathf.Abs( GlobalUtils.PlayerObject.transform.position.x - m_FloorDetector.GetComponent<Transform>().position.x) - 4;
-        Debug.Log( distance > entityScript.combatRange );
+//        Debug.Log( distance > entityScript.combatRange );
         if( distance > entityScript.combatRange ) return false;
         if( meeleCombatTimer > 0 )                return false;
         meeleCombatTimer = entityScript.breakBeetweenAttacks;

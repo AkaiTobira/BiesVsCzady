@@ -405,6 +405,10 @@ MonoBehaviour:
   combatRange: 300
   knockbackValues: {x: 0, y: 0}
   stunDuration: 0
+  canJumpOnPlayer: 0
+  jumpAttackBreak: 2
+  jumpAttackKnockbackValue: {x: 0, y: 0}
+  jumpAttackDamage: 1
   canShot: 0
   breakBeetweenShots: 1
   probabilityOfShot: 1
@@ -787,7 +791,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 12
-  m_Sprite: {fileID: 21300000, guid: 45f85e4312b5ac74c8f378315bb46ebf, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 4dc29e4ca21cbb749b4fb66f6e1aae08, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

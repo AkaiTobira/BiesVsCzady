@@ -31,6 +31,8 @@ public class Camera_Follow : MonoBehaviour
 
     public float defaultSize = 0;
 
+    [HideInInspector] public float additionalCameraSmoothTime = 0;
+
     Vector3 targetCenter = Vector3.zero;
     void Start() {
         GlobalUtils.Camera = GetComponent<Camera_Follow>();
@@ -68,7 +70,7 @@ public class Camera_Follow : MonoBehaviour
     }
 
     void DragCenterOfCamera(){
-        centerOfCamera = Vector3.SmoothDamp( centerOfCamera, targetCenter, ref velocity2, m_smoothCenterMoveTime);
+        centerOfCamera = Vector3.SmoothDamp( centerOfCamera, targetCenter, ref velocity2, m_smoothCenterMoveTime );
     }
 
     void DragZoomOfCamera(){
@@ -84,6 +86,26 @@ public class Camera_Follow : MonoBehaviour
         targetPosition.z   = -20;//transform.position.z + centerOfCamera.z;
         targetPosition.x   = GetXPosition();
         targetPosition.y   = GetYPosition();
-        transform.position = Vector3.SmoothDamp( transform.position, targetPosition, ref velocity, m_smoothTime);
+        transform.position = Vector3.SmoothDamp( transform.position, targetPosition, ref velocity, m_smoothTime+ additionalCameraSmoothTime);
+
     }
+
+    private bool holdAdditionalSmooth = false;
+
+    public void EnableMoreSmooth(float additionalSmooth){
+        additionalCameraSmoothTime = additionalSmooth;
+        holdAdditionalSmooth = true;
+    }
+
+    public void DisableMoreSmooth(){
+        holdAdditionalSmooth = false;
+        StartCoroutine(ClearAddtionalSmooth());
+    }
+
+    IEnumerator ClearAddtionalSmooth(){
+        yield return new WaitForSeconds( (m_smoothTime + additionalCameraSmoothTime) * 2 );
+        if( holdAdditionalSmooth ) yield break;
+        additionalCameraSmoothTime = 0;
+    }
+
 }

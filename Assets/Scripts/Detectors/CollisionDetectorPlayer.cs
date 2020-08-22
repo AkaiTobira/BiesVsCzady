@@ -62,10 +62,15 @@ public class CollisionDetectorPlayer : CollisionDetector, ICollisionWallDetector
     }
 
     override protected void ProcessCollision(){
+    //    Debug.Log( "BEFoRE Slope Calculation" + transition );
         ProcessSlopeDetection( Mathf.Sign(transition.x) );
+    //    Debug.Log( "After SlopeI Calculation" + transition );
         DescendSlope();
+    //    Debug.Log( "After SlopeII Calculation" + transition );
         ProcessCollisionHorizontal( Mathf.Sign(transition.x));
+    //    Debug.Log( "After SlopeIII Calculation" + transition );
         ProcessCollisionVertical(   Mathf.Sign(transition.y));
+    //    Debug.Log( "After SlopeIIII Calculation" + transition );
         ProcessOneWayPlatformDetection( Mathf.Sign(transition.y) );
         ProcessCollisionWallClose();
         ProcessLedgeDetection();
@@ -124,7 +129,7 @@ public class CollisionDetectorPlayer : CollisionDetector, ICollisionWallDetector
                 rayOrigin,
                 new Vector2( 0, directionY),
                 rayLenght,
-                m_collsionMask
+                m_collsionMask + m_oneWayFloorMask
             );
 
             if( hit ){
@@ -136,7 +141,7 @@ public class CollisionDetectorPlayer : CollisionDetector, ICollisionWallDetector
             Debug.DrawRay(
                 rayOrigin,
                 new Vector2( 0, directionY) * rayLenght,
-                new Color(0,1,0)
+                new Color(0,1,1)
              );
         }
 
@@ -145,7 +150,7 @@ public class CollisionDetectorPlayer : CollisionDetector, ICollisionWallDetector
     }
 
     public bool hasReachedPlatformEdge(){
-        return isOverHalfOfRaysOverLedge;
+        return !isOverHalfOfRaysOverLedge;
     }
 
 
@@ -194,6 +199,43 @@ public class CollisionDetectorPlayer : CollisionDetector, ICollisionWallDetector
             objectWithLedgde = hit2.collider.transform;
         }
     }
+
+    public void UpdateDestroyableExistance(){
+        float rayLenght = wallCheckRayLenght;
+
+        for( float i = -1.0f; i < 2.0f; i++){
+            Vector2 rayOrigin = new Vector2( (collisionInfo.faceDir == DIR_LEFT) ? 
+                                             borders.left + skinSize: borders.right -skinSize ,
+                                              borders.bottom + ((horizontalRayNumber+i)/2.0f) * 
+                                                                horizontalDistanceBeetweenRays );
+
+            RaycastHit2D hit = Physics2D.Raycast(
+                rayOrigin,
+                new Vector2( collisionInfo.faceDir, 0),
+                rayLenght,
+                m_collsionMask
+            );
+
+            if( hit ){
+                closeToWall = true;
+                HandleDestroyable(hit.collider);
+                HandleMoveable(hit.collider);
+            }else{
+                closeToWall      = false;
+                if( !closeToWall ){
+                    isObjectPullable  = false;
+                    pullableObject    = null;
+                    destroyableObject = null;
+                }
+            }
+            Debug.DrawRay(
+                rayOrigin,
+                new Vector2( collisionInfo.faceDir, 0) * rayLenght,
+                new Color(1,1,1)
+             );
+        }
+    }
+
 
     protected void ProcessCollisionWallClose(){
         float rayLenght = wallCheckRayLenght;

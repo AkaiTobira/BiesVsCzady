@@ -151,6 +151,8 @@ public class PlayerJump : PlayerBaseState
     }
 
     public override string GetTutorialAdvice(){
-        return "E - ChangeForm\nWSAD or arrows - Move";
+        string msg = ( LockAreaOverseer.isChangeLocked ) ? "" : "E - ChangeForm";
+        msg += "\nWSAD or arrows - Move";
+        return msg;
     }
 }

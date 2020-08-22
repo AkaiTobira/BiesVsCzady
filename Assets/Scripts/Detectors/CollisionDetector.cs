@@ -53,6 +53,7 @@ public class CollisionDetector : MonoBehaviour, ICollisionFloorDetector
         m_boxCollider = GetComponent<BoxCollider2D>();
         CalculateBorders();
         CalculateDistanceBeetweenRay();
+        collisionInfo.faceDir = (int)GlobalUtils.Direction.Right;
     }
     private void CalculateBorders(){
 		Bounds bounds = m_boxCollider.bounds;
@@ -153,6 +154,7 @@ public class CollisionDetector : MonoBehaviour, ICollisionFloorDetector
     }
 
     protected void ProcessSlopeDetection(float directionX){
+
         float rayLenght  = Mathf.Abs (transition.x) + skinSize;
         Vector2 rayOrigin = new Vector2( (directionX == DIR_LEFT) ? 
                                                     borders.left : 
@@ -169,6 +171,9 @@ public class CollisionDetector : MonoBehaviour, ICollisionFloorDetector
             if( hit ){
                 if( hit.distance == 0.0f) return;
                 float slopeAngle = Vector2.Angle(hit.normal, Vector2.up); 
+                
+
+                
                 if( slopeAngle == 0 ) return;
                 if( slopeAngle < maxClimbAngle){
 					if (collisionInfo.descendingSlope) {
@@ -204,6 +209,7 @@ public class CollisionDetector : MonoBehaviour, ICollisionFloorDetector
             rayOrigin,
             new Vector2(directionX * 4, 0) * rayLenght,
             new Color(0,0,0));
+
     }
 
 	protected void DescendSlope() {
@@ -299,7 +305,9 @@ public class CollisionDetector : MonoBehaviour, ICollisionFloorDetector
             Vector2 rayOrigin = new Vector2( (directionX == DIR_LEFT) ? 
                                                     borders.left : 
                                                     borders.right  ,
-                                             borders.bottom + i * horizontalDistanceBeetweenRays );
+                                             borders.bottom + skinSize*2.5f + i * horizontalDistanceBeetweenRays );
+
+            if( i == horizontalRayNumber-1 ) rayOrigin.y = borders.bottom + i * horizontalDistanceBeetweenRays;
 
             RaycastHit2D hit = Physics2D.Raycast(
                 rayOrigin,

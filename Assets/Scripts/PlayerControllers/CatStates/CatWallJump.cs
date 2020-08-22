@@ -147,12 +147,12 @@ public class CatWallJump : PlayerBaseState
     }
 
     public override string GetTutorialAdvice(){
-        string msg = "E - ChangeForm";
+        string msg = ( LockAreaOverseer.isChangeLocked ) ? "" : "E - ChangeForm";
         return msg;
     }
 
     public override string GetCombatAdvice(){
-        string msg = "E - ChangeForm";
+        string msg = ( LockAreaOverseer.isChangeLocked ) ? "" : "E - ChangeForm";
         return msg;
     }
 

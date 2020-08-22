@@ -28,8 +28,12 @@ public class AutoDestroyablePlatform : MonoBehaviour
 
     [SerializeField] bool reverseRays = false;
 
+
+    private Animator m_animator;
+
     void Start()
     {
+        m_animator = transform.GetChild(0).GetComponent<Animator>();
         m_box = GetComponent<BoxCollider2D>();
         CalculateColliderVertexPositions();
     }
@@ -55,10 +59,21 @@ public class AutoDestroyablePlatform : MonoBehaviour
             if( hit ){
                 bool isValidHit = hit.collider.tag == "PlayerHurtBox";
                 isValidHit     |= hit.collider.tag == "StalactitHurtBos";
+
                 if( isValidHit ) {
                     startTimer = true;
                     existingTimer   = m_existingTimer;
                     maxOfTimerValue = m_existingTimer;
+
+
+
+
+                    float multipler =  m_existingTimer/getAnimationLenght( m_animator, "MushroomHide");
+
+                    Debug.Log( multipler );
+
+                    m_animator.SetFloat("AnimationSpeed", 1.0f/multipler);
+                    m_animator.SetBool("isActive", true);
                 }
             }
             Debug.DrawLine( rayOrigin, rayOrigin + upDirection * rayLenght, new Color( 0, 0.5f,0 ));
@@ -97,6 +112,16 @@ public class AutoDestroyablePlatform : MonoBehaviour
         };
     }
 
+    protected float getAnimationLenght( Animator a, string animationName){
+        RuntimeAnimatorController ac = a.runtimeAnimatorController;   
+        for (int i = 0; i < ac.animationClips.Length; i++){
+            if (ac.animationClips[i].name == animationName)
+                return ac.animationClips[i].length;
+        }
+        return 0.0f;
+    }
+
+
     void ProcessReapear(){
         timeToReapear = Mathf.Max( 0, timeToReapear - Time.deltaTime );
         var colorForAlphaReduction = GetComponent<SpriteRenderer>().color;
@@ -110,6 +135,8 @@ public class AutoDestroyablePlatform : MonoBehaviour
             reapear       = false;
             colorForAlphaReduction.r = 0.0f;
             GetComponent<SpriteRenderer>().color = colorForAlphaReduction;
+
+            m_animator.SetBool("isActive", false);
         }
     }
 

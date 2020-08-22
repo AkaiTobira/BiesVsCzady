@@ -6,6 +6,9 @@ public class PlayerMove : PlayerBaseState
 {
     private bool isAccelerating = true;
     string m_formName;
+
+    protected IPlatformEdgeDetector m_lowerEdgeDetector;
+
     public PlayerMove(  GameObject controllable, 
                         GlobalUtils.Direction dir,
                         ICharacterSettings settings,
@@ -16,6 +19,8 @@ public class PlayerMove : PlayerBaseState
         m_formName = formName;
         SetUpRotation();
         m_dir = dir;
+
+        m_lowerEdgeDetector = controllable.GetComponent<IPlatformEdgeDetector>();
     }
 /*
     protected override void  SetUpAnimation(){
@@ -85,8 +90,9 @@ public class PlayerMove : PlayerBaseState
     }
 
     public override string GetTutorialAdvice(){
-        return "E - ChangeForm\nSPACE - Jump";
+        string msg = ( LockAreaOverseer.isChangeLocked ) ? "" : "E - ChangeForm";
+        msg += "\nSPACE - Jump";
+        return msg;
     }
-
 
 }

@@ -9,6 +9,11 @@ public class StalactitController :IEntity
     private Vector3 animationVel = new Vector3();
     public float m_smoothTime = 0.01f;
 
+    public float fallDownDelay = 0;
+
+    private float fallDownTimer = 0.0f;
+
+//    private float dummyTimer    = 0.0f;
 
     void Start() {
         m_FloorDetector = transform.Find("Detector").GetComponent<CollisionDetector>();
@@ -17,12 +22,23 @@ public class StalactitController :IEntity
 
     bool hasBeenHit = false;
 
+    public bool HasBeenTouched(){
+        return hasBeenHit;
+    }
+
     public override void OnHit(GlobalUtils.AttackInfo infoPack){
         if( !infoPack.isValid ) return;
+        if( infoPack.stateName == null ) return;
+
         if(    infoPack.stateName.Contains("2") 
             || infoPack.stateName.Contains("1") 
             || infoPack.stateName.Contains("4")
-            || infoPack.stateName.Contains("5")){ 
+            || infoPack.stateName.Contains("5")){
+
+            if( ! hasBeenHit ){
+                fallDownTimer = fallDownDelay;
+            }
+
             hasBeenHit = true;
             m_FloorDetector.Move( new Vector2(0, 50f));
             m_animator.transform.GetChild(0).gameObject.SetActive(true);
@@ -30,15 +46,18 @@ public class StalactitController :IEntity
     }
 
     public float damage = 3;
+    public float enemyDamage;
 
     public override GlobalUtils.AttackInfo GetAttackInfo(){
         GlobalUtils.AttackInfo infoPack = new GlobalUtils.AttackInfo();
         infoPack.isValid = true;
 
-        if( Vector3.Distance(GlobalUtils.PlayerObject.position, m_FloorDetector.transform.position) < 150 ){ 
+//        Debug.Log( Vector3.Distance(GlobalUtils.PlayerObject.position, m_FloorDetector.transform.position) );
+
+        if( Vector3.Distance(GlobalUtils.PlayerObject.position, m_FloorDetector.transform.position) < 100 ){ 
             infoPack.attackDamage = damage;
         }else{
-            infoPack.attackDamage = 10000;
+            infoPack.attackDamage = enemyDamage;
         }
 
         return infoPack;
@@ -62,11 +81,11 @@ public class StalactitController :IEntity
     private bool onFloor = false;
     void Update()
     {   
-
         UpdateAnimatorPosition();
+        fallDownTimer = Mathf.Max( 0, fallDownTimer - Time.deltaTime);
+        if( fallDownTimer > 0 ) return;
         UpdateMoveDown();
         UpdateBreak();
-
     }
 
     void UpdateMoveDown(){
@@ -74,6 +93,7 @@ public class StalactitController :IEntity
         if( hasBeenHit && !m_FloorDetector.isOnGround() ){
             Gravity += GravityForce * Time.deltaTime;
             m_FloorDetector.Move( new Vector2(0, Gravity )* Time.deltaTime);
+        //    dummyTimer += Time.deltaTime;
         }else{
             Gravity = 0;
         }
@@ -81,7 +101,9 @@ public class StalactitController :IEntity
     void UpdateBreak(){
         if( onFloor ) return;
         if( hasBeenHit && m_FloorDetector.isOnGround()){
- 
+            
+        //    Debug.Log( transform.position.x + " " + dummyTimer );
+
             m_FloorDetector.enabled = false;
             m_FloorDetector.GetComponent<BoxCollider2D>().enabled = false;
             m_animator.SetTrigger("OnDestroy");
@@ -98,6 +120,4 @@ public class StalactitController :IEntity
         }
         return 0.0f;
     }
-
-
 }

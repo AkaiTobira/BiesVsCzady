@@ -6,6 +6,7 @@ public class BiesHurt : PlayerHurt{
     public BiesHurt( GameObject controllable, 
                      GlobalUtils.AttackInfo infoPack) : base( controllable, infoPack,  BiesUtils.infoPack ){
         name = "BiesHurt";
+        m_animator.SetBool("Block", false);
     }
 
     protected override void SetUpAnimation(){

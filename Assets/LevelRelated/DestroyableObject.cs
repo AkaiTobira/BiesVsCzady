@@ -73,6 +73,7 @@ public class DestroyableObject : MonoBehaviour
             infoPack =   other.transform.parent.Find("Animator").
                                                 Find("AttackBox").GetComponent<AttackBoxHandler>().
                         mainScript.GetComponent<IEntity>().GetAttackInfo();
+            infoPack.attackDamage = 1000;
         }
 
         if( infoPack.isValid){
@@ -94,6 +95,8 @@ public class DestroyableObject : MonoBehaviour
                     m_anim.SetBool("isDestroyed", true);
                     GetComponent<BoxCollider2D>().enabled = false;
                     GetComponent<CollisionDetector>().enabled = false;
+                }else{
+                    m_anim.SetTrigger("isHit");
                 }
             }
         }

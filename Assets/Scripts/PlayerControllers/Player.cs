@@ -56,6 +56,7 @@ public class Player : IEntity
         PlayerSwipeLock.IncrementCounters();
         PlayerMoveOfWallHelper.IncrementCounters();
         PlayerJumpOffWall.IncrementCounters();
+        PlayerRoarHelper.IncrementCounters();
     }
 
     [Header("DebugInfo")]
@@ -172,7 +173,7 @@ public class Player : IEntity
         }else{
             m_controller.OverriteStates( "Dead", infoPack );
         }
-        Debug.Log( "Player object is hurt : hp reduced to " + healthPoints.ToString());
+    //    Debug.Log( "Player object is hurt : hp reduced to " + healthPoints.ToString());
     }
 
     [SerializeField] public int keys = 0;

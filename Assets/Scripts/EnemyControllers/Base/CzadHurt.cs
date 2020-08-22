@@ -39,7 +39,7 @@ public class CzadHurt : EnemyBaseState{
             m_FloorDetector.CheatMove( new Vector2(0,4.0f));
         }
 
-        Debug.Log( entityScript.velocity);
+//        Debug.Log( entityScript.velocity);
     }
 
 

@@ -14,6 +14,7 @@ public class CatWallHold : PlayerBaseState
     }
 
     public override void Process(){
+        m_ObjectInteractionDetector.UpdateDestroyableExistance();
         if( !m_WallDetector.isWallClose()) m_isOver = true;
 
        // distanceToFixAnimation = new Vector3( (isLeftOriented())? -125 : 125, 75 , 0);
@@ -61,14 +62,16 @@ public class CatWallHold : PlayerBaseState
 
 
     public override string GetTutorialAdvice(){
-        string msg = "E - ChangeForm\nSPACE - Jump";
-        msg += "\n W or Up - Climb up";
+        string msg = ( LockAreaOverseer.isChangeLocked ) ? "" : "E - ChangeForm";
+        msg += "\nSPACE - Jump";
+        msg += "\nW or Up - Climb up";
         return msg;
     }
 
     public override string GetCombatAdvice(){
-        string msg = "E - ChangeForm\nSPACE - Jump";
-        msg += "\n W or Up - Climb up";
+        string msg = ( LockAreaOverseer.isChangeLocked ) ? "" : "E - ChangeForm";
+        msg += "\nSPACE - Jump";
+        msg += "\nW or Up - Climb up";
         return msg;
     }
 

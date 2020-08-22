@@ -7,7 +7,7 @@ public class CollisionDetectorMissle : CollisionDetector, ICollisionWallDetector
 {
 
     private bool closeToWall = false;
-    protected float wallCheckRayLenght = 200f;
+    [SerializeField] protected float wallCheckRayLenght = 200f;
 
     public float GetDistanceToClosestWallFront(){
         return 0;

@@ -40,7 +40,9 @@ public class PlayerIdle : PlayerBaseState
     }
 
     public override string GetTutorialAdvice(){
-        return "E - ChangeForm\nWSAD or arrows - Move\n SPACE - Jump";
+        string msg = ( LockAreaOverseer.isChangeLocked ) ? "" : "E - ChangeForm";
+        msg += "\nWSAD or arrows - Move\n SPACE - Jump";
+        return msg;
     }
 
 }

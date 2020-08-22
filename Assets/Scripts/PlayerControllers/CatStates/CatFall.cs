@@ -21,7 +21,6 @@ public class CatFall : PlayerFall
         }
     }
 
-
     public override void Process(){
         base.Process();
         distanceToFixAnimation = new Vector3( (isLeftOriented())? -6.3f : 6.3f, 0 , 0);

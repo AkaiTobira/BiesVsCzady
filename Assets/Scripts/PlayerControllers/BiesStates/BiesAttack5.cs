@@ -10,6 +10,8 @@ public class BiesAttack5 : PlayerBaseState
     private float animationTime;    
     private AnimationTransition m_transition;
     float ANNIMATION_SPEED = 1.7f;
+    private bool moveForward = false;
+    GlobalUtils.Direction m_lockedDirection;
     public BiesAttack5( GameObject controllable) : base( controllable ){
         name = "BiesAttack5";
         distanceToFixAnimation = new Vector3(0, 7.5f , 0);
@@ -18,6 +20,12 @@ public class BiesAttack5 : PlayerBaseState
 
         m_animator.SetFloat("AnimationSpeed", ANNIMATION_SPEED );// 3);
         timeToEnd     = animationTime;
+
+        if( PlayerInput.isMoveRightKeyHold() || PlayerInput.isMoveLeftKeyHold()  ) moveForward = true;
+
+        m_lockedDirection = m_FloorDetector.GetCurrentDirection();
+
+        velocity = new Vector2( 80, 0 );
     }
 
     public override void OnExit(){
@@ -43,9 +51,9 @@ public class BiesAttack5 : PlayerBaseState
     }
     private void ProcessMove(){
         PlayerFallHelper.FallRequirementsMeet( true );
-        velocity = (int)m_FloorDetector.GetCurrentDirection() * m_transition.MoveSpeed;
-        m_FloorDetector.Move(velocity*Time.deltaTime);
+        if( moveForward ) m_FloorDetector.Move((float)m_lockedDirection * velocity * Time.deltaTime);
     }
+
     public override void Process(){
         ProcessStateEnd();
         ProcessMove();

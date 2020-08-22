@@ -117,16 +117,18 @@ public class CatWallSlide : PlayerBaseState
     }
 
     public override string GetTutorialAdvice(){
-        string msg = "E - ChangeForm\nSPACE - Jump";
-        msg += "\n W or Up - Climb up";
-        msg += "\n SHIFT   - hold there";
+        string msg = ( LockAreaOverseer.isChangeLocked ) ? "" : "E - ChangeForm";
+        msg += "\nSPACE - Jump";
+        msg += "\nW or Up - Climb up";
+        msg += "\nSHIFT   - hold there";
         return msg;
     }
 
     public override string GetCombatAdvice(){
-        string msg = "E - ChangeForm\nSPACE - Jump";
-        msg += "\n W or Up - Climb up";
-        msg += "\n SHIFT   - hold there";
+        string msg = ( LockAreaOverseer.isChangeLocked ) ? "" : "E - ChangeForm";
+        msg += "\nSPACE - Jump";
+        msg += "\nW or Up - Climb up";
+        msg += "\nSHIFT   - hold there";
         return msg;
     }
 
