@@ -7,7 +7,7 @@ public class CatAutoJump : CatJump
 
     public CatAutoJump( GameObject controllable, GlobalUtils.Direction dir) : base( controllable, dir) {
         name = "CatAutoJump";
-        CommonValues.PlayerVelocity.x = CatUtils.PlayerSpeed * 0.3f * (int)dir;
+        CommonValues.PlayerVelocity.x = CatUtils.PlayerSpeed * 0.5f * (int)dir;
     }
 
     private float lostTime = 0.0f;
