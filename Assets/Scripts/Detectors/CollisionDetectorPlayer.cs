@@ -18,15 +18,20 @@ public class CollisionDetectorPlayer : CollisionDetector, ICollisionWallDetector
     private bool isObjectDestroyable;
 
     private bool isOverHalfOfRaysOverLedge;
+    private bool isLedgeDetectedUp;
 
-    private bool isLedgeDetected;
+    private bool isLedgeDetectedLeft;
 
     [SerializeField] private float FallByFloorTime = 1.0f;
     private float disableFallByOneWayFloorTimer = 0.0f;
     [SerializeField] private float wallCheckRayLenght = 0.3f;
 
     public bool canClimbLedge(){
-        return isLedgeDetected;
+        return isLedgeDetectedLeft;
+    }
+
+    public bool canClimbLedgeFromUpSite(){
+        return isLedgeDetectedUp;
     }
 
     public void enableFallForOneWayFloor(){
@@ -53,8 +58,9 @@ public class CollisionDetectorPlayer : CollisionDetector, ICollisionWallDetector
         collisionInfo.Reset();
         oneWayPlatformBelow = false;
         closeToWall         = false;
-        isLedgeDetected     = false;
+        isLedgeDetectedLeft     = false;
         isOverHalfOfRaysOverLedge = false;
+        isLedgeDetectedUp = false;
     }
 
     public void DetectWall( ){
@@ -117,11 +123,12 @@ public class CollisionDetectorPlayer : CollisionDetector, ICollisionWallDetector
 
         bool isSave1 = false;
         bool isSave2 = false;
+        bool isSave3 = false;
 
         for( int i = 0; i < numberOfRayRequiredToFall + 1; i ++){
 
         Vector2 rayOrigin = new Vector2( (collisionInfo.faceDir == DIR_RIGHT) ? 
-                                            borders.right  - skinSize - i * verticalDistanceBeetweenRays: 
+                                            borders.right  + skinSize - i * verticalDistanceBeetweenRays: 
                                             borders.left + skinSize + i * verticalDistanceBeetweenRays ,
                                             borders.bottom + skinSize );
 
@@ -133,13 +140,15 @@ public class CollisionDetectorPlayer : CollisionDetector, ICollisionWallDetector
             );
 
             if( hit ){
-                if( i == 0) isSave1 = true;
-                if( i == 1) isSave2 = true;
-    //            isSave |= true;
-            }else{
-                if( i == 2) {
+                if( i == 0){
                     isSave1 = true;
-                    isSave2 = false;
+                    objectWithLedgde = hit.collider.transform;
+                } 
+                if( i == 1){
+                    isSave2 = true;
+                }
+                if( i == 2){
+                    isSave3 = true;
                 }
             }
             
@@ -150,12 +159,12 @@ public class CollisionDetectorPlayer : CollisionDetector, ICollisionWallDetector
              );
         }
 
-        isOverHalfOfRaysOverLedge = isSave1 && isSave2;
-    //    Debug.Log(isSave1.ToString() + isSave2.ToString() + isOverHalfOfRaysOverLedge.ToString());
+        isOverHalfOfRaysOverLedge = !isSave1 && !isSave2 && isSave3;
+        isLedgeDetectedUp         = !isSave3 && isSave1;
     }
 
     public bool hasReachedPlatformEdge(){
-        return !isOverHalfOfRaysOverLedge;
+        return isOverHalfOfRaysOverLedge;
     }
 
 
@@ -200,7 +209,7 @@ public class CollisionDetectorPlayer : CollisionDetector, ICollisionWallDetector
              );
 
         if( !hit1 && hit2 ){
-            isLedgeDetected = true;
+            isLedgeDetectedLeft = true;
             objectWithLedgde = hit2.collider.transform;
         }
     }

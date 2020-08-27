@@ -11,6 +11,10 @@ public class CollisionDetectorEnemy : CollisionDetector, IPlatformEdgeDetector, 
 
     bool closeToWall = true;
 
+    public bool canClimbLedgeFromUpSite(){
+        return false;
+    }
+
     override protected void ResetCollisionInfo(){
         base.ResetCollisionInfo();
         closeToWall = false;

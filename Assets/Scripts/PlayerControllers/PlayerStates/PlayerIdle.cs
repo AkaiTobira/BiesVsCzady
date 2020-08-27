@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerIdle : PlayerBaseState
 {
+    protected IPlatformEdgeDetector m_lowerEdgeDetector;
 
     public PlayerIdle(  GameObject controllable,
                         ICharacterSettings settings
@@ -12,6 +13,7 @@ public class PlayerIdle : PlayerBaseState
         m_settings = settings;
         m_dir      = m_FloorDetector.GetCurrentDirection();
 
+        m_lowerEdgeDetector = controllable.GetComponent<IPlatformEdgeDetector>();
     }
 
     protected void HandleStopping(){

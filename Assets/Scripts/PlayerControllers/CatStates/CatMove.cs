@@ -37,11 +37,12 @@ public class CatMove : PlayerMove
 
         m_animator.SetFloat("AnimationSpeed", 2.0f * CommonValues.PlayerVelocity.x/BiesUtils.PlayerSpeed);
 
-        Debug.Log( m_lowerEdgeDetector.hasReachedPlatformEdge() + " " + !LockAreaOverseer.autoJumpLock );
-
         if( PlayerFallHelper.FallRequirementsMeet( m_FloorDetector.isOnGround()) ){
             CommonValues.PlayerVelocity.x = 0;
             m_nextState = new CatFall(m_controllabledObject, m_FloorDetector.GetCurrentDirection());
+        }else if( m_lowerEdgeDetector.canClimbLedgeFromUpSite()){
+            m_isOver = true;
+            m_nextState = new CatLedgeClimb(m_controllabledObject, m_dir);
         }else if( m_lowerEdgeDetector.hasReachedPlatformEdge() && !LockAreaOverseer.autoJumpLock && m_FloorDetector.isOnGround() ){
             
             m_isOver = true;
