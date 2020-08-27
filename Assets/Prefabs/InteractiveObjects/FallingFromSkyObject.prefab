@@ -27,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 7525220883917507821}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.4, y: 1, z: 1}
+  m_LocalScale: {x: 0.4, y: -1, z: 1}
   m_Children: []
   m_Father: {fileID: 7525220884724155866}
   m_RootOrder: 1
@@ -107,9 +107,9 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7525220884305668338}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: -1, z: 1}
   m_Children: []
   m_Father: {fileID: 7525220885830885768}
   m_RootOrder: 1
@@ -178,9 +178,9 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7525220884695535055}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.037, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: -1.037, z: 0}
+  m_LocalScale: {x: 1, y: -1, z: 1}
   m_Children: []
   m_Father: {fileID: 7525220885830885768}
   m_RootOrder: 0
@@ -272,6 +272,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_smoothTime: 0.01
+  fallDownDelay: 0
   damage: 3
   enemyDamage: 0
   GravityForce: 10
@@ -336,7 +337,7 @@ Transform:
   m_GameObject: {fileID: 7525220885830885769}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: -0.0048, z: 0}
-  m_LocalScale: {x: 2, y: -2, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 7525220884695535054}
   - {fileID: 7525220884305668365}
@@ -382,7 +383,7 @@ SpriteRenderer:
   m_SortingLayerID: 1849812049
   m_SortingLayer: 1
   m_SortingOrder: 10
-  m_Sprite: {fileID: 21300000, guid: 1d095a32cdbd6844eaadd812514df76d, type: 3}
+  m_Sprite: {fileID: 21300000, guid: cd4df8882e4690047b710e401bbfbadc, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
