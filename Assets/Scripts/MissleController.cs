@@ -11,7 +11,7 @@ public class MissleController : IEntity
 
     private ICollisionWallDetector m_wallDetector;
 
-    [SerializeField] private Vector2 knockbackInfo;
+    [SerializeField] private Vector2 knockbackInfo = new Vector2(); 
 
     void Start()
     {

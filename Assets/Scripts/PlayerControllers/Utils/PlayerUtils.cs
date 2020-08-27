@@ -37,8 +37,8 @@ public static class  PlayerUtils
 
 
     public static void ResetStamina(){
-        stamina = 700;
+        stamina = 70;
     }
 
-    public static float stamina = 700;
+    public static float stamina = 70;
 }

@@ -5,4 +5,5 @@ using UnityEngine.UI;
 
 public interface IPlatformEdgeDetector {
     bool hasReachedPlatformEdge( );
+    bool canClimbLedgeFromUpSite();
 }

@@ -20,6 +20,8 @@ public class BiesIdle : PlayerIdle
         if( PlayerFallHelper.FallRequirementsMeet( m_FloorDetector.isOnGround() ) ){
             CommonValues.PlayerVelocity.x = 0;
             m_nextState = new BiesFall(m_controllabledObject, m_FloorDetector.GetCurrentDirection());
+        }else if(m_lowerEdgeDetector.canClimbLedgeFromUpSite()){
+            m_nextState = new BiesLedgeClimb( m_controllabledObject, m_dir);
         }else if( PlayerInput.isAttack1KeyPressed() ){
             m_nextState = new BiesAttack1(m_controllabledObject);
         }else if( PlayerInput.isAttack2KeyPressed() ){

@@ -102,7 +102,7 @@ public class StalactitController :IEntity
         if( onFloor ) return;
         if( hasBeenHit && m_FloorDetector.isOnGround()){
             
-        //    Debug.Log( transform.position.x + " " + dummyTimer );
+            Debug.Log( transform.position.x );
 
             m_FloorDetector.enabled = false;
             m_FloorDetector.GetComponent<BoxCollider2D>().enabled = false;

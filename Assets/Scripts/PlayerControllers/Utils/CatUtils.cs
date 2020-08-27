@@ -40,7 +40,7 @@ public static class  CatUtils
     public static Vector2 KnockBackValueAttack2 =  new Vector2( 100, 400);
     public static Vector2 KnockBackValueAttack3 =  new Vector2( 100, 400);
 
-    public static float MaxStamina = 2000;
+    public static float MaxStamina = 200;
 
     public static void ResetStamina(){
         stamina = MaxStamina;

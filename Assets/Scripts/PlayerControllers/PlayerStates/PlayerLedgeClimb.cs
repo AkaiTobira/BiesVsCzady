@@ -8,7 +8,7 @@ public class PlayerLedgeClimb : PlayerBaseState
     protected float timeToEnd;
     protected AnimationTransition m_transition;
 
-    protected float targetClimbHight = 0;
+    protected Vector2 targetClimbHightPoint = new Vector2(); 
     protected float targetStayHightY  = 0; 
     protected float targetStayHightX = 0;
 
@@ -24,9 +24,11 @@ public class PlayerLedgeClimb : PlayerBaseState
         
         PlayerFallOfWallHelper.ResetCounter();
 
+        GlobalUtils.Camera.EnableMoreSmooth(1f);
+        GlobalUtils.Camera.DisableMoreSmooth();
     }
 
-    private float CalculateHighOfLedge(BoxCollider2D ledgeBox){
+    private Vector2 CalculateHighOfLedge(BoxCollider2D ledgeBox){
 
         Transform interactable = m_ObjectInteractionDetector.GetClimbableObject();
         Vector2[] Vectors = new Vector2[4];
@@ -51,17 +53,24 @@ public class PlayerLedgeClimb : PlayerBaseState
             }
         }
 
-        return Mathf.Max( closestOne.y, closestOne.y);
+        Vector2 toReturn = new Vector2();
+        toReturn.y       = closestOne.y > closestOne2.y ? closestOne.y : closestOne2.y;
+
+        if(  Mathf.Abs( closestOne.x - m_FloorDetector.GetComponent<Transform>().position.x) < Mathf.Abs( closestOne2.x - m_FloorDetector.GetComponent<Transform>().position.x) ){
+            toReturn.x = closestOne.x;
+        }else{
+            toReturn.x = closestOne2.x;
+        }
+
+        return toReturn;
     }
 
     private void SetUpDirection(){
-
         float ledgeBoxX  = m_ObjectInteractionDetector.GetClimbableObject().GetComponent<Transform>().position.x;
         float playerBoxX = m_FloorDetector.GetComponent<Transform>().position.x;
 
         if( ledgeBoxX < playerBoxX) m_dir = GlobalUtils.Direction.Left;
         if( ledgeBoxX > playerBoxX) m_dir = GlobalUtils.Direction.Right;
-
     }
 
     private void SetUpRotation(){
@@ -69,22 +78,27 @@ public class PlayerLedgeClimb : PlayerBaseState
         m_controllabledObject.GetComponent<Player>().animationNode.eulerAngles = new Vector3( 0, rotationAngle, slopeAngle);
     }
 
+    int dummycounter = 0 ;
     private void SetUpVariables( float sommeVariable){ //TODO Calculation of target position will require slight update;
         
         BoxCollider2D ledgeBox  = m_ObjectInteractionDetector.GetClimbableObject().GetComponent<BoxCollider2D>();
         BoxCollider2D playerBox = m_FloorDetector.GetComponent<BoxCollider2D>();
         Vector2 pos             = m_FloorDetector.GetComponent<Transform>().position;
 
-        targetClimbHight = CalculateHighOfLedge(ledgeBox);
-        targetStayHightY = targetClimbHight + 3;
+        targetClimbHightPoint = CalculateHighOfLedge(ledgeBox);
+        targetStayHightY = targetClimbHightPoint.y + 3;
 
-        GlobalUtils.Direction obstacleDir = ( playerBox.bounds.max.x > ledgeBox.bounds.max.x ) ? 
+        GlobalUtils.Direction obstacleDir = ( playerBox.bounds.max.x < ledgeBox.bounds.max.x ) ? 
                                                     GlobalUtils.Direction.Left : 
                                                     GlobalUtils.Direction.Right;
-        targetStayHightX = pos.x + sommeVariable * (int)obstacleDir;
+        targetStayHightX = targetClimbHightPoint.x  - ( 2 * playerBox.size.x - sommeVariable ) * (int) GlobalUtils.ReverseDirection( obstacleDir );
 
-        Vector2 velocityS = new Vector2( 0, targetClimbHight - pos.y);
+        Vector2 velocityS = new Vector2( targetStayHightX - pos.x, targetClimbHightPoint.y - pos.y);
         m_FloorDetector.CheatMove( velocityS );
+
+        m_controllabledObject.GetComponent<BoxCollider2D>().enabled = false;
+        m_controllabledObject.GetComponent<CollisionDetectorPlayer>().enabled = false;
+
     }
 
     protected Vector2 shiftValue;
@@ -93,16 +107,26 @@ public class PlayerLedgeClimb : PlayerBaseState
 
         Vector2 pos     = m_FloorDetector.GetComponent<Transform>().position;
         Vector2 pos2    = shiftValue;
-        float rayLenght = 5.0f;
 
-        Debug.DrawLine(pos + pos2 + new Vector2( rayLenght,  rayLenght), pos + pos2 + new Vector2( -rayLenght, -rayLenght), new Color(0,1,0));
-        Debug.DrawLine(pos + pos2 + new Vector2( rayLenght, -rayLenght), pos + pos2 + new Vector2( -rayLenght,  rayLenght), new Color(0,1,0));
+        DebugDrawHelper.DrawX( targetClimbHightPoint );
+        DebugDrawHelper.DrawX( pos + pos2 );
 
         timeToEnd -= Time.deltaTime;
         if( timeToEnd < 0 ){
             PlayerFallHelper.FallRequirementsMeet( true );
             m_FloorDetector.CheatMove( shiftValue );
+            m_FloorDetector.Move( new Vector2( 5, 0 ) );
             m_isOver = true;
+
+            m_controllabledObject.GetComponent<BoxCollider2D>().enabled           = true;
+            m_controllabledObject.GetComponent<CollisionDetectorPlayer>().enabled = true;
+
+
+            m_controllabledObject.GetComponent<Player>().animationNode.position = 
+                                m_controllabledObject.transform.position + distanceToFixAnimation;
+
+            rotationAngle = isLeftOriented() ? 0 :180 ; 
+            m_controllabledObject.GetComponent<Player>().animationNode.eulerAngles = new Vector3( 0, rotationAngle, slopeAngle);
         }
     }
 
