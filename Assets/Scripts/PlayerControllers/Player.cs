@@ -8,6 +8,8 @@ public class Player : IEntity
     [SerializeField] public bool invincible = false;
 
     [SerializeField] public float MaxHealthPoints = 10;
+
+    [SerializeField] public HpBarController hpBar;
     public float healthPoints = 10;
 
     private ICollisionWallDetector m_WallDetector;
@@ -173,6 +175,9 @@ public class Player : IEntity
         }else{
             m_controller.OverriteStates( "Dead", infoPack );
         }
+
+        hpBar.UpdateHp( healthPoints, MaxHealthPoints );
+
     //    Debug.Log( "Player object is hurt : hp reduced to " + healthPoints.ToString());
     }
 
