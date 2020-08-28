@@ -15,7 +15,7 @@ public class CatAttack2 : PlayerBaseState{
     //    m_animator.SetBool("Attack2", true);
     //    timeToEnd = getAnimationLenght("PlayerAttack2");
 
-    //    GlobalUtils.cameraShake.TriggerShake(timeToEnd);
+    //    GlobalUtils.GUIElements.TriggerShake(timeToEnd);
 
     //    m_transition = m_controllabledObject.
     //                   GetComponent<Player>().animationNode.

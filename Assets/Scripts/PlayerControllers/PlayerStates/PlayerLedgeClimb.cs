@@ -24,8 +24,8 @@ public class PlayerLedgeClimb : PlayerBaseState
         
         PlayerFallOfWallHelper.ResetCounter();
 
-        GlobalUtils.Camera.EnableMoreSmooth(1f);
-        GlobalUtils.Camera.DisableMoreSmooth();
+        GUIElements.Camera.EnableMoreSmooth(1f);
+        GUIElements.Camera.DisableMoreSmooth();
     }
 
     private Vector2 CalculateHighOfLedge(BoxCollider2D ledgeBox){

@@ -35,7 +35,7 @@ public class Camera_Follow : MonoBehaviour
 
     Vector3 targetCenter = Vector3.zero;
     void Start() {
-        GlobalUtils.Camera = GetComponent<Camera_Follow>();
+        GUIElements.Camera = GetComponent<Camera_Follow>();
         targetCenter = centerOfCamera;
         zoomOfCamera = GetComponent<Camera>().orthographicSize;
         defaultSize  = GetComponent<Camera>().orthographicSize;

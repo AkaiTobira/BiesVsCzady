@@ -15,8 +15,8 @@ public class CameraControlArea : MonoBehaviour
 
 
     void SetCameraValues(){
-        GlobalUtils.Camera.SetValues(LeftClamping, RightClamping, TopClamping, DownClamping, centerOfCamera, camerSize);
-        GlobalUtils.Camera.EnableMoreSmooth(additionalSmoothTime);
+        GUIElements.Camera.SetValues(LeftClamping, RightClamping, TopClamping, DownClamping, centerOfCamera, camerSize);
+        GUIElements.Camera.EnableMoreSmooth(additionalSmoothTime);
     }
 
     void OnTriggerEnter2D(Collider2D other) {
@@ -29,14 +29,14 @@ public class CameraControlArea : MonoBehaviour
 
     void OnTriggerExit2D(Collider2D other) {
         if( other.name.Contains( "Player") ){
-            GlobalUtils.Camera.SetValues(new Camera_Follow.KeyValuePairs(false, 0), 
+            GUIElements.Camera.SetValues(new Camera_Follow.KeyValuePairs(false, 0), 
                                          new Camera_Follow.KeyValuePairs(false, 0), 
                                          new Camera_Follow.KeyValuePairs(false, 0), 
                                          new Camera_Follow.KeyValuePairs(false, 0),
                                          new Vector3(0,-6,0),
-                                         GlobalUtils.Camera.defaultSize
+                                         GUIElements.Camera.defaultSize
                                          );
-            GlobalUtils.Camera.DisableMoreSmooth();
+            GUIElements.Camera.DisableMoreSmooth();
         }
     }
 

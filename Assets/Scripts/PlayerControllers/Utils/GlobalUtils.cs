@@ -45,20 +45,7 @@ public static class  GlobalUtils
     };
 
     public static Transform   PlayerObject   = null;
-    public static CameraShake cameraShake    = null;
-
     public static TaskMaster    TaskMaster = null;
-
-    public static Camera_Follow Camera = null;
-
-    public static Text TutorialConsole = null;
-
-    public static GUIController GUIOverlay = null;
-
-    public static DialogueBoxesController DialogueSystem = null;
-
-    public static Text        debugConsole   = null;
-    public static Text        debugConsole2  = null;
 
     public static Direction ReverseDirection( Direction curr ){
         return (curr == Direction.Left) ? Direction.Right : Direction.Left;

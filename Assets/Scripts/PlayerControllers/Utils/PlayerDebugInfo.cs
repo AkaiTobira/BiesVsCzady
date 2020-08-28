@@ -7,8 +7,8 @@ public class PlayerDebugInfo : MonoBehaviour
 {
 
     public void Awake() {
-        GlobalUtils.debugConsole  = m_debugText[0];
-        GlobalUtils.debugConsole2 = m_debugText[2];
+        GUIElements.debugConsole  = m_debugText[0];
+        GUIElements.debugConsole2 = m_debugText[2];
     }
 
     [SerializeField] public Text[] m_debugText;

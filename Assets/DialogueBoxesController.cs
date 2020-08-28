@@ -23,7 +23,7 @@ public class DialogueBoxesController : MonoBehaviour
 
     void Start()
     {
-        GlobalUtils.DialogueSystem = GetComponent<DialogueBoxesController>();
+        GUIElements.DialogueSystem = GetComponent<DialogueBoxesController>();
     }
 
     void Update()

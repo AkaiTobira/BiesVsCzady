@@ -163,7 +163,10 @@ public class Player : IEntity
     public override void OnHit( GlobalUtils.AttackInfo infoPack ){
         if( !infoPack.isValid ) return;
         if( !CanBeHurt() )      return;
-        if( !invincible ) healthPoints -= infoPack.attackDamage;
+        if( !invincible ) {
+            healthPoints -= infoPack.attackDamage;
+            GUIElements.LightHit.ApplyHurtColors();
+        }
         if( healthPoints > 0 ){
             if( infoPack.stunDuration > 0){
                 m_controller.OverriteStates( "Stun", infoPack );

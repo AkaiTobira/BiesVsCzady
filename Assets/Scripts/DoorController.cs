@@ -21,7 +21,7 @@ public class DoorController : MonoBehaviour
                     GlobalUtils.PlayerObject.GetComponent<Player>().keys -= numberOfRequiredKeys;
                     Destroy(gameObject);
                     hasBeenActivated = true;
-                    GlobalUtils.GUIOverlay.keyInfoScreen.HideAtAreaDoorExit();
+                    GUIElements.GUIOverlay.keyInfoScreen.HideAtAreaDoorExit();
                 }
             }
         }
@@ -31,14 +31,14 @@ public class DoorController : MonoBehaviour
 //        Debug.Log( other.tag + " :: " + other.name );
         if( other.tag.Contains("Player")){
             isHeroInArea = true;
-            GlobalUtils.GUIOverlay.keyInfoScreen.ShowAtAreaDoorEnter(numberOfRequiredKeys);
+            GUIElements.GUIOverlay.keyInfoScreen.ShowAtAreaDoorEnter(numberOfRequiredKeys);
         }  
     }
 
     void OnTriggerExit2D(Collider2D other){
         if( other.tag.Contains("Player")){
             isHeroInArea = false;
-            GlobalUtils.GUIOverlay.keyInfoScreen.HideAtAreaDoorExit();
+            GUIElements.GUIOverlay.keyInfoScreen.HideAtAreaDoorExit();
         }  
     }
 

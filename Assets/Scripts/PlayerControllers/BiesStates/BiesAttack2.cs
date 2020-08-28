@@ -22,7 +22,7 @@ public class BiesAttack2 : PlayerBaseState{
         m_animator.SetBool("Attack2", true);
         timeToEnd = getAnimationLenght("BiesRoar");
 
-        GlobalUtils.cameraShake.TriggerShake(timeToEnd);
+        GUIElements.cameraShake.TriggerShake(timeToEnd);
 
         m_transition = m_controllabledObject.
                        GetComponent<Player>().animationNode.

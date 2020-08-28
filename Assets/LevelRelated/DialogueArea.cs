@@ -10,7 +10,7 @@ public class DialogueArea : MonoBehaviour
     void OnTriggerEnter2D(Collider2D other){
         if( other.tag == "PlayerHurtBox"){
             foreach( GlobalUtils.DialogueInfo dialog in dialogue){
-                GlobalUtils.DialogueSystem.AddToSequence( dialog );
+                GUIElements.DialogueSystem.AddToSequence( dialog );
             }
         }  
     }

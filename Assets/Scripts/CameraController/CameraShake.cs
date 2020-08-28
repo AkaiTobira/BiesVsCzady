@@ -14,7 +14,7 @@ public class CameraShake : MonoBehaviour
     }
 
     void Awake(){
-        GlobalUtils.cameraShake = transform.GetComponent<CameraShake>();
+        GUIElements.cameraShake = transform.GetComponent<CameraShake>();
         initialPosition = transform.position; 
     }
 

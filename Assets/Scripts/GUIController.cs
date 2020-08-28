@@ -10,8 +10,8 @@ public class GUIController : MonoBehaviour
 
     void Start()
     {   
-        GlobalUtils.GUIOverlay      = GetComponent<GUIController>();
-        GlobalUtils.TutorialConsole = transform.Find("TutorialText").GetChild(0).GetComponent<Text>();
+        GUIElements.GUIOverlay      = GetComponent<GUIController>();
+        GUIElements.TutorialConsole = transform.Find("TutorialText").GetChild(0).GetComponent<Text>();
     }
 
     public void SwitchButtonVisibility(){

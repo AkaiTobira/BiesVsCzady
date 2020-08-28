@@ -10,7 +10,7 @@ public class BiesFall : PlayerFall
 
     public override void Process(){
         base.Process();
-        if(  m_isOver ) GlobalUtils.cameraShake.TriggerShake(0.3f);
+        if(  m_isOver ) GUIElements.cameraShake.TriggerShake(0.3f);
     }
 
     public override void HandleInput(){
