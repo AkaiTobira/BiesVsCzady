@@ -115,7 +115,7 @@ public class PlayerLedgeClimb : PlayerBaseState
         if( timeToEnd < 0 ){
             PlayerFallHelper.FallRequirementsMeet( true );
             m_FloorDetector.CheatMove( shiftValue );
-            m_FloorDetector.Move( new Vector2( 5, 0 ) );
+
             m_isOver = true;
 
             m_controllabledObject.GetComponent<BoxCollider2D>().enabled           = true;
@@ -127,6 +127,8 @@ public class PlayerLedgeClimb : PlayerBaseState
 
             rotationAngle = isLeftOriented() ? 0 :180 ; 
             m_controllabledObject.GetComponent<Player>().animationNode.eulerAngles = new Vector3( 0, rotationAngle, slopeAngle);
+
+                        m_FloorDetector.Move( new Vector2( 0, -0.01f ) );
         }
     }
 

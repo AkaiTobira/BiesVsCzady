@@ -282,7 +282,7 @@ public class CollisionDetectorPlayer : CollisionDetector, ICollisionWallDetector
             Debug.DrawRay(
                 rayOrigin,
                 new Vector2( collisionInfo.faceDir, 0) * rayLenght,
-                new Color(1,1,1)
+                new Color(0.6f, 0.8f, 1)
              );
         }
     }
