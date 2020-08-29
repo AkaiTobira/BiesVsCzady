@@ -26,14 +26,14 @@ public class BloodHitLightChange : MonoBehaviour
 
         GUIElements.LightHit = GetComponent<BloodHitLightChange>();
 
-        Debug.Log( savedColor + " " + savedLightIntensivity );
+  //      Debug.Log( savedColor + " " + savedLightIntensivity );
     }
 
     public void ApplyHurtColors(){
         m_light.color     = hurtColor;
         m_light.intensity = hurtLightIntensivity;
         returningToNormalTimer = timeOfReturningToSavedColor;
-        Debug.Log( "APPLYColors");
+  //      Debug.Log( "APPLYColors");
     }
 
     void Update()
@@ -43,7 +43,7 @@ public class BloodHitLightChange : MonoBehaviour
 
         float t = returningToNormalTimer/timeOfReturningToSavedColor;
 
-        Debug.Log( returningToNormalTimer + " " + t);
+//        Debug.Log( returningToNormalTimer + " " + t);
 
         m_light.color     = savedColor             * (1f - t) + hurtColor * t;
         m_light.intensity = savedLightIntensivity  * (1f - t) + hurtLightIntensivity * t;
