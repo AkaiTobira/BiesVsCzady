@@ -305,12 +305,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 6464913367813850091}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &239379937 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 6464913367784793610, guid: 5c9d8671db069494eb169b071acd31b0,
-    type: 3}
-  m_PrefabInstance: {fileID: 6464913367813850091}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &239379940 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6464913367784793615, guid: 5c9d8671db069494eb169b071acd31b0,
@@ -1029,7 +1023,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   centerOfCamera: {x: 0, y: -6, z: -20}
   zoomOfCamera: 8000
-  followedObject: {fileID: 239379937}
+  followedObject: {fileID: 551294738}
   LeftClamping:
     enable: 0
     position: 66.38
@@ -1161,6 +1155,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attenuationObject: {fileID: 239379935}
   ListenerNumber: -1
+--- !u!4 &551294738 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6464913367840326887, guid: 5c9d8671db069494eb169b071acd31b0,
+    type: 3}
+  m_PrefabInstance: {fileID: 6464913367813850091}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &623631631
 GameObject:
   m_ObjectHideFlags: 0
@@ -7605,7 +7605,7 @@ PrefabInstance:
     - target: {fileID: 6464913367784793610, guid: 5c9d8671db069494eb169b071acd31b0,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 892
+      value: -2433
       objectReference: {fileID: 0}
     - target: {fileID: 6464913367784793613, guid: 5c9d8671db069494eb169b071acd31b0,
         type: 3}
