@@ -3487,6 +3487,11 @@ PrefabInstance:
       propertyPath: healthPoints
       value: 13
       objectReference: {fileID: 0}
+    - target: {fileID: 8897573902166550572, guid: 07662773cb44971489b75afb3b56619d,
+        type: 3}
+      propertyPath: DownClamping.enable
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8940599969910196515, guid: 07662773cb44971489b75afb3b56619d,
         type: 3}
       propertyPath: m_LocalPosition.x

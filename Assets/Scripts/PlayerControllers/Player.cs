@@ -27,9 +27,9 @@ public class Player : IEntity
         m_animator    = animationNode.gameObject.GetComponent<Animator>();
         healthPoints  = MaxHealthPoints;
 
-        var inAnimator = transform.parent.GetComponent<Animator>();
+        var inAnimator      = transform.parent.GetComponent<Animator>();
         inAnimatorBaseSpeed = inAnimator.speed;
-        inAnimator.speed = timeOfInvincibility/getAnimationLenght(inAnimator, "Invincibility");
+        inAnimator.speed    = timeOfInvincibility/getAnimationLenght(inAnimator, "Invincibility");
     }
 
     protected float getAnimationLenght( Animator a, string animationName){
@@ -45,6 +45,7 @@ public class Player : IEntity
         animationNode.GetComponent<Animator>().Rebind();
         m_controller  = new SFSMPlayerChange( transform.gameObject, new BiesIdle( gameObject ) );
         healthPoints  = MaxHealthPoints;
+        hpBar.UpdateHp( healthPoints, MaxHealthPoints );
     }
 
     public bool isImmortal(){
