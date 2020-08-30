@@ -26,6 +26,10 @@ public class PlayerLedgeClimb : PlayerBaseState
 
         GUIElements.Camera.EnableMoreSmooth(1f);
         GUIElements.Camera.DisableMoreSmooth();
+
+
+        
+        Debug.Log( timeToEnd );
     }
 
     private Vector2 CalculateHighOfLedge(BoxCollider2D ledgeBox){
@@ -86,41 +90,51 @@ public class PlayerLedgeClimb : PlayerBaseState
         Vector2 pos             = m_FloorDetector.GetComponent<Transform>().position;
 
         targetClimbHightPoint = CalculateHighOfLedge(ledgeBox);
-        targetStayHightY = targetClimbHightPoint.y + 3;
+        targetStayHightY = targetClimbHightPoint.y + 20;
 
         GlobalUtils.Direction obstacleDir = ( playerBox.bounds.max.x < ledgeBox.bounds.max.x ) ? 
                                                     GlobalUtils.Direction.Left : 
                                                     GlobalUtils.Direction.Right;
-        targetStayHightX = targetClimbHightPoint.x  - ( 2 * playerBox.size.x - sommeVariable ) * (int) GlobalUtils.ReverseDirection( obstacleDir );
+        targetStayHightX = targetClimbHightPoint.x  - ( 2 * playerBox.size.x - 20 ) * (int) GlobalUtils.ReverseDirection( obstacleDir );
 
         Vector2 velocityS = new Vector2( targetStayHightX - pos.x, targetClimbHightPoint.y - pos.y);
         m_FloorDetector.CheatMove( velocityS );
 
-        m_controllabledObject.GetComponent<BoxCollider2D>().enabled = false;
-        m_controllabledObject.GetComponent<CollisionDetectorPlayer>().enabled = false;
+    //    m_controllabledObject.GetComponent<BoxCollider2D>().enabled = false;
+    //    m_controllabledObject.GetComponent<CollisionDetectorPlayer>().enabled = false;
 
     }
 
     protected Vector2 shiftValue;
 
+    int i = 0;
+
     public override void Process(){
 
+        Debug.Log( i + "  " + timeToEnd);
+        i++;
         Vector2 pos     = m_FloorDetector.GetComponent<Transform>().position;
         Vector2 pos2    = shiftValue;
+
 
         DebugDrawHelper.DrawX( targetClimbHightPoint );
         DebugDrawHelper.DrawX( pos + pos2 );
 
         timeToEnd -= Time.deltaTime;
+
+            m_controllabledObject.GetComponent<Player>().animationNode.position = 
+                                m_controllabledObject.transform.position + distanceToFixAnimation;
+
         if( timeToEnd < 0 ){
             PlayerFallHelper.FallRequirementsMeet( true );
             m_FloorDetector.CheatMove( shiftValue );
 
             m_isOver = true;
 
-            m_controllabledObject.GetComponent<BoxCollider2D>().enabled           = true;
-            m_controllabledObject.GetComponent<CollisionDetectorPlayer>().enabled = true;
+        //    m_controllabledObject.GetComponent<BoxCollider2D>().enabled           = true;
+        //    m_controllabledObject.GetComponent<CollisionDetectorPlayer>().enabled = true;
 
+            m_FloorDetector.GetComponent<Transform>().position = new Vector3( targetStayHightX, targetStayHightY) + (Vector3)shiftValue;
 
             m_controllabledObject.GetComponent<Player>().animationNode.position = 
                                 m_controllabledObject.transform.position + distanceToFixAnimation;
@@ -128,7 +142,9 @@ public class PlayerLedgeClimb : PlayerBaseState
             rotationAngle = isLeftOriented() ? 0 :180 ; 
             m_controllabledObject.GetComponent<Player>().animationNode.eulerAngles = new Vector3( 0, rotationAngle, slopeAngle);
 
-                        m_FloorDetector.Move( new Vector2( 0, -0.01f ) );
+            m_FloorDetector.Move( new Vector2( 0, -0.01f ) );
+        }else{
+            m_FloorDetector.GetComponent<Transform>().position = new Vector3( targetStayHightX, targetStayHightY);
         }
     }
 
