@@ -38,6 +38,17 @@ public class AutoDestroyablePlatform : MonoBehaviour
         CalculateColliderVertexPositions();
     }
 
+    public void ResetMushroom(){
+        existingTimer   = 0;
+        startTimer      = false;
+        maxOfTimerValue = 0;
+        m_animator.Rebind();
+    }
+
+    public bool isActivated(){
+        return startTimer;
+    }
+
     void ProcessPlayerDetection(){
         if( startTimer ) return;
         for( int i = 0 ; i < rayNumber; i++){

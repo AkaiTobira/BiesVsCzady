@@ -16,12 +16,15 @@ public class LevelController : MonoBehaviour
 
     [SerializeField] KeysResetController m_keys = null;
 
+    [SerializeField] MushroomObjectController m_mushroom = null;
+
     public void SaveLevelStatus(){
         m_movable.SaveAllObjects();
         m_destroyable.SaveAllObjects();
         m_stalactits.SaveAllObjects();
         m_areaStalactits.SaveAllObjects();
         m_keys.SaveAllObjects();
+        m_mushroom.SaveAllObjects();
     //    m_doors.SaveAllObjects();
     }
 
@@ -32,6 +35,7 @@ public class LevelController : MonoBehaviour
         m_areaStalactits.LoadAllObjects();
     //    m_doors.LoadAllObjects();
         m_keys.LoadAllObjects();
+        m_mushroom.LoadAllObjects();
     }
 
 
