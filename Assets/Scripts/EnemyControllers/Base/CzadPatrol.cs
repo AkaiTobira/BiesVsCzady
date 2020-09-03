@@ -14,10 +14,14 @@ public class CzadPatrol : EnemyBaseState
 
     List<Stage> nextMoves = new List<Stage>();
 
+    ICollisionWallDetector m_wallDetector;
+
     public CzadPatrol( GameObject controllable ) : base( controllable ){
         name = "CzadPatrol";
 
         nextMoves.Add ( (Random.Range( 0, 2) == 1) ? Stage.StartLeft : Stage.StartRight );
+
+        m_wallDetector = m_FloorDetector.GetComponent<ICollisionWallDetector>();
 
     }
 
@@ -26,21 +30,36 @@ public class CzadPatrol : EnemyBaseState
         else if( entityScript.velocity.x != 0 ) HandleStopping();
         else{
             if( nextMoves[0] == Stage.StartLeft ){
-                m_nextState = new CzadPatrolMove( m_controllabledObject, new Vector2( entityScript.patrolRangeLeft, 0 ) );
+                if( !m_wallDetector.isCollideWithLeftWall() )
+                    m_nextState = new CzadPatrolMove( m_controllabledObject, new Vector2( entityScript.patrolRangeLeft, 0 ) );
                 nextMoves.Add( Stage.BackL );
             }else if( nextMoves[0] == Stage.StartRight  ){
-                m_nextState = new CzadPatrolMove( m_controllabledObject, new Vector2( entityScript.patrolRangeRight, 0 ) );
+                if( !m_wallDetector.isCollideWithRightWall() )
+                    m_nextState = new CzadPatrolMove( m_controllabledObject, new Vector2( entityScript.patrolRangeRight, 0 ) );
                 nextMoves.Add( Stage.BackR );
             }else if( nextMoves[0] == Stage.BackL  ){
-                m_nextState = new CzadPatrolMove( m_controllabledObject, new Vector2( entityScript.patrolRangeRight  - entityScript.patrolRangeLeft, 0 ) );
+                if( !m_wallDetector.isCollideWithLeftWall() )
+                    m_nextState = new CzadPatrolMove( m_controllabledObject, new Vector2( entityScript.patrolRangeRight  - entityScript.patrolRangeLeft, 0 ) );
                 nextMoves.Add( Stage.BackR );
             }else if( nextMoves[0] == Stage.BackR  ){
-                m_nextState = new CzadPatrolMove( m_controllabledObject, new Vector2( entityScript.patrolRangeLeft   - entityScript.patrolRangeRight, 0 ) );
+                if( !m_wallDetector.isCollideWithRightWall() )
+                    m_nextState = new CzadPatrolMove( m_controllabledObject, new Vector2( entityScript.patrolRangeLeft   - entityScript.patrolRangeRight, 0 ) );
                 nextMoves.Add( Stage.BackL );
             }
             nextMoves.RemoveAt(0);
         }
 
+    }
+
+    private void IsNotInTheWall(){
+        
+        if( m_wallDetector.isCollideWithRightWall() && isRightOriented()  ){
+
+        }
+
+        if( m_wallDetector.isCollideWithLeftWall() && isLeftOriented()  ){
+
+        }
     }
 
     public override void Process(){

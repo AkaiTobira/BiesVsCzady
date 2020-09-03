@@ -27,13 +27,14 @@ public class CzadMoveBase : EnemyBaseState
     public virtual void SelectNextState(){}
 
     public override void Process(){
+        SelectNextState();
+        if( m_isOver ) return;
+
         base.Process();
         ProcessAcceleration();
 
         leftToMove -= entityScript.velocity * Time.deltaTime;
         m_FloorDetector.Move( entityScript.velocity * Time.deltaTime);
-
-        SelectNextState();
     }
 
     public override void UpdateAnimator(){

@@ -23,18 +23,18 @@ public class CzadPatrolMove : CzadMoveBase
         if( m_wallDetector.isCollideWithRightWall() && isRightOriented()  ){
             AdaptPatrolRange();
             m_isOver = true;
+            entityScript.velocity.x = 0;
         }
 
         if( m_wallDetector.isCollideWithLeftWall() && isLeftOriented()  ){
             AdaptPatrolRange();
             m_isOver = true;
+            entityScript.velocity.x = 0;
         }
 
-       // if( Vector3.Distance( GlobalUtils.PlayerObject.transform.position, m_controllabledObject.transform.position) < 400){
-      //      m_nextState = new CzadPlayerDetected( m_controllabledObject );
-    //    }else if( Vector3.Distance( GlobalUtils.PlayerObject.transform.position, m_controllabledObject.transform.position) < 100){
-  //          m_nextState = new CzadAttack( m_controllabledObject );
-//        }
+        if( m_wallDetector.GetDistanceToClosestWallFront() < 50 ){
+            m_isOver = true;
+        }
 
 
     }
