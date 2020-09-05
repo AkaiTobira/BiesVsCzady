@@ -16,26 +16,27 @@ public class CzadPatrolMove : CzadMoveBase
         }
         if( m_edgeDetector.hasReachedPlatformEdge( ) ) {
             entityScript.velocity.x = 0;
-            AdaptPatrolRange();
+        //    AdaptPatrolRange();
             m_isOver = true;
         }
 
         if( m_wallDetector.isCollideWithRightWall() && isRightOriented()  ){
-            AdaptPatrolRange();
+        //    AdaptPatrolRange();
             m_isOver = true;
             entityScript.velocity.x = 0;
         }
 
         if( m_wallDetector.isCollideWithLeftWall() && isLeftOriented()  ){
-            AdaptPatrolRange();
+        //    AdaptPatrolRange();
             m_isOver = true;
             entityScript.velocity.x = 0;
         }
-
+/*
         if( m_wallDetector.GetDistanceToClosestWallFront() < 50 ){
             m_isOver = true;
+            Debug.Log("WallIsToClose");
         }
-
+*/
 
     }
 

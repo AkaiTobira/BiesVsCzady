@@ -48,18 +48,6 @@ public class CzadPatrol : EnemyBaseState
             }
             nextMoves.RemoveAt(0);
         }
-
-    }
-
-    private void IsNotInTheWall(){
-        
-        if( m_wallDetector.isCollideWithRightWall() && isRightOriented()  ){
-
-        }
-
-        if( m_wallDetector.isCollideWithLeftWall() && isLeftOriented()  ){
-
-        }
     }
 
     public override void Process(){

@@ -183,7 +183,7 @@ public class ChaserChaseAttack : EnemyBaseState
             }
         }
 
-        Debug.Log( Mathf.Abs( GlobalUtils.PlayerObject.position.x - m_FloorDetector.GetComponent<Transform>().position.x ) );
+//        Debug.Log( Mathf.Abs( GlobalUtils.PlayerObject.position.x - m_FloorDetector.GetComponent<Transform>().position.x ) );
 
         if(  Mathf.Abs( GlobalUtils.PlayerObject.position.x - m_FloorDetector.GetComponent<Transform>().position.x ) - m_FloorDetector.GetComponent<CollisionDetectorEnemy>().sightLenght > 0  ){
             m_isOver = true;

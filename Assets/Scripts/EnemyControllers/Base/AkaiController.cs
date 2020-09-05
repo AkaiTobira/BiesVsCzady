@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class AkaiController : IEntity
+public class AkaiController : IEntity, IEnemy
 {
     [SerializeField] protected float healthPoints = 30;
     [SerializeField] public float onTouchDamage   = 1;
@@ -121,6 +121,20 @@ public class AkaiController : IEntity
 
     protected void UpdateHurtDelayTimer(){
         delayOfHurtGoInTimer = Mathf.Max( delayOfHurtGoInTimer - Time.deltaTime, 0);
+    }
+
+    public bool playerDetectedByBox = false;
+
+    public void OnPlayerDetection(){
+        playerDetectedByBox = true;
+    }
+
+    public void OnPlayerEscape(){
+        playerDetectedByBox = false;
+        isAlreadyInCombat   = false; 
+        m_controller        = new SFSMEnemy( gameObject, new CzadIdle( gameObject ) );
+        m_animator.Rebind();
+        m_FloorDetector.Move( new Vector2(0.1f, 0) );
     }
 
     public void ResetPatrolValues(){

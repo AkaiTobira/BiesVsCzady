@@ -15,9 +15,8 @@ public class ChaserAkaiController : AkaiController
         m_FloorDetector.Move( new Vector2(0.1f, 0) );
     }
 
-
     void UpdatePlayerDetection(){
-        if( m_sightController.isPlayerSeen() && !isAlreadyInCombat ){
+        if( playerDetectedByBox && !isAlreadyInCombat ){
             m_controller.OverriteStates( "ChaserCombatEngage" );
             isAlreadyInCombat = true;
         };
