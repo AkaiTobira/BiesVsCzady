@@ -5,7 +5,7 @@ using UnityEngine;
 public static class  PlayerInput
 {
     public static bool isSpecialKeyHold(){
-        return Input.GetKey(KeyCode.RightShift) || Input.GetKey(KeyCode.LeftShift);
+        return Input.GetKey(KeyCode.RightShift) || Input.GetKey(KeyCode.LeftShift) || Input.GetButton("Shift");
     }
 
     public static bool isMoveLeftKeyHold(){
@@ -17,19 +17,19 @@ public static class  PlayerInput
     }
 
     public static bool isFallKeyHold(){
-        return Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow);
+        return Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow) || (Input.GetAxis("Vertical") == -1);
     }
 
     public static bool isFallKeyPressed(){
-        return Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow);
+        return Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow) || (Input.GetAxis("Vertical") == -1);
     }
 
     public static bool isClimbKeyPressed(){
-        return Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow);
+        return Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow) || (Input.GetAxis("Vertical") == 1);
     }
 
     public static bool isAttack1KeyPressed(){
-        return Input.GetKeyDown(KeyCode.X) || Input.GetButtonDown("Fire1");
+        return Input.GetKeyDown(KeyCode.X) || Input.GetButtonDown("Strike");
     }
 
     public static bool isAttack3KeyPressed(){
@@ -37,12 +37,12 @@ public static class  PlayerInput
     }
 
     public static bool isAttack2KeyPressed(){
-        return ( Input.GetKeyDown(KeyCode.C) || Input.GetButtonDown("Fire2") )
+        return ( Input.GetKeyDown(KeyCode.C) || Input.GetButtonDown("Roar") )
                 && PlayerRoarHelper.RoarRequirementsMeet() ;
     }
 
     public static bool isClimbKeyHold(){
-        return Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow);
+        return Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow) || (Input.GetAxis("Vertical") == 1);
     }
 
     public static bool isJumpKeyHold(){
@@ -54,18 +54,18 @@ public static class  PlayerInput
     }
 
     public static bool isActionKeyJustPressed(){
-        return Input.GetKeyDown( KeyCode.F );
+        return Input.GetKeyDown( KeyCode.F) || Input.GetButtonDown("Action");
     }
 
     public static bool isBlockKeyJustPressed(){
-        return Input.GetKeyDown( KeyCode.R ) || Input.GetKeyDown( KeyCode.LeftControl ) || Input.GetKeyDown( KeyCode.RightControl );
+        return Input.GetKeyDown( KeyCode.R ) || Input.GetKeyDown( KeyCode.LeftControl ) || Input.GetKeyDown( KeyCode.RightControl) || (Input.GetAxis("Block") == 1);
     }
 
     public static bool isActionKeyHold(){
-        return Input.GetKey( KeyCode.F );
+        return Input.GetKey( KeyCode.F) || Input.GetButton("Action");
     }
 
     public static bool isChangeFormKeyJustPressed(){
-        return Input.GetKeyDown( KeyCode.E) || Input.GetKeyDown(KeyCode.V);
+        return Input.GetKeyDown( KeyCode.E) || Input.GetKeyDown(KeyCode.V) || Input.GetButtonDown("Transform");
     }
 }
