@@ -48,8 +48,6 @@ public class ChaserAkaiController : AkaiController
         Debug.DrawLine( RayPosition - new Vector2( combatRange, 0 ), RayPosition + new Vector2( combatRange, 0 ), new Color(1,0,1));
     }
 
-
-
     [Header("ChaseAttack")]
     public float chaseSpeed             = 2400;
     public Vector2 chaseKnockbackValues = new Vector2();
@@ -57,14 +55,9 @@ public class ChaserAkaiController : AkaiController
     public float chasePreparation       = 1.0f;
     public float chaseBrakingTime       = 0;
     public float chaseAccelerationTime  = 0;
-
     public float chaseTargetPleaceNearPlayer = 50;
-    
     public bool playerGetHitInChase = false;
     private Vector2 animationVel;
-
-
-
 
     public override GlobalUtils.AttackInfo GetAttackInfo(){
 
@@ -94,9 +87,7 @@ public class ChaserAkaiController : AkaiController
                 infoPack.fromCameAttack = GlobalUtils.PlayerObject.position.x < m_FloorDetector.GetComponent<Transform>().position.x? 
                                             GlobalUtils.Direction.Left : GlobalUtils.Direction.Right;
             break;
-
         }
-
         return infoPack;
     }
 
@@ -104,15 +95,13 @@ public class ChaserAkaiController : AkaiController
         if( !infoPack.isValid ) return;
         if( infoPack.attackDamage > 500 ) m_controller.OverriteStates( "Dead", infoPack );
         if( m_controller.GetDirection() != infoPack.fromCameAttack ) return;
-
-         healthPoints -= infoPack.attackDamage;
+        healthPoints -= infoPack.attackDamage;
         if( healthPoints > 0 ){
             if( infoPack.stunDuration > 0 && !infoPack.stateName.Contains("2")){
                 m_controller.OverriteStates( "ChaserStun", infoPack );
             }else{
                 if( delayOfHurtGoInTimer >= 0 ){
                     m_controller.OverriteStates( "ChaserHurt", infoPack );
-            
                 }
                 delayOfHurtGoInTimer = delayOfHurtStartReEnter;
             }
@@ -120,10 +109,4 @@ public class ChaserAkaiController : AkaiController
             m_controller.OverriteStates( "Dead", infoPack );
         }
     }
-
-    
-
-    void OnDrawGizmos(){
-}
-
 }
