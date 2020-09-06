@@ -68,11 +68,9 @@ public class BiesPushObj : PlayerBaseState
         if( PlayerFallHelper.FallRequirementsMeet( m_FloorDetector.isOnGround()) ) {
             m_isOver = true;
         }else if( isRightOriented() && m_wallDetector.isCollideWithRightWall() ){
-            Debug.Log(" ASERETER ");
             m_isOver = true;
         }else if( isLeftOriented()  && m_wallDetector.isCollideWithLeftWall()  ){
             m_isOver = true;
-            Debug.Log(" ASERETER ");
         }
 
         m_animator.SetBool("isPushing", !m_isOver);
@@ -88,9 +86,7 @@ public class BiesPushObj : PlayerBaseState
         }
     }
 
-
     public override string GetTutorialAdvice(){
         return "";
     }
-
 }
