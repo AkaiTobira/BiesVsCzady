@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CollisionDetectorMovable : CollisionDetector
+public class CollisionDetectorMovable : CollisionDetector, ICollisionWallDetector
 {
     [SerializeField] public float PullFriction = 0;
     [SerializeField] public float PushFriction = 0;
@@ -11,6 +11,29 @@ public class CollisionDetectorMovable : CollisionDetector
     [SerializeField] public float MaxGravityForce = 0;
     
     private float accumulatedGravity = 0.0f;
+
+
+    public float GetDistanceToClosestWallFront(){
+        return 0;
+    }
+    public float GetDistanceToClosestWallBack(){
+        return 0;
+    }
+    public bool isWallClose(){
+        return false;
+    }
+    public bool isCollideWithLeftWall(){
+        return collisionInfo.left;
+    }
+    public bool isCollideWithRightWall(){
+        return collisionInfo.right;
+    }
+
+    public bool canBePushedInDirection( GlobalUtils.Direction m_dir){
+        if( m_dir == GlobalUtils.Direction.Right ) return !collisionInfo.right;
+        if( m_dir == GlobalUtils.Direction.Left  ) return !collisionInfo.left;
+        return false;
+    }
 
 
     protected override void ProcessAutoGravity(){

@@ -73,7 +73,7 @@ public class CollisionDetectorPlayer : CollisionDetector, ICollisionWallDetector
     //    Debug.Log( "After SlopeI Calculation" + transition );
         DescendSlope();
     //    Debug.Log( "After SlopeII Calculation" + transition );
-        ProcessCollisionHorizontal( Mathf.Sign(transition.x));
+        ProcessCollisionHorizontal( Mathf.Sign(transition.x), skinSize*2.5f);
     //    Debug.Log( "After SlopeIII Calculation" + transition );
         ProcessCollisionVertical(   Mathf.Sign(transition.y));
     //    Debug.Log( "After SlopeIIII Calculation" + transition );
