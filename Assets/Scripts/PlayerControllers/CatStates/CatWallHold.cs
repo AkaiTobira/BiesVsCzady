@@ -17,7 +17,6 @@ public class CatWallHold : PlayerBaseState
         m_ObjectInteractionDetector.UpdateDestroyableExistance();
         if( !m_WallDetector.isWallClose()) m_isOver = true;
 
-       // distanceToFixAnimation = new Vector3( (isLeftOriented())? -125 : 125, 75 , 0);
         m_animator.SetFloat( "FallVelocity", 0);
         m_animator.SetBool( "isGrounded"   , m_FloorDetector.isOnGround());
         if( !m_FloorDetector.isOnGround() ){

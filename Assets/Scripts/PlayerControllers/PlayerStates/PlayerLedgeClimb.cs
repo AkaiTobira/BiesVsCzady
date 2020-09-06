@@ -107,7 +107,7 @@ public class PlayerLedgeClimb : PlayerBaseState
 
     public override void Process(){
 
-        Debug.Log( i + "  " + timeToEnd);
+//        Debug.Log( i + "  " + timeToEnd);
         i++;
         Vector2 pos     = m_FloorDetector.GetComponent<Transform>().position;
 

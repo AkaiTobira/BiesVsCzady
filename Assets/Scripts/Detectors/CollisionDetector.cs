@@ -297,7 +297,7 @@ public class CollisionDetector : MonoBehaviour, ICollisionFloorDetector
     }
 
 
-    protected void ProcessCollisionHorizontal( float directionX){
+    protected void ProcessCollisionHorizontal( float directionX, float additionalHight = 0){
         if( transition.x == 0) return;
         float rayLenght  = Mathf.Abs (transition.x) + skinSize;
 
@@ -305,7 +305,7 @@ public class CollisionDetector : MonoBehaviour, ICollisionFloorDetector
             Vector2 rayOrigin = new Vector2( (directionX == DIR_LEFT) ? 
                                                     borders.left : 
                                                     borders.right  ,
-                                             borders.bottom + skinSize*2.5f + i * horizontalDistanceBeetweenRays );
+                                             borders.bottom + additionalHight + i * horizontalDistanceBeetweenRays );
 
             if( i == horizontalRayNumber-1 ) rayOrigin.y = borders.bottom + i * horizontalDistanceBeetweenRays;
 
