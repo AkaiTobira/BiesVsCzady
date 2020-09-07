@@ -17,6 +17,12 @@ public class BiesIdle : PlayerIdle
     }
 
     public override void HandleInput(){
+
+        
+        Debug.Log( "CCLFU" +  m_lowerEdgeDetector.canClimbLedgeFromUpSite() );
+
+
+
         if( PlayerFallHelper.FallRequirementsMeet( m_FloorDetector.isOnGround() ) ){
             CommonValues.PlayerVelocity.x = 0;
             m_nextState = new BiesFall(m_controllabledObject, m_FloorDetector.GetCurrentDirection());

@@ -44,6 +44,10 @@ public class BiesJump : PlayerJump
     }
 
     public override void HandleInput(){
+
+        Debug.Log( "CCL" +  m_ObjectInteractionDetector.canClimbLedge() );
+
+
         if( m_ObjectInteractionDetector.canClimbLedge() ){
             m_isOver = true;
             m_nextState = new BiesLedgeClimb( m_controllabledObject, m_dir);
