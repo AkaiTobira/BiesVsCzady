@@ -46,6 +46,10 @@ public class BiesWallHold : PlayerBaseState
         velocity = new Vector2();
     }
 
+    private bool IsObjPullableCloseToWall(){
+        return m_ObjectInteractionDetector.GetPullableObject().GetComponent<CollisionDetectorMovable>().canBePushedInDirection(  m_dir);
+    }
+
     public override void HandleInput(){
         if( PlayerFallHelper.FallRequirementsMeet( m_FloorDetector.isOnGround()) ){
             m_nextState = new BiesFall(m_controllabledObject, GlobalUtils.Direction.Left);
@@ -53,7 +57,7 @@ public class BiesWallHold : PlayerBaseState
             m_nextState = new BiesAttack1(m_controllabledObject);
         }else if( PlayerInput.isAttack2KeyPressed() ){
             m_nextState = new BiesAttack2(m_controllabledObject);
-        }else if ( m_ObjectInteractionDetector.IsWallPullable() && PlayerInput.isSpecialKeyHold() ){
+        }else if ( m_ObjectInteractionDetector.IsWallPullable() && PlayerInput.isSpecialKeyHold() && IsObjPullableCloseToWall() ){
 
             if( isLeftOriented() ){
                 if( PlayerInput.isMoveRightKeyHold()){

@@ -10,17 +10,21 @@ public class BiesPushObj : PlayerBaseState
     
     float distanceFromObject;
 
+    private ICollisionWallDetector m_wallDetector;
+
     public BiesPushObj( GameObject controllable, GlobalUtils.Direction dir) : base( controllable ) {
         // play change direction animation;
         // at end of animation call :
         // TEMP
 
+
+
         name = "BiesPushObj";
         isMovingLeft = dir == GlobalUtils.Direction.Left;
         m_dir = dir;
 
-        rotationAngle = ( m_dir == GlobalUtils.Direction.Left) ? 180 :0 ; 
-        m_controllabledObject.GetComponent<Player>().animationNode.eulerAngles = new Vector3( 0, rotationAngle, slopeAngle);
+        //rotationAngle = ( m_dir == GlobalUtils.Direction.Left) ? 180 :0 ; 
+        // m_controllabledObject.GetComponent<Player>().animationNode.eulerAngles = new Vector3( 0, rotationAngle, slopeAngle);
 
         m_moveable    = m_ObjectInteractionDetector.GetPullableObject();
         pushForce.x   = BiesUtils.PlayerSpeed * (int)dir * 
@@ -31,6 +35,8 @@ public class BiesPushObj : PlayerBaseState
 
 
         distanceToFixAnimation = new Vector3(0, 6 , 0);
+
+        m_wallDetector = m_moveable.GetComponent<ICollisionWallDetector>();
     }
 
     public override void OnExit(){
@@ -43,7 +49,6 @@ public class BiesPushObj : PlayerBaseState
 
     public override void Process(){
         
-        if( PlayerFallHelper.FallRequirementsMeet( m_FloorDetector.isOnGround()) )m_isOver = true;
 
         if( m_moveable ){
             Vector3 currentPullableObjectPosition = m_moveable.transform.position;
@@ -60,6 +65,14 @@ public class BiesPushObj : PlayerBaseState
                 currentPullableObjectPosition;
         }
 
+        if( PlayerFallHelper.FallRequirementsMeet( m_FloorDetector.isOnGround()) ) {
+            m_isOver = true;
+        }else if( isRightOriented() && m_wallDetector.isCollideWithRightWall() ){
+            m_isOver = true;
+        }else if( isLeftOriented()  && m_wallDetector.isCollideWithLeftWall()  ){
+            m_isOver = true;
+        }
+
         m_animator.SetBool("isPushing", !m_isOver);
     }
 
@@ -73,9 +86,7 @@ public class BiesPushObj : PlayerBaseState
         }
     }
 
-
     public override string GetTutorialAdvice(){
         return "";
     }
-
 }

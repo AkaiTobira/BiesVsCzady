@@ -160,7 +160,7 @@ public class ChaserChaseAttack : EnemyBaseState
                 GlobalUtils.AttackInfo infoPack = new GlobalUtils.AttackInfo();
 
                 infoPack.isValid      = true;
-                infoPack.stunDuration = 5f;
+                infoPack.stunDuration = 7.5f;
                 m_isOver = true;
                 infoPack.knockBackValue = new Vector2( 10, 0);
                 infoPack.lockFaceDirectionDuringKnockback = true;
@@ -172,7 +172,7 @@ public class ChaserChaseAttack : EnemyBaseState
                 GlobalUtils.AttackInfo infoPack = new GlobalUtils.AttackInfo();
 
                 infoPack.isValid      = true;
-                infoPack.stunDuration = 5f;
+                infoPack.stunDuration = 7.5f;
                 m_isOver = true;
 
                 infoPack.knockBackValue = new Vector2( 10, 0);
@@ -183,7 +183,7 @@ public class ChaserChaseAttack : EnemyBaseState
             }
         }
 
-        Debug.Log( Mathf.Abs( GlobalUtils.PlayerObject.position.x - m_FloorDetector.GetComponent<Transform>().position.x ) );
+//        Debug.Log( Mathf.Abs( GlobalUtils.PlayerObject.position.x - m_FloorDetector.GetComponent<Transform>().position.x ) );
 
         if(  Mathf.Abs( GlobalUtils.PlayerObject.position.x - m_FloorDetector.GetComponent<Transform>().position.x ) - m_FloorDetector.GetComponent<CollisionDetectorEnemy>().sightLenght > 0  ){
             m_isOver = true;

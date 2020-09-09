@@ -42,6 +42,9 @@ public class CatWallSlide : PlayerBaseState
         if( PlayerMoveOfWallHelper.MoveOfWallRequirementsMeet()  ){
             m_FloorDetector.Move( new Vector2( ( isRightOriented() ) ? -4 : 4, 0));
             m_nextState = new CatFall( m_controllabledObject,  GlobalUtils.ReverseDirection( m_dir ) );
+            m_animator.SetBool("isWallClose", false);
+            m_animator.SetBool("isSliding", false);
+            m_animator.SetFloat( "FallVelocity", -2);
             return true;
         }
         return false;

@@ -73,7 +73,7 @@ public class CollisionDetectorPlayer : CollisionDetector, ICollisionWallDetector
     //    Debug.Log( "After SlopeI Calculation" + transition );
         DescendSlope();
     //    Debug.Log( "After SlopeII Calculation" + transition );
-        ProcessCollisionHorizontal( Mathf.Sign(transition.x));
+        ProcessCollisionHorizontal( Mathf.Sign(transition.x), skinSize*2.5f);
     //    Debug.Log( "After SlopeIII Calculation" + transition );
         ProcessCollisionVertical(   Mathf.Sign(transition.y));
     //    Debug.Log( "After SlopeIIII Calculation" + transition );
@@ -141,6 +141,7 @@ public class CollisionDetectorPlayer : CollisionDetector, ICollisionWallDetector
 
             if( hit ){
                 if( i == 0){
+                    if( isObjectNotClimbable(hit) ) continue;
                     isSave1 = true;
                     objectWithLedgde = hit.collider.transform;
                 } 
@@ -150,6 +151,7 @@ public class CollisionDetectorPlayer : CollisionDetector, ICollisionWallDetector
                 if( i == 2){
                     isSave3 = true;
                 }
+
             }
             
             Debug.DrawRay(
@@ -160,8 +162,16 @@ public class CollisionDetectorPlayer : CollisionDetector, ICollisionWallDetector
         }
 
         isOverHalfOfRaysOverLedge = !isSave1 && !isSave2 && isSave3;
+
         isLedgeDetectedUp         = !isSave3 && isSave1;
     }
+
+    private bool isObjectNotClimbable( RaycastHit2D  hit ){
+        return ( hit.collider.tag == "BiesClimbLock" && GetComponent<Player>().GetCurrentFormName().Contains("Bies") ) ||
+               ( hit.collider.tag == "CatClimbLock"  && GetComponent<Player>().GetCurrentFormName().Contains("Cat")  ) ||
+               ( hit.collider.tag == "BothClimbLock" );
+    }
+
 
     public bool hasReachedPlatformEdge(){
         return isOverHalfOfRaysOverLedge;
@@ -209,6 +219,9 @@ public class CollisionDetectorPlayer : CollisionDetector, ICollisionWallDetector
              );
 
         if( !hit1 && hit2 ){
+
+            if( isObjectNotClimbable( hit2) ) return;
+
             isLedgeDetectedLeft = true;
             objectWithLedgde = hit2.collider.transform;
         }
@@ -249,7 +262,6 @@ public class CollisionDetectorPlayer : CollisionDetector, ICollisionWallDetector
              );
         }
     }
-
 
     protected void ProcessCollisionWallClose(){
         float rayLenght = wallCheckRayLenght;
@@ -295,7 +307,6 @@ public class CollisionDetectorPlayer : CollisionDetector, ICollisionWallDetector
             destroyableObject = null;
         }
     }
-
 
     private void HandleMoveable( Collider2D obj){
         isObjectPullable    = obj.tag == "Movable";
@@ -346,7 +357,6 @@ public class CollisionDetectorPlayer : CollisionDetector, ICollisionWallDetector
         transition.y = Mathf.Sign(transition.y) * ( rayLenght -skinSize );
     }
 
-
     public bool isWallClose(){
         return closeToWall;
     }
@@ -358,6 +368,4 @@ public class CollisionDetectorPlayer : CollisionDetector, ICollisionWallDetector
     public bool isCollideWithRightWall(){
         return collisionInfo.right;
     }
-
-
 }

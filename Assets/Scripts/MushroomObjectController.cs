@@ -50,14 +50,17 @@ public class MushroomObjectController : MonoBehaviour
 
     public void ResetChild( int i, int index)
     {
-        MushroomSaveInfo info = lastSavedObjects[index];
 
-        transform.GetChild(i).position = info.position;
-        transform.GetChild(i).rotation = info.rotation;
-        transform.GetChild(i).localScale = info.scale;
+        if( lastSavedObjects.ContainsKey( index )){
 
-        transform.GetChild(i).GetComponent<AutoDestroyablePlatform>().ResetMushroom();
-
+            MushroomSaveInfo info = lastSavedObjects[index];
+    
+            transform.GetChild(i).position = info.position;
+            transform.GetChild(i).rotation = info.rotation;
+            transform.GetChild(i).localScale = info.scale;
+    
+            transform.GetChild(i).GetComponent<AutoDestroyablePlatform>().ResetMushroom();
+        }
 /*
         transform.GetChild(i).GetComponent<CollisionDetectorMovable>().PushFriction = info.pushFriction;
         transform.GetChild(i).GetComponent<CollisionDetectorMovable>().PullFriction = info.pullFriction;

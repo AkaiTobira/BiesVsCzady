@@ -12,15 +12,20 @@ public class ChaserPlayerDetected : EnemyBaseState
         GlobalUtils.TaskMaster.EnemyTriggered();
     }
     
+
     private bool CanCharge(){
         float distance = Vector3.Distance( GlobalUtils.PlayerObject.transform.position, 
                                             m_FloorDetector.GetComponent<Transform>().position);
 
-        if( distance - entityScript.combatRange > 5 ) return false;
         if( chaseCombatTimer > 0 ) return false;
-        chaseCombatTimer = entityScript.breakBeetweenAttacks;
+        if( distance - entityScript.combatRange > 5 ) return false;
+        
+        chaseCombatTimer  = entityScript.breakBeetweenAttacks;
+        forcedChargeTimer = 0;
         return true;
     }
+
+    private float forcedChargeTimer = 0;
 
     public void SelectNextState(){
         chaseCombatTimer -= Time.deltaTime;
@@ -34,12 +39,18 @@ public class ChaserPlayerDetected : EnemyBaseState
 
         float distance = Vector3.Distance( playerPosition, detectorPosition);
 
-        if( distance > 300 ) {
-            entityScript.ResetPatrolValues();
+        if( !entityScript.isAlreadyInCombat ) {
+        //    entityScript.ResetPatrolValues();
             m_isOver                       = true;
-            entityScript.isAlreadyInCombat = false;
+        //    entityScript.isAlreadyInCombat = false;
             GlobalUtils.TaskMaster.EnemyIsOutOfCombat();
 
+        }else if( distance > 300 ){
+            forcedChargeTimer += Time.deltaTime;
+            if( forcedChargeTimer > 2.5f){
+                m_nextState      = new ChaserChaseAttack(m_controllabledObject);
+                chaseCombatTimer = entityScript.breakBeetweenAttacks;
+            }
         }else if( CanCharge() ){
 //
             m_nextState = new ChaserChaseAttack(m_controllabledObject);
