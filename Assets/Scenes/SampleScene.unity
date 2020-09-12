@@ -1010,7 +1010,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   centerOfCamera: {x: 0, y: -6, z: -20}
-  zoomOfCamera: 8000
+  zoomOfCamera: 250
   followedObject: {fileID: 551294738}
   LeftClamping:
     enable: 0
@@ -4566,6 +4566,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 896879984655882348, guid: 07662773cb44971489b75afb3b56619d,
+        type: 3}
+      propertyPath: TopClamping.enable
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 896879984655882348, guid: 07662773cb44971489b75afb3b56619d,
+        type: 3}
+      propertyPath: DownClamping.position
+      value: 2250
+      objectReference: {fileID: 0}
+    - target: {fileID: 896879984655882348, guid: 07662773cb44971489b75afb3b56619d,
+        type: 3}
+      propertyPath: camerSize
+      value: 250
+      objectReference: {fileID: 0}
     - target: {fileID: 1036464263440302430, guid: 07662773cb44971489b75afb3b56619d,
         type: 3}
       propertyPath: m_Name
@@ -4634,6 +4649,11 @@ PrefabInstance:
     - target: {fileID: 6039362988448530257, guid: 07662773cb44971489b75afb3b56619d,
         type: 3}
       propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7993790977779497828, guid: 07662773cb44971489b75afb3b56619d,
+        type: 3}
+      propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -5305,12 +5325,12 @@ PrefabInstance:
     - target: {fileID: 6464913367784793610, guid: 5c9d8671db069494eb169b071acd31b0,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -50
+      value: 2157
       objectReference: {fileID: 0}
     - target: {fileID: 6464913367784793610, guid: 5c9d8671db069494eb169b071acd31b0,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2428
+      value: -9486
       objectReference: {fileID: 0}
     - target: {fileID: 6464913367784793613, guid: 5c9d8671db069494eb169b071acd31b0,
         type: 3}
