@@ -33,7 +33,7 @@ MonoBehaviour:
   Path: event:/ATM/Atmosphere Cave
   guid: 822ed4446d741a4fa9c138ef85b1b3eb
   Banks:
-  - {fileID: -1569401737659476251}
+  - {fileID: 4834208049015013378}
   IsStream: 1
   Is3D: 1
   IsOneShot: 0
@@ -92,7 +92,7 @@ MonoBehaviour:
   Path: event:/SFX/Bies/roar-sound-effect
   guid: 54208e0a78b1ec468498ee40e272d271
   Banks:
-  - {fileID: -1569401737659476251}
+  - {fileID: 4834208049015013378}
   IsStream: 0
   Is3D: 1
   IsOneShot: 1
@@ -133,7 +133,7 @@ MonoBehaviour:
   Path: event:/SFX/Kot/kot-bies-przemiana
   guid: ce6455acdcde144ab61d237e498e4ea5
   Banks:
-  - {fileID: -1569401737659476251}
+  - {fileID: 4834208049015013378}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -173,17 +173,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EditorBanks:
   - {fileID: 3170686507304576538}
-  - {fileID: -1569401737659476251}
+  - {fileID: 4834208049015013378}
   EditorEvents:
   - {fileID: -3856249862555066728}
   - {fileID: -2504149357596670497}
   - {fileID: -4984267660862615672}
   EditorParameters: []
   MasterBanks:
-  - {fileID: -1569401737659476251}
+  - {fileID: 4834208049015013378}
   StringsBanks:
   - {fileID: 3170686507304576538}
-  stringsBankWriteTime: 637314594360000000
+  stringsBankWriteTime: 637331189160000000
   cacheVersion: 3
 --- !u!114 &1197939853777733788
 MonoBehaviour:
@@ -217,7 +217,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Path: Assets/FMOD/BiesVsCzady/Build/Desktop/Master.strings.bank
   SubDir: 
-  lastModified: 637314594360000000
+  lastModified: 637331189160000000
+  LoadResult: 0
+  FileSizes: []
+  Exists: 1
+--- !u!114 &4834208049015013378
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.bank
+  m_EditorClassIdentifier: 
+  Path: Assets/FMOD/BiesVsCzady/Build/Desktop/Master.bank
+  SubDir: 
+  lastModified: 637331189160000000
   LoadResult: 0
   FileSizes: []
   Exists: 1
