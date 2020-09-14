@@ -18,11 +18,15 @@ public class SoundSFX : MonoBehaviour {
 
         }
 
+        
+    }
+
+    private void OnEnable()
+    {
         if(shouldPlayOnStart)
         {
             PlaySFX(playOnStart);
         }
-        
     }
 
     void PlaySFX( int soundId){
