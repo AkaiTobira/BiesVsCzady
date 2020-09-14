@@ -3281,6 +3281,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1163317346}
   m_CullTransparentMesh: 0
+--- !u!114 &1338007619 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 491394118019173867, guid: 07662773cb44971489b75afb3b56619d,
+    type: 3}
+  m_PrefabInstance: {fileID: 1860165513}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29218e08d5556cb41aecd107c97bdf96, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1397111294
 GameObject:
   m_ObjectHideFlags: 0
@@ -5769,7 +5781,7 @@ PrefabInstance:
         type: 3}
       propertyPath: levelControl
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1338007619}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 59d8381794b10e54d9016ef4d50555b6, type: 3}
 --- !u!1 &8593523426632259473 stripped

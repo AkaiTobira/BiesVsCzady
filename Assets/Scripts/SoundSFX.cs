@@ -6,7 +6,7 @@ public class SoundSFX : MonoBehaviour {
 
     [FMODUnity.EventRef]
     public string[] Sounds;
-    private List<FMOD.Studio.EventInstance> soundevents;
+    private List<FMOD.Studio.EventInstance> soundevents = new List<FMOD.Studio.EventInstance>();
     public int playOnStart;
     public bool shouldPlayOnStart;
 
