@@ -6,28 +6,41 @@ public class SoundSFX : MonoBehaviour {
 
     [FMODUnity.EventRef]
     public string[] Sounds;
-    public FMOD.Studio.EventInstance[] soundevents;
+    private List<FMOD.Studio.EventInstance> soundevents;
     public int playOnStart;
     public bool shouldPlayOnStart;
 
+
+
+
     void Start (){
+    }
 
-        soundevents = new FMOD.Studio.EventInstance[Sounds.Length];
-        for( int i = 0; i < Sounds.Length; i++ ){
-            soundevents[i] = FMODUnity.RuntimeManager.CreateInstance (Sounds[i]);
-
-        }
-
+    void OnEnable() {
         if(shouldPlayOnStart)
         {
             PlaySFX(playOnStart);
         }
-        
     }
+
+    void DetachInstance(){
+        foreach( FMOD.Studio.EventInstance ei in soundevents){
+
+          FMOD.Studio.PLAYBACK_STATE fmodPbState;
+          ei.getPlaybackState(out fmodPbState);
+
+          if( fmodPbState == FMOD.Studio.PLAYBACK_STATE.STOPPED ){
+              FMODUnity.RuntimeManager.DetachInstanceFromGameObject( ei );
+              soundevents.Remove( ei );
+          }
+        }
+    }
+
 
     void PlaySFX( int soundId){
         var sound = FMODUnity.RuntimeManager.CreateInstance (Sounds[soundId]);
         FMODUnity.RuntimeManager.AttachInstanceToGameObject(sound, GetComponent<Transform>(), GetComponent<Rigidbody2D>());
         sound.start();
+        soundevents.Add( sound );
     }
 }
