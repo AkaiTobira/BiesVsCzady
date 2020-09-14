@@ -1205,7 +1205,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Sounds:
-  - event:/SFX/Bies/roar-sound-effect
+  - event:/SFX/Bies/roar
+  - event:/SFX/Bies/FS
   playOnStart: 0
   shouldPlayOnStart: 0
 --- !u!1 &623631631
@@ -5439,12 +5440,12 @@ PrefabInstance:
     - target: {fileID: 6464913367784793610, guid: 5c9d8671db069494eb169b071acd31b0,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 878
+      value: -15
       objectReference: {fileID: 0}
     - target: {fileID: 6464913367784793610, guid: 5c9d8671db069494eb169b071acd31b0,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2850
+      value: -2432
       objectReference: {fileID: 0}
     - target: {fileID: 6464913367784793613, guid: 5c9d8671db069494eb169b071acd31b0,
         type: 3}
