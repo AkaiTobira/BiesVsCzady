@@ -100,8 +100,8 @@ public class DestroyableObject : MonoBehaviour
                     GetComponent<BoxCollider2D>().enabled = false;
                     GetComponent<CollisionDetector>().enabled = false;
 
-                    areaControll.DisableCameraArea();
-                    fadeArea.SetNotVisible();
+                    if(areaControll) areaControll.DisableCameraArea();
+                    if(fadeArea)     fadeArea.SetNotVisible();
 
                 }else{
                     m_anim.SetTrigger("isHit");
