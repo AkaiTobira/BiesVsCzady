@@ -295,6 +295,8 @@ public class Player : IEntity
         directionLeft  = m_controller.GetDirection() == GlobalUtils.Direction.Left;
         directionRight = m_controller.GetDirection() == GlobalUtils.Direction.Right;
 
+        HurtBehaviourTests();
+
     }
 
 }

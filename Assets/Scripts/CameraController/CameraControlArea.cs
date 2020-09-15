@@ -30,15 +30,24 @@ public class CameraControlArea : MonoBehaviour
 
     void OnTriggerExit2D(Collider2D other) {
         if( other.name.Contains( "Player") ){
+            SetDefaultValuesOfCamera();
+        }
+    }
+
+    public void DisableCameraArea(){
+            SetDefaultValuesOfCamera();
+            gameObject.SetActive(false);
+    }
+
+    private void SetDefaultValuesOfCamera(){
             GUIElements.Camera.SetValues(new Camera_Follow.KeyValuePairs(false, 0), 
                                          new Camera_Follow.KeyValuePairs(false, 0), 
                                          new Camera_Follow.KeyValuePairs(false, 0), 
-                                         new Camera_Follow.KeyValuePairs(false, 0),
+                                         new Camera_Follow.KeyValuePairs(true, 15),
                                          new Vector3(0,-6,0),
                                          GUIElements.Camera.defaultSize
                                          );
             GUIElements.Camera.DisableMoreSmooth();
-        }
     }
 
 }
