@@ -9,8 +9,8 @@ public class BiesBlock : PlayerBaseState{
 
     public BiesBlock( GameObject controllable) : base( controllable ){
         name = "BiesBlock";
-        m_animator.SetFloat("AnimationSpeed", 0.8f);
-    //    distanceToFixAnimation = new Vector3(0, 7.5f , 0);
+        m_animator.SetFloat("AnimationSpeed", 2f);
+        m_animator.SetBool("isBlockHold", true);
     }
 
     protected override void SetUpAnimation(){
@@ -35,18 +35,17 @@ public class BiesBlock : PlayerBaseState{
         return false;
     }
 
-    private bool isWallHit(){
-        if( m_WallDetector.isWallClose() ){
+    private bool isKeyHold(){
+        if( !PlayerInput.isBlockKeyPressed() ){
             //TOWALLHITSTATE 
             return true;
         }
         return false;
     }
 
-
     private void  ProcessStateEnd(){
-        timeToEnd -= Time.deltaTime;
-        m_isOver |= isTimerOver();// || isWallHit();
+        m_isOver |= isKeyHold();
+        m_animator.SetBool("isBlockHold", !m_isOver);
         if( m_isOver ){
             m_animator.SetBool("Block", false);
         }
@@ -62,10 +61,13 @@ public class BiesBlock : PlayerBaseState{
         }
         m_FloorDetector.Move(velocity*Time.deltaTime);
     }
+
     public override void Process(){
+
         ProcessStateEnd();
         ProcessMove();
     }
+
     public override void HandleInput(){
     }
 }

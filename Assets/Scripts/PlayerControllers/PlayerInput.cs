@@ -61,6 +61,10 @@ public static class  PlayerInput
         return Input.GetKeyDown( KeyCode.R ) || Input.GetKeyDown( KeyCode.LeftControl ) || Input.GetKeyDown( KeyCode.RightControl) || (Input.GetAxis("Block") == 1);
     }
 
+    public static bool isBlockKeyPressed(){
+        return Input.GetKey( KeyCode.R ) || Input.GetKey( KeyCode.LeftControl ) || Input.GetKey( KeyCode.RightControl) || (Input.GetAxis("Block") == 1);
+    }
+
     public static bool isActionKeyHold(){
         return Input.GetKey( KeyCode.F) || Input.GetButton("Action");
     }
