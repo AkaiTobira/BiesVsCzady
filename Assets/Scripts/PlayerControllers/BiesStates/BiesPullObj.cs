@@ -16,7 +16,7 @@ public class BiesPullObj : PlayerBaseState
         // play change direction animation;
         // at end of animation call :
         // TEMP
-
+        m_animator.GetComponent<SoundAmbientStopable>().PlayAmbient(0);
         isFaceingLeft = dir == GlobalUtils.Direction.Left;
         name = "BiesPullObj";
         m_dir = dir;
@@ -40,6 +40,7 @@ public class BiesPullObj : PlayerBaseState
     public override void OnExit(){
         CommonValues.PlayerVelocity = new Vector2(0,0);
         m_FloorDetector.Move(CommonValues.PlayerVelocity);
+        m_animator.GetComponent<SoundAmbientStopable>().StopAmbient(0);
     }
     public override void Process(){
         if( PlayerFallHelper.FallRequirementsMeet( m_FloorDetector.isOnGround()) ){
