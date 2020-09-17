@@ -15,7 +15,7 @@ MonoBehaviour:
   Path: event:/SFX/Bies/jump up
   guid: aeca7e9a0523754ab1ff36c7ff035882
   Banks:
-  - {fileID: -6914257242124271147}
+  - {fileID: 6454772197221415138}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -56,7 +56,7 @@ MonoBehaviour:
   Path: event:/SFX/Bies/atak ziemia
   guid: 3b108eee03179442bf10bd7914a20480
   Banks:
-  - {fileID: -6914257242124271147}
+  - {fileID: 6454772197221415138}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -151,7 +151,7 @@ MonoBehaviour:
   Path: event:/SFX/Czad/presence
   guid: de526d469d419145b183ba2253bec5c2
   Banks:
-  - {fileID: -6914257242124271147}
+  - {fileID: 6454772197221415138}
   IsStream: 0
   Is3D: 1
   IsOneShot: 0
@@ -359,7 +359,7 @@ MonoBehaviour:
   Path: event:/SFX/Bies/climb
   guid: 0405028629bce94d9c026dde034d3498
   Banks:
-  - {fileID: -6914257242124271147}
+  - {fileID: 6454772197221415138}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -418,7 +418,7 @@ MonoBehaviour:
   Path: event:/SFX/Enviro/wall break
   guid: a86cba7f6eda534ba7cc6e96fe25f70e
   Banks:
-  - {fileID: -6914257242124271147}
+  - {fileID: 6454772197221415138}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -441,7 +441,7 @@ MonoBehaviour:
   Path: event:/SFX/Enviro/stalactite fall
   guid: ba937fc36b23bc42948f89e7c3af4feb
   Banks:
-  - {fileID: -6914257242124271147}
+  - {fileID: 6454772197221415138}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -481,7 +481,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EditorBanks:
   - {fileID: 5864574226408267649}
-  - {fileID: -6914257242124271147}
+  - {fileID: 6454772197221415138}
   EditorEvents:
   - {fileID: -4902263680055983602}
   - {fileID: 883708458752113524}
@@ -500,10 +500,10 @@ MonoBehaviour:
   - {fileID: -999088424435246994}
   EditorParameters: []
   MasterBanks:
-  - {fileID: -6914257242124271147}
+  - {fileID: 6454772197221415138}
   StringsBanks:
   - {fileID: 5864574226408267649}
-  stringsBankWriteTime: 637357274099554821
+  stringsBankWriteTime: 637359717378404949
   cacheVersion: 3
 --- !u!114 &9433077994204138
 MonoBehaviour:
@@ -520,7 +520,7 @@ MonoBehaviour:
   Path: event:/SFX/Bies/FS
   guid: f741770e0c442a45867911bf6cfa9135
   Banks:
-  - {fileID: -6914257242124271147}
+  - {fileID: 6454772197221415138}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -580,7 +580,7 @@ MonoBehaviour:
   guid: 822ed4446d741a4fa9c138ef85b1b3eb
   Banks:
   - {fileID: 6082243530561040618}
-  - {fileID: -6914257242124271147}
+  - {fileID: 6454772197221415138}
   IsStream: 1
   Is3D: 1
   IsOneShot: 0
@@ -639,7 +639,7 @@ MonoBehaviour:
   Path: event:/SFX/Bies/roar
   guid: 0806eed7bcc4174e906fa530f537438a
   Banks:
-  - {fileID: -6914257242124271147}
+  - {fileID: 6454772197221415138}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -680,7 +680,7 @@ MonoBehaviour:
   Path: event:/SFX/Enviro/wall hit
   guid: 337e7b903cbef547bdba9fd5912b7f7d
   Banks:
-  - {fileID: -6914257242124271147}
+  - {fileID: 6454772197221415138}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -757,7 +757,7 @@ MonoBehaviour:
   Path: event:/SFX/Bies/atak lapa
   guid: ebdee42216c97a4a879d46bb64f6aeae
   Banks:
-  - {fileID: -6914257242124271147}
+  - {fileID: 6454772197221415138}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -780,7 +780,7 @@ MonoBehaviour:
   Path: event:/SFX/Bies/jump down
   guid: 090c074f35869945ba6407bb38086183
   Banks:
-  - {fileID: -6914257242124271147}
+  - {fileID: 6454772197221415138}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -897,7 +897,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Path: Assets/FMOD/BiesVsCzady/Build/Desktop/Master.strings.bank
   SubDir: 
-  lastModified: 637357274099554821
+  lastModified: 637359717378404949
   LoadResult: 0
   FileSizes:
   - Name: Desktop
@@ -939,6 +939,24 @@ MonoBehaviour:
   LoadResult: 0
   FileSizes: []
   Exists: 0
+--- !u!114 &6454772197221415138
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.bank
+  m_EditorClassIdentifier: 
+  Path: Assets/FMOD/BiesVsCzady/Build/Desktop/Master.bank
+  SubDir: 
+  lastModified: 637359717378394945
+  LoadResult: 0
+  FileSizes: []
+  Exists: 1
 --- !u!114 &6642441165238457057
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -994,7 +1012,7 @@ MonoBehaviour:
   Path: event:/SFX/przemiana
   guid: ce6455acdcde144ab61d237e498e4ea5
   Banks:
-  - {fileID: -6914257242124271147}
+  - {fileID: 6454772197221415138}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
