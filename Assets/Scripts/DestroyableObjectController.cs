@@ -11,6 +11,12 @@ public class DestroyableObjectSaveInfo : GeneralObjectInfoPack{
     public float maxGravity;
 
     public float   durability;
+
+
+    public HideAreaController hideArea;
+    public CameraControlArea camera;
+    public bool hideAreaControllerStatus;
+    public bool cameraStatus;
 }
 
 
@@ -42,6 +48,15 @@ public class DestroyableObjectController : MonoBehaviour
         infoPack.gravity      = go.GetComponent<CollisionDetectorMovable>().GravityForce;
         infoPack.maxGravity   = go.GetComponent<CollisionDetectorMovable>().MaxGravityForce;
         infoPack.durability   = go.GetComponent<DestroyableObject>().durability;
+        infoPack.hideArea     = go.GetComponent<DestroyableObject>().fadeArea;
+
+
+
+        if( infoPack.hideArea ) infoPack.hideAreaControllerStatus = go.GetComponent<DestroyableObject>().fadeArea.state;
+        infoPack.camera       = go.GetComponent<DestroyableObject>().areaControll;
+        if( infoPack.camera ) infoPack.cameraStatus = go.GetComponent<DestroyableObject>().areaControll.gameObject.activeSelf;
+
+        Debug.Log( infoPack.hideAreaControllerStatus);
 
         return infoPack;
     }
@@ -70,6 +85,19 @@ public class DestroyableObjectController : MonoBehaviour
         transform.GetChild(i).GetComponent<CollisionDetectorMovable>().GravityForce = info.gravity;
         transform.GetChild(i).GetComponent<CollisionDetectorMovable>().MaxGravityForce = info.maxGravity;
         transform.GetChild(i).GetComponent<DestroyableObject>().durability = info.durability;
+
+
+        if( info.cameraStatus ){
+            transform.GetChild(i).GetComponent<DestroyableObject>().areaControll = info.camera;
+            info.camera.gameObject.SetActive(true);
+        }
+
+        Debug.Log( info.hideAreaControllerStatus );
+
+        if( info.hideAreaControllerStatus ){
+            transform.GetChild(i).GetComponent<DestroyableObject>().fadeArea     = info.hideArea;
+            transform.GetChild(i).GetComponent<DestroyableObject>().fadeArea.ResetValues();
+        }
 
         transform.GetChild(i).GetComponent<Animator>().Rebind();
     }
@@ -111,6 +139,19 @@ public class DestroyableObjectController : MonoBehaviour
         newInstancion.transform.GetComponent<CollisionDetectorMovable>().GravityForce = info.gravity;
         newInstancion.transform.GetComponent<CollisionDetectorMovable>().MaxGravityForce = info.maxGravity;
         newInstancion.transform.GetComponent<DestroyableObject>().durability = info.durability;
+
+        if( info.cameraStatus ){
+            newInstancion.transform.GetComponent<DestroyableObject>().areaControll = info.camera;
+            info.camera.gameObject.SetActive(true);
+        }
+
+        Debug.Log( info.hideAreaControllerStatus );
+
+        if( info.hideAreaControllerStatus ){
+            newInstancion.transform.GetComponent<DestroyableObject>().fadeArea     = info.hideArea;
+            newInstancion.transform.GetComponent<DestroyableObject>().fadeArea.ResetValues();
+        }
+
     }
 
 }

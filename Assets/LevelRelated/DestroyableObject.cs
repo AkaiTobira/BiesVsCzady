@@ -25,6 +25,10 @@ public class DestroyableObject : MonoBehaviour
     private Vector2 currentMoveValue;
 
 
+    [SerializeField] public CameraControlArea areaControll;
+    [SerializeField] public HideAreaController fadeArea;
+
+
     void Start() {
         m_anim     = GetComponent<Animator>();
         m_FloorDetector = GetComponent<CollisionDetector>(); 
@@ -95,6 +99,10 @@ public class DestroyableObject : MonoBehaviour
                     m_anim.SetBool("isDestroyed", true);
                     GetComponent<BoxCollider2D>().enabled = false;
                     GetComponent<CollisionDetector>().enabled = false;
+
+                    if(areaControll) areaControll.DisableCameraArea();
+                    if(fadeArea)     fadeArea.SetNotVisible();
+
                 }else{
                     m_anim.SetTrigger("isHit");
                 }

@@ -167,9 +167,9 @@ public class CollisionDetectorPlayer : CollisionDetector, ICollisionWallDetector
     }
 
     private bool isObjectNotClimbable( RaycastHit2D  hit ){
-        return ( hit.collider.tag == "BiesClimbLock" && GetComponent<Player>().GetCurrentFormName().Contains("Bies") ) ||
-               ( hit.collider.tag == "CatClimbLock"  && GetComponent<Player>().GetCurrentFormName().Contains("Cat")  ) ||
-               ( hit.collider.tag == "BothClimbLock" );
+        return ( hit.collider.tag.Contains("BiesClimbLock") && GetComponent<Player>().GetCurrentFormName().Contains("Bies") ) ||
+               ( hit.collider.tag.Contains("CatClimbLock")  && GetComponent<Player>().GetCurrentFormName().Contains("Cat")  ) ||
+               ( hit.collider.tag.Contains("BothClimbLock") );
     }
 
 
@@ -309,7 +309,7 @@ public class CollisionDetectorPlayer : CollisionDetector, ICollisionWallDetector
     }
 
     private void HandleMoveable( Collider2D obj){
-        isObjectPullable    = obj.tag == "Movable";
+        isObjectPullable    = obj.tag.Contains("Movable");
         if( isObjectPullable ){
             pullableObject = obj.transform;
         }else{

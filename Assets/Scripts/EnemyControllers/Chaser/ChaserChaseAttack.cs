@@ -160,11 +160,13 @@ public class ChaserChaseAttack : EnemyBaseState
                 GlobalUtils.AttackInfo infoPack = new GlobalUtils.AttackInfo();
 
                 infoPack.isValid      = true;
-                infoPack.stunDuration = 7.5f;
+                infoPack.stunDuration = 9f;
                 m_isOver = true;
                 infoPack.knockBackValue = new Vector2( 10, 0);
                 infoPack.lockFaceDirectionDuringKnockback = true;
                 infoPack.fromCameAttack = GlobalUtils.Direction.Left;
+
+                GUIElements.cameraShake.TriggerShake(0.1f);
 
                 m_nextState = new CzadStun( m_controllabledObject, infoPack);
                 
@@ -172,12 +174,15 @@ public class ChaserChaseAttack : EnemyBaseState
                 GlobalUtils.AttackInfo infoPack = new GlobalUtils.AttackInfo();
 
                 infoPack.isValid      = true;
-                infoPack.stunDuration = 7.5f;
+                infoPack.stunDuration = 9f;
                 m_isOver = true;
 
                 infoPack.knockBackValue = new Vector2( 10, 0);
                 infoPack.lockFaceDirectionDuringKnockback = true;
                 infoPack.fromCameAttack = GlobalUtils.Direction.Right;
+
+
+                GUIElements.cameraShake.TriggerShake(0.1f);
 
                 m_nextState = new CzadStun( m_controllabledObject, infoPack);
             }

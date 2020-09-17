@@ -29,7 +29,7 @@ public static class  PlayerInput
     }
 
     public static bool isAttack1KeyPressed(){
-        return Input.GetKeyDown(KeyCode.X) || Input.GetButtonDown("Strike");
+        return Input.GetKeyDown(KeyCode.X) || Input.GetButtonDown("Strike")  || Input.GetButtonDown("Fire1");
     }
 
     public static bool isAttack3KeyPressed(){
@@ -37,7 +37,7 @@ public static class  PlayerInput
     }
 
     public static bool isAttack2KeyPressed(){
-        return ( Input.GetKeyDown(KeyCode.C) || Input.GetButtonDown("Roar") )
+        return ( Input.GetKeyDown(KeyCode.C) || Input.GetButtonDown("Roar")  || Input.GetButtonDown("Fire2"))
                 && PlayerRoarHelper.RoarRequirementsMeet() ;
     }
 

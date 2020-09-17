@@ -723,6 +723,10 @@ MonoBehaviour:
   combatRange: 600
   knockbackValues: {x: 100, y: 0}
   stunDuration: 0
+  canJumpOnPlayer: 0
+  jumpAttackBreak: 2
+  jumpAttackKnockbackValue: {x: 0, y: 0}
+  jumpAttackDamage: 1
   canShot: 1
   breakBeetweenShots: 1
   probabilityOfShot: 10
@@ -732,6 +736,7 @@ MonoBehaviour:
   DebugConsoleInfo2: {fileID: 7134896951922532560}
   isDead: 0
   delayOfHurtGoInTimer: 0
+  playerDetectedByBox: 0
 --- !u!50 &2500821061737914914
 Rigidbody2D:
   serializedVersion: 4
