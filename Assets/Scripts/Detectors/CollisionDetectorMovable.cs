@@ -51,4 +51,9 @@ public class CollisionDetectorMovable : CollisionDetector, ICollisionWallDetecto
         }        
     }
 
+    public override void Move(float x, float y)
+    {
+        base.Move(x, y);
+    }
+
 }

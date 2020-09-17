@@ -27,7 +27,7 @@ public class SoundAmbient : MonoBehaviour {
           PlayAmbient( 0 );
      }
 
-     private void PlayAmbient( int index ){
+     public virtual void PlayAmbient( int index ){
           FMODUnity.RuntimeManager.AttachInstanceToGameObject(soundevents[index], GetComponent<Transform>(), GetComponent<Rigidbody2D>());
           FMOD.Studio.PLAYBACK_STATE fmodPbState;
           soundevents[index].getPlaybackState(out fmodPbState);
@@ -37,7 +37,7 @@ public class SoundAmbient : MonoBehaviour {
      }
 
 
-     private void StopAmbient(int index){
+     public virtual void StopAmbient(int index){
           FMOD.Studio.PLAYBACK_STATE fmodPbState;
           soundevents[index].getPlaybackState(out fmodPbState);
           if (fmodPbState == FMOD.Studio.PLAYBACK_STATE.PLAYING) {
