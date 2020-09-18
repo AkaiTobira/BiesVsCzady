@@ -38,6 +38,7 @@ public class BiesPullObj : PlayerBaseState
     protected override void UpdateDirection(){}
 
     public override void OnExit(){
+        m_animator.SetBool("isPulling", !m_isOver);
         CommonValues.PlayerVelocity = new Vector2(0,0);
         m_FloorDetector.Move(CommonValues.PlayerVelocity);
         m_animator.GetComponent<SoundAmbientStopable>().StopAmbient(0);
@@ -70,6 +71,8 @@ public class BiesPullObj : PlayerBaseState
                     currentDistanceFromObject/distanceFromObject + 
                     oldMoveablePosition; 
             }
+            
+            m_animator.SetBool("isPulling", !m_isOver);
         }
     }
 

@@ -36,7 +36,7 @@ public class CatFall : PlayerFall
     //        m_nextState = new PlayerJump(m_controllabledObject, GlobalUtils.Direction.Left);
     //    }
 
-        if( m_ObjectInteractionDetector.canClimbLedge() ){
+        if( m_ObjectInteractionDetector.canClimbLedge()  && !LockAreaOverseer.ledgeClimbBlock  ){
             m_isOver = true;
             m_nextState = new CatLedgeClimb( m_controllabledObject, m_dir);
         }else if( m_WallDetector.isWallClose() && WallSlideDelay < 0){
