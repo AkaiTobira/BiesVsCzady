@@ -34,7 +34,7 @@ public class BiesPushObj : PlayerBaseState
                                                 m_moveable.transform.position );
 
 
-        distanceToFixAnimation = new Vector3(0, 6 , 0);
+        distanceToFixAnimation = new Vector3(30, 6 , 0);
 
         m_wallDetector = m_moveable.GetComponent<ICollisionWallDetector>();
     }
