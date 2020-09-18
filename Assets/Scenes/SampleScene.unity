@@ -1239,6 +1239,9 @@ MonoBehaviour:
   - event:/SFX/Kot/jump down
   - event:/SFX/Bies/hurt
   - event:/SFX/Kot/hurt
+  - event:/SFX/Bies/dies
+  - event:/SFX/Kot/dies
+  - event:/SFX/Bies/block
   playOnStart: 0
   shouldPlayOnStart: 0
 --- !u!114 &581408155
@@ -5855,12 +5858,12 @@ PrefabInstance:
     - target: {fileID: 6464913367784793610, guid: 5c9d8671db069494eb169b071acd31b0,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 772
+      value: 236
       objectReference: {fileID: 0}
     - target: {fileID: 6464913367784793610, guid: 5c9d8671db069494eb169b071acd31b0,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -4052
+      value: 575
       objectReference: {fileID: 0}
     - target: {fileID: 6464913367784793613, guid: 5c9d8671db069494eb169b071acd31b0,
         type: 3}
