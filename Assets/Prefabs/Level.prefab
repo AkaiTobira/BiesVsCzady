@@ -19270,8 +19270,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5299012732031761503}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 31.007, y: 3.004, z: 0}
-  m_LocalScale: {x: -0.2358835, y: 0.3487675, z: 1}
+  m_LocalPosition: {x: 31.049, y: 2.693, z: 0}
+  m_LocalScale: {x: -0.24017605, y: 0.47969744, z: 1}
   m_Children: []
   m_Father: {fileID: 56704911053618236}
   m_RootOrder: 3
@@ -28502,7 +28502,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &3728239625866721548
 Transform:
   m_ObjectHideFlags: 0
@@ -32513,7 +32513,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &4900492315362221273
 Transform:
   m_ObjectHideFlags: 0
@@ -34177,6 +34177,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: OnceEnterLockArea
+      objectReference: {fileID: 0}
+    - target: {fileID: 2464559188624607926, guid: 0556e9572ae21cc4d809f7b6b138feef,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3575182482926566376, guid: 0556e9572ae21cc4d809f7b6b138feef,
         type: 3}
@@ -73164,6 +73169,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8497751068856336868}
     m_Modifications:
+    - target: {fileID: 7525220883917507820, guid: 52124cb9d3832b74db5418ba21ce2a5a,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.575
+      objectReference: {fileID: 0}
+    - target: {fileID: 7525220883917507823, guid: 52124cb9d3832b74db5418ba21ce2a5a,
+        type: 3}
+      propertyPath: m_Offset.x
+      value: 0.18250978
+      objectReference: {fileID: 0}
+    - target: {fileID: 7525220883917507823, guid: 52124cb9d3832b74db5418ba21ce2a5a,
+        type: 3}
+      propertyPath: m_Offset.y
+      value: 0.012573481
+      objectReference: {fileID: 0}
+    - target: {fileID: 7525220883917507823, guid: 52124cb9d3832b74db5418ba21ce2a5a,
+        type: 3}
+      propertyPath: m_Size.x
+      value: 1.9793124
+      objectReference: {fileID: 0}
     - target: {fileID: 7525220884724155861, guid: 52124cb9d3832b74db5418ba21ce2a5a,
         type: 3}
       propertyPath: GravityForce
@@ -73187,7 +73212,7 @@ PrefabInstance:
     - target: {fileID: 7525220884724155866, guid: 52124cb9d3832b74db5418ba21ce2a5a,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 801.9
+      value: 783.9
       objectReference: {fileID: 0}
     - target: {fileID: 7525220884724155866, guid: 52124cb9d3832b74db5418ba21ce2a5a,
         type: 3}
@@ -76576,7 +76601,7 @@ PrefabInstance:
     - target: {fileID: 5310617170085545500, guid: 16bfcf7edbb4a96468c9c2a7117fea6c,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 132.9
+      value: 123.02
       objectReference: {fileID: 0}
     - target: {fileID: 5310617170085545500, guid: 16bfcf7edbb4a96468c9c2a7117fea6c,
         type: 3}
@@ -76631,7 +76656,7 @@ PrefabInstance:
     - target: {fileID: 5310617170085545500, guid: 16bfcf7edbb4a96468c9c2a7117fea6c,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 49.031
+      value: 61.38362
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 16bfcf7edbb4a96468c9c2a7117fea6c, type: 3}
@@ -94975,6 +95000,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: RoarExtensionArea_CAVE-01
+      objectReference: {fileID: 0}
+    - target: {fileID: 6846198544123169623, guid: 045f12c7cd3bbe84192ac45cdda8f7c5,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 045f12c7cd3bbe84192ac45cdda8f7c5, type: 3}
