@@ -6,7 +6,11 @@ public class SoundAmbientStopable : SoundAmbient
 {
 
     void Awake() {
-        
+          instance = GetComponent<SoundAmbientStopable>();
+
+          foreach( string sound in Sounds){
+               soundevents.Add( FMODUnity.RuntimeManager.CreateInstance (sound) );
+          }
     }
 
     private void Start()

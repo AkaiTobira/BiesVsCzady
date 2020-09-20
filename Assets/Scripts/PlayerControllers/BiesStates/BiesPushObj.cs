@@ -18,7 +18,7 @@ public class BiesPushObj : PlayerBaseState
         // TEMP
 
 
-        m_animator.GetComponent<SoundAmbientStopable>().PlayAmbient(0);
+     //   m_animator.GetComponent<SoundAmbientStopable>().PlayAmbient(0);
         name = "BiesPushObj";
         isMovingLeft = dir == GlobalUtils.Direction.Left;
         m_dir = dir;
@@ -43,7 +43,7 @@ public class BiesPushObj : PlayerBaseState
         m_animator.SetBool("isPushing", !m_isOver);
         CommonValues.PlayerVelocity = new Vector2(0,0);
         m_FloorDetector.Move(CommonValues.PlayerVelocity);
-        m_animator.GetComponent<SoundAmbientStopable>().StopAmbient(0);
+    //    m_animator.GetComponent<SoundAmbientStopable>().StopAmbient(0);
     }
 
     protected override void UpdateDirection(){}

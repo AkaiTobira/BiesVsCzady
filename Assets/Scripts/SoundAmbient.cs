@@ -11,7 +11,6 @@ public class SoundAmbient : MonoBehaviour {
      public string[] Sounds;
      public List<FMOD.Studio.EventInstance> soundevents = new List<FMOD.Studio.EventInstance>();
 
-
      private int currentActiveAmbient = 0;
 
      void Awake() {
@@ -22,12 +21,16 @@ public class SoundAmbient : MonoBehaviour {
           }
      }
 
-
      void Start() {
           PlayAmbient( 0 );
      }
 
      public virtual void PlayAmbient( int index ){
+          if( index >= Sounds.Length || index < 0 ){
+            //Debug.LogError( "Sound Id is invalid " + soundId + " : maxArray is " + Sounds.Length);
+            return;
+        }
+
           FMODUnity.RuntimeManager.AttachInstanceToGameObject(soundevents[index], GetComponent<Transform>(), GetComponent<Rigidbody2D>());
           FMOD.Studio.PLAYBACK_STATE fmodPbState;
           soundevents[index].getPlaybackState(out fmodPbState);
@@ -38,6 +41,11 @@ public class SoundAmbient : MonoBehaviour {
 
 
      public virtual void StopAmbient(int index){
+
+          if( index >= Sounds.Length || index < 0 ){
+            //Debug.LogError( "Sound Id is invalid " + soundId + " : maxArray is " + Sounds.Length);
+            return;
+        }
           FMOD.Studio.PLAYBACK_STATE fmodPbState;
           soundevents[index].getPlaybackState(out fmodPbState);
           if (fmodPbState == FMOD.Studio.PLAYBACK_STATE.PLAYING) {
