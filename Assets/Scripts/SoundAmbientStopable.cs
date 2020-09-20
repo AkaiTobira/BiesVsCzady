@@ -5,14 +5,18 @@ using UnityEngine;
 public class SoundAmbientStopable : SoundAmbient
 {
 
+    void Awake() {
+        
+    }
+
     private void Start()
     {
         
     }
     public void PlaySFX(int soundId)
     {
-        if( soundId > Sounds.Length || soundId < 0 ){
-            Debug.LogError( "Sound Id is invalid " + soundId + " : maxArray is " + Sounds.Length);
+        if( soundId >= Sounds.Length || soundId < 0 ){
+            //Debug.LogError( "Sound Id is invalid " + soundId + " : maxArray is " + Sounds.Length);
             return;
         }
         var sound = FMODUnity.RuntimeManager.CreateInstance(Sounds[soundId]);
