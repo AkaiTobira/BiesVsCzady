@@ -60,6 +60,9 @@ public class StalactitController :IEntity
             infoPack.attackDamage = enemyDamage;
         }
 
+        Debug.Log( infoPack.attackDamage );
+
+
         return infoPack;
     }
 
@@ -101,9 +104,6 @@ public class StalactitController :IEntity
     void UpdateBreak(){
         if( onFloor ) return;
         if( hasBeenHit && m_FloorDetector.isOnGround()){
-            
-            Debug.Log( transform.position.x );
-
             m_FloorDetector.enabled = false;
             m_FloorDetector.GetComponent<BoxCollider2D>().enabled = false;
             m_animator.SetTrigger("OnDestroy");

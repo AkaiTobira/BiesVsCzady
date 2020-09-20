@@ -32,12 +32,13 @@ public class BiesPullObj : PlayerBaseState
         distanceFromObject = Vector3.Distance( m_controllabledObject.transform.position,
                                                m_moveable.transform.position );
 
-        distanceToFixAnimation = new Vector3(0, 6 , 0);
+        distanceToFixAnimation = new Vector3(30, 6 , 0);
     }
 
     protected override void UpdateDirection(){}
 
     public override void OnExit(){
+        m_animator.SetBool("isPulling", !m_isOver);
         CommonValues.PlayerVelocity = new Vector2(0,0);
         m_FloorDetector.Move(CommonValues.PlayerVelocity);
         m_animator.GetComponent<SoundAmbientStopable>().StopAmbient(0);
@@ -70,6 +71,8 @@ public class BiesPullObj : PlayerBaseState
                     currentDistanceFromObject/distanceFromObject + 
                     oldMoveablePosition; 
             }
+            
+            m_animator.SetBool("isPulling", !m_isOver);
         }
     }
 

@@ -59,7 +59,7 @@ public class CatWallClimb : PlayerBaseState
             m_nextState = new CatWallJump(m_controllabledObject, GlobalUtils.ReverseDirection(m_dir));
         }
 
-        if( m_ObjectInteractionDetector.canClimbLedge() ){
+        if( m_ObjectInteractionDetector.canClimbLedge()  && !LockAreaOverseer.ledgeClimbBlock ){
             m_isOver = true;
             m_nextState = new CatLedgeClimb( m_controllabledObject, m_dir);
         }else if( PlayerInput.isSpecialKeyHold() ){

@@ -14,7 +14,7 @@ public class CatAutoJump : CatJump
 
     public override void HandleInput(){
         lostTime -= Time.deltaTime;
-        if( m_ObjectInteractionDetector.canClimbLedge() ){
+        if( m_ObjectInteractionDetector.canClimbLedge() && !LockAreaOverseer.ledgeClimbBlock  ){
             m_isOver = true;
             m_nextState = new CatLedgeClimb( m_controllabledObject, m_dir);
         }else if( PlayerInput.isJumpKeyJustPressed() ){

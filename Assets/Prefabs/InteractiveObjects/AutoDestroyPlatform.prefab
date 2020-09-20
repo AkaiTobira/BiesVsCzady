@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4028860356361242737}
   - component: {fileID: 3158984257696627388}
   - component: {fileID: 5765698491763281436}
+  - component: {fileID: 3782935832100814027}
   m_Layer: 0
   m_Name: Mushroom
   m_TagString: Untagged
@@ -101,6 +102,23 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &3782935832100814027
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 954613146449609856}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e5f50d528dc4d24486a2d94436a1573, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Sounds:
+  - event:/SFX/Enviro/grzyb znika
+  - event:/SFX/Enviro/grzyb pojawia sie
+  playOnStart: 0
+  shouldPlayOnStart: 0
 --- !u!1 &4989929133822151169
 GameObject:
   m_ObjectHideFlags: 0

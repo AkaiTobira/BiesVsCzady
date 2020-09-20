@@ -30,7 +30,7 @@ public class BiesMove : PlayerMove
 
         if( PlayerFallHelper.FallRequirementsMeet( m_FloorDetector.isOnGround()) ){
             m_nextState = new BiesFall(m_controllabledObject, GlobalUtils.Direction.Left);
-        }else if(m_lowerEdgeDetector.canClimbLedgeFromUpSite()){
+        }else if(m_lowerEdgeDetector.canClimbLedgeFromUpSite() && !LockAreaOverseer.ledgeClimbBlock ){
             m_isOver = true;
             m_nextState = new BiesLedgeClimb( m_controllabledObject, m_dir);
         }else if( m_lowerEdgeDetector.hasReachedPlatformEdge() && !LockAreaOverseer.autoJumpLock && m_FloorDetector.isOnGround() ){

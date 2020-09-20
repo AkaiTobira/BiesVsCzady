@@ -41,7 +41,7 @@ public class CatJump : PlayerJump
     }
 
     public override void HandleInput(){
-        if( m_ObjectInteractionDetector.canClimbLedge() ){
+        if( m_ObjectInteractionDetector.canClimbLedge() && !LockAreaOverseer.ledgeClimbBlock ){
             m_isOver = true;
             m_nextState = new CatLedgeClimb( m_controllabledObject, m_dir);
         }else if( m_WallDetector.isWallClose() && timeOfIgnoringWallStick < 0 ){

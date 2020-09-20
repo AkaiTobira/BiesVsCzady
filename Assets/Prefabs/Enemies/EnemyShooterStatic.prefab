@@ -293,6 +293,7 @@ GameObject:
   - component: {fileID: 2500821060950013894}
   - component: {fileID: 2500821060950013893}
   - component: {fileID: 5787487234780792252}
+  - component: {fileID: 2589750296138885789}
   m_Layer: 0
   m_Name: Animator
   m_TagString: Untagged
@@ -387,6 +388,25 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &2589750296138885789
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2500821060950013895}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e5f50d528dc4d24486a2d94436a1573, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Sounds:
+  - event:/SFX/Czad/shoot
+  - event:/SFX/Czad/hurt
+  - event:/SFX/Czad/dies
+  - event:/SFX/Czad/presence
+  playOnStart: 0
+  shouldPlayOnStart: 0
 --- !u!1 &2500821061185076093
 GameObject:
   m_ObjectHideFlags: 0
