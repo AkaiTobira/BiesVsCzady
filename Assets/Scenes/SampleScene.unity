@@ -1223,23 +1223,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Sounds:
-  - event:/SFX/NULL
+  - 
   - event:/SFX/Bies/FS
+  - event:/SFX/Bies/atak lapa
+  - event:/SFX/Bies/atak ziemia
+  - event:/SFX/Bies/climb
+  - event:/SFX/Bies/climb
   - event:/SFX/Bies/climb
   - event:/SFX/Bies/jump up
   - event:/SFX/Bies/jump down
-  - event:/SFX/Bies/roar
-  - event:/SFX/Bies/atak lapa
-  - event:/SFX/Bies/atak ziemia
-  - event:/SFX/Bies/block
-  - event:/SFX/Bies/hurt
-  - event:/SFX/Bies/dies
   - event:/SFX/przemiana
   - event:/SFX/Kot/FS
+  - event:/SFX/Bies/roar
   - event:/SFX/Kot/jump up
-  - event:/SFX/Bies/jump down
+  - event:/SFX/Kot/jump down
+  - event:/SFX/Bies/hurt
   - event:/SFX/Kot/hurt
+  - event:/SFX/Bies/dies
   - event:/SFX/Kot/dies
+  - event:/SFX/Bies/block
   playOnStart: 0
   shouldPlayOnStart: 0
 --- !u!114 &581408155
@@ -6244,12 +6246,12 @@ PrefabInstance:
     - target: {fileID: 6464913369440815581, guid: 5c9d8671db069494eb169b071acd31b0,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 3446
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6464913369440815581, guid: 5c9d8671db069494eb169b071acd31b0,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1966
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6464913369440815581, guid: 5c9d8671db069494eb169b071acd31b0,
         type: 3}
