@@ -31,6 +31,9 @@
 		<relationship name="timeline">
 			<destination>{b803e0ef-19a0-42be-adfb-5637ba9aa5f7}</destination>
 		</relationship>
+		<relationship name="banks">
+			<destination>{2512b335-c433-4850-aa50-e8afb69bfc3f}</destination>
+		</relationship>
 	</object>
 	<object class="EventMixer" id="{b926ebae-b2c5-4d74-881a-c4cbbfc87a66}">
 		<relationship name="masterBus">
@@ -56,11 +59,17 @@
 	<object class="EventAutomatableProperties" id="{c282c966-c1bb-4ac8-9c4d-4d163cb006e2}" />
 	<object class="MarkerTrack" id="{19df9c38-ff5d-41bb-bffb-8275e643de33}" />
 	<object class="GroupTrack" id="{b016adb1-f9cf-48fd-b95a-494c8dc92c90}">
+		<relationship name="modules">
+			<destination>{b798376a-4834-4501-a3fe-c53fad75f7e9}</destination>
+		</relationship>
 		<relationship name="mixerGroup">
 			<destination>{1852b8be-f7a0-452c-ba4b-abbb46732737}</destination>
 		</relationship>
 	</object>
 	<object class="Timeline" id="{b803e0ef-19a0-42be-adfb-5637ba9aa5f7}">
+		<relationship name="modules">
+			<destination>{b798376a-4834-4501-a3fe-c53fad75f7e9}</destination>
+		</relationship>
 		<relationship name="markers">
 			<destination>{f760a39d-ab66-4ef9-bdc3-55ccdc7fce3f}</destination>
 		</relationship>
@@ -82,6 +91,14 @@
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{c2103988-6bd1-4d50-bcdd-54f34078103e}" />
+	<object class="SingleSound" id="{b798376a-4834-4501-a3fe-c53fad75f7e9}">
+		<property name="length">
+			<value>52.363628117913834</value>
+		</property>
+		<relationship name="audioFile">
+			<destination>{a421563d-5c8a-43d5-bceb-dcc41177b2f5}</destination>
+		</relationship>
+	</object>
 	<object class="EventMixerGroup" id="{1852b8be-f7a0-452c-ba4b-abbb46732737}">
 		<property name="name">
 			<value>Audio 1</value>
@@ -101,7 +118,7 @@
 			<value>0</value>
 		</property>
 		<property name="length">
-			<value>69.818185941043083</value>
+			<value>52.363628117913834</value>
 		</property>
 		<relationship name="timeline">
 			<destination>{b803e0ef-19a0-42be-adfb-5637ba9aa5f7}</destination>
@@ -128,10 +145,10 @@
 	<object class="MixerBusFader" id="{f0a11f63-30cd-411c-a1a1-2f7d2edb1503}" />
 	<object class="MixerSend" id="{8539dabd-c084-4e85-ad67-c88986edfe64}">
 		<property name="level">
-			<value>-36</value>
+			<value>-38</value>
 		</property>
 		<property name="inputFormat">
-			<value>0</value>
+			<value>1</value>
 		</property>
 		<relationship name="mixerReturn">
 			<destination>{61708e4a-16ef-4ee4-9e42-15fe1b20f405}</destination>
