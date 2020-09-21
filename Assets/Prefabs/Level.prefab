@@ -15,7 +15,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &4949234394162239171
 Transform:
   m_ObjectHideFlags: 0
@@ -136,7 +136,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 20
+  m_SortingOrder: 10
   m_Sprite: {fileID: 21300000, guid: cf0a6afcfc9eb144499054dcd36d9e63, type: 3}
   m_Color: {r: 0.027100407, g: 0.8207547, b: 0.6784937, a: 1}
   m_FlipX: 0
@@ -601,7 +601,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 20
+  m_SortingOrder: 10
   m_Sprite: {fileID: 21300000, guid: cf0a6afcfc9eb144499054dcd36d9e63, type: 3}
   m_Color: {r: 0.027100407, g: 0.8207547, b: 0.6784937, a: 1}
   m_FlipX: 0
@@ -1437,7 +1437,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 20
+  m_SortingOrder: 10
   m_Sprite: {fileID: 21300000, guid: cf0a6afcfc9eb144499054dcd36d9e63, type: 3}
   m_Color: {r: 0.027100407, g: 0.8207547, b: 0.6784937, a: 1}
   m_FlipX: 0
@@ -1640,7 +1640,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &3728239625866721548
 Transform:
   m_ObjectHideFlags: 0
@@ -1833,6 +1833,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: AutoDestroyPlatform (31)
       objectReference: {fileID: 0}
+    - target: {fileID: 4989929133822151169, guid: 09a7f118809de2e45abcbf6159e80622,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4989929133822151170, guid: 09a7f118809de2e45abcbf6159e80622,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1932,6 +1937,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: OnceEnterLockArea
+      objectReference: {fileID: 0}
+    - target: {fileID: 2464559188624607926, guid: 0556e9572ae21cc4d809f7b6b138feef,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3575182482926566376, guid: 0556e9572ae21cc4d809f7b6b138feef,
         type: 3}
@@ -2103,6 +2113,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: CheckpointArea (16)
       objectReference: {fileID: 0}
+    - target: {fileID: 1192619444154100522, guid: b5046a976e0b82c44888ec886be8f562,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1192619444154100526, guid: b5046a976e0b82c44888ec886be8f562,
         type: 3}
       propertyPath: m_SortingOrder
@@ -2132,6 +2147,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: AutoDestroyPlatform (28)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4989929133822151169, guid: 09a7f118809de2e45abcbf6159e80622,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4989929133822151170, guid: 09a7f118809de2e45abcbf6159e80622,
         type: 3}
@@ -2237,6 +2257,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Destroyable_CAVE-02
+      objectReference: {fileID: 0}
+    - target: {fileID: 2695046210730010640, guid: d5d5bde3a86031347a1f83f472a7000d,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2695046210730010641, guid: d5d5bde3a86031347a1f83f472a7000d,
         type: 3}
@@ -3174,6 +3199,11 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Movable
       objectReference: {fileID: 0}
+    - target: {fileID: 5368838613019971325, guid: 93175970ab2ecca41a426ff164496ae3,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 93175970ab2ecca41a426ff164496ae3, type: 3}
 --- !u!4 &5234644285649852574 stripped
@@ -3544,6 +3574,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: SneakyArea_FOREST-02
       objectReference: {fileID: 0}
+    - target: {fileID: 675234456118384295, guid: a7a502ace4192ad4799b9a6d3773f5de,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 675234456118384296, guid: a7a502ace4192ad4799b9a6d3773f5de,
         type: 3}
       propertyPath: m_Enabled
@@ -3749,6 +3784,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: CheckpointArea (13)
       objectReference: {fileID: 0}
+    - target: {fileID: 1192619444154100522, guid: b5046a976e0b82c44888ec886be8f562,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1192619444154100526, guid: b5046a976e0b82c44888ec886be8f562,
         type: 3}
       propertyPath: m_SortingOrder
@@ -3939,6 +3979,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: SneakyArea_CAVE-03
       objectReference: {fileID: 0}
+    - target: {fileID: 675234456118384295, guid: a7a502ace4192ad4799b9a6d3773f5de,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 675234456118384296, guid: a7a502ace4192ad4799b9a6d3773f5de,
         type: 3}
       propertyPath: m_Enabled
@@ -3988,6 +4033,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_SortingLayer
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5178019152899575849, guid: 16bfcf7edbb4a96468c9c2a7117fea6c,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 5310617170085545499, guid: 16bfcf7edbb4a96468c9c2a7117fea6c,
         type: 3}
@@ -4659,6 +4709,11 @@ PrefabInstance:
       propertyPath: m_SortingLayer
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5178019152899575849, guid: 16bfcf7edbb4a96468c9c2a7117fea6c,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 5310617170085545499, guid: 16bfcf7edbb4a96468c9c2a7117fea6c,
         type: 3}
       propertyPath: m_Name
@@ -4944,6 +4999,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Destroyable_CAVE-06
       objectReference: {fileID: 0}
+    - target: {fileID: 2695046210730010640, guid: d5d5bde3a86031347a1f83f472a7000d,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2695046210730010641, guid: d5d5bde3a86031347a1f83f472a7000d,
         type: 3}
       propertyPath: durability
@@ -5143,6 +5203,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: FallingFromSkyObject_CAVE-12
+      objectReference: {fileID: 0}
+    - target: {fileID: 7525220884724155867, guid: 52124cb9d3832b74db5418ba21ce2a5a,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7525220885830885768, guid: 52124cb9d3832b74db5418ba21ce2a5a,
         type: 3}
@@ -5581,6 +5646,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: AutoDestroyPlatform_CAVE-03
       objectReference: {fileID: 0}
+    - target: {fileID: 4989929133822151169, guid: 09a7f118809de2e45abcbf6159e80622,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4989929133822151170, guid: 09a7f118809de2e45abcbf6159e80622,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -5971,6 +6041,11 @@ PrefabInstance:
       propertyPath: m_SortingLayer
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5178019152899575849, guid: 16bfcf7edbb4a96468c9c2a7117fea6c,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 5310617170085545499, guid: 16bfcf7edbb4a96468c9c2a7117fea6c,
         type: 3}
       propertyPath: m_Name
@@ -6060,6 +6135,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Dangerous_CAVE-22
+      objectReference: {fileID: 0}
+    - target: {fileID: 7819002658321421588, guid: 9f677d340930e644fb18f19bafff3b70,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7819002658321421591, guid: 9f677d340930e644fb18f19bafff3b70,
         type: 3}
@@ -6256,6 +6336,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: FallingFromSkyObject_CAVE-11
       objectReference: {fileID: 0}
+    - target: {fileID: 7525220884724155867, guid: 52124cb9d3832b74db5418ba21ce2a5a,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7525220885830885768, guid: 52124cb9d3832b74db5418ba21ce2a5a,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -6388,6 +6473,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: FallingFromSkyObject_CAVE-07
       objectReference: {fileID: 0}
+    - target: {fileID: 7525220884724155867, guid: 52124cb9d3832b74db5418ba21ce2a5a,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7525220885830885768, guid: 52124cb9d3832b74db5418ba21ce2a5a,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -6495,6 +6585,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: SneakyArea_CAVE-01
       objectReference: {fileID: 0}
+    - target: {fileID: 675234456118384295, guid: a7a502ace4192ad4799b9a6d3773f5de,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 675234456118384296, guid: a7a502ace4192ad4799b9a6d3773f5de,
         type: 3}
       propertyPath: m_Enabled
@@ -6549,6 +6644,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_TagString
       value: DestroyableBothClimbLock
+      objectReference: {fileID: 0}
+    - target: {fileID: 2695046210730010640, guid: d5d5bde3a86031347a1f83f472a7000d,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2695046210730010641, guid: d5d5bde3a86031347a1f83f472a7000d,
         type: 3}
@@ -6760,6 +6860,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Destroyable (15)
       objectReference: {fileID: 0}
+    - target: {fileID: 2695046210730010640, guid: d5d5bde3a86031347a1f83f472a7000d,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2695046210730010641, guid: d5d5bde3a86031347a1f83f472a7000d,
         type: 3}
       propertyPath: durability
@@ -6965,6 +7070,11 @@ PrefabInstance:
       propertyPath: m_SortingLayer
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5178019152899575849, guid: 16bfcf7edbb4a96468c9c2a7117fea6c,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 5310617170085545499, guid: 16bfcf7edbb4a96468c9c2a7117fea6c,
         type: 3}
       propertyPath: m_Name
@@ -7054,6 +7164,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: AutoDestroyPlatform (27)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4989929133822151169, guid: 09a7f118809de2e45abcbf6159e80622,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4989929133822151170, guid: 09a7f118809de2e45abcbf6159e80622,
         type: 3}
@@ -7254,6 +7369,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_SortingLayer
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5178019152899575849, guid: 16bfcf7edbb4a96468c9c2a7117fea6c,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 5310617170085545499, guid: 16bfcf7edbb4a96468c9c2a7117fea6c,
         type: 3}
@@ -7635,6 +7755,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Dangerous_FOREST-04
       objectReference: {fileID: 0}
+    - target: {fileID: 7819002658321421588, guid: 9f677d340930e644fb18f19bafff3b70,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7819002658321421591, guid: 9f677d340930e644fb18f19bafff3b70,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -7834,6 +7959,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: CameraControllArea (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2342242944410888030, guid: f3d577092eb1c534f9d5d276d91ea1e5,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2342242944410888031, guid: f3d577092eb1c534f9d5d276d91ea1e5,
         type: 3}
@@ -8070,6 +8200,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: FallingFromSkyObject_CAVE-10
       objectReference: {fileID: 0}
+    - target: {fileID: 7525220884724155867, guid: 52124cb9d3832b74db5418ba21ce2a5a,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7525220885830885768, guid: 52124cb9d3832b74db5418ba21ce2a5a,
         type: 3}
       propertyPath: m_LocalPosition.y
@@ -8287,6 +8422,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: CameraControllArea_FOREST-01
       objectReference: {fileID: 0}
+    - target: {fileID: 2342242944410888030, guid: f3d577092eb1c534f9d5d276d91ea1e5,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2342242944410888031, guid: f3d577092eb1c534f9d5d276d91ea1e5,
         type: 3}
       propertyPath: DownClamping.enable
@@ -8326,6 +8466,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Dangerous_FOREST-02
+      objectReference: {fileID: 0}
+    - target: {fileID: 7819002658321421588, guid: 9f677d340930e644fb18f19bafff3b70,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7819002658321421591, guid: 9f677d340930e644fb18f19bafff3b70,
         type: 3}
@@ -8711,6 +8856,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Keys (6)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1195742997930895893, guid: 8e33925040efbe943994bca476bd23b4,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8e33925040efbe943994bca476bd23b4, type: 3}
@@ -9187,6 +9337,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Key_CAVE-01
       objectReference: {fileID: 0}
+    - target: {fileID: 1195742997930895893, guid: 8e33925040efbe943994bca476bd23b4,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8e33925040efbe943994bca476bd23b4, type: 3}
 --- !u!4 &2072231402417301424 stripped
@@ -9231,6 +9386,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_TagString
       value: BothClimbLock
+      objectReference: {fileID: 0}
+    - target: {fileID: 4989929133822151169, guid: 09a7f118809de2e45abcbf6159e80622,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4989929133822151170, guid: 09a7f118809de2e45abcbf6159e80622,
         type: 3}
@@ -9337,6 +9497,11 @@ PrefabInstance:
       propertyPath: m_SortingLayer
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5178019152899575849, guid: 16bfcf7edbb4a96468c9c2a7117fea6c,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 5310617170085545499, guid: 16bfcf7edbb4a96468c9c2a7117fea6c,
         type: 3}
       propertyPath: m_Name
@@ -9431,6 +9596,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_SortingLayer
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5178019152899575849, guid: 16bfcf7edbb4a96468c9c2a7117fea6c,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 5310617170085545499, guid: 16bfcf7edbb4a96468c9c2a7117fea6c,
         type: 3}
@@ -9622,6 +9792,11 @@ PrefabInstance:
       propertyPath: m_SortingLayer
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5178019152899575849, guid: 16bfcf7edbb4a96468c9c2a7117fea6c,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 5310617170085545499, guid: 16bfcf7edbb4a96468c9c2a7117fea6c,
         type: 3}
       propertyPath: m_Name
@@ -9716,6 +9891,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_SortingLayer
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5178019152899575849, guid: 16bfcf7edbb4a96468c9c2a7117fea6c,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 5310617170085545499, guid: 16bfcf7edbb4a96468c9c2a7117fea6c,
         type: 3}
@@ -9997,6 +10177,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Dangerous_CAVE-03
       objectReference: {fileID: 0}
+    - target: {fileID: 7819002658321421588, guid: 9f677d340930e644fb18f19bafff3b70,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7819002658321421591, guid: 9f677d340930e644fb18f19bafff3b70,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -10191,6 +10376,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Key_FOREST-03
+      objectReference: {fileID: 0}
+    - target: {fileID: 1195742997930895893, guid: 8e33925040efbe943994bca476bd23b4,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8e33925040efbe943994bca476bd23b4, type: 3}
@@ -10567,6 +10757,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: CheckpointArea (18)
       objectReference: {fileID: 0}
+    - target: {fileID: 1192619444154100522, guid: b5046a976e0b82c44888ec886be8f562,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1192619444154100526, guid: b5046a976e0b82c44888ec886be8f562,
         type: 3}
       propertyPath: m_SortingOrder
@@ -10661,6 +10856,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: SneakyArea_CAVE-02
+      objectReference: {fileID: 0}
+    - target: {fileID: 675234456118384295, guid: a7a502ace4192ad4799b9a6d3773f5de,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 675234456118384296, guid: a7a502ace4192ad4799b9a6d3773f5de,
         type: 3}
@@ -11962,6 +12162,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Dangerous_CAVE-04
       objectReference: {fileID: 0}
+    - target: {fileID: 7819002658321421588, guid: 9f677d340930e644fb18f19bafff3b70,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7819002658321421591, guid: 9f677d340930e644fb18f19bafff3b70,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -12071,6 +12276,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: AutoDestroyPlatform_CAVE-01
+      objectReference: {fileID: 0}
+    - target: {fileID: 4989929133822151169, guid: 09a7f118809de2e45abcbf6159e80622,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4989929133822151170, guid: 09a7f118809de2e45abcbf6159e80622,
         type: 3}
@@ -12657,6 +12867,11 @@ PrefabInstance:
       propertyPath: m_SortingLayer
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5178019152899575849, guid: 16bfcf7edbb4a96468c9c2a7117fea6c,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 5310617170085545499, guid: 16bfcf7edbb4a96468c9c2a7117fea6c,
         type: 3}
       propertyPath: m_Name
@@ -12927,6 +13142,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Movable (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 5368838613019971325, guid: 93175970ab2ecca41a426ff164496ae3,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 93175970ab2ecca41a426ff164496ae3, type: 3}
 --- !u!4 &6368988743081548645 stripped
@@ -13041,6 +13261,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Dangerous_FOREST-11
+      objectReference: {fileID: 0}
+    - target: {fileID: 7819002658321421588, guid: 9f677d340930e644fb18f19bafff3b70,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7819002658321421591, guid: 9f677d340930e644fb18f19bafff3b70,
         type: 3}
@@ -13326,6 +13551,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: CheckpointArea_CAVE-01
+      objectReference: {fileID: 0}
+    - target: {fileID: 1192619444154100522, guid: b5046a976e0b82c44888ec886be8f562,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1192619444154100526, guid: b5046a976e0b82c44888ec886be8f562,
         type: 3}
@@ -14217,6 +14447,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: AutoDestroyPlatform_FOREST-16
       objectReference: {fileID: 0}
+    - target: {fileID: 4989929133822151169, guid: 09a7f118809de2e45abcbf6159e80622,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4989929133822151170, guid: 09a7f118809de2e45abcbf6159e80622,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -14316,6 +14551,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: AutoDestroyPlatform (32)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4989929133822151169, guid: 09a7f118809de2e45abcbf6159e80622,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4989929133822151170, guid: 09a7f118809de2e45abcbf6159e80622,
         type: 3}
@@ -14732,6 +14972,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: AutoDestroyPlatform_FOREST-03
       objectReference: {fileID: 0}
+    - target: {fileID: 4989929133822151169, guid: 09a7f118809de2e45abcbf6159e80622,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4989929133822151170, guid: 09a7f118809de2e45abcbf6159e80622,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -15042,6 +15287,11 @@ PrefabInstance:
       propertyPath: m_SortingLayer
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5178019152899575849, guid: 16bfcf7edbb4a96468c9c2a7117fea6c,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 5310617170085545499, guid: 16bfcf7edbb4a96468c9c2a7117fea6c,
         type: 3}
       propertyPath: m_Name
@@ -15226,6 +15476,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: AutoDestroyPlatform_FOREST-11
+      objectReference: {fileID: 0}
+    - target: {fileID: 4989929133822151169, guid: 09a7f118809de2e45abcbf6159e80622,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4989929133822151170, guid: 09a7f118809de2e45abcbf6159e80622,
         type: 3}
@@ -15487,6 +15742,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: SneakyArea (8)
       objectReference: {fileID: 0}
+    - target: {fileID: 675234456118384295, guid: a7a502ace4192ad4799b9a6d3773f5de,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 675234456118384296, guid: a7a502ace4192ad4799b9a6d3773f5de,
         type: 3}
       propertyPath: m_Enabled
@@ -15721,6 +15981,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: AutoDestroyPlatform_FOREST-13
+      objectReference: {fileID: 0}
+    - target: {fileID: 4989929133822151169, guid: 09a7f118809de2e45abcbf6159e80622,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4989929133822151170, guid: 09a7f118809de2e45abcbf6159e80622,
         type: 3}
@@ -16016,6 +16281,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Dangerous (43)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7819002658321421588, guid: 9f677d340930e644fb18f19bafff3b70,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7819002658321421591, guid: 9f677d340930e644fb18f19bafff3b70,
         type: 3}
@@ -16337,6 +16607,11 @@ PrefabInstance:
       propertyPath: m_TagString
       value: BothClimbLock
       objectReference: {fileID: 0}
+    - target: {fileID: 4989929133822151169, guid: 09a7f118809de2e45abcbf6159e80622,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4989929133822151170, guid: 09a7f118809de2e45abcbf6159e80622,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -16537,6 +16812,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Dangerous_CAVE-05
       objectReference: {fileID: 0}
+    - target: {fileID: 7819002658321421588, guid: 9f677d340930e644fb18f19bafff3b70,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7819002658321421591, guid: 9f677d340930e644fb18f19bafff3b70,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -16661,6 +16941,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Dangerous_CAVE-08
+      objectReference: {fileID: 0}
+    - target: {fileID: 7819002658321421588, guid: 9f677d340930e644fb18f19bafff3b70,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7819002658321421591, guid: 9f677d340930e644fb18f19bafff3b70,
         type: 3}
@@ -17157,6 +17442,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Movable_FOREST-01
       objectReference: {fileID: 0}
+    - target: {fileID: 5368838613019971325, guid: 93175970ab2ecca41a426ff164496ae3,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 93175970ab2ecca41a426ff164496ae3, type: 3}
 --- !u!4 &6034753330795975867 stripped
@@ -17372,6 +17662,11 @@ PrefabInstance:
       propertyPath: m_SortingLayer
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5178019152899575849, guid: 16bfcf7edbb4a96468c9c2a7117fea6c,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 5310617170085545499, guid: 16bfcf7edbb4a96468c9c2a7117fea6c,
         type: 3}
       propertyPath: m_Name
@@ -17527,6 +17822,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: CheckpointArea_FOREST_01
       objectReference: {fileID: 0}
+    - target: {fileID: 1192619444154100522, guid: b5046a976e0b82c44888ec886be8f562,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1192619444154100526, guid: b5046a976e0b82c44888ec886be8f562,
         type: 3}
       propertyPath: m_SortingOrder
@@ -17556,6 +17856,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Dangerous_CAVE-20
+      objectReference: {fileID: 0}
+    - target: {fileID: 7819002658321421588, guid: 9f677d340930e644fb18f19bafff3b70,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7819002658321421591, guid: 9f677d340930e644fb18f19bafff3b70,
         type: 3}
@@ -17756,6 +18061,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Dangerous_CAVE-11
+      objectReference: {fileID: 0}
+    - target: {fileID: 7819002658321421588, guid: 9f677d340930e644fb18f19bafff3b70,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7819002658321421591, guid: 9f677d340930e644fb18f19bafff3b70,
         type: 3}
@@ -18181,6 +18491,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_SortingLayer
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5178019152899575849, guid: 16bfcf7edbb4a96468c9c2a7117fea6c,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 5310617170085545499, guid: 16bfcf7edbb4a96468c9c2a7117fea6c,
         type: 3}
@@ -19097,6 +19412,11 @@ PrefabInstance:
       propertyPath: m_SortingLayer
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5178019152899575849, guid: 16bfcf7edbb4a96468c9c2a7117fea6c,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 5310617170085545499, guid: 16bfcf7edbb4a96468c9c2a7117fea6c,
         type: 3}
       propertyPath: m_Name
@@ -19381,6 +19701,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: RoarExtensionArea
+      objectReference: {fileID: 0}
+    - target: {fileID: 6846198544123169623, guid: 045f12c7cd3bbe84192ac45cdda8f7c5,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 045f12c7cd3bbe84192ac45cdda8f7c5, type: 3}
@@ -19776,6 +20101,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_SortingLayer
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5178019152899575849, guid: 16bfcf7edbb4a96468c9c2a7117fea6c,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 5310617170085545499, guid: 16bfcf7edbb4a96468c9c2a7117fea6c,
         type: 3}
@@ -20697,6 +21027,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: CheckpointArea_FOREST_06
       objectReference: {fileID: 0}
+    - target: {fileID: 1192619444154100522, guid: b5046a976e0b82c44888ec886be8f562,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1192619444154100526, guid: b5046a976e0b82c44888ec886be8f562,
         type: 3}
       propertyPath: m_SortingOrder
@@ -20726,6 +21061,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Dangerous_CAVE-13
+      objectReference: {fileID: 0}
+    - target: {fileID: 7819002658321421588, guid: 9f677d340930e644fb18f19bafff3b70,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7819002658321421591, guid: 9f677d340930e644fb18f19bafff3b70,
         type: 3}
@@ -21397,6 +21737,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: CheckpointArea_CAVE-04
       objectReference: {fileID: 0}
+    - target: {fileID: 1192619444154100522, guid: b5046a976e0b82c44888ec886be8f562,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1192619444154100526, guid: b5046a976e0b82c44888ec886be8f562,
         type: 3}
       propertyPath: m_SortingOrder
@@ -21927,6 +22272,11 @@ PrefabInstance:
       propertyPath: m_SortingLayer
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5178019152899575849, guid: 16bfcf7edbb4a96468c9c2a7117fea6c,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 5310617170085545499, guid: 16bfcf7edbb4a96468c9c2a7117fea6c,
         type: 3}
       propertyPath: m_Name
@@ -22431,6 +22781,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_SortingLayer
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5178019152899575849, guid: 16bfcf7edbb4a96468c9c2a7117fea6c,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 5310617170085545499, guid: 16bfcf7edbb4a96468c9c2a7117fea6c,
         type: 3}
@@ -23222,6 +23577,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: FallingFromSkyObject (13)
       objectReference: {fileID: 0}
+    - target: {fileID: 7525220884724155867, guid: 52124cb9d3832b74db5418ba21ce2a5a,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 52124cb9d3832b74db5418ba21ce2a5a, type: 3}
 --- !u!114 &5491039164234737955 stripped
@@ -23734,6 +24094,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Destroyable_CAVE-08
       objectReference: {fileID: 0}
+    - target: {fileID: 2695046210730010640, guid: d5d5bde3a86031347a1f83f472a7000d,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2695046210730010641, guid: d5d5bde3a86031347a1f83f472a7000d,
         type: 3}
       propertyPath: durability
@@ -24229,6 +24594,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Dangerous_FOREST-05
       objectReference: {fileID: 0}
+    - target: {fileID: 7819002658321421588, guid: 9f677d340930e644fb18f19bafff3b70,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7819002658321421591, guid: 9f677d340930e644fb18f19bafff3b70,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -24438,6 +24808,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_SortingLayer
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5178019152899575849, guid: 16bfcf7edbb4a96468c9c2a7117fea6c,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 5310617170085545499, guid: 16bfcf7edbb4a96468c9c2a7117fea6c,
         type: 3}
@@ -24930,6 +25305,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_SortingLayer
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5178019152899575849, guid: 16bfcf7edbb4a96468c9c2a7117fea6c,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 5310617170085545499, guid: 16bfcf7edbb4a96468c9c2a7117fea6c,
         type: 3}
@@ -25505,6 +25885,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_SortingLayer
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5178019152899575849, guid: 16bfcf7edbb4a96468c9c2a7117fea6c,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 5310617170085545499, guid: 16bfcf7edbb4a96468c9c2a7117fea6c,
         type: 3}
@@ -26381,6 +26766,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: AutoDestroyPlatform_FOREST-17
       objectReference: {fileID: 0}
+    - target: {fileID: 4989929133822151169, guid: 09a7f118809de2e45abcbf6159e80622,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4989929133822151170, guid: 09a7f118809de2e45abcbf6159e80622,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -26581,6 +26971,11 @@ PrefabInstance:
       propertyPath: m_SortingLayer
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5178019152899575849, guid: 16bfcf7edbb4a96468c9c2a7117fea6c,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 5310617170085545499, guid: 16bfcf7edbb4a96468c9c2a7117fea6c,
         type: 3}
       propertyPath: m_Name
@@ -26745,6 +27140,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: CameraControllArea (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2342242944410888030, guid: f3d577092eb1c534f9d5d276d91ea1e5,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2342242944410888031, guid: f3d577092eb1c534f9d5d276d91ea1e5,
         type: 3}
@@ -27456,6 +27856,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: RoarExtensionArea_CAVE-03
       objectReference: {fileID: 0}
+    - target: {fileID: 6846198544123169623, guid: 045f12c7cd3bbe84192ac45cdda8f7c5,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 045f12c7cd3bbe84192ac45cdda8f7c5, type: 3}
 --- !u!4 &8364441134963039144 stripped
@@ -27671,6 +28076,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: RoarExtensionArea
       objectReference: {fileID: 0}
+    - target: {fileID: 6846198544123169623, guid: 045f12c7cd3bbe84192ac45cdda8f7c5,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 045f12c7cd3bbe84192ac45cdda8f7c5, type: 3}
 --- !u!4 &8402885323710182090 stripped
@@ -27885,6 +28295,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_SortingLayer
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5178019152899575849, guid: 16bfcf7edbb4a96468c9c2a7117fea6c,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 5310617170085545499, guid: 16bfcf7edbb4a96468c9c2a7117fea6c,
         type: 3}
@@ -28140,6 +28555,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Dangerous_CAVE-18
+      objectReference: {fileID: 0}
+    - target: {fileID: 7819002658321421588, guid: 9f677d340930e644fb18f19bafff3b70,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7819002658321421591, guid: 9f677d340930e644fb18f19bafff3b70,
         type: 3}
@@ -28456,6 +28876,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: FallingFromSkyObject (11)
       objectReference: {fileID: 0}
+    - target: {fileID: 7525220884724155867, guid: 52124cb9d3832b74db5418ba21ce2a5a,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7525220885830885768, guid: 52124cb9d3832b74db5418ba21ce2a5a,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -28661,6 +29086,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: CameraControllArea_CAVE-02
       objectReference: {fileID: 0}
+    - target: {fileID: 2342242944410888030, guid: f3d577092eb1c534f9d5d276d91ea1e5,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2342242944410888031, guid: f3d577092eb1c534f9d5d276d91ea1e5,
         type: 3}
       propertyPath: DownClamping.enable
@@ -28780,6 +29210,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: SneakyArea_FOREST-03
+      objectReference: {fileID: 0}
+    - target: {fileID: 675234456118384295, guid: a7a502ace4192ad4799b9a6d3773f5de,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 675234456118384296, guid: a7a502ace4192ad4799b9a6d3773f5de,
         type: 3}
@@ -29581,6 +30016,11 @@ PrefabInstance:
       propertyPath: m_SortingLayer
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5178019152899575849, guid: 16bfcf7edbb4a96468c9c2a7117fea6c,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 5310617170085545499, guid: 16bfcf7edbb4a96468c9c2a7117fea6c,
         type: 3}
       propertyPath: m_Name
@@ -29736,6 +30176,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: CheckpointArea_CAVE-05
       objectReference: {fileID: 0}
+    - target: {fileID: 1192619444154100522, guid: b5046a976e0b82c44888ec886be8f562,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1192619444154100526, guid: b5046a976e0b82c44888ec886be8f562,
         type: 3}
       propertyPath: m_SortingOrder
@@ -29770,6 +30215,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_SortingLayer
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5178019152899575849, guid: 16bfcf7edbb4a96468c9c2a7117fea6c,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 5310617170085545499, guid: 16bfcf7edbb4a96468c9c2a7117fea6c,
         type: 3}
@@ -30121,6 +30571,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Key_FOREST-02
       objectReference: {fileID: 0}
+    - target: {fileID: 1195742997930895893, guid: 8e33925040efbe943994bca476bd23b4,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8e33925040efbe943994bca476bd23b4, type: 3}
 --- !u!4 &2446715165558073027 stripped
@@ -30261,6 +30716,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: AutoJumpLock (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 1564949260710706775, guid: 0d44bdc3dd4f1e9429ef3f98155298d6,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4926511273316922702, guid: 0d44bdc3dd4f1e9429ef3f98155298d6,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -30345,6 +30805,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_TagString
       value: DestroyableBothClimbLock
+      objectReference: {fileID: 0}
+    - target: {fileID: 2695046210730010640, guid: d5d5bde3a86031347a1f83f472a7000d,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2695046210730010641, guid: d5d5bde3a86031347a1f83f472a7000d,
         type: 3}
@@ -30455,6 +30920,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Dangerous_CAVE-07
+      objectReference: {fileID: 0}
+    - target: {fileID: 7819002658321421588, guid: 9f677d340930e644fb18f19bafff3b70,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7819002658321421591, guid: 9f677d340930e644fb18f19bafff3b70,
         type: 3}
@@ -30961,6 +31431,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Dangerous_CAVE-02
       objectReference: {fileID: 0}
+    - target: {fileID: 7819002658321421588, guid: 9f677d340930e644fb18f19bafff3b70,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7819002658321421591, guid: 9f677d340930e644fb18f19bafff3b70,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -31186,6 +31661,11 @@ PrefabInstance:
       propertyPath: m_SortingLayer
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5178019152899575849, guid: 16bfcf7edbb4a96468c9c2a7117fea6c,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 5310617170085545499, guid: 16bfcf7edbb4a96468c9c2a7117fea6c,
         type: 3}
       propertyPath: m_Name
@@ -31376,6 +31856,11 @@ PrefabInstance:
       propertyPath: m_SortingLayer
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5178019152899575849, guid: 16bfcf7edbb4a96468c9c2a7117fea6c,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 5310617170085545499, guid: 16bfcf7edbb4a96468c9c2a7117fea6c,
         type: 3}
       propertyPath: m_Name
@@ -31560,6 +32045,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: AutoDestroyPlatform (23)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4989929133822151169, guid: 09a7f118809de2e45abcbf6159e80622,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4989929133822151170, guid: 09a7f118809de2e45abcbf6159e80622,
         type: 3}
@@ -31761,6 +32251,11 @@ PrefabInstance:
       propertyPath: m_SortingLayer
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5178019152899575849, guid: 16bfcf7edbb4a96468c9c2a7117fea6c,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 5310617170085545499, guid: 16bfcf7edbb4a96468c9c2a7117fea6c,
         type: 3}
       propertyPath: m_Name
@@ -31855,6 +32350,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Destroyable_CAVE-04
+      objectReference: {fileID: 0}
+    - target: {fileID: 2695046210730010640, guid: d5d5bde3a86031347a1f83f472a7000d,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2695046210730010641, guid: d5d5bde3a86031347a1f83f472a7000d,
         type: 3}
@@ -32251,6 +32751,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: FallingFromSkyObject_FOREST-01
       objectReference: {fileID: 0}
+    - target: {fileID: 7525220884724155867, guid: 52124cb9d3832b74db5418ba21ce2a5a,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7525220885830885768, guid: 52124cb9d3832b74db5418ba21ce2a5a,
         type: 3}
       propertyPath: m_LocalPosition.y
@@ -32287,6 +32792,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Dangerous_CAVE-06
+      objectReference: {fileID: 0}
+    - target: {fileID: 7819002658321421588, guid: 9f677d340930e644fb18f19bafff3b70,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7819002658321421591, guid: 9f677d340930e644fb18f19bafff3b70,
         type: 3}
@@ -32417,6 +32927,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Destroyable (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2695046210730010640, guid: d5d5bde3a86031347a1f83f472a7000d,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2695046210730010641, guid: d5d5bde3a86031347a1f83f472a7000d,
         type: 3}
@@ -32622,6 +33137,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_SortingLayer
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5178019152899575849, guid: 16bfcf7edbb4a96468c9c2a7117fea6c,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 5310617170085545499, guid: 16bfcf7edbb4a96468c9c2a7117fea6c,
         type: 3}
@@ -32873,6 +33393,11 @@ PrefabInstance:
       propertyPath: m_SortingLayer
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5178019152899575849, guid: 16bfcf7edbb4a96468c9c2a7117fea6c,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 5310617170085545499, guid: 16bfcf7edbb4a96468c9c2a7117fea6c,
         type: 3}
       propertyPath: m_Name
@@ -32962,6 +33487,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: AutoDestroyPlatform (17)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4989929133822151169, guid: 09a7f118809de2e45abcbf6159e80622,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4989929133822151170, guid: 09a7f118809de2e45abcbf6159e80622,
         type: 3}
@@ -34453,6 +34983,11 @@ PrefabInstance:
       propertyPath: m_SortingLayer
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5178019152899575849, guid: 16bfcf7edbb4a96468c9c2a7117fea6c,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 5310617170085545499, guid: 16bfcf7edbb4a96468c9c2a7117fea6c,
         type: 3}
       propertyPath: m_Name
@@ -34642,6 +35177,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_SortingLayer
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5178019152899575849, guid: 16bfcf7edbb4a96468c9c2a7117fea6c,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 5310617170085545499, guid: 16bfcf7edbb4a96468c9c2a7117fea6c,
         type: 3}
@@ -34917,6 +35457,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: FallingFromSkyObject_CAVE-03
+      objectReference: {fileID: 0}
+    - target: {fileID: 7525220884724155867, guid: 52124cb9d3832b74db5418ba21ce2a5a,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 52124cb9d3832b74db5418ba21ce2a5a, type: 3}
@@ -35635,6 +36180,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Dangerous_FOREST-08
       objectReference: {fileID: 0}
+    - target: {fileID: 7819002658321421588, guid: 9f677d340930e644fb18f19bafff3b70,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7819002658321421591, guid: 9f677d340930e644fb18f19bafff3b70,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -35764,6 +36314,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_SortingLayer
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5178019152899575849, guid: 16bfcf7edbb4a96468c9c2a7117fea6c,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 5310617170085545499, guid: 16bfcf7edbb4a96468c9c2a7117fea6c,
         type: 3}
@@ -36130,6 +36685,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: FallingFromSkyObject_CAVE-04
       objectReference: {fileID: 0}
+    - target: {fileID: 7525220884724155867, guid: 52124cb9d3832b74db5418ba21ce2a5a,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 52124cb9d3832b74db5418ba21ce2a5a, type: 3}
 --- !u!4 &6004730513969663502 stripped
@@ -36161,6 +36721,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: AutoDestroyPlatform_FOREST-12
+      objectReference: {fileID: 0}
+    - target: {fileID: 4989929133822151169, guid: 09a7f118809de2e45abcbf6159e80622,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4989929133822151170, guid: 09a7f118809de2e45abcbf6159e80622,
         type: 3}
@@ -36362,6 +36927,11 @@ PrefabInstance:
       propertyPath: m_SortingLayer
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5178019152899575849, guid: 16bfcf7edbb4a96468c9c2a7117fea6c,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 5310617170085545499, guid: 16bfcf7edbb4a96468c9c2a7117fea6c,
         type: 3}
       propertyPath: m_Name
@@ -36456,6 +37026,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_SortingLayer
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5178019152899575849, guid: 16bfcf7edbb4a96468c9c2a7117fea6c,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 5310617170085545499, guid: 16bfcf7edbb4a96468c9c2a7117fea6c,
         type: 3}
@@ -36701,6 +37276,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: CheckpointArea_FOREST_07
+      objectReference: {fileID: 0}
+    - target: {fileID: 1192619444154100522, guid: b5046a976e0b82c44888ec886be8f562,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1192619444154100526, guid: b5046a976e0b82c44888ec886be8f562,
         type: 3}
@@ -37082,6 +37662,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: CheckpointArea_CAVE-02
       objectReference: {fileID: 0}
+    - target: {fileID: 1192619444154100522, guid: b5046a976e0b82c44888ec886be8f562,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1192619444154100526, guid: b5046a976e0b82c44888ec886be8f562,
         type: 3}
       propertyPath: m_SortingOrder
@@ -37312,6 +37897,11 @@ PrefabInstance:
       propertyPath: m_TagString
       value: DestroyableBothClimbLock
       objectReference: {fileID: 0}
+    - target: {fileID: 2695046210730010640, guid: d5d5bde3a86031347a1f83f472a7000d,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2695046210730010641, guid: d5d5bde3a86031347a1f83f472a7000d,
         type: 3}
       propertyPath: durability
@@ -37426,6 +38016,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: AutoDestroyPlatform_FOREST-09
+      objectReference: {fileID: 0}
+    - target: {fileID: 4989929133822151169, guid: 09a7f118809de2e45abcbf6159e80622,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4989929133822151170, guid: 09a7f118809de2e45abcbf6159e80622,
         type: 3}
@@ -38667,6 +39262,11 @@ PrefabInstance:
       propertyPath: m_SortingLayer
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5178019152899575849, guid: 16bfcf7edbb4a96468c9c2a7117fea6c,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 5310617170085545499, guid: 16bfcf7edbb4a96468c9c2a7117fea6c,
         type: 3}
       propertyPath: m_Name
@@ -38761,6 +39361,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_SortingLayer
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5178019152899575849, guid: 16bfcf7edbb4a96468c9c2a7117fea6c,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 5310617170085545499, guid: 16bfcf7edbb4a96468c9c2a7117fea6c,
         type: 3}
@@ -39227,6 +39832,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: FallingFromSkyObject_CAVE-08
       objectReference: {fileID: 0}
+    - target: {fileID: 7525220884724155867, guid: 52124cb9d3832b74db5418ba21ce2a5a,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7525220885830885768, guid: 52124cb9d3832b74db5418ba21ce2a5a,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -39364,6 +39974,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Dangerous_FOREST-10
       objectReference: {fileID: 0}
+    - target: {fileID: 7819002658321421588, guid: 9f677d340930e644fb18f19bafff3b70,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7819002658321421591, guid: 9f677d340930e644fb18f19bafff3b70,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -39493,6 +40108,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_SortingLayer
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5178019152899575849, guid: 16bfcf7edbb4a96468c9c2a7117fea6c,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 5310617170085545499, guid: 16bfcf7edbb4a96468c9c2a7117fea6c,
         type: 3}
@@ -39774,6 +40394,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: AutoDestroyPlatform (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 4989929133822151169, guid: 09a7f118809de2e45abcbf6159e80622,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4989929133822151170, guid: 09a7f118809de2e45abcbf6159e80622,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -40044,6 +40669,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Key_FOREST-01
       objectReference: {fileID: 0}
+    - target: {fileID: 1195742997930895893, guid: 8e33925040efbe943994bca476bd23b4,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8e33925040efbe943994bca476bd23b4, type: 3}
 --- !u!4 &5902914969196876957 stripped
@@ -40068,6 +40698,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_SortingLayer
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5178019152899575849, guid: 16bfcf7edbb4a96468c9c2a7117fea6c,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 5310617170085545499, guid: 16bfcf7edbb4a96468c9c2a7117fea6c,
         type: 3}
@@ -40374,6 +41009,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: AutoJumpLock_FOREST-02
       objectReference: {fileID: 0}
+    - target: {fileID: 1564949260710706775, guid: 0d44bdc3dd4f1e9429ef3f98155298d6,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4926511273316922702, guid: 0d44bdc3dd4f1e9429ef3f98155298d6,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -40523,6 +41163,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Movable (9)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5368838613019971325, guid: 93175970ab2ecca41a426ff164496ae3,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 93175970ab2ecca41a426ff164496ae3, type: 3}
@@ -40809,6 +41454,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: CameraControllArea_FOREST-02
       objectReference: {fileID: 0}
+    - target: {fileID: 2342242944410888030, guid: f3d577092eb1c534f9d5d276d91ea1e5,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2342242944410888031, guid: f3d577092eb1c534f9d5d276d91ea1e5,
         type: 3}
       propertyPath: DownClamping.enable
@@ -40854,6 +41504,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8497751068856336868}
     m_Modifications:
+    - target: {fileID: 7525220883917507821, guid: 52124cb9d3832b74db5418ba21ce2a5a,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7525220884724155861, guid: 52124cb9d3832b74db5418ba21ce2a5a,
         type: 3}
       propertyPath: GravityForce
@@ -40944,6 +41599,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: FallingFromSkyObject_CAVE-01
       objectReference: {fileID: 0}
+    - target: {fileID: 7525220884724155867, guid: 52124cb9d3832b74db5418ba21ce2a5a,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7525220885830885769, guid: 52124cb9d3832b74db5418ba21ce2a5a,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 52124cb9d3832b74db5418ba21ce2a5a, type: 3}
 --- !u!4 &3204795975259850787 stripped
@@ -40980,6 +41645,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_SortingLayer
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5178019152899575849, guid: 16bfcf7edbb4a96468c9c2a7117fea6c,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 5310617170085545499, guid: 16bfcf7edbb4a96468c9c2a7117fea6c,
         type: 3}
@@ -41070,6 +41740,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: AutoDestroyPlatform_FOREST-01
+      objectReference: {fileID: 0}
+    - target: {fileID: 4989929133822151169, guid: 09a7f118809de2e45abcbf6159e80622,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4989929133822151170, guid: 09a7f118809de2e45abcbf6159e80622,
         type: 3}
@@ -41170,6 +41845,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Dangerous_CAVE-15
+      objectReference: {fileID: 0}
+    - target: {fileID: 7819002658321421588, guid: 9f677d340930e644fb18f19bafff3b70,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7819002658321421591, guid: 9f677d340930e644fb18f19bafff3b70,
         type: 3}
@@ -41300,6 +41980,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_SortingLayer
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5178019152899575849, guid: 16bfcf7edbb4a96468c9c2a7117fea6c,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 5310617170085545499, guid: 16bfcf7edbb4a96468c9c2a7117fea6c,
         type: 3}
@@ -41581,6 +42266,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Dangerous_CAVE-10
       objectReference: {fileID: 0}
+    - target: {fileID: 7819002658321421588, guid: 9f677d340930e644fb18f19bafff3b70,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7819002658321421591, guid: 9f677d340930e644fb18f19bafff3b70,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -41706,6 +42396,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: AutoDestroyPlatform_FOREST-05
       objectReference: {fileID: 0}
+    - target: {fileID: 4989929133822151169, guid: 09a7f118809de2e45abcbf6159e80622,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4989929133822151170, guid: 09a7f118809de2e45abcbf6159e80622,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -41805,6 +42500,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Dangerous_CAVE-09
+      objectReference: {fileID: 0}
+    - target: {fileID: 7819002658321421588, guid: 9f677d340930e644fb18f19bafff3b70,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7819002658321421591, guid: 9f677d340930e644fb18f19bafff3b70,
         type: 3}
@@ -42281,6 +42981,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Movable (8)
       objectReference: {fileID: 0}
+    - target: {fileID: 5368838613019971325, guid: 93175970ab2ecca41a426ff164496ae3,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 93175970ab2ecca41a426ff164496ae3, type: 3}
 --- !u!4 &1087150415252376909 stripped
@@ -42490,6 +43195,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Dangerous_FOREST-14
+      objectReference: {fileID: 0}
+    - target: {fileID: 7819002658321421588, guid: 9f677d340930e644fb18f19bafff3b70,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7819002658321421591, guid: 9f677d340930e644fb18f19bafff3b70,
         type: 3}
@@ -42715,6 +43425,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Dangerous_FOREST-09
+      objectReference: {fileID: 0}
+    - target: {fileID: 7819002658321421588, guid: 9f677d340930e644fb18f19bafff3b70,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7819002658321421591, guid: 9f677d340930e644fb18f19bafff3b70,
         type: 3}
@@ -43101,6 +43816,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: FallingFromSkyObject_CAVE-06
       objectReference: {fileID: 0}
+    - target: {fileID: 7525220884724155867, guid: 52124cb9d3832b74db5418ba21ce2a5a,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7525220885830885768, guid: 52124cb9d3832b74db5418ba21ce2a5a,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -43147,6 +43867,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_SortingLayer
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5178019152899575849, guid: 16bfcf7edbb4a96468c9c2a7117fea6c,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 5310617170085545499, guid: 16bfcf7edbb4a96468c9c2a7117fea6c,
         type: 3}
@@ -43333,6 +44058,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Dangerous_CAVE-23
       objectReference: {fileID: 0}
+    - target: {fileID: 7819002658321421588, guid: 9f677d340930e644fb18f19bafff3b70,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7819002658321421591, guid: 9f677d340930e644fb18f19bafff3b70,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -43462,6 +44192,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_SortingLayer
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5178019152899575849, guid: 16bfcf7edbb4a96468c9c2a7117fea6c,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 5310617170085545499, guid: 16bfcf7edbb4a96468c9c2a7117fea6c,
         type: 3}
@@ -43652,6 +44387,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: RoarExtensionArea
+      objectReference: {fileID: 0}
+    - target: {fileID: 6846198544123169623, guid: 045f12c7cd3bbe84192ac45cdda8f7c5,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 045f12c7cd3bbe84192ac45cdda8f7c5, type: 3}
@@ -44118,6 +44858,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: SneakyArea_FOREST-01
       objectReference: {fileID: 0}
+    - target: {fileID: 675234456118384295, guid: a7a502ace4192ad4799b9a6d3773f5de,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 675234456118384296, guid: a7a502ace4192ad4799b9a6d3773f5de,
         type: 3}
       propertyPath: m_Enabled
@@ -44167,6 +44912,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_SortingLayer
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5178019152899575849, guid: 16bfcf7edbb4a96468c9c2a7117fea6c,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 5310617170085545499, guid: 16bfcf7edbb4a96468c9c2a7117fea6c,
         type: 3}
@@ -44703,6 +45453,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: SneakyArea (7)
       objectReference: {fileID: 0}
+    - target: {fileID: 675234456118384295, guid: a7a502ace4192ad4799b9a6d3773f5de,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 675234456118384296, guid: a7a502ace4192ad4799b9a6d3773f5de,
         type: 3}
       propertyPath: m_Enabled
@@ -44812,6 +45567,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Door_FOREST-01
+      objectReference: {fileID: 0}
+    - target: {fileID: 2287602936642275273, guid: b918dcfa9e54c134ba8a4c0375c0b4aa,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2287602937388237660, guid: b918dcfa9e54c134ba8a4c0375c0b4aa,
         type: 3}
@@ -45053,6 +45813,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Dangerous_FOREST-03
       objectReference: {fileID: 0}
+    - target: {fileID: 7819002658321421588, guid: 9f677d340930e644fb18f19bafff3b70,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7819002658321421591, guid: 9f677d340930e644fb18f19bafff3b70,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -45273,6 +46038,11 @@ PrefabInstance:
       propertyPath: m_SortingLayer
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5178019152899575849, guid: 16bfcf7edbb4a96468c9c2a7117fea6c,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 5310617170085545499, guid: 16bfcf7edbb4a96468c9c2a7117fea6c,
         type: 3}
       propertyPath: m_Name
@@ -45452,6 +46222,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_SortingLayer
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5178019152899575849, guid: 16bfcf7edbb4a96468c9c2a7117fea6c,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 5310617170085545499, guid: 16bfcf7edbb4a96468c9c2a7117fea6c,
         type: 3}
@@ -45642,6 +46417,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_SortingLayer
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5178019152899575849, guid: 16bfcf7edbb4a96468c9c2a7117fea6c,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 5310617170085545499, guid: 16bfcf7edbb4a96468c9c2a7117fea6c,
         type: 3}
@@ -46498,6 +47278,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Dangerous_FOREST-06
       objectReference: {fileID: 0}
+    - target: {fileID: 7819002658321421588, guid: 9f677d340930e644fb18f19bafff3b70,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7819002658321421591, guid: 9f677d340930e644fb18f19bafff3b70,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -46627,6 +47412,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Destroyable_CAVE-10
+      objectReference: {fileID: 0}
+    - target: {fileID: 2695046210730010640, guid: d5d5bde3a86031347a1f83f472a7000d,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2695046210730010641, guid: d5d5bde3a86031347a1f83f472a7000d,
         type: 3}
@@ -46908,6 +47698,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: FallingFromSkyObject (14)
       objectReference: {fileID: 0}
+    - target: {fileID: 7525220884724155867, guid: 52124cb9d3832b74db5418ba21ce2a5a,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 52124cb9d3832b74db5418ba21ce2a5a, type: 3}
 --- !u!4 &2820170275650753470 stripped
@@ -47034,6 +47829,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Dangerous (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7819002658321421588, guid: 9f677d340930e644fb18f19bafff3b70,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7819002658321421591, guid: 9f677d340930e644fb18f19bafff3b70,
         type: 3}
@@ -47290,6 +48090,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Door (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 2287602936642275273, guid: b918dcfa9e54c134ba8a4c0375c0b4aa,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2287602937618874164, guid: b918dcfa9e54c134ba8a4c0375c0b4aa,
         type: 3}
       propertyPath: numberOfRequiredKeys
@@ -47314,6 +48119,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: AutoDestroyPlatform (29)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4989929133822151169, guid: 09a7f118809de2e45abcbf6159e80622,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4989929133822151170, guid: 09a7f118809de2e45abcbf6159e80622,
         type: 3}
@@ -47585,6 +48395,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Movable (7)
       objectReference: {fileID: 0}
+    - target: {fileID: 5368838613019971325, guid: 93175970ab2ecca41a426ff164496ae3,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 93175970ab2ecca41a426ff164496ae3, type: 3}
 --- !u!4 &2003551411125090932 stripped
@@ -47674,6 +48489,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Keys (8)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1195742997930895893, guid: 8e33925040efbe943994bca476bd23b4,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8e33925040efbe943994bca476bd23b4, type: 3}
@@ -48201,6 +49021,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_TagString
       value: Movable
+      objectReference: {fileID: 0}
+    - target: {fileID: 5368838613019971325, guid: 93175970ab2ecca41a426ff164496ae3,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 93175970ab2ecca41a426ff164496ae3, type: 3}
@@ -48792,6 +49617,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: FallingFromSkyObject_CAVE-05
       objectReference: {fileID: 0}
+    - target: {fileID: 7525220884724155867, guid: 52124cb9d3832b74db5418ba21ce2a5a,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 52124cb9d3832b74db5418ba21ce2a5a, type: 3}
 --- !u!114 &4258582899758812964 stripped
@@ -48828,6 +49658,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_SortingLayer
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5178019152899575849, guid: 16bfcf7edbb4a96468c9c2a7117fea6c,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 5310617170085545499, guid: 16bfcf7edbb4a96468c9c2a7117fea6c,
         type: 3}
@@ -48928,6 +49763,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_SortingLayer
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5178019152899575849, guid: 16bfcf7edbb4a96468c9c2a7117fea6c,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 5310617170085545499, guid: 16bfcf7edbb4a96468c9c2a7117fea6c,
         type: 3}
@@ -49119,6 +49959,11 @@ PrefabInstance:
       propertyPath: m_SortingLayer
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5178019152899575849, guid: 16bfcf7edbb4a96468c9c2a7117fea6c,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 5310617170085545499, guid: 16bfcf7edbb4a96468c9c2a7117fea6c,
         type: 3}
       propertyPath: m_Name
@@ -49284,6 +50129,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Movable_FOREST-02
       objectReference: {fileID: 0}
+    - target: {fileID: 5368838613019971325, guid: 93175970ab2ecca41a426ff164496ae3,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 93175970ab2ecca41a426ff164496ae3, type: 3}
 --- !u!4 &2189486671521691497 stripped
@@ -49368,6 +50218,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: CheckpointArea_FOREST_02
+      objectReference: {fileID: 0}
+    - target: {fileID: 1192619444154100522, guid: b5046a976e0b82c44888ec886be8f562,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1192619444154100526, guid: b5046a976e0b82c44888ec886be8f562,
         type: 3}
@@ -49748,6 +50603,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: CheckpointArea_FOREST_05
+      objectReference: {fileID: 0}
+    - target: {fileID: 1192619444154100522, guid: b5046a976e0b82c44888ec886be8f562,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1192619444154100526, guid: b5046a976e0b82c44888ec886be8f562,
         type: 3}
@@ -50229,6 +51089,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: CheckpointArea_CAVE-03
       objectReference: {fileID: 0}
+    - target: {fileID: 1192619444154100522, guid: b5046a976e0b82c44888ec886be8f562,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1192619444154100526, guid: b5046a976e0b82c44888ec886be8f562,
         type: 3}
       propertyPath: m_SortingOrder
@@ -50258,6 +51123,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Dangerous_CAVE-14
+      objectReference: {fileID: 0}
+    - target: {fileID: 7819002658321421588, guid: 9f677d340930e644fb18f19bafff3b70,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7819002658321421591, guid: 9f677d340930e644fb18f19bafff3b70,
         type: 3}
@@ -50969,6 +51839,11 @@ PrefabInstance:
       propertyPath: m_SortingLayer
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5178019152899575849, guid: 16bfcf7edbb4a96468c9c2a7117fea6c,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 5310617170085545499, guid: 16bfcf7edbb4a96468c9c2a7117fea6c,
         type: 3}
       propertyPath: m_Name
@@ -51449,6 +52324,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Destroyable (10)
       objectReference: {fileID: 0}
+    - target: {fileID: 2695046210730010640, guid: d5d5bde3a86031347a1f83f472a7000d,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2695046210730010641, guid: d5d5bde3a86031347a1f83f472a7000d,
         type: 3}
       propertyPath: durability
@@ -51668,6 +52548,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: AutoJumpLock_FOREST-01
+      objectReference: {fileID: 0}
+    - target: {fileID: 1564949260710706775, guid: 0d44bdc3dd4f1e9429ef3f98155298d6,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4926511273316922702, guid: 0d44bdc3dd4f1e9429ef3f98155298d6,
         type: 3}
@@ -52041,6 +52926,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Dangerous_CAVE-21
       objectReference: {fileID: 0}
+    - target: {fileID: 7819002658321421588, guid: 9f677d340930e644fb18f19bafff3b70,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7819002658321421591, guid: 9f677d340930e644fb18f19bafff3b70,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -52146,6 +53036,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: AutoDestroyPlatform (30)
       objectReference: {fileID: 0}
+    - target: {fileID: 4989929133822151169, guid: 09a7f118809de2e45abcbf6159e80622,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4989929133822151170, guid: 09a7f118809de2e45abcbf6159e80622,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -52245,6 +53140,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Dangerous_CAVE-17
+      objectReference: {fileID: 0}
+    - target: {fileID: 7819002658321421588, guid: 9f677d340930e644fb18f19bafff3b70,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7819002658321421591, guid: 9f677d340930e644fb18f19bafff3b70,
         type: 3}
@@ -52640,6 +53540,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_SortingLayer
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5178019152899575849, guid: 16bfcf7edbb4a96468c9c2a7117fea6c,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 5310617170085545499, guid: 16bfcf7edbb4a96468c9c2a7117fea6c,
         type: 3}
@@ -53147,6 +54052,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_SortingLayer
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5178019152899575849, guid: 16bfcf7edbb4a96468c9c2a7117fea6c,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 5310617170085545499, guid: 16bfcf7edbb4a96468c9c2a7117fea6c,
         type: 3}
@@ -53798,6 +54708,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: AutoDestroyPlatform_CAVE-04
       objectReference: {fileID: 0}
+    - target: {fileID: 4989929133822151169, guid: 09a7f118809de2e45abcbf6159e80622,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4989929133822151170, guid: 09a7f118809de2e45abcbf6159e80622,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -54088,6 +55003,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: RoarExtensionArea_CAVE-02
       objectReference: {fileID: 0}
+    - target: {fileID: 6846198544123169623, guid: 045f12c7cd3bbe84192ac45cdda8f7c5,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6846198544123169644, guid: 045f12c7cd3bbe84192ac45cdda8f7c5,
         type: 3}
       propertyPath: m_Simulated
@@ -54187,6 +55107,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: CameraControllArea (6)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2342242944410888030, guid: f3d577092eb1c534f9d5d276d91ea1e5,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2342242944410888031, guid: f3d577092eb1c534f9d5d276d91ea1e5,
         type: 3}
@@ -54668,6 +55593,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Keys (7)
       objectReference: {fileID: 0}
+    - target: {fileID: 1195742997930895893, guid: 8e33925040efbe943994bca476bd23b4,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8e33925040efbe943994bca476bd23b4, type: 3}
 --- !u!4 &5495264749110000246 stripped
@@ -54877,6 +55807,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: FallingFromSkyObject_CAVE-09
+      objectReference: {fileID: 0}
+    - target: {fileID: 7525220884724155867, guid: 52124cb9d3832b74db5418ba21ce2a5a,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7525220885830885768, guid: 52124cb9d3832b74db5418ba21ce2a5a,
         type: 3}
@@ -55089,6 +56024,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Movable (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5368838613019971325, guid: 93175970ab2ecca41a426ff164496ae3,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 93175970ab2ecca41a426ff164496ae3, type: 3}
@@ -55359,6 +56299,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_SortingLayer
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5178019152899575849, guid: 16bfcf7edbb4a96468c9c2a7117fea6c,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 5310617170085545499, guid: 16bfcf7edbb4a96468c9c2a7117fea6c,
         type: 3}
@@ -55735,6 +56680,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Dangerous_FOREST-12
       objectReference: {fileID: 0}
+    - target: {fileID: 7819002658321421588, guid: 9f677d340930e644fb18f19bafff3b70,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7819002658321421591, guid: 9f677d340930e644fb18f19bafff3b70,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -55849,6 +56799,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_SortingLayer
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5178019152899575849, guid: 16bfcf7edbb4a96468c9c2a7117fea6c,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 5310617170085545499, guid: 16bfcf7edbb4a96468c9c2a7117fea6c,
         type: 3}
@@ -56135,6 +57090,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: AutoDestroyPlatform (18)
       objectReference: {fileID: 0}
+    - target: {fileID: 4989929133822151169, guid: 09a7f118809de2e45abcbf6159e80622,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4989929133822151170, guid: 09a7f118809de2e45abcbf6159e80622,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -56240,6 +57200,11 @@ PrefabInstance:
       propertyPath: m_SortingLayer
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5178019152899575849, guid: 16bfcf7edbb4a96468c9c2a7117fea6c,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 5310617170085545499, guid: 16bfcf7edbb4a96468c9c2a7117fea6c,
         type: 3}
       propertyPath: m_Name
@@ -56334,6 +57299,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Destroyable_CAVE-09
+      objectReference: {fileID: 0}
+    - target: {fileID: 2695046210730010640, guid: d5d5bde3a86031347a1f83f472a7000d,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2695046210730010641, guid: d5d5bde3a86031347a1f83f472a7000d,
         type: 3}
@@ -56520,6 +57490,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: CameraControllArea (8)
       objectReference: {fileID: 0}
+    - target: {fileID: 2342242944410888030, guid: f3d577092eb1c534f9d5d276d91ea1e5,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2342242944410888031, guid: f3d577092eb1c534f9d5d276d91ea1e5,
         type: 3}
       propertyPath: DownClamping.enable
@@ -56554,6 +57529,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: AutoDestroyPlatform_FOREST-04
+      objectReference: {fileID: 0}
+    - target: {fileID: 4989929133822151169, guid: 09a7f118809de2e45abcbf6159e80622,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4989929133822151170, guid: 09a7f118809de2e45abcbf6159e80622,
         type: 3}
@@ -56750,6 +57730,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: AutoDestroyPlatform_FOREST-02
       objectReference: {fileID: 0}
+    - target: {fileID: 4989929133822151169, guid: 09a7f118809de2e45abcbf6159e80622,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4989929133822151170, guid: 09a7f118809de2e45abcbf6159e80622,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -56854,6 +57839,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_SortingLayer
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5178019152899575849, guid: 16bfcf7edbb4a96468c9c2a7117fea6c,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 5310617170085545499, guid: 16bfcf7edbb4a96468c9c2a7117fea6c,
         type: 3}
@@ -57009,6 +57999,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: CheckpointArea (17)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1192619444154100522, guid: b5046a976e0b82c44888ec886be8f562,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1192619444154100526, guid: b5046a976e0b82c44888ec886be8f562,
         type: 3}
@@ -57530,6 +58525,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: AutoJumpLock_CAVE-01
       objectReference: {fileID: 0}
+    - target: {fileID: 1564949260710706775, guid: 0d44bdc3dd4f1e9429ef3f98155298d6,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4926511273316922702, guid: 0d44bdc3dd4f1e9429ef3f98155298d6,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -57795,6 +58795,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: FallingFromSkyObject_CAVE-02
       objectReference: {fileID: 0}
+    - target: {fileID: 7525220884724155867, guid: 52124cb9d3832b74db5418ba21ce2a5a,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 52124cb9d3832b74db5418ba21ce2a5a, type: 3}
 --- !u!4 &721269765200447188 stripped
@@ -57921,6 +58926,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: AutoDestroyPlatform_FOREST-07B
+      objectReference: {fileID: 0}
+    - target: {fileID: 4989929133822151169, guid: 09a7f118809de2e45abcbf6159e80622,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4989929133822151170, guid: 09a7f118809de2e45abcbf6159e80622,
         type: 3}
@@ -58307,6 +59317,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Dangerous_FOREST-13
       objectReference: {fileID: 0}
+    - target: {fileID: 7819002658321421588, guid: 9f677d340930e644fb18f19bafff3b70,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7819002658321421591, guid: 9f677d340930e644fb18f19bafff3b70,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -58532,6 +59547,11 @@ PrefabInstance:
       propertyPath: m_SortingLayer
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5178019152899575849, guid: 16bfcf7edbb4a96468c9c2a7117fea6c,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 5310617170085545499, guid: 16bfcf7edbb4a96468c9c2a7117fea6c,
         type: 3}
       propertyPath: m_Name
@@ -58626,6 +59646,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_SortingLayer
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5178019152899575849, guid: 16bfcf7edbb4a96468c9c2a7117fea6c,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 5310617170085545499, guid: 16bfcf7edbb4a96468c9c2a7117fea6c,
         type: 3}
@@ -59077,6 +60102,11 @@ PrefabInstance:
       propertyPath: m_SortingLayer
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5178019152899575849, guid: 16bfcf7edbb4a96468c9c2a7117fea6c,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 5310617170085545499, guid: 16bfcf7edbb4a96468c9c2a7117fea6c,
         type: 3}
       propertyPath: m_Name
@@ -59172,6 +60202,11 @@ PrefabInstance:
       propertyPath: m_SortingLayer
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5178019152899575849, guid: 16bfcf7edbb4a96468c9c2a7117fea6c,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 5310617170085545499, guid: 16bfcf7edbb4a96468c9c2a7117fea6c,
         type: 3}
       propertyPath: m_Name
@@ -59266,6 +60301,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_SortingLayer
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5178019152899575849, guid: 16bfcf7edbb4a96468c9c2a7117fea6c,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 5310617170085545499, guid: 16bfcf7edbb4a96468c9c2a7117fea6c,
         type: 3}
@@ -59552,6 +60592,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Dangerous_CAVE-19
       objectReference: {fileID: 0}
+    - target: {fileID: 7819002658321421588, guid: 9f677d340930e644fb18f19bafff3b70,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7819002658321421591, guid: 9f677d340930e644fb18f19bafff3b70,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -59801,6 +60846,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_SortingLayer
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5178019152899575849, guid: 16bfcf7edbb4a96468c9c2a7117fea6c,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 5310617170085545499, guid: 16bfcf7edbb4a96468c9c2a7117fea6c,
         type: 3}
@@ -60096,6 +61146,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_SortingLayer
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5178019152899575849, guid: 16bfcf7edbb4a96468c9c2a7117fea6c,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 5310617170085545499, guid: 16bfcf7edbb4a96468c9c2a7117fea6c,
         type: 3}
@@ -60727,6 +61782,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Dangerous_FOREST-15
       objectReference: {fileID: 0}
+    - target: {fileID: 7819002658321421588, guid: 9f677d340930e644fb18f19bafff3b70,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7819002658321421591, guid: 9f677d340930e644fb18f19bafff3b70,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -60857,6 +61917,11 @@ PrefabInstance:
       propertyPath: m_SortingLayer
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5178019152899575849, guid: 16bfcf7edbb4a96468c9c2a7117fea6c,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 5310617170085545499, guid: 16bfcf7edbb4a96468c9c2a7117fea6c,
         type: 3}
       propertyPath: m_Name
@@ -60951,6 +62016,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Destroyable_CAVE-07
+      objectReference: {fileID: 0}
+    - target: {fileID: 2695046210730010640, guid: d5d5bde3a86031347a1f83f472a7000d,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2695046210730010641, guid: d5d5bde3a86031347a1f83f472a7000d,
         type: 3}
@@ -61264,6 +62334,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Dangerous
       objectReference: {fileID: 0}
+    - target: {fileID: 7819002658321421588, guid: 9f677d340930e644fb18f19bafff3b70,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7819002658321421591, guid: 9f677d340930e644fb18f19bafff3b70,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -61454,6 +62529,11 @@ PrefabInstance:
       propertyPath: m_SortingLayer
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5178019152899575849, guid: 16bfcf7edbb4a96468c9c2a7117fea6c,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 5310617170085545499, guid: 16bfcf7edbb4a96468c9c2a7117fea6c,
         type: 3}
       propertyPath: m_Name
@@ -61543,6 +62623,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Dangerous_CAVE-16
+      objectReference: {fileID: 0}
+    - target: {fileID: 7819002658321421588, guid: 9f677d340930e644fb18f19bafff3b70,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7819002658321421591, guid: 9f677d340930e644fb18f19bafff3b70,
         type: 3}
@@ -61653,6 +62738,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_SortingLayer
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5178019152899575849, guid: 16bfcf7edbb4a96468c9c2a7117fea6c,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 5310617170085545499, guid: 16bfcf7edbb4a96468c9c2a7117fea6c,
         type: 3}
@@ -61833,6 +62923,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: AutoDestroyPlatform (25)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4989929133822151169, guid: 09a7f118809de2e45abcbf6159e80622,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4989929133822151170, guid: 09a7f118809de2e45abcbf6159e80622,
         type: 3}
@@ -62686,6 +63781,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: CheckpointArea_FOREST_03
       objectReference: {fileID: 0}
+    - target: {fileID: 1192619444154100522, guid: b5046a976e0b82c44888ec886be8f562,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1192619444154100526, guid: b5046a976e0b82c44888ec886be8f562,
         type: 3}
       propertyPath: m_SortingOrder
@@ -62715,6 +63815,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: AutoDestroyPlatform_FOREST-10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4989929133822151169, guid: 09a7f118809de2e45abcbf6159e80622,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4989929133822151170, guid: 09a7f118809de2e45abcbf6159e80622,
         type: 3}
@@ -63101,6 +64206,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: RoarExtensionArea_CAVE-01
       objectReference: {fileID: 0}
+    - target: {fileID: 6846198544123169623, guid: 045f12c7cd3bbe84192ac45cdda8f7c5,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 045f12c7cd3bbe84192ac45cdda8f7c5, type: 3}
 --- !u!4 &3716223426430201260 stripped
@@ -63286,6 +64396,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Key_CAVE-02
       objectReference: {fileID: 0}
+    - target: {fileID: 1195742997930895893, guid: 8e33925040efbe943994bca476bd23b4,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8e33925040efbe943994bca476bd23b4, type: 3}
 --- !u!4 &8950043320227367589 stripped
@@ -63310,6 +64425,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_SortingLayer
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5178019152899575849, guid: 16bfcf7edbb4a96468c9c2a7117fea6c,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 5310617170085545499, guid: 16bfcf7edbb4a96468c9c2a7117fea6c,
         type: 3}
@@ -63501,6 +64621,11 @@ PrefabInstance:
       propertyPath: m_SortingLayer
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5178019152899575849, guid: 16bfcf7edbb4a96468c9c2a7117fea6c,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 5310617170085545499, guid: 16bfcf7edbb4a96468c9c2a7117fea6c,
         type: 3}
       propertyPath: m_Name
@@ -63595,6 +64720,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_SortingLayer
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5178019152899575849, guid: 16bfcf7edbb4a96468c9c2a7117fea6c,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 5310617170085545499, guid: 16bfcf7edbb4a96468c9c2a7117fea6c,
         type: 3}
@@ -64225,6 +65355,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: SneakyArea_FOREST-04
+      objectReference: {fileID: 0}
+    - target: {fileID: 675234456118384295, guid: a7a502ace4192ad4799b9a6d3773f5de,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 675234456118384296, guid: a7a502ace4192ad4799b9a6d3773f5de,
         type: 3}
@@ -64891,6 +66026,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: RoarExtensionArea_CAVE-04
       objectReference: {fileID: 0}
+    - target: {fileID: 6846198544123169623, guid: 045f12c7cd3bbe84192ac45cdda8f7c5,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 045f12c7cd3bbe84192ac45cdda8f7c5, type: 3}
 --- !u!4 &3364592919017431634 stripped
@@ -64915,6 +66055,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Destroyable (9)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2695046210730010640, guid: d5d5bde3a86031347a1f83f472a7000d,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2695046210730010641, guid: d5d5bde3a86031347a1f83f472a7000d,
         type: 3}
@@ -65157,6 +66302,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_SortingLayer
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5178019152899575849, guid: 16bfcf7edbb4a96468c9c2a7117fea6c,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 5310617170085545499, guid: 16bfcf7edbb4a96468c9c2a7117fea6c,
         type: 3}
@@ -65450,6 +66600,11 @@ PrefabInstance:
       propertyPath: m_SortingLayer
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5178019152899575849, guid: 16bfcf7edbb4a96468c9c2a7117fea6c,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 5310617170085545499, guid: 16bfcf7edbb4a96468c9c2a7117fea6c,
         type: 3}
       propertyPath: m_Name
@@ -65639,6 +66794,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Destroyable_CAVE-05
+      objectReference: {fileID: 0}
+    - target: {fileID: 2695046210730010640, guid: d5d5bde3a86031347a1f83f472a7000d,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2695046210730010641, guid: d5d5bde3a86031347a1f83f472a7000d,
         type: 3}
@@ -65850,6 +67010,11 @@ PrefabInstance:
       propertyPath: m_SortingLayer
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5178019152899575849, guid: 16bfcf7edbb4a96468c9c2a7117fea6c,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 5310617170085545499, guid: 16bfcf7edbb4a96468c9c2a7117fea6c,
         type: 3}
       propertyPath: m_Name
@@ -66050,6 +67215,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: AutoJumpLock_FOREST-03
       objectReference: {fileID: 0}
+    - target: {fileID: 1564949260710706775, guid: 0d44bdc3dd4f1e9429ef3f98155298d6,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4926511273316922702, guid: 0d44bdc3dd4f1e9429ef3f98155298d6,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -66231,6 +67401,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Dangerous_FOREST-01
+      objectReference: {fileID: 0}
+    - target: {fileID: 7819002658321421588, guid: 9f677d340930e644fb18f19bafff3b70,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7819002658321421591, guid: 9f677d340930e644fb18f19bafff3b70,
         type: 3}
@@ -66457,6 +67632,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Dangerous_CAVE-12
       objectReference: {fileID: 0}
+    - target: {fileID: 7819002658321421588, guid: 9f677d340930e644fb18f19bafff3b70,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7819002658321421591, guid: 9f677d340930e644fb18f19bafff3b70,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -66572,6 +67752,11 @@ PrefabInstance:
       propertyPath: m_SortingLayer
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5178019152899575849, guid: 16bfcf7edbb4a96468c9c2a7117fea6c,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 5310617170085545499, guid: 16bfcf7edbb4a96468c9c2a7117fea6c,
         type: 3}
       propertyPath: m_Name
@@ -66671,6 +67856,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_SortingLayer
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5178019152899575849, guid: 16bfcf7edbb4a96468c9c2a7117fea6c,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 5310617170085545499, guid: 16bfcf7edbb4a96468c9c2a7117fea6c,
         type: 3}
@@ -66937,6 +68127,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Movable (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 5368838613019971325, guid: 93175970ab2ecca41a426ff164496ae3,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 93175970ab2ecca41a426ff164496ae3, type: 3}
 --- !u!4 &4476724461295243151 stripped
@@ -66956,6 +68151,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Dangerous_FOREST-07
+      objectReference: {fileID: 0}
+    - target: {fileID: 7819002658321421588, guid: 9f677d340930e644fb18f19bafff3b70,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7819002658321421591, guid: 9f677d340930e644fb18f19bafff3b70,
         type: 3}
@@ -67066,6 +68266,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: AutoDestroyPlatform_FOREST-07
+      objectReference: {fileID: 0}
+    - target: {fileID: 4989929133822151169, guid: 09a7f118809de2e45abcbf6159e80622,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4989929133822151170, guid: 09a7f118809de2e45abcbf6159e80622,
         type: 3}
@@ -67542,6 +68747,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: CameraControllArea (7)
       objectReference: {fileID: 0}
+    - target: {fileID: 2342242944410888030, guid: f3d577092eb1c534f9d5d276d91ea1e5,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2342242944410888031, guid: f3d577092eb1c534f9d5d276d91ea1e5,
         type: 3}
       propertyPath: DownClamping.enable
@@ -67641,6 +68851,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: CheckpointArea_CAVE-07
+      objectReference: {fileID: 0}
+    - target: {fileID: 1192619444154100522, guid: b5046a976e0b82c44888ec886be8f562,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1192619444154100526, guid: b5046a976e0b82c44888ec886be8f562,
         type: 3}
@@ -67961,6 +69176,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_TagString
       value: BothClimbLock
+      objectReference: {fileID: 0}
+    - target: {fileID: 4989929133822151169, guid: 09a7f118809de2e45abcbf6159e80622,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4989929133822151170, guid: 09a7f118809de2e45abcbf6159e80622,
         type: 3}
@@ -68331,6 +69551,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: FallingFromSkyObject (12)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7525220884724155867, guid: 52124cb9d3832b74db5418ba21ce2a5a,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7525220885830885768, guid: 52124cb9d3832b74db5418ba21ce2a5a,
         type: 3}
@@ -68832,6 +70057,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: AutoDestroyPlatform_FOREST-08
       objectReference: {fileID: 0}
+    - target: {fileID: 4989929133822151169, guid: 09a7f118809de2e45abcbf6159e80622,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4989929133822151170, guid: 09a7f118809de2e45abcbf6159e80622,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -69082,6 +70312,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: RoarExtensionArea_CAVE-05
       objectReference: {fileID: 0}
+    - target: {fileID: 6846198544123169623, guid: 045f12c7cd3bbe84192ac45cdda8f7c5,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 045f12c7cd3bbe84192ac45cdda8f7c5, type: 3}
 --- !u!4 &2835666214007519404 stripped
@@ -69101,6 +70336,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Dangerous (33)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7819002658321421588, guid: 9f677d340930e644fb18f19bafff3b70,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7819002658321421591, guid: 9f677d340930e644fb18f19bafff3b70,
         type: 3}
@@ -70802,6 +72042,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Dangerous_CAVE-01
       objectReference: {fileID: 0}
+    - target: {fileID: 7819002658321421588, guid: 9f677d340930e644fb18f19bafff3b70,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7819002658321421591, guid: 9f677d340930e644fb18f19bafff3b70,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -70977,6 +72222,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: CheckpointArea_FOREST_04
       objectReference: {fileID: 0}
+    - target: {fileID: 1192619444154100522, guid: b5046a976e0b82c44888ec886be8f562,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1192619444154100526, guid: b5046a976e0b82c44888ec886be8f562,
         type: 3}
       propertyPath: m_SortingOrder
@@ -71096,6 +72346,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: FallingFromSkyObject_CAVE-14
+      objectReference: {fileID: 0}
+    - target: {fileID: 7525220884724155867, guid: 52124cb9d3832b74db5418ba21ce2a5a,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7525220885830885768, guid: 52124cb9d3832b74db5418ba21ce2a5a,
         type: 3}
@@ -71238,6 +72493,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_SortingLayer
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5178019152899575849, guid: 16bfcf7edbb4a96468c9c2a7117fea6c,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 5310617170085545499, guid: 16bfcf7edbb4a96468c9c2a7117fea6c,
         type: 3}
@@ -71554,6 +72814,11 @@ PrefabInstance:
       propertyPath: m_TagString
       value: DestroyableBothClimbLock
       objectReference: {fileID: 0}
+    - target: {fileID: 2695046210730010640, guid: d5d5bde3a86031347a1f83f472a7000d,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2695046210730010641, guid: d5d5bde3a86031347a1f83f472a7000d,
         type: 3}
       propertyPath: durability
@@ -71683,6 +72948,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: AutoDestroyPlatform (24)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4989929133822151169, guid: 09a7f118809de2e45abcbf6159e80622,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4989929133822151170, guid: 09a7f118809de2e45abcbf6159e80622,
         type: 3}
@@ -72054,6 +73324,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: FallingFromSkyObject (15)
       objectReference: {fileID: 0}
+    - target: {fileID: 7525220884724155867, guid: 52124cb9d3832b74db5418ba21ce2a5a,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 52124cb9d3832b74db5418ba21ce2a5a, type: 3}
 --- !u!114 &1654948070215977251 stripped
@@ -72276,6 +73551,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: RoarExtensionArea_FOREST-01
       objectReference: {fileID: 0}
+    - target: {fileID: 6846198544123169623, guid: 045f12c7cd3bbe84192ac45cdda8f7c5,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 045f12c7cd3bbe84192ac45cdda8f7c5, type: 3}
 --- !u!4 &2427030035862362147 stripped
@@ -72415,6 +73695,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_SortingLayer
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5178019152899575849, guid: 16bfcf7edbb4a96468c9c2a7117fea6c,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 5310617170085545499, guid: 16bfcf7edbb4a96468c9c2a7117fea6c,
         type: 3}
@@ -72691,6 +73976,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: FallingFromSkyObject_CAVE-13
       objectReference: {fileID: 0}
+    - target: {fileID: 7525220884724155867, guid: 52124cb9d3832b74db5418ba21ce2a5a,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7525220885830885768, guid: 52124cb9d3832b74db5418ba21ce2a5a,
         type: 3}
       propertyPath: m_LocalPosition.y
@@ -72798,6 +74088,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: CheckpointArea_CAVE-06
       objectReference: {fileID: 0}
+    - target: {fileID: 1192619444154100522, guid: b5046a976e0b82c44888ec886be8f562,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1192619444154100526, guid: b5046a976e0b82c44888ec886be8f562,
         type: 3}
       propertyPath: m_SortingOrder
@@ -72832,6 +74127,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_SortingLayer
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5178019152899575849, guid: 16bfcf7edbb4a96468c9c2a7117fea6c,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 5310617170085545499, guid: 16bfcf7edbb4a96468c9c2a7117fea6c,
         type: 3}
