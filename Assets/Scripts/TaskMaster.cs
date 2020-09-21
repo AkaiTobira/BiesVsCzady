@@ -26,10 +26,9 @@ public class TaskMaster : MonoBehaviour
     void Start()
     {
         GlobalUtils.TaskMaster = GetComponent<TaskMaster>();
-        if( GlobalUtils.PlayerObject ) lastCheckPoint = GlobalUtils.PlayerObject.transform.position;
+        if( GlobalUtils.PlayerObject ) lastCheckPoint    = GlobalUtils.PlayerObject.transform.position;
         if( GlobalUtils.PlayerObject ) savedNumberOfKeys = GlobalUtils.PlayerObject.GetComponent<Player>().keys;
     }
-
 
     public void SetPlayerAtLastCheckpoint(){
         GlobalUtils.PlayerObject.position = lastCheckPoint;

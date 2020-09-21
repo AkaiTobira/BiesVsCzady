@@ -24,7 +24,7 @@ public class BiesFall : PlayerFall
     //    }
 
 
-        Debug.Log( "CCL" +  m_ObjectInteractionDetector.canClimbLedge() );
+//        Debug.Log( "CCL" +  m_ObjectInteractionDetector.canClimbLedge() );
 
 
         if( m_ObjectInteractionDetector.canClimbLedge()  && !LockAreaOverseer.ledgeClimbBlock  ){
