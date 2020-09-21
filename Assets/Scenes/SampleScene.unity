@@ -1174,8 +1174,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e658f23aef23e6a4cb81a304af87e1ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Sounds:
-  - event:/ATM/Atmosphere Cave
+  Sounds: []
 --- !u!4 &551294738 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6464913367840326887, guid: 5c9d8671db069494eb169b071acd31b0,
@@ -1200,10 +1199,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e5f50d528dc4d24486a2d94436a1573, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Sounds:
-  - event:/SFX/Bies/roar-sound-effect
-  playOnStart: 0
-  shouldPlayOnStart: 1
+  SFXSounds: []
+  LoopedSounds: []
+  _playOnStart: 0
+  _shouldPlayOnStart: 0
 --- !u!1 &581408150 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6464913367840326880, guid: 5c9d8671db069494eb169b071acd31b0,
@@ -1222,28 +1221,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e5f50d528dc4d24486a2d94436a1573, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Sounds:
-  - 
-  - event:/SFX/Bies/FS
-  - event:/SFX/Bies/atak lapa
-  - event:/SFX/Bies/atak ziemia
-  - event:/SFX/Bies/climb
-  - event:/SFX/Bies/climb
-  - event:/SFX/Bies/climb
-  - event:/SFX/Bies/jump up
-  - event:/SFX/Bies/jump down
-  - event:/SFX/przemiana
-  - event:/SFX/Kot/FS
-  - event:/SFX/Bies/roar
-  - event:/SFX/Kot/jump up
-  - event:/SFX/Kot/jump down
-  - event:/SFX/Bies/hurt
-  - event:/SFX/Kot/hurt
-  - event:/SFX/Bies/dies
-  - event:/SFX/Kot/dies
-  - event:/SFX/Bies/block
-  playOnStart: 0
-  shouldPlayOnStart: 0
+  SFXSounds: []
+  LoopedSounds: []
+  _playOnStart: 0
+  _shouldPlayOnStart: 0
 --- !u!114 &581408155
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1256,8 +1237,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 867cbbf704b234c8d9ba40e716a61cc4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Sounds:
-  - event:/SFX/Enviro/push object
+  Sounds: []
 --- !u!1 &623631631
 GameObject:
   m_ObjectHideFlags: 0
@@ -6262,12 +6242,12 @@ PrefabInstance:
     - target: {fileID: 6464913367784793610, guid: 5c9d8671db069494eb169b071acd31b0,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1935
+      value: 978
       objectReference: {fileID: 0}
     - target: {fileID: 6464913367784793610, guid: 5c9d8671db069494eb169b071acd31b0,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -5915
+      value: -1096
       objectReference: {fileID: 0}
     - target: {fileID: 6464913367784793613, guid: 5c9d8671db069494eb169b071acd31b0,
         type: 3}

@@ -56,7 +56,7 @@ public class DestroyableObjectController : MonoBehaviour
         infoPack.camera       = go.GetComponent<DestroyableObject>().areaControll;
         if( infoPack.camera ) infoPack.cameraStatus = go.GetComponent<DestroyableObject>().areaControll.gameObject.activeSelf;
 
-        Debug.Log( infoPack.hideAreaControllerStatus);
+// /        Debug.Log( infoPack.hideAreaControllerStatus);
 
         return infoPack;
     }
