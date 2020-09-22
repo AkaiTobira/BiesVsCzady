@@ -114,11 +114,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e5f50d528dc4d24486a2d94436a1573, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Sounds:
-  - event:/SFX/Enviro/grzyb znika
-  - event:/SFX/Enviro/grzyb pojawia sie
-  playOnStart: 0
-  shouldPlayOnStart: 0
+  SFXSounds:
+  - event:/SFX/Enviro/grzyb hide
+  - event:/SFX/Enviro/grzyb show
+  LoopedSounds: []
+  _playOnStart: 0
+  _playLoopedOnStart: 0
+  _shouldPlayOnStart: 0
+  _shouldPlayLoopedOnStart: 0
 --- !u!1 &4989929133822151169
 GameObject:
   m_ObjectHideFlags: 0

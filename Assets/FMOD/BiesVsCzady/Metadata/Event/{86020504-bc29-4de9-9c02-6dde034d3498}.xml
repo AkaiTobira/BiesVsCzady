@@ -56,7 +56,11 @@
 			<destination>{5876b881-eadb-41de-ab6e-370bf9b436a1}</destination>
 		</relationship>
 	</object>
-	<object class="EventAutomatableProperties" id="{8ded78fc-693f-4e7e-ac79-470c1a8ed412}" />
+	<object class="EventAutomatableProperties" id="{8ded78fc-693f-4e7e-ac79-470c1a8ed412}">
+		<property name="maxVoices">
+			<value>1</value>
+		</property>
+	</object>
 	<object class="MarkerTrack" id="{047bca62-d127-450e-a741-4a5f3e2d486e}" />
 	<object class="GroupTrack" id="{3c14b75c-9b25-4d8a-ba65-b396c3620f48}">
 		<relationship name="modules">
@@ -72,6 +76,9 @@
 		</relationship>
 	</object>
 	<object class="EventMixerMaster" id="{893266c8-fece-4cb2-b6e0-283bb541abae}">
+		<property name="volume">
+			<value>-10</value>
+		</property>
 		<relationship name="effectChain">
 			<destination>{c2d9ada5-47bf-4618-b9fb-b30bbf2ab7c6}</destination>
 		</relationship>
@@ -121,6 +128,7 @@
 	<object class="MixerBusEffectChain" id="{c2d9ada5-47bf-4618-b9fb-b30bbf2ab7c6}">
 		<relationship name="effects">
 			<destination>{b4f5b358-62e7-499d-bf0b-7c187cf9388f}</destination>
+			<destination>{2e82e408-82a8-4cee-9802-bde0930da968}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{61964057-c362-44e7-8720-87b52356049a}" />
@@ -159,15 +167,13 @@
 	<object class="MixerBusEffectChain" id="{98e7c537-5b7a-4cee-b6ff-3cfcdda8bf55}">
 		<relationship name="effects">
 			<destination>{e8e0cde8-f8b3-48bb-b699-a58a1c43ede9}</destination>
-			<destination>{1e6f6d47-51cd-488a-9602-0173d4149d5f}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{cc5e301a-36c0-4522-a530-eed64517c634}" />
 	<object class="MixerBusFader" id="{b4f5b358-62e7-499d-bf0b-7c187cf9388f}" />
-	<object class="MixerBusFader" id="{e8e0cde8-f8b3-48bb-b699-a58a1c43ede9}" />
-	<object class="MixerSend" id="{1e6f6d47-51cd-488a-9602-0173d4149d5f}">
+	<object class="MixerSend" id="{2e82e408-82a8-4cee-9802-bde0930da968}">
 		<property name="level">
-			<value>-25.5</value>
+			<value>-39</value>
 		</property>
 		<property name="inputFormat">
 			<value>1</value>
@@ -176,4 +182,5 @@
 			<destination>{0a98f67f-29aa-4fe5-b637-09c115d170ed}</destination>
 		</relationship>
 	</object>
+	<object class="MixerBusFader" id="{e8e0cde8-f8b3-48bb-b699-a58a1c43ede9}" />
 </objects>

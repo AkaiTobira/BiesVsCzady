@@ -56,7 +56,11 @@
 			<destination>{5876b881-eadb-41de-ab6e-370bf9b436a1}</destination>
 		</relationship>
 	</object>
-	<object class="EventAutomatableProperties" id="{9ee3c51b-28f5-4d92-ba90-2b2dd5e524c3}" />
+	<object class="EventAutomatableProperties" id="{9ee3c51b-28f5-4d92-ba90-2b2dd5e524c3}">
+		<property name="maxVoices">
+			<value>2</value>
+		</property>
+	</object>
 	<object class="MarkerTrack" id="{d45900ab-fa2c-4b30-984b-3f9b33af3c4f}" />
 	<object class="GroupTrack" id="{8f3351a9-b863-4909-8567-ff0c20922bbf}">
 		<relationship name="modules">
@@ -72,6 +76,9 @@
 		</relationship>
 	</object>
 	<object class="EventMixerMaster" id="{d155bdc7-f3cf-4499-8311-476fb268aa79}">
+		<property name="volume">
+			<value>-5.5</value>
+		</property>
 		<relationship name="effectChain">
 			<destination>{af2e17c7-d941-424e-b043-27a45d04de9b}</destination>
 		</relationship>
@@ -197,7 +204,7 @@
 	<object class="MixerBusFader" id="{4bccee8e-f249-4715-a1f4-c87ef3b24d87}" />
 	<object class="MixerSend" id="{e4591dde-a423-4fb7-a144-2cbd0a886d7a}">
 		<property name="level">
-			<value>-24.5</value>
+			<value>-26</value>
 		</property>
 		<property name="inputFormat">
 			<value>1</value>

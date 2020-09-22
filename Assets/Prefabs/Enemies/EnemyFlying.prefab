@@ -817,14 +817,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e5f50d528dc4d24486a2d94436a1573, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Sounds:
+  SFXSounds:
   - event:/SFX/Czad/shoot
+  - event:/SFX/Czad/melee
   - event:/SFX/Czad/hurt
   - event:/SFX/Czad/dies
+  LoopedSounds:
   - event:/SFX/Czad/presence
-  - event:/SFX/Czad/melee
-  playOnStart: 0
-  shouldPlayOnStart: 0
+  _playOnStart: 0
+  _playLoopedOnStart: 0
+  _shouldPlayOnStart: 0
+  _shouldPlayLoopedOnStart: 1
 --- !u!1 &1220950012290220896
 GameObject:
   m_ObjectHideFlags: 0

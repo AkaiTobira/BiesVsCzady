@@ -34,7 +34,7 @@ MonoBehaviour:
   guid: aeca7e9a0523754ab1ff36c7ff035882
   Banks:
   - {fileID: -8390949206412305660}
-  - {fileID: 2344789562337962029}
+  - {fileID: -7993823520326524175}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -130,7 +130,7 @@ MonoBehaviour:
   guid: 3b108eee03179442bf10bd7914a20480
   Banks:
   - {fileID: -8390949206412305660}
-  - {fileID: 2344789562337962029}
+  - {fileID: -7993823520326524175}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -138,6 +138,24 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 1500
+--- !u!114 &-7993823520326524175
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.bank
+  m_EditorClassIdentifier: 
+  Path: Assets/FMOD/BiesVsCzady/Build/Desktop/Master.bank
+  SubDir: 
+  lastModified: 637363964370000000
+  LoadResult: 0
+  FileSizes: []
+  Exists: 1
 --- !u!114 &-7766031810432326350
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -171,7 +189,7 @@ MonoBehaviour:
   Path: event:/SFX/Enviro/key collect
   guid: dfaaa31c7467a04cbe7b18db02136701
   Banks:
-  - {fileID: 2344789562337962029}
+  - {fileID: -7993823520326524175}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -215,6 +233,29 @@ MonoBehaviour:
   LoadResult: 0
   FileSizes: []
   Exists: 1
+--- !u!114 &-6937414400723509444
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/NULL
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/NULL
+  guid: a154108dc6d64e43a2fd624f3dcaf9c3
+  Banks:
+  - {fileID: -7993823520326524175}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 0
 --- !u!114 &-6914257242124271147
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -233,6 +274,29 @@ MonoBehaviour:
   LoadResult: 0
   FileSizes: []
   Exists: 1
+--- !u!114 &-6765368007746673721
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/ATM/NEW ATMO 1
+  m_EditorClassIdentifier: 
+  Path: event:/ATM/NEW ATMO 1
+  guid: d193bd8234ee9f44aa3b523034dc0424
+  Banks:
+  - {fileID: -7993823520326524175}
+  IsStream: 1
+  Is3D: 1
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 79887
 --- !u!114 &-6730858796480969999
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -248,7 +312,7 @@ MonoBehaviour:
   Path: event:/SFX/Kot/jump up
   guid: eb686428c1204e44ac48e876e6eecf60
   Banks:
-  - {fileID: 2344789562337962029}
+  - {fileID: -7993823520326524175}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -290,14 +354,14 @@ MonoBehaviour:
   guid: de526d469d419145b183ba2253bec5c2
   Banks:
   - {fileID: -8390949206412305660}
-  - {fileID: 2344789562337962029}
+  - {fileID: -7993823520326524175}
   IsStream: 0
   Is3D: 1
-  IsOneShot: 0
+  IsOneShot: 1
   Parameters: []
   MinDistance: 1
   MaxDistance: 85
-  Length: 7424
+  Length: 0
 --- !u!114 &-6391842361941486982
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -385,7 +449,7 @@ MonoBehaviour:
   Path: event:/SFX/Kot/FS
   guid: efa40ecf6a3ccb48a9af59a72af4e60f
   Banks:
-  - {fileID: 2344789562337962029}
+  - {fileID: -7993823520326524175}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -425,8 +489,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Path: event:/SFX/Enviro/grzyb znika
   guid: a0d09b68aa29e84480183b8888e3712b
-  Banks:
-  - {fileID: 2344789562337962029}
+  Banks: []
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -467,7 +530,7 @@ MonoBehaviour:
   Path: event:/SFX/Bies/dies
   guid: 11fd36283a160742a825d2b0ba438928
   Banks:
-  - {fileID: 2344789562337962029}
+  - {fileID: -7993823520326524175}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -490,7 +553,7 @@ MonoBehaviour:
   Path: event:/SFX/Enviro/door open
   guid: d66004038e126444bbb8d6b5309a10c5
   Banks:
-  - {fileID: 2344789562337962029}
+  - {fileID: -7993823520326524175}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -521,6 +584,29 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 0
+--- !u!114 &-4833912941200276152
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/Enviro/grzyb show
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/Enviro/grzyb show
+  guid: e3ddc3c49240d64fb07f3aae355ab9c6
+  Banks:
+  - {fileID: -7993823520326524175}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 2200
 --- !u!114 &-4406913535377367868
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -575,6 +661,29 @@ MonoBehaviour:
   LoadResult: 0
   FileSizes: []
   Exists: 0
+--- !u!114 &-4168966542136047104
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/Enviro/grzyb hide
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/Enviro/grzyb hide
+  guid: bec5da1e85dbe04394f70a6d53efd592
+  Banks:
+  - {fileID: -7993823520326524175}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 1500
 --- !u!114 &-4064611204131349956
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -625,8 +734,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Path: event:/SFX/Enviro/grzyb pojawia sie
   guid: 88fe75fd7968244e86ed9b3fe097eb80
-  Banks:
-  - {fileID: 2344789562337962029}
+  Banks: []
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -668,7 +776,7 @@ MonoBehaviour:
   guid: 0405028629bce94d9c026dde034d3498
   Banks:
   - {fileID: -8390949206412305660}
-  - {fileID: 2344789562337962029}
+  - {fileID: -7993823520326524175}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -676,6 +784,29 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 1020
+--- !u!114 &-2742020147978486201
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/ATM/NEW ATMO 3
+  m_EditorClassIdentifier: 
+  Path: event:/ATM/NEW ATMO 3
+  guid: cad9934aba50694688f8613a68b7a9ec
+  Banks:
+  - {fileID: -7993823520326524175}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 78863
 --- !u!114 &-2717017389285683813
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -728,7 +859,7 @@ MonoBehaviour:
   guid: a86cba7f6eda534ba7cc6e96fe25f70e
   Banks:
   - {fileID: -8390949206412305660}
-  - {fileID: 2344789562337962029}
+  - {fileID: -7993823520326524175}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -751,7 +882,7 @@ MonoBehaviour:
   Path: event:/SFX/Enviro/push object
   guid: 6aaaf5b6ebf1e34cb1327e57e7ea3ee8
   Banks:
-  - {fileID: 2344789562337962029}
+  - {fileID: -7993823520326524175}
   IsStream: 0
   Is3D: 0
   IsOneShot: 0
@@ -774,7 +905,7 @@ MonoBehaviour:
   Path: event:/SFX/Czad/dies
   guid: d9119336716d86479cd451ad11b76649
   Banks:
-  - {fileID: 2344789562337962029}
+  - {fileID: -7993823520326524175}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -797,7 +928,7 @@ MonoBehaviour:
   Path: event:/SFX/Kot/dies
   guid: ff8a0aa1cd762b448f72de586b695461
   Banks:
-  - {fileID: 2344789562337962029}
+  - {fileID: -7993823520326524175}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -821,7 +952,7 @@ MonoBehaviour:
   guid: ba937fc36b23bc42948f89e7c3af4feb
   Banks:
   - {fileID: -8390949206412305660}
-  - {fileID: 2344789562337962029}
+  - {fileID: -7993823520326524175}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -862,7 +993,7 @@ MonoBehaviour:
   Path: event:/SFX/Kot/hurt
   guid: 20f3f410d8c3044aae073a600917e62d
   Banks:
-  - {fileID: 2344789562337962029}
+  - {fileID: -7993823520326524175}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -884,7 +1015,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EditorBanks:
   - {fileID: 5864574226408267649}
-  - {fileID: 2344789562337962029}
+  - {fileID: -7993823520326524175}
   EditorEvents:
   - {fileID: -4902263680055983602}
   - {fileID: 883708458752113524}
@@ -910,20 +1041,25 @@ MonoBehaviour:
   - {fileID: 6984456457868816756}
   - {fileID: -4996317722827953111}
   - {fileID: 3878394394200245643}
-  - {fileID: -3686039531317203658}
   - {fileID: 6847132360641865207}
-  - {fileID: -5290944302029974665}
   - {fileID: 3145630306846196663}
   - {fileID: -4967732271101212893}
   - {fileID: -1068244901912112821}
   - {fileID: -7589001829027001669}
   - {fileID: -1061320165649721874}
+  - {fileID: 3611036280479966093}
+  - {fileID: -6937414400723509444}
+  - {fileID: -4168966542136047104}
+  - {fileID: -2742020147978486201}
+  - {fileID: 1990238046621605186}
+  - {fileID: -6765368007746673721}
+  - {fileID: -4833912941200276152}
   EditorParameters: []
   MasterBanks:
-  - {fileID: 2344789562337962029}
+  - {fileID: -7993823520326524175}
   StringsBanks:
   - {fileID: 5864574226408267649}
-  stringsBankWriteTime: 637362399054097878
+  stringsBankWriteTime: 637363964370000000
   cacheVersion: 3
 --- !u!114 &9433077994204138
 MonoBehaviour:
@@ -941,7 +1077,7 @@ MonoBehaviour:
   guid: f741770e0c442a45867911bf6cfa9135
   Banks:
   - {fileID: -8390949206412305660}
-  - {fileID: 2344789562337962029}
+  - {fileID: -7993823520326524175}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -1002,7 +1138,7 @@ MonoBehaviour:
   Banks:
   - {fileID: 6082243530561040618}
   - {fileID: -8390949206412305660}
-  - {fileID: 2344789562337962029}
+  - {fileID: -7993823520326524175}
   IsStream: 1
   Is3D: 1
   IsOneShot: 0
@@ -1046,6 +1182,24 @@ MonoBehaviour:
   LoadResult: 0
   FileSizes: []
   Exists: 1
+--- !u!114 &1383623538553692693
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.bank
+  m_EditorClassIdentifier: 
+  Path: Assets/FMOD/BiesVsCzady/Build/Desktop/Master.bank
+  SubDir: 
+  lastModified: 637362990410000000
+  LoadResult: 0
+  FileSizes: []
+  Exists: 0
 --- !u!114 &1420551183551458754
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1062,7 +1216,7 @@ MonoBehaviour:
   guid: 0806eed7bcc4174e906fa530f537438a
   Banks:
   - {fileID: -8390949206412305660}
-  - {fileID: 2344789562337962029}
+  - {fileID: -7993823520326524175}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -1104,7 +1258,7 @@ MonoBehaviour:
   guid: 337e7b903cbef547bdba9fd5912b7f7d
   Banks:
   - {fileID: -8390949206412305660}
-  - {fileID: 2344789562337962029}
+  - {fileID: -7993823520326524175}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -1166,6 +1320,29 @@ MonoBehaviour:
   LoadResult: 0
   FileSizes: []
   Exists: 0
+--- !u!114 &1990238046621605186
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/ATM/NEW ATMO 2
+  m_EditorClassIdentifier: 
+  Path: event:/ATM/NEW ATMO 2
+  guid: ccdc4d6b7e111c4694a0b21b5f136c8d
+  Banks:
+  - {fileID: -7993823520326524175}
+  IsStream: 1
+  Is3D: 1
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 43083
 --- !u!114 &2344789562337962029
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1218,7 +1395,7 @@ MonoBehaviour:
   guid: ebdee42216c97a4a879d46bb64f6aeae
   Banks:
   - {fileID: -8390949206412305660}
-  - {fileID: 2344789562337962029}
+  - {fileID: -7993823520326524175}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -1241,7 +1418,7 @@ MonoBehaviour:
   Path: event:/SFX/Czad/hurt
   guid: c54a75e0ff2e0a489a15ee1e8ceb5650
   Banks:
-  - {fileID: 2344789562337962029}
+  - {fileID: -7993823520326524175}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -1265,7 +1442,7 @@ MonoBehaviour:
   guid: 090c074f35869945ba6407bb38086183
   Banks:
   - {fileID: -8390949206412305660}
-  - {fileID: 2344789562337962029}
+  - {fileID: -7993823520326524175}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -1273,6 +1450,29 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 1200
+--- !u!114 &3611036280479966093
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/ATM/SWITCH 3 TREE
+  m_EditorClassIdentifier: 
+  Path: event:/ATM/SWITCH 3 TREE
+  guid: 627d33db5866874c8988dbdc98f32b28
+  Banks:
+  - {fileID: -7993823520326524175}
+  IsStream: 1
+  Is3D: 1
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 52363
 --- !u!114 &3878394394200245643
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1288,7 +1488,7 @@ MonoBehaviour:
   Path: event:/SFX/Czad/melee
   guid: 2a4e062b19437f4eb32472adc310765f
   Banks:
-  - {fileID: 2344789562337962029}
+  - {fileID: -7993823520326524175}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -1460,7 +1660,7 @@ MonoBehaviour:
   Path: event:/SFX/Bies/hurt
   guid: b8f9fb659fcfa540a3e0ba2d2923d4cb
   Banks:
-  - {fileID: 2344789562337962029}
+  - {fileID: -7993823520326524175}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -1500,11 +1700,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Path: Assets/FMOD/BiesVsCzady/Build/Desktop/Master.strings.bank
   SubDir: 
-  lastModified: 637362399054097878
+  lastModified: 637363964370000000
   LoadResult: 0
   FileSizes:
   - Name: Desktop
-    Value: 2042
+    Value: 2286
   Exists: 1
 --- !u!114 &6082243530561040618
 MonoBehaviour:
@@ -1573,15 +1773,15 @@ MonoBehaviour:
   m_Name: event:/SFX/Czad/shoot
   m_EditorClassIdentifier: 
   Path: event:/SFX/Czad/shoot
-  guid: 9004da442f0cad42939f2711d5544834
+  guid: fe7a7aa3a616f74b8870c6733509a193
   Banks:
-  - {fileID: 2344789562337962029}
+  - {fileID: -7993823520326524175}
   IsStream: 0
-  Is3D: 0
+  Is3D: 1
   IsOneShot: 1
   Parameters: []
-  MinDistance: 0
-  MaxDistance: 0
+  MinDistance: 1
+  MaxDistance: 20
   Length: 2000
 --- !u!114 &6984456457868816756
 MonoBehaviour:
@@ -1598,7 +1798,7 @@ MonoBehaviour:
   Path: event:/SFX/Bies/block
   guid: 0f2917707288044387a4d9e2d72c19a0
   Banks:
-  - {fileID: 2344789562337962029}
+  - {fileID: -7993823520326524175}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -1662,7 +1862,7 @@ MonoBehaviour:
   guid: ce6455acdcde144ab61d237e498e4ea5
   Banks:
   - {fileID: -8390949206412305660}
-  - {fileID: 2344789562337962029}
+  - {fileID: -7993823520326524175}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -1721,7 +1921,7 @@ MonoBehaviour:
   Path: event:/SFX/Kot/jump down
   guid: 98b23e08666c344998f92f60aac554f1
   Banks:
-  - {fileID: 2344789562337962029}
+  - {fileID: -7993823520326524175}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
