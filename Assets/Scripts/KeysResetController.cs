@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class KeySaveInfo : GeneralObjectInfoPack{
 
+    public Animator animator;
+
 }
 
 
@@ -30,6 +32,8 @@ public class KeysResetController : MonoBehaviour
         KeySaveInfo infoPack = new KeySaveInfo();
         infoPack.saveBasics( go );
 
+        infoPack.animator = go.GetComponent<KeyDetector>().TextNode;
+
         return infoPack;
     }
 
@@ -47,6 +51,11 @@ public class KeysResetController : MonoBehaviour
         transform.GetChild(i).position = info.position;
         transform.GetChild(i).rotation = info.rotation;
         transform.GetChild(i).localScale = info.scale;
+
+        if( info.animator ){
+            transform.GetChild(i).GetComponent<KeyDetector>().TextNode = info.animator;
+            transform.GetChild(i).GetComponent<KeyDetector>().TextNode?.Rebind();
+        }
     }
 
 
@@ -77,6 +86,11 @@ public class KeysResetController : MonoBehaviour
 
         var newInstancion = Instantiate( childPrefab, info.position, info.rotation, transform);
         newInstancion.transform.localScale = info.scale;
+
+        if( info.animator ){
+            newInstancion.GetComponent<KeyDetector>().TextNode = info.animator;
+            newInstancion.GetComponent<KeyDetector>().TextNode.Rebind();
+        }
 
         newInstancion.GetComponent<ObjectIdHolder>().objectId = index;
     }
