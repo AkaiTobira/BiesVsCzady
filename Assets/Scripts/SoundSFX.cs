@@ -71,10 +71,11 @@ public class SoundSFX : MonoBehaviour {
 
     public void PlayLoopedSFX( int soundId ){
         if( soundId > LoopedSounds.Length || soundId < 0 ){
-            //Debug.LogError( "Sound Id is invalid" + soundId + " : maxArray is" + Sounds.Length);
+            Debug.LogError( "Sound Id is invalid" + soundId + " : maxArray is" + SFXSounds.Length);
             return;
         }
 
+        
         if ( LoopedSounds[soundId] == null){
             Debug.LogError( "Array of sounds : index " + soundId + " is null" );
             return;
@@ -89,7 +90,7 @@ public class SoundSFX : MonoBehaviour {
 
     public void StopLoopedSFX( int soundId ){
         if( soundId > LoopedSounds.Length || soundId < 0 ){
-            //Debug.LogError( "Sound Id is invalid" + soundId + " : maxArray is" + Sounds.Length);
+            Debug.LogError( "Sound Id is invalid" + soundId + " : maxArray is" + LoopedSounds.Length);
             return;
         }
 
