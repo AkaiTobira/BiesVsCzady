@@ -78,6 +78,9 @@ public class ChaserAkaiController : AkaiController
                 infoPack.fromCameAttack = GlobalUtils.PlayerObject.position.x < m_FloorDetector.GetComponent<Transform>().position.x? 
                                             GlobalUtils.Direction.Left : GlobalUtils.Direction.Right;
             break;
+            case "CzadStun":
+                infoPack.isValid = false;
+            break;
             default: 
                 infoPack.isValid = true;
                 infoPack.knockBackValue = onTouchKnockbackValues;
