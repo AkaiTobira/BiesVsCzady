@@ -17,6 +17,8 @@ public class BiesWallHold : PlayerBaseState
         m_animator.SetBool( "isWallMovable",  m_ObjectInteractionDetector.IsWallPullable() );
         if( m_ObjectInteractionDetector.IsWallPullable() ){
             distanceToFixAnimation = new Vector3(30, 6 , 0);
+        }else{
+            distanceToFixAnimation = new Vector3(20, 6, 0);
         }
     }
 
