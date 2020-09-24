@@ -132,6 +132,7 @@
 		<relationship name="effects">
 			<destination>{ebc011c3-453f-4bd0-ba32-7511737390c8}</destination>
 			<destination>{6f3f3e14-0327-4d8f-b8e0-999e95a2ce8d}</destination>
+			<destination>{6b9389cf-a54e-473a-8a16-f853540989a8}</destination>
 			<destination>{908eb5d6-c99e-4a65-89c9-ddfb7119e819}</destination>
 		</relationship>
 	</object>
@@ -195,6 +196,17 @@
 		</property>
 		<relationship name="mixerReturn">
 			<destination>{0a98f67f-29aa-4fe5-b637-09c115d170ed}</destination>
+		</relationship>
+	</object>
+	<object class="MixerSend" id="{6b9389cf-a54e-473a-8a16-f853540989a8}">
+		<property name="level">
+			<value>-34</value>
+		</property>
+		<property name="inputFormat">
+			<value>1</value>
+		</property>
+		<relationship name="mixerReturn">
+			<destination>{61708e4a-16ef-4ee4-9e42-15fe1b20f405}</destination>
 		</relationship>
 	</object>
 	<object class="SpatialiserEffect" id="{908eb5d6-c99e-4a65-89c9-ddfb7119e819}" />

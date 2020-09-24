@@ -145,7 +145,7 @@
 	<object class="MixerBusFader" id="{f0a11f63-30cd-411c-a1a1-2f7d2edb1503}" />
 	<object class="MixerSend" id="{8539dabd-c084-4e85-ad67-c88986edfe64}">
 		<property name="level">
-			<value>-35</value>
+			<value>-26.5</value>
 		</property>
 		<property name="inputFormat">
 			<value>1</value>
@@ -154,6 +154,10 @@
 			<destination>{61708e4a-16ef-4ee4-9e42-15fe1b20f405}</destination>
 		</relationship>
 	</object>
-	<object class="SpatialiserEffect" id="{c718f3eb-057f-4ccf-83d3-0e2b490b25be}" />
+	<object class="SpatialiserEffect" id="{c718f3eb-057f-4ccf-83d3-0e2b490b25be}">
+		<property name="maximumDistance">
+			<value>100</value>
+		</property>
+	</object>
 	<object class="MixerBusFader" id="{26175993-7726-4749-a23b-113497bd73dd}" />
 </objects>
