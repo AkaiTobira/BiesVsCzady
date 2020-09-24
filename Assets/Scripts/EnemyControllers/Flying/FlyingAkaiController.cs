@@ -25,7 +25,7 @@ public class FlyingAkaiController : AkaiController
     }
 
     void UpdatePlayerDetection(){
-        if( m_sightController.isPlayerSeen() && !isAlreadyInCombat ){
+        if( playerDetectedByBox && !isAlreadyInCombat ){
             m_controller.OverriteStates( "FlyingCombatEngage" );
             isAlreadyInCombat = true;
         }else if( isAlreadyInCombat && canFollowPlayer ) {

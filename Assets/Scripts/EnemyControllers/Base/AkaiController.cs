@@ -105,7 +105,7 @@ public class AkaiController : IEntity, IEnemy
     }
 
     void UpdatePlayerDetection(){
-        if( m_sightController.isPlayerSeen() && !isAlreadyInCombat ){
+        if( playerDetectedByBox && !isAlreadyInCombat ){
             m_controller.OverriteStates( "CombatEngage" );
             isAlreadyInCombat = true;
         }
