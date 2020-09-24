@@ -4,6 +4,9 @@
 		<property name="name">
 			<value>cave reverb</value>
 		</property>
+		<relationship name="automators">
+			<destination>{91bc5ffc-182c-43ab-8768-930fd0dd5e4c}</destination>
+		</relationship>
 		<relationship name="effectChain">
 			<destination>{27daf156-e20f-416f-ad90-58f48eff7820}</destination>
 		</relationship>
@@ -14,6 +17,14 @@
 			<destination>{5876b881-eadb-41de-ab6e-370bf9b436a1}</destination>
 		</relationship>
 	</object>
+	<object class="Automator" id="{91bc5ffc-182c-43ab-8768-930fd0dd5e4c}">
+		<property name="nameOfPropertyBeingAutomated">
+			<value>volume</value>
+		</property>
+		<relationship name="automationCurves">
+			<destination>{a3aa136c-87b6-430c-a980-3c05009f7a55}</destination>
+		</relationship>
+	</object>
 	<object class="MixerBusEffectChain" id="{27daf156-e20f-416f-ad90-58f48eff7820}">
 		<relationship name="effects">
 			<destination>{55e4660b-5327-4df1-b70d-d4791fc22632}</destination>
@@ -21,6 +32,15 @@
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{69f10b83-c90f-48b4-abc4-a7d565c290c3}" />
+	<object class="AutomationCurve" id="{a3aa136c-87b6-430c-a980-3c05009f7a55}">
+		<relationship name="parameter">
+			<destination>{9b66ceed-0ff7-42ab-a591-e449e6d9481b}</destination>
+		</relationship>
+		<relationship name="automationPoints">
+			<destination>{808475b0-03c0-440a-a4a7-695fb242365e}</destination>
+			<destination>{45871d18-2606-4c0e-81fb-f5de2f8eb4e0}</destination>
+		</relationship>
+	</object>
 	<object class="ConvolutionReverbEffect" id="{55e4660b-5327-4df1-b70d-d4791fc22632}">
 		<property name="endFrame">
 			<value>78678</value>
@@ -30,4 +50,20 @@
 		</relationship>
 	</object>
 	<object class="MixerBusFader" id="{b45afed1-31f9-4aa9-9133-3c56bf905fe7}" />
+	<object class="AutomationPoint" id="{808475b0-03c0-440a-a4a7-695fb242365e}">
+		<property name="position">
+			<value>2</value>
+		</property>
+		<property name="value">
+			<value>0</value>
+		</property>
+	</object>
+	<object class="AutomationPoint" id="{45871d18-2606-4c0e-81fb-f5de2f8eb4e0}">
+		<property name="position">
+			<value>2.0000208333333331</value>
+		</property>
+		<property name="value">
+			<value>-80</value>
+		</property>
+	</object>
 </objects>
