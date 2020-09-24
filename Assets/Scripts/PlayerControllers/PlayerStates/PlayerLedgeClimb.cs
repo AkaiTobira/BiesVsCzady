@@ -25,7 +25,7 @@ public class PlayerLedgeClimb : PlayerBaseState
         GUIElements.Camera.EnableMoreSmooth(1f);
         GUIElements.Camera.DisableMoreSmooth();
 
-        Debug.Log( timeToEnd );
+//        Debug.Log( timeToEnd );
     }
 
     private Vector2 CalculateHighOfLedge(BoxCollider2D ledgeBox){

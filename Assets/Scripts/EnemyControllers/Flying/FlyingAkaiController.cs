@@ -65,8 +65,9 @@ public class FlyingAkaiController : AkaiController
         UpdateDebugConsole();
         DrawNavigationPoints();
         UpdateHurtDelayTimer();
+        UpdateDeadTimer();
 
-        if( isDead ) Destroy(gameObject);
+        if( toDeadTimer == 0 ) Destroy(gameObject);
     }
 
     void UpdateDebugConsole(){

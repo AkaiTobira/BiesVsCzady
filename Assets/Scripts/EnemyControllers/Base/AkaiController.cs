@@ -91,7 +91,7 @@ public class AkaiController : IEntity, IEnemy
 
     public IFieldSightDetector m_sightController;
 
-    [HideInInspector] public bool isDead = false;
+    [HideInInspector] public float toDeadTimer = 10000000.0f;
 
     [HideInInspector] public float delayOfHurtGoInTimer = 0.0f;
 
@@ -102,6 +102,10 @@ public class AkaiController : IEntity, IEnemy
         m_animator      = transform.Find("Animator").GetComponent<Animator>();
         m_controller    = new SFSMEnemy( gameObject, new CzadIdle( gameObject ) );
         m_FloorDetector.Move( new Vector2(0.1f, 0) );
+    }
+
+    public Vector3 GetPosition(){
+        return m_FloorDetector.GetComponent<Transform>().position;
     }
 
     void UpdatePlayerDetection(){
@@ -116,7 +120,14 @@ public class AkaiController : IEntity, IEnemy
         UpdatePlayerDetection();
         UpdateHurtDelayTimer();
         UpdateDebugConsole();
-        if( isDead ) Destroy(gameObject);
+        UpdateDeadTimer();
+
+        Debug.Log( toDeadTimer );
+        if( toDeadTimer == 0 ) Destroy(gameObject);
+    }
+
+    protected void UpdateDeadTimer(){
+        toDeadTimer = Mathf.Max( toDeadTimer - Time.deltaTime, 0);
     }
 
     protected void UpdateHurtDelayTimer(){

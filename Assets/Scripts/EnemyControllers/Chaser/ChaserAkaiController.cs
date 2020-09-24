@@ -31,8 +31,9 @@ public class ChaserAkaiController : AkaiController
         UpdatePlayerDetection();
         UpdateDebugConsole();
         UpdateHurtDelayTimer();
-
-        if( isDead ) Destroy(gameObject);
+        UpdateDeadTimer();
+        
+        if( toDeadTimer == 0 ) Destroy(gameObject);
     }
 
 

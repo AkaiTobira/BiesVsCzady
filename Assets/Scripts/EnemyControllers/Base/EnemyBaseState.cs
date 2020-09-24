@@ -23,6 +23,7 @@ public class EnemyBaseState : IBaseState
     public override void Process(){
         if( !m_FloorDetector.isOnGround() ){
             entityScript.velocity.y -= entityScript.gravityForce * Time.deltaTime;
+            entityScript.velocity.y = Mathf.Max( entityScript.velocity.y, -500);
             m_FloorDetector.Move( entityScript.velocity * Time.deltaTime);
         }else{
             entityScript.velocity.y = 0;

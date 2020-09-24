@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class CzadDead : EnemyBaseState{    
-    private float timeToEnd;
     private float velocitXFriction = 0.0f;
 
     private float knocBackDirection;
@@ -15,12 +14,12 @@ public class CzadDead : EnemyBaseState{
         knocBackDirection = (int)infoPack.fromCameAttack;
 
         fillKnockbackInfo( infoPack );
-        timeToEnd = 5;
+        entityScript.toDeadTimer = 1f;
         m_animator.SetTrigger( "isDead" );
 
 
         GlobalUtils.TaskMaster.EnemyIsOutOfCombat();
-
+        Debug.Log( "DeadStateCalled ");
     }
 
     private void fillKnockbackInfo( GlobalUtils.AttackInfo infoPack ){
@@ -34,14 +33,6 @@ public class CzadDead : EnemyBaseState{
 
         if( velocitXFriction > 0){
             m_FloorDetector.CheatMove( new Vector2(0,4.0f));
-        }
-    }
-
-
-    private void  ProcessStateEnd(){
-        timeToEnd -= Time.deltaTime;
-        if( timeToEnd < 0){
-            entityScript.isDead = true;
         }
     }
 
@@ -60,7 +51,6 @@ public class CzadDead : EnemyBaseState{
     }
 
     public override void Process(){
-        ProcessStateEnd();
         ProcessMove();
     }
 }
