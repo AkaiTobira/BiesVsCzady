@@ -360,12 +360,11 @@ MonoBehaviour:
   - event:/SFX/Czad/melee
   - event:/SFX/Czad/hurt
   - event:/SFX/Czad/dies
-  LoopedSounds:
-  - event:/SFX/Czad/presence
+  LoopedSounds: []
   _playOnStart: 0
   _playLoopedOnStart: 0
   _shouldPlayOnStart: 0
-  _shouldPlayLoopedOnStart: 1
+  _shouldPlayLoopedOnStart: 0
 --- !u!1 &2173679741069993215
 GameObject:
   m_ObjectHideFlags: 0
