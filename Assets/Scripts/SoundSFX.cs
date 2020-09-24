@@ -18,6 +18,7 @@ public class SoundSFX : MonoBehaviour {
     public bool _shouldPlayLoopedOnStart;
 
     void Start (){
+   
     }
 
     void OnEnable() {
@@ -28,7 +29,7 @@ public class SoundSFX : MonoBehaviour {
 
         foreach( string sound in LoopedSounds){
             var NewSound = FMODUnity.RuntimeManager.CreateInstance (sound);
-            FMODUnity.RuntimeManager.AttachInstanceToGameObject(NewSound, GetComponent<Transform>(), GetComponent<Rigidbody2D>());
+            FMODUnity.RuntimeManager.AttachInstanceToGameObject(NewSound, GetComponent<Transform>(), GetComponent<Rigidbody>());
             _aciveLoopedSounds.Add( NewSound );
         }
 
@@ -106,7 +107,7 @@ public class SoundSFX : MonoBehaviour {
     public void PlaySFX( int soundId ){
         DetachSFXInstance();
         if( soundId > SFXSounds.Length || soundId < 0 ){
-            //Debug.LogError( "Sound Id is invalid" + soundId + " : maxArray is" + Sounds.Length);
+            Debug.LogError( "Sound Id is invalid" + soundId + " : maxArray is" + SFXSounds.Length);
             return;
         }
 
@@ -119,5 +120,27 @@ public class SoundSFX : MonoBehaviour {
         FMODUnity.RuntimeManager.AttachInstanceToGameObject(sound, GetComponent<Transform>(), GetComponent<Rigidbody2D>());
         sound.start();
         _aciveSounds.Add( sound );
+    }
+
+    public void PlaySFX3D(int soundId)
+    {
+        DetachSFXInstance();
+        if (soundId > SFXSounds.Length || soundId < 0)
+        {
+            Debug.LogError( "Sound Id is invalid" + soundId + " : maxArray is" + SFXSounds.Length);
+            return;
+        }
+
+        if (SFXSounds[soundId] == null)
+        {
+            Debug.LogError("Array of sounds : index " + soundId + " is null");
+            return;
+        }
+
+        //FMODUnity.RuntimeManager.PlayOneShot(SFXSounds[soundId]);
+        var sound = FMODUnity.RuntimeManager.CreateInstance(SFXSounds[soundId]);
+        FMODUnity.RuntimeManager.AttachInstanceToGameObject(sound, GetComponent<Transform>(), GetComponent<Rigidbody>());
+        sound.start();
+        _aciveSounds.Add(sound);
     }
 }
