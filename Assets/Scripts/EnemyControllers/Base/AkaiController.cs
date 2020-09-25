@@ -91,7 +91,7 @@ public class AkaiController : IEntity, IEnemy
 
     public IFieldSightDetector m_sightController;
 
-    [HideInInspector] public bool isDead = false;
+    [HideInInspector] public float toDeadTimer = 10000000.0f;
 
     [HideInInspector] public float delayOfHurtGoInTimer = 0.0f;
 
@@ -104,8 +104,12 @@ public class AkaiController : IEntity, IEnemy
         m_FloorDetector.Move( new Vector2(0.1f, 0) );
     }
 
+    public Vector3 GetPosition(){
+        return m_FloorDetector.GetComponent<Transform>().position;
+    }
+
     void UpdatePlayerDetection(){
-        if( m_sightController.isPlayerSeen() && !isAlreadyInCombat ){
+        if( playerDetectedByBox && !isAlreadyInCombat ){
             m_controller.OverriteStates( "CombatEngage" );
             isAlreadyInCombat = true;
         }
@@ -116,7 +120,14 @@ public class AkaiController : IEntity, IEnemy
         UpdatePlayerDetection();
         UpdateHurtDelayTimer();
         UpdateDebugConsole();
-        if( isDead ) Destroy(gameObject);
+        UpdateDeadTimer();
+
+        Debug.Log( toDeadTimer );
+        if( toDeadTimer == 0 ) Destroy(gameObject);
+    }
+
+    protected void UpdateDeadTimer(){
+        toDeadTimer = Mathf.Max( toDeadTimer - Time.deltaTime, 0);
     }
 
     protected void UpdateHurtDelayTimer(){

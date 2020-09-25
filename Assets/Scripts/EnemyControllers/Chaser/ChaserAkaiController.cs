@@ -31,8 +31,9 @@ public class ChaserAkaiController : AkaiController
         UpdatePlayerDetection();
         UpdateDebugConsole();
         UpdateHurtDelayTimer();
-
-        if( isDead ) Destroy(gameObject);
+        UpdateDeadTimer();
+        
+        if( toDeadTimer == 0 ) Destroy(gameObject);
     }
 
 
@@ -77,6 +78,9 @@ public class ChaserAkaiController : AkaiController
                 infoPack.attackDamage   = chaseDamage;
                 infoPack.fromCameAttack = GlobalUtils.PlayerObject.position.x < m_FloorDetector.GetComponent<Transform>().position.x? 
                                             GlobalUtils.Direction.Left : GlobalUtils.Direction.Right;
+            break;
+            case "CzadStun":
+                infoPack.isValid = false;
             break;
             default: 
                 infoPack.isValid = true;

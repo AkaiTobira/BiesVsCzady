@@ -137,9 +137,11 @@ public class ChaserChaseAttack : EnemyBaseState
         if( isLeftOriented() )        ProcessLeftMove();
         else if ( isRightOriented() ) ProcessRightMove();
 
-        if( !m_wallDetector.isWallClose() )
-        m_FloorDetector.Move( entityScript.velocity * Time.deltaTime );
-        
+        if( !m_wallDetector.isWallClose() ){
+            m_FloorDetector.Move( entityScript.velocity * Time.deltaTime );
+        }else{
+            m_FloorDetector.Move( entityScript.velocity * 0.000001f * Time.deltaTime );
+        }
 
         if( m_isOver){
             m_animator.SetBool("isGliding", !m_isOver);
@@ -151,6 +153,7 @@ public class ChaserChaseAttack : EnemyBaseState
         ProcessStateOver();
 
         UpdateTurnAroundPoint();
+
     }
 
     public void ProcessStateOver(){

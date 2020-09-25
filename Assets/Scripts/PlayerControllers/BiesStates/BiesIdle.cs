@@ -19,7 +19,7 @@ public class BiesIdle : PlayerIdle
     public override void HandleInput(){
 
         
-        Debug.Log( "CCLFU" +  m_lowerEdgeDetector.canClimbLedgeFromUpSite() );
+//        Debug.Log( "CCLFU" +  m_lowerEdgeDetector.canClimbLedgeFromUpSite() );
 
 
 

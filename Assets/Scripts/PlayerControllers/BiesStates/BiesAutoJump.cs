@@ -16,7 +16,7 @@ public class BiesAutoJump : BiesJump
     public override void HandleInput(){
         lostTime -= Time.deltaTime;
 
-        Debug.Log( "CCL" +  m_ObjectInteractionDetector.canClimbLedge() );
+//        Debug.Log( "CCL" +  m_ObjectInteractionDetector.canClimbLedge() );
 
         if( m_ObjectInteractionDetector.canClimbLedge()  && !LockAreaOverseer.ledgeClimbBlock  ){
             m_isOver = true;
