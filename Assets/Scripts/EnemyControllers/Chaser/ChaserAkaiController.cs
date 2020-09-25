@@ -13,6 +13,9 @@ public class ChaserAkaiController : AkaiController
         m_animator        = transform.Find("Animator").GetComponent<Animator>();
         m_controller      = new SFSMEnemy( gameObject, new CzadIdle( gameObject ) );
         m_FloorDetector.Move( new Vector2(0.1f, 0) );
+    
+        currentHp = healthPoints;
+        SetHpBarValues();
     }
 
     void UpdatePlayerDetection(){
@@ -32,7 +35,7 @@ public class ChaserAkaiController : AkaiController
         UpdateDebugConsole();
         UpdateHurtDelayTimer();
         UpdateDeadTimer();
-        
+
         if( toDeadTimer == 0 ) Destroy(gameObject);
     }
 
@@ -43,7 +46,7 @@ public class ChaserAkaiController : AkaiController
         DebugConsoleInfo1.text = "";
         DebugConsoleInfo1.text += velocity.ToString() + "\n";
         DebugConsoleInfo1.text += "Player seen :" + m_sightController.isPlayerSeen().ToString() + "\n";
-        DebugConsoleInfo1.text += "EnemyHp : " + healthPoints.ToString() + "\n";
+        DebugConsoleInfo1.text += "EnemyHp : " + currentHp.ToString() + "\n";
 
         Vector2 RayPosition = transform.Find("Detector").transform.position + new Vector3( 0, -7.5f, 0);
         Debug.DrawLine( RayPosition - new Vector2( combatRange, 0 ), RayPosition + new Vector2( combatRange, 0 ), new Color(1,0,1));
@@ -99,8 +102,9 @@ public class ChaserAkaiController : AkaiController
         if( !infoPack.isValid ) return;
         if( infoPack.attackDamage > 500 ) m_controller.OverriteStates( "Dead", infoPack );
         if( m_controller.GetDirection() != infoPack.fromCameAttack ) return;
-        healthPoints -= infoPack.attackDamage;
-        if( healthPoints > 0 ){
+        currentHp -= infoPack.attackDamage;
+        SetHpBarValues();
+        if( currentHp > 0 ){
             if( infoPack.stunDuration > 0 && !infoPack.stateName.Contains("2")){
                 m_controller.OverriteStates( "ChaserStun", infoPack );
             }else{

@@ -6,12 +6,15 @@ using UnityEngine.UI;
 public class AkaiController : IEntity, IEnemy
 {
     [SerializeField] protected float healthPoints = 30;
+    protected float currentHp;
     [SerializeField] public float onTouchDamage   = 1;
 
     public Vector2 onTouchKnockbackValues = new Vector2();
 
     [HideInInspector] public Vector2 velocity;
     [HideInInspector] public bool isAlreadyInCombat = false;
+
+    [SerializeField] private HpBarController hpBar;
 
     [Header("MoveValues")]
 
@@ -102,6 +105,15 @@ public class AkaiController : IEntity, IEnemy
         m_animator      = transform.Find("Animator").GetComponent<Animator>();
         m_controller    = new SFSMEnemy( gameObject, new CzadIdle( gameObject ) );
         m_FloorDetector.Move( new Vector2(0.1f, 0) );
+        
+        currentHp = healthPoints;
+
+        SetHpBarValues();
+    }
+
+    protected void SetHpBarValues(){
+        if( hpBar == null ) return;
+        hpBar.UpdateHp( currentHp, healthPoints);
     }
 
     public Vector3 GetPosition(){
@@ -122,7 +134,7 @@ public class AkaiController : IEntity, IEnemy
         UpdateDebugConsole();
         UpdateDeadTimer();
 
-        Debug.Log( toDeadTimer );
+    //    Debug.Log( toDeadTimer );
         if( toDeadTimer == 0 ) Destroy(gameObject);
     }
 
@@ -160,7 +172,7 @@ public class AkaiController : IEntity, IEnemy
         DebugConsoleInfo1.text = "";
         DebugConsoleInfo1.text += velocity.ToString() + "\n";
         DebugConsoleInfo1.text += "Player seen :" + m_sightController.isPlayerSeen().ToString() + "\n";
-        DebugConsoleInfo1.text += "EnemyHp : " + healthPoints.ToString() + "\n";
+        DebugConsoleInfo1.text += "EnemyHp : " + currentHp.ToString() + "\n";
 
         Vector2 RayPosition = transform.Find("Detector").transform.position + new Vector3( 0, -7.5f, 0);
         Debug.DrawLine( RayPosition - new Vector2( combatRange, 0 ), RayPosition + new Vector2( combatRange, 0 ), new Color(1,0,1));
@@ -201,8 +213,9 @@ public class AkaiController : IEntity, IEnemy
 
     public override void OnHit(GlobalUtils.AttackInfo infoPack){
         if( !infoPack.isValid ) return;
-         healthPoints -= infoPack.attackDamage;
-        if( healthPoints > 0 ){
+        currentHp -= infoPack.attackDamage;
+        SetHpBarValues();
+        if( currentHp > 0 ){
             if( infoPack.stunDuration > 0){
                 m_controller.OverriteStates( "Stun", infoPack );
             }else{
