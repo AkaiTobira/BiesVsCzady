@@ -13,8 +13,10 @@ public class HpBarController : MonoBehaviour
     private Color acitveColor;
 
     void Start() {
-        acitveColor = colorChange[colorChange.Length-1];
-        hpFill.color = acitveColor;
+        if( swichColorActive ){
+            acitveColor = colorChange[colorChange.Length-1];
+            hpFill.color = acitveColor;
+        }
     }
 
     public void UpdateHp( float currentHP, float maxHP ){
