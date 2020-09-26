@@ -15,6 +15,9 @@ public class FlyingAkaiController : AkaiController
         m_FloorDetector.Move( new Vector2(0.1f, 0) );
         saveHightValues = m_FloorDetector.GetComponent<Transform>().position.y;
         CreateAirNavPoints();
+
+        currentHp = healthPoints;
+        SetHpBarValues();
     }
 
     private void CreateAirNavPoints(){
@@ -76,7 +79,7 @@ public class FlyingAkaiController : AkaiController
         DebugConsoleInfo1.text = "";
         DebugConsoleInfo1.text += velocity.ToString() + "\n";
         DebugConsoleInfo1.text += "Player seen :" + m_sightController.isPlayerSeen().ToString() + "\n";
-        DebugConsoleInfo1.text += "EnemyHp : " + healthPoints.ToString() + "\n";
+        DebugConsoleInfo1.text += "EnemyHp : " + currentHp.ToString() + "\n";
 
         Vector2 RayPosition = transform.Find("Detector").transform.position + new Vector3( 0, -7.5f, 0);
         Debug.DrawLine( RayPosition - new Vector2( combatRange, 0 ), RayPosition + new Vector2( combatRange, 0 ), new Color(1,0,1));
@@ -212,8 +215,9 @@ public class FlyingAkaiController : AkaiController
 
     public override void OnHit(GlobalUtils.AttackInfo infoPack){
         if( !infoPack.isValid ) return;
-         healthPoints -= infoPack.attackDamage;
-        if( healthPoints > 0 ){
+        currentHp -= infoPack.attackDamage;
+        SetHpBarValues();
+        if( currentHp > 0 ){
             if( infoPack.stunDuration > 0){
                 m_controller.OverriteStates( "FlyingStun", infoPack );
             }else{
