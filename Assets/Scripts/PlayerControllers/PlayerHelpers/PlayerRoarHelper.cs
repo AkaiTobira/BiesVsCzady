@@ -5,6 +5,11 @@ using UnityEngine;
 public static class  PlayerRoarHelper
 {
     static float coldownTimer = 0;
+    
+    public static float ColdownTImer{
+        get { return coldownTimer;}
+    }
+    
     public static float ROAR_COLDOWN = 2.0f;
 
     public static void IncrementCounters(){
