@@ -17,9 +17,12 @@ public class Player : IEntity
 
     private float inAnimatorBaseSpeed;
 
+    void Awake() {
+        GlobalUtils.PlayerObject = transform;
+    }
+
     void Start()
     {
-        GlobalUtils.PlayerObject = transform;
         m_FloorDetector       = GetComponent<CollisionDetectorPlayer>();
         m_WallDetector        = GetComponent<CollisionDetectorPlayer>();
         m_InteractionDetector = GetComponent<CollisionDetectorPlayer>();
