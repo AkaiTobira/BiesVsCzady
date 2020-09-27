@@ -45,35 +45,22 @@ public class AkaiController : IEntity, IEnemy
     public float maxMoveDistance = 0;
 
     [Header("MeeleAttackBehaviour")]
-
     public bool canMeeleAttack;
-
     public float timeOfBeeingHurt = 3.0f;
-
     public float delayOfHurtStartReEnter = 4.0f;
-
     [SerializeField]  public float massFactor = 0.2f;
-
     public float delayOfFirstAttack  = 3;
-
     public float breakBeetweenAttacks = 0;
-
     public float attackDamage         = 0;
-
     public float combatRange          = 300;
-
     public Vector2 knockbackValues    = new Vector2();
-
     public float stunDuration         = 0;
 
     [Header("JumpAttackBehaviour")]
 
     public bool canJumpOnPlayer = false;
-
     public float jumpAttackBreak = 2;
-
     public Vector2 jumpAttackKnockbackValue = new Vector2();
-
     public float jumpAttackDamage = 1;
 
     [Header("ShotAttackBehaviour")]
@@ -95,9 +82,7 @@ public class AkaiController : IEntity, IEnemy
     public IFieldSightDetector m_sightController;
 
     [HideInInspector] public float toDeadTimer = 10000000.0f;
-
     [HideInInspector] public float delayOfHurtGoInTimer = 0.0f;
-
 
     protected Vector3 _distanceToDebugInfo = new Vector3();
 
@@ -125,6 +110,10 @@ public class AkaiController : IEntity, IEnemy
     }
 
     void UpdatePlayerDetection(){ 
+        string currentStateName = m_controller.GetStateName();
+        if( currentStateName.Contains("Dead")) return;
+        if( currentStateName.Contains("Stun")) return;
+
         if( playerDetectedByBox && !isAlreadyInCombat ){
             m_controller.OverriteStates( "CombatEngage" );
             isAlreadyInCombat = true;
@@ -138,7 +127,6 @@ public class AkaiController : IEntity, IEnemy
         UpdateDebugConsole();
         UpdateDeadTimer();
 
-    //    Debug.Log( toDeadTimer );
         if( toDeadTimer == 0 ) Destroy(gameObject);
     }
 
@@ -181,7 +169,6 @@ public class AkaiController : IEntity, IEnemy
         Vector2 RayPosition = transform.Find("Detector").transform.position + new Vector3( 0, -7.5f, 0);
         Debug.DrawLine( RayPosition - new Vector2( combatRange, 0 ), RayPosition + new Vector2( combatRange, 0 ), new Color(1,0,1));
     }
-
 
     public override GlobalUtils.AttackInfo GetAttackInfo(){
 

@@ -100,6 +100,7 @@ public class ChaserChaseAttack : EnemyBaseState
             if( entityScript.playerGetHitInChase ) {
                 m_isOver = true;
                 entityScript.playerGetHitInChase = false;
+                Debug.Log( "EndState ");
             }
         }
     }

@@ -21,6 +21,11 @@ public class ChaserAkaiController : AkaiController
     }
 
     void UpdatePlayerDetection(){
+        string currentStateName = m_controller.GetStateName();
+        if( currentStateName.Contains("Dead")) return;
+        if( currentStateName.Contains("Stun")) return;
+
+
         if( playerDetectedByBox && !isAlreadyInCombat ){
             m_controller.OverriteStates( "ChaserCombatEngage" );
             isAlreadyInCombat = true;

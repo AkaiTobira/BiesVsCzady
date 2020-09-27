@@ -10,7 +10,7 @@ public class SFSMEnemy : ISFSMBase
 
     public override string StackStatusPrint(){
         string stackInfo = "";
-        foreach( PlayerBaseState b in m_states ){
+        foreach( IBaseState b in m_states ){
             stackInfo += b.name + " : " + b.isOver() + " :  " + b.GetDirection().ToString() + "\n";
         }
         return stackInfo;
@@ -23,6 +23,9 @@ public class SFSMEnemy : ISFSMBase
         string currentStateName = GetStateName();
 
         if( currentStateName.Contains("Dead")) return;
+        if( currentStateName.Contains("Stun")) return;
+        Debug.Log( StackStatusPrint() );
+        Debug.Log( currentStateName + " OverrideCaled _middle" + targetState);
 
         while( m_states.Count != 1 ) m_states.Pop();
 
@@ -67,6 +70,7 @@ public class SFSMEnemy : ISFSMBase
                 Debug.Log( targetState + " :: Not found");
             break;
         }
+        Debug.Log( StackStatusPrint() );
     }
     
     private string RemoveDirectionInfo( string stateName ){
