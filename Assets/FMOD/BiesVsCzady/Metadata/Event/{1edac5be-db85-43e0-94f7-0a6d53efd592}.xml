@@ -64,6 +64,9 @@
 		<property name="maxVoices">
 			<value>2</value>
 		</property>
+		<property name="voiceStealing">
+			<value>1</value>
+		</property>
 	</object>
 	<object class="MarkerTrack" id="{a7c3f065-c262-4184-a24e-dc82e327c836}" />
 	<object class="GroupTrack" id="{c4561401-cb5f-4e63-b2fd-b7a426e60fef}">
@@ -92,6 +95,9 @@
 		<property name="volume">
 			<value>-14.5</value>
 		</property>
+		<relationship name="modulators">
+			<destination>{ed6e7101-46d2-4055-a268-dc8bfad58cc5}</destination>
+		</relationship>
 		<relationship name="effectChain">
 			<destination>{e8d29b66-b0ce-4962-bed5-f5a3e0b01f8d}</destination>
 		</relationship>
@@ -160,6 +166,14 @@
 		<relationship name="output">
 			<destination>{bdc7a0b0-e080-4bf6-a4d5-974466f01d60}</destination>
 		</relationship>
+	</object>
+	<object class="RandomizerModulator" id="{ed6e7101-46d2-4055-a268-dc8bfad58cc5}">
+		<property name="nameOfPropertyBeingModulated">
+			<value>pitch</value>
+		</property>
+		<property name="amount">
+			<value>5.5</value>
+		</property>
 	</object>
 	<object class="MixerBusEffectChain" id="{e8d29b66-b0ce-4962-bed5-f5a3e0b01f8d}">
 		<relationship name="effects">
@@ -240,17 +254,14 @@
 		</relationship>
 	</object>
 	<object class="SpatialiserEffect" id="{bacb4383-9269-48d7-93af-c6b8a90c91c3}">
-		<property name="distanceRolloffType">
-			<value>1</value>
+		<property name="minimumDistance">
+			<value>15</value>
 		</property>
 		<property name="maximumDistance">
-			<value>70</value>
-		</property>
-		<property name="extentMode">
-			<value>1</value>
+			<value>650</value>
 		</property>
 		<property name="soundSize">
-			<value>0.75</value>
+			<value>2.60000014</value>
 		</property>
 	</object>
 	<object class="MixerBusFader" id="{b27a8b3c-dca8-4c2e-9501-99654794ca77}" />
