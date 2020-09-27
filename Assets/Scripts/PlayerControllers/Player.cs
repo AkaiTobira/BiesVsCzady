@@ -299,7 +299,13 @@ public class Player : IEntity
         directionRight = m_controller.GetDirection() == GlobalUtils.Direction.Right;
 
         HurtBehaviourTests();
+        GodModeSwitch();
+    }
 
+    void GodModeSwitch(){
+        if( Input.GetKeyDown(KeyCode.F1)){
+            SwitchGoodMode();
+        }
     }
 
 }
