@@ -98,6 +98,9 @@ public class AkaiController : IEntity, IEnemy
 
     [HideInInspector] public float delayOfHurtGoInTimer = 0.0f;
 
+
+    protected Vector3 _distanceToDebugInfo = new Vector3();
+
     void Start()
     {
         m_FloorDetector   = transform.Find("Detector").GetComponent<ICollisionFloorDetector>();
@@ -107,8 +110,9 @@ public class AkaiController : IEntity, IEnemy
         m_FloorDetector.Move( new Vector2(0.1f, 0) );
         
         currentHp = healthPoints;
-
         SetHpBarValues();
+
+        _distanceToDebugInfo =   DebugConsole.transform.position - m_FloorDetector.GetComponent<Transform>().position;
     }
 
     protected void SetHpBarValues(){
@@ -120,7 +124,7 @@ public class AkaiController : IEntity, IEnemy
         return m_FloorDetector.GetComponent<Transform>().position;
     }
 
-    void UpdatePlayerDetection(){
+    void UpdatePlayerDetection(){ 
         if( playerDetectedByBox && !isAlreadyInCombat ){
             m_controller.OverriteStates( "CombatEngage" );
             isAlreadyInCombat = true;
@@ -167,7 +171,7 @@ public class AkaiController : IEntity, IEnemy
 
     void UpdateDebugConsole(){
 
-        DebugConsole.transform.position = m_FloorDetector.GetComponent<Transform>().position + new Vector3( -20, 50, 0);
+        DebugConsole.transform.position = m_FloorDetector.GetComponent<Transform>().position + _distanceToDebugInfo;
         DebugConsoleInfo2.text = m_controller.GetStackStatus();
         DebugConsoleInfo1.text = "";
         DebugConsoleInfo1.text += velocity.ToString() + "\n";

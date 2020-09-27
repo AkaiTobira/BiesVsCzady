@@ -18,6 +18,8 @@ public class FlyingAkaiController : AkaiController
 
         currentHp = healthPoints;
         SetHpBarValues();
+
+                _distanceToDebugInfo =   DebugConsole.transform.position - m_FloorDetector.GetComponent<Transform>().position;
     }
 
     private void CreateAirNavPoints(){
@@ -74,7 +76,7 @@ public class FlyingAkaiController : AkaiController
     }
 
     void UpdateDebugConsole(){
-        DebugConsole.transform.position = m_FloorDetector.GetComponent<Transform>().position + new Vector3( -20, 50, 0);
+        DebugConsole.transform.position = m_FloorDetector.GetComponent<Transform>().position + _distanceToDebugInfo;
         DebugConsoleInfo2.text = m_controller.GetStackStatus();
         DebugConsoleInfo1.text = "";
         DebugConsoleInfo1.text += velocity.ToString() + "\n";
