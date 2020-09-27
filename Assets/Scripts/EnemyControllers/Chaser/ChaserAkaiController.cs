@@ -75,7 +75,7 @@ public class ChaserAkaiController : AkaiController
 
             case "ChaserChaseAttack":
                 playerGetHitInChase = true;
-
+                Debug.Log( playerGetHitInChase );
                 infoPack.isValid = true;
                 infoPack.knockBackValue = chaseKnockbackValues;
                 infoPack.stunDuration   = 0.0f;

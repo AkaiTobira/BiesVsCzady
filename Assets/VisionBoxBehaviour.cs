@@ -35,7 +35,6 @@ public class VisionBoxBehaviour : MonoBehaviour
         if( !inArea ) return;
         
         Vector2 toPlayer = GlobalUtils.PlayerObject.transform.position - parent.GetPosition();
-        //toPlayer = toPlayer/toPlayer.magnitude;
 
         RaycastHit2D hit = Physics2D.Raycast(   parent.GetPosition(), 
                                                 toPlayer,
