@@ -5,7 +5,7 @@
 			<value>presence</value>
 		</property>
 		<property name="outputFormat">
-			<value>2</value>
+			<value>1</value>
 		</property>
 		<relationship name="folder">
 			<destination>{83e610f5-10b8-4614-bb0e-475a793c5012}</destination>
@@ -247,7 +247,6 @@
 			<destination>{9d85568d-f9e9-4153-ba0b-413258ba1251}</destination>
 			<destination>{c2e395e1-a9c2-4475-9e86-1255d02a930d}</destination>
 			<destination>{1602a583-cdbe-4c9b-bfef-d5e94e9ae580}</destination>
-			<destination>{3d795307-0560-4d43-ad28-549134a43841}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{98520e1d-23bd-4818-b590-5d4b8ff45fdf}" />
@@ -299,11 +298,6 @@
 		<relationship name="mixerReturn">
 			<destination>{61708e4a-16ef-4ee4-9e42-15fe1b20f405}</destination>
 		</relationship>
-	</object>
-	<object class="SpatialiserEffect" id="{3d795307-0560-4d43-ad28-549134a43841}">
-		<property name="maximumDistance">
-			<value>9</value>
-		</property>
 	</object>
 	<object class="MixerBusFader" id="{5a6fea54-3dea-4a5a-a607-844ef7c56798}" />
 	<object class="MixerSend" id="{20f565c0-83a4-484c-85a0-4eb62aa091ff}">
