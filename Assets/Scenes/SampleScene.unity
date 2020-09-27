@@ -121,6 +121,12 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!95 &36100928 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 1097515107090949508, guid: 07662773cb44971489b75afb3b56619d,
+    type: 3}
+  m_PrefabInstance: {fileID: 1860165513}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &43994059 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2542351639551060501, guid: 07662773cb44971489b75afb3b56619d,
@@ -2142,6 +2148,11 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8950043320227367588, guid: 07662773cb44971489b75afb3b56619d,
+        type: 3}
+      propertyPath: TextNode
+      value: 
+      objectReference: {fileID: 36100928}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 07662773cb44971489b75afb3b56619d, type: 3}
 --- !u!114 &1860165515 stripped
@@ -2260,12 +2271,12 @@ PrefabInstance:
     - target: {fileID: 3150698890479183686, guid: 5c9d8671db069494eb169b071acd31b0,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1379
+      value: 70
       objectReference: {fileID: 0}
     - target: {fileID: 3150698890479183686, guid: 5c9d8671db069494eb169b071acd31b0,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 930
+      value: 2151
       objectReference: {fileID: 0}
     - target: {fileID: 3150698890479183686, guid: 5c9d8671db069494eb169b071acd31b0,
         type: 3}
