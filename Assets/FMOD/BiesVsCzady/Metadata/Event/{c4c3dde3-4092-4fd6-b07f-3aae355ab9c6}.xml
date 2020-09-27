@@ -214,6 +214,8 @@
 			<destination>{e4247811-0704-4b4c-9558-c5634d085c0b}</destination>
 			<destination>{3a37e7b4-b2a8-4956-b23c-f126dda93ae6}</destination>
 			<destination>{1e0a877e-e9be-4859-b042-f41016b1c791}</destination>
+			<destination>{bc4abffe-4e3a-46b9-b52f-ef7c08db0c5b}</destination>
+			<destination>{877825f2-e89c-4c72-b52d-cc1b952d521e}</destination>
 			<destination>{fe0c95dc-b7cf-46ca-80e7-7d4cf3dcf77c}</destination>
 		</relationship>
 	</object>
@@ -283,12 +285,37 @@
 			<destination>{61708e4a-16ef-4ee4-9e42-15fe1b20f405}</destination>
 		</relationship>
 	</object>
+	<object class="MixerSend" id="{bc4abffe-4e3a-46b9-b52f-ef7c08db0c5b}">
+		<property name="level">
+			<value>-38</value>
+		</property>
+		<property name="inputFormat">
+			<value>1</value>
+		</property>
+		<relationship name="mixerReturn">
+			<destination>{8255471f-f5b1-4229-a05e-ebdc36f1bdc3}</destination>
+		</relationship>
+	</object>
+	<object class="MixerSend" id="{877825f2-e89c-4c72-b52d-cc1b952d521e}">
+		<property name="level">
+			<value>-35</value>
+		</property>
+		<property name="inputFormat">
+			<value>1</value>
+		</property>
+		<relationship name="mixerReturn">
+			<destination>{266f4f0d-073b-428c-9aa8-146082e4f5a0}</destination>
+		</relationship>
+	</object>
 	<object class="SpatialiserEffect" id="{fe0c95dc-b7cf-46ca-80e7-7d4cf3dcf77c}">
+		<property name="distanceRolloffType">
+			<value>1</value>
+		</property>
 		<property name="minimumDistance">
 			<value>15</value>
 		</property>
 		<property name="maximumDistance">
-			<value>650</value>
+			<value>250</value>
 		</property>
 		<property name="soundSize">
 			<value>0.349999994</value>

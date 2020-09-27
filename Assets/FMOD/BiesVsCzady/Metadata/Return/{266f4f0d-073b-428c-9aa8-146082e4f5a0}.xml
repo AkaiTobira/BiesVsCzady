@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.01.00">
+	<object class="MixerReturn" id="{266f4f0d-073b-428c-9aa8-146082e4f5a0}">
+		<property name="name">
+			<value>underground reverb</value>
+		</property>
+		<relationship name="automators">
+			<destination>{80d09ff0-9053-4b7c-863d-89585ad57958}</destination>
+		</relationship>
+		<relationship name="effectChain">
+			<destination>{29b920e1-74c7-4435-b7b5-2684f43dedf7}</destination>
+		</relationship>
+		<relationship name="panner">
+			<destination>{e8d0caae-0bd7-49fa-89d5-ff3d1bbf21e7}</destination>
+		</relationship>
+		<relationship name="output">
+			<destination>{5876b881-eadb-41de-ab6e-370bf9b436a1}</destination>
+		</relationship>
+	</object>
+	<object class="Automator" id="{80d09ff0-9053-4b7c-863d-89585ad57958}">
+		<property name="nameOfPropertyBeingAutomated">
+			<value>volume</value>
+		</property>
+		<relationship name="automationCurves">
+			<destination>{75b6bbb1-03b4-4819-b206-652bda88306d}</destination>
+		</relationship>
+	</object>
+	<object class="MixerBusEffectChain" id="{29b920e1-74c7-4435-b7b5-2684f43dedf7}">
+		<relationship name="effects">
+			<destination>{758268a2-67fe-4e85-b207-5a9a6a6643ba}</destination>
+			<destination>{2de778c3-752c-403d-a5a5-29bcbd9cd626}</destination>
+		</relationship>
+	</object>
+	<object class="MixerBusPanner" id="{e8d0caae-0bd7-49fa-89d5-ff3d1bbf21e7}" />
+	<object class="AutomationCurve" id="{75b6bbb1-03b4-4819-b206-652bda88306d}">
+		<relationship name="parameter">
+			<destination>{9b66ceed-0ff7-42ab-a591-e449e6d9481b}</destination>
+		</relationship>
+		<relationship name="automationPoints">
+			<destination>{a42d1bae-cd73-40cf-a1ce-b2cc7504bd73}</destination>
+			<destination>{4d503b95-7243-49a8-917a-535548c8f457}</destination>
+			<destination>{633f3663-9d62-457e-8971-41f52c13f8aa}</destination>
+			<destination>{b2cdcfd9-f1f2-472b-b3c8-94de71f039e6}</destination>
+			<destination>{2389fb15-0471-4d1f-8cd9-5a2dc9bd3589}</destination>
+			<destination>{8eec390e-872d-4598-9c8c-a5aed788caac}</destination>
+			<destination>{b02086ae-d1fd-452f-a1d6-e8f599108d32}</destination>
+		</relationship>
+	</object>
+	<object class="MixerBusFader" id="{758268a2-67fe-4e85-b207-5a9a6a6643ba}" />
+	<object class="ConvolutionReverbEffect" id="{2de778c3-752c-403d-a5a5-29bcbd9cd626}">
+		<property name="endFrame">
+			<value>68341</value>
+		</property>
+		<relationship name="referenceableData">
+			<destination>{4b649142-c73b-447c-a447-3ec8061b6136}</destination>
+		</relationship>
+	</object>
+	<object class="AutomationPoint" id="{a42d1bae-cd73-40cf-a1ce-b2cc7504bd73}">
+		<property name="position">
+			<value>2.9915462570621467</value>
+		</property>
+		<property name="value">
+			<value>0</value>
+		</property>
+		<property name="curveShape">
+			<value>0.815208018</value>
+		</property>
+	</object>
+	<object class="AutomationPoint" id="{4d503b95-7243-49a8-917a-535548c8f457}">
+		<property name="position">
+			<value>2.9915254237288136</value>
+		</property>
+		<property name="value">
+			<value>-80</value>
+		</property>
+	</object>
+	<object class="AutomationPoint" id="{633f3663-9d62-457e-8971-41f52c13f8aa}">
+		<property name="position">
+			<value>4</value>
+		</property>
+		<property name="value">
+			<value>0</value>
+		</property>
+	</object>
+	<object class="AutomationPoint" id="{b2cdcfd9-f1f2-472b-b3c8-94de71f039e6}">
+		<property name="position">
+			<value>4.0000208333333331</value>
+		</property>
+		<property name="value">
+			<value>-80</value>
+		</property>
+	</object>
+	<object class="AutomationPoint" id="{2389fb15-0471-4d1f-8cd9-5a2dc9bd3589}">
+		<property name="position">
+			<value>5</value>
+		</property>
+		<property name="value">
+			<value>-80</value>
+		</property>
+	</object>
+	<object class="AutomationPoint" id="{8eec390e-872d-4598-9c8c-a5aed788caac}">
+		<property name="position">
+			<value>5.0000208333333331</value>
+		</property>
+		<property name="value">
+			<value>0</value>
+		</property>
+	</object>
+	<object class="AutomationPoint" id="{b02086ae-d1fd-452f-a1d6-e8f599108d32}">
+		<property name="position">
+			<value>6</value>
+		</property>
+		<property name="value">
+			<value>0</value>
+		</property>
+	</object>
+</objects>

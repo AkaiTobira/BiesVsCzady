@@ -133,6 +133,8 @@
 			<destination>{e9bfd8d9-3123-4bff-a757-f7f8febcaecb}</destination>
 			<destination>{b99f676f-f6a9-46fa-ab9b-f49cbd926f00}</destination>
 			<destination>{2e808dfa-eb18-4cf2-8ae3-706504c3d8c5}</destination>
+			<destination>{b275a73d-c6ca-4f28-b0f6-02ce3bf8dbc4}</destination>
+			<destination>{4837ae6b-69e8-4b44-93ab-efa088eafd95}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{9c4103df-6dbc-43a6-bdfd-2cfad9247c5f}" />
@@ -187,6 +189,28 @@
 		</property>
 		<relationship name="mixerReturn">
 			<destination>{61708e4a-16ef-4ee4-9e42-15fe1b20f405}</destination>
+		</relationship>
+	</object>
+	<object class="MixerSend" id="{b275a73d-c6ca-4f28-b0f6-02ce3bf8dbc4}">
+		<property name="level">
+			<value>-35</value>
+		</property>
+		<property name="inputFormat">
+			<value>1</value>
+		</property>
+		<relationship name="mixerReturn">
+			<destination>{8255471f-f5b1-4229-a05e-ebdc36f1bdc3}</destination>
+		</relationship>
+	</object>
+	<object class="MixerSend" id="{4837ae6b-69e8-4b44-93ab-efa088eafd95}">
+		<property name="level">
+			<value>-35</value>
+		</property>
+		<property name="inputFormat">
+			<value>1</value>
+		</property>
+		<relationship name="mixerReturn">
+			<destination>{266f4f0d-073b-428c-9aa8-146082e4f5a0}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusFader" id="{0be2d0e2-c27c-4e52-9271-5ccac6227519}" />
