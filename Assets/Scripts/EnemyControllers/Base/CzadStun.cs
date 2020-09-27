@@ -24,7 +24,7 @@ public class CzadStun : EnemyBaseState{
         m_animator.SetTrigger( "GetStun" );
         m_animator.SetFloat( "StunDuration", timeToEnd);
 
-        Debug.Log(timeToEnd);
+
     }
 
     public override void UpdateAnimator(){
@@ -44,10 +44,14 @@ public class CzadStun : EnemyBaseState{
     }
 
     private void  ProcessStateEnd(){
+        Debug.Log(timeToEnd);
         timeToEnd -= Time.deltaTime;
         if( timeToEnd < 0){
             m_isOver = true;
             m_animator.ResetTrigger( "GetStun" );
+            m_animator.SetFloat( "StunDuration", 0 );
+            entityScript.isAlreadyInCombat   = false;
+            entityScript.playerDetectedByBox = false;
         }
     }
 

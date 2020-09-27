@@ -110,10 +110,6 @@ public class AkaiController : IEntity, IEnemy
     }
 
     void UpdatePlayerDetection(){ 
-        string currentStateName = m_controller.GetStateName();
-        if( currentStateName.Contains("Dead")) return;
-        if( currentStateName.Contains("Stun")) return;
-
         if( playerDetectedByBox && !isAlreadyInCombat ){
             m_controller.OverriteStates( "CombatEngage" );
             isAlreadyInCombat = true;
@@ -145,11 +141,13 @@ public class AkaiController : IEntity, IEnemy
     }
 
     public void OnPlayerEscape(){
-        playerDetectedByBox = false;
-        isAlreadyInCombat   = false; 
-        m_controller        = new SFSMEnemy( gameObject, new CzadIdle( gameObject ) );
-        m_animator.Rebind();
-        m_FloorDetector.Move( new Vector2(0.1f, 0) );
+        if( !m_controller.GetStateName().Contains("Stun") ){
+            playerDetectedByBox = false;
+            isAlreadyInCombat   = false;
+            m_controller        = new SFSMEnemy( gameObject, new CzadIdle( gameObject ) );
+            m_animator.Rebind();
+            m_FloorDetector.Move( new Vector2(0.1f, 0) );
+        }
     }
 
     public void ResetPatrolValues(){

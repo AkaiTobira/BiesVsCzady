@@ -19,7 +19,7 @@ public class FlyingAkaiController : AkaiController
         currentHp = healthPoints;
         SetHpBarValues();
 
-                _distanceToDebugInfo =   DebugConsole.transform.position - m_FloorDetector.GetComponent<Transform>().position;
+        _distanceToDebugInfo =   DebugConsole.transform.position - m_FloorDetector.GetComponent<Transform>().position;
     }
 
     private void CreateAirNavPoints(){
