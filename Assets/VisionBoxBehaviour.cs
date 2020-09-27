@@ -35,17 +35,19 @@ public class VisionBoxBehaviour : MonoBehaviour
         if( !inArea ) return;
         
         Vector2 toPlayer = GlobalUtils.PlayerObject.transform.position - parent.GetPosition();
+        //toPlayer = toPlayer/toPlayer.magnitude;
 
-        RaycastHit2D hit = Physics2D.Raycast(   parent.transform.position, 
-                                                toPlayer.normalized,
+        RaycastHit2D hit = Physics2D.Raycast(   parent.GetPosition(), 
+                                                toPlayer,
                                                 Mathf.Infinity,
                                                 m_layers );
+
 
         if( hit.collider.CompareTag( "Player")){
             parent.OnPlayerDetection();
         }
 
-        Debug.DrawLine(parent.GetPosition(), GlobalUtils.PlayerObject.transform.position, Color.green);
+        Debug.DrawLine(parent.GetPosition(), toPlayer * 10000, Color.green);
 
     }
 
