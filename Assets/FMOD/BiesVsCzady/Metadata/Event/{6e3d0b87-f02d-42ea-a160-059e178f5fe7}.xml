@@ -5,10 +5,10 @@
 			<value>dzik fs</value>
 		</property>
 		<property name="outputFormat">
-			<value>1</value>
+			<value>2</value>
 		</property>
 		<relationship name="folder">
-			<destination>{09472521-fa59-4558-a051-6fda6282ec83}</destination>
+			<destination>{99170519-066d-40d9-9302-1822f9d8e24d}</destination>
 		</relationship>
 		<relationship name="mixer">
 			<destination>{1ffed824-358c-421e-a873-7d5a9213888b}</destination>
@@ -59,7 +59,14 @@
 			<destination>{5876b881-eadb-41de-ab6e-370bf9b436a1}</destination>
 		</relationship>
 	</object>
-	<object class="EventAutomatableProperties" id="{ffcf5ac9-a890-432c-a6f8-8a614e6f5e8a}" />
+	<object class="EventAutomatableProperties" id="{ffcf5ac9-a890-432c-a6f8-8a614e6f5e8a}">
+		<property name="maxVoices">
+			<value>1</value>
+		</property>
+		<property name="voiceStealing">
+			<value>3</value>
+		</property>
+	</object>
 	<object class="MarkerTrack" id="{8b505cf9-3259-47d6-94f1-42ccb7e3fa70}" />
 	<object class="GroupTrack" id="{0b1fb7a6-b772-44b5-bea2-ecf3c6b42982}">
 		<relationship name="modules">
@@ -132,9 +139,14 @@
 			<destination>{071a5c65-0288-46a2-8a81-d9c79d25268b}</destination>
 			<destination>{8bd8743e-75c8-4d4c-ba10-e93ddd8175c7}</destination>
 			<destination>{6b9353ed-ffd6-46a5-9653-0788d3ca2615}</destination>
+			<destination>{b4ab8ba5-6fbd-4ec5-a965-637a8238fa9d}</destination>
 		</relationship>
 	</object>
-	<object class="MixerBusPanner" id="{9a3b7de7-d3b8-4d83-a8c0-fd46b1f45dc0}" />
+	<object class="MixerBusPanner" id="{9a3b7de7-d3b8-4d83-a8c0-fd46b1f45dc0}">
+		<property name="disabledSpeakers">
+			<value>48</value>
+		</property>
+	</object>
 	<object class="MixerBusFader" id="{b1a0f6b0-17e9-405a-b08e-a23ba6feacb2}" />
 	<object class="RandomizerModulator" id="{d1315b07-7d2f-45c9-a806-22cd92b31e88}">
 		<property name="nameOfPropertyBeingModulated">
@@ -220,6 +232,14 @@
 		<relationship name="mixerReturn">
 			<destination>{61708e4a-16ef-4ee4-9e42-15fe1b20f405}</destination>
 		</relationship>
+	</object>
+	<object class="SpatialiserEffect" id="{b4ab8ba5-6fbd-4ec5-a965-637a8238fa9d}">
+		<property name="minimumDistance">
+			<value>15</value>
+		</property>
+		<property name="maximumDistance">
+			<value>400</value>
+		</property>
 	</object>
 	<object class="MixerBusFader" id="{eae615c4-7d69-4b8c-8d63-1750ff055e2b}" />
 </objects>

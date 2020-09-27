@@ -5,7 +5,7 @@
 			<value>hurt</value>
 		</property>
 		<property name="outputFormat">
-			<value>1</value>
+			<value>2</value>
 		</property>
 		<relationship name="folder">
 			<destination>{83e610f5-10b8-4614-bb0e-475a793c5012}</destination>
@@ -62,6 +62,9 @@
 	<object class="EventAutomatableProperties" id="{ef675fed-087f-4221-aa70-c88df14d8399}">
 		<property name="maxVoices">
 			<value>2</value>
+		</property>
+		<property name="voiceStealing">
+			<value>3</value>
 		</property>
 	</object>
 	<object class="MarkerTrack" id="{ed475daf-4953-494e-b988-749d2ecce335}" />
@@ -131,6 +134,7 @@
 			<destination>{f7f78051-cffd-437a-85ea-36723e42f8ec}</destination>
 			<destination>{906722e6-de43-4f76-984e-502b9d2161ac}</destination>
 			<destination>{3dbe0773-1117-4bf2-9ae9-161aa0a2d298}</destination>
+			<destination>{bd04277c-b5bf-47a9-a25a-318b5258655c}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{e458ac4f-a68e-4143-9a8a-7d8df76b1897}" />
@@ -195,6 +199,14 @@
 		<relationship name="mixerReturn">
 			<destination>{0a98f67f-29aa-4fe5-b637-09c115d170ed}</destination>
 		</relationship>
+	</object>
+	<object class="SpatialiserEffect" id="{bd04277c-b5bf-47a9-a25a-318b5258655c}">
+		<property name="minimumDistance">
+			<value>15</value>
+		</property>
+		<property name="maximumDistance">
+			<value>600</value>
+		</property>
 	</object>
 	<object class="MixerBusFader" id="{77653491-f727-46e8-a365-3ac3ab87c315}" />
 	<object class="MixerSend" id="{57d0932a-9382-4f7c-8be9-32bc6d57e08f}">

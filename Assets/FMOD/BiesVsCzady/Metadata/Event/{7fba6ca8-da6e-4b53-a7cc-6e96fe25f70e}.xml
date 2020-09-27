@@ -63,6 +63,9 @@
 		<property name="maxVoices">
 			<value>1</value>
 		</property>
+		<property name="voiceStealing">
+			<value>1</value>
+		</property>
 	</object>
 	<object class="MarkerTrack" id="{75a1ad07-c49b-428c-b109-bb129a9b64be}" />
 	<object class="GroupTrack" id="{58aefafc-9832-4eee-b55d-99c33b7c3aa0}">
@@ -82,6 +85,9 @@
 		<property name="volume">
 			<value>-15.5</value>
 		</property>
+		<relationship name="modulators">
+			<destination>{8a0f4972-9584-400e-b924-2200178819a9}</destination>
+		</relationship>
 		<relationship name="effectChain">
 			<destination>{15cc0836-3d3a-4378-a97b-ebd43b8d633b}</destination>
 		</relationship>
@@ -123,6 +129,14 @@
 			<destination>{e00a4e4d-48aa-4bf3-96c1-3c08d99c5e59}</destination>
 		</relationship>
 	</object>
+	<object class="RandomizerModulator" id="{8a0f4972-9584-400e-b924-2200178819a9}">
+		<property name="nameOfPropertyBeingModulated">
+			<value>pitch</value>
+		</property>
+		<property name="amount">
+			<value>5.5</value>
+		</property>
+	</object>
 	<object class="MixerBusEffectChain" id="{15cc0836-3d3a-4378-a97b-ebd43b8d633b}">
 		<relationship name="effects">
 			<destination>{d036253e-3b62-4469-8bf3-39c4bfe36dfd}</destination>
@@ -134,9 +148,6 @@
 	<object class="RandomizerModulator" id="{b7faac30-2625-43f6-b4ad-0448374e9145}">
 		<property name="nameOfPropertyBeingModulated">
 			<value>pitch</value>
-		</property>
-		<property name="amount">
-			<value>11.5</value>
 		</property>
 	</object>
 	<object class="MixerBusEffectChain" id="{1ee098fb-4335-4156-a986-5d29f4f78e40}">
