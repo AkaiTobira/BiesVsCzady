@@ -35,7 +35,7 @@ public class SoundSFX : MonoBehaviour {
 
         if(_shouldPlayLoopedOnStart)       
         {
-            PlaySFX(_playLoopedOnStart);
+            PlaySFX3D(_playLoopedOnStart);
         }
     }
 
