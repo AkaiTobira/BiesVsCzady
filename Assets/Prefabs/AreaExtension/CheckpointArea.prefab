@@ -156,6 +156,7 @@ GameObject:
   - component: {fileID: 765823810000249641}
   - component: {fileID: 1128263742141739708}
   - component: {fileID: 5180914419788574025}
+  - component: {fileID: 6532022568391029594}
   m_Layer: 0
   m_Name: Animator
   m_TagString: Untagged
@@ -246,3 +247,22 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &6532022568391029594
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2225139470608219609}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e5f50d528dc4d24486a2d94436a1573, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SFXSounds:
+  - event:/SFX/save
+  LoopedSounds: []
+  _playOnStart: 0
+  _playLoopedOnStart: 0
+  _shouldPlayOnStart: 0
+  _shouldPlayLoopedOnStart: 0
