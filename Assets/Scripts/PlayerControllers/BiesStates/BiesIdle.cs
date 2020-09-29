@@ -11,7 +11,10 @@ public class BiesIdle : PlayerIdle
 
     private void HandleInputMoveState(GlobalUtils.Direction dir){
             m_dir = m_FloorDetector.GetCurrentDirection();
-            if( m_dir !=  dir ) CommonValues.needChangeDirection = true;
+            if( m_dir !=  dir ) {
+                CommonValues.needChangeDirection = true;
+                m_animator.SetTrigger("BiesChangingDirection");
+            }
             m_dir = dir;
             m_nextState = new BiesMove(m_controllabledObject, m_dir); 
     }

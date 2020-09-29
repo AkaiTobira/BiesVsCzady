@@ -6,7 +6,6 @@ public class PlayerMove : PlayerBaseState
 {
     private bool isAccelerating = true;
     string m_formName;
-
     protected IPlatformEdgeDetector m_lowerEdgeDetector;
 
     public PlayerMove(  GameObject controllable, 
@@ -17,27 +16,30 @@ public class PlayerMove : PlayerBaseState
         name = formName + "Move";
         m_settings = settings;
         m_formName = formName;
-        SetUpRotation();
+        
         m_dir = dir;
+        SetUpRotation();
 
+        
+    
         m_lowerEdgeDetector = controllable.GetComponent<IPlatformEdgeDetector>();
     }
-/*
-    protected override void  SetUpAnimation(){
-        if( CommonValues.needChangeDirection ){
-            m_animator.SetTrigger( m_formName + "ChangingDirection");
-            CommonValues.needChangeDirection = false;
-        }
-    }*/
+    protected override void UpdateDirection(){
+        
+    }
 
     private void SetUpRotation(){
         if( CommonValues.needChangeDirection ){
             m_animator.SetTrigger( m_formName + "ChangingDirection");
             CommonValues.needChangeDirection = false;
+
+
+            Vector3 lScale =  m_controllabledObject.GetComponent<Player>().animationNode.localScale;
+            lScale.x       = Mathf.Abs( lScale.x) * (int)m_dir;
+            m_controllabledObject.GetComponent<Player>().animationNode.localScale = lScale;
+
         }
 
-        rotationAngle = isLeftOriented() ? 180 :0 ; 
-        m_controllabledObject.GetComponent<Player>().animationNode.eulerAngles = new Vector3( 0, rotationAngle, slopeAngle);
     }
 
     private void ProcessGravity(){
@@ -47,7 +49,6 @@ public class PlayerMove : PlayerBaseState
             CommonValues.PlayerVelocity.y = -m_settings.GravityForce * Time.deltaTime;
         }
     }
-
 
     private void ProcessAcceleration(){
         if( ! isAccelerating ) return;
