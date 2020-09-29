@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class SoundSFX : MonoBehaviour {
 
-    [FMODUnity.EventRef]
+
+   [FMODUnity.EventRef]
     public string[] SFXSounds;
     
     [FMODUnity.EventRef]

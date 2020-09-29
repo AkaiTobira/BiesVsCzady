@@ -171,6 +171,8 @@ public class ChaserChaseAttack : EnemyBaseState
                 infoPack.fromCameAttack = GlobalUtils.Direction.Left;
 
                 GUIElements.cameraShake.TriggerShake(0.1f);
+                m_animator.GetComponent<SoundSFX>().PlaySFX3D(3);
+
 
                 m_nextState = new CzadStun( m_controllabledObject, infoPack);
                 
@@ -187,6 +189,8 @@ public class ChaserChaseAttack : EnemyBaseState
 
 
                 GUIElements.cameraShake.TriggerShake(0.1f);
+
+                m_animator.GetComponent<SoundSFX>().PlaySFX3D(3);
 
                 m_nextState = new CzadStun( m_controllabledObject, infoPack);
             }
