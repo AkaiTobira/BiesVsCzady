@@ -41,6 +41,7 @@ public class PlayerIdle : PlayerBaseState
         }
     }
 
+
     public override string GetTutorialAdvice(){
         string msg = ( LockAreaOverseer.isChangeLocked ) ? "" : "E - ChangeForm";
         msg += "\nWSAD or arrows - Move\n SPACE - Jump";
