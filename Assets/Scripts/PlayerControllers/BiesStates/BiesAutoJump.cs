@@ -8,7 +8,6 @@ public class BiesAutoJump : BiesJump
     public BiesAutoJump( GameObject controllable, GlobalUtils.Direction dir) : base( controllable, dir) {
         name = "BiesAutoJump";
         CommonValues.PlayerVelocity.x = BiesUtils.PlayerSpeed * 0.65f * (int)dir;
-//        Debug.Log( CommonValues.PlayerVelocity );
     }
 
     private float lostTime = 0.0f;

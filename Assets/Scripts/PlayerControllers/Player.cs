@@ -17,7 +17,7 @@ public class Player : IEntity
 
     private float inAnimatorBaseSpeed;
 
-    private float baseInputLockAfterRebirth = 2.0f;
+    private float baseInputLockAfterRebirth = 1.0f;
 
     void Awake() {
         GlobalUtils.PlayerObject = transform;
@@ -47,7 +47,7 @@ public class Player : IEntity
     }
 
     public void ResetPlayer(){
-        baseInputLockAfterRebirth = 2.0f;
+        baseInputLockAfterRebirth = 1.0f;
         animationNode.GetComponent<Animator>().Rebind();
         m_controller  = new SFSMPlayerChange( transform.gameObject, new BiesIdle( gameObject ) );
         healthPoints  = MaxHealthPoints;
@@ -286,7 +286,11 @@ public class Player : IEntity
     }
 
     void Update(){
-        if( baseInputLockAfterRebirth < 0) m_controller.Update();
+        if( baseInputLockAfterRebirth < 0) {
+            m_controller.Update();
+        }else{
+            m_animator.transform.position = m_FloorDetector.GetComponent<Transform>().position;
+        }
         UpdateCounters();
         UpdateInvincibility();
 

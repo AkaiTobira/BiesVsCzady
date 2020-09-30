@@ -15,11 +15,12 @@ public class BiesWallHold : PlayerBaseState
 
     private void SetUpAnimValue(){
         m_animator.SetBool( "isWallMovable",  m_ObjectInteractionDetector.IsWallPullable() );
+        /*
         if( m_ObjectInteractionDetector.IsWallPullable() ){
             distanceToFixAnimation = new Vector3(30, 6 , 0);
         }else{
             distanceToFixAnimation = new Vector3(15 * ((isLeftOriented())? 1: -2) , 6, 0);
-        }
+        }*/
     }
 
     public override void Process(){
