@@ -25,7 +25,7 @@ public class PlayerLedgeClimb : PlayerBaseState
         
         PlayerFallOfWallHelper.ResetCounter();
 
-        GUIElements.Camera.EnableMoreSmooth(1f);
+        GUIElements.Camera.EnableMoreSmooth(0.4f);
         GUIElements.Camera.DisableMoreSmooth();
     }
 

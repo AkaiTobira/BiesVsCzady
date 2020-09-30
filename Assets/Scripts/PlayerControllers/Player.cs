@@ -17,6 +17,8 @@ public class Player : IEntity
 
     private float inAnimatorBaseSpeed;
 
+    private float baseInputLockAfterRebirth = 2.0f;
+
     void Awake() {
         GlobalUtils.PlayerObject = transform;
     }
@@ -45,6 +47,7 @@ public class Player : IEntity
     }
 
     public void ResetPlayer(){
+        baseInputLockAfterRebirth = 2.0f;
         animationNode.GetComponent<Animator>().Rebind();
         m_controller  = new SFSMPlayerChange( transform.gameObject, new BiesIdle( gameObject ) );
         healthPoints  = MaxHealthPoints;
@@ -56,6 +59,7 @@ public class Player : IEntity
     }
 
     private void UpdateCounters(){
+        baseInputLockAfterRebirth -= Time.deltaTime;
         PlayerJumpHelper.IncrementCounters();
         PlayerFallHelper.IncrementCounters();
         PlayerFallOfWallHelper.IncrementCounters();
@@ -282,7 +286,7 @@ public class Player : IEntity
     }
 
     void Update(){
-        m_controller.Update();
+        if( baseInputLockAfterRebirth < 0) m_controller.Update();
         UpdateCounters();
         UpdateInvincibility();
 

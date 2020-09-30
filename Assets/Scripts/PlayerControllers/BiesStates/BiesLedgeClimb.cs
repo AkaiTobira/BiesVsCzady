@@ -16,6 +16,7 @@ public class BiesLedgeClimb : PlayerLedgeClimb
         m_animator.SetTrigger("BiesClimb");
         timeToEnd = getAnimationLenght("BiesLedgeClimb");
         maxOfAnimationToEnd = timeToEnd;
+        
         m_transition = m_controllabledObject.
                        GetComponent<Player>().animationNode.
                        GetComponent<AnimationTransition>();
