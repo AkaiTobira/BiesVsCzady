@@ -29,6 +29,7 @@ public class Camera_Follow : MonoBehaviour
     Vector3 velocity2  = Vector3.zero;
     float zoomSpeed  = 0;
 
+    private Vector3 additonalModificator = new Vector3();
     public float defaultSize = 0;
 
     [HideInInspector] public float additionalCameraSmoothTime = 0;
@@ -86,8 +87,13 @@ public class Camera_Follow : MonoBehaviour
         targetPosition.z   = -20;//transform.position.z + centerOfCamera.z;
         targetPosition.x   = GetXPosition();
         targetPosition.y   = GetYPosition();
-        transform.position = Vector3.SmoothDamp( transform.position, targetPosition, ref velocity, m_smoothTime+ additionalCameraSmoothTime);
 
+//        targetPosition    += additonalModificator;
+
+        transform.position = Vector3.SmoothDamp( transform.position, targetPosition + additonalModificator, ref velocity, m_smoothTime+ additionalCameraSmoothTime);
+    }
+    public void SetAdditionalModification( Vector3 modif){
+        additonalModificator = modif;
     }
 
     private bool holdAdditionalSmooth = false;

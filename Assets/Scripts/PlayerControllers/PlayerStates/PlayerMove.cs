@@ -19,9 +19,6 @@ public class PlayerMove : PlayerBaseState
         
         m_dir = dir;
         SetUpRotation();
-
-        
-    
         m_lowerEdgeDetector = controllable.GetComponent<IPlatformEdgeDetector>();
     }
     protected override void UpdateDirection(){
@@ -33,13 +30,10 @@ public class PlayerMove : PlayerBaseState
             m_animator.SetTrigger( m_formName + "ChangingDirection");
             CommonValues.needChangeDirection = false;
 
-
             Vector3 lScale =  m_controllabledObject.GetComponent<Player>().animationNode.localScale;
             lScale.x       = Mathf.Abs( lScale.x) * (int)m_dir;
             m_controllabledObject.GetComponent<Player>().animationNode.localScale = lScale;
-
         }
-
     }
 
     private void ProcessGravity(){

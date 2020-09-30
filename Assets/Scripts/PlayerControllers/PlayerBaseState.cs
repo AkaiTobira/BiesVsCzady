@@ -48,7 +48,7 @@ public class PlayerBaseState : IBaseState, IInputProcessingState
 
         m_controllabledObject.GetComponent<Player>().animationNode.position = 
             Vector3.SmoothDamp( m_controllabledObject.GetComponent<Player>().animationNode.position, 
-                                m_controllabledObject.transform.position + distanceToFixAnimation + new Vector3(CommonValues.tempModulator2, CommonValues.tempModulator, 0), ref animationVel, m_smoothTime);
+                                m_controllabledObject.transform.position + distanceToFixAnimation, ref animationVel, m_smoothTime);
 
     }
     protected virtual void UpdateFloorAligment(){

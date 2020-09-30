@@ -26,14 +26,18 @@ public class StalactitController :IEntity
         return hasBeenHit;
     }
 
+    [SerializeField] private List<string> attacks = new List<string> { "2", "1", "4", "5" };
+
     public override void OnHit(GlobalUtils.AttackInfo infoPack){
         if( !infoPack.isValid ) return;
         if( infoPack.stateName == null ) return;
 
-        if(    infoPack.stateName.Contains("2") 
-            || infoPack.stateName.Contains("1") 
-            || infoPack.stateName.Contains("4")
-            || infoPack.stateName.Contains("5")){
+        bool canActivate = false;
+        foreach( string attackTyoe in attacks){
+            canActivate |= infoPack.stateName.Contains(attackTyoe);
+        }
+
+        if( canActivate ){
 
             if( ! hasBeenHit ){
                 fallDownTimer = fallDownDelay;

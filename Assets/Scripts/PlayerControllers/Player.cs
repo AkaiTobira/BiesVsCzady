@@ -292,7 +292,7 @@ public class Player : IEntity
         isOnGround  = m_FloorDetector.isOnGround();
         isWallClose = m_WallDetector.isWallClose();
         StateName   = m_controller.GetStateName();
-        isColLeft   =m_WallDetector.isCollideWithLeftWall();
+        isColLeft   = m_WallDetector.isCollideWithLeftWall();
         isColRight  = m_WallDetector.isCollideWithLeftWall();
         
         directionLeft  = m_controller.GetDirection() == GlobalUtils.Direction.Left;
@@ -300,7 +300,13 @@ public class Player : IEntity
 
         HurtBehaviourTests();
         GodModeSwitch();
+
+        CommonValues.tempModulator  = t1;
+        CommonValues.tempModulator2 = t2;
     }
+
+    public float t1;
+    public float t2;
 
     void GodModeSwitch(){
         if( Input.GetKeyDown(KeyCode.F1)){

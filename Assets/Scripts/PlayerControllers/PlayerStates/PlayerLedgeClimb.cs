@@ -5,13 +5,16 @@ using UnityEngine;
 public class PlayerLedgeClimb : PlayerBaseState
 {
 
-    protected float timeToEnd;
+    protected float timeToEnd;    
     protected AnimationTransition m_transition;
-
     protected Vector2 targetClimbHightPoint   = new Vector2();
     protected Vector2 targetClimbStayPoint    = new Vector2();
     protected Vector2 targetClimbTargetPoint  = new Vector2();
     protected GlobalUtils.Direction forSureDirection;
+
+    protected Vector2 differenceForCameraMove = new Vector2();
+
+    protected float maxOfAnimationToEnd;
 
     public PlayerLedgeClimb( GameObject controllable, GlobalUtils.Direction dir , float someVariable) : base( controllable ) {
         CommonValues.PlayerVelocity = new Vector2(0,0);
@@ -24,8 +27,6 @@ public class PlayerLedgeClimb : PlayerBaseState
 
         GUIElements.Camera.EnableMoreSmooth(1f);
         GUIElements.Camera.DisableMoreSmooth();
-
-//        Debug.Log( timeToEnd );
     }
 
     private Vector2 CalculateHighOfLedge(BoxCollider2D ledgeBox){
@@ -99,16 +100,23 @@ public class PlayerLedgeClimb : PlayerBaseState
         Vector2 velocityS = new Vector2( targetClimbStayPoint.x - pos.x, targetClimbHightPoint.y - pos.y);
         m_FloorDetector.CheatMove( velocityS );
 
+        differenceForCameraMove = targetClimbTargetPoint - targetClimbStayPoint;
     }
 
     protected float shiftValue;
 
-    int i = 0;
+    protected override void UpdateAnimatorPosition(){
+    
+        GUIElements.Camera.SetAdditionalModification( differenceForCameraMove * (maxOfAnimationToEnd - timeToEnd)/maxOfAnimationToEnd );
+        base.UpdateAnimatorPosition();
+    }
+
+    public override void OnExit(){
+        GUIElements.Camera.SetAdditionalModification(new Vector3());
+    }
 
     public override void Process(){
 
-//        Debug.Log( i + "  " + timeToEnd);
-        i++;
         Vector2 pos     = m_FloorDetector.GetComponent<Transform>().position;
 
         DebugDrawHelper.DrawX( targetClimbTargetPoint, new Color( 0, 1, 0));
@@ -125,8 +133,6 @@ public class PlayerLedgeClimb : PlayerBaseState
 
             m_isOver = true;
 
-        //    m_controllabledObject.GetComponent<BoxCollider2D>().enabled           = true;
-        //    m_controllabledObject.GetComponent<CollisionDetectorPlayer>().enabled = true;
 
             m_FloorDetector.GetComponent<Transform>().position = targetClimbTargetPoint;// + (Vector3)shiftValue;
 
@@ -140,10 +146,6 @@ public class PlayerLedgeClimb : PlayerBaseState
             m_FloorDetector.GetComponent<Transform>().position = targetClimbStayPoint;
         }
     }
-
-//    protected override void UpdateDirection(){
-//        m_dir = forSureDirection;
-//    }
 
     public override void HandleInput(){}
 

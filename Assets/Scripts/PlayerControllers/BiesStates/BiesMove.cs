@@ -9,6 +9,12 @@ public class BiesMove : PlayerMove
     {
         name = "BiesMove";
 
+        Debug.Log( dir);
+
+        distanceToFixAnimation = new Vector3( (int) dir * CommonValues.tempModulator, CommonValues.tempModulator2 ,0);
+
+        Debug.Log( distanceToFixAnimation );
+
         m_animator.SetFloat("AnimationSpeed", 1.0f * CommonValues.PlayerVelocity.x/BiesUtils.PlayerSpeed);
     }
 

@@ -13,7 +13,8 @@ public class CatLedgeClimb : PlayerLedgeClimb
     protected override void  SetUpAnimation(){
         m_animator.SetTrigger("CatClimb");
         timeToEnd = getAnimationLenght("CatLedgeClimb");
-
+        maxOfAnimationToEnd = timeToEnd;
+        
         m_transition = m_controllabledObject.
                        GetComponent<Player>().animationNode.
                        GetComponent<AnimationTransition>();
