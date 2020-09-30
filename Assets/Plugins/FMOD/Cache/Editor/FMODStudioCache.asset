@@ -17,6 +17,29 @@ MonoBehaviour:
   Max: 2
   Default: 0
   Exists: 0
+--- !u!114 &-9160468818727453737
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/Dzik/dzik stun
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/Dzik/dzik stun
+  guid: 204df5da8f1feb4a80dab34ad70c7cb7
+  Banks:
+  - {fileID: -4337936796200752835}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 15
+  MaxDistance: 600
+  Length: 1000
 --- !u!114 &-9132887207724147723
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -88,7 +111,7 @@ MonoBehaviour:
   - {fileID: -8390949206412305660}
   - {fileID: 3158382596104474746}
   - {fileID: -1157358396488692081}
-  - {fileID: 1889917836972334362}
+  - {fileID: -4337936796200752835}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -111,6 +134,24 @@ MonoBehaviour:
   Path: Assets/FMOD/BiesVsCzady/Build/Desktop/Master.bank
   SubDir: 
   lastModified: 637359788110000000
+  LoadResult: 0
+  FileSizes: []
+  Exists: 0
+--- !u!114 &-8666060719643955386
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.bank
+  m_EditorClassIdentifier: 
+  Path: Assets/FMOD/BiesVsCzady/Build/Desktop/Master.bank
+  SubDir: 
+  lastModified: 637370151810000000
   LoadResult: 0
   FileSizes: []
   Exists: 0
@@ -257,7 +298,7 @@ MonoBehaviour:
   - {fileID: -8390949206412305660}
   - {fileID: 3158382596104474746}
   - {fileID: -1157358396488692081}
-  - {fileID: 1889917836972334362}
+  - {fileID: -4337936796200752835}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -283,6 +324,24 @@ MonoBehaviour:
   LoadResult: 0
   FileSizes: []
   Exists: 1
+--- !u!114 &-7796803331615177470
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.bank
+  m_EditorClassIdentifier: 
+  Path: Assets/FMOD/BiesVsCzady/Build/Desktop/Master.bank
+  SubDir: 
+  lastModified: 637370147990000000
+  LoadResult: 0
+  FileSizes: []
+  Exists: 0
 --- !u!114 &-7766031810432326350
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -318,7 +377,7 @@ MonoBehaviour:
   Banks:
   - {fileID: 3158382596104474746}
   - {fileID: -1157358396488692081}
-  - {fileID: 1889917836972334362}
+  - {fileID: -4337936796200752835}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -326,6 +385,59 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 2995
+--- !u!114 &-7585956925986113165
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/presence/Parameter 1
+  m_EditorClassIdentifier: 
+  Name: Parameter 1
+  Min: 0
+  Max: 2
+  Default: 0
+  Exists: 0
+--- !u!114 &-7468323144122301464
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.bank
+  m_EditorClassIdentifier: 
+  Path: Assets/FMOD/BiesVsCzady/Build/Desktop/Master.bank
+  SubDir: 
+  lastModified: 637370152570000000
+  LoadResult: 0
+  FileSizes: []
+  Exists: 0
+--- !u!114 &-7395141482683429359
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.bank
+  m_EditorClassIdentifier: 
+  Path: Assets/FMOD/BiesVsCzady/Build/Desktop/Master.bank
+  SubDir: 
+  lastModified: 637370179960000000
+  LoadResult: 0
+  FileSizes: []
+  Exists: 0
 --- !u!114 &-7382036438720532805
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -362,6 +474,23 @@ MonoBehaviour:
   LoadResult: 0
   FileSizes: []
   Exists: 0
+--- !u!114 &-7252959583680353587
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: lpfOn
+  m_EditorClassIdentifier: 
+  Name: lpfOn
+  Min: 0
+  Max: 1
+  Default: 0
+  Exists: 1
 --- !u!114 &-7239839020827850677
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -433,7 +562,7 @@ MonoBehaviour:
   Banks:
   - {fileID: 3158382596104474746}
   - {fileID: -1157358396488692081}
-  - {fileID: 1889917836972334362}
+  - {fileID: -4337936796200752835}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -516,7 +645,7 @@ MonoBehaviour:
   Banks:
   - {fileID: 3158382596104474746}
   - {fileID: -1157358396488692081}
-  - {fileID: 1889917836972334362}
+  - {fileID: -4337936796200752835}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -524,6 +653,40 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 600
+--- !u!114 &-6565577147203126595
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: Ambient
+  m_EditorClassIdentifier: 
+  Name: Ambient
+  Min: 0
+  Max: 6
+  Default: 0
+  Exists: 0
+--- !u!114 &-6544189192734478229
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/presence/Parameter 1
+  m_EditorClassIdentifier: 
+  Name: Parameter 1
+  Min: 0
+  Max: 2
+  Default: 0
+  Exists: 0
 --- !u!114 &-6535743692965327091
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -560,14 +723,13 @@ MonoBehaviour:
   - {fileID: -8390949206412305660}
   - {fileID: 3158382596104474746}
   - {fileID: -1157358396488692081}
-  - {fileID: 1889917836972334362}
+  - {fileID: -4337936796200752835}
   IsStream: 0
   Is3D: 1
   IsOneShot: 0
-  Parameters:
-  - {fileID: -4071172105358742818}
-  MinDistance: 1
-  MaxDistance: 20
+  Parameters: []
+  MinDistance: 15
+  MaxDistance: 75
   Length: 4921
 --- !u!114 &-6427527166366435158
 MonoBehaviour:
@@ -640,6 +802,40 @@ MonoBehaviour:
   LoadResult: 0
   FileSizes: []
   Exists: 1
+--- !u!114 &-6192451618370244867
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: Ambient
+  m_EditorClassIdentifier: 
+  Name: Ambient
+  Min: 0
+  Max: 6
+  Default: 0
+  Exists: 1
+--- !u!114 &-6184820327294755094
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: Ambient
+  m_EditorClassIdentifier: 
+  Name: Ambient
+  Min: 0
+  Max: 6
+  Default: 0
+  Exists: 0
 --- !u!114 &-6111938090076958784
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -693,6 +889,23 @@ MonoBehaviour:
   Max: 6
   Default: 0
   Exists: 0
+--- !u!114 &-5971284687361369087
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/presence/Parameter 1
+  m_EditorClassIdentifier: 
+  Name: Parameter 1
+  Min: 0
+  Max: 2
+  Default: 0
+  Exists: 0
 --- !u!114 &-5964873606474513255
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -708,6 +921,23 @@ MonoBehaviour:
   Name: Ambient
   Min: 0
   Max: 6
+  Default: 0
+  Exists: 0
+--- !u!114 &-5940709991098682775
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/presence/Parameter 1
+  m_EditorClassIdentifier: 
+  Name: Parameter 1
+  Min: 0
+  Max: 2
   Default: 0
   Exists: 0
 --- !u!114 &-5863712500140644203
@@ -762,7 +992,7 @@ MonoBehaviour:
   Banks:
   - {fileID: 3158382596104474746}
   - {fileID: -1157358396488692081}
-  - {fileID: 1889917836972334362}
+  - {fileID: -4337936796200752835}
   IsStream: 1
   Is3D: 1
   IsOneShot: 0
@@ -787,7 +1017,7 @@ MonoBehaviour:
   Banks:
   - {fileID: 3158382596104474746}
   - {fileID: -1157358396488692081}
-  - {fileID: 1889917836972334362}
+  - {fileID: -4337936796200752835}
   IsStream: 1
   Is3D: 1
   IsOneShot: 0
@@ -812,7 +1042,7 @@ MonoBehaviour:
   Banks:
   - {fileID: 3158382596104474746}
   - {fileID: -1157358396488692081}
-  - {fileID: 1889917836972334362}
+  - {fileID: -4337936796200752835}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -820,6 +1050,41 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 180
+--- !u!114 &-5537156159477386407
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.bank
+  m_EditorClassIdentifier: 
+  Path: Assets/FMOD/BiesVsCzady/Build/Desktop/Master.bank
+  SubDir: 
+  lastModified: 637370182100000000
+  LoadResult: 0
+  FileSizes: []
+  Exists: 0
+--- !u!114 &-5520283688810379614
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: Ambient
+  m_EditorClassIdentifier: 
+  Name: Ambient
+  Min: 0
+  Max: 6
+  Default: 0
+  Exists: 0
 --- !u!114 &-5398443951578886777
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -853,14 +1118,14 @@ MonoBehaviour:
   Path: event:/SFX/Dzik/dzik dead
   guid: cfd043a14bfe9543a846ad8cb086b9b7
   Banks:
-  - {fileID: 1889917836972334362}
+  - {fileID: -4337936796200752835}
   IsStream: 0
   Is3D: 1
   IsOneShot: 1
   Parameters: []
   MinDistance: 15
   MaxDistance: 400
-  Length: 2375
+  Length: 2503
 --- !u!114 &-5290944302029974665
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -901,6 +1166,23 @@ MonoBehaviour:
   LoadResult: 0
   FileSizes: []
   Exists: 0
+--- !u!114 &-5023262633639106401
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: Ambient
+  m_EditorClassIdentifier: 
+  Name: Ambient
+  Min: 0
+  Max: 6
+  Default: 0
+  Exists: 0
 --- !u!114 &-4996317722827953111
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -918,7 +1200,7 @@ MonoBehaviour:
   Banks:
   - {fileID: 3158382596104474746}
   - {fileID: -1157358396488692081}
-  - {fileID: 1889917836972334362}
+  - {fileID: -4337936796200752835}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -943,14 +1225,14 @@ MonoBehaviour:
   Banks:
   - {fileID: 3158382596104474746}
   - {fileID: -1157358396488692081}
-  - {fileID: 1889917836972334362}
+  - {fileID: -4337936796200752835}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
   Parameters: []
   MinDistance: 0
   MaxDistance: 0
-  Length: 5170
+  Length: 4735
 --- !u!114 &-4908320092456542814
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1009,7 +1291,7 @@ MonoBehaviour:
   Banks:
   - {fileID: 3158382596104474746}
   - {fileID: -1157358396488692081}
-  - {fileID: 1889917836972334362}
+  - {fileID: -4337936796200752835}
   IsStream: 0
   Is3D: 1
   IsOneShot: 1
@@ -1106,6 +1388,41 @@ MonoBehaviour:
   LoadResult: 0
   FileSizes: []
   Exists: 0
+--- !u!114 &-4337936796200752835
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.bank
+  m_EditorClassIdentifier: 
+  Path: Assets/FMOD/BiesVsCzady/Build/Desktop/Master.bank
+  SubDir: 
+  lastModified: 637370183570000000
+  LoadResult: 0
+  FileSizes: []
+  Exists: 1
+--- !u!114 &-4333654449741470277
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: Ambient
+  m_EditorClassIdentifier: 
+  Name: Ambient
+  Min: 0
+  Max: 6
+  Default: 0
+  Exists: 1
 --- !u!114 &-4223956044638103766
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1140,7 +1457,7 @@ MonoBehaviour:
   guid: c18c2ae8f58fd64388129a19188aac8e
   Banks:
   - {fileID: -1157358396488692081}
-  - {fileID: 1889917836972334362}
+  - {fileID: -4337936796200752835}
   IsStream: 1
   Is3D: 1
   IsOneShot: 0
@@ -1165,7 +1482,7 @@ MonoBehaviour:
   Banks:
   - {fileID: 3158382596104474746}
   - {fileID: -1157358396488692081}
-  - {fileID: 1889917836972334362}
+  - {fileID: -4337936796200752835}
   IsStream: 0
   Is3D: 1
   IsOneShot: 1
@@ -1336,6 +1653,47 @@ MonoBehaviour:
   LoadResult: 0
   FileSizes: []
   Exists: 1
+--- !u!114 &-3594017272450706202
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/Dzik/dzik hurt
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/Dzik/dzik hurt
+  guid: 83d6e2f7360efc4fa143576fb59f37bb
+  Banks:
+  - {fileID: -4337936796200752835}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 15
+  MaxDistance: 550
+  Length: 718
+--- !u!114 &-3481792378603025703
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.bank
+  m_EditorClassIdentifier: 
+  Path: Assets/FMOD/BiesVsCzady/Build/Desktop/Master.bank
+  SubDir: 
+  lastModified: 637370176310000000
+  LoadResult: 0
+  FileSizes: []
+  Exists: 0
 --- !u!114 &-3472685721426982820
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1372,7 +1730,7 @@ MonoBehaviour:
   - {fileID: -8390949206412305660}
   - {fileID: 3158382596104474746}
   - {fileID: -1157358396488692081}
-  - {fileID: 1889917836972334362}
+  - {fileID: -4337936796200752835}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -1433,6 +1791,58 @@ MonoBehaviour:
   LoadResult: 0
   FileSizes: []
   Exists: 0
+--- !u!114 &-3209491499837899325
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/presence/Parameter 1
+  m_EditorClassIdentifier: 
+  Name: Parameter 1
+  Min: 0
+  Max: 2
+  Default: 0
+  Exists: 0
+--- !u!114 &-3193435446590852688
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/presence/Parameter 1
+  m_EditorClassIdentifier: 
+  Name: Parameter 1
+  Min: 0
+  Max: 2
+  Default: 0
+  Exists: 0
+--- !u!114 &-3024076740258196548
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.bank
+  m_EditorClassIdentifier: 
+  Path: Assets/FMOD/BiesVsCzady/Build/Desktop/Master.bank
+  SubDir: 
+  lastModified: 637370174890000000
+  LoadResult: 0
+  FileSizes: []
+  Exists: 0
 --- !u!114 &-3001053920284142641
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1451,6 +1861,23 @@ MonoBehaviour:
   LoadResult: 0
   FileSizes: []
   Exists: 1
+--- !u!114 &-2774770435440914987
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: Ambient
+  m_EditorClassIdentifier: 
+  Name: Ambient
+  Min: 0
+  Max: 6
+  Default: 0
+  Exists: 0
 --- !u!114 &-2742020147978486201
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1492,6 +1919,23 @@ MonoBehaviour:
   LoadResult: 0
   FileSizes: []
   Exists: 1
+--- !u!114 &-2706880798707186491
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: Ambient
+  m_EditorClassIdentifier: 
+  Name: Ambient
+  Min: 0
+  Max: 6
+  Default: 0
+  Exists: 0
 --- !u!114 &-2600468908981190713
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1532,6 +1976,24 @@ MonoBehaviour:
   Max: 2
   Default: 0
   Exists: 0
+--- !u!114 &-2291672789453017556
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.bank
+  m_EditorClassIdentifier: 
+  Path: Assets/FMOD/BiesVsCzady/Build/Desktop/Master.bank
+  SubDir: 
+  lastModified: 637370180300000000
+  LoadResult: 0
+  FileSizes: []
+  Exists: 0
 --- !u!114 &-2186339953877735729
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1550,6 +2012,23 @@ MonoBehaviour:
   LoadResult: 0
   FileSizes: []
   Exists: 1
+--- !u!114 &-2100631887045053552
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: lpfOn
+  m_EditorClassIdentifier: 
+  Name: lpfOn
+  Min: 0
+  Max: 1
+  Default: 0
+  Exists: 0
 --- !u!114 &-2024097671296915082
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1569,6 +2048,23 @@ MonoBehaviour:
   FileSizes: []
   Exists: 1
 --- !u!114 &-2008621602553656409
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: Ambient
+  m_EditorClassIdentifier: 
+  Name: Ambient
+  Min: 0
+  Max: 6
+  Default: 0
+  Exists: 0
+--- !u!114 &-1756198474198783488
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1608,6 +2104,23 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 4000
+--- !u!114 &-1676123348057264307
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/presence/Parameter 1
+  m_EditorClassIdentifier: 
+  Name: Parameter 1
+  Min: 0
+  Max: 2
+  Default: 0
+  Exists: 0
 --- !u!114 &-1595065339844770793
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1661,7 +2174,7 @@ MonoBehaviour:
   - {fileID: -8390949206412305660}
   - {fileID: 3158382596104474746}
   - {fileID: -1157358396488692081}
-  - {fileID: 1889917836972334362}
+  - {fileID: -4337936796200752835}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -1670,6 +2183,40 @@ MonoBehaviour:
   MaxDistance: 0
   Length: 1892
 --- !u!114 &-1437167024674671949
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/presence/Parameter 1
+  m_EditorClassIdentifier: 
+  Name: Parameter 1
+  Min: 0
+  Max: 2
+  Default: 0
+  Exists: 0
+--- !u!114 &-1357693785259606584
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: lpfOn
+  m_EditorClassIdentifier: 
+  Name: lpfOn
+  Min: 0
+  Max: 1
+  Default: 0
+  Exists: 0
+--- !u!114 &-1300800330725872452
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1703,7 +2250,7 @@ MonoBehaviour:
   Banks:
   - {fileID: 3158382596104474746}
   - {fileID: -1157358396488692081}
-  - {fileID: 1889917836972334362}
+  - {fileID: -4337936796200752835}
   IsStream: 0
   Is3D: 0
   IsOneShot: 0
@@ -1746,7 +2293,7 @@ MonoBehaviour:
   Banks:
   - {fileID: 3158382596104474746}
   - {fileID: -1157358396488692081}
-  - {fileID: 1889917836972334362}
+  - {fileID: -4337936796200752835}
   IsStream: 0
   Is3D: 1
   IsOneShot: 1
@@ -1771,7 +2318,7 @@ MonoBehaviour:
   Banks:
   - {fileID: 3158382596104474746}
   - {fileID: -1157358396488692081}
-  - {fileID: 1889917836972334362}
+  - {fileID: -4337936796200752835}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -1797,7 +2344,7 @@ MonoBehaviour:
   - {fileID: -8390949206412305660}
   - {fileID: 3158382596104474746}
   - {fileID: -1157358396488692081}
-  - {fileID: 1889917836972334362}
+  - {fileID: -4337936796200752835}
   IsStream: 0
   Is3D: 1
   IsOneShot: 1
@@ -1805,7 +2352,42 @@ MonoBehaviour:
   MinDistance: 15
   MaxDistance: 600
   Length: 2500
+--- !u!114 &-958926439328765803
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.bank
+  m_EditorClassIdentifier: 
+  Path: Assets/FMOD/BiesVsCzady/Build/Desktop/Master.bank
+  SubDir: 
+  lastModified: 637369406880000000
+  LoadResult: 0
+  FileSizes: []
+  Exists: 1
 --- !u!114 &-939685697401126725
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: Ambient
+  m_EditorClassIdentifier: 
+  Name: Ambient
+  Min: 0
+  Max: 6
+  Default: 0
+  Exists: 0
+--- !u!114 &-892655890424940602
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1840,6 +2422,40 @@ MonoBehaviour:
   LoadResult: 0
   FileSizes: []
   Exists: 1
+--- !u!114 &-611998835720370732
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/presence/Parameter 1
+  m_EditorClassIdentifier: 
+  Name: Parameter 1
+  Min: 0
+  Max: 2
+  Default: 0
+  Exists: 0
+--- !u!114 &-490810631232358123
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: lpfOn
+  m_EditorClassIdentifier: 
+  Name: lpfOn
+  Min: 0
+  Max: 1
+  Default: 0
+  Exists: 0
 --- !u!114 &-445370920753350564
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1909,7 +2525,7 @@ MonoBehaviour:
   Banks:
   - {fileID: 3158382596104474746}
   - {fileID: -1157358396488692081}
-  - {fileID: 1889917836972334362}
+  - {fileID: -4337936796200752835}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -1917,6 +2533,23 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 645
+--- !u!114 &-41245385781184678
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: Ambient
+  m_EditorClassIdentifier: 
+  Name: Ambient
+  Min: 0
+  Max: 6
+  Default: 0
+  Exists: 1
 --- !u!114 &-34746983920331571
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1965,7 +2598,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EditorBanks:
   - {fileID: 5864574226408267649}
-  - {fileID: 1889917836972334362}
+  - {fileID: -4337936796200752835}
   EditorEvents:
   - {fileID: -4902263680055983602}
   - {fileID: 883708458752113524}
@@ -2007,13 +2640,18 @@ MonoBehaviour:
   - {fileID: -4179072372773884070}
   - {fileID: 4419456928098032317}
   - {fileID: -5372000529799671355}
+  - {fileID: 8594907327832944464}
+  - {fileID: -9160468818727453737}
+  - {fileID: -3594017272450706202}
+  - {fileID: 7683049054922539145}
   EditorParameters:
-  - {fileID: -3390104346730931186}
+  - {fileID: 3776645411825714265}
+  - {fileID: -4333654449741470277}
   MasterBanks:
-  - {fileID: 1889917836972334362}
+  - {fileID: -4337936796200752835}
   StringsBanks:
   - {fileID: 5864574226408267649}
-  stringsBankWriteTime: 637369405640000000
+  stringsBankWriteTime: 637370183570000000
   cacheVersion: 3
 --- !u!114 &9433077994204138
 MonoBehaviour:
@@ -2033,7 +2671,7 @@ MonoBehaviour:
   - {fileID: -8390949206412305660}
   - {fileID: 3158382596104474746}
   - {fileID: -1157358396488692081}
-  - {fileID: 1889917836972334362}
+  - {fileID: -4337936796200752835}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -2057,7 +2695,7 @@ MonoBehaviour:
   guid: 870b3d6e2df0ea42a160059e178f5fe7
   Banks:
   - {fileID: -1157358396488692081}
-  - {fileID: 1889917836972334362}
+  - {fileID: -4337936796200752835}
   IsStream: 0
   Is3D: 1
   IsOneShot: 1
@@ -2065,6 +2703,23 @@ MonoBehaviour:
   MinDistance: 15
   MaxDistance: 500
   Length: 530
+--- !u!114 &143109309499461080
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: Ambient
+  m_EditorClassIdentifier: 
+  Name: Ambient
+  Min: 0
+  Max: 6
+  Default: 0
+  Exists: 0
 --- !u!114 &268594867770284189
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2137,6 +2792,23 @@ MonoBehaviour:
   LoadResult: 0
   FileSizes: []
   Exists: 0
+--- !u!114 &631199938223825815
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/presence/Parameter 1
+  m_EditorClassIdentifier: 
+  Name: Parameter 1
+  Min: 0
+  Max: 2
+  Default: 0
+  Exists: 0
 --- !u!114 &663852796176219551
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2173,6 +2845,23 @@ MonoBehaviour:
   LoadResult: 0
   FileSizes: []
   Exists: 0
+--- !u!114 &762209407298825145
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: Ambient
+  m_EditorClassIdentifier: 
+  Name: Ambient
+  Min: 0
+  Max: 6
+  Default: 0
+  Exists: 0
 --- !u!114 &766544622973489770
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2188,6 +2877,40 @@ MonoBehaviour:
   Name: Parameter 1
   Min: 0
   Max: 2
+  Default: 0
+  Exists: 0
+--- !u!114 &810856299073546710
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: lpfOn
+  m_EditorClassIdentifier: 
+  Name: lpfOn
+  Min: 0
+  Max: 1
+  Default: 0
+  Exists: 0
+--- !u!114 &835809243533696239
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: lpfOn
+  m_EditorClassIdentifier: 
+  Name: lpfOn
+  Min: 0
+  Max: 1
   Default: 0
   Exists: 0
 --- !u!114 &883708458752113524
@@ -2232,6 +2955,24 @@ MonoBehaviour:
   LoadResult: 0
   FileSizes: []
   Exists: 1
+--- !u!114 &922121277475114688
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.bank
+  m_EditorClassIdentifier: 
+  Path: Assets/FMOD/BiesVsCzady/Build/Desktop/Master.bank
+  SubDir: 
+  lastModified: 637370176990000000
+  LoadResult: 0
+  FileSizes: []
+  Exists: 0
 --- !u!114 &1013321600190701472
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2302,6 +3043,23 @@ MonoBehaviour:
   LoadResult: 0
   FileSizes: []
   Exists: 0
+--- !u!114 &1381809868985819834
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: Ambient
+  m_EditorClassIdentifier: 
+  Name: Ambient
+  Min: 0
+  Max: 6
+  Default: 0
+  Exists: 1
 --- !u!114 &1383623538553692693
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2338,7 +3096,7 @@ MonoBehaviour:
   - {fileID: -8390949206412305660}
   - {fileID: 3158382596104474746}
   - {fileID: -1157358396488692081}
-  - {fileID: 1889917836972334362}
+  - {fileID: -4337936796200752835}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -2364,6 +3122,24 @@ MonoBehaviour:
   LoadResult: 0
   FileSizes: []
   Exists: 0
+--- !u!114 &1483863718940911230
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.bank
+  m_EditorClassIdentifier: 
+  Path: Assets/FMOD/BiesVsCzady/Build/Desktop/Master.bank
+  SubDir: 
+  lastModified: 637370173440000000
+  LoadResult: 0
+  FileSizes: []
+  Exists: 0
 --- !u!114 &1535374525558780087
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2382,7 +3158,7 @@ MonoBehaviour:
   - {fileID: -8390949206412305660}
   - {fileID: 3158382596104474746}
   - {fileID: -1157358396488692081}
-  - {fileID: 1889917836972334362}
+  - {fileID: -4337936796200752835}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -2444,6 +3220,23 @@ MonoBehaviour:
   LoadResult: 0
   FileSizes: []
   Exists: 0
+--- !u!114 &1791223019957221319
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/presence/Parameter 1
+  m_EditorClassIdentifier: 
+  Name: Parameter 1
+  Min: 0
+  Max: 2
+  Default: 0
+  Exists: 1
 --- !u!114 &1889917836972334362
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2520,6 +3313,24 @@ MonoBehaviour:
   LoadResult: 0
   FileSizes: []
   Exists: 1
+--- !u!114 &2303668535792606418
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.bank
+  m_EditorClassIdentifier: 
+  Path: Assets/FMOD/BiesVsCzady/Build/Desktop/Master.bank
+  SubDir: 
+  lastModified: 637370154980000000
+  LoadResult: 0
+  FileSizes: []
+  Exists: 0
 --- !u!114 &2344789562337962029
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2538,6 +3349,23 @@ MonoBehaviour:
   LoadResult: 0
   FileSizes: []
   Exists: 1
+--- !u!114 &2424135217180975074
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: lpfOn
+  m_EditorClassIdentifier: 
+  Name: lpfOn
+  Min: 0
+  Max: 1
+  Default: 0
+  Exists: 0
 --- !u!114 &2434704482764133378
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2609,6 +3437,42 @@ MonoBehaviour:
   LoadResult: 0
   FileSizes: []
   Exists: 0
+--- !u!114 &2851484357203896468
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.bank
+  m_EditorClassIdentifier: 
+  Path: Assets/FMOD/BiesVsCzady/Build/Desktop/Master.bank
+  SubDir: 
+  lastModified: 637370182930000000
+  LoadResult: 0
+  FileSizes: []
+  Exists: 0
+--- !u!114 &2854026482516263046
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.bank
+  m_EditorClassIdentifier: 
+  Path: Assets/FMOD/BiesVsCzady/Build/Desktop/Master.bank
+  SubDir: 
+  lastModified: 637370181180000000
+  LoadResult: 0
+  FileSizes: []
+  Exists: 0
 --- !u!114 &2867942195422975233
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2627,7 +3491,7 @@ MonoBehaviour:
   - {fileID: -8390949206412305660}
   - {fileID: 3158382596104474746}
   - {fileID: -1157358396488692081}
-  - {fileID: 1889917836972334362}
+  - {fileID: -4337936796200752835}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -2635,6 +3499,23 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 160
+--- !u!114 &2935280476823927363
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/presence/Parameter 1
+  m_EditorClassIdentifier: 
+  Name: Parameter 1
+  Min: 0
+  Max: 2
+  Default: 0
+  Exists: 1
 --- !u!114 &2952756071879532987
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2669,7 +3550,7 @@ MonoBehaviour:
   Banks:
   - {fileID: 3158382596104474746}
   - {fileID: -1157358396488692081}
-  - {fileID: 1889917836972334362}
+  - {fileID: -4337936796200752835}
   IsStream: 0
   Is3D: 1
   IsOneShot: 1
@@ -2713,7 +3594,7 @@ MonoBehaviour:
   - {fileID: -8390949206412305660}
   - {fileID: 3158382596104474746}
   - {fileID: -1157358396488692081}
-  - {fileID: 1889917836972334362}
+  - {fileID: -4337936796200752835}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -2721,6 +3602,24 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 1200
+--- !u!114 &3412975434031239437
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.bank
+  m_EditorClassIdentifier: 
+  Path: Assets/FMOD/BiesVsCzady/Build/Desktop/Master.bank
+  SubDir: 
+  lastModified: 637370169080000000
+  LoadResult: 0
+  FileSizes: []
+  Exists: 0
 --- !u!114 &3611036280479966093
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2761,6 +3660,24 @@ MonoBehaviour:
   Max: 2
   Default: 0
   Exists: 0
+--- !u!114 &3736068402725566039
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.bank
+  m_EditorClassIdentifier: 
+  Path: Assets/FMOD/BiesVsCzady/Build/Desktop/Master.bank
+  SubDir: 
+  lastModified: 637370177720000000
+  LoadResult: 0
+  FileSizes: []
+  Exists: 0
 --- !u!114 &3762864810385205866
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2778,6 +3695,23 @@ MonoBehaviour:
   Max: 2
   Default: 0
   Exists: 0
+--- !u!114 &3776645411825714265
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: lpfOn
+  m_EditorClassIdentifier: 
+  Name: lpfOn
+  Min: 0
+  Max: 1
+  Default: 0
+  Exists: 1
 --- !u!114 &3777449019481801271
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2830,7 +3764,7 @@ MonoBehaviour:
   Banks:
   - {fileID: 3158382596104474746}
   - {fileID: -1157358396488692081}
-  - {fileID: 1889917836972334362}
+  - {fileID: -4337936796200752835}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -2855,6 +3789,40 @@ MonoBehaviour:
   lastModified: 637364068940000000
   LoadResult: 0
   FileSizes: []
+  Exists: 0
+--- !u!114 &4082941142519399860
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: Ambient
+  m_EditorClassIdentifier: 
+  Name: Ambient
+  Min: 0
+  Max: 6
+  Default: 0
+  Exists: 0
+--- !u!114 &4103255491382978421
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/presence/Parameter 1
+  m_EditorClassIdentifier: 
+  Name: Parameter 1
+  Min: 0
+  Max: 2
+  Default: 0
   Exists: 0
 --- !u!114 &4188151729434021985
 MonoBehaviour:
@@ -2942,7 +3910,7 @@ MonoBehaviour:
   Path: event:/SFX/save
   guid: 88f2c5bf43a36c448cbc22090defbb04
   Banks:
-  - {fileID: 1889917836972334362}
+  - {fileID: -4337936796200752835}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -2950,6 +3918,23 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 3625
+--- !u!114 &4510883794468891997
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/presence/Parameter 1
+  m_EditorClassIdentifier: 
+  Name: Parameter 1
+  Min: 0
+  Max: 2
+  Default: 0
+  Exists: 0
 --- !u!114 &4588000663262835551
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3044,6 +4029,23 @@ MonoBehaviour:
   LoadResult: 0
   FileSizes: []
   Exists: 1
+--- !u!114 &4946077136854706754
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/presence/Parameter 1
+  m_EditorClassIdentifier: 
+  Name: Parameter 1
+  Min: 0
+  Max: 2
+  Default: 0
+  Exists: 1
 --- !u!114 &5131120354196891817
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3077,6 +4079,24 @@ MonoBehaviour:
   Path: Assets/FMOD/BiesVsCzady/Build/Desktop/Master.bank
   SubDir: 
   lastModified: 637315832480312594
+  LoadResult: 0
+  FileSizes: []
+  Exists: 1
+--- !u!114 &5216221182092864024
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.bank
+  m_EditorClassIdentifier: 
+  Path: Assets/FMOD/BiesVsCzady/Build/Desktop/Master.bank
+  SubDir: 
+  lastModified: 637370178900000000
   LoadResult: 0
   FileSizes: []
   Exists: 1
@@ -3133,7 +4153,7 @@ MonoBehaviour:
   Banks:
   - {fileID: 3158382596104474746}
   - {fileID: -1157358396488692081}
-  - {fileID: 1889917836972334362}
+  - {fileID: -4337936796200752835}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -3243,11 +4263,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Path: Assets/FMOD/BiesVsCzady/Build/Desktop/Master.strings.bank
   SubDir: 
-  lastModified: 637369405640000000
+  lastModified: 637370183570000000
   LoadResult: 0
   FileSizes:
   - Name: Desktop
-    Value: 2620
+    Value: 2722
   Exists: 1
 --- !u!114 &6082243530561040618
 MonoBehaviour:
@@ -3284,6 +4304,23 @@ MonoBehaviour:
   Max: 6
   Default: 0
   Exists: 1
+--- !u!114 &6174130063699072937
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: lpfOn
+  m_EditorClassIdentifier: 
+  Name: lpfOn
+  Min: 0
+  Max: 1
+  Default: 0
+  Exists: 0
 --- !u!114 &6281622509186002702
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3458,6 +4495,24 @@ MonoBehaviour:
   LoadResult: 0
   FileSizes: []
   Exists: 1
+--- !u!114 &6794794412685846636
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.bank
+  m_EditorClassIdentifier: 
+  Path: Assets/FMOD/BiesVsCzady/Build/Desktop/Master.bank
+  SubDir: 
+  lastModified: 637370174280000000
+  LoadResult: 0
+  FileSizes: []
+  Exists: 0
 --- !u!114 &6847132360641865207
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3475,7 +4530,7 @@ MonoBehaviour:
   Banks:
   - {fileID: 3158382596104474746}
   - {fileID: -1157358396488692081}
-  - {fileID: 1889917836972334362}
+  - {fileID: -4337936796200752835}
   IsStream: 0
   Is3D: 1
   IsOneShot: 1
@@ -3517,7 +4572,7 @@ MonoBehaviour:
   Banks:
   - {fileID: 3158382596104474746}
   - {fileID: -1157358396488692081}
-  - {fileID: 1889917836972334362}
+  - {fileID: -4337936796200752835}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -3635,6 +4690,24 @@ MonoBehaviour:
   LoadResult: 0
   FileSizes: []
   Exists: 0
+--- !u!114 &7336603100511866548
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.bank
+  m_EditorClassIdentifier: 
+  Path: Assets/FMOD/BiesVsCzady/Build/Desktop/Master.bank
+  SubDir: 
+  lastModified: 637370176630000000
+  LoadResult: 0
+  FileSizes: []
+  Exists: 0
 --- !u!114 &7492811222630504044
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3653,6 +4726,59 @@ MonoBehaviour:
   LoadResult: 0
   FileSizes: []
   Exists: 1
+--- !u!114 &7497234561194418761
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: lpfOn
+  m_EditorClassIdentifier: 
+  Name: lpfOn
+  Min: 0
+  Max: 1
+  Default: 0
+  Exists: 0
+--- !u!114 &7520750400899529485
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.bank
+  m_EditorClassIdentifier: 
+  Path: Assets/FMOD/BiesVsCzady/Build/Desktop/Master.bank
+  SubDir: 
+  lastModified: 637370155590000000
+  LoadResult: 0
+  FileSizes: []
+  Exists: 1
+--- !u!114 &7642290469757424548
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.bank
+  m_EditorClassIdentifier: 
+  Path: Assets/FMOD/BiesVsCzady/Build/Desktop/Master.bank
+  SubDir: 
+  lastModified: 637370152980000000
+  LoadResult: 0
+  FileSizes: []
+  Exists: 0
 --- !u!114 &7682631484554132478
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3671,7 +4797,7 @@ MonoBehaviour:
   - {fileID: -8390949206412305660}
   - {fileID: 3158382596104474746}
   - {fileID: -1157358396488692081}
-  - {fileID: 1889917836972334362}
+  - {fileID: -4337936796200752835}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -3679,6 +4805,29 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 2150
+--- !u!114 &7683049054922539145
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/ui click
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/ui click
+  guid: 9d31f7ad76dd9547af212247a4c27046
+  Banks:
+  - {fileID: -4337936796200752835}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 169
 --- !u!114 &7808592739638526760
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3713,6 +4862,23 @@ MonoBehaviour:
   Max: 6
   Default: 0
   Exists: 1
+--- !u!114 &7925256516243697839
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: Ambient
+  m_EditorClassIdentifier: 
+  Name: Ambient
+  Min: 0
+  Max: 6
+  Default: 0
+  Exists: 0
 --- !u!114 &7955361915061454270
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3765,6 +4931,23 @@ MonoBehaviour:
   Max: 2
   Default: 0
   Exists: 1
+--- !u!114 &8118432665524528426
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/presence/Parameter 1
+  m_EditorClassIdentifier: 
+  Name: Parameter 1
+  Min: 0
+  Max: 2
+  Default: 0
+  Exists: 0
 --- !u!114 &8218027729428490794
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3818,6 +5001,23 @@ MonoBehaviour:
   lastModified: 637369240960000000
   LoadResult: 0
   FileSizes: []
+  Exists: 0
+--- !u!114 &8306715744083029622
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/presence/Parameter 1
+  m_EditorClassIdentifier: 
+  Name: Parameter 1
+  Min: 0
+  Max: 2
+  Default: 0
   Exists: 0
 --- !u!114 &8324406994160671411
 MonoBehaviour:
@@ -3889,6 +5089,29 @@ MonoBehaviour:
   LoadResult: 0
   FileSizes: []
   Exists: 0
+--- !u!114 &8594907327832944464
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/Czad/glide
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/Czad/glide
+  guid: 1efb0ec99d8420439d54d5bdabbd8148
+  Banks:
+  - {fileID: -4337936796200752835}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 15
+  MaxDistance: 600
+  Length: 3500
 --- !u!114 &8886608881557118059
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3906,7 +5129,7 @@ MonoBehaviour:
   Banks:
   - {fileID: 3158382596104474746}
   - {fileID: -1157358396488692081}
-  - {fileID: 1889917836972334362}
+  - {fileID: -4337936796200752835}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -3914,6 +5137,41 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 360
+--- !u!114 &9065669261826297476
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/presence/Parameter 1
+  m_EditorClassIdentifier: 
+  Name: Parameter 1
+  Min: 0
+  Max: 2
+  Default: 0
+  Exists: 0
+--- !u!114 &9129549391750984467
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.bank
+  m_EditorClassIdentifier: 
+  Path: Assets/FMOD/BiesVsCzady/Build/Desktop/Master.bank
+  SubDir: 
+  lastModified: 637370183440000000
+  LoadResult: 0
+  FileSizes: []
+  Exists: 0
 --- !u!114 &9150196487486110732
 MonoBehaviour:
   m_ObjectHideFlags: 0
