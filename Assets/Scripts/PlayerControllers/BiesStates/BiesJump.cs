@@ -7,7 +7,6 @@ public class BiesJump : PlayerJump
 
     public BiesJump( GameObject controllable, GlobalUtils.Direction dir) : base( controllable, dir, BiesUtils.infoPack ) {
         name = "BiesJump";
-        distanceToFixAnimation = new Vector3(0, 0, 0);
         StartAnimation();
     }
 
