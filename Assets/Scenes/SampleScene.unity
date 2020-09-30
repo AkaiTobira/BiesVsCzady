@@ -161,6 +161,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ccbbdd94218e80341b59e29cda447b3d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!95 &347185012 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 7059672296920941414, guid: 07662773cb44971489b75afb3b56619d,
+    type: 3}
+  m_PrefabInstance: {fileID: 1860165513}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &350715393 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3267777498636654372, guid: 07662773cb44971489b75afb3b56619d,
@@ -1398,6 +1404,11 @@ PrefabInstance:
       propertyPath: fadeArea
       value: 
       objectReference: {fileID: 408120264}
+    - target: {fileID: 841098261358246931, guid: 07662773cb44971489b75afb3b56619d,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 896879984655882339, guid: 07662773cb44971489b75afb3b56619d,
         type: 3}
       propertyPath: m_Enabled
@@ -2252,7 +2263,7 @@ PrefabInstance:
         type: 3}
       propertyPath: TextNode
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 347185012}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 07662773cb44971489b75afb3b56619d, type: 3}
 --- !u!114 &1860165515 stripped
