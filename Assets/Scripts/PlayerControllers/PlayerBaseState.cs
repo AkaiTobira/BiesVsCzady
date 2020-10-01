@@ -45,11 +45,11 @@ public class PlayerBaseState : IBaseState, IInputProcessingState
     public override void Process(){}
 
     protected virtual void UpdateAnimatorPosition(){
-
-        m_controllabledObject.GetComponent<Player>().animationNode.position = 
+        if( PlayerAnimatorLock.UnlockRequirementsMeen() ){
+            m_controllabledObject.GetComponent<Player>().animationNode.position = 
             Vector3.SmoothDamp( m_controllabledObject.GetComponent<Player>().animationNode.position, 
                                 m_controllabledObject.transform.position + distanceToFixAnimation, ref animationVel, m_smoothTime);
-
+        }
     }
     protected virtual void UpdateFloorAligment(){
         m_controllabledObject.GetComponent<Player>().animationNode.transform.up = m_FloorDetector.GetSlopeAngle();

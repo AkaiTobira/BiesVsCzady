@@ -18,6 +18,7 @@ public class PlayerLedgeClimb : PlayerBaseState
 
     public PlayerLedgeClimb( GameObject controllable, GlobalUtils.Direction dir , float someVariable) : base( controllable ) {
         CommonValues.PlayerVelocity = new Vector2(0,0);
+        m_animator.SetBool("LedgeOver", false);
         SetUpVariables(someVariable);
 
         SetUpDirection();
@@ -125,26 +126,35 @@ public class PlayerLedgeClimb : PlayerBaseState
 
         timeToEnd -= Time.deltaTime;
 
-            m_controllabledObject.GetComponent<Player>().animationNode.position = 
+        m_controllabledObject.GetComponent<Player>().animationNode.position = 
                                 m_controllabledObject.transform.position + distanceToFixAnimation;
 
-        if( timeToEnd < 0 ){
+        if( !m_animator.GetCurrentAnimatorStateInfo(0).IsName("BiesIdle") &&  ! m_animator.GetCurrentAnimatorStateInfo(0).IsName("CatIdle") ){
+            
+
+        if( timeToEnd < 0 ){// && ! m_animator.GetCurrentAnimatorStateInfo(0).IsName("BiesLedgeClimb")){
             PlayerFallHelper.FallRequirementsMeet( true );
+            PlayerFallHelper.lockTime = 0.2f;
+            PlayerAnimatorLock.lockTime = 0.2f;
 
             m_isOver = true;
 
+            m_FloorDetector.GetComponent<Transform>().position = targetClimbTargetPoint - new Vector2(0, 10f);// + (Vector3)shiftValue;
 
-            m_FloorDetector.GetComponent<Transform>().position = targetClimbTargetPoint;// + (Vector3)shiftValue;
-
-            m_controllabledObject.GetComponent<Player>().animationNode.position = m_controllabledObject.transform.position;
+            m_controllabledObject.GetComponent<Player>().animationNode.position = m_controllabledObject.transform.position + new Vector3(0, 20f);
 
             rotationAngle = isLeftOriented() ? 0 :180 ; 
             m_controllabledObject.GetComponent<Player>().animationNode.eulerAngles = new Vector3( 0, rotationAngle, slopeAngle);
 
             m_FloorDetector.Move( new Vector2( 0, -0.01f ) );
+
+        }
+
         }else{
             m_FloorDetector.GetComponent<Transform>().position = targetClimbStayPoint;
         }
+            Debug.Log( m_controllabledObject.GetComponent<Player>().animationNode.position );
+
     }
 
     public override void HandleInput(){}

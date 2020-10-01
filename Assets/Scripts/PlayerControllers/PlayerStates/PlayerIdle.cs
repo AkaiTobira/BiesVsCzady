@@ -25,6 +25,7 @@ public class PlayerIdle : PlayerBaseState
     protected virtual void ProcessAnimationUpdate(){
         m_animator.SetFloat( "FallVelocity", -2);
         m_animator.SetFloat("MoveVelocity", Mathf.Abs(CommonValues.PlayerVelocity.x));
+        m_animator.SetBool("LedgeOver", true);
     }
 
     public override void Process(){

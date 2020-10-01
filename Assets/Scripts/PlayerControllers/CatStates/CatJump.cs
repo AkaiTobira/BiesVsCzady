@@ -6,7 +6,7 @@ public class CatJump : PlayerJump
 {    
     public CatJump( GameObject controllable, GlobalUtils.Direction dir) : base( controllable, dir,  CatUtils.infoPack ) {
         name = "CatJump";
-        distanceToFixAnimation = new Vector3(0, -6 , 0);
+        distanceToFixAnimation = new Vector3(0, 3 , 0);
         StartAnimation();
     }
 

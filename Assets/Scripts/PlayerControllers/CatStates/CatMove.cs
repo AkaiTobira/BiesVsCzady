@@ -9,16 +9,16 @@ public class CatMove : PlayerMove
         base( controllable, dir, CatUtils.infoPack, "Cat" ) 
     {
         name = "CatMove";
-        distanceToFixAnimation = new Vector3(0, -6 , 0);
+            distanceToFixAnimation = new Vector3(0, 3 , 0);
         m_animator.SetFloat("AnimationSpeed", 2.0f * CommonValues.PlayerVelocity.x/BiesUtils.PlayerSpeed);
     }
 
     protected override void ProcessStateEnd(){
 
         if( m_animator.GetBool("SneakySneaky") ){
-           distanceToFixAnimation = new Vector3(0, -14.551f , 0);
+           distanceToFixAnimation = new Vector3(0, 3f , 0);
         }else{
-            distanceToFixAnimation = new Vector3(0, -6 , 0);
+            distanceToFixAnimation = new Vector3(0, 3 , 0);
         }
 
         if(  m_WallDetector.isWallClose() && 

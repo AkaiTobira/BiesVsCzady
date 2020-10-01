@@ -60,9 +60,9 @@ public class CatIdle : PlayerIdle
         base.ProcessAnimationUpdate();
 
         if( m_animator.GetBool("SneakySneaky") ){
-            distanceToFixAnimation = new Vector3(0, -14.551f , 0);
+            distanceToFixAnimation = new Vector3(0, 3f , 0);
         }else{
-            distanceToFixAnimation = new Vector3(0, -6 , 0);
+            distanceToFixAnimation = new Vector3(0, 3 , 0);
         }
     }
 

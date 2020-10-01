@@ -20,6 +20,8 @@ public class CameraShake : MonoBehaviour
 
     void Update(){
         if (duration > 0){
+            if( Time.timeScale == 0 ) return;
+
             transform.localPosition = initialPosition + Random.insideUnitSphere * magnitude;
             
             Vector3 shakeValue = Random.insideUnitSphere * magnitude;

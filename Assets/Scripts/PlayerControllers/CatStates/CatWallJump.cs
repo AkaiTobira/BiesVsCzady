@@ -21,7 +21,7 @@ public class CatWallJump : PlayerBaseState
         name = "CatWallJump";
         m_dir = dir;
         SetUpVariables();
-        distanceToFixAnimation = new Vector3(  (isRightOriented()) ? 7.5f : -7.5f, -6.5f, 0);
+        distanceToFixAnimation = new Vector3(  (isLeftOriented()) ? 12.5f : -12.5f, -6.5f, 0);
     }
 
     protected override void SetUpAnimation(){

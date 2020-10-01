@@ -23,4 +23,12 @@ public class HideAreaController : MonoBehaviour
         GetComponent<Animator>().SetTrigger("FadeOut");
     }
 
+    void OnTriggerEnter2D(Collider2D other) {
+        if( other.gameObject.tag.Contains("Player")){
+            if( !state ) return;
+            state = false;
+            GetComponent<Animator>().SetTrigger("FadeOut");
+        }
+    }
+
 }

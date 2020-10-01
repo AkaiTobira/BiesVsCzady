@@ -10,7 +10,7 @@ public class CatWallHold : PlayerBaseState
         m_dir = dir;
         name = "CatWallHold" + ((isLeftOriented())? "L": "R");
         CommonValues.PlayerVelocity.y =0;
-        distanceToFixAnimation = new Vector3(  (isRightOriented()) ? 7.5f : -7.5f, -6.5f, 0);
+        distanceToFixAnimation = new Vector3(  (isRightOriented()) ? 7.5f : -7.5f, 3f, 0);
     }
 
     public override void Process(){
