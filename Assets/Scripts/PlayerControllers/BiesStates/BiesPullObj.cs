@@ -87,7 +87,7 @@ public class BiesPullObj : PlayerBaseState
 
         Debug.Log( (m_moveable.transform.position - m_FloorDetector.GetComponent<Transform>().transform.position).magnitude );
 
-        if( (m_moveable.transform.position - m_FloorDetector.GetComponent<Transform>().transform.position).magnitude > 80 ){
+        if( (m_moveable.transform.position - m_FloorDetector.GetComponent<Transform>().transform.position).magnitude > 100 ){
             m_isOver = true;
         }
 

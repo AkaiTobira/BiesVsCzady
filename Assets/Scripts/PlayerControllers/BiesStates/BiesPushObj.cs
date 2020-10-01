@@ -80,7 +80,7 @@ public class BiesPushObj : PlayerBaseState
             m_isOver = true;
         }else if( isLeftOriented()  && m_wallDetector.isCollideWithLeftWall()  ){
             m_isOver = true;
-        }else if( (m_moveable.transform.position - m_FloorDetector.GetComponent<Transform>().transform.position).magnitude > 80 ){
+        }else if( (m_moveable.transform.position - m_FloorDetector.GetComponent<Transform>().transform.position).magnitude > 100 ){
             m_isOver = true;
         }
 
