@@ -12,11 +12,19 @@ public class BiesPullObj : PlayerBaseState
 
     float distanceFromObject;
 
+    private FMOD.Studio.EventInstance instance;
+
     public BiesPullObj( GameObject controllable, GlobalUtils.Direction dir) : base( controllable ) {
         // play change direction animation;
         // at end of animation call :
         // TEMP
-    //    m_animator.GetComponent<SoundAmbientStopable>().PlayAmbient(0);
+
+
+
+        //instance = FMODUnity.RuntimeManager.CreateInstance("event:/SFX/Enviro/push object");
+        //instance.start();
+
+        m_animator.GetComponent<SoundSFX>().PlayLoopedSFX(0);
         isFaceingLeft = dir == GlobalUtils.Direction.Left;
         name = "BiesPullObj";
         m_dir = dir;
@@ -41,7 +49,9 @@ public class BiesPullObj : PlayerBaseState
         m_animator.SetBool("isPulling", !m_isOver);
         CommonValues.PlayerVelocity = new Vector2(0,0);
         m_FloorDetector.Move(CommonValues.PlayerVelocity);
-    //    m_animator.GetComponent<SoundAmbientStopable>().StopAmbient(0);
+        m_animator.GetComponent<SoundSFX>().StopLoopedSFX(0);
+        //instance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+        //instance.release();
     }
     public override void Process(){
         if( PlayerFallHelper.FallRequirementsMeet( m_FloorDetector.isOnGround()) ){

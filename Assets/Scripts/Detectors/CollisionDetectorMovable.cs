@@ -46,7 +46,12 @@ public class CollisionDetectorMovable : CollisionDetector, ICollisionWallDetecto
                 Move( transition );
             }else{
                 Move( new Vector2(0,-0.1f));
-                accumulatedGravity = 0.0f;
+                if(accumulatedGravity != 0)
+                {
+                    accumulatedGravity = 0.0f;
+                    //FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/Enviro/stone fall");
+                }
+
             }
         }        
     }
@@ -57,3 +62,4 @@ public class CollisionDetectorMovable : CollisionDetector, ICollisionWallDetecto
     }
 
 }
+
