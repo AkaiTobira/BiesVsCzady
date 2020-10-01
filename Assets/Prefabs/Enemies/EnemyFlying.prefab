@@ -228,7 +228,7 @@ SpriteRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 612243848155957873}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
@@ -260,7 +260,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 0a580382dcdc2454a82a599c35dca219, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 503f033d222cf294b937cc403d72838d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -288,7 +288,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 6.4, y: 1.5}
+    oldSize: {x: 7, y: 10}
     newSize: {x: 6.4, y: 1.5}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -618,7 +618,7 @@ SpriteRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 612243849001099206}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
@@ -650,15 +650,15 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 503f033d222cf294b937cc403d72838d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 7, y: 10}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!114 &612243849001099205
@@ -691,8 +691,8 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 5.1, y: 4.54}
-    newSize: {x: 5.1, y: 4.54}
+    oldSize: {x: 7, y: 10}
+    newSize: {x: 7, y: 10}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
@@ -1339,6 +1339,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 35973c5ddd8507143bf8d23d36e6a518, type: 3}
+--- !u!224 &8693674948798920221 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 6669666763474745577, guid: 35973c5ddd8507143bf8d23d36e6a518,
+    type: 3}
+  m_PrefabInstance: {fileID: 2605695066319818484}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &8693674948798920220 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6669666763474745576, guid: 35973c5ddd8507143bf8d23d36e6a518,
@@ -1351,12 +1357,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ccbbdd94218e80341b59e29cda447b3d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!224 &8693674948798920221 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 6669666763474745577, guid: 35973c5ddd8507143bf8d23d36e6a518,
-    type: 3}
-  m_PrefabInstance: {fileID: 2605695066319818484}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2985354845508456173
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -21,9 +21,9 @@ public class PauseMenu : MonoBehaviour
     void Update()
     {
         if( Input.GetKeyDown( KeyCode.Escape )){
-            Debug.Log( pauseMenu.activeSelf );
-            if( !pauseMenu.activeSelf ) PauseGame();
-            else ReplayGame();
+            //Debug.Log( pauseMenu.activeSelf );
+            //if( !pauseMenu.activeSelf ) PauseGame();
+            //else ReplayGame();
             Application.Quit();
         }
     }

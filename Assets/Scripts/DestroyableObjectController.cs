@@ -17,6 +17,8 @@ public class DestroyableObjectSaveInfo : GeneralObjectInfoPack{
     public CameraControlArea camera;
     public bool hideAreaControllerStatus;
     public bool cameraStatus;
+
+    public int type;
 }
 
 
@@ -25,7 +27,7 @@ public class DestroyableObjectController : MonoBehaviour
 
     int baseChildNumber = 0;
 
-    [SerializeField] GameObject childPrefab = null;
+    [SerializeField] List<GameObject> childPrefab = null;
 
     Dictionary<int, DestroyableObjectSaveInfo> lastSavedObjects = new Dictionary<int, DestroyableObjectSaveInfo>();
 
@@ -49,6 +51,7 @@ public class DestroyableObjectController : MonoBehaviour
         infoPack.maxGravity   = go.GetComponent<CollisionDetectorMovable>().MaxGravityForce;
         infoPack.durability   = go.GetComponent<DestroyableObject>().durability;
         infoPack.hideArea     = go.GetComponent<DestroyableObject>().fadeArea;
+        infoPack.type         = go.GetComponent<DestroyableObject>().type;
 
 
 
@@ -85,14 +88,12 @@ public class DestroyableObjectController : MonoBehaviour
         transform.GetChild(i).GetComponent<CollisionDetectorMovable>().GravityForce = info.gravity;
         transform.GetChild(i).GetComponent<CollisionDetectorMovable>().MaxGravityForce = info.maxGravity;
         transform.GetChild(i).GetComponent<DestroyableObject>().durability = info.durability;
-
+        transform.GetChild(i).GetComponent<DestroyableObject>().type = info.type;
 
         if( info.cameraStatus ){
             transform.GetChild(i).GetComponent<DestroyableObject>().areaControll = info.camera;
             info.camera.gameObject.SetActive(true);
         }
-
-        Debug.Log( info.hideAreaControllerStatus );
 
         if( info.hideAreaControllerStatus ){
             transform.GetChild(i).GetComponent<DestroyableObject>().fadeArea     = info.hideArea;
@@ -131,7 +132,7 @@ public class DestroyableObjectController : MonoBehaviour
     void PushAgainOnScene( int index){
         DestroyableObjectSaveInfo info = lastSavedObjects[index];
 
-        var newInstancion = Instantiate( childPrefab, info.position, info.rotation, transform);
+        var newInstancion = Instantiate( childPrefab[info.type], info.position, info.rotation, transform);
         newInstancion.transform.localScale = info.scale;
 
         newInstancion.transform.GetComponent<CollisionDetectorMovable>().PushFriction = info.pushFriction;
@@ -139,6 +140,7 @@ public class DestroyableObjectController : MonoBehaviour
         newInstancion.transform.GetComponent<CollisionDetectorMovable>().GravityForce = info.gravity;
         newInstancion.transform.GetComponent<CollisionDetectorMovable>().MaxGravityForce = info.maxGravity;
         newInstancion.transform.GetComponent<DestroyableObject>().durability = info.durability;
+        newInstancion.transform.GetComponent<DestroyableObject>().type = info.type;
 
         if( info.cameraStatus ){
             newInstancion.transform.GetComponent<DestroyableObject>().areaControll = info.camera;

@@ -21,6 +21,8 @@ public class DestroyableObject : MonoBehaviour
 
     private float gravityForce = 0.0f;
 
+    public int type = 0;
+
     private Vector2 moveValue;
     private Vector2 currentMoveValue;
 
