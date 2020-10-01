@@ -70,6 +70,6 @@ public static class  PlayerInput
     }
 
     public static bool isChangeFormKeyJustPressed(){
-        return Input.GetKeyDown( KeyCode.E) || Input.GetKeyDown(KeyCode.V) || Input.GetButtonDown("Transform");
+        return Input.GetKeyDown( KeyCode.E) || Input.GetKeyDown(KeyCode.Z) || Input.GetButtonDown("Transform");
     }
 }
