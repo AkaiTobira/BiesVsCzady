@@ -20,7 +20,7 @@ public class CameraShake : MonoBehaviour
 
     void Update(){
         if (duration > 0){
-            if( Time.timeScale == 0 ) return;
+            if( Time.timeScale < 1 ) return;
 
             transform.localPosition = initialPosition + Random.insideUnitSphere * magnitude;
             

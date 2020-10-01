@@ -10,7 +10,7 @@ public class PauseMenu : MonoBehaviour
 
 
     public void PauseGame(){
-        Time.timeScale = 0;
+        Time.timeScale = 0.00001f;
         pauseMenu.SetActive(true);
         if( GlobalUtils.PlayerObject.GetComponent<Player>().gameOver && endMenu.activeSelf ){
             endMenu.SetActive(false);
@@ -24,6 +24,7 @@ public class PauseMenu : MonoBehaviour
             Debug.Log( pauseMenu.activeSelf );
             if( !pauseMenu.activeSelf ) PauseGame();
             else ReplayGame();
+            Application.Quit();
         }
     }
 

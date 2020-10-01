@@ -13,6 +13,10 @@ public class StalactitController :IEntity
 
     private float fallDownTimer = 0.0f;
 
+    public string animName = "StalactitBreak";
+
+    public int type = 0;
+
 //    private float dummyTimer    = 0.0f;
 
     void Start() {
@@ -111,7 +115,7 @@ public class StalactitController :IEntity
             m_FloorDetector.enabled = false;
             m_FloorDetector.GetComponent<BoxCollider2D>().enabled = false;
             m_animator.SetTrigger("OnDestroy");
-            Destroy( gameObject, getAnimationLenght( "StalactitBreak") );
+            Destroy( gameObject, getAnimationLenght( animName) );
             onFloor = true;
         }
     }

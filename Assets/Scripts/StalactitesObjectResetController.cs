@@ -8,9 +8,8 @@ public class StalactitesObjectSaveInfo : GeneralObjectInfoPack{
 
     public float enemyDamage;
     public float gravity;
-
     public float fallDelay;
-
+    public int type;
 }
 
 
@@ -19,7 +18,7 @@ public class StalactitesObjectResetController : MonoBehaviour
 
     int baseChildNumber = 0;
 
-    [SerializeField] GameObject childPrefab = null;
+    [SerializeField] List<GameObject> childPrefab = null;
 
     Dictionary<int, StalactitesObjectSaveInfo> lastSavedObjects = new Dictionary<int, StalactitesObjectSaveInfo>();
 
@@ -41,6 +40,7 @@ public class StalactitesObjectResetController : MonoBehaviour
         infoPack.gravity     = go.GetComponent<StalactitController>().GravityForce;
         infoPack.enemyDamage = go.GetComponent<StalactitController>().enemyDamage;
         infoPack.fallDelay   = go.GetComponent<StalactitController>().fallDownDelay;
+        infoPack.type        = go.GetComponent<StalactitController>().type;
 
         return infoPack;
     }
@@ -67,6 +67,7 @@ public class StalactitesObjectResetController : MonoBehaviour
             transform.GetChild(i).rotation = info.rotation;
             transform.GetChild(i).localScale = info.scale;
 
+            transform.GetChild(i).GetComponent<StalactitController>().type = info.type;
             transform.GetChild(i).GetComponent<StalactitController>().damage       = info.damage;
             transform.GetChild(i).GetComponent<StalactitController>().GravityForce = info.gravity;
             transform.GetChild(i).GetComponent<StalactitController>().fallDownDelay = info.fallDelay;
@@ -99,11 +100,13 @@ public class StalactitesObjectResetController : MonoBehaviour
     void PushAgainOnScene( int index){
         StalactitesObjectSaveInfo info = lastSavedObjects[index];
 
-        var newInstancion = Instantiate( childPrefab, info.position, info.rotation, transform);
+        var newInstancion = Instantiate( childPrefab[info.type], info.position, info.rotation, transform);
         newInstancion.transform.localScale = info.scale;
 
         newInstancion.GetComponent<ObjectIdHolder>().objectId = index;
     
+    
+        newInstancion.GetComponent<StalactitController>().type = info.type;
         newInstancion.GetComponent<StalactitController>().damage       = info.damage;
         newInstancion.GetComponent<StalactitController>().GravityForce = info.gravity;
         newInstancion.GetComponent<StalactitController>().enemyDamage  = info.enemyDamage;

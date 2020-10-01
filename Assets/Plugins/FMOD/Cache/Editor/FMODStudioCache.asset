@@ -1,5 +1,479 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-9072489460683069451
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/Bies/hurt
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/Bies/hurt
+  guid: b8f9fb659fcfa540a3e0ba2d2923d4cb
+  Banks:
+  - {fileID: 4281023856208008976}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 761
+--- !u!114 &-8720914516018798136
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/ATM/SWITCH 2 TREE
+  m_EditorClassIdentifier: 
+  Path: event:/ATM/SWITCH 2 TREE
+  guid: 627d33db5866874c8988dbdc98f32b28
+  Banks:
+  - {fileID: 4281023856208008976}
+  IsStream: 1
+  Is3D: 1
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 15
+  MaxDistance: 1400
+  Length: 52363
+--- !u!114 &-8656922411929517009
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/ui click
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/ui click
+  guid: 9d31f7ad76dd9547af212247a4c27046
+  Banks:
+  - {fileID: 4281023856208008976}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 169
+--- !u!114 &-8389405649727740013
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/NULL
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/NULL
+  guid: a154108dc6d64e43a2fd624f3dcaf9c3
+  Banks:
+  - {fileID: 4281023856208008976}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 0
+--- !u!114 &-8323684088819448552
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/ATM/SWITCH 3 TREE
+  m_EditorClassIdentifier: 
+  Path: event:/ATM/SWITCH 3 TREE
+  guid: c18c2ae8f58fd64388129a19188aac8e
+  Banks:
+  - {fileID: 4281023856208008976}
+  IsStream: 1
+  Is3D: 1
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 15
+  MaxDistance: 1400
+  Length: 52363
+--- !u!114 &-7749446180267842491
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/Enviro/wall hit
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/Enviro/wall hit
+  guid: 337e7b903cbef547bdba9fd5912b7f7d
+  Banks:
+  - {fileID: 4281023856208008976}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 1000
+--- !u!114 &-7521110555259489831
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/Kot/FS
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/Kot/FS
+  guid: efa40ecf6a3ccb48a9af59a72af4e60f
+  Banks:
+  - {fileID: 4281023856208008976}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 180
+--- !u!114 &-7093997749259799830
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/Dzik/dzik dead
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/Dzik/dzik dead
+  guid: cfd043a14bfe9543a846ad8cb086b9b7
+  Banks:
+  - {fileID: 4281023856208008976}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 15
+  MaxDistance: 400
+  Length: 2503
+--- !u!114 &-5423318952424815465
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/Enviro/key collect
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/Enviro/key collect
+  guid: dfaaa31c7467a04cbe7b18db02136701
+  Banks:
+  - {fileID: 4281023856208008976}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 2995
+--- !u!114 &-5399611022576301849
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/Czad/shoot
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/Czad/shoot
+  guid: fe7a7aa3a616f74b8870c6733509a193
+  Banks:
+  - {fileID: 4281023856208008976}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 15
+  MaxDistance: 600
+  Length: 2000
+--- !u!114 &-4824893907002100842
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/Kot/jump up
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/Kot/jump up
+  guid: eb686428c1204e44ac48e876e6eecf60
+  Banks:
+  - {fileID: 4281023856208008976}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 600
+--- !u!114 &-3910674944469796586
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/Bies/FS
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/Bies/FS
+  guid: f741770e0c442a45867911bf6cfa9135
+  Banks:
+  - {fileID: 4281023856208008976}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 440
+--- !u!114 &-3270101168667636043
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/przemiana
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/przemiana
+  guid: ce6455acdcde144ab61d237e498e4ea5
+  Banks:
+  - {fileID: 4281023856208008976}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 2150
+--- !u!114 &-2689489187482191422
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/Bies/climb
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/Bies/climb
+  guid: 0405028629bce94d9c026dde034d3498
+  Banks:
+  - {fileID: 4281023856208008976}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 1020
+--- !u!114 &-2662202451794366492
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/Enviro/door open
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/Enviro/door open
+  guid: d66004038e126444bbb8d6b5309a10c5
+  Banks:
+  - {fileID: 4281023856208008976}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 4735
+--- !u!114 &-2514555915828015297
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/Kot/jump down
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/Kot/jump down
+  guid: 98b23e08666c344998f92f60aac554f1
+  Banks:
+  - {fileID: 4281023856208008976}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 360
+--- !u!114 &-1401092606457512004
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.strings.bank
+  m_EditorClassIdentifier: 
+  Path: Assets/FMOD/BiesVsCzady/Build/Desktop/Master.strings.bank
+  SubDir: 
+  lastModified: 637371948899215191
+  LoadResult: 0
+  FileSizes:
+  - Name: Desktop
+    Value: 3068
+  Exists: 1
+--- !u!114 &-997711272150628257
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/Dzik/dzik hurt
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/Dzik/dzik hurt
+  guid: 83d6e2f7360efc4fa143576fb59f37bb
+  Banks:
+  - {fileID: 4281023856208008976}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 15
+  MaxDistance: 550
+  Length: 718
+--- !u!114 &-847069085551039768
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/Enviro/wall break
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/Enviro/wall break
+  guid: a86cba7f6eda534ba7cc6e96fe25f70e
+  Banks:
+  - {fileID: 4281023856208008976}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 1892
+--- !u!114 &-617357871576882919
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: Ambient
+  m_EditorClassIdentifier: 
+  Name: Ambient
+  Min: 0
+  Max: 6
+  Default: 0
+  Exists: 1
+--- !u!114 &-117102120595866485
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/Enviro/grzyb show
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/Enviro/grzyb show
+  guid: e3ddc3c49240d64fb07f3aae355ab9c6
+  Banks:
+  - {fileID: 4281023856208008976}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 15
+  MaxDistance: 250
+  Length: 2200
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12,10 +486,640 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d32cf7c32a3ed8347bac48ef5ed56d82, type: 3}
   m_Name: FMODStudioCache
   m_EditorClassIdentifier: 
-  EditorBanks: []
-  EditorEvents: []
-  EditorParameters: []
-  MasterBanks: []
-  StringsBanks: []
-  stringsBankWriteTime: 0
+  EditorBanks:
+  - {fileID: -1401092606457512004}
+  - {fileID: 4281023856208008976}
+  EditorEvents:
+  - {fileID: -2689489187482191422}
+  - {fileID: 4521289737461068039}
+  - {fileID: 8764510540979763530}
+  - {fileID: 488036201857963429}
+  - {fileID: 8861235803452054570}
+  - {fileID: 1381407426861448979}
+  - {fileID: 3539887117052021130}
+  - {fileID: 4681387875141865944}
+  - {fileID: 2180349092542862799}
+  - {fileID: 4533202740157986031}
+  - {fileID: -7749446180267842491}
+  - {fileID: 7261706818962351872}
+  - {fileID: -8720914516018798136}
+  - {fileID: 8578499188373513906}
+  - {fileID: 903405419110481877}
+  - {fileID: -997711272150628257}
+  - {fileID: 5677832107213983788}
+  - {fileID: -2514555915828015297}
+  - {fileID: -8656922411929517009}
+  - {fileID: -8389405649727740013}
+  - {fileID: -847069085551039768}
+  - {fileID: 9022142289557850616}
+  - {fileID: -9072489460683069451}
+  - {fileID: 8531294905337070128}
+  - {fileID: 7553916425173270115}
+  - {fileID: -8323684088819448552}
+  - {fileID: 7926617274040059254}
+  - {fileID: 3600144314582685080}
+  - {fileID: -3270101168667636043}
+  - {fileID: -7093997749259799830}
+  - {fileID: 5883000683436237151}
+  - {fileID: -2662202451794366492}
+  - {fileID: 577943667521829282}
+  - {fileID: 181672353395990697}
+  - {fileID: -5423318952424815465}
+  - {fileID: -117102120595866485}
+  - {fileID: -4824893907002100842}
+  - {fileID: 3812318804882889186}
+  - {fileID: -7521110555259489831}
+  - {fileID: -3910674944469796586}
+  - {fileID: -5399611022576301849}
+  - {fileID: 8671990622529374018}
+  EditorParameters:
+  - {fileID: 1088679454638405792}
+  - {fileID: 4510763937770038703}
+  - {fileID: -617357871576882919}
+  MasterBanks:
+  - {fileID: 4281023856208008976}
+  StringsBanks:
+  - {fileID: -1401092606457512004}
+  stringsBankWriteTime: 637371948899215191
   cacheVersion: 3
+--- !u!114 &181672353395990697
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/Czad/presence
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/Czad/presence
+  guid: de526d469d419145b183ba2253bec5c2
+  Banks:
+  - {fileID: 4281023856208008976}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 15
+  MaxDistance: 500
+  Length: 4921
+--- !u!114 &488036201857963429
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/Bies/block
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/Bies/block
+  guid: 0f2917707288044387a4d9e2d72c19a0
+  Banks:
+  - {fileID: 4281023856208008976}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 531
+--- !u!114 &577943667521829282
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/Czad/dies
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/Czad/dies
+  guid: d9119336716d86479cd451ad11b76649
+  Banks:
+  - {fileID: 4281023856208008976}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 15
+  MaxDistance: 600
+  Length: 1468
+--- !u!114 &903405419110481877
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/Enviro/push object
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/Enviro/push object
+  guid: 6aaaf5b6ebf1e34cb1327e57e7ea3ee8
+  Banks:
+  - {fileID: 4281023856208008976}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 5588
+--- !u!114 &1088679454638405792
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: PauseMenu
+  m_EditorClassIdentifier: 
+  Name: PauseMenu
+  Min: 0
+  Max: 1
+  Default: 0
+  Exists: 1
+--- !u!114 &1381407426861448979
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/Czad/glide
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/Czad/glide
+  guid: 1efb0ec99d8420439d54d5bdabbd8148
+  Banks:
+  - {fileID: 4281023856208008976}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 15
+  MaxDistance: 600
+  Length: 3500
+--- !u!114 &2180349092542862799
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/Enviro/stone fall
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/Enviro/stone fall
+  guid: 27820707247f814b8668fe10cd8e8153
+  Banks:
+  - {fileID: 4281023856208008976}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 1568
+--- !u!114 &3539887117052021130
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/Dzik/dzik stun
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/Dzik/dzik stun
+  guid: 204df5da8f1feb4a80dab34ad70c7cb7
+  Banks:
+  - {fileID: 4281023856208008976}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 15
+  MaxDistance: 600
+  Length: 1000
+--- !u!114 &3600144314582685080
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/Czad/hurt
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/Czad/hurt
+  guid: c54a75e0ff2e0a489a15ee1e8ceb5650
+  Banks:
+  - {fileID: 4281023856208008976}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 15
+  MaxDistance: 600
+  Length: 700
+--- !u!114 &3812318804882889186
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/Bies/atak lapa
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/Bies/atak lapa
+  guid: ebdee42216c97a4a879d46bb64f6aeae
+  Banks:
+  - {fileID: 4281023856208008976}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 160
+--- !u!114 &4281023856208008976
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.bank
+  m_EditorClassIdentifier: 
+  Path: Assets/FMOD/BiesVsCzady/Build/Desktop/Master.bank
+  SubDir: 
+  lastModified: 637371948899175572
+  LoadResult: 0
+  FileSizes: []
+  Exists: 1
+--- !u!114 &4510763937770038703
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: LowHP
+  m_EditorClassIdentifier: 
+  Name: LowHP
+  Min: 0
+  Max: 1
+  Default: 0
+  Exists: 1
+--- !u!114 &4521289737461068039
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/Bies/roar
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/Bies/roar
+  guid: 0806eed7bcc4174e906fa530f537438a
+  Banks:
+  - {fileID: 4281023856208008976}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 1950
+--- !u!114 &4533202740157986031
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/Czad/melee
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/Czad/melee
+  guid: 2a4e062b19437f4eb32472adc310765f
+  Banks:
+  - {fileID: 4281023856208008976}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 500
+--- !u!114 &4681387875141865944
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/Kot/hurt
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/Kot/hurt
+  guid: 20f3f410d8c3044aae073a600917e62d
+  Banks:
+  - {fileID: 4281023856208008976}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 645
+--- !u!114 &5677832107213983788
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/save
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/save
+  guid: 88f2c5bf43a36c448cbc22090defbb04
+  Banks:
+  - {fileID: 4281023856208008976}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 3625
+--- !u!114 &5883000683436237151
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/ATM/NEW ATMO
+  m_EditorClassIdentifier: 
+  Path: event:/ATM/NEW ATMO
+  guid: d193bd8234ee9f44aa3b523034dc0424
+  Banks:
+  - {fileID: 4281023856208008976}
+  IsStream: 1
+  Is3D: 1
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 573818
+--- !u!114 &7261706818962351872
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/Bies/atak ziemia
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/Bies/atak ziemia
+  guid: 3b108eee03179442bf10bd7914a20480
+  Banks:
+  - {fileID: 4281023856208008976}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 1500
+--- !u!114 &7553916425173270115
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/Enviro/grzyb hide
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/Enviro/grzyb hide
+  guid: bec5da1e85dbe04394f70a6d53efd592
+  Banks:
+  - {fileID: 4281023856208008976}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 15
+  MaxDistance: 500
+  Length: 1500
+--- !u!114 &7926617274040059254
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/Dzik/dzik fs
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/Dzik/dzik fs
+  guid: c1cd238d2671e54fb7645c1219057ae1
+  Banks:
+  - {fileID: 4281023856208008976}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 15
+  MaxDistance: 250
+  Length: 530
+--- !u!114 &8531294905337070128
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/Enviro/stalactite fall
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/Enviro/stalactite fall
+  guid: ba937fc36b23bc42948f89e7c3af4feb
+  Banks:
+  - {fileID: 4281023856208008976}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 15
+  MaxDistance: 600
+  Length: 2500
+--- !u!114 &8578499188373513906
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/ATM/flame
+  m_EditorClassIdentifier: 
+  Path: event:/ATM/flame
+  guid: 64f10a33e807b64c89d6fb907a5a17f2
+  Banks:
+  - {fileID: 4281023856208008976}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 15
+  MaxDistance: 200
+  Length: 4921
+--- !u!114 &8671990622529374018
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/Kot/dies
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/Kot/dies
+  guid: ff8a0aa1cd762b448f72de586b695461
+  Banks:
+  - {fileID: 4281023856208008976}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 2291
+--- !u!114 &8764510540979763530
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/Bies/jump down
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/Bies/jump down
+  guid: 090c074f35869945ba6407bb38086183
+  Banks:
+  - {fileID: 4281023856208008976}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 1200
+--- !u!114 &8861235803452054570
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/Bies/dies
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/Bies/dies
+  guid: 11fd36283a160742a825d2b0ba438928
+  Banks:
+  - {fileID: 4281023856208008976}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 2147
+--- !u!114 &9022142289557850616
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/Bies/jump up
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/Bies/jump up
+  guid: aeca7e9a0523754ab1ff36c7ff035882
+  Banks:
+  - {fileID: 4281023856208008976}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 1000
