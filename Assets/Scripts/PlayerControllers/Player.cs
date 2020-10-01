@@ -309,6 +309,7 @@ public class Player : IEntity
 
         HurtBehaviourTests();
         GodModeSwitch();
+        ChangeLowHPParameterFMOD();
 
         CommonValues.tempModulator  = t1;
         CommonValues.tempModulator2 = t2;
@@ -321,6 +322,20 @@ public class Player : IEntity
         if( Input.GetKeyDown(KeyCode.F1)){
             SwitchGoodMode();
         }
+    }
+
+    public void ChangeLowHPParameterFMOD()
+    {
+        if(healthPoints < 6)
+        {
+            FMODUnity.RuntimeManager.StudioSystem.setParameterByName("LowHP", 1, false);
+        }
+        else
+        {
+            FMODUnity.RuntimeManager.StudioSystem.setParameterByName("LowHP", 0, false);
+        }
+
+
     }
 
 }

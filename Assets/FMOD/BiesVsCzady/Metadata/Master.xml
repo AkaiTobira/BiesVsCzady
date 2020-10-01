@@ -17,7 +17,6 @@
 	<object class="MixerBusEffectChain" id="{77fd301c-f1f5-46e1-b554-c35466c504c4}">
 		<relationship name="effects">
 			<destination>{0472be89-2de2-46f4-9564-b3b67ab76ed0}</destination>
-			<destination>{ea3d706a-1cf9-4a78-bff6-9f995f7e3329}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{683b40f4-ffeb-4a8c-9596-e47e7b942d7b}">
@@ -26,51 +25,4 @@
 		</property>
 	</object>
 	<object class="MixerBusFader" id="{0472be89-2de2-46f4-9564-b3b67ab76ed0}" />
-	<object class="MultibandEqEffect" id="{ea3d706a-1cf9-4a78-bff6-9f995f7e3329}">
-		<property name="frequencyA">
-			<value>20674.1602</value>
-		</property>
-		<property name="qualityA">
-			<value>0.255202591</value>
-		</property>
-		<relationship name="automators">
-			<destination>{1ecfa544-1577-424b-99cd-14fef772980d}</destination>
-		</relationship>
-	</object>
-	<object class="Automator" id="{1ecfa544-1577-424b-99cd-14fef772980d}">
-		<property name="nameOfPropertyBeingAutomated">
-			<value>frequencyA</value>
-		</property>
-		<relationship name="automationCurves">
-			<destination>{892577bc-c778-46bb-8fe3-763df4c758f2}</destination>
-		</relationship>
-	</object>
-	<object class="AutomationCurve" id="{892577bc-c778-46bb-8fe3-763df4c758f2}">
-		<relationship name="parameter">
-			<destination>{66b53483-3711-431d-9aea-738a3ee873f5}</destination>
-		</relationship>
-		<relationship name="automationPoints">
-			<destination>{4e2510f9-b576-4e51-ae7b-0cc09541187b}</destination>
-			<destination>{a41c57a4-5300-4f3d-99b9-c2756570085d}</destination>
-		</relationship>
-	</object>
-	<object class="AutomationPoint" id="{4e2510f9-b576-4e51-ae7b-0cc09541187b}">
-		<property name="position">
-			<value>0.85000000000000009</value>
-		</property>
-		<property name="value">
-			<value>22000</value>
-		</property>
-		<property name="curveShape">
-			<value>-0.247204468</value>
-		</property>
-	</object>
-	<object class="AutomationPoint" id="{a41c57a4-5300-4f3d-99b9-c2756570085d}">
-		<property name="position">
-			<value>0.95000000000000007</value>
-		</property>
-		<property name="value">
-			<value>2000</value>
-		</property>
-	</object>
 </objects>

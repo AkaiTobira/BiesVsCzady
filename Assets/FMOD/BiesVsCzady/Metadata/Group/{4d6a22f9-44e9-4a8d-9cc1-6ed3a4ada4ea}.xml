@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.01.00">
+	<object class="MixerGroup" id="{4d6a22f9-44e9-4a8d-9cc1-6ed3a4ada4ea}">
+		<property name="name">
+			<value>NotAffectedByLPF</value>
+		</property>
+		<relationship name="effectChain">
+			<destination>{fd320ce3-a92c-404d-bb8a-2f794357b15a}</destination>
+		</relationship>
+		<relationship name="panner">
+			<destination>{190a147b-4c74-4456-99a4-2b4da70a8784}</destination>
+		</relationship>
+		<relationship name="output">
+			<destination>{5876b881-eadb-41de-ab6e-370bf9b436a1}</destination>
+		</relationship>
+	</object>
+	<object class="MixerBusEffectChain" id="{fd320ce3-a92c-404d-bb8a-2f794357b15a}">
+		<relationship name="effects">
+			<destination>{5fcf9be7-7f0f-4a49-8386-2705f4906ad5}</destination>
+		</relationship>
+	</object>
+	<object class="MixerBusPanner" id="{190a147b-4c74-4456-99a4-2b4da70a8784}" />
+	<object class="MixerBusFader" id="{5fcf9be7-7f0f-4a49-8386-2705f4906ad5}" />
+</objects>
