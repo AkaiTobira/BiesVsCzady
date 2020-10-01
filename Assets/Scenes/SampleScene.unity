@@ -2018,6 +2018,11 @@ PrefabInstance:
       propertyPath: m_SortingLayer
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1680920259507667032, guid: 07662773cb44971489b75afb3b56619d,
+        type: 3}
+      propertyPath: dialogue.Array.data[0].text
+      value: Przed nami demon.
+      objectReference: {fileID: 0}
     - target: {fileID: 1749209305027299148, guid: 07662773cb44971489b75afb3b56619d,
         type: 3}
       propertyPath: m_SortingLayerID
@@ -2189,6 +2194,16 @@ PrefabInstance:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: 60fc17a308db09a4485dec410b96346a, type: 2}
+    - target: {fileID: 2689519455245171489, guid: 07662773cb44971489b75afb3b56619d,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 3001.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 2689519455245171489, guid: 07662773cb44971489b75afb3b56619d,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 169.27274
+      objectReference: {fileID: 0}
     - target: {fileID: 2861325208111766364, guid: 07662773cb44971489b75afb3b56619d,
         type: 3}
       propertyPath: m_Sprite
@@ -3549,7 +3564,7 @@ PrefabInstance:
     - target: {fileID: 7564430828420401013, guid: 07662773cb44971489b75afb3b56619d,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7568349311235643151, guid: 07662773cb44971489b75afb3b56619d,
         type: 3}
@@ -3600,6 +3615,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_SortingOrder
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7653660188889775549, guid: 07662773cb44971489b75afb3b56619d,
+        type: 3}
+      propertyPath: m_SortingLayerID
+      value: 1849812049
+      objectReference: {fileID: 0}
+    - target: {fileID: 7653660188889775549, guid: 07662773cb44971489b75afb3b56619d,
+        type: 3}
+      propertyPath: m_SortingLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7653660188889775549, guid: 07662773cb44971489b75afb3b56619d,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 7714281249418065567, guid: 07662773cb44971489b75afb3b56619d,
         type: 3}
