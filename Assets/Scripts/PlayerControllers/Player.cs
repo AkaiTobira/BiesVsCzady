@@ -23,6 +23,12 @@ public class Player : IEntity
         GlobalUtils.PlayerObject = transform;
     }
 
+    public void GetWings(){
+        m_animator.SetTrigger("GetWings");
+        GUIElements.LightHit.ApplyLightColors();
+        baseInputLockAfterRebirth = 1000f;
+    }
+
     void Start()
     {
         m_FloorDetector       = GetComponent<CollisionDetectorPlayer>();

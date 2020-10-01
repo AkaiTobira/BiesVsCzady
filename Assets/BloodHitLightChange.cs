@@ -16,6 +16,10 @@ public class BloodHitLightChange : MonoBehaviour
 
     [SerializeField] float timeOfReturningToSavedColor = 2.0f;
 
+    [SerializeField] float addLightIntensivity;
+    [SerializeField] float timeOfReturningToSavedColor2 = 2.0f;
+
+
     float returningToNormalTimer = 0;
 
     void Start()
@@ -29,7 +33,19 @@ public class BloodHitLightChange : MonoBehaviour
   //      Debug.Log( savedColor + " " + savedLightIntensivity );
     }
 
+    bool hurtLight = false;
+
+
+    public void ApplyLightColors(){
+        hurtLight = false;
+        m_light.color     = Color.white;
+        m_light.intensity = addLightIntensivity;
+        returningToNormalTimer = timeOfReturningToSavedColor2;
+  //      Debug.Log( "APPLYColors");
+    }
+
     public void ApplyHurtColors(){
+        hurtLight = true;
         m_light.color     = hurtColor;
         m_light.intensity = hurtLightIntensivity;
         returningToNormalTimer = timeOfReturningToSavedColor;
@@ -38,14 +54,20 @@ public class BloodHitLightChange : MonoBehaviour
 
     void Update()
     {
+        
         returningToNormalTimer = Mathf.Max( 0 , returningToNormalTimer - Time.deltaTime );
         if( returningToNormalTimer == 0) return;
 
-        float t = returningToNormalTimer/timeOfReturningToSavedColor;
+        if( hurtLight ){
+            float t = returningToNormalTimer/timeOfReturningToSavedColor;
+            m_light.color     = savedColor             * (1f - t) + hurtColor * t;
+            m_light.intensity = savedLightIntensivity  * (1f - t) + hurtLightIntensivity * t;
+        }else{
+            float t = returningToNormalTimer/timeOfReturningToSavedColor2;
+            m_light.color     = savedColor             * (1f - t) + Color.white * t;
+            m_light.intensity = savedLightIntensivity  * (1f - t) + addLightIntensivity * t;
+        }
 
-//        Debug.Log( returningToNormalTimer + " " + t);
 
-        m_light.color     = savedColor             * (1f - t) + hurtColor * t;
-        m_light.intensity = savedLightIntensivity  * (1f - t) + hurtLightIntensivity * t;
     }
 }

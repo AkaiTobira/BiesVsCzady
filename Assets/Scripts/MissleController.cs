@@ -40,7 +40,7 @@ public class MissleController : IEntity
     void Update()
     {
         m_FloorDetector.Move( direction * speed * Time.deltaTime );
-        if( m_FloorDetector.isOnGround() || m_wallDetector.isWallClose() ) Destroy(gameObject);
+        if( m_FloorDetector.isOnGround() || m_wallDetector.isCollideWithLeftWall() ) Destroy(gameObject);
     }
 
     private void OnTriggerEnter2D(Collider2D other)

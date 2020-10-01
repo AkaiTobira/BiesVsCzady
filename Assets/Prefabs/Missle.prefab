@@ -72,6 +72,7 @@ MonoBehaviour:
   direction: {x: 0, y: 0, z: 0}
   speed: 300
   AttackDamage: 3
+  knockbackInfo: {x: 0, y: 0}
 --- !u!114 &3674367399692196556
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -135,6 +136,7 @@ MonoBehaviour:
   maxClimbAngle: 40
   maxDescendAngle: 40
   autoGravityOn: 0
+  wallCheckRayLenght: 200
 --- !u!1 &3394112485970536769
 GameObject:
   m_ObjectHideFlags: 0
@@ -222,9 +224,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingLayerID: 1849812049
+  m_SortingLayer: 1
+  m_SortingOrder: 4
   m_Sprite: {fileID: 21300000, guid: cfe5b1f2a168f564fa0afda36b6ec630, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

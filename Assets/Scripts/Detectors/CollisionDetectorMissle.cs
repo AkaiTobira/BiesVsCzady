@@ -60,7 +60,8 @@ public class CollisionDetectorMissle : CollisionDetector, ICollisionWallDetector
         return closeToWall;
     }
     public bool isCollideWithLeftWall(){
-        return false;
+
+        return collisionInfo.below || collisionInfo.above || collisionInfo.left || collisionInfo.right;
     }
     public bool isCollideWithRightWall(){
         return false;
