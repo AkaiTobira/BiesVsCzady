@@ -21,6 +21,8 @@ public class CollisionDetectorMissle : CollisionDetector, ICollisionWallDetector
         DescendSlope();
         ProcessCollisionHorizontal( Mathf.Sign(transition.x));
         ProcessCollisionVertical(   Mathf.Sign(transition.y));
+        ProcessCollisionHorizontal( Mathf.Sign(-transition.x));
+        ProcessCollisionVertical(   Mathf.Sign(-transition.y));
         ProcessColisionOnTheSameLayer();
         ProcessCollisionWallClose();
     }
