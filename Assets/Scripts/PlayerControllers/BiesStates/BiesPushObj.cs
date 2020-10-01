@@ -18,7 +18,10 @@ public class BiesPushObj : PlayerBaseState
         // TEMP
 
 
-     //   m_animator.GetComponent<SoundAmbientStopable>().PlayAmbient(0);
+        //instance = FMODUnity.RuntimeManager.CreateInstance("event:/SFX/Enviro/push object");
+        //instance.start();
+
+        m_animator.GetComponent<SoundSFX>().PlayLoopedSFX(0);
         name = "BiesPushObj";
         isMovingLeft = dir == GlobalUtils.Direction.Left;
         m_dir = dir;
@@ -43,7 +46,9 @@ public class BiesPushObj : PlayerBaseState
         m_animator.SetBool("isPushing", !m_isOver);
         CommonValues.PlayerVelocity = new Vector2(0,0);
         m_FloorDetector.Move(CommonValues.PlayerVelocity);
-    //    m_animator.GetComponent<SoundAmbientStopable>().StopAmbient(0);
+        m_animator.GetComponent<SoundSFX>().StopLoopedSFX(0);
+        //instance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+        //instance.release();
     }
 
     protected override void UpdateDirection(){}
