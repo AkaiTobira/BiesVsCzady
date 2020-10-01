@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.01.00">
+	<object class="MixerGroup" id="{d120c160-7669-4a48-aab8-2271ee9d40ee}">
+		<property name="name">
+			<value>Ambient</value>
+		</property>
+		<relationship name="effectChain">
+			<destination>{a9db7285-9627-46a3-a864-cee241ca4e3c}</destination>
+		</relationship>
+		<relationship name="panner">
+			<destination>{4f2aeb85-3db1-4b92-83e9-d5921e99f0da}</destination>
+		</relationship>
+		<relationship name="output">
+			<destination>{5876b881-eadb-41de-ab6e-370bf9b436a1}</destination>
+		</relationship>
+	</object>
+	<object class="MixerBusEffectChain" id="{a9db7285-9627-46a3-a864-cee241ca4e3c}">
+		<relationship name="effects">
+			<destination>{2c735c4a-2625-45bc-9468-a8bfd8147e38}</destination>
+			<destination>{625e83fd-c063-4b87-9e86-54f4d33a888c}</destination>
+		</relationship>
+	</object>
+	<object class="MixerBusPanner" id="{4f2aeb85-3db1-4b92-83e9-d5921e99f0da}" />
+	<object class="MixerBusFader" id="{2c735c4a-2625-45bc-9468-a8bfd8147e38}" />
+	<object class="MultibandEqEffect" id="{625e83fd-c063-4b87-9e86-54f4d33a888c}">
+		<property name="filterTypeB">
+			<value>1</value>
+		</property>
+		<property name="frequencyA">
+			<value>20674.1602</value>
+		</property>
+		<property name="frequencyB">
+			<value>1988.98267</value>
+		</property>
+		<property name="qualityA">
+			<value>0.255202591</value>
+		</property>
+		<property name="qualityB">
+			<value>0.399999976</value>
+		</property>
+		<relationship name="automators">
+			<destination>{a3862a21-2853-429a-9725-6651ebb381c9}</destination>
+			<destination>{833769d2-808b-420d-9f86-8196592f134a}</destination>
+		</relationship>
+	</object>
+	<object class="Automator" id="{a3862a21-2853-429a-9725-6651ebb381c9}">
+		<property name="nameOfPropertyBeingAutomated">
+			<value>frequencyA</value>
+		</property>
+		<relationship name="automationCurves">
+			<destination>{eb3a2f4a-ce0b-4fc1-a602-7c3efbeb920b}</destination>
+		</relationship>
+	</object>
+	<object class="Automator" id="{833769d2-808b-420d-9f86-8196592f134a}">
+		<property name="nameOfPropertyBeingAutomated">
+			<value>frequencyB</value>
+		</property>
+		<relationship name="automationCurves">
+			<destination>{abd76927-da4e-4cb6-873a-22f8f47faa43}</destination>
+		</relationship>
+	</object>
+	<object class="AutomationCurve" id="{eb3a2f4a-ce0b-4fc1-a602-7c3efbeb920b}">
+		<relationship name="parameter">
+			<destination>{66b53483-3711-431d-9aea-738a3ee873f5}</destination>
+		</relationship>
+		<relationship name="automationPoints">
+			<destination>{9550ff4f-38e6-4268-96d8-9da534267213}</destination>
+			<destination>{3ce01338-2ceb-497f-b2d9-bdd1b96af8dc}</destination>
+		</relationship>
+	</object>
+	<object class="AutomationCurve" id="{abd76927-da4e-4cb6-873a-22f8f47faa43}">
+		<relationship name="parameter">
+			<destination>{f9d6eb05-e9db-4c94-953c-800064efb180}</destination>
+		</relationship>
+		<relationship name="automationPoints">
+			<destination>{2a557981-e63c-44c0-b739-e028a9186d26}</destination>
+			<destination>{090d2819-bb99-4734-950d-7cdea33e4d2e}</destination>
+		</relationship>
+	</object>
+	<object class="AutomationPoint" id="{9550ff4f-38e6-4268-96d8-9da534267213}">
+		<property name="position">
+			<value>0.85000000000000009</value>
+		</property>
+		<property name="value">
+			<value>22000</value>
+		</property>
+		<property name="curveShape">
+			<value>-0.247204468</value>
+		</property>
+	</object>
+	<object class="AutomationPoint" id="{3ce01338-2ceb-497f-b2d9-bdd1b96af8dc}">
+		<property name="position">
+			<value>0.95000000000000007</value>
+		</property>
+		<property name="value">
+			<value>2000</value>
+		</property>
+	</object>
+	<object class="AutomationPoint" id="{2a557981-e63c-44c0-b739-e028a9186d26}">
+		<property name="position">
+			<value>0.91101694915254239</value>
+		</property>
+		<property name="value">
+			<value>22000</value>
+		</property>
+	</object>
+	<object class="AutomationPoint" id="{090d2819-bb99-4734-950d-7cdea33e4d2e}">
+		<property name="position">
+			<value>1</value>
+		</property>
+		<property name="value">
+			<value>1100</value>
+		</property>
+	</object>
+</objects>

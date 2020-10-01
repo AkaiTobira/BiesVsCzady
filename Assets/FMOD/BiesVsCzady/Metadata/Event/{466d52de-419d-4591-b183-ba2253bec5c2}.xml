@@ -59,12 +59,15 @@
 			<destination>{b50929ae-8bef-4280-bf2e-1e25a24a7edc}</destination>
 		</relationship>
 		<relationship name="output">
-			<destination>{5876b881-eadb-41de-ab6e-370bf9b436a1}</destination>
+			<destination>{6f8846d7-5dd7-44b5-845d-83478634c948}</destination>
 		</relationship>
 	</object>
 	<object class="EventAutomatableProperties" id="{26f8ea6b-58a6-4c9f-8ef3-a42856708146}">
+		<property name="maxVoices">
+			<value>3</value>
+		</property>
 		<property name="voiceStealing">
-			<value>4</value>
+			<value>1</value>
 		</property>
 	</object>
 	<object class="MarkerTrack" id="{3e494c48-ed87-4bad-b698-438db3ee5866}" />
@@ -113,7 +116,7 @@
 	</object>
 	<object class="EventMixerMaster" id="{daebceae-7975-49e4-bea2-b82fa5d8833b}">
 		<property name="volume">
-			<value>-80</value>
+			<value>-3.5</value>
 		</property>
 		<relationship name="effectChain">
 			<destination>{fa55b4b7-458c-41c5-b57d-615cf69c6cac}</destination>
@@ -166,7 +169,7 @@
 	</object>
 	<object class="EventMixerGroup" id="{3b6d8951-ed77-46bd-ae06-f8d0fa958e36}">
 		<property name="volume">
-			<value>-26</value>
+			<value>-33</value>
 		</property>
 		<property name="name">
 			<value>Audio 2</value>
@@ -248,11 +251,11 @@
 	<object class="MixerBusEffectChain" id="{fa55b4b7-458c-41c5-b57d-615cf69c6cac}">
 		<relationship name="effects">
 			<destination>{9d85568d-f9e9-4153-ba0b-413258ba1251}</destination>
+			<destination>{65ad865c-b850-4a7a-b47b-719a6b60e049}</destination>
 			<destination>{c2e395e1-a9c2-4475-9e86-1255d02a930d}</destination>
 			<destination>{1602a583-cdbe-4c9b-bfef-d5e94e9ae580}</destination>
 			<destination>{63cb4876-3716-4925-9a75-bd29304af288}</destination>
 			<destination>{bde3b1fd-54aa-47dd-8e53-3f33cf3e9a03}</destination>
-			<destination>{65ad865c-b850-4a7a-b47b-719a6b60e049}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{98520e1d-23bd-4818-b590-5d4b8ff45fdf}">
@@ -287,12 +290,20 @@
 	</object>
 	<object class="MixerBusPanner" id="{02df43f5-4927-41e3-a34f-777744b69dd4}" />
 	<object class="MixerBusFader" id="{9d85568d-f9e9-4153-ba0b-413258ba1251}" />
+	<object class="SpatialiserEffect" id="{65ad865c-b850-4a7a-b47b-719a6b60e049}">
+		<property name="minimumDistance">
+			<value>15</value>
+		</property>
+		<property name="maximumDistance">
+			<value>500</value>
+		</property>
+	</object>
 	<object class="MixerSend" id="{c2e395e1-a9c2-4475-9e86-1255d02a930d}">
 		<property name="level">
 			<value>-52</value>
 		</property>
 		<property name="inputFormat">
-			<value>1</value>
+			<value>2</value>
 		</property>
 		<relationship name="mixerReturn">
 			<destination>{0a98f67f-29aa-4fe5-b637-09c115d170ed}</destination>
@@ -303,7 +314,7 @@
 			<value>-41</value>
 		</property>
 		<property name="inputFormat">
-			<value>1</value>
+			<value>2</value>
 		</property>
 		<relationship name="mixerReturn">
 			<destination>{61708e4a-16ef-4ee4-9e42-15fe1b20f405}</destination>
@@ -314,7 +325,7 @@
 			<value>-42</value>
 		</property>
 		<property name="inputFormat">
-			<value>1</value>
+			<value>2</value>
 		</property>
 		<relationship name="mixerReturn">
 			<destination>{8255471f-f5b1-4229-a05e-ebdc36f1bdc3}</destination>
@@ -325,22 +336,11 @@
 			<value>-41</value>
 		</property>
 		<property name="inputFormat">
-			<value>1</value>
+			<value>2</value>
 		</property>
 		<relationship name="mixerReturn">
 			<destination>{266f4f0d-073b-428c-9aa8-146082e4f5a0}</destination>
 		</relationship>
-	</object>
-	<object class="SpatialiserEffect" id="{65ad865c-b850-4a7a-b47b-719a6b60e049}">
-		<property name="distanceRolloffType">
-			<value>4</value>
-		</property>
-		<property name="minimumDistance">
-			<value>15</value>
-		</property>
-		<property name="maximumDistance">
-			<value>75</value>
-		</property>
 	</object>
 	<object class="MixerBusFader" id="{5a6fea54-3dea-4a5a-a607-844ef7c56798}" />
 	<object class="MixerSend" id="{20f565c0-83a4-484c-85a0-4eb62aa091ff}">
