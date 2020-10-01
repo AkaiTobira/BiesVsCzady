@@ -21,9 +21,9 @@ public class PlayerMove : PlayerBaseState
         SetUpRotation();
         m_lowerEdgeDetector = controllable.GetComponent<IPlatformEdgeDetector>();
     }
-    protected override void UpdateDirection(){
+  //  protected override void UpdateDirection(){
         
-    }
+   // }
 
     private void SetUpRotation(){
         if( CommonValues.needChangeDirection ){
