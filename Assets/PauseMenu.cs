@@ -6,11 +6,15 @@ public class PauseMenu : MonoBehaviour
 {
 
     public GameObject pauseMenu = null;
+    public GameObject endMenu   = null;
 
 
     public void PauseGame(){
         Time.timeScale = 0;
         pauseMenu.SetActive(true);
+        if( GlobalUtils.PlayerObject.GetComponent<Player>().gameOver && endMenu.activeSelf ){
+            endMenu.SetActive(false);
+        }
         FMODUnity.RuntimeManager.StudioSystem.setParameterByName("PauseMenu", 1, false);
     }
 
@@ -28,6 +32,11 @@ public class PauseMenu : MonoBehaviour
         Time.timeScale = 1;
         pauseMenu.SetActive(false);
         FMODUnity.RuntimeManager.StudioSystem.setParameterByName("PauseMenu", 0, false);
+
+        
+        if( GlobalUtils.PlayerObject.GetComponent<Player>().gameOver && !endMenu.activeSelf ){
+            endMenu.SetActive(true);
+        }
     }
 
     public void Exit(){

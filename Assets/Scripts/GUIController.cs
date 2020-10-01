@@ -8,10 +8,13 @@ public class GUIController : MonoBehaviour
 
     public KeyInfoControll keyInfoScreen;
 
+    public Animator endScreen;
+
     void Start()
     {   
         GUIElements.GUIOverlay      = GetComponent<GUIController>();
         GUIElements.TutorialConsole = transform.Find("TutorialText").GetChild(0).GetComponent<Text>();
+        GUIElements.endScreen       = endScreen;
     }
 
     public void SwitchButtonVisibility(){

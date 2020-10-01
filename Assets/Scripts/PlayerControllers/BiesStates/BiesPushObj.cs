@@ -12,14 +12,15 @@ public class BiesPushObj : PlayerBaseState
 
     private ICollisionWallDetector m_wallDetector;
 
+    private FMOD.Studio.EventInstance instance;
     public BiesPushObj( GameObject controllable, GlobalUtils.Direction dir) : base( controllable ) {
         // play change direction animation;
         // at end of animation call :
         // TEMP
 
 
-        //instance = FMODUnity.RuntimeManager.CreateInstance("event:/SFX/Enviro/push object");
-        //instance.start();
+        instance = FMODUnity.RuntimeManager.CreateInstance("event:/SFX/Enviro/push object");
+        instance.start();
 
         //m_animator.GetComponent<SoundSFX>().PlayLoopedSFX(0);
         name = "BiesPushObj";
@@ -46,9 +47,11 @@ public class BiesPushObj : PlayerBaseState
         //m_animator.SetBool("isPushing", !m_isOver);
         CommonValues.PlayerVelocity = new Vector2(0,0);
         m_FloorDetector.Move(CommonValues.PlayerVelocity);
-        m_animator.GetComponent<SoundSFX>().StopLoopedSFX(0);
-        //instance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
-        //instance.release();
+        //m_animator.GetComponent<SoundSFX>().StopLoopedSFX(0);
+        instance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+        instance.release();
+        
+        m_animator.SetBool("isPushing", false);
     }
 
     protected override void UpdateDirection(){}
@@ -76,6 +79,8 @@ public class BiesPushObj : PlayerBaseState
         }else if( isRightOriented() && m_wallDetector.isCollideWithRightWall() ){
             m_isOver = true;
         }else if( isLeftOriented()  && m_wallDetector.isCollideWithLeftWall()  ){
+            m_isOver = true;
+        }else if( (m_moveable.transform.position - m_FloorDetector.GetComponent<Transform>().transform.position).magnitude > 80 ){
             m_isOver = true;
         }
 

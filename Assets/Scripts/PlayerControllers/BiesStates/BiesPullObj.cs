@@ -49,9 +49,10 @@ public class BiesPullObj : PlayerBaseState
         //m_animator.SetBool("isPulling", !m_isOver);
         CommonValues.PlayerVelocity = new Vector2(0,0);
         m_FloorDetector.Move(CommonValues.PlayerVelocity);
-        m_animator.GetComponent<SoundSFX>().StopLoopedSFX(0);
+        //m_animator.GetComponent<SoundSFX>().StopLoopedSFX(0);
         instance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
         instance.release();
+        m_animator.SetBool("isPulling", false);
     }
     public override void Process(){
         if( PlayerFallHelper.FallRequirementsMeet( m_FloorDetector.isOnGround()) ){
@@ -82,8 +83,16 @@ public class BiesPullObj : PlayerBaseState
                     oldMoveablePosition; 
             }
             
-            m_animator.SetBool("isPulling", !m_isOver);
         }
+
+        Debug.Log( (m_moveable.transform.position - m_FloorDetector.GetComponent<Transform>().transform.position).magnitude );
+
+        if( (m_moveable.transform.position - m_FloorDetector.GetComponent<Transform>().transform.position).magnitude > 80 ){
+            m_isOver = true;
+        }
+
+            m_animator.SetBool("isPulling", !m_isOver);
+        
     }
 
     public override void HandleInput(){
