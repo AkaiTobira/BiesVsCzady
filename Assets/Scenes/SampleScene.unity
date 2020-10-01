@@ -3950,6 +3950,11 @@ PrefabInstance:
       propertyPath: pauseMenu
       value: 
       objectReference: {fileID: 322383275}
+    - target: {fileID: 8303907541182445161, guid: 59d8381794b10e54d9016ef4d50555b6,
+        type: 3}
+      propertyPath: lpfOn
+      value: lpfOn
+      objectReference: {fileID: 0}
     - target: {fileID: 8303907541861954696, guid: 59d8381794b10e54d9016ef4d50555b6,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -4600,6 +4605,37 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 519420031}
+    - target: {fileID: 8269146313714153900, guid: cf25cbca065412749acc53e25a2a42d0,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8269146313714153900, guid: cf25cbca065412749acc53e25a2a42d0,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8269146313714153900, guid: cf25cbca065412749acc53e25a2a42d0,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8269146313714153900, guid: cf25cbca065412749acc53e25a2a42d0,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 11500000, guid: 5e5f50d528dc4d24486a2d94436a1573,
+        type: 3}
+    - target: {fileID: 8269146313714153900, guid: cf25cbca065412749acc53e25a2a42d0,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: set_name
+      objectReference: {fileID: 0}
+    - target: {fileID: 8269146313714153900, guid: cf25cbca065412749acc53e25a2a42d0,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 8269146313987268709, guid: cf25cbca065412749acc53e25a2a42d0,
         type: 3}
       propertyPath: m_Color.r
