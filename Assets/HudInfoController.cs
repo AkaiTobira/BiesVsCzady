@@ -25,6 +25,7 @@ public class HudInfoController : MonoBehaviour
     private Player _player;
 
     void Start() {
+        GUIElements.GUIinfo = gameObject;
         _player = GlobalUtils.PlayerObject.GetComponent<Player>();
     }
 

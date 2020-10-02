@@ -17,6 +17,8 @@ public static class  GUIElements
 
     public static BloodHitLightChange LightHit = null;
 
+    public static GameObject GUIinfo = null;
+    public static Animator endScreen = null;
     public static Text        debugConsole   = null;
     public static Text        debugConsole2  = null;
 

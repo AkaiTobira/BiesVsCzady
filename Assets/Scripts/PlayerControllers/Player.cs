@@ -24,10 +24,16 @@ public class Player : IEntity
     }
 
     public void GetWings(){
-        m_animator.SetTrigger("GetWings");
+
         GUIElements.LightHit.ApplyLightColors();
         baseInputLockAfterRebirth = 1000f;
+        almostLastFuckingTimer = 0.74f;
+        gameOver = true;
     }
+
+
+    private float almostLastFuckingTimer = 0;
+
 
     void Start()
     {
@@ -292,6 +298,10 @@ public class Player : IEntity
         }
     }
 
+
+    private bool anotherOne = false;
+    public bool gameOver = false;
+    private float lastFuckingTimer = 4;
     void Update(){
         if( baseInputLockAfterRebirth < 0) {
             m_controller.Update();
@@ -319,6 +329,20 @@ public class Player : IEntity
 
         CommonValues.tempModulator  = t1;
         CommonValues.tempModulator2 = t2;
+
+        almostLastFuckingTimer = Mathf.Max( almostLastFuckingTimer -Time.deltaTime, 0 );
+        if( almostLastFuckingTimer == 0 && gameOver){
+            if( !anotherOne ) m_animator.SetTrigger("GetWings");
+            anotherOne = true;
+            lastFuckingTimer = Mathf.Max( lastFuckingTimer  - Time.deltaTime, 0 );
+            if( lastFuckingTimer == 0){
+                GUIElements.GUIinfo.SetActive(false);
+                hpBar.gameObject.SetActive(false);
+                GUIElements.endScreen.enabled = true;
+                GUIElements.endScreen.SetTrigger("Show");
+                lastFuckingTimer = 1000000;
+            }
+        }
     }
 
     public float t1;
