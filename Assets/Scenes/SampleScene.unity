@@ -7393,6 +7393,21 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3150698890358943138, guid: 5c9d8671db069494eb169b071acd31b0,
+        type: 3}
+      propertyPath: SFXSounds.Array.size
+      value: 19
+      objectReference: {fileID: 0}
+    - target: {fileID: 3150698890358943138, guid: 5c9d8671db069494eb169b071acd31b0,
+        type: 3}
+      propertyPath: SFXSounds.Array.data[17]
+      value: event:/SFX/Bies/skrzydla
+      objectReference: {fileID: 0}
+    - target: {fileID: 3150698890358943138, guid: 5c9d8671db069494eb169b071acd31b0,
+        type: 3}
+      propertyPath: SFXSounds.Array.data[18]
+      value: event:/SFX/Bies/skrzydla loop
+      objectReference: {fileID: 0}
     - target: {fileID: 3150698890358943149, guid: 5c9d8671db069494eb169b071acd31b0,
         type: 3}
       propertyPath: m_Enabled
@@ -7417,12 +7432,12 @@ PrefabInstance:
     - target: {fileID: 3150698890479183686, guid: 5c9d8671db069494eb169b071acd31b0,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2431
+      value: 1477
       objectReference: {fileID: 0}
     - target: {fileID: 3150698890479183686, guid: 5c9d8671db069494eb169b071acd31b0,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -66
+      value: -2969
       objectReference: {fileID: 0}
     - target: {fileID: 3150698890479183686, guid: 5c9d8671db069494eb169b071acd31b0,
         type: 3}
