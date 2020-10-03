@@ -124,7 +124,7 @@ public class SFSMPlayerChange : ISFSMBase
         if( newState != null ){
            currentStateName = RemoveFormName( RemoveDirectionInfo( newState.name ));
            if( !newState.name.Contains("Idle") ) m_states.Push( newState );
-        }else if( newState.name.Contains("Idle") ){
+        }else if( newState == null || newState.name.Contains("Idle") ){
             currentStateName = "Idle";    
         }
         PlayerChangeRules.ChangeAnimation( currentFormName, currentStateName, currentDirection);
