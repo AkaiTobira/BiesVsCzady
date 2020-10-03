@@ -43,7 +43,7 @@ public class CzadStun : EnemyBaseState{
     }
 
     private void  ProcessStateEnd(){
-        Debug.Log(timeToEnd);
+//        Debug.Log(timeToEnd);
         timeToEnd -= Time.deltaTime;
         if( timeToEnd < 0){
             m_isOver = true;

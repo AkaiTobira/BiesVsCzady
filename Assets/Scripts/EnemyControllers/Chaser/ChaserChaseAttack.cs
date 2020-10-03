@@ -160,7 +160,11 @@ public class ChaserChaseAttack : EnemyBaseState
     public void ProcessStateOver(){
         if( m_wallDetector.isWallClose() ){
 
-            if( m_wallDetector.isCollideWithLeftWall() && isLeftOriented() ){ 
+            bool isStunned = Mathf.Abs(entityScript.velocity.x) > entityScript.chaseSpeed*0.3;
+            isStunned |= m_wallDetector.isCollideWithLeftWall() && isLeftOriented();
+            isStunned |= m_wallDetector.isCollideWithRightWall() && isRightOriented();
+
+            if( isStunned ){
                 GlobalUtils.AttackInfo infoPack = new GlobalUtils.AttackInfo();
 
                 infoPack.isValid      = true;
@@ -168,37 +172,17 @@ public class ChaserChaseAttack : EnemyBaseState
                 m_isOver = true;
                 infoPack.knockBackValue = new Vector2( 10, 0);
                 infoPack.lockFaceDirectionDuringKnockback = true;
-                infoPack.fromCameAttack = GlobalUtils.Direction.Left;
+                infoPack.fromCameAttack = isLeftOriented()? GlobalUtils.Direction.Left : GlobalUtils.Direction.Right;
 
                 GUIElements.cameraShake.TriggerShake(0.1f);
-                m_animator.GetComponent<SoundSFX>().PlaySFX3D(3);
-
-
-                m_nextState = new CzadStun( m_controllabledObject, infoPack);
-                
-            }else if( m_wallDetector.isCollideWithRightWall() && isRightOriented()){
-                GlobalUtils.AttackInfo infoPack = new GlobalUtils.AttackInfo();
-
-                infoPack.isValid      = true;
-                infoPack.stunDuration = 9f;
-                m_isOver = true;
-
-                infoPack.knockBackValue = new Vector2( 10, 0);
-                infoPack.lockFaceDirectionDuringKnockback = true;
-                infoPack.fromCameAttack = GlobalUtils.Direction.Right;
-
-
-                GUIElements.cameraShake.TriggerShake(0.1f);
-
                 m_animator.GetComponent<SoundSFX>().PlaySFX3D(3);
 
                 m_nextState = new CzadStun( m_controllabledObject, infoPack);
             }
         }
 
-//        Debug.Log( Mathf.Abs( GlobalUtils.PlayerObject.position.x - m_FloorDetector.GetComponent<Transform>().position.x ) );
-
-        if(  Mathf.Abs( GlobalUtils.PlayerObject.position.x - m_FloorDetector.GetComponent<Transform>().position.x ) - m_FloorDetector.GetComponent<CollisionDetectorEnemy>().sightLenght > 0  ){
+        if(  Mathf.Abs( GlobalUtils.PlayerObject.position.x - m_FloorDetector.GetComponent<Transform>().position.x ) - 
+            m_FloorDetector.GetComponent<CollisionDetectorEnemy>().sightLenght > 0  ){
             m_isOver = true;
         }
 

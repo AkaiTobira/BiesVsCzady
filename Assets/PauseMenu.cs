@@ -8,10 +8,7 @@ public class PauseMenu : MonoBehaviour
     public GameObject pauseMenu = null;
     public GameObject endMenu   = null;
     public GameObject controllMenu   = null;
-
     public GameObject pauseScreen   = null;
-    
-
 
     public void PauseGame(){
         Time.timeScale = 0.00001f;
@@ -25,10 +22,8 @@ public class PauseMenu : MonoBehaviour
     void Update()
     {
         if( Input.GetKeyDown( KeyCode.Escape )){
-            //Debug.Log( pauseMenu.activeSelf );
             if( !pauseMenu.activeSelf ) PauseGame();
             else ReplayGame();
-            //Application.Quit();
         }
     }
 

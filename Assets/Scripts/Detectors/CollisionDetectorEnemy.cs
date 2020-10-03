@@ -134,7 +134,7 @@ public class CollisionDetectorEnemy : CollisionDetector, IPlatformEdgeDetector, 
             Debug.DrawRay(
                 rayOrigin,
                 new Vector2( collisionInfo.faceDir, 0) * rayLenght,
-                new Color(1,1,1)
+                Color.blue
              );
 
         }
