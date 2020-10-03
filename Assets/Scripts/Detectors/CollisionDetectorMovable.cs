@@ -12,6 +12,10 @@ public class CollisionDetectorMovable : CollisionDetector, ICollisionWallDetecto
     
     private float accumulatedGravity = 0.0f;
 
+    [SerializeField] private float timerOfStoneFall = -2;
+    [SerializeField] private float timeToStoneFall    = 0.03f;
+
+    [SerializeField] private bool shakeEnabled = false;
 
     public float GetDistanceToClosestWallFront(){
         return 0;
@@ -43,21 +47,34 @@ public class CollisionDetectorMovable : CollisionDetector, ICollisionWallDetecto
                     accumulatedGravity += GravityForce;
                 }
                 transition.y = -accumulatedGravity * Time.deltaTime;
+                timerOfStoneFall += Time.deltaTime;
                 Move( transition );
             }else{
                 Move( new Vector2(0,-0.1f));
+                if( timerOfStoneFall > timeToStoneFall ){
+                    FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/Enviro/stone fall");
+                    if( shakeEnabled) GUIElements.cameraShake.TriggerShake(0.3f);
+                }
+                timerOfStoneFall = 0;
                 if(accumulatedGravity != 0)
                 {
                     accumulatedGravity = 0.0f;
-                    //FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/Enviro/stone fall");
+                    //
                 }
 
             }
         }        
     }
 
+    public override void Move(Vector2 velocity)
+    {
+        if( velocity.x != 0 ){ timerOfStoneFall = 0;}
+        base.Move(velocity);
+    }
+
     public override void Move(float x, float y)
     {
+        if( x != 0 ){ timerOfStoneFall = 0;}
         base.Move(x, y);
     }
 
