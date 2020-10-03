@@ -1,20 +1,27 @@
-using System.Collections.Generic;
 using UnityEngine;
+using System.Collections;
 using UnityEngine.SceneManagement;
 
 public class LoadScript : MonoBehaviour
 {
     public static string nextSceneName = "";
+    public string onEscapeReturnScene = "";
     public void LoadScene( string name ){
-        nextSceneName = name;
-  //      StartCoroutine(LoadNextScene());
+        LoadManager.instance.LoadScene( name );
     }
 
-/*
-    IEnumerator LoadNextScene ()
-    {
-       yield return new WaitForSeconds(0.1f);
-       SceneManager.LoadScene(nextSceneName);
+    void Update() {
+        OnEscapeReturn( );
     }
-    */
+
+    public void OnEscapeReturn( ){
+        if( !Input.GetKeyDown(KeyCode.Escape)) return;
+        if( onEscapeReturnScene == "") return;
+        LoadManager.instance.LoadScene( onEscapeReturnScene );
+    }
+
+    public void Exit(){
+        Application.Quit();
+    }
+
 }

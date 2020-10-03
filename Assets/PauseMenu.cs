@@ -7,6 +7,10 @@ public class PauseMenu : MonoBehaviour
 
     public GameObject pauseMenu = null;
     public GameObject endMenu   = null;
+    public GameObject controllMenu   = null;
+
+    public GameObject pauseScreen   = null;
+    
 
 
     public void PauseGame(){
@@ -28,6 +32,22 @@ public class PauseMenu : MonoBehaviour
         }
     }
 
+    public void SwitControlls(){
+        if( pauseScreen.activeSelf ){
+            controllMenu.SetActive( true );
+            pauseScreen.SetActive(false);
+        }else{
+            controllMenu.SetActive( false );
+            pauseScreen.SetActive(true);
+        }
+    }
+
+    public void ResetAllSettings(){
+        pauseMenu.SetActive(false);
+            controllMenu.SetActive( false );
+            pauseScreen.SetActive(true);
+        Time.timeScale = 1;
+    }
 
     public void ReplayGame(){
         Time.timeScale = 1;
@@ -38,10 +58,11 @@ public class PauseMenu : MonoBehaviour
         if( GlobalUtils.PlayerObject.GetComponent<Player>().gameOver && !endMenu.activeSelf ){
             endMenu.SetActive(true);
         }
+
+        ResetAllSettings();
     }
 
     public void Exit(){
-        Debug.Log( "OnQuit");
         Application.Quit();
     }
 

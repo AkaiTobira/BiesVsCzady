@@ -303,7 +303,7 @@ public class Player : IEntity
     public bool gameOver = false;
     private float showCongratulationTimer = 4;
     void Update(){
-        if( baseInputLockAfterRebirth < 0) {
+        if( baseInputLockAfterRebirth < 0 && Time.timeScale == 1) {
             m_controller.Update();
         }else{
             m_animator.transform.position = m_FloorDetector.GetComponent<Transform>().position;
