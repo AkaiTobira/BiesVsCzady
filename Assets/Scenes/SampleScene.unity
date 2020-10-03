@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -1547,6 +1547,11 @@ PrefabInstance:
       propertyPath: m_LocalPosition.x
       value: -727
       objectReference: {fileID: 0}
+    - target: {fileID: 1997565935303814489, guid: c12156b9a5191b94189f602896a4d502,
+        type: 3}
+      propertyPath: m_Text
+      value: "korzenie/ga\u0142\u0119zie."
+      objectReference: {fileID: 0}
     - target: {fileID: 2017310051180659217, guid: c12156b9a5191b94189f602896a4d502,
         type: 3}
       propertyPath: m_Sprite
@@ -1556,7 +1561,7 @@ PrefabInstance:
     - target: {fileID: 2040512063881424619, guid: c12156b9a5191b94189f602896a4d502,
         type: 3}
       propertyPath: m_Text
-      value: "\u017Ceby spa\u015B\u0107 przez platform\u0119."
+      value: "\u017Ceby spa\u015B\u0107 przez"
       objectReference: {fileID: 0}
     - target: {fileID: 2040512063881424619, guid: c12156b9a5191b94189f602896a4d502,
         type: 3}
@@ -1779,12 +1784,12 @@ PrefabInstance:
     - target: {fileID: 4971371329057982901, guid: c12156b9a5191b94189f602896a4d502,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 903.78
+      value: 896.91
       objectReference: {fileID: 0}
     - target: {fileID: 4971371329057982901, guid: c12156b9a5191b94189f602896a4d502,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 76.44968
+      value: 90.19641
       objectReference: {fileID: 0}
     - target: {fileID: 5542693078787117688, guid: c12156b9a5191b94189f602896a4d502,
         type: 3}
@@ -1803,6 +1808,16 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21300000, guid: a5d4a7187bb6381439d3587855d4d572,
         type: 3}
+    - target: {fileID: 5734636638026101703, guid: c12156b9a5191b94189f602896a4d502,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -736.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 5734636638026101703, guid: c12156b9a5191b94189f602896a4d502,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 863.5
+      objectReference: {fileID: 0}
     - target: {fileID: 5993705443659067203, guid: c12156b9a5191b94189f602896a4d502,
         type: 3}
       propertyPath: m_AnchoredPosition.x
