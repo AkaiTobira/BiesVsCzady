@@ -273,6 +273,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_smoothTime: 0.01
   fallDownDelay: 0
+  animName: StalactitBreak
+  type: 0
+  attacks:
+  - 2
+  - 1
+  - 4
+  - 5
   damage: 3
   enemyDamage: 0
   GravityForce: 10
@@ -383,7 +390,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1849812049
   m_SortingLayer: 1
-  m_SortingOrder: 10
+  m_SortingOrder: 3
   m_Sprite: {fileID: 21300000, guid: cd4df8882e4690047b710e401bbfbadc, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

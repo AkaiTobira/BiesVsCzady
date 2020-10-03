@@ -153,7 +153,6 @@ public class PlayerLedgeClimb : PlayerBaseState
         }else{
             m_FloorDetector.GetComponent<Transform>().position = targetClimbStayPoint;
         }
-            Debug.Log( m_controllabledObject.GetComponent<Player>().animationNode.position );
 
     }
 

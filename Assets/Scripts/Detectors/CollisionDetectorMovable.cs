@@ -52,7 +52,7 @@ public class CollisionDetectorMovable : CollisionDetector, ICollisionWallDetecto
             }else{
                 Move( new Vector2(0,-0.1f));
                 if( timerOfStoneFall > timeToStoneFall ){
-                    FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/Enviro/stone fall");
+                    if( !canBePushedInDirection(moveDirection) ) FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/Enviro/stone fall");
                     if( shakeEnabled) GUIElements.cameraShake.TriggerShake(0.3f);
                 }
                 timerOfStoneFall = 0;
@@ -66,15 +66,25 @@ public class CollisionDetectorMovable : CollisionDetector, ICollisionWallDetecto
         }        
     }
 
+    private GlobalUtils.Direction moveDirection;
+
     public override void Move(Vector2 velocity)
     {
+        moveDirection = (GlobalUtils.Direction)Mathf.Sign(velocity.x);
+
         if( velocity.x != 0 ){ timerOfStoneFall = 0;}
+    //    if( Mathf.Abs(velocity.y) > 3 ) timerOfStoneFall = timeToStoneFall;
+    //    Debug.Log( velocity.y );
         base.Move(velocity);
     }
 
     public override void Move(float x, float y)
     {
+        
+        moveDirection = (GlobalUtils.Direction)Mathf.Sign(x);
+
         if( x != 0 ){ timerOfStoneFall = 0;}
+    //    if( Mathf.Abs(y) > 3 ) timerOfStoneFall = timeToStoneFall;
         base.Move(x, y);
     }
 

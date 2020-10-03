@@ -20,9 +20,10 @@ public class BiesPullObj : PlayerBaseState
         // TEMP
 
 
-
+        
         instance = FMODUnity.RuntimeManager.CreateInstance("event:/SFX/Enviro/push object");
-        instance.start();
+        
+        
 
         //m_animator.GetComponent<SoundSFX>().PlayLoopedSFX(0);
         isFaceingLeft = dir == GlobalUtils.Direction.Left;
@@ -40,6 +41,14 @@ public class BiesPullObj : PlayerBaseState
         distanceFromObject = Vector3.Distance( m_controllabledObject.transform.position,
                                                m_moveable.transform.position );
 
+
+        if( isLeftOriented() && m_moveable.GetComponent<CollisionDetectorMovable>().isCollideWithLeftWall() ){
+
+        }else if( isRightOriented() && m_moveable.GetComponent<CollisionDetectorMovable>().isCollideWithRightWall()){
+
+        }else{
+            instance.start();
+        }
       //  distanceToFixAnimation = new Vector3(30, 6 , 0);
     }
 
