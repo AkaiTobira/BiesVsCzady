@@ -22,9 +22,9 @@ public class PauseMenu : MonoBehaviour
     {
         if( Input.GetKeyDown( KeyCode.Escape )){
             //Debug.Log( pauseMenu.activeSelf );
-            //if( !pauseMenu.activeSelf ) PauseGame();
-            //else ReplayGame();
-            Application.Quit();
+            if( !pauseMenu.activeSelf ) PauseGame();
+            else ReplayGame();
+            //Application.Quit();
         }
     }
 
@@ -41,6 +41,7 @@ public class PauseMenu : MonoBehaviour
     }
 
     public void Exit(){
+        Debug.Log( "OnQuit");
         Application.Quit();
     }
 
